@@ -42,16 +42,20 @@ Use the **same Google account that owns your YouTube channel**.
    - App name: `Shorts Autopilot`, support email: your email → Next
    - Audience: **External** → Next
    - Contact email: your email → Next → agree → **Create**
-2. Left menu → **Audience** → click **Publish app** → Confirm.
+2. Left menu → **Branding** → fill in and **Save**:
+   - Application home page: `https://github.com/nimrodagoat/bi`
+   - Application privacy policy link: `https://github.com/nimrodagoat/bi/blob/HEAD/PRIVACY.md`
+   - Authorized domains → **Add domain** → `github.com`
+3. Left menu → **Audience** → click **Publish app** → Confirm.
    *(This is important: if the app stays in "Testing", your login expires every
    7 days and uploads stop.)*
-3. Left menu → **Clients** → **Create client**
+4. Left menu → **Clients** → **Create client**
    - Application type: **Web application**
    - Name: `shorts`
    - Under **Authorized redirect URIs** → **Add URI** →
      `https://developers.google.com/oauthplayground`
    - **Create**
-4. Copy the **Client ID** (`YT_CLIENT_ID`) and **Client secret** (`YT_CLIENT_SECRET`).
+5. Copy the **Client ID** (`YT_CLIENT_ID`) and **Client secret** (`YT_CLIENT_SECRET`).
 
 ## Step 4: Get the refresh token (lets GitHub upload as you)
 
