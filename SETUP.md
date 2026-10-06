@@ -107,9 +107,13 @@ day. Single user, no other users' data."* Approval usually takes days to a few w
 
 ## Gameplay background (Minecraft parkour etc.)
 
-Videos use **your gameplay footage** as the background when there is some, and
-free stock footage otherwise. Each Short uses a random part of a random gameplay
-video, so a few long recordings (10+ minutes each) are plenty.
+By default every video gets **freshly generated Minecraft-style parkour** (a new
+random course each time, made from scratch, so it's copyright-free). You don't
+need to do anything for that.
+
+If you'd rather use **your own recordings**, add them as below; they're then used
+instead. Each Short uses a random part of a random video, so a few long
+recordings (10+ minutes each) are plenty.
 
 **Where to get footage you're allowed to use:**
 - **Record it yourself.** Minecraft's rules allow videos of your own gameplay,

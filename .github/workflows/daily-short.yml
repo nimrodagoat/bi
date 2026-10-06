@@ -34,7 +34,7 @@ jobs:
       - name: Install ffmpeg and fonts
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core libegl1 libgl1-mesa-dri
 
       - name: Install Python packages
         run: pip install -r requirements.txt

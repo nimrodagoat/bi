@@ -5,3 +5,5 @@ PyYAML>=6.0
 requests>=2.31
 google-api-python-client>=2.100
 google-auth>=2.23
+moderngl>=5.8
+numpy>=1.24

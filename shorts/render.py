@@ -87,7 +87,7 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
     inputs: list[str] = []
     filters: list[str] = []
     fill = f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1,fps={fps}"
-    gameplay = visuals.pick_gameplay(total, cfg)
+    gameplay = visuals.pick_gameplay(total, cfg, work_dir, item.get("id", ""))
     clips = [] if gameplay else visuals.fetch_clips(
         item.get("search_terms") or [item.get("niche") or cfg.get("channel", {}).get("niche", "")],
         total, work_dir, cfg,

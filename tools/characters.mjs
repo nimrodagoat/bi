@@ -1,63 +1,46 @@
 // Draws the two characters with 5 expressions each into assets/characters/<name>/.
+// Each expression combines a face (brows, eyes, mouth) with a hand gesture.
 //
-// Art: "Avataaars" by Pablo Stanley (https://avataaars.com/), free for personal
-// and commercial use, rendered with DiceBear (https://www.dicebear.com/).
+// Art: "Notionists" by Zoish (CC0 / public domain), rendered with DiceBear
+// (https://www.dicebear.com/styles/notionists/).
 //
-// Run (needs Node 18+), from the repo root:
+// Run (needs Node 18+ and Python with Pillow), from the repo root:
 //   npm install --no-save @dicebear/core@9 @dicebear/collection@9 @resvg/resvg-js@2
 //   node tools/characters.mjs
+//   python tools/sticker.py          # adds the coloured outline from config.yaml
 //
-// To restyle a character, change its `look` below. Options for every field:
-// https://www.dicebear.com/styles/avataaars/
+// To restyle a character, change its `look` or expressions below. Every part is
+// "variantNN"; see the style page above for pictures of each option.
 
 import { createAvatar } from "@dicebear/core";
-import { avataaars } from "@dicebear/collection";
+import { notionists } from "@dicebear/collection";
 import { Resvg } from "@resvg/resvg-js";
 import { mkdirSync, writeFileSync } from "node:fs";
 
-const SIZE = 640;
+const SIZE = 900;
+const v = (n) => [`variant${String(n).padStart(2, "0")}`];
 
 const characters = {
-  // The loud, clueless big guy.
+  // The loud, clueless one: spiky hair, stubble, big reactions.
   dave: {
-    look: {
-      top: ["shortFlat"],
-      hairColor: ["2c1b18"],
-      facialHair: ["beardLight"],
-      facialHairColor: ["2c1b18"],
-      facialHairProbability: 100,
-      accessoriesProbability: 0,
-      clothing: ["hoodie"],
-      clothesColor: ["ff5c5c"],
-      skinColor: ["edb98a"],
-    },
+    look: { hair: v(53), beard: v(8), beardProbability: 100, glassesProbability: 0, body: v(14), nose: v(3) },
     expressions: {
-      neutral: { eyes: ["default"], eyebrows: ["defaultNatural"], mouth: ["default"] },
-      happy: { eyes: ["happy"], eyebrows: ["raisedExcitedNatural"], mouth: ["smile"] },
-      shocked: { eyes: ["surprised"], eyebrows: ["raisedExcited"], mouth: ["screamOpen"] },
-      confused: { eyes: ["squint"], eyebrows: ["upDownNatural"], mouth: ["disbelief"] },
-      goofy: { eyes: ["winkWacky"], eyebrows: ["raisedExcitedNatural"], mouth: ["tongue"] },
+      neutral: { brows: v(1), eyes: v(4), lips: v(22), gesture: ["hand"] },
+      excited: { brows: v(11), eyes: v(4), lips: v(25), gesture: ["waveLongArm"] },
+      shocked: { brows: v(11), eyes: v(5), lips: v(11), gesture: ["waveLongArms"] },
+      confused: { brows: v(3), eyes: v(4), lips: v(18), gesture: ["handPhone"] },
+      goofy: { brows: v(11), eyes: v(4), lips: v(12), gesture: ["okLongArm"] },
     },
   },
-  // The tiny, smug genius.
+  // The know-it-all: neat hair, glasses, calm and smug.
   pip: {
-    look: {
-      top: ["shortCurly"],
-      hairColor: ["c93305"],
-      facialHairProbability: 0,
-      accessories: ["prescription02"],
-      accessoriesColor: ["262e33"],
-      accessoriesProbability: 100,
-      clothing: ["collarAndSweater"],
-      clothesColor: ["5199e4"],
-      skinColor: ["ffdbb4"],
-    },
+    look: { hair: v(13), glasses: v(11), glassesProbability: 100, beardProbability: 0, body: v(5), nose: v(10) },
     expressions: {
-      neutral: { eyes: ["default"], eyebrows: ["defaultNatural"], mouth: ["serious"] },
-      explaining: { eyes: ["happy"], eyebrows: ["raisedExcitedNatural"], mouth: ["smile"] },
-      smug: { eyes: ["side"], eyebrows: ["upDownNatural"], mouth: ["twinkle"] },
-      unimpressed: { eyes: ["eyeRoll"], eyebrows: ["flatNatural"], mouth: ["serious"] },
-      surprised: { eyes: ["surprised"], eyebrows: ["raisedExcitedNatural"], mouth: ["disbelief"] },
+      explaining: { brows: v(1), eyes: v(1), lips: v(25), gesture: ["pointLongArm"] },
+      smug: { brows: v(9), eyes: v(1), lips: v(23), gesture: ["ok"] },
+      factcheck: { brows: v(5), eyes: v(2), lips: v(13), gesture: ["handPhone"] },
+      unimpressed: { brows: v(3), eyes: v(2), lips: v(18), gesture: ["hand"] },
+      surprised: { brows: v(11), eyes: v(5), lips: v(29), gesture: ["waveLongArm"] },
     },
   },
 };
@@ -66,7 +49,9 @@ for (const [name, { look, expressions }] of Object.entries(characters)) {
   const dir = `assets/characters/${name}`;
   mkdirSync(dir, { recursive: true });
   for (const [expression, face] of Object.entries(expressions)) {
-    const svg = createAvatar(avataaars, { seed: name, ...look, ...face }).toString();
+    const svg = createAvatar(notionists, {
+      seed: name, gestureProbability: 100, bodyIconProbability: 0, ...look, ...face,
+    }).toString();
     const png = new Resvg(svg, { fitTo: { mode: "width", value: SIZE } }).render().asPng();
     writeFileSync(`${dir}/${expression}.png`, png);
     console.log(`${dir}/${expression}.png`);

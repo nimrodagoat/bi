@@ -38,13 +38,17 @@ voice:
   piper_voice: en_US-ryan-high
 
 visuals:
-  # auto     = your gameplay videos if there are any (see SETUP.md, "Gameplay"),
+  # auto     = your own gameplay videos if there are any (see SETUP.md, "Gameplay"),
+  #            otherwise generated Minecraft-style parkour (parkour: true),
   #            otherwise free stock videos matching each video's search_terms from
   #            Pixabay (PIXABAY_API_KEY) or Pexels (PEXELS_API_KEY),
   #            otherwise an animated colour background
-  # gameplay / pixabay / pexels / gradient = force one of these
+  # gameplay / parkour / pixabay / pexels / gradient = force one of these
   source: auto
   gameplay_dir: assets/gameplay
+  parkour: true
+  parkour_fov: 96               # camera field of view in degrees
+  parkour_render_scale: 0.75    # lower = faster rendering, softer picture
   # Darkens the background so captions stay readable (0 = none, 1 = black).
   dim: 0.35
   gameplay_dim: 0.15
@@ -56,20 +60,21 @@ visuals:
 #           Actions and download the "voice-samples" files.
 #   expressions: one picture per face; the speaking character switches between
 #           them. "reactions" picks the first face for questions/exclamations.
-#   Art: "Avataaars" by Pablo Stanley; restyle with tools/characters.mjs.
+#   Art: "Notionists" by Zoish (public domain); restyle with tools/characters.mjs.
 characters:
   dave:
     name: Dave
-    edge_voice: en-US-BrianMultilingualNeural
-    edge_rate: "+6%"
-    kokoro_voice: am_puck
+    engines: [edge, kokoro]
+    edge_voice: en-US-AndrewMultilingualNeural
+    edge_rate: "+8%"
+    kokoro_voice: am_puck   # backup if Edge is down
     kokoro_speed: 1.05
     espeak_voice: en-us     # robotic offline voice, local testing only
-    color: "#FF5C5C"        # his words light up red
+    color: "#FF5C5C"        # outline + his words light up red
     side: left
     expressions:
       neutral: assets/characters/dave/neutral.png
-      happy: assets/characters/dave/happy.png
+      excited: assets/characters/dave/excited.png
       shocked: assets/characters/dave/shocked.png
       confused: assets/characters/dave/confused.png
       goofy: assets/characters/dave/goofy.png
@@ -78,17 +83,18 @@ characters:
       exclaim: shocked
   pip:
     name: Pip
-    edge_voice: en-GB-RyanNeural
-    edge_rate: "+4%"
-    kokoro_voice: bm_george
+    engines: [kokoro, edge]
+    kokoro_voice: bm_lewis
     kokoro_speed: 1.05
+    edge_voice: en-GB-RyanNeural  # backup if Kokoro fails
+    edge_rate: "+4%"
     espeak_voice: en-gb
-    color: "#4CC9F0"        # his words light up blue
+    color: "#4CC9F0"        # outline + his words light up blue
     side: right
     expressions:
-      neutral: assets/characters/pip/neutral.png
       explaining: assets/characters/pip/explaining.png
       smug: assets/characters/pip/smug.png
+      factcheck: assets/characters/pip/factcheck.png
       unimpressed: assets/characters/pip/unimpressed.png
       surprised: assets/characters/pip/surprised.png
     reactions:

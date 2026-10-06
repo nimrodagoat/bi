@@ -5,12 +5,17 @@ first entry of `content/queue.yaml`, renders a vertical Short and uploads it; th
 it moves the entry to `content/posted.yaml` and commits. Everything is free: Edge
 TTS (Piper fallback), ffmpeg, YouTube Data API.
 
-Current format: two original cartoon characters, **Dave** (loud, clueless big guy)
-and **Pip** (tiny smug genius, British voice), talk through a fact. Each has their
-own voice, avatar (`assets/characters/`) and caption highlight colour, defined under
-`characters:` in `config.yaml`. Background: the owner's gameplay footage
-(`assets/gameplay/`, downloaded from the repo's `gameplay` release), else Pixabay/
-Pexels stock clips from `search_terms`, else a gradient.
+Current format: two original cartoon characters, **Dave** (loud, clueless; Edge
+voice en-US-AndrewMultilingualNeural) and **Pip** (smug know-it-all; Kokoro voice
+bm_lewis), talk through a fact. Each has 5 expression pictures (face + hand
+gesture, "Notionists" art, public domain) in `assets/characters/<name>/` that
+rotate while they talk, a sticker outline and caption colour; all defined under
+`characters:` in `config.yaml`. Regenerate art with `tools/characters.mjs` then
+`tools/sticker.py`. Background: the owner's real gameplay (`assets/gameplay/`, also
+pulled from the repo's `gameplay` release), else **generated Minecraft-style parkour**
+(`shorts/parkour.py`, procedural textures, headless OpenGL), else Pixabay/Pexels
+stock clips from `search_terms`, else a gradient. Never use real Minecraft/Subway
+Surfers footage downloaded from others.
 
 Don't imitate copyrighted characters or real people's voices (e.g. Family Guy):
 the owner asked once and was steered to original characters; keep it that way.

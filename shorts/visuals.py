@@ -20,14 +20,18 @@ PEXELS_SEARCH = "https://api.pexels.com/videos/search"
 PIXABAY_SEARCH = "https://pixabay.com/api/videos/"
 
 
-def pick_gameplay(duration: float, cfg: dict) -> tuple[Path, float] | None:
+def pick_gameplay(duration: float, cfg: dict, work_dir: Path, seed: str = "") -> tuple[Path, float] | None:
     """Pick a random gameplay video and a random start time inside it.
 
-    Gameplay lives in assets/gameplay/ (small files committed to the repo) and
-    is also downloaded from the repo's "gameplay" GitHub release by the daily job.
+    Real gameplay lives in assets/gameplay/ (small files committed to the repo)
+    and is also downloaded from the repo's "gameplay" GitHub release by the daily
+    job. Without any, generated Minecraft-style parkour is used.
     """
     vis = cfg.get("visuals", {})
-    if vis.get("source", "auto") not in ("auto", "gameplay"):
+    source = vis.get("source", "auto")
+    if source == "parkour":
+        return _parkour(duration, cfg, work_dir, seed)
+    if source not in ("auto", "gameplay"):
         return None  # stock footage or gradient only
     folder = ROOT / vis.get("gameplay_dir", "assets/gameplay")
     files = [f for f in folder.glob("*") if f.suffix.lower() in GAMEPLAY_EXTS] if folder.exists() else []
@@ -43,7 +47,21 @@ def pick_gameplay(duration: float, cfg: dict) -> tuple[Path, float] | None:
             print(f"  visuals: gameplay {f.name} from {start:.0f}s")
             return f, start
         print(f"  visuals: {f.name} is shorter than the video, skipping", file=sys.stderr)
+    if vis.get("parkour", True):
+        return _parkour(duration, cfg, work_dir, seed)
     return None
+
+
+def _parkour(duration: float, cfg: dict, work_dir: Path, seed: str) -> tuple[Path, float] | None:
+    from . import parkour
+
+    try:
+        path = parkour.render(work_dir / "parkour.mp4", duration + 0.5, cfg, seed)
+    except Exception as e:  # e.g. no OpenGL available: fall back to stock footage
+        print(f"  visuals: parkour generator failed ({e})", file=sys.stderr)
+        return None
+    print("  visuals: generated parkour")
+    return path, 0.0
 
 
 def fetch_clips(terms: list[str], duration: float, work_dir: Path, cfg: dict) -> list[Path]:
