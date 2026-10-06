@@ -1,0 +1,108 @@
+# Setup guide (one time, about 20 minutes, all free)
+
+You'll collect **4 secret values** and paste them into GitHub. After that,
+everything runs by itself every day.
+
+| Secret name | Where it comes from | Step |
+|---|---|---|
+| `PEXELS_API_KEY` | pexels.com (free stock videos) | 1 |
+| `YT_CLIENT_ID` | Google Cloud | 3 |
+| `YT_CLIENT_SECRET` | Google Cloud | 3 |
+| `YT_REFRESH_TOKEN` | Google OAuth Playground | 4 |
+
+> Keep these values private. Never paste them into a chat, a file in the repo,
+> or anywhere public. They only go into GitHub Secrets (step 5).
+
+---
+
+## Step 1: Free Pexels key (stock footage)
+
+1. Go to **https://www.pexels.com/api/** and click **Get Started** (create a free account).
+2. Fill in the short form (description: "Automated YouTube Shorts backgrounds").
+3. Copy your **API key**. That's `PEXELS_API_KEY`.
+
+## Step 2: Google Cloud project + YouTube API
+
+Use the **same Google account that owns your YouTube channel**.
+
+1. Go to **https://console.cloud.google.com/** and accept the terms if asked.
+   No credit card is needed.
+2. Top bar → project picker → **New project** → name it `shorts-autopilot` → **Create**.
+   Make sure it's selected afterwards.
+3. Search bar → **YouTube Data API v3** → **Enable**.
+
+## Step 3: OAuth app (permission to upload)
+
+1. Search bar → **Google Auth Platform** (or "OAuth consent screen") → **Get started**.
+   - App name: `Shorts Autopilot`, support email: your email → Next
+   - Audience: **External** → Next
+   - Contact email: your email → Next → agree → **Create**
+2. Left menu → **Audience** → click **Publish app** → Confirm.
+   *(This is important: if the app stays in "Testing", your login expires every
+   7 days and uploads stop.)*
+3. Left menu → **Clients** → **Create client**
+   - Application type: **Web application**
+   - Name: `shorts`
+   - Under **Authorized redirect URIs** → **Add URI** →
+     `https://developers.google.com/oauthplayground`
+   - **Create**
+4. Copy the **Client ID** (`YT_CLIENT_ID`) and **Client secret** (`YT_CLIENT_SECRET`).
+
+## Step 4: Get the refresh token (lets GitHub upload as you)
+
+1. Open **https://developers.google.com/oauthplayground**
+2. Click the **gear icon** (top right) → tick **Use your own OAuth credentials** →
+   paste your Client ID and Client secret → close the panel.
+3. In the left box **"Input your own scopes"**, paste:
+   `https://www.googleapis.com/auth/youtube.upload` → **Authorize APIs**.
+4. Sign in with the account that owns the channel. If you have several channels,
+   **pick the channel you want to post to**.
+5. You'll see "Google hasn't verified this app". That's expected, because it's your own
+   app. Click **Advanced** → **Go to Shorts Autopilot (unsafe)** → **Continue / Allow**.
+6. Back in the Playground, click **Exchange authorization code for tokens**.
+7. Copy the **Refresh token**. That's `YT_REFRESH_TOKEN`.
+
+## Step 5: Put the secrets into GitHub
+
+1. Open this repository on GitHub → **Settings** → **Secrets and variables** → **Actions**.
+2. Click **New repository secret** four times, once for each name in the table above.
+   The names must match exactly.
+
+## Step 6: Test run
+
+1. GitHub → **Actions** tab → if asked, click **I understand… enable workflows**.
+2. Click **Daily Short** → **Run workflow** → leave **"Test only"** ticked → **Run workflow**.
+3. When it finishes (about 2–4 minutes), open the run → scroll to **Artifacts** →
+   download `shorts-…` → unzip → watch the video.
+4. Happy with it? Run it again with **"Test only" unticked**. The video is uploaded.
+   Check YouTube Studio.
+
+From now on it runs **every day by itself** (time is set in
+`.github/workflows/daily-short.yml`).
+
+## Step 7: Allow public videos (YouTube API audit; free, but takes time)
+
+YouTube makes every video uploaded by a **new, unaudited API project private**.
+Until the audit is approved:
+
+- the daily upload still works, but each video arrives as **Private**;
+- you can make it public by hand in YouTube Studio (one click per video).
+
+To remove that limit, submit YouTube's free audit form:
+**https://support.google.com/youtube/contact/yt_api_form** →
+"YouTube API Services - Audit and Quota Extension Form". Describe it honestly:
+*"Personal tool that uploads my own original Shorts to my own channel once a
+day. Single user, no other users' data."* Approval usually takes days to a few weeks.
+
+---
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---|---|
+| Run failed with `invalid_grant` | Refresh token expired. Check step 3.2 (app must be **published**), then redo step 4 and update `YT_REFRESH_TOKEN`. |
+| `Missing secrets` | A secret name is misspelled in GitHub. |
+| `The queue is empty` | Ask Claude for a new batch of scripts. |
+| Background is a plain colour | `PEXELS_API_KEY` is missing or wrong. |
+| `quotaExceeded` | You uploaded more than ~6 videos today. It resumes tomorrow automatically. |
+| GitHub emails you that a run failed | Open the run in the **Actions** tab, or paste the error to Claude. |

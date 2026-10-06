@@ -1,0 +1,80 @@
+name: Daily Short
+
+on:
+  schedule:
+    # Every day at 15:07 UTC. Change the time with https://crontab.guru
+    # (GitHub may start scheduled runs a few minutes late.)
+    - cron: "7 15 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Test only: make the video but don't upload it"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write   # to record posted videos back into content/
+
+concurrency:
+  group: daily-short
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install ffmpeg and fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
+      - name: Cache backup voice
+        uses: actions/cache@v4
+        with:
+          path: .cache/piper
+          key: piper-${{ hashFiles('config.yaml') }}
+          restore-keys: piper-
+
+      - name: Make and post video
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m shorts run --dry-run
+          else
+            python -m shorts run
+          fi
+
+      - name: Save the video so you can watch it
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shorts-${{ github.run_number }}
+          path: output/*.mp4
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Record posted videos
+        if: success() && inputs.dry_run != true
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Record posted Short ($(date -u +%F))"
+          git pull --rebase
+          git push

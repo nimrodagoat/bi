@@ -1,0 +1,61 @@
+# ─────────────────────────────────────────────────────────────
+#  YouTube Shorts autopilot — settings
+#  Change anything here and push; the next daily run uses it.
+# ─────────────────────────────────────────────────────────────
+
+channel:
+  # The default topic for new videos. Each video in content/queue.yaml can
+  # override this with its own "niche:" line.
+  niche: "Mind-blowing science facts"
+  language: en
+
+schedule:
+  # How many videos to post each time the daily job runs.
+  # YouTube's free API quota allows about 6 uploads per day in total.
+  uploads_per_run: 1
+  # The job warns in its log when fewer videos than this are left in the queue.
+  low_queue_warning: 7
+
+upload:
+  # public | unlisted | private
+  # NOTE: until your Google Cloud project passes YouTube's (free) API audit,
+  # YouTube forces every API upload to private, whatever this says.
+  privacy: public
+  category_id: "27"        # 27 = Education, 24 = Entertainment, 22 = People & Blogs
+  made_for_kids: false
+  extra_tags: ["shorts"]   # added to every video's own tags
+
+voice:
+  # Tried in order until one works:
+  #   edge  = free Microsoft Edge neural voices (best quality, needs internet)
+  #   piper = free open-source voice, downloaded once (good quality)
+  #   espeak = robotic offline voice (only for local testing)
+  engines: [edge, piper]
+  edge_voice: en-US-AndrewNeural   # others: en-US-AvaNeural, en-GB-RyanNeural, en-US-BrianNeural
+  edge_rate: "+8%"                 # speed: "-10%" slower, "+15%" faster
+  piper_voice: en_US-ryan-high
+
+visuals:
+  # pexels   = free stock videos matching each video's search_terms (needs PEXELS_API_KEY)
+  # gradient = animated colour background (no key needed)
+  source: pexels
+  # Darkens the background so captions stay readable (0 = none, 1 = black).
+  dim: 0.35
+
+captions:
+  font: "DejaVu Sans"
+  font_size: 92
+  words_per_caption: 3
+  color: "#FFFFFF"
+  highlight_color: "#FFE600"   # colour of the word being spoken
+  position_from_bottom: 760    # pixels from the bottom of the 1920px-tall frame
+
+video:
+  width: 1080
+  height: 1920
+  fps: 30
+  # Seconds of silence after the voice ends.
+  tail_seconds: 0.6
+  # Optional background music: drop .mp3 files you have the rights to into
+  # assets/music/ and one is picked at random for each video.
+  music_volume: 0.12

@@ -1,0 +1,28 @@
+# Videos waiting to be posted, top to bottom. The daily job takes the first one.
+# Each entry:
+#   id            unique name (letters, numbers, dashes)
+#   niche         optional; overrides the niche in config.yaml for this video
+#   title         YouTube title (max 100 characters)
+#   script        what the voice says (aim for 35-55 seconds, ~90-140 words)
+#   search_terms  words used to find matching stock footage, one per scene
+#   tags          YouTube tags
+#   description   optional; generated from the script if missing
+
+- id: demo-octopus-hearts
+  title: Octopuses have THREE hearts and blue blood 🐙
+  script: |
+    An octopus has three hearts. Two of them pump blood through the gills, and the third pumps it to the rest of the body. Here's the strange part. When an octopus swims, that third heart actually stops beating. That's why octopuses prefer crawling. Swimming literally exhausts them. And their blood isn't red. It's blue, because it uses copper instead of iron to carry oxygen. That works better in cold water with very little oxygen. So the next time you see an octopus, remember: three hearts, blue blood, and a body that would rather walk than swim. Follow for one strange fact every day.
+  search_terms: [octopus, ocean underwater, coral reef, deep sea, octopus swimming]
+  tags: [octopus, animal facts, science facts, ocean, did you know]
+- id: demo-honey-never-spoils
+  title: This food never goes bad. Not even after 3000 years 🍯
+  script: |
+    Archaeologists found pots of honey in ancient Egyptian tombs. Over three thousand years old. And it was still perfectly edible. How? Honey has almost no water, so bacteria can't survive in it. It's also slightly acidic, and bees add an enzyme that produces tiny amounts of hydrogen peroxide. That's a natural disinfectant. Together, those three things make honey one of the only foods on Earth that basically never spoils. If your honey turns hard and cloudy, it hasn't gone bad. It just crystallized. Warm it gently and it's good as new. Follow for one strange fact every day.
+  search_terms: [honey, bees, honeycomb, egypt pyramids, honey jar]
+  tags: [honey, food facts, science facts, history, did you know]
+- id: demo-space-silence
+  title: Why you could scream in space and no one would hear you 🚀
+  script: |
+    In space, no one can hear you scream. And that's not just a movie line. Sound is a vibration that travels through something, like air or water. Space is almost a perfect vacuum, so there's nothing for sound to travel through. Two astronauts floating side by side could shout at each other and hear absolutely nothing. Unless they touch helmets. Then the vibration travels through the glass, and they can hear each other faintly. So every explosion you've seen in space movies? In real life, it would be completely silent. Follow for one strange fact every day.
+  search_terms: [space, astronaut, galaxy stars, planet earth from space, rocket launch]
+  tags: [space, astronomy, science facts, physics, did you know]
