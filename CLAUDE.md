@@ -10,8 +10,11 @@ voice en-US-AndrewMultilingualNeural) and **Pip** (smug know-it-all; Kokoro voic
 bm_lewis), talk through a fact. Each has 5 expression pictures (face + hand
 gesture, "Notionists" art, public domain) in `assets/characters/<name>/` that
 rotate while they talk, a sticker outline and caption colour; all defined under
-`characters:` in `config.yaml`. Regenerate art with `tools/characters.mjs` then
-`tools/sticker.py`. Background: the owner's real gameplay (`assets/gameplay/`, also
+`characters:` in `config.yaml`. Regenerate art with `tools/characters.mjs`, then
+`tools/sticker.py` (outline + torso extended to the frame bottom, so no gap under
+the characters), then `tools/design_sheet.py`. Music: the owner's tracks in
+`assets/music/`, else an original beat from `shorts/music.py` (phonk/lofi, never
+copyrighted songs); the mix is loudness-normalised. Background: the owner's real gameplay (`assets/gameplay/`, also
 pulled from the repo's `gameplay` release), else **generated Minecraft-style parkour**
 (`shorts/parkour.py`, procedural textures, headless OpenGL), else Pixabay/Pexels
 stock clips from `search_terms`, else a gradient. Never use real Minecraft/Subway

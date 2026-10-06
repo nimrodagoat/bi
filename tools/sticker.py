@@ -1,5 +1,6 @@
 """Give every character picture a thick outline in the character's colour, like a
-sticker, so they stand out on busy gameplay. Run after tools/characters.mjs:
+sticker, so they stand out on busy gameplay, and continue the torso downwards so
+the body reaches the bottom of the video. Run after tools/characters.mjs:
 
     python tools/sticker.py
 """
@@ -11,6 +12,7 @@ from PIL import Image, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTLINE = 22  # pixels, on the 900px source pictures
+EXTEND = 560  # how far the torso continues below the drawing, in pixels
 
 
 def sticker(path: Path, color: str) -> None:
@@ -23,9 +25,15 @@ def sticker(path: Path, color: str) -> None:
     border = Image.new("RGBA", canvas.size, color)
     border.putalpha(grown)
     border.alpha_composite(canvas)
-    # Cut the bottom flat so the torso ends in a clean line instead of a rounded blob.
+    # Cut the bottom flat, then repeat the last row of pixels downwards: the clothes,
+    # their lines and the outline simply carry on to the bottom of the screen.
     box = border.getbbox()
-    border.crop((0, 0, border.width, min(box[3], pad + img.height))).save(path)
+    body = border.crop((0, 0, border.width, min(box[3], pad + img.height)))
+    last = body.crop((0, body.height - 1, body.width, body.height))
+    full = Image.new("RGBA", (body.width, body.height + EXTEND))
+    full.paste(body, (0, 0))
+    full.paste(last.resize((body.width, EXTEND)), (0, body.height))
+    full.save(path)
 
 
 def main() -> None:

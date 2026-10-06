@@ -119,6 +119,11 @@ video:
   expression_seconds: 1.6
   # How often the stock footage cuts to a new clip (gameplay doesn't cut).
   scene_seconds: 2.5
-  # Optional background music: drop .mp3 files you have the rights to into
-  # assets/music/ and one is picked at random for each video.
-  music_volume: 0.12
+
+music:
+  # Every video gets an original beat generated from scratch (copyright-free).
+  # To use your own tracks instead, put .mp3 files you're allowed to use (e.g. from
+  # the YouTube Audio Library) into assets/music/; one is picked at random.
+  generate: true
+  styles: [phonk, lofi]   # phonk = hard 808 + cowbell, lofi = chill jazzy chords
+  volume: 0.14            # how loud the music is under the voices (0-1)

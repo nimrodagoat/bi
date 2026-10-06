@@ -6,6 +6,8 @@ from __future__ import annotations
 import random
 from pathlib import Path
 
+from PIL import Image
+
 from . import captions, tts, visuals
 from .media import probe_duration, run_ffmpeg
 
@@ -65,6 +67,23 @@ def expression_schedule(item: dict, turns: list, total: float, cfg: dict) -> dic
             schedule.setdefault((turn.speaker, order[k % len(order)]), []).append((t, nxt))
             t, k = nxt, k + 1
     return schedule
+
+
+def pick_music(item: dict, total: float, work_dir: Path, cfg: dict) -> Path | None:
+    """Your own tracks in assets/music/ first; otherwise a freshly generated beat."""
+    own = sorted(f for f in MUSIC_DIR.glob("*") if f.suffix.lower() in (".mp3", ".wav", ".m4a")) if MUSIC_DIR.exists() else []
+    if own:
+        track = random.choice(own)
+        print(f"  music: {track.name}")
+        return track
+    mcfg = cfg.get("music", {})
+    if not mcfg.get("generate", True):
+        return None
+    from . import music
+
+    track, style = music.render(work_dir / "music.wav", total, item.get("id", ""), mcfg.get("styles"))
+    print(f"  music: generated {style} beat")
+    return track
 
 
 def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
@@ -128,7 +147,11 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
         idx = n
         n += 1
         x = -30 if ch.get("side", "left") == "left" else w - size + 30
-        y = h - size - ch.get("bottom", 330)
+        # The pictures' torsos run off the bottom of the frame (no gap below them);
+        # "bottom" nudges a character up (positive) or further down (negative).
+        with Image.open(image) as pic:
+            height = round(pic.height * size / pic.width)
+        y = h - height - ch.get("bottom", -60)
         enable = "+".join(f"between(t,{a:.2f},{b:.2f})" for a, b in spans)
         filters.append(f"[{idx}:v]format=rgba[c{idx}]")
         filters.append(f"[{current}][c{idx}]overlay=x={x}:y={y}:enable='{enable}':shortest=1[o{idx}]")
@@ -140,16 +163,18 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
     voice_idx = n
     inputs += ["-i", str(audio.resolve())]
     filters.append(f"[{voice_idx}:a]apad,atrim=0:{total:.3f}[voice]")
-    music = sorted(MUSIC_DIR.glob("*.mp3")) if MUSIC_DIR.exists() else []
-    if music:
-        inputs += ["-stream_loop", "-1", "-i", str(random.choice(music).resolve())]
-        vol = v.get("music_volume", 0.12)
+    track = pick_music(item, total, work_dir, cfg)
+    if track:
+        inputs += ["-stream_loop", "-1", "-i", str(track.resolve())]
+        vol = cfg.get("music", {}).get("volume", v.get("music_volume", 0.14))
         filters.append(
             f"[{voice_idx + 1}:a]volume={vol},atrim=0:{total:.3f},afade=t=out:st={max(total - 1.5, 0):.3f}:d=1.5[music]"
         )
-        filters.append("[voice][music]amix=inputs=2:duration=first:normalize=0[aout]")
+        filters.append("[voice][music]amix=inputs=2:duration=first:normalize=0[mix]")
     else:
-        filters.append("[voice]anull[aout]")
+        filters.append("[voice]anull[mix]")
+    # Shorts-standard loudness, so videos aren't quieter than everything around them.
+    filters.append("[mix]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=44100[aout]")
 
     run_ffmpeg(
         [
