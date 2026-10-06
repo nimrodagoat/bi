@@ -3,7 +3,7 @@
 Posts a YouTube Short every day, automatically and for free.
 
 **Script** (from `content/queue.yaml`) → **AI voice** (Edge TTS) → **word-by-word captions**
-→ **stock footage** (Pexels) → **vertical 1080×1920 MP4** → **upload** (YouTube API),
+→ **stock footage** (Pixabay or Pexels) → **vertical 1080×1920 MP4** → **upload** (YouTube API),
 run daily by GitHub Actions.
 
 - First time? Follow **[SETUP.md](SETUP.md)**.

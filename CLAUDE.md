@@ -4,7 +4,7 @@ A GitHub Actions job (`.github/workflows/daily-short.yml`) runs daily, takes the
 first entry of `content/queue.yaml`, renders a vertical Short (voice + word-by-word
 captions + stock footage) and uploads it; then it moves the entry to
 `content/posted.yaml` and commits. Everything is free: Edge TTS (Piper fallback),
-Pexels footage (gradient fallback), ffmpeg, YouTube Data API.
+Pixabay/Pexels stock footage (gradient fallback), ffmpeg, YouTube Data API.
 
 The owner is not a programmer. They manage the channel by chatting. Keep replies
 plain-language, and do the git work for them.

@@ -36,9 +36,10 @@ voice:
   piper_voice: en_US-ryan-high
 
 visuals:
-  # pexels   = free stock videos matching each video's search_terms (needs PEXELS_API_KEY)
+  # auto     = free stock videos matching each video's search_terms, from Pixabay
+  #            (PIXABAY_API_KEY) or Pexels (PEXELS_API_KEY), whichever key you have
   # gradient = animated colour background (no key needed)
-  source: pexels
+  source: auto
   # Darkens the background so captions stay readable (0 = none, 1 = black).
   dim: 0.35
 

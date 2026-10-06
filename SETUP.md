@@ -5,7 +5,7 @@ everything runs by itself every day.
 
 | Secret name | Where it comes from | Step |
 |---|---|---|
-| `PEXELS_API_KEY` | pexels.com (free stock videos) | 1 |
+| `PIXABAY_API_KEY` | pixabay.com (free stock videos) | 1 |
 | `YT_CLIENT_ID` | Google Cloud | 3 |
 | `YT_CLIENT_SECRET` | Google Cloud | 3 |
 | `YT_REFRESH_TOKEN` | Google OAuth Playground | 4 |
@@ -15,11 +15,16 @@ everything runs by itself every day.
 
 ---
 
-## Step 1: Free Pexels key (stock footage)
+## Step 1: Free Pixabay key (stock footage)
 
-1. Go to **https://www.pexels.com/api/** and click **Get Started** (create a free account).
-2. Fill in the short form (description: "Automated YouTube Shorts backgrounds").
-3. Copy your **API key**. That's `PEXELS_API_KEY`.
+1. Go to **https://pixabay.com/** and click **Join** (create a free account; confirm your email).
+2. While logged in, open **https://pixabay.com/api/docs/**.
+3. Scroll to **Parameters** → `key (required)`: your personal key is shown there
+   in green. Copy it. That's `PIXABAY_API_KEY`.
+
+> Already have a Pexels API key? You can add it as `PEXELS_API_KEY` instead (or as well).
+> Pexels currently isn't giving out new keys, which is why Pixabay is the default.
+> No key at all? Videos still work, with an animated colour background.
 
 ## Step 2: Google Cloud project + YouTube API
 
@@ -103,6 +108,6 @@ day. Single user, no other users' data."* Approval usually takes days to a few w
 | Run failed with `invalid_grant` | Refresh token expired. Check step 3.2 (app must be **published**), then redo step 4 and update `YT_REFRESH_TOKEN`. |
 | `Missing secrets` | A secret name is misspelled in GitHub. |
 | `The queue is empty` | Ask Claude for a new batch of scripts. |
-| Background is a plain colour | `PEXELS_API_KEY` is missing or wrong. |
+| Background is a plain colour | `PIXABAY_API_KEY` is missing or wrong (the run log says why). |
 | `quotaExceeded` | You uploaded more than ~6 videos today. It resumes tomorrow automatically. |
 | GitHub emails you that a run failed | Open the run in the **Actions** tab, or paste the error to Claude. |

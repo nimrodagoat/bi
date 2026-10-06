@@ -1,4 +1,4 @@
-"""Background footage: free Pexels stock clips, or an animated gradient."""
+"""Background footage: free stock clips (Pixabay or Pexels), or an animated gradient."""
 
 from __future__ import annotations
 
@@ -11,47 +11,87 @@ from pathlib import Path
 import requests
 
 PEXELS_SEARCH = "https://api.pexels.com/videos/search"
+PIXABAY_SEARCH = "https://pixabay.com/api/videos/"
 SCENE_SECONDS = 5.5  # roughly how long each stock clip stays on screen
 
 
 def fetch_clips(terms: list[str], duration: float, work_dir: Path, cfg: dict) -> list[Path]:
-    """Download enough portrait stock clips to cover `duration` seconds.
+    """Download enough stock clips to cover `duration` seconds.
 
     Returns an empty list if stock footage isn't available, in which case the
     renderer falls back to an animated gradient.
     """
-    if cfg.get("visuals", {}).get("source", "pexels") != "pexels":
+    source = cfg.get("visuals", {}).get("source", "auto")
+    if source == "gradient":
         return []
-    key = os.environ.get("PEXELS_API_KEY")
-    if not key:
-        print("  visuals: no PEXELS_API_KEY set, using gradient background")
+    providers = []
+    if source in ("auto", "pixabay") and os.environ.get("PIXABAY_API_KEY"):
+        providers.append(("Pixabay", _pick_pixabay, os.environ["PIXABAY_API_KEY"]))
+    if source in ("auto", "pexels") and os.environ.get("PEXELS_API_KEY"):
+        providers.append(("Pexels", _pick_pexels, os.environ["PEXELS_API_KEY"]))
+    if not providers:
+        print("  visuals: no PIXABAY_API_KEY / PEXELS_API_KEY set, using gradient background")
         return []
+
     terms = [t for t in terms if t] or ["nature"]
     scenes = max(len(terms), math.ceil(duration / SCENE_SECONDS))
+    for name, pick, key in providers:
+        try:
+            clips = _download_scenes(terms, scenes, pick, key, work_dir)
+        except requests.RequestException as e:
+            print(f"  visuals: {name} failed ({e})", file=sys.stderr)
+            continue
+        if clips:
+            print(f"  visuals: {len(clips)} {name} clips")
+            return clips
+        print(f"  visuals: {name} found no matching clips", file=sys.stderr)
+    print("  visuals: using gradient background", file=sys.stderr)
+    return []
+
+
+def _download_scenes(terms, scenes, pick, key, work_dir: Path) -> list[Path]:
     clips: list[Path] = []
     used: set[int] = set()
-    try:
-        for i in range(scenes):
-            term = terms[i % len(terms)]
-            url, vid = _pick_video(term, key, used)
-            if not url:
-                continue
-            used.add(vid)
-            path = work_dir / f"clip{i:02d}.mp4"
-            with requests.get(url, stream=True, timeout=60) as r:
-                r.raise_for_status()
-                with path.open("wb") as f:
-                    for block in r.iter_content(1 << 16):
-                        f.write(block)
-            clips.append(path)
-    except requests.RequestException as e:
-        print(f"  visuals: Pexels failed ({e}), using gradient background", file=sys.stderr)
-        return []
-    print(f"  visuals: {len(clips)} Pexels clips")
+    for i in range(scenes):
+        url, vid = pick(terms[i % len(terms)], key, used)
+        if not url:
+            continue
+        used.add(vid)
+        path = work_dir / f"clip{i:02d}.mp4"
+        with requests.get(url, stream=True, timeout=60) as r:
+            r.raise_for_status()
+            with path.open("wb") as f:
+                for block in r.iter_content(1 << 16):
+                    f.write(block)
+        clips.append(path)
     return clips
 
 
-def _pick_video(term: str, key: str, used: set[int]) -> tuple[str | None, int | None]:
+def _pick_pixabay(term: str, key: str, used: set[int]) -> tuple[str | None, int | None]:
+    r = requests.get(
+        PIXABAY_SEARCH,
+        params={"key": key, "q": term[:100], "per_page": 30, "safesearch": "true"},
+        timeout=30,
+    )
+    r.raise_for_status()
+    hits = [h for h in r.json().get("hits", []) if h["id"] not in used and h.get("duration", 0) >= 4]
+    random.shuffle(hits)
+    candidates = []
+    for h in hits:
+        sizes = h.get("videos", {})
+        for size in ("large", "medium"):
+            f = sizes.get(size) or {}
+            if f.get("url") and (f.get("height") or 0) >= 720:
+                candidates.append((f["height"] > f["width"], f["url"], h["id"]))
+                break
+    if not candidates:
+        return None, None
+    # Most Pixabay clips are landscape (they get cropped to the centre); prefer portrait ones.
+    candidates.sort(key=lambda c: not c[0])
+    return candidates[0][1], candidates[0][2]
+
+
+def _pick_pexels(term: str, key: str, used: set[int]) -> tuple[str | None, int | None]:
     r = requests.get(
         PEXELS_SEARCH,
         headers={"Authorization": key},
