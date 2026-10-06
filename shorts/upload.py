@@ -47,7 +47,8 @@ def build_metadata(item: dict, cfg: dict) -> dict:
     hashtags = " ".join(f"#{t.replace(' ', '')}" for t in kept[:3])
     if "#shorts" not in description.lower():
         hashtags = (hashtags + " #shorts").strip()
-    description = _clean(f"{description}\n\n{hashtags}", 5000)
+    credit = f"\n\nMusic: {item['music_credit']}" if item.get("music_credit") else ""
+    description = _clean(f"{description}\n\n{hashtags}{credit}", 5000)
 
     up = cfg.get("upload", {})
     lang = cfg.get("channel", {}).get("language", "en")

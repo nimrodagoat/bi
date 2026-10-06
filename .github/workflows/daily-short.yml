@@ -11,6 +11,10 @@ on:
         description: "Test only: make the video but don't upload it"
         type: boolean
         default: true
+      videos:
+        description: "Test only: how many videos from the top of the queue to make"
+        type: number
+        default: 1
 
 permissions:
   contents: write   # to record posted videos back into content/
@@ -62,7 +66,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            python -m shorts run --dry-run
+            python -m shorts run --dry-run --count "${{ inputs.videos }}"
           else
             python -m shorts run
           fi

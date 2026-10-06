@@ -1,4 +1,4 @@
-// Draws the two characters with 5 expressions each into assets/characters/<name>/.
+// Draws the characters with 5 expressions each into assets/characters/<name>/.
 // Each expression combines a face (brows, eyes, mouth) with a hand gesture.
 //
 // Art: "Notionists" by Zoish (CC0 / public domain), rendered with DiceBear
@@ -41,6 +41,29 @@ const characters = {
       factcheck: { brows: v(5), eyes: v(2), lips: v(13), gesture: ["handPhone"] },
       unimpressed: { brows: v(3), eyes: v(2), lips: v(18), gesture: ["hand"] },
       surprised: { brows: v(11), eyes: v(5), lips: v(29), gesture: ["waveLongArm"] },
+    },
+  },
+  // A caveman from 40,000 years ago, baffled by modern money. Fur is painted on
+  // by tools/sticker.py (outfit: pelt).
+  grug: {
+    look: { hair: v(33), beard: v(2), beardProbability: 100, glassesProbability: 0, body: v(1), nose: v(14) },
+    expressions: {
+      neutral: { brows: v(1), eyes: v(4), lips: v(22), gesture: ["hand"] },
+      amazed: { brows: v(11), eyes: v(5), lips: v(11), gesture: ["waveLongArms"] },
+      confused: { brows: v(3), eyes: v(4), lips: v(18), gesture: ["handPhone"] },
+      grumpy: { brows: v(3), eyes: v(2), lips: v(27), gestureProbability: 0 },
+      happy: { brows: v(11), eyes: v(4), lips: v(25), gesture: ["waveLongArm"] },
+    },
+  },
+  // Nova, a time traveller who explains how money was invented.
+  nova: {
+    look: { hair: v(28), glassesProbability: 0, beardProbability: 0, body: v(24), nose: v(2) },
+    expressions: {
+      explaining: { brows: v(1), eyes: v(1), lips: v(25), gesture: ["pointLongArm"] },
+      laughing: { brows: v(11), eyes: v(1), lips: v(10), gesture: ["waveLongArm"] },
+      smug: { brows: v(9), eyes: v(1), lips: v(23), gesture: ["ok"] },
+      timecheck: { brows: v(5), eyes: v(2), lips: v(13), gesture: ["handPhone"] },
+      surprised: { brows: v(11), eyes: v(5), lips: v(29), gesture: ["waveLongArms"] },
     },
   },
 };

@@ -71,6 +71,7 @@ characters:
     kokoro_speed: 1.05
     espeak_voice: en-us     # robotic offline voice, local testing only
     color: "#FF5C5C"        # outline + his words light up red
+    outfit: {pants: "#4a6fa5", belt: true}   # jeans
     side: left
     expressions:
       neutral: assets/characters/dave/neutral.png
@@ -90,6 +91,7 @@ characters:
     edge_rate: "+4%"
     espeak_voice: en-gb
     color: "#4CC9F0"        # outline + his words light up blue
+    outfit: {pants: "#c2a878", belt: true}   # khakis
     side: right
     expressions:
       explaining: assets/characters/pip/explaining.png
@@ -97,6 +99,44 @@ characters:
       factcheck: assets/characters/pip/factcheck.png
       unimpressed: assets/characters/pip/unimpressed.png
       surprised: assets/characters/pip/surprised.png
+    reactions:
+      question: smug
+      exclaim: surprised
+  grug:
+    name: Grug
+    engines: [kokoro, edge]
+    kokoro_voice: am_onyx   # deep and slow
+    kokoro_speed: 0.92
+    edge_voice: en-US-RogerNeural
+    espeak_voice: en-us
+    color: "#F4A261"        # outline + his words light up orange
+    outfit: {pelt: true}    # fur tunic instead of shirt and trousers
+    side: left
+    expressions:
+      neutral: assets/characters/grug/neutral.png
+      amazed: assets/characters/grug/amazed.png
+      confused: assets/characters/grug/confused.png
+      grumpy: assets/characters/grug/grumpy.png
+      happy: assets/characters/grug/happy.png
+    reactions:
+      question: confused
+      exclaim: amazed
+  nova:
+    name: Nova
+    engines: [kokoro, edge]
+    kokoro_voice: af_heart
+    kokoro_speed: 1.05
+    edge_voice: en-US-AvaMultilingualNeural
+    espeak_voice: en-us
+    color: "#B388FF"        # outline + her words light up purple
+    outfit: {pants: "#3d3d5c", belt: true}
+    side: right
+    expressions:
+      explaining: assets/characters/nova/explaining.png
+      laughing: assets/characters/nova/laughing.png
+      smug: assets/characters/nova/smug.png
+      timecheck: assets/characters/nova/timecheck.png
+      surprised: assets/characters/nova/surprised.png
     reactions:
       question: smug
       exclaim: surprised
@@ -121,9 +161,20 @@ video:
   scene_seconds: 2.5
 
 music:
-  # Every video gets an original beat generated from scratch (copyright-free).
-  # To use your own tracks instead, put .mp3 files you're allowed to use (e.g. from
-  # the YouTube Audio Library) into assets/music/; one is picked at random.
-  generate: true
-  styles: [phonk, lofi]   # phonk = hard 808 + cowbell, lofi = chill jazzy chords
+  # Free meme music heard under countless viral videos, by Kevin MacLeod
+  # (incompetech.com), licensed CC BY 4.0: free to use in monetized videos as long
+  # as he's credited. The credit is added to each video's description automatically.
+  # Each video gets one of these at random. Your own tracks in assets/music/
+  # (e.g. from the YouTube Audio Library) are used instead if there are any.
+  tracks:
+    - Sneaky Snitch
+    - Monkeys Spinning Monkeys
+    - Fluffing a Duck
+    - Scheming Weasel faster
+    - Investigations
+    - Run Amok
+    - Pixel Peeker Polka - faster
+    - Electrodoodle
+    - Carefree
+    - Local Forecast - Elevator
   volume: 0.14            # how loud the music is under the voices (0-1)

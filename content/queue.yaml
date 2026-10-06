@@ -13,450 +13,1122 @@
 - id: penny-costs-more
   title: A penny costs MORE than a penny to make 🪙
   dialogue:
-    - [dave, "Pip, I'm rich. I found a whole jar full of pennies."]
-    - [pip, "Congratulations. Each one cost the government almost four cents to make."]
-    - [dave, "Wait, what? A penny costs more than a penny?"]
-    - [pip, "In 2024, the US Mint spent about 3.7 cents to make every single one. Mostly zinc, with a thin copper coat."]
-    - [dave, "So they were losing money on purpose?"]
-    - [pip, "Hundreds of millions of dollars over the years. That's why in 2025 the US finally stopped making new pennies."]
-    - [dave, "So my jar is a collector's item now!"]
-    - [pip, "No, Dave. They're still worth exactly one cent each."]
-    - [dave, "Follow us before I spend them all."]
-  search_terms: [pennies coins, coin jar, money, coins falling]
-  tags: [money facts, penny, finance, fun facts, did you know]
-
+  - - dave
+    - Pip, I'm rich. I found a whole jar full of pennies.
+  - - pip
+    - Congratulations. Each one cost the government almost four cents to make.
+  - - dave
+    - Wait, what? A penny costs more than a penny?
+  - - pip
+    - In 2024, the US Mint spent about 3.7 cents to make every single one. Mostly zinc, with a thin copper coat.
+  - - dave
+    - So they were losing money on purpose?
+  - - pip
+    - Hundreds of millions of dollars over the years. That's why in 2025 the US finally stopped making new pennies.
+  - - dave
+    - So my jar is a collector's item now!
+  - - pip
+    - No, Dave. They're still worth exactly one cent each.
+  - - dave
+    - Follow us before I spend them all.
+  search_terms:
+  - pennies coins
+  - coin jar
+  - money
+  - coins falling
+  tags:
+  - money facts
+  - penny
+  - finance
+  - fun facts
+  - did you know
 - id: shorts-monetization-rules
   title: What it ACTUALLY takes to get paid for YouTube Shorts 💸
   dialogue:
-    - [dave, "I'm gonna start getting paid for my Shorts tomorrow."]
-    - [pip, "How many subscribers do you have?"]
-    - [dave, "Four. Five if my mom logs in."]
-    - [pip, "To join the YouTube Partner Program with Shorts, you need 1,000 subscribers and 10 million Shorts views in 90 days."]
-    - [dave, "Ten MILLION?"]
-    - [pip, "Or 4,000 hours of long video watch time in a year. Then Shorts ad money goes into a big pool, and creators keep 45 percent of their share."]
-    - [dave, "So the secret is posting every single day."]
-    - [pip, "The secret is posting every day and making each one better than the last."]
-    - [dave, "Help me get to six subscribers. Follow."]
-  search_terms: [smartphone video, content creator, social media phone, filming phone]
-  tags: [youtube shorts, make money online, content creator, youtube monetization, shorts tips]
-
+  - - dave
+    - I'm gonna start getting paid for my Shorts tomorrow.
+  - - pip
+    - How many subscribers do you have?
+  - - dave
+    - Four. Five if my mom logs in.
+  - - pip
+    - To join the YouTube Partner Program with Shorts, you need 1,000 subscribers and 10 million Shorts views in 90 days.
+  - - dave
+    - Ten MILLION?
+  - - pip
+    - Or 4,000 hours of long video watch time in a year. Then Shorts ad money goes into a big pool, and creators keep 45 percent of their share.
+  - - dave
+    - So the secret is posting every single day.
+  - - pip
+    - The secret is posting every day and making each one better than the last.
+  - - dave
+    - Help me get to six subscribers. Follow.
+  search_terms:
+  - smartphone video
+  - content creator
+  - social media phone
+  - filming phone
+  tags:
+  - youtube shorts
+  - make money online
+  - content creator
+  - youtube monetization
+  - shorts tips
+- id: grug-first-coins
+  title: A caveman sees a coin for the first time 🪙
+  dialogue:
+  - - grug
+    - Grug trade three fish for one shiny rock. Grug rich now.
+  - - nova
+    - That's a coin, Grug. And you just got scammed.
+  - - grug
+    - Coin? What coin?
+  - - nova
+    - The oldest known coins were made in Lydia, in what is now Turkey, around 600 BC. A mix of gold and silver, stamped with a lion.
+  - - grug
+    - Why lion on rock?
+  - - nova
+    - The stamp was a promise. The king guaranteed how much metal was inside, so people stopped weighing everything.
+  - - grug
+    - So nobody need to check fish anymore?
+  - - nova
+    - Exactly. Coins made trading way faster. That's why they spread everywhere.
+  - - grug
+    - Grug want lion rock. Follow for more Grug money lessons.
+  search_terms:
+  - ancient coins
+  - gold coins
+  - fish market
+  - ancient greece
+  tags:
+  - money history
+  - coins
+  - caveman
+  - ancient history
+  - fun facts
 - id: bitcoin-pizza
   title: The billion dollar pizza 🍕
   dialogue:
-    - [dave, "What's the most expensive pizza anyone ever bought?"]
-    - [pip, "May 22nd, 2010. A programmer paid 10,000 bitcoin for two pizzas."]
-    - [dave, "Ten thousand bitcoin? That sounds like a lot."]
-    - [pip, "Back then it was worth about 40 dollars."]
-    - [dave, "Okay, so cheap pizza."]
-    - [pip, "At bitcoin's peak prices, those same coins would be worth over a billion dollars."]
-    - [dave, "A billion dollar pizza. Was it at least good?"]
-    - [pip, "It was Papa John's."]
-    - [dave, "People celebrate that day every year as Bitcoin Pizza Day. Follow for more money facts."]
-  search_terms: [pizza, bitcoin, cryptocurrency, pizza slice]
-  tags: [bitcoin, money facts, crypto history, bitcoin pizza day, fun facts]
-
+  - - dave
+    - What's the most expensive pizza anyone ever bought?
+  - - pip
+    - May 22nd, 2010. A programmer paid 10,000 bitcoin for two pizzas.
+  - - dave
+    - Ten thousand bitcoin? That sounds like a lot.
+  - - pip
+    - Back then it was worth about 40 dollars.
+  - - dave
+    - Okay, so cheap pizza.
+  - - pip
+    - At bitcoin's peak prices, those same coins would be worth over a billion dollars.
+  - - dave
+    - A billion dollar pizza. Was it at least good?
+  - - pip
+    - It was Papa John's.
+  - - dave
+    - People celebrate that day every year as Bitcoin Pizza Day. Follow for more money facts.
+  search_terms:
+  - pizza
+  - bitcoin
+  - cryptocurrency
+  - pizza slice
+  tags:
+  - bitcoin
+  - money facts
+  - crypto history
+  - bitcoin pizza day
+  - fun facts
 - id: hook-first
   title: Why nobody watches your Shorts past 1 second ⏱️
   dialogue:
-    - [dave, "Nobody watches my Shorts past the first second."]
-    - [pip, "What's your first line?"]
-    - [dave, "Hey guys, welcome back to my channel."]
-    - [pip, "That's the problem. On Shorts, people decide almost instantly whether to keep watching."]
-    - [dave, "So what should I say instead?"]
-    - [pip, "Start with the most interesting part. A surprising fact, a bold question, or show the result first."]
-    - [dave, "Like, this pizza cost a billion dollars."]
-    - [pip, "Exactly. Hook first, explain second. Never warm up."]
-    - [dave, "Follow. See? I didn't say hey guys."]
-  search_terms: [scrolling phone, smartphone, video editing, social media]
-  tags: [youtube shorts tips, content creator, hooks, grow on youtube, short form content]
-
+  - - dave
+    - Nobody watches my Shorts past the first second.
+  - - pip
+    - What's your first line?
+  - - dave
+    - Hey guys, welcome back to my channel.
+  - - pip
+    - That's the problem. On Shorts, people decide almost instantly whether to keep watching.
+  - - dave
+    - So what should I say instead?
+  - - pip
+    - Start with the most interesting part. A surprising fact, a bold question, or show the result first.
+  - - dave
+    - Like, this pizza cost a billion dollars.
+  - - pip
+    - Exactly. Hook first, explain second. Never warm up.
+  - - dave
+    - Follow. See? I didn't say hey guys.
+  search_terms:
+  - scrolling phone
+  - smartphone
+  - video editing
+  - social media
+  tags:
+  - youtube shorts tips
+  - content creator
+  - hooks
+  - grow on youtube
+  - short form content
 - id: rule-of-72
   title: The rule of 72 (how long until your money doubles) 📈
   dialogue:
-    - [dave, "How long does it take to double my money?"]
-    - [pip, "Use the rule of 72. Divide 72 by your yearly return."]
-    - [dave, "Okay, my savings account pays 1 percent."]
-    - [pip, "72 divided by 1. That's 72 years."]
-    - [dave, "I'll be a hundred and something!"]
-    - [pip, "At 8 percent a year, it's about 9 years. At 12 percent, about 6."]
-    - [dave, "So the number at the bottom matters way more than I thought."]
-    - [pip, "Exactly. Small differences in growth turn into massive differences over time. It's an estimate, not a promise, but it's surprisingly accurate."]
-    - [dave, "Follow for more math that's actually useful."]
-  search_terms: [stock chart, calculator, money growth, savings]
-  tags: [rule of 72, money facts, compound interest, finance basics, personal finance]
-
+  - - dave
+    - How long does it take to double my money?
+  - - pip
+    - Use the rule of 72. Divide 72 by your yearly return.
+  - - dave
+    - Okay, my savings account pays 1 percent.
+  - - pip
+    - 72 divided by 1. That's 72 years.
+  - - dave
+    - I'll be a hundred and something!
+  - - pip
+    - At 8 percent a year, it's about 9 years. At 12 percent, about 6.
+  - - dave
+    - So the number at the bottom matters way more than I thought.
+  - - pip
+    - Exactly. Small differences in growth turn into massive differences over time. It's an estimate, not a promise, but it's surprisingly accurate.
+  - - dave
+    - Follow for more math that's actually useful.
+  search_terms:
+  - stock chart
+  - calculator
+  - money growth
+  - savings
+  tags:
+  - rule of 72
+  - money facts
+  - compound interest
+  - finance basics
+  - personal finance
+- id: grug-yap-stones
+  title: The giant stone money that sank to the bottom of the sea 🗿
+  dialogue:
+  - - grug
+    - Grug understand money now. Money is rock. Big rock.
+  - - nova
+    - Weirdly, you're not wrong. On the island of Yap, people used giant stone discs as money.
+  - - grug
+    - How big?
+  - - nova
+    - Some are bigger than a person. They were carved on another island hundreds of kilometres away, and brought back by canoe.
+  - - grug
+    - How you carry big rock to shop?
+  - - nova
+    - You don't. The stone stays where it is. Everyone just remembers who owns it.
+  - - grug
+    - What if rock fall in sea?
+  - - nova
+    - That actually happened. One stone sank during the trip, and it was still used as money, because everyone agreed it existed.
+  - - grug
+    - Money is just everybody agree? Follow, Grug need to lie down.
+  search_terms:
+  - tropical island
+  - ocean waves
+  - stone circle
+  - canoe ocean
+  tags:
+  - money history
+  - yap island
+  - stone money
+  - fun facts
+  - did you know
 - id: cash-is-rare
   title: Most money doesn't actually exist 🏦
   dialogue:
-    - [dave, "I keep all my money under my mattress. Real money."]
-    - [pip, "Fun fact. Most of the world's money doesn't exist as cash at all."]
-    - [dave, "Then where is it?"]
-    - [pip, "It's numbers in bank computers. In the United States, physical cash is only about a tenth of the money supply."]
-    - [dave, "So when I check my bank app..."]
-    - [pip, "You're looking at a record in a database. When you pay with a card, no coins or bills move anywhere. Just numbers changing."]
-    - [dave, "So my mattress is the only real bank."]
-    - [pip, "Your mattress doesn't pay interest, and it's not insured."]
-    - [dave, "Follow us. I'm going to go check under the mattress."]
-  search_terms: [bank, credit card payment, cash money, server room]
-  tags: [money facts, banking, digital money, finance, did you know]
-
+  - - dave
+    - I keep all my money under my mattress. Real money.
+  - - pip
+    - Fun fact. Most of the world's money doesn't exist as cash at all.
+  - - dave
+    - Then where is it?
+  - - pip
+    - It's numbers in bank computers. In the United States, physical cash is only about a tenth of the money supply.
+  - - dave
+    - So when I check my bank app...
+  - - pip
+    - You're looking at a record in a database. When you pay with a card, no coins or bills move anywhere. Just numbers changing.
+  - - dave
+    - So my mattress is the only real bank.
+  - - pip
+    - Your mattress doesn't pay interest, and it's not insured.
+  - - dave
+    - Follow us. I'm going to go check under the mattress.
+  search_terms:
+  - bank
+  - credit card payment
+  - cash money
+  - server room
+  tags:
+  - money facts
+  - banking
+  - digital money
+  - finance
+  - did you know
 - id: dollar-bills-cotton
   title: Dollar bills aren't made of paper 💵
   dialogue:
-    - [dave, "I washed my jeans and there was a twenty in the pocket. It survived!"]
-    - [pip, "Of course it did. Dollar bills aren't made of paper."]
-    - [dave, "Then what are they made of?"]
-    - [pip, "75 percent cotton and 25 percent linen. Basically fabric."]
-    - [dave, "So my money is a tiny T-shirt."]
-    - [pip, "In a way. That's why it doesn't fall apart in the wash like normal paper."]
-    - [dave, "How long does a bill last?"]
-    - [pip, "A one dollar bill lasts around six and a half years. A hundred dollar bill lasts over twenty years, because people spend it less."]
-    - [dave, "Follow, and check your pockets before laundry day."]
-  search_terms: [dollar bills, washing machine, cash money, cotton field]
-  tags: [money facts, dollar bill, fun facts, did you know, cash]
-
+  - - dave
+    - I washed my jeans and there was a twenty in the pocket. It survived!
+  - - pip
+    - Of course it did. Dollar bills aren't made of paper.
+  - - dave
+    - Then what are they made of?
+  - - pip
+    - 75 percent cotton and 25 percent linen. Basically fabric.
+  - - dave
+    - So my money is a tiny T-shirt.
+  - - pip
+    - In a way. That's why it doesn't fall apart in the wash like normal paper.
+  - - dave
+    - How long does a bill last?
+  - - pip
+    - A one dollar bill lasts around six and a half years. A hundred dollar bill lasts over twenty years, because people spend it less.
+  - - dave
+    - Follow, and check your pockets before laundry day.
+  search_terms:
+  - dollar bills
+  - washing machine
+  - cash money
+  - cotton field
+  tags:
+  - money facts
+  - dollar bill
+  - fun facts
+  - did you know
+  - cash
 - id: thousand-true-fans
   title: You don't need millions of fans to make a living 🙌
   dialogue:
-    - [dave, "To make a living online, you need millions of fans, right?"]
-    - [pip, "Not necessarily. There's a famous idea called one thousand true fans."]
-    - [dave, "Only a thousand?"]
-    - [pip, "Writer Kevin Kelly argued that if a thousand people each spend 100 dollars a year on your work, that's 100,000 dollars."]
-    - [dave, "That's way more realistic than a million."]
-    - [pip, "The key word is true. People who buy what you make. Not just people who scroll past."]
-    - [dave, "So views are nice, but real fans pay the bills."]
-    - [pip, "Exactly. Build a small crowd that really cares."]
-    - [dave, "Follow, and you're officially fan number one."]
-  search_terms: [crowd concert, community, laptop work, happy people]
-  tags: [content creator, make money online, 1000 true fans, creator economy, grow audience]
-
+  - - dave
+    - To make a living online, you need millions of fans, right?
+  - - pip
+    - Not necessarily. There's a famous idea called one thousand true fans.
+  - - dave
+    - Only a thousand?
+  - - pip
+    - Writer Kevin Kelly argued that if a thousand people each spend 100 dollars a year on your work, that's 100,000 dollars.
+  - - dave
+    - That's way more realistic than a million.
+  - - pip
+    - The key word is true. People who buy what you make. Not just people who scroll past.
+  - - dave
+    - So views are nice, but real fans pay the bills.
+  - - pip
+    - Exactly. Build a small crowd that really cares.
+  - - dave
+    - Follow, and you're officially fan number one.
+  search_terms:
+  - crowd concert
+  - community
+  - laptop work
+  - happy people
+  tags:
+  - content creator
+  - make money online
+  - 1000 true fans
+  - creator economy
+  - grow audience
+- id: grug-cowrie-shells
+  title: When seashells were real money 🐚
+  dialogue:
+  - - grug
+    - Grug find shells on beach. Grug make necklace.
+  - - nova
+    - For thousands of years, those shells would have been money.
+  - - grug
+    - Shells? Money? Grug confused.
+  - - nova
+    - Cowrie shells were used as money across Africa and Asia. They're small, tough, hard to fake, and easy to count.
+  - - grug
+    - Grug have whole beach. Grug richest man ever!
+  - - nova
+    - Ha! That's the problem. When shells got too easy to collect, they became worth less.
+  - - grug
+    - So money must be hard to get?
+  - - nova
+    - Exactly. Good money is rare. In Chinese, the old character for money and wealth even comes from a picture of a shell.
+  - - grug
+    - Grug keep necklace anyway. Follow for more.
+  search_terms:
+  - seashells beach
+  - cowrie shells
+  - tropical beach
+  - shell necklace
+  tags:
+  - money history
+  - shells
+  - ancient money
+  - fun facts
+  - did you know
 - id: nike-swoosh-35
   title: Nike's logo cost $35 ✔️
   dialogue:
-    - [dave, "How much does a famous logo cost? Like a million dollars?"]
-    - [pip, "Nike's swoosh cost 35 dollars."]
-    - [dave, "Thirty-five? For the swoosh?"]
-    - [pip, "In 1971, a design student named Carolyn Davidson made it for a small running shoe company. She charged by the hour."]
-    - [dave, "She must be so mad."]
-    - [pip, "Actually, Nike later gave her a gold swoosh ring and company shares. Those shares became worth a lot more than 35 dollars."]
-    - [dave, "So the lesson is, always ask for shares."]
-    - [pip, "The lesson is, small work for the right people can become huge."]
-    - [dave, "Follow for more stories like this."]
-  search_terms: [running shoes, sneakers, graphic designer, running]
-  tags: [nike, business facts, logo design, money facts, brand history]
-
+  - - dave
+    - How much does a famous logo cost? Like a million dollars?
+  - - pip
+    - Nike's swoosh cost 35 dollars.
+  - - dave
+    - Thirty-five? For the swoosh?
+  - - pip
+    - In 1971, a design student named Carolyn Davidson made it for a small running shoe company. She charged by the hour.
+  - - dave
+    - She must be so mad.
+  - - pip
+    - Actually, Nike later gave her a gold swoosh ring and company shares. Those shares became worth a lot more than 35 dollars.
+  - - dave
+    - So the lesson is, always ask for shares.
+  - - pip
+    - The lesson is, small work for the right people can become huge.
+  - - dave
+    - Follow for more stories like this.
+  search_terms:
+  - running shoes
+  - sneakers
+  - graphic designer
+  - running
+  tags:
+  - nike
+  - business facts
+  - logo design
+  - money facts
+  - brand history
 - id: compound-100-a-month
   title: What $100 a month turns into 🤯
   dialogue:
-    - [dave, "A hundred dollars a month is nothing. Why bother saving it?"]
-    - [pip, "Let's do the math. 100 dollars a month for 40 years is 48,000 dollars."]
-    - [dave, "Okay, that's something."]
-    - [pip, "Now imagine it grows 7 percent a year, every year. You'd end up with roughly 260,000."]
-    - [dave, "Where did the extra two hundred thousand come from?"]
-    - [pip, "Compound growth. Your money earns money, and then that money earns money too."]
-    - [dave, "So time does most of the work."]
-    - [pip, "Exactly. Real returns go up and down, so nothing is guaranteed. But starting early makes a huge difference."]
-    - [dave, "Follow, I'm starting today. Well, tomorrow."]
-  search_terms: [piggy bank, growing plant, money stack, calendar]
-  tags: [compound interest, money facts, saving money, personal finance, finance basics]
-
+  - - dave
+    - A hundred dollars a month is nothing. Why bother saving it?
+  - - pip
+    - Let's do the math. 100 dollars a month for 40 years is 48,000 dollars.
+  - - dave
+    - Okay, that's something.
+  - - pip
+    - Now imagine it grows 7 percent a year, every year. You'd end up with roughly 260,000.
+  - - dave
+    - Where did the extra two hundred thousand come from?
+  - - pip
+    - Compound growth. Your money earns money, and then that money earns money too.
+  - - dave
+    - So time does most of the work.
+  - - pip
+    - Exactly. Real returns go up and down, so nothing is guaranteed. But starting early makes a huge difference.
+  - - dave
+    - Follow, I'm starting today. Well, tomorrow.
+  search_terms:
+  - piggy bank
+  - growing plant
+  - money stack
+  - calendar
+  tags:
+  - compound interest
+  - money facts
+  - saving money
+  - personal finance
+  - finance basics
 - id: instagram-13-employees
   title: 13 employees, $1 billion 📸
   dialogue:
-    - [dave, "How many people do you need to build a billion dollar company?"]
-    - [pip, "Instagram had 13 employees when Facebook bought it for 1 billion dollars in 2012."]
-    - [dave, "Thirteen? My group chat has more people than that."]
-    - [pip, "And the app was less than two years old."]
-    - [dave, "What did they do differently?"]
-    - [pip, "They did one thing really well. Fast, simple photo sharing on phones, right when smartphones exploded."]
-    - [dave, "So timing matters."]
-    - [pip, "Timing, focus, and moving fast. Short-form video is in a moment like that right now."]
-    - [dave, "Follow, and I'm hiring twelve people."]
-  search_terms: [smartphone photo, startup office, taking photo phone, team meeting]
-  tags: [instagram, business facts, startup, money facts, tech history]
-
+  - - dave
+    - How many people do you need to build a billion dollar company?
+  - - pip
+    - Instagram had 13 employees when Facebook bought it for 1 billion dollars in 2012.
+  - - dave
+    - Thirteen? My group chat has more people than that.
+  - - pip
+    - And the app was less than two years old.
+  - - dave
+    - What did they do differently?
+  - - pip
+    - They did one thing really well. Fast, simple photo sharing on phones, right when smartphones exploded.
+  - - dave
+    - So timing matters.
+  - - pip
+    - Timing, focus, and moving fast. Short-form video is in a moment like that right now.
+  - - dave
+    - Follow, and I'm hiring twelve people.
+  search_terms:
+  - smartphone photo
+  - startup office
+  - taking photo phone
+  - team meeting
+  tags:
+  - instagram
+  - business facts
+  - startup
+  - money facts
+  - tech history
+- id: grug-paper-money
+  title: The first paper money freaked people out 💴
+  dialogue:
+  - - grug
+    - Grug pay with paper? Paper not real. Paper burn.
+  - - nova
+    - That's exactly what people thought when China invented paper money, around a thousand years ago.
+  - - grug
+    - Why use paper? Coins heavy, but coins real.
+  - - nova
+    - That's the reason. Merchants were carrying huge strings of iron coins. Paper notes were much lighter to travel with.
+  - - grug
+    - But paper worth nothing.
+  - - nova
+    - Paper is worth whatever people trust it's worth. The government promised to accept it.
+  - - grug
+    - So money is promise again?
+  - - nova
+    - You're getting good at this, Grug. When the explorer Marco Polo saw it in China, he was amazed.
+  - - grug
+    - Grug also amazed. Follow for more Grug lessons.
+  search_terms:
+  - ancient china
+  - paper money
+  - old scroll
+  - chinese temple
+  tags:
+  - money history
+  - paper money
+  - ancient china
+  - fun facts
+  - economics
 - id: first-youtube-video
   title: The first YouTube video was 19 seconds long 🐘
   dialogue:
-    - [dave, "What was the first video ever uploaded to YouTube?"]
-    - [pip, "Nineteen seconds of a guy at the zoo, talking about elephants."]
-    - [dave, "That's it?"]
-    - [pip, "That's it. It's called Me at the zoo, uploaded April 23rd, 2005, by one of YouTube's co-founders."]
-    - [dave, "And now?"]
-    - [pip, "Now people watch over a billion hours of YouTube every single day."]
-    - [dave, "So the first video was kind of bad and it still worked out."]
-    - [pip, "That's the lesson. Your first video doesn't have to be good. It just has to exist."]
-    - [dave, "Follow, my first video is also about elephants."]
-  search_terms: [elephants zoo, video camera, watching phone, elephant]
-  tags: [youtube history, content creator, fun facts, start creating, youtube]
-
+  - - dave
+    - What was the first video ever uploaded to YouTube?
+  - - pip
+    - Nineteen seconds of a guy at the zoo, talking about elephants.
+  - - dave
+    - That's it?
+  - - pip
+    - That's it. It's called Me at the zoo, uploaded April 23rd, 2005, by one of YouTube's co-founders.
+  - - dave
+    - And now?
+  - - pip
+    - Now people watch over a billion hours of YouTube every single day.
+  - - dave
+    - So the first video was kind of bad and it still worked out.
+  - - pip
+    - That's the lesson. Your first video doesn't have to be good. It just has to exist.
+  - - dave
+    - Follow, my first video is also about elephants.
+  search_terms:
+  - elephants zoo
+  - video camera
+  - watching phone
+  - elephant
+  tags:
+  - youtube history
+  - content creator
+  - fun facts
+  - start creating
+  - youtube
 - id: cpm-by-niche
   title: Why some YouTubers earn way more per view 💰
   dialogue:
-    - [dave, "Why does my friend earn more per view than me?"]
-    - [pip, "What's his channel about?"]
-    - [dave, "Personal finance. Mine is about my cat."]
-    - [pip, "There it is. Advertisers pay different amounts depending on who's watching."]
-    - [dave, "My cat's fans are very valuable."]
-    - [pip, "Banks, insurance companies, and software companies pay a lot to reach people who are thinking about money. So finance videos often earn several times more per thousand views than entertainment."]
-    - [dave, "So I should make finance videos about my cat."]
-    - [pip, "That's actually not the worst idea you've ever had."]
-    - [dave, "Follow for my cat's money tips."]
-  search_terms: [cat, laptop analytics, advertising billboard, money]
-  tags: [youtube money, cpm, content creator, make money online, youtube tips]
-
+  - - dave
+    - Why does my friend earn more per view than me?
+  - - pip
+    - What's his channel about?
+  - - dave
+    - Personal finance. Mine is about my cat.
+  - - pip
+    - There it is. Advertisers pay different amounts depending on who's watching.
+  - - dave
+    - My cat's fans are very valuable.
+  - - pip
+    - Banks, insurance companies, and software companies pay a lot to reach people who are thinking about money. So finance videos often earn several times more per thousand views than entertainment.
+  - - dave
+    - So I should make finance videos about my cat.
+  - - pip
+    - That's actually not the worst idea you've ever had.
+  - - dave
+    - Follow for my cat's money tips.
+  search_terms:
+  - cat
+  - laptop analytics
+  - advertising billboard
+  - money
+  tags:
+  - youtube money
+  - cpm
+  - content creator
+  - make money online
+  - youtube tips
 - id: zimbabwe-trillion
   title: The $100 TRILLION bill you can buy for a few dollars 🤑
   dialogue:
-    - [dave, "I want to be a trillionaire."]
-    - [pip, "Easy. In 2008, Zimbabwe printed a 100 trillion dollar bill."]
-    - [dave, "Where do I get one?"]
-    - [pip, "You can buy one online for a few dollars."]
-    - [dave, "Wait, why is a trillion dollars so cheap?"]
-    - [pip, "Hyperinflation. The government printed so much money that at the worst point, prices were doubling about every day."]
-    - [dave, "Every day?"]
-    - [pip, "Shop prices changed by the hour. In the end, the country stopped using its own currency."]
-    - [dave, "So printing more money doesn't make everyone rich."]
-    - [pip, "Correct. It just makes money worth less."]
-    - [dave, "Follow for more money facts."]
-  search_terms: [money printing, banknotes, inflation prices, cash pile]
-  tags: [inflation, money facts, zimbabwe dollar, economics, did you know]
-
+  - - dave
+    - I want to be a trillionaire.
+  - - pip
+    - Easy. In 2008, Zimbabwe printed a 100 trillion dollar bill.
+  - - dave
+    - Where do I get one?
+  - - pip
+    - You can buy one online for a few dollars.
+  - - dave
+    - Wait, why is a trillion dollars so cheap?
+  - - pip
+    - Hyperinflation. The government printed so much money that at the worst point, prices were doubling about every day.
+  - - dave
+    - Every day?
+  - - pip
+    - Shop prices changed by the hour. In the end, the country stopped using its own currency.
+  - - dave
+    - So printing more money doesn't make everyone rich.
+  - - pip
+    - Correct. It just makes money worth less.
+  - - dave
+    - Follow for more money facts.
+  search_terms:
+  - money printing
+  - banknotes
+  - inflation prices
+  - cash pile
+  tags:
+  - inflation
+  - money facts
+  - zimbabwe dollar
+  - economics
+  - did you know
+- id: grug-first-atm
+  title: The first cash machine used radioactive vouchers ☢️
+  dialogue:
+  - - grug
+    - Grug see wall that spit out money. Grug hit wall with club.
+  - - nova
+    - Please don't. That's an ATM. The first one opened in 1967, at a bank in London.
+  - - grug
+    - How wall know Grug?
+  - - nova
+    - Back then, you didn't use a card. You used a special paper voucher. And it was very slightly radioactive, so the machine could detect it.
+  - - grug
+    - Radioactive money?! Grug scared.
+  - - nova
+    - Only a tiny bit, and it was soon replaced with plastic cards and a secret number. The PIN.
+  - - grug
+    - Why four numbers?
+  - - nova
+    - The story goes the inventor wanted six, but his wife said she could only remember four.
+  - - grug
+    - Grug remember zero. Follow anyway.
+  search_terms:
+  - atm machine
+  - london street
+  - bank
+  - credit card machine
+  tags:
+  - atm
+  - money history
+  - inventions
+  - fun facts
+  - banking
 - id: loop-trick
   title: The loop trick that makes Shorts get replayed 🔁
   dialogue:
-    - [pip, "One trick is the loop. The last sentence flows straight back into the first one."]
-    - [dave, "Why does that help?"]
-    - [pip, "Because people watch it again without noticing. More rewatching tells the algorithm the video is worth showing."]
-    - [dave, "That's sneaky."]
-    - [pip, "It's just good editing. But it only works if the video is worth watching in the first place."]
-    - [dave, "And a strong hook helps too?"]
-    - [pip, "Hook, short sentences, no filler. Every second has to earn the next one."]
-    - [dave, "Okay, but seriously. How do some Shorts get way more views than they should?"]
-  search_terms: [video editing, scrolling phone, timeline editing, smartphone]
-  tags: [youtube shorts tips, content creator, editing tips, short form content, grow on youtube]
-
+  - - pip
+    - One trick is the loop. The last sentence flows straight back into the first one.
+  - - dave
+    - Why does that help?
+  - - pip
+    - Because people watch it again without noticing. More rewatching tells the algorithm the video is worth showing.
+  - - dave
+    - That's sneaky.
+  - - pip
+    - It's just good editing. But it only works if the video is worth watching in the first place.
+  - - dave
+    - And a strong hook helps too?
+  - - pip
+    - Hook, short sentences, no filler. Every second has to earn the next one.
+  - - dave
+    - Okay, but seriously. How do some Shorts get way more views than they should?
+  search_terms:
+  - video editing
+  - scrolling phone
+  - timeline editing
+  - smartphone
+  tags:
+  - youtube shorts tips
+  - content creator
+  - editing tips
+  - short form content
+  - grow on youtube
 - id: inflation-100-dollars
   title: Your $100 is shrinking right now 📉
   dialogue:
-    - [dave, "My grandpa says a hundred dollars used to buy a lot."]
-    - [pip, "He's right. What 100 dollars bought in the year 2000 would cost around 190 dollars today."]
-    - [dave, "So my money is shrinking?"]
-    - [pip, "Its buying power is. That's inflation. Prices rise a little every year, and it adds up."]
-    - [dave, "How much is a little?"]
-    - [pip, "The Federal Reserve aims for about 2 percent a year. At 2 percent, prices double in roughly 36 years."]
-    - [dave, "The rule of 72 again!"]
-    - [pip, "You were listening. I'm proud of you."]
-    - [dave, "Follow, because apparently I'm learning things now."]
-  search_terms: [grocery shopping, price tags, supermarket, dollar bills]
-  tags: [inflation, money facts, personal finance, economics, saving money]
-
+  - - dave
+    - My grandpa says a hundred dollars used to buy a lot.
+  - - pip
+    - He's right. What 100 dollars bought in the year 2000 would cost around 190 dollars today.
+  - - dave
+    - So my money is shrinking?
+  - - pip
+    - Its buying power is. That's inflation. Prices rise a little every year, and it adds up.
+  - - dave
+    - How much is a little?
+  - - pip
+    - The Federal Reserve aims for about 2 percent a year. At 2 percent, prices double in roughly 36 years.
+  - - dave
+    - The rule of 72 again!
+  - - pip
+    - You were listening. I'm proud of you.
+  - - dave
+    - Follow, because apparently I'm learning things now.
+  search_terms:
+  - grocery shopping
+  - price tags
+  - supermarket
+  - dollar bills
+  tags:
+  - inflation
+  - money facts
+  - personal finance
+  - economics
+  - saving money
 - id: double-eagle
   title: The coin that sold for $18.9 million 🥇
   dialogue:
-    - [dave, "What's the most money anyone ever paid for one coin?"]
-    - [pip, "18.9 million dollars, in 2021, for a 1933 Double Eagle. A twenty dollar gold coin."]
-    - [dave, "Why is that one so special?"]
-    - [pip, "In 1933, the US stopped making gold coins. Almost all of them were melted down before they were ever released."]
-    - [dave, "Almost?"]
-    - [pip, "A few escaped. Only one is legal for a private person to own, and that's the one that sold."]
-    - [dave, "So the most valuable coin is one that wasn't supposed to exist."]
-    - [pip, "Rarity is everything in collecting."]
-    - [dave, "Follow, I'm checking my couch cushions."]
-  search_terms: [gold coins, auction, gold, coin collection]
-  tags: [rare coins, money facts, gold, coin collecting, did you know]
-
+  - - dave
+    - What's the most money anyone ever paid for one coin?
+  - - pip
+    - 18.9 million dollars, in 2021, for a 1933 Double Eagle. A twenty dollar gold coin.
+  - - dave
+    - Why is that one so special?
+  - - pip
+    - In 1933, the US stopped making gold coins. Almost all of them were melted down before they were ever released.
+  - - dave
+    - Almost?
+  - - pip
+    - A few escaped. Only one is legal for a private person to own, and that's the one that sold.
+  - - dave
+    - So the most valuable coin is one that wasn't supposed to exist.
+  - - pip
+    - Rarity is everything in collecting.
+  - - dave
+    - Follow, I'm checking my couch cushions.
+  search_terms:
+  - gold coins
+  - auction
+  - gold
+  - coin collection
+  tags:
+  - rare coins
+  - money facts
+  - gold
+  - coin collecting
+  - did you know
+- id: grug-salary-salt
+  title: Why your salary is named after SALT 🧂
+  dialogue:
+  - - grug
+    - Grug get job! Boss pay Grug in salt.
+  - - nova
+    - Funny you say that. The word salary comes from the Latin salarium, linked to sal, the word for salt.
+  - - grug
+    - So Romans paid in salt?
+  - - nova
+    - That's the popular story. Historians still argue about it. But salt really was precious.
+  - - grug
+    - Why salt precious? Salt just taste.
+  - - nova
+    - Before fridges, salt was how you kept meat and fish from rotting. No salt, no food for winter.
+  - - grug
+    - So salt is like money that keep fish alive?
+  - - nova
+    - Kind of. That's where people say someone is worth their salt.
+  - - grug
+    - Grug worth much salt. Follow for more Grug facts.
+  search_terms:
+  - salt crystals
+  - ancient rome
+  - roman ruins
+  - salt flats
+  tags:
+  - money history
+  - word origins
+  - salary
+  - fun facts
+  - ancient rome
 - id: batching-content
   title: How to make 10 Shorts in the time it takes to make 1 🎬
   dialogue:
-    - [dave, "I spend all day making one Short."]
-    - [pip, "Try batching. Write or film ten in one session instead of one a day."]
-    - [dave, "Why is that faster?"]
-    - [pip, "Every time you switch tasks, your brain needs time to get back into focus. Batching means you set up once and stay in the zone."]
-    - [dave, "So, one day for writing, one day for editing."]
-    - [pip, "Exactly. Then you schedule them to post automatically."]
-    - [dave, "Wait. That's what we do."]
-    - [pip, "Correct. This video was probably made weeks ago."]
-    - [dave, "Follow us from the past."]
-  search_terms: [video editing, desk setup, calendar planning, camera filming]
-  tags: [content creator, productivity, youtube shorts tips, batching, short form content]
-
+  - - dave
+    - I spend all day making one Short.
+  - - pip
+    - Try batching. Write or film ten in one session instead of one a day.
+  - - dave
+    - Why is that faster?
+  - - pip
+    - Every time you switch tasks, your brain needs time to get back into focus. Batching means you set up once and stay in the zone.
+  - - dave
+    - So, one day for writing, one day for editing.
+  - - pip
+    - Exactly. Then you schedule them to post automatically.
+  - - dave
+    - Wait. That's what we do.
+  - - pip
+    - Correct. This video was probably made weeks ago.
+  - - dave
+    - Follow us from the past.
+  search_terms:
+  - video editing
+  - desk setup
+  - calendar planning
+  - camera filming
+  tags:
+  - content creator
+  - productivity
+  - youtube shorts tips
+  - batching
+  - short form content
 - id: powerball-odds
   title: Your real odds of winning the lottery 🎰
   dialogue:
-    - [dave, "I'm buying a lottery ticket. I can feel it this time."]
-    - [pip, "The odds of winning the Powerball jackpot are about 1 in 292 million."]
-    - [dave, "So there's a chance."]
-    - [pip, "You're far more likely to be struck by lightning in your lifetime."]
-    - [dave, "What if I buy ten tickets?"]
-    - [pip, "Then it's ten in 292 million. Still basically zero."]
-    - [dave, "Okay, then why does anyone play?"]
-    - [pip, "For the dream. On average, players get back much less than they spend. That's how lotteries make money."]
-    - [dave, "Follow. I'm keeping my ticket money this week."]
-  search_terms: [lottery balls, lightning storm, lottery ticket, casino]
-  tags: [lottery, money facts, probability, powerball, did you know]
-
+  - - dave
+    - I'm buying a lottery ticket. I can feel it this time.
+  - - pip
+    - The odds of winning the Powerball jackpot are about 1 in 292 million.
+  - - dave
+    - So there's a chance.
+  - - pip
+    - You're far more likely to be struck by lightning in your lifetime.
+  - - dave
+    - What if I buy ten tickets?
+  - - pip
+    - Then it's ten in 292 million. Still basically zero.
+  - - dave
+    - Okay, then why does anyone play?
+  - - pip
+    - For the dream. On average, players get back much less than they spend. That's how lotteries make money.
+  - - dave
+    - Follow. I'm keeping my ticket money this week.
+  search_terms:
+  - lottery balls
+  - lightning storm
+  - lottery ticket
+  - casino
+  tags:
+  - lottery
+  - money facts
+  - probability
+  - powerball
+  - did you know
 - id: coca-cola-9-drinks
   title: Coca-Cola sold 9 drinks a day in its first year 🥤
   dialogue:
-    - [dave, "Coca-Cola was probably famous from day one."]
-    - [pip, "In its first year, in 1886, it sold about nine drinks a day."]
-    - [dave, "Nine? My lemonade stand did better than that."]
-    - [pip, "And in that first year, it reportedly spent more on advertising than it made in sales."]
-    - [dave, "So it lost money?"]
-    - [pip, "At first. But they kept advertising and kept selling. Today, Coca-Cola is sold in more than 200 countries and territories."]
-    - [dave, "So the lesson is, keep going even if the first year is slow."]
-    - [pip, "Most big brands started small and boring."]
-    - [dave, "Follow, my lemonade empire starts now."]
-  search_terms: [soda drink, lemonade stand, vintage shop, cola bottles]
-  tags: [business facts, coca cola, brand history, money facts, entrepreneurship]
-
+  - - dave
+    - Coca-Cola was probably famous from day one.
+  - - pip
+    - In its first year, in 1886, it sold about nine drinks a day.
+  - - dave
+    - Nine? My lemonade stand did better than that.
+  - - pip
+    - And in that first year, it reportedly spent more on advertising than it made in sales.
+  - - dave
+    - So it lost money?
+  - - pip
+    - At first. But they kept advertising and kept selling. Today, Coca-Cola is sold in more than 200 countries and territories.
+  - - dave
+    - So the lesson is, keep going even if the first year is slow.
+  - - pip
+    - Most big brands started small and boring.
+  - - dave
+    - Follow, my lemonade empire starts now.
+  search_terms:
+  - soda drink
+  - lemonade stand
+  - vintage shop
+  - cola bottles
+  tags:
+  - business facts
+  - coca cola
+  - brand history
+  - money facts
+  - entrepreneurship
+- id: grug-oldest-receipts
+  title: The oldest writing in the world is... a receipt? 🧾
+  dialogue:
+  - - grug
+    - Grug no need writing. Grug remember everything.
+  - - nova
+    - Do you remember who owes you three fish?
+  - - grug
+    - Grug forget.
+  - - nova
+    - That's why writing was invented. Some of the oldest writing ever found, from Mesopotamia, is basically records of grain, sheep, and beer.
+  - - grug
+    - Writing invented for beer?
+  - - nova
+    - For keeping track of it. One of the oldest names we know might belong to an accountant called Kushim, on a tablet about barley.
+  - - grug
+    - First famous man is money counter?
+  - - nova
+    - Possibly. Not a king, not a hero. The person tracking the receipts.
+  - - grug
+    - Grug start writing receipts. Follow for more.
+  search_terms:
+  - clay tablet
+  - ancient ruins desert
+  - wheat field
+  - sheep
+  tags:
+  - money history
+  - ancient history
+  - writing
+  - fun facts
+  - did you know
 - id: faceless-channels
   title: You don't need to show your face to grow on YouTube 🙈
   dialogue:
-    - [dave, "I want to make videos, but I don't want to show my face."]
-    - [pip, "You don't have to. Faceless channels are some of the biggest on YouTube."]
-    - [dave, "How does that even work?"]
-    - [pip, "Voiceovers, animation, gameplay, screen recordings. Viewers care about the story, not who's telling it."]
-    - [dave, "Like us. Nobody's seen our real faces."]
-    - [pip, "We're cartoons, Dave."]
-    - [dave, "Right. So what's the catch?"]
-    - [pip, "You still need original value. YouTube doesn't reward copying other people's clips. Your script, your idea, your edit."]
-    - [dave, "Follow us, the most handsome faceless channel."]
-  search_terms: [microphone recording, animation, video game, screen recording laptop]
-  tags: [faceless youtube, content creator, make money online, youtube tips, short form content]
-
+  - - dave
+    - I want to make videos, but I don't want to show my face.
+  - - pip
+    - You don't have to. Faceless channels are some of the biggest on YouTube.
+  - - dave
+    - How does that even work?
+  - - pip
+    - Voiceovers, animation, gameplay, screen recordings. Viewers care about the story, not who's telling it.
+  - - dave
+    - Like us. Nobody's seen our real faces.
+  - - pip
+    - We're cartoons, Dave.
+  - - dave
+    - Right. So what's the catch?
+  - - pip
+    - You still need original value. YouTube doesn't reward copying other people's clips. Your script, your idea, your edit.
+  - - dave
+    - Follow us, the most handsome faceless channel.
+  search_terms:
+  - microphone recording
+  - animation
+  - video game
+  - screen recording laptop
+  tags:
+  - faceless youtube
+  - content creator
+  - make money online
+  - youtube tips
+  - short form content
 - id: amazon-garage
   title: Amazon started in a garage selling only books 📦
   dialogue:
-    - [dave, "Amazon must have started in a giant warehouse."]
-    - [pip, "It started in a garage in Bellevue, Washington, in 1994, selling only books."]
-    - [dave, "Just books?"]
-    - [pip, "Just books. And it was called Cadabra at first, until someone misheard it as cadaver."]
-    - [dave, "Yeah, that's a bad name for a store."]
-    - [pip, "So it was renamed Amazon, after one of the biggest rivers in the world, to sound huge."]
-    - [dave, "So start small, but pick a big name."]
-    - [pip, "And then grow into the name. One product, done well, first."]
-    - [dave, "Follow for more business origin stories."]
-  search_terms: [garage, books, amazon river, delivery boxes]
-  tags: [amazon, business facts, startup story, entrepreneurship, money facts]
-
+  - - dave
+    - Amazon must have started in a giant warehouse.
+  - - pip
+    - It started in a garage in Bellevue, Washington, in 1994, selling only books.
+  - - dave
+    - Just books?
+  - - pip
+    - Just books. And it was called Cadabra at first, until someone misheard it as cadaver.
+  - - dave
+    - Yeah, that's a bad name for a store.
+  - - pip
+    - So it was renamed Amazon, after one of the biggest rivers in the world, to sound huge.
+  - - dave
+    - So start small, but pick a big name.
+  - - pip
+    - And then grow into the name. One product, done well, first.
+  - - dave
+    - Follow for more business origin stories.
+  search_terms:
+  - garage
+  - books
+  - amazon river
+  - delivery boxes
+  tags:
+  - amazon
+  - business facts
+  - startup story
+  - entrepreneurship
+  - money facts
 - id: buffett-age-11
   title: Warren Buffett bought his first stock at 11 📊
   dialogue:
-    - [dave, "I'm way too young to think about investing."]
-    - [pip, "Warren Buffett bought his first stock when he was eleven years old."]
-    - [dave, "Eleven? At eleven I was eating glue."]
-    - [pip, "He bought three shares for about 38 dollars each, then sold them when they went up a little."]
-    - [dave, "Nice, a quick profit."]
-    - [pip, "Except right after he sold, the price shot way up. He said it taught him patience."]
-    - [dave, "So the lesson was to wait."]
-    - [pip, "Patience, and starting early. Time is the biggest advantage young people have."]
-    - [dave, "Follow. I'm starting at thirty-two, which is basically eleven."]
-  search_terms: [stock market, newspaper finance, kid reading, stock chart]
-  tags: [warren buffett, investing history, money facts, finance basics, patience]
-
+  - - dave
+    - I'm way too young to think about investing.
+  - - pip
+    - Warren Buffett bought his first stock when he was eleven years old.
+  - - dave
+    - Eleven? At eleven I was eating glue.
+  - - pip
+    - He bought three shares for about 38 dollars each, then sold them when they went up a little.
+  - - dave
+    - Nice, a quick profit.
+  - - pip
+    - Except right after he sold, the price shot way up. He said it taught him patience.
+  - - dave
+    - So the lesson was to wait.
+  - - pip
+    - Patience, and starting early. Time is the biggest advantage young people have.
+  - - dave
+    - Follow. I'm starting at thirty-two, which is basically eleven.
+  search_terms:
+  - stock market
+  - newspaper finance
+  - kid reading
+  - stock chart
+  tags:
+  - warren buffett
+  - investing history
+  - money facts
+  - finance basics
+  - patience
+- id: grug-credit-card
+  title: The credit card exists because someone forgot their wallet 💳
+  dialogue:
+  - - grug
+    - Grug eat at restaurant. Grug forget meat money.
+  - - nova
+    - That's exactly how the first modern charge card was born. Diners Club, 1950.
+  - - grug
+    - Diners? Grug is diner!
+  - - nova
+    - The story goes a businessman forgot his wallet at a New York restaurant. So the idea was one card that works at many restaurants, and you pay the bill later.
+  - - grug
+    - Pay later? Grug love pay later.
+  - - nova
+    - Everyone does. That's the danger. The bill always comes, and with interest if you don't pay it.
+  - - grug
+    - What is interest?
+  - - nova
+    - Extra money you pay for borrowing. Like paying back four fish for borrowing three.
+  - - grug
+    - Grug pay now. Follow for more Grug lessons.
+  search_terms:
+  - restaurant dinner
+  - credit card payment
+  - new york city
+  - fish market
+  tags:
+  - credit card
+  - money history
+  - interest
+  - fun facts
+  - personal finance
 - id: fifty-thirty-twenty
   title: Where does your money go every month? 🤔
   dialogue:
-    - [dave, "Every month my money just disappears."]
-    - [pip, "Try the 50 30 20 rule."]
-    - [dave, "Sounds like a workout."]
-    - [pip, "50 percent of your take-home pay goes to needs, like rent and food. 30 percent to wants. 20 percent to savings or paying off debt."]
-    - [dave, "So I'm allowed to have fun?"]
-    - [pip, "Thirty percent worth of fun. It's a simple starting point, not a law. Adjust it to your life."]
-    - [dave, "What if my wants are already eighty percent?"]
-    - [pip, "Then you just found where your money is disappearing."]
-    - [dave, "Follow. I need to have a serious talk with my snacks."]
-  search_terms: [budget planning, wallet, groceries, notebook planning]
-  tags: [budgeting, 50 30 20 rule, personal finance, saving money, money tips]
-
-- id: salary-salt
-  title: The word "salary" comes from SALT 🧂
-  dialogue:
-    - [dave, "Where does the word salary even come from?"]
-    - [pip, "From the Latin word salarium, which is connected to sal, the Latin word for salt."]
-    - [dave, "Salt? Were they paying people in salt?"]
-    - [pip, "Salt was incredibly valuable in the ancient world. It kept food from going bad."]
-    - [dave, "So is that where worth your salt comes from?"]
-    - [pip, "That's the popular story. Historians still argue about exactly how Roman soldiers were paid."]
-    - [dave, "So I could ask my boss to pay me in salt?"]
-    - [pip, "You could. I wouldn't recommend it."]
-    - [dave, "Follow for more weird money history."]
-  search_terms: [salt, ancient rome, roman ruins, salt crystals]
-  tags: [money history, word origins, fun facts, salary, did you know]
-
+  - - dave
+    - Every month my money just disappears.
+  - - pip
+    - Try the 50 30 20 rule.
+  - - dave
+    - Sounds like a workout.
+  - - pip
+    - 50 percent of your take-home pay goes to needs, like rent and food. 30 percent to wants. 20 percent to savings or paying off debt.
+  - - dave
+    - So I'm allowed to have fun?
+  - - pip
+    - Thirty percent worth of fun. It's a simple starting point, not a law. Adjust it to your life.
+  - - dave
+    - What if my wants are already eighty percent?
+  - - pip
+    - Then you just found where your money is disappearing.
+  - - dave
+    - Follow. I need to have a serious talk with my snacks.
+  search_terms:
+  - budget planning
+  - wallet
+  - groceries
+  - notebook planning
+  tags:
+  - budgeting
+  - 50 30 20 rule
+  - personal finance
+  - saving money
+  - money tips
 - id: coffee-math
   title: The real price of a $5 daily coffee ☕
   dialogue:
-    - [dave, "It's just a five dollar coffee. Relax."]
-    - [pip, "Every day?"]
-    - [dave, "Every single day."]
-    - [pip, "That's 1,825 dollars a year."]
-    - [dave, "Okay, that sounds bad when you say it like that."]
-    - [pip, "Over ten years, that's more than 18,000 dollars. Before counting any growth."]
-    - [dave, "So I should never drink coffee again?"]
-    - [pip, "No. Spend on what you love. Just know the real yearly price of your habits, then decide on purpose."]
-    - [dave, "Follow. I'm still getting the coffee."]
-  search_terms: [coffee cup, coffee shop, barista, latte art]
-  tags: [money tips, saving money, personal finance, budgeting, coffee]
-
-- id: diners-club
-  title: The first credit card was invented because of a forgotten wallet 💳
-  dialogue:
-    - [dave, "Who invented the credit card?"]
-    - [pip, "The first modern charge card was Diners Club, in 1950."]
-    - [dave, "Why diners?"]
-    - [pip, "The story goes that a businessman named Frank McNamara forgot his wallet at a New York restaurant, and was very embarrassed."]
-    - [dave, "Relatable."]
-    - [pip, "So the idea was a card you could use at many restaurants, and pay the bill later. It started with a few hundred members."]
-    - [dave, "And now everybody has one."]
-    - [pip, "Billions of cards. The lesson? Paying later is convenient, but the bill always comes."]
-    - [dave, "Follow. I left my wallet at home again."]
-  search_terms: [credit card, restaurant dinner, new york 1950s, paying bill]
-  tags: [credit card, money history, business facts, fun facts, personal finance]
-
-- id: oldest-writing-receipts
-  title: Some of the oldest writing ever found is... receipts 🧾
-  dialogue:
-    - [dave, "Who invented coins?"]
-    - [pip, "The oldest known coins come from Lydia, in what is now Turkey, around 600 BC."]
-    - [dave, "What did people use before that?"]
-    - [pip, "Barter, and things like grain, cattle, and shells. Writing itself may have started partly to keep track of who owed what."]
-    - [dave, "So accountants invented writing?"]
-    - [pip, "Ancient record keepers, sort of. Some of the oldest writing ever found is basically receipts."]
-    - [dave, "Receipts? That's the oldest literature?"]
-    - [pip, "Some of it. Lists of grain, sheep, and beer."]
-    - [dave, "Follow. I'm keeping my receipts from now on."]
-  search_terms: [ancient coins, clay tablet, wheat field, sheep]
-  tags: [money history, ancient history, fun facts, coins, did you know]
-
+  - - dave
+    - It's just a five dollar coffee. Relax.
+  - - pip
+    - Every day?
+  - - dave
+    - Every single day.
+  - - pip
+    - That's 1,825 dollars a year.
+  - - dave
+    - Okay, that sounds bad when you say it like that.
+  - - pip
+    - Over ten years, that's more than 18,000 dollars. Before counting any growth.
+  - - dave
+    - So I should never drink coffee again?
+  - - pip
+    - No. Spend on what you love. Just know the real yearly price of your habits, then decide on purpose.
+  - - dave
+    - Follow. I'm still getting the coffee.
+  search_terms:
+  - coffee cup
+  - coffee shop
+  - barista
+  - latte art
+  tags:
+  - money tips
+  - saving money
+  - personal finance
+  - budgeting
+  - coffee
 - id: price-ends-in-99
   title: Why everything costs $9.99 🏷️
   dialogue:
-    - [dave, "Why does everything cost nine ninety-nine?"]
-    - [pip, "Because your brain reads the first number and rounds down."]
-    - [dave, "No way. I'm smarter than that."]
-    - [pip, "Is nine ninety-nine closer to nine or ten?"]
-    - [dave, "Nine. Obviously."]
-    - [pip, "It's one cent away from ten. That's called the left digit effect. Studies show prices ending in nine often sell better."]
-    - [dave, "So stores are tricking me with one cent."]
-    - [pip, "One cent that makes things feel cheaper. Online creators use the same trick, selling things for 19 dollars instead of 20."]
-    - [dave, "Follow. This video is worth nine ninety-nine."]
-  search_terms: [price tags, shopping mall, sale sign, cash register]
-  tags: [marketing psychology, pricing, money facts, business tips, did you know]
-
+  - - dave
+    - Why does everything cost nine ninety-nine?
+  - - pip
+    - Because your brain reads the first number and rounds down.
+  - - dave
+    - No way. I'm smarter than that.
+  - - pip
+    - Is nine ninety-nine closer to nine or ten?
+  - - dave
+    - Nine. Obviously.
+  - - pip
+    - It's one cent away from ten. That's called the left digit effect. Studies show prices ending in nine often sell better.
+  - - dave
+    - So stores are tricking me with one cent.
+  - - pip
+    - One cent that makes things feel cheaper. Online creators use the same trick, selling things for 19 dollars instead of 20.
+  - - dave
+    - Follow. This video is worth nine ninety-nine.
+  search_terms:
+  - price tags
+  - shopping mall
+  - sale sign
+  - cash register
+  tags:
+  - marketing psychology
+  - pricing
+  - money facts
+  - business tips
+  - did you know
 - id: mansa-musa
   title: The man so rich he crashed the price of gold 👑
   dialogue:
-    - [dave, "Who's the richest person who ever lived?"]
-    - [pip, "Many historians point to Mansa Musa, ruler of the Mali Empire in the 1300s."]
-    - [dave, "Richer than today's billionaires?"]
-    - [pip, "His wealth is almost impossible to measure. His empire controlled huge supplies of gold."]
-    - [dave, "What did he do with it?"]
-    - [pip, "On a trip to Mecca in 1324, he gave away so much gold in Cairo that its value there dropped for years."]
-    - [dave, "He was so rich he broke the economy."]
-    - [pip, "By being generous. One of history's strangest money problems."]
-    - [dave, "Follow for more money history."]
-  search_terms: [gold, desert caravan, camels desert, ancient city]
-  tags: [mansa musa, money history, richest person, fun facts, gold]
+  - - dave
+    - Who's the richest person who ever lived?
+  - - pip
+    - Many historians point to Mansa Musa, ruler of the Mali Empire in the 1300s.
+  - - dave
+    - Richer than today's billionaires?
+  - - pip
+    - His wealth is almost impossible to measure. His empire controlled huge supplies of gold.
+  - - dave
+    - What did he do with it?
+  - - pip
+    - On a trip to Mecca in 1324, he gave away so much gold in Cairo that its value there dropped for years.
+  - - dave
+    - He was so rich he broke the economy.
+  - - pip
+    - By being generous. One of history's strangest money problems.
+  - - dave
+    - Follow for more money history.
+  search_terms:
+  - gold
+  - desert caravan
+  - camels desert
+  - ancient city
+  tags:
+  - mansa musa
+  - money history
+  - richest person
+  - fun facts
+  - gold

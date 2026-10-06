@@ -4,6 +4,7 @@ into one vertical MP4."""
 from __future__ import annotations
 
 import random
+import sys
 from pathlib import Path
 
 from PIL import Image
@@ -69,20 +70,29 @@ def expression_schedule(item: dict, turns: list, total: float, cfg: dict) -> dic
     return schedule
 
 
-def pick_music(item: dict, total: float, work_dir: Path, cfg: dict) -> Path | None:
-    """Your own tracks in assets/music/ first; otherwise a freshly generated beat."""
+def pick_music(item: dict, cfg: dict) -> Path | None:
+    """Your own tracks in assets/music/ first; otherwise a free meme track.
+
+    When a CC BY track is used, its credit is stored on the item so the uploader
+    can put it in the description (the licence requires it).
+    """
     own = sorted(f for f in MUSIC_DIR.glob("*") if f.suffix.lower() in (".mp3", ".wav", ".m4a")) if MUSIC_DIR.exists() else []
     if own:
-        track = random.choice(own)
+        track = random.Random(item.get("id", "")).choice(own)
         print(f"  music: {track.name}")
         return track
-    mcfg = cfg.get("music", {})
-    if not mcfg.get("generate", True):
+    tracks = cfg.get("music", {}).get("tracks") or []
+    if not tracks:
         return None
     from . import music
 
-    track, style = music.render(work_dir / "music.wav", total, item.get("id", ""), mcfg.get("styles"))
-    print(f"  music: generated {style} beat")
+    found = music.pick(item.get("id", ""), tracks)
+    if not found:
+        print("  music: none available, video has voices only", file=sys.stderr)
+        return None
+    track, credit = found
+    item["music_credit"] = credit
+    print(f"  music: {track.stem}")
     return track
 
 
@@ -163,7 +173,7 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
     voice_idx = n
     inputs += ["-i", str(audio.resolve())]
     filters.append(f"[{voice_idx}:a]apad,atrim=0:{total:.3f}[voice]")
-    track = pick_music(item, total, work_dir, cfg)
+    track = pick_music(item, cfg)
     if track:
         inputs += ["-stream_loop", "-1", "-i", str(track.resolve())]
         vol = cfg.get("music", {}).get("volume", v.get("music_volume", 0.14))

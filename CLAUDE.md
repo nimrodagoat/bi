@@ -5,20 +5,25 @@ first entry of `content/queue.yaml`, renders a vertical Short and uploads it; th
 it moves the entry to `content/posted.yaml` and commits. Everything is free: Edge
 TTS (Piper fallback), ffmpeg, YouTube Data API.
 
-Current format: two original cartoon characters, **Dave** (loud, clueless; Edge
-voice en-US-AndrewMultilingualNeural) and **Pip** (smug know-it-all; Kokoro voice
-bm_lewis), talk through a fact. Each has 5 expression pictures (face + hand
-gesture, "Notionists" art, public domain) in `assets/characters/<name>/` that
-rotate while they talk, a sticker outline and caption colour; all defined under
-`characters:` in `config.yaml`. Regenerate art with `tools/characters.mjs`, then
-`tools/sticker.py` (outline + torso extended to the frame bottom, so no gap under
-the characters), then `tools/design_sheet.py`. Music: the owner's tracks in
-`assets/music/`, else an original beat from `shorts/music.py` (phonk/lofi, never
-copyrighted songs); the mix is loudness-normalised. Background: the owner's real gameplay (`assets/gameplay/`, also
-pulled from the repo's `gameplay` release), else **generated Minecraft-style parkour**
-(`shorts/parkour.py`, procedural textures, headless OpenGL), else Pixabay/Pexels
-stock clips from `search_terms`, else a gradient. Never use real Minecraft/Subway
-Surfers footage downloaded from others.
+Current format: two original cartoon characters talk through a fact. Duos:
+- **Dave** (loud, clueless; Edge en-US-AndrewMultilingualNeural) + **Pip** (smug
+  know-it-all; Kokoro bm_lewis): money facts and short-form-content tips.
+- **Grug** (caveman, broken English: "Grug trade fish"; Kokoro am_onyx) + **Nova**
+  (time traveller; Kokoro af_heart): where money came from (history). Every third
+  video in the queue is a Grug episode.
+Each character has 5 expression pictures (face + hand gesture, "Notionists" art,
+public domain) in `assets/characters/<name>/` that rotate while they talk, a
+sticker outline, caption colour and outfit, all under `characters:` in
+`config.yaml`. Regenerate art with `tools/characters.mjs`, then `tools/sticker.py`
+(draws the lower body: shirt, belt, trousers, or a fur pelt; adds the outline),
+then `tools/design_sheet.py`. Music: the owner's tracks in `assets/music/`, else
+Kevin MacLeod meme tracks (CC BY 4.0, downloaded from incompetech.com; the credit
+is added to the description automatically). Never use copyrighted songs, and
+the owner disliked synthesised beats. Background: the owner's real gameplay
+(`assets/gameplay/`, also pulled from the repo's `gameplay` release), else
+**generated Minecraft-style parkour** (`shorts/parkour.py`), else Pixabay/Pexels
+stock clips, else a gradient. Never use real Minecraft/Subway Surfers footage
+downloaded from others.
 
 Don't imitate copyrighted characters or real people's voices (e.g. Family Guy):
 the owner asked once and was steered to original characters; keep it that way.
@@ -49,8 +54,9 @@ plain-language, and do the git work for them.
 
 ## Writing scripts (queue entries)
 - Default is `dialogue:` — a list of `[speaker, "line"]` using the character keys
-  (`dave`, `pip`). Pattern: Dave says/asks something naive, Pip answers with the
-  fact, Dave reacts, Pip lands the lesson, Dave ends with the call to action.
+  (`dave`/`pip` or `grug`/`nova`). Pattern: the naive one says/asks something,
+  the smart one answers with the fact, reaction, lesson, the naive one ends with
+  the call to action. Grug speaks caveman English ("Grug no understand paper").
   8–11 short lines. `script:` (single narrator) still works for one-off videos.
 - 85–140 words in total (≈30–55 s). Hook in the first line; no slow intros.
 - Short sentences, spoken style, no emojis or symbols in `script` (the voice reads them).
