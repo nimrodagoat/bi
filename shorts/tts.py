@@ -10,7 +10,7 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-from .media import probe_duration
+from .media import probe_duration, run_ffmpeg
 
 PIPER_DIR = Path(__file__).resolve().parent.parent / ".cache" / "piper"
 
@@ -20,11 +20,27 @@ class Word:
     text: str
     start: float  # seconds
     end: float
+    speaker: str | None = None
 
 
-def synthesize(text: str, work_dir: Path, cfg: dict) -> tuple[Path, list[Word]]:
-    """Speak `text`; return the audio file and when each word is said."""
-    vcfg = cfg.get("voice", {})
+@dataclass
+class Turn:
+    speaker: str
+    start: float
+    end: float
+
+
+LINE_GAP = 0.18  # seconds of silence between two characters' lines
+
+
+def synthesize(
+    text: str, work_dir: Path, cfg: dict, voice: dict | None = None, name: str = "voice"
+) -> tuple[Path, list[Word]]:
+    """Speak `text`; return the audio file and when each word is said.
+
+    `voice` overrides the voice settings from config.yaml (used for characters).
+    """
+    vcfg = {**cfg.get("voice", {}), **(voice or {}), "_name": name}
     errors = []
     engines = vcfg.get("engines", ["edge", "piper"])
     if os.environ.get("SHORTS_VOICES"):  # e.g. SHORTS_VOICES=espeak for offline testing
@@ -37,7 +53,8 @@ def synthesize(text: str, work_dir: Path, cfg: dict) -> tuple[Path, list[Word]]:
             continue
         try:
             audio, words = fn(text, work_dir, vcfg)
-            print(f"  voice: {engine}")
+            if name == "voice" or name.endswith("00"):
+                print(f"  voice: {engine}")
             return audio, words
         except Exception as e:  # try the next engine
             errors.append(f"{engine}: {e}")
@@ -48,7 +65,7 @@ def synthesize(text: str, work_dir: Path, cfg: dict) -> tuple[Path, list[Word]]:
 def _edge(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
     import edge_tts
 
-    out = work_dir / "voice.mp3"
+    out = work_dir / f"{vcfg['_name']}.mp3"
     words: list[Word] = []
 
     async def run():
@@ -56,6 +73,7 @@ def _edge(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
             text,
             vcfg.get("edge_voice", "en-US-AndrewNeural"),
             rate=vcfg.get("edge_rate", "+0%"),
+            pitch=vcfg.get("edge_pitch", "+0Hz"),
             boundary="WordBoundary",
         )
         with out.open("wb") as f:
@@ -81,7 +99,7 @@ def _piper(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
             [sys.executable, "-m", "piper.download_voices", "--download-dir", str(PIPER_DIR), voice],
             check=True,
         )
-    out = work_dir / "voice.wav"
+    out = work_dir / f"{vcfg['_name']}.wav"
     subprocess.run(
         [sys.executable, "-m", "piper", "-m", str(model), "-f", str(out)],
         input=text.encode(),
@@ -92,8 +110,10 @@ def _piper(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
 
 
 def _espeak(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
-    out = work_dir / "voice.wav"
-    subprocess.run(["espeak-ng", "-v", "en-us", "-s", "165", "-w", str(out), text], check=True)
+    out = work_dir / f"{vcfg['_name']}.wav"
+    cmd = ["espeak-ng", "-v", vcfg.get("espeak_voice", "en-us"), "-s", "165"]
+    cmd += ["-p", str(vcfg.get("espeak_pitch", 50)), "-w", str(out), text]
+    subprocess.run(cmd, check=True)
     return out, estimate_word_times(text, probe_duration(out))
 
 
@@ -133,3 +153,35 @@ def _attach_punctuation(text: str, words: list[Word]) -> list[Word]:
                 i = j + 1
                 break
     return words
+
+
+def synthesize_dialogue(
+    lines: list[tuple[str, str]], work_dir: Path, cfg: dict
+) -> tuple[Path, list[Word], list[Turn]]:
+    """Voice a conversation: each (speaker, text) line in that character's voice,
+    joined into one audio track. Returns the audio, every word's timing (tagged
+    with its speaker) and when each character is talking."""
+    characters = cfg.get("characters", {})
+    parts, words, turns = [], [], []
+    t = 0.0
+    for i, (speaker, text) in enumerate(lines):
+        voice = {k: v for k, v in characters.get(speaker, {}).items() if k != "name"}
+        audio, line_words = synthesize(text, work_dir, cfg, voice=voice, name=f"line{i:02d}")
+        length = probe_duration(audio)
+        for w in line_words:
+            words.append(Word(w.text, w.start + t, w.end + t, speaker))
+        turns.append(Turn(speaker, t, t + length))
+        parts.append(audio)
+        t += length + LINE_GAP
+
+    out = work_dir / "dialogue.wav"
+    args, filters = [], []
+    for i, part in enumerate(parts):
+        args += ["-i", str(part.resolve())]
+        filters.append(
+            f"[{i}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono,"
+            f"apad=pad_dur={LINE_GAP}[a{i}]"
+        )
+    filters.append("".join(f"[a{i}]" for i in range(len(parts))) + f"concat=n={len(parts)}:v=0:a=1[out]")
+    run_ffmpeg([*args, "-filter_complex", ";".join(filters), "-map", "[out]", str(out.resolve())])
+    return out, words, turns

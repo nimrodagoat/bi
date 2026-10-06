@@ -6,7 +6,7 @@
 channel:
   # The default topic for new videos. Each video in content/queue.yaml can
   # override this with its own "niche:" line.
-  niche: "Mind-blowing science facts"
+  niche: "Money facts and making money with short-form content"
   language: en
 
 schedule:
@@ -36,12 +36,42 @@ voice:
   piper_voice: en_US-ryan-high
 
 visuals:
-  # auto     = free stock videos matching each video's search_terms, from Pixabay
-  #            (PIXABAY_API_KEY) or Pexels (PEXELS_API_KEY), whichever key you have
-  # gradient = animated colour background (no key needed)
+  # auto     = your gameplay videos if there are any (see SETUP.md, "Gameplay"),
+  #            otherwise free stock videos matching each video's search_terms from
+  #            Pixabay (PIXABAY_API_KEY) or Pexels (PEXELS_API_KEY),
+  #            otherwise an animated colour background
+  # gameplay / pixabay / pexels / gradient = force one of these
   source: auto
+  gameplay_dir: assets/gameplay
   # Darkens the background so captions stay readable (0 = none, 1 = black).
   dim: 0.35
+  gameplay_dim: 0.15
+
+# The two characters who talk in "dialogue" videos. The keys (dave, pip) are
+# what the queue uses as speaker names. Voices are free Microsoft Edge voices;
+# pitch and rate make them sound different. Replace image with your own PNG
+# (transparent background, roughly square) to restyle a character.
+characters:
+  dave:
+    name: Dave
+    edge_voice: en-US-GuyNeural
+    edge_rate: "+6%"
+    edge_pitch: "-6Hz"
+    espeak_voice: en-us     # robotic offline voice, local testing only
+    espeak_pitch: 35
+    color: "#FF9F1C"        # his words light up orange
+    image: assets/characters/dave.png
+    side: left
+  pip:
+    name: Pip
+    edge_voice: en-GB-RyanNeural
+    edge_rate: "+10%"
+    edge_pitch: "+30Hz"
+    espeak_voice: en-gb
+    espeak_pitch: 80
+    color: "#4CC9F0"        # his words light up blue
+    image: assets/characters/pip.png
+    side: right
 
 captions:
   font: "DejaVu Sans"
@@ -49,7 +79,7 @@ captions:
   words_per_caption: 3
   color: "#FFFFFF"
   highlight_color: "#FFE600"   # colour of the word being spoken
-  position_from_bottom: 760    # pixels from the bottom of the 1920px-tall frame
+  position_from_bottom: 1150   # pixels from the bottom of the 1920px-tall frame
 
 video:
   width: 1080

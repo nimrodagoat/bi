@@ -39,6 +39,14 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
+      - name: Get gameplay footage
+        # Videos attached to the repo's "gameplay" release (see SETUP.md).
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download gameplay --dir assets/gameplay --skip-existing \
+            || echo "No 'gameplay' release yet: using stock footage instead."
+
       - name: Cache backup voice
         uses: actions/cache@v4
         with:

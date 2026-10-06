@@ -105,6 +105,31 @@ day. Single user, no other users' data."* Approval usually takes days to a few w
 
 ---
 
+## Gameplay background (Minecraft parkour etc.)
+
+Videos use **your gameplay footage** as the background when there is some, and
+free stock footage otherwise. Each Short uses a random part of a random gameplay
+video, so a few long recordings (10+ minutes each) are plenty.
+
+**Where to get footage you're allowed to use:**
+- **Record it yourself.** Minecraft's rules allow videos of your own gameplay,
+  including monetized ones. Free recorder: OBS Studio (obsproject.com).
+  Record parkour, running, building: anything constantly moving.
+- **Luanti** (luanti.org): a free, open-source Minecraft-like game you can record.
+- Don't download other people's gameplay videos (e.g. "Subway Surfers gameplay"
+  from YouTube). That's reuploading their content and leads to copyright claims.
+
+**How to upload it (no size problems, free):**
+1. On GitHub, open the repo → right side **Releases** → **Create a new release**.
+2. **Choose a tag** → type `gameplay` → **Create new tag**. Title: `gameplay`.
+3. Drag your .mp4 files into the box at the bottom (up to 2 GB each).
+4. **Publish release**.
+
+To add more later: Releases → `gameplay` → **Edit** → drag in more files → **Update release**.
+Landscape (16:9) recordings are fine; the middle part is cropped to fill the vertical frame.
+
+---
+
 ## Troubleshooting
 
 | Symptom | Fix |

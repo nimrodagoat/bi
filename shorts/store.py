@@ -18,7 +18,9 @@ QUEUE_HEADER = """\
 #   id            unique name (letters, numbers, dashes)
 #   niche         optional; overrides the niche in config.yaml for this video
 #   title         YouTube title (max 100 characters)
-#   script        what the voice says (aim for 35-55 seconds, ~90-140 words)
+#   dialogue      a conversation: list of [speaker, line]; speakers are the
+#                 characters in config.yaml (aim for 35-55 seconds, ~100-140 words)
+#   script        OR: one narrator reads this text instead of a dialogue
 #   search_terms  words used to find matching stock footage, one per scene
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
@@ -28,7 +30,7 @@ POSTED_HEADER = """\
 # Videos already uploaded (newest last). Written automatically by the daily job.
 """
 
-REQUIRED_FIELDS = ("id", "title", "script")
+REQUIRED_FIELDS = ("id", "title")
 
 
 class _Dumper(yaml.SafeDumper):
@@ -94,6 +96,7 @@ def validate_queue(items: list[dict]) -> list[str]:
     """Return a list of human-readable problems with the queue (empty = fine)."""
     problems = []
     seen = {p.get("id") for p in load_posted()}
+    characters = set((load_config().get("characters") or {}).keys())
     for n, item in enumerate(items, 1):
         label = f"entry #{n} ({item.get('id', 'no id')})"
         if not isinstance(item, dict):
@@ -107,7 +110,20 @@ def validate_queue(items: list[dict]) -> list[str]:
         seen.add(item.get("id"))
         if len(str(item.get("title", ""))) > 100:
             problems.append(f"{label}: title is longer than 100 characters")
-        words = len(str(item.get("script", "")).split())
+        dialogue = item.get("dialogue") or []
+        if not dialogue and not str(item.get("script", "")).strip():
+            problems.append(f"{label}: needs either 'script' or 'dialogue'")
+        text = str(item.get("script", ""))
+        for line in dialogue:
+            try:
+                speaker, said = next(iter(line.items())) if isinstance(line, dict) else line
+            except (TypeError, ValueError, StopIteration):
+                problems.append(f"{label}: dialogue line {line!r} should look like [speaker, text]")
+                continue
+            if speaker not in characters:
+                problems.append(f"{label}: unknown speaker '{speaker}' (add it under characters: in config.yaml)")
+            text += " " + str(said)
+        words = len(text.split())
         if words > 170:
             problems.append(f"{label}: script has {words} words; keep it under ~150 so the Short stays under a minute")
     return problems

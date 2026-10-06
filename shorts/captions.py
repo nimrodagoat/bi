@@ -29,6 +29,9 @@ def chunk_words(words: list[Word], size: int) -> list[list[Word]]:
     """Group words into short caption lines, breaking early at sentence ends."""
     chunks, cur = [], []
     for w in words:
+        if cur and w.speaker != cur[-1].speaker:  # new line on speaker change
+            chunks.append(cur)
+            cur = []
         cur.append(w)
         if len(cur) >= size or w.text[-1:] in ".!?,;:":
             chunks.append(cur)
@@ -43,6 +46,11 @@ def write_ass(words: list[Word], path: Path, cfg: dict) -> None:
     v = cfg.get("video", {})
     base = _ass_color(c.get("color", "#FFFFFF"))
     hi = _ass_color(c.get("highlight_color", "#FFE600"))
+    speaker_hi = {
+        key: _ass_color(ch["color"])
+        for key, ch in (cfg.get("characters") or {}).items()
+        if ch.get("color")
+    }
     size = c.get("font_size", 92)
 
     lines = [
@@ -76,7 +84,7 @@ def write_ass(words: list[Word], path: Path, cfg: dict) -> None:
                 continue
             parts = []
             for k, w in enumerate(chunk):
-                color = hi if k == wi else base
+                color = speaker_hi.get(w.speaker, hi) if k == wi else base
                 parts.append(f"{{\\c{color}}}{_clean(w.text)}")
             pop = r"{\fscx112\fscy112\t(0,90,\fscx100\fscy100)}" if wi == 0 else ""
             lines.append(f"Dialogue: 0,{_ts(start)},{_ts(end)},Default,,0,0,0,,{pop}{' '.join(parts)}")

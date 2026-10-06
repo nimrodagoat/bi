@@ -7,6 +7,8 @@ import re
 import sys
 from pathlib import Path
 
+from .render import spoken_text
+
 SCOPE = "https://www.googleapis.com/auth/youtube.upload"
 SECRETS = ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")
 
@@ -37,8 +39,10 @@ def build_metadata(item: dict, cfg: dict) -> dict:
         kept.append(t)
 
     description = item.get("description")
+    if not description and item.get("dialogue"):
+        description = title  # a dialogue's first line reads oddly out of context
     if not description:
-        sentences = re.split(r"(?<=[.!?])\s+", " ".join(str(item["script"]).split()))
+        sentences = re.split(r"(?<=[.!?])\s+", spoken_text(item))
         description = " ".join(sentences[:2])
     hashtags = " ".join(f"#{t.replace(' ', '')}" for t in kept[:3])
     if "#shorts" not in description.lower():

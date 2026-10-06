@@ -1,10 +1,19 @@
 # YouTube Shorts autopilot
 
 A GitHub Actions job (`.github/workflows/daily-short.yml`) runs daily, takes the
-first entry of `content/queue.yaml`, renders a vertical Short (voice + word-by-word
-captions + stock footage) and uploads it; then it moves the entry to
-`content/posted.yaml` and commits. Everything is free: Edge TTS (Piper fallback),
-Pixabay/Pexels stock footage (gradient fallback), ffmpeg, YouTube Data API.
+first entry of `content/queue.yaml`, renders a vertical Short and uploads it; then
+it moves the entry to `content/posted.yaml` and commits. Everything is free: Edge
+TTS (Piper fallback), ffmpeg, YouTube Data API.
+
+Current format: two original cartoon characters, **Dave** (loud, clueless big guy)
+and **Pip** (tiny smug genius, British voice), talk through a fact. Each has their
+own voice, avatar (`assets/characters/`) and caption highlight colour, defined under
+`characters:` in `config.yaml`. Background: the owner's gameplay footage
+(`assets/gameplay/`, downloaded from the repo's `gameplay` release), else Pixabay/
+Pexels stock clips from `search_terms`, else a gradient.
+
+Don't imitate copyrighted characters or real people's voices (e.g. Family Guy):
+the owner asked once and was steered to original characters; keep it that way.
 
 The owner is not a programmer. They manage the channel by chatting. Keep replies
 plain-language, and do the git work for them.
@@ -31,7 +40,11 @@ plain-language, and do the git work for them.
   the workflow (UTC).
 
 ## Writing scripts (queue entries)
-- 90–140 words (≈35–55 s). Hook in the first sentence; no slow intros.
+- Default is `dialogue:` — a list of `[speaker, "line"]` using the character keys
+  (`dave`, `pip`). Pattern: Dave says/asks something naive, Pip answers with the
+  fact, Dave reacts, Pip lands the lesson, Dave ends with the call to action.
+  8–11 short lines. `script:` (single narrator) still works for one-off videos.
+- 85–140 words in total (≈30–55 s). Hook in the first line; no slow intros.
 - Short sentences, spoken style, no emojis or symbols in `script` (the voice reads them).
   Spell numbers the way they should be spoken when it matters.
 - End with a short call to action (e.g. "Follow for one strange fact every day.").
@@ -39,6 +52,7 @@ plain-language, and do the git work for them.
 - `search_terms`: 4–6 concrete, filmable stock-footage queries (e.g. "octopus swimming",
   not "biology"), one per scene, in story order.
 - `tags`: 4–6 relevant tags. `id`: short kebab-case, unique, never reused.
+- Money niche: explain facts and maths, never tell viewers what to buy or invest in.
 - Facts must be accurate; no medical/financial advice, no real people's likeness,
   no copyrighted text. Vary topics and structure; YouTube penalises
   repetitive mass-produced content.

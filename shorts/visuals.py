@@ -1,4 +1,5 @@
-"""Background footage: free stock clips (Pixabay or Pexels), or an animated gradient."""
+"""Background footage: your gameplay videos, free stock clips (Pixabay or
+Pexels), or an animated gradient, in that order of preference."""
 
 from __future__ import annotations
 
@@ -10,9 +11,40 @@ from pathlib import Path
 
 import requests
 
+from .media import probe_duration
+
+ROOT = Path(__file__).resolve().parent.parent
+GAMEPLAY_EXTS = {".mp4", ".mov", ".mkv", ".webm"}
+
 PEXELS_SEARCH = "https://api.pexels.com/videos/search"
 PIXABAY_SEARCH = "https://pixabay.com/api/videos/"
 SCENE_SECONDS = 5.5  # roughly how long each stock clip stays on screen
+
+
+def pick_gameplay(duration: float, cfg: dict) -> tuple[Path, float] | None:
+    """Pick a random gameplay video and a random start time inside it.
+
+    Gameplay lives in assets/gameplay/ (small files committed to the repo) and
+    is also downloaded from the repo's "gameplay" GitHub release by the daily job.
+    """
+    vis = cfg.get("visuals", {})
+    if vis.get("source", "auto") not in ("auto", "gameplay"):
+        return None  # stock footage or gradient only
+    folder = ROOT / vis.get("gameplay_dir", "assets/gameplay")
+    files = [f for f in folder.glob("*") if f.suffix.lower() in GAMEPLAY_EXTS] if folder.exists() else []
+    random.shuffle(files)
+    for f in files:
+        try:
+            length = probe_duration(f)
+        except Exception as e:
+            print(f"  visuals: can't read {f.name} ({e})", file=sys.stderr)
+            continue
+        if length >= duration + 1:
+            start = random.uniform(0, length - duration - 0.5)
+            print(f"  visuals: gameplay {f.name} from {start:.0f}s")
+            return f, start
+        print(f"  visuals: {f.name} is shorter than the video, skipping", file=sys.stderr)
+    return None
 
 
 def fetch_clips(terms: list[str], duration: float, work_dir: Path, cfg: dict) -> list[Path]:
@@ -25,9 +57,9 @@ def fetch_clips(terms: list[str], duration: float, work_dir: Path, cfg: dict) ->
     if source == "gradient":
         return []
     providers = []
-    if source in ("auto", "pixabay") and os.environ.get("PIXABAY_API_KEY"):
+    if source != "pexels" and os.environ.get("PIXABAY_API_KEY"):
         providers.append(("Pixabay", _pick_pixabay, os.environ["PIXABAY_API_KEY"]))
-    if source in ("auto", "pexels") and os.environ.get("PEXELS_API_KEY"):
+    if source != "pixabay" and os.environ.get("PEXELS_API_KEY"):
         providers.append(("Pexels", _pick_pexels, os.environ["PEXELS_API_KEY"]))
     if not providers:
         print("  visuals: no PIXABAY_API_KEY / PEXELS_API_KEY set, using gradient background")
