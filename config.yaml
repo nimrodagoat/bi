@@ -27,10 +27,12 @@ upload:
 
 voice:
   # Tried in order until one works:
-  #   edge  = free Microsoft Edge neural voices (best quality, needs internet)
-  #   piper = free open-source voice, downloaded once (good quality)
+  #   edge   = free Microsoft Edge neural voices (needs internet)
+  #   kokoro = free open-source neural voices, downloaded once (~350 MB)
+  #   piper  = free open-source voice, downloaded once (plainer)
   #   espeak = robotic offline voice (only for local testing)
-  engines: [edge, piper]
+  # Characters (below) have their own voices; these are for narrated videos.
+  engines: [edge, kokoro, piper]
   edge_voice: en-US-AndrewNeural   # others: en-US-AvaNeural, en-GB-RyanNeural, en-US-BrianNeural
   edge_rate: "+8%"                 # speed: "-10%" slower, "+15%" faster
   piper_voice: en_US-ryan-high
@@ -48,30 +50,50 @@ visuals:
   gameplay_dim: 0.15
 
 # The two characters who talk in "dialogue" videos. The keys (dave, pip) are
-# what the queue uses as speaker names. Voices are free Microsoft Edge voices;
-# pitch and rate make them sound different. Replace image with your own PNG
-# (transparent background, roughly square) to restyle a character.
+# what the queue uses as speaker names.
+#   voices: edge_voice (Microsoft Edge, free) is tried first, then kokoro_voice
+#           (Kokoro, free open-source). Hear all options: run a test in GitHub
+#           Actions and download the "voice-samples" files.
+#   expressions: one picture per face; the speaking character switches between
+#           them. "reactions" picks the first face for questions/exclamations.
+#   Art: "Avataaars" by Pablo Stanley; restyle with tools/characters.mjs.
 characters:
   dave:
     name: Dave
-    edge_voice: en-US-GuyNeural
+    edge_voice: en-US-BrianMultilingualNeural
     edge_rate: "+6%"
-    edge_pitch: "-6Hz"
+    kokoro_voice: am_puck
+    kokoro_speed: 1.05
     espeak_voice: en-us     # robotic offline voice, local testing only
-    espeak_pitch: 35
-    color: "#FF9F1C"        # his words light up orange
-    image: assets/characters/dave.png
+    color: "#FF5C5C"        # his words light up red
     side: left
+    expressions:
+      neutral: assets/characters/dave/neutral.png
+      happy: assets/characters/dave/happy.png
+      shocked: assets/characters/dave/shocked.png
+      confused: assets/characters/dave/confused.png
+      goofy: assets/characters/dave/goofy.png
+    reactions:
+      question: confused
+      exclaim: shocked
   pip:
     name: Pip
     edge_voice: en-GB-RyanNeural
-    edge_rate: "+10%"
-    edge_pitch: "+30Hz"
+    edge_rate: "+4%"
+    kokoro_voice: bm_george
+    kokoro_speed: 1.05
     espeak_voice: en-gb
-    espeak_pitch: 80
     color: "#4CC9F0"        # his words light up blue
-    image: assets/characters/pip.png
     side: right
+    expressions:
+      neutral: assets/characters/pip/neutral.png
+      explaining: assets/characters/pip/explaining.png
+      smug: assets/characters/pip/smug.png
+      unimpressed: assets/characters/pip/unimpressed.png
+      surprised: assets/characters/pip/surprised.png
+    reactions:
+      question: smug
+      exclaim: surprised
 
 captions:
   font: "DejaVu Sans"
@@ -87,6 +109,10 @@ video:
   fps: 30
   # Seconds of silence after the voice ends.
   tail_seconds: 0.6
+  # How often a talking character changes expression.
+  expression_seconds: 1.6
+  # How often the stock footage cuts to a new clip (gameplay doesn't cut).
+  scene_seconds: 2.5
   # Optional background music: drop .mp3 files you have the rights to into
   # assets/music/ and one is picked at random for each video.
   music_volume: 0.12

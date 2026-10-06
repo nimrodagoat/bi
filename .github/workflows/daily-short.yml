@@ -47,12 +47,11 @@ jobs:
           gh release download gameplay --dir assets/gameplay --skip-existing \
             || echo "No 'gameplay' release yet: using stock footage instead."
 
-      - name: Cache backup voice
+      - name: Cache voice models
         uses: actions/cache@v4
         with:
-          path: .cache/piper
-          key: piper-${{ hashFiles('config.yaml') }}
-          restore-keys: piper-
+          path: .cache
+          key: voice-models-v2
 
       - name: Make and post video
         env:
@@ -68,12 +67,25 @@ jobs:
             python -m shorts run
           fi
 
+      - name: Make voice samples (test runs only)
+        if: inputs.dry_run == true
+        run: python -m shorts voices
+
       - name: Save the video so you can watch it
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: shorts-${{ github.run_number }}
           path: output/*.mp4
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Save the voice samples
+        if: inputs.dry_run == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-samples-${{ github.run_number }}
+          path: output/voice-samples/
           retention-days: 7
           if-no-files-found: ignore
 

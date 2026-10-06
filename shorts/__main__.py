@@ -4,6 +4,7 @@
     python -m shorts run --dry-run    render only, don't upload or change the queue
     python -m shorts preview [ID]     render one video to output/ to look at it
     python -m shorts status           show what's queued and check the queue for mistakes
+    python -m shorts voices           save a sample of every candidate voice to output/voice-samples/
 """
 
 from __future__ import annotations
@@ -14,6 +15,7 @@ import sys
 from pathlib import Path
 
 from . import store
+from .media import run_ffmpeg
 from .render import render
 
 OUTPUT = store.ROOT / "output"
@@ -59,6 +61,44 @@ def cmd_preview(args) -> int:
         print("Nothing to preview: queue is empty or id not found.", file=sys.stderr)
         return 1
     _render_one(item, store.load_config())
+    return 0
+
+
+# Free voices worth trying for the characters (see config.yaml → characters).
+SAMPLE_VOICES = {
+    "edge": [
+        "en-US-AndrewMultilingualNeural", "en-US-BrianMultilingualNeural",
+        "en-US-ChristopherNeural", "en-US-EricNeural", "en-US-RogerNeural",
+        "en-US-SteffanNeural", "en-GB-RyanNeural", "en-GB-ThomasNeural",
+        "en-AU-WilliamMultilingualNeural",
+        "en-US-AvaMultilingualNeural", "en-US-EmmaMultilingualNeural",
+    ],
+    "kokoro": [
+        "am_michael", "am_fenrir", "am_puck", "am_echo", "am_eric", "am_liam", "am_onyx",
+        "bm_george", "bm_fable", "bm_lewis", "bm_daniel", "af_heart", "af_bella",
+    ],
+}
+SAMPLE_TEXT = "Wait, a penny costs more than a penny to make? That's actually insane. Explain it to me like I'm five."
+
+
+def cmd_voices(_args) -> int:
+    from . import tts
+
+    out = OUTPUT / "voice-samples"
+    work = OUTPUT / "work" / "voices"
+    out.mkdir(parents=True, exist_ok=True)
+    work.mkdir(parents=True, exist_ok=True)
+    cfg = store.load_config()
+    for engine, voices in SAMPLE_VOICES.items():
+        for voice in voices:
+            setting = {"engines": [engine], f"{engine}_voice": voice}
+            try:
+                audio, _ = tts.synthesize(SAMPLE_TEXT, work, cfg, voice=setting, name=f"{engine}-{voice}")
+                run_ffmpeg(["-i", str(audio), "-b:a", "96k", str(out / f"{engine}--{voice}.mp3")])
+                print(f"  ✔ {engine}: {voice}")
+            except Exception as e:
+                print(f"  ✘ {engine}: {voice} ({e})", file=sys.stderr)
+    print(f"Samples saved in {out.relative_to(store.ROOT)}")
     return 0
 
 
@@ -109,6 +149,7 @@ def main() -> int:
     pv.add_argument("id", nargs="?")
     pv.set_defaults(fn=cmd_preview)
     sub.add_parser("status").set_defaults(fn=cmd_status)
+    sub.add_parser("voices").set_defaults(fn=cmd_voices)
     args = p.parse_args()
     return args.fn(args)
 

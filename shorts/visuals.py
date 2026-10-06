@@ -18,7 +18,6 @@ GAMEPLAY_EXTS = {".mp4", ".mov", ".mkv", ".webm"}
 
 PEXELS_SEARCH = "https://api.pexels.com/videos/search"
 PIXABAY_SEARCH = "https://pixabay.com/api/videos/"
-SCENE_SECONDS = 5.5  # roughly how long each stock clip stays on screen
 
 
 def pick_gameplay(duration: float, cfg: dict) -> tuple[Path, float] | None:
@@ -66,7 +65,8 @@ def fetch_clips(terms: list[str], duration: float, work_dir: Path, cfg: dict) ->
         return []
 
     terms = [t for t in terms if t] or ["nature"]
-    scenes = max(len(terms), math.ceil(duration / SCENE_SECONDS))
+    scene = cfg.get("video", {}).get("scene_seconds", 2.5)
+    scenes = max(len(terms), math.ceil(duration / scene))
     for name, pick, key in providers:
         try:
             clips = _download_scenes(terms, scenes, pick, key, work_dir)

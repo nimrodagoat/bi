@@ -32,6 +32,41 @@ def spoken_text(item: dict) -> str:
     return " ".join(str(item.get("script", "")).split())
 
 
+def expression_schedule(item: dict, turns: list, total: float, cfg: dict) -> dict:
+    """Decide which face each character shows, and when.
+
+    The speaking character stays on screen until the next one starts. Their face
+    changes every `expression_seconds`: the first face fits the line (a question
+    or an exclamation), then it rotates through the others.
+    """
+    schedule: dict[tuple[str, str], list[tuple[float, float]]] = {}
+    characters = cfg.get("characters") or {}
+    step = cfg.get("video", {}).get("expression_seconds", 1.6)
+    rng = random.Random(item.get("id", ""))
+    for i, turn in enumerate(turns):
+        ch = characters.get(turn.speaker) or {}
+        faces = list((ch.get("expressions") or {}).keys())
+        if not faces:
+            continue
+        reactions = ch.get("reactions") or {}
+        if "?" in turn.text and reactions.get("question") in faces:
+            first = reactions["question"]
+        elif "!" in turn.text and reactions.get("exclaim") in faces:
+            first = reactions["exclaim"]
+        else:
+            first = rng.choice(faces)
+        order = [first] + rng.sample([f for f in faces if f != first], len(faces) - 1)
+        end = turns[i + 1].start if i + 1 < len(turns) else total
+        t, k = turn.start, 0
+        while t < end - 0.05:
+            nxt = min(t + step, end)
+            if end - nxt < step * 0.5:  # don't leave a tiny flash at the end
+                nxt = end
+            schedule.setdefault((turn.speaker, order[k % len(order)]), []).append((t, nxt))
+            t, k = nxt, k + 1
+    return schedule
+
+
 def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
     work_dir.mkdir(parents=True, exist_ok=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -80,29 +115,23 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
     filters.append(f"[bg]drawbox=c=black@{dim}:t=fill[base]")
     current = "base"
 
-    # 3. Characters: show whoever is talking, with a little talking bounce.
-    # Each character stays on screen until the next one starts talking.
-    shown = [
-        (t.speaker, t.start, turns[i + 1].start if i + 1 < len(turns) else total)
-        for i, t in enumerate(turns)
-    ]
-    for key, ch in (cfg.get("characters") or {}).items():
-        spans = [(start, end) for speaker, start, end in shown if speaker == key]
-        image = ROOT / ch.get("image", "") if ch.get("image") else None
-        if not spans or not image or not image.exists():
+    # 3. Characters: show whoever is talking, switching between their expressions.
+    for (key, expression), spans in expression_schedule(item, turns, total, cfg).items():
+        ch = cfg["characters"][key]
+        image = ROOT / ch["expressions"][expression]
+        if not image.exists():
             continue
-        size = ch.get("size", 560)
-        inputs += ["-loop", "1", "-i", str(image.resolve())]
+        size = ch.get("size", 760)
+        scaled = work_dir / f"face-{key}-{expression}.png"
+        run_ffmpeg(["-i", str(image.resolve()), "-vf", f"scale={size}:-1", str(scaled.resolve())])
+        inputs += ["-framerate", str(fps), "-loop", "1", "-i", str(scaled.resolve())]
         idx = n
         n += 1
-        x = 40 if ch.get("side", "left") == "left" else w - size - 140
-        y = h - size - ch.get("bottom", 420)
-        enable = "+".join(f"between(t,{start:.2f},{end:.2f})" for start, end in spans)
-        filters.append(f"[{idx}:v]scale={size}:-1,format=rgba[c{idx}]")
-        filters.append(
-            f"[{current}][c{idx}]overlay=x={x}:y='{y}-abs(14*sin(t*11))':"
-            f"enable='{enable}':shortest=1[o{idx}]"
-        )
+        x = -30 if ch.get("side", "left") == "left" else w - size + 30
+        y = h - size - ch.get("bottom", 330)
+        enable = "+".join(f"between(t,{a:.2f},{b:.2f})" for a, b in spans)
+        filters.append(f"[{idx}:v]format=rgba[c{idx}]")
+        filters.append(f"[{current}][c{idx}]overlay=x={x}:y={y}:enable='{enable}':shortest=1[o{idx}]")
         current = f"o{idx}"
 
     filters.append(f"[{current}]ass=captions.ass,format=yuv420p[vout]")

@@ -7,12 +7,17 @@ import os
 import re
 import subprocess
 import sys
+import wave
 from dataclasses import dataclass
 from pathlib import Path
 
 from .media import probe_duration, run_ffmpeg
 
-PIPER_DIR = Path(__file__).resolve().parent.parent / ".cache" / "piper"
+CACHE = Path(__file__).resolve().parent.parent / ".cache"
+PIPER_DIR = CACHE / "piper"
+KOKORO_DIR = CACHE / "kokoro"
+KOKORO_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/"
+KOKORO_FILES = ("kokoro-v1.0.onnx", "voices-v1.0.bin")
 
 
 @dataclass
@@ -28,6 +33,7 @@ class Turn:
     speaker: str
     start: float
     end: float
+    text: str = ""
 
 
 LINE_GAP = 0.18  # seconds of silence between two characters' lines
@@ -42,12 +48,12 @@ def synthesize(
     """
     vcfg = {**cfg.get("voice", {}), **(voice or {}), "_name": name}
     errors = []
-    engines = vcfg.get("engines", ["edge", "piper"])
+    engines = vcfg.get("engines", ["edge", "kokoro", "piper"])
     if os.environ.get("SHORTS_VOICES"):  # e.g. SHORTS_VOICES=espeak for offline testing
         engines = os.environ["SHORTS_VOICES"].split(",")
     for engine in engines:
         try:
-            fn = {"edge": _edge, "piper": _piper, "espeak": _espeak}[engine]
+            fn = {"edge": _edge, "kokoro": _kokoro, "piper": _piper, "espeak": _espeak}[engine]
         except KeyError:
             errors.append(f"{engine}: unknown engine")
             continue
@@ -88,6 +94,43 @@ def _edge(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
     if not words or out.stat().st_size == 0:
         raise RuntimeError("no audio returned")
     return out, _attach_punctuation(text, words)
+
+
+_kokoro_model = None
+
+
+def _kokoro(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
+    """Kokoro: free open-source neural voice that runs on the machine itself."""
+    global _kokoro_model
+    if _kokoro_model is None:
+        import requests
+        from kokoro_onnx import Kokoro
+
+        KOKORO_DIR.mkdir(parents=True, exist_ok=True)
+        for name in KOKORO_FILES:
+            target = KOKORO_DIR / name
+            if not target.exists():
+                print(f"  downloading voice model {name}…")
+                with requests.get(KOKORO_URL + name, stream=True, timeout=120) as r:
+                    r.raise_for_status()
+                    tmp = target.with_suffix(".part")
+                    with tmp.open("wb") as f:
+                        for block in r.iter_content(1 << 20):
+                            f.write(block)
+                    tmp.rename(target)
+        _kokoro_model = Kokoro(str(KOKORO_DIR / KOKORO_FILES[0]), str(KOKORO_DIR / KOKORO_FILES[1]))
+
+    voice = vcfg.get("kokoro_voice", "am_michael")
+    lang = "en-gb" if voice.startswith("b") else "en-us"
+    samples, rate = _kokoro_model.create(text, voice=voice, speed=vcfg.get("kokoro_speed", 1.0), lang=lang)
+    out = work_dir / f"{vcfg['_name']}.wav"
+    pcm = (samples.clip(-1, 1) * 32767).astype("<i2").tobytes()
+    with wave.open(str(out), "wb") as f:
+        f.setnchannels(1)
+        f.setsampwidth(2)
+        f.setframerate(rate)
+        f.writeframes(pcm)
+    return out, estimate_word_times(text, len(samples) / rate)
 
 
 def _piper(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
@@ -170,7 +213,7 @@ def synthesize_dialogue(
         length = probe_duration(audio)
         for w in line_words:
             words.append(Word(w.text, w.start + t, w.end + t, speaker))
-        turns.append(Turn(speaker, t, t + length))
+        turns.append(Turn(speaker, t, t + length, text))
         parts.append(audio)
         t += length + LINE_GAP
 
