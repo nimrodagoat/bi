@@ -109,7 +109,7 @@ day. Single user, no other users' data."* Approval usually takes days to a few w
 
 | Symptom | Fix |
 |---|---|
-| Run failed with `invalid_grant` | Refresh token expired. Check step 3.2 (app must be **published**), then redo step 4 and update `YT_REFRESH_TOKEN`. |
+| Run failed with `invalid_grant` | Refresh token expired. Check step 3.3 (app must be **published**), then redo step 4 and update `YT_REFRESH_TOKEN`. |
 | `Missing secrets` | A secret name is misspelled in GitHub. |
 | `The queue is empty` | Ask Claude for a new batch of scripts. |
 | Background is a plain colour | `PIXABAY_API_KEY` is missing or wrong (the run log says why). |
