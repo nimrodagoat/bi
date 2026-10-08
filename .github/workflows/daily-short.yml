@@ -2,9 +2,11 @@ name: Daily Short
 
 on:
   schedule:
-    # Every day at 15:07 UTC. Change the time with https://crontab.guru
-    # (GitHub may start scheduled runs a few minutes late.)
-    - cron: "7 15 * * *"
+    # 6 videos a day, one every 3 hours: 08:37, 11:37 ... 23:37 UTC
+    # (= 10:37 ... 01:37 in Hungary in summer, an hour earlier in winter).
+    # YouTube's free quota (~6 uploads) resets at midnight California time, so all
+    # six slots sit inside one quota day. GitHub may start scheduled runs late.
+    - cron: "37 8,11,14,17,20,23 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -12,7 +14,7 @@ on:
         type: boolean
         default: true
       videos:
-        description: "Test only: how many videos from the top of the queue to make"
+        description: "How many videos from the top of the queue to make (and post, if not a test)"
         type: number
         default: 1
 
@@ -65,10 +67,13 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
+          COUNT="${{ inputs.videos }}"
+          ARGS=""
+          if [ -n "$COUNT" ]; then ARGS="--count $COUNT"; fi
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            python -m shorts run --dry-run --count "${{ inputs.videos }}"
+            python -m shorts run --dry-run $ARGS
           else
-            python -m shorts run
+            python -m shorts run $ARGS
           fi
 
       - name: Make voice samples (test runs only)

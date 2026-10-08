@@ -76,7 +76,16 @@ def chat_voices(item: dict, cfg: dict) -> dict:
     c = cfg.get("chat", {})
     presets = c.get("voices") or {}
     picks = {"me": item.get("me", c.get("me", "male")), "them": item.get("them", c.get("them", "female"))}
-    return {who: presets.get(name, {}) for who, name in picks.items()}
+    chosen: dict[str, dict] = {}
+    for who, name in picks.items():
+        pool = presets.get(name) or [{}]
+        pool = pool if isinstance(pool, list) else [pool]
+        k = random.Random(f"voice-{item.get('id', '')}-{who}").randrange(len(pool))
+        # never give both sides the same voice
+        if who == "them" and len(pool) > 1 and pool[k] == chosen.get("me"):
+            k = (k + 1) % len(pool)
+        chosen[who] = pool[k]
+    return chosen
 
 
 def pick_music(item: dict, cfg: dict) -> Path | None:
@@ -142,7 +151,9 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
         if credit:
             item["gameplay_credit"] = credit
         inputs += ["-stream_loop", "-1", "-ss", f"{start:.2f}", "-t", f"{total + 0.5:.2f}", "-i", str(path.resolve())]
-        filters.append(f"[0:v]{fill},setpts=PTS-STARTPTS[bg]")
+        # Mirror every other video's gameplay, so reused footage looks like a new run.
+        mirror = ",hflip" if random.Random(f"mirror-{item.get('id', '')}").random() < 0.5 else ""
+        filters.append(f"[0:v]{fill}{mirror},setpts=PTS-STARTPTS[bg]")
         n = 1
     elif clips:
         seg = total / len(clips)

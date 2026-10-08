@@ -42,8 +42,8 @@ def pick_gameplay(duration: float, cfg: dict, work_dir: Path, seed: str = "") ->
         except Exception as e:
             print(f"  visuals: can't read {f.name} ({e})", file=sys.stderr)
             continue
-        # A random part of the clip; clips shorter than the video simply loop.
-        start = random.uniform(0, length - duration - 0.5) if length >= duration + 1 else random.uniform(0, length * 0.5)
+        # Each video starts somewhere else in the clip (it loops, so any point works).
+        start = random.Random(f"start-{seed}").uniform(0, max(length - 1, 0))
         print(f"  visuals: gameplay {f.name} from {start:.0f}s")
         return f, start
     if vis.get("parkour", True):

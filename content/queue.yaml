@@ -139,6 +139,62 @@
   - wrong number
   - storytime
   - texting story
+- id: delivery-dog-guard
+  title: The delivery driver says my dog won't let him leave 📦
+  contact: Delivery Driver
+  me: female
+  them: male
+  messages:
+  - - them
+    - hi, i have your package. but there's a problem
+  - - me
+    - what kind of problem?
+  - - them
+    - a golden retriever is sitting on it
+  - - me
+    - that's my dog. he's friendly
+  - - them
+    - he won't move
+  - - them
+    - every time i reach for it he gives me his paw
+  - - me
+    - he wants you to shake his paw
+  - - them
+    - i shook it. he gave me the other paw
+  - - me
+    - yeah he does that
+  - - them
+    - i have 40 more deliveries
+  - - me
+    - try saying good boy
+  - - them
+    - i said good boy. he rolled over
+  - - them
+    - now he's on his back and i'm rubbing his belly
+  - - me
+    - you're in too deep now
+  - - them
+    - he brought me a tennis ball
+  - - me
+    - do not throw it. you'll be there all day
+  - - them
+    - i threw it
+  - - me
+    - oh no
+  - - them
+    - he brought it back. and his friend from next door
+  - - them
+    - there are two dogs now
+  - - me
+    - you're one of us now
+  - - them
+    - leaving the package by the door. my heart is staying here
+  tags:
+  - text story
+  - dogs
+  - delivery
+  - funny texts
+  - storytime
 - id: dad-voice-to-text
   title: My dad discovered voice to text 💀
   contact: Dad
@@ -257,6 +313,64 @@
   - funny texts
   - brother prank
   - storytime
+- id: ex-hoodie
+  title: My ex texted me asking for their hoodie back 👀
+  contact: Alex
+  me: young_female
+  them: young_male
+  messages:
+  - - them
+    - hey. sorry to text out of nowhere
+  - - them
+    - i think you still have my grey hoodie
+  - - me
+    - the one with the paint stain?
+  - - them
+    - yes. it's my favorite
+  - - me
+    - we broke up eight months ago
+  - - them
+    - i know. i've missed it every single day
+  - - me
+    - the hoodie or me
+  - - them
+    - the hoodie mostly
+  - - me
+    - wow
+  - - them
+    - ok that came out wrong
+  - - me
+    - it came out very clearly actually
+  - - them
+    - can i come get it?
+  - - me
+    - i have bad news
+  - - me
+    - my brother has been wearing it
+  - - them
+    - your brother??
+  - - me
+    - he says it's the softest hoodie he's ever owned
+  - - them
+    - he doesn't OWN it
+  - - me
+    - he's wearing it to his job interview right now
+  - - them
+    - a job interview in my hoodie?
+  - - me
+    - he says it's lucky
+  - - them
+    - '...ok if he gets the job he can keep it'
+  - - me
+    - he got the job
+  - - them
+    - i'm happy for him. and sad for me
+  tags:
+  - text story
+  - ex texts
+  - funny texts
+  - storytime
+  - plot twist
 - id: roommate-cereal
   title: My roommate thinks I'm stealing his cereal 🥣
   contact: Jake (roommate)
@@ -375,6 +489,64 @@
   - funny texts
   - storytime
   - texting story
+- id: teacher-cake-text
+  title: My teacher texted me thinking I was his wife 😳
+  contact: Mr. Davis (math)
+  me: young_male
+  them: old_male
+  messages:
+  - - them
+    - is the chocolate cake ready yet, my love
+  - - me
+    - mr davis?
+  - - them
+    - who is this
+  - - me
+    - it's jordan. from your math class
+  - - them
+    - oh no
+  - - them
+    - this number is saved as honey
+  - - me
+    - why am i saved as honey
+  - - them
+    - i think my wife's number changed
+  - - them
+    - and you got her old one
+  - - me
+    - so the cake is not ready. sorry
+  - - them
+    - please forget this ever happened
+  - - me
+    - absolutely
+  - - me
+    - can i ask one thing though
+  - - them
+    - what
+  - - me
+    - is there really a chocolate cake
+  - - them
+    - it's her birthday tomorrow. it's a surprise
+  - - me
+    - aw that's sweet
+  - - them
+    - if anyone in class finds out, you're doing extra homework
+  - - me
+    - my lips are sealed
+  - - them
+    - thank you jordan
+  - - them
+    - also you have a test on friday. study
+  - - me
+    - yes honey
+  - - them
+    - detention
+  tags:
+  - text story
+  - teacher
+  - wrong number
+  - funny texts
+  - storytime
 - id: landlord-rules
   title: My new landlord sent me some VERY strange rules 🏚️
   contact: Mr. Hollis (landlord)
@@ -487,6 +659,60 @@
   - lost phone
   - storytime
   - texting story
+- id: uber-hamster
+  title: I left something VERY important in an Uber 🐹
+  contact: Driver - Marco
+  me: young_female
+  them: male
+  messages:
+  - - them
+    - hi, you left a bag in my car
+  - - me
+    - oh thank you! the blue backpack?
+  - - them
+    - yes. it's moving
+  - - me
+    - oh
+  - - them
+    - why is your bag moving
+  - - me
+    - that's peanut
+  - - them
+    - who is peanut
+  - - me
+    - my hamster. i was taking him to the vet
+  - - them
+    - there's a hamster in my car
+  - - them
+    - and he's not in the bag anymore
+  - - me
+    - WHAT
+  - - them
+    - the zipper was open
+  - - me
+    - where is he??
+  - - them
+    - checking
+  - - them
+    - found him. he's in the cup holder
+  - - them
+    - eating my sunflower seeds
+  - - me
+    - i'm so sorry
+  - - them
+    - honestly he's the best passenger i've had all day
+  - - me
+    - can you bring him back?
+  - - them
+    - on my way. no charge
+  - - them
+    - five stars for peanut
+  tags:
+  - text story
+  - uber
+  - hamster
+  - funny texts
+  - storytime
 - id: group-project
   title: My group project partner ghosted me all semester 😤
   contact: Ethan (group project)
@@ -600,6 +826,60 @@
   - funny texts
   - mom texts
   - gen z slang
+  - storytime
+- id: nice-shirt-stranger
+  title: An unknown number texted me "nice shirt" 😨
+  contact: Unknown
+  me: young_male
+  them: young_female
+  messages:
+  - - them
+    - nice shirt
+  - - me
+    - who is this?
+  - - them
+    - the blue one suits you
+  - - me
+    - i am wearing a blue shirt. how do you know that
+  - - them
+    - you should close your curtains
+  - - me
+    - this isn't funny
+  - - them
+    - also you have toothpaste on your chin
+  - - me
+    - i'm calling the police
+  - - them
+    - wait wait don't
+  - - them
+    - look out your window. the building across the street
+  - - me
+    - i see someone waving
+  - - them
+    - it's me. maya. from seventh grade
+  - - me
+    - MAYA?
+  - - them
+    - i just moved in. i saw you and wasn't sure
+  - - them
+    - so i got your number from my mom
+  - - me
+    - you could have just said hi
+  - - them
+    - this was funnier
+  - - me
+    - you scared me to death
+  - - them
+    - sorry. coffee to make up for it?
+  - - me
+    - fine. but i'm closing my curtains
+  - - them
+    - wipe your chin first
+  tags:
+  - text story
+  - scary texts
+  - plot twist
+  - neighbors
   - storytime
 - id: dog-sitter-talking
   title: The dog sitter says my dog started TALKING 🐶
@@ -715,6 +995,60 @@
   - funny texts
   - chaos
   - storytime
+- id: grandma-gift-doll
+  title: Grandma sent me a creepy doll for my birthday 🧸
+  contact: Grandma
+  me: young_female
+  them: female
+  messages:
+  - - them
+    - did you get my package, sweetheart?
+  - - me
+    - i did grandma. it's a doll
+  - - them
+    - do you like her?
+  - - me
+    - she's very old
+  - - me
+    - and her eyes follow me around the room
+  - - them
+    - that's because she's watching over you
+  - - me
+    - that's what i'm afraid of
+  - - them
+    - press her hand
+  - - me
+    - i'm scared to
+  - - them
+    - trust me
+  - - me
+    - ok i pressed it
+  - - me
+    - she talked
+  - - me
+    - grandma it's your voice
+  - - them
+    - i recorded it. that doll was mine when i was your age
+  - - them
+    - she always made me feel safe
+  - - me
+    - she said happy birthday my brave girl
+  - - them
+    - and if you press it again?
+  - - me
+    - she said call your grandmother more often
+  - - them
+    - both messages are very important
+  - - me
+    - calling you right now
+  - - them
+    - good. the doll told me you would
+  tags:
+  - text story
+  - grandma
+  - wholesome
+  - creepy doll
+  - storytime
 - id: boss-fire-text
   title: My boss texted me "I'm going to fire you" 😰
   contact: Boss - Karen
@@ -826,6 +1160,64 @@
   - scary texts
   - baby monitor
   - plot twist
+  - storytime
+- id: gym-protein-shake
+  title: My gym buddy's protein shake recipe went WRONG 🏋️
+  contact: Tyler (gym)
+  me: young_male
+  them: young_male
+  messages:
+  - - them
+    - bro i made a new protein shake
+  - - me
+    - what's in it
+  - - them
+    - three scoops protein, banana, peanut butter
+  - - me
+    - sounds good
+  - - them
+    - and six raw eggs
+  - - me
+    - why
+  - - them
+    - for the gains
+  - - them
+    - also a spoon of coffee
+  - - them
+    - and pickle juice for electrolytes
+  - - me
+    - tyler that's disgusting
+  - - them
+    - i put it in the blender
+  - - them
+    - forgot to put the lid on
+  - - me
+    - oh no
+  - - them
+    - it's on the ceiling
+  - - them
+    - it's on the dog
+  - - them
+    - it's on my mom
+  - - me
+    - is your mom ok
+  - - them
+    - she's not speaking to me
+  - - them
+    - the dog licked it off the wall though. he loves it
+  - - me
+    - so the dog got the gains
+  - - them
+    - he did ten push ups this morning
+  - - me
+    - i'm never drinking anything you make
+  - - them
+    - too late. i made you one for tomorrow
+  tags:
+  - text story
+  - gym
+  - funny texts
+  - chaos
   - storytime
 - id: pizza-wrong-house
   title: My pizza got delivered to my neighbor 🍕
@@ -943,6 +1335,62 @@
   - exam
   - funny texts
   - storytime
+- id: package-swap-dinosaur
+  title: My neighbor got my package and I got THEIRS 🦖
+  contact: Neighbor - Mrs. Lee
+  me: young_male
+  them: old_male
+  messages:
+  - - me
+    - hi mrs lee, i think i got your package by mistake
+  - - them
+    - this is mr lee. what is in it?
+  - - me
+    - i didn't open it. it's very big and squishy
+  - - them
+    - oh no. please don't open it
+  - - me
+    - too late. it was addressed to my apartment number
+  - - them
+    - what did you see
+  - - me
+    - an inflatable dinosaur costume
+  - - them
+    - that is for my granddaughter's party
+  - - me
+    - it's a size adult large
+  - - them
+    - '...the costume is for me'
+  - - me
+    - you're going to be the dinosaur?
+  - - them
+    - i am the dinosaur every year. it's tradition
+  - - me
+    - respect
+  - - them
+    - i think i got your package too
+  - - me
+    - oh no
+  - - them
+    - it's 12 rolls of glitter tape
+  - - me
+    - that's for a school project
+  - - them
+    - i don't believe you
+  - - me
+    - it's for my sister's party
+  - - them
+    - trade at the door in 5 minutes?
+  - - me
+    - deal. can i see the dinosaur in action
+  - - them
+    - only if you wear the glitter
+  tags:
+  - text story
+  - neighbors
+  - package
+  - funny texts
+  - storytime
 - id: old-friend-lego
   title: My friend from 2nd grade found me after 15 years 🧱
   contact: Unknown
@@ -1047,6 +1495,62 @@
   - text story
   - neighbors
   - wifi
+  - funny texts
+  - storytime
+- id: cat-on-roof
+  title: The cat sitter says my cat is on the ROOF 🐱
+  contact: Olivia (cat sitter)
+  me: female
+  them: young_female
+  messages:
+  - - them
+    - don't panic but where does mochi usually hide
+  - - me
+    - under the bed. why
+  - - them
+    - she's not under the bed
+  - - me
+    - check the closet
+  - - them
+    - not in the closet
+  - - them
+    - found her
+  - - me
+    - oh thank god
+  - - them
+    - she's on the roof
+  - - me
+    - THE ROOF
+  - - them
+    - the bathroom window was open
+  - - them
+    - she's sitting next to a pigeon
+  - - me
+    - is she attacking it?
+  - - them
+    - no. they're just sitting there. watching the sunset
+  - - me
+    - that's oddly peaceful
+  - - them
+    - i'm getting a ladder
+  - - them
+    - ok i'm up here
+  - - them
+    - she won't come to me
+  - - me
+    - shake the treat bag
+  - - them
+    - she came running
+  - - them
+    - the pigeon also came running
+  - - me
+    - do not bring the pigeon inside
+  - - them
+    - too late. mochi won't go in without him
+  tags:
+  - text story
+  - cats
+  - pet sitter
   - funny texts
   - storytime
 - id: secret-santa-detective
@@ -1161,5 +1665,173 @@
   - text story
   - grandpa
   - funny texts
+  - wholesome
+  - storytime
+- id: smart-speaker-3am
+  title: Someone keeps ordering pizza to my house at 3am 🍕
+  contact: Pizza Palace
+  me: male
+  them: young_male
+  messages:
+  - - them
+    - hi, we have another order for your address
+  - - me
+    - another one? i didn't order anything
+  - - them
+    - it's the third night in a row. always at 3am
+  - - them
+    - always the same. large pineapple, extra olives
+  - - me
+    - i hate olives
+  - - them
+    - the order comes from your smart speaker account
+  - - me
+    - my speaker?
+  - - them
+    - the voice says order my usual
+  - - me
+    - i'm asleep at 3am
+  - - them
+    - are you sure
+  - - me
+    - now i'm not
+  - - me
+    - ok i checked the speaker history
+  - - me
+    - it's my parrot
+  - - them
+    - your parrot
+  - - me
+    - he learned my voice. he says order my usual
+  - - them
+    - and the olives?
+  - - me
+    - he loves olives
+  - - them
+    - should we cancel
+  - - me
+    - honestly just deliver it. he's earned it
+  - - them
+    - what's his name
+  - - me
+    - captain olive
+  - - them
+    - we're putting him on the employee of the month board
+  tags:
+  - text story
+  - parrot
+  - plot twist
+  - pizza
+  - storytime
+- id: office-printer-warning
+  title: My coworker warned me about the office printer 🖨️
+  contact: Ben (work)
+  me: young_female
+  them: male
+  messages:
+  - - them
+    - welcome to your first day. one warning
+  - - me
+    - ok?
+  - - them
+    - never use the printer on the third floor
+  - - me
+    - why
+  - - them
+    - we don't talk about it
+  - - me
+    - it's a printer ben
+  - - them
+    - it ate dave's tie last year
+  - - them
+    - dave was wearing the tie
+  - - me
+    - is dave ok??
+  - - them
+    - dave works from home now
+  - - me
+    - i have to print a report in five minutes
+  - - them
+    - use the one on the second floor
+  - - me
+    - it's broken
+  - - them
+    - then may luck be with you
+  - - me
+    - ok it's printing
+  - - me
+    - it's printing a lot
+  - - me
+    - i asked for 2 pages. it's on page 40
+  - - them
+    - it does that. it's showing off
+  - - me
+    - now it's printing a picture of a cat
+  - - them
+    - that means it likes you
+  - - me
+    - i'm scared and honored
+  - - them
+    - welcome to the team
+  tags:
+  - text story
+  - office
+  - first day
+  - funny texts
+  - storytime
+- id: friend-acting-weird
+  title: My best friend was acting so weird all week... 😢
+  contact: Chloe
+  me: young_female
+  them: young_female
+  messages:
+  - - me
+    - are you mad at me?
+  - - them
+    - no why
+  - - me
+    - you've been weird all week
+  - - me
+    - you leave every time i walk in
+  - - them
+    - i've just been busy
+  - - me
+    - you told my mom not to tell me something
+  - - them
+    - she said that??
+  - - me
+    - so there IS something
+  - - them
+    - can you come to the park at 6
+  - - me
+    - if you're breaking up our friendship just tell me now
+  - - them
+    - i'm not. just come to the park
+  - - me
+    - fine
+  - - me
+    - i'm here. there's nobody here
+  - - them
+    - look behind the big tree
+  - - me
+    - chloe what is
+  - - me
+    - oh my god
+  - - me
+    - everyone is here
+  - - them
+    - SURPRISE
+  - - them
+    - happy birthday you paranoid weirdo
+  - - me
+    - i literally cried in the car
+  - - them
+    - i know. your mom texted me. we have it on video
+  - - me
+    - i love you and i hate you
+  tags:
+  - text story
+  - best friend
+  - surprise party
   - wholesome
   - storytime

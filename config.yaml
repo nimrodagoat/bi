@@ -10,7 +10,7 @@ channel:
   language: en
 
 schedule:
-  # How many videos to post each time the daily job runs.
+  # How many videos to post each time the job runs (it runs 6 times a day).
   # YouTube's free API quota allows about 6 uploads per day in total.
   uploads_per_run: 1
   # The job warns in its log when fewer videos than this are left in the queue.
@@ -192,12 +192,39 @@ chat:
   gap_seconds: 0.3    # pause between messages
   time: "Today 3:42 PM"
   music: false        # true = also play background music under the story
-  me: male            # default voices; a story can set me: / them: itself
+  me: male            # default voice types; a story can set me: / them: itself
   them: female
+  # Each voice type is a pool; every video picks one voice from the pool (and the
+  # two sides never get the same voice), so the channel doesn't sound repetitive.
   voices:
-    male: {engines: [edge, kokoro], edge_voice: en-US-AndrewMultilingualNeural, edge_rate: "+5%", kokoro_voice: am_michael}
-    female: {engines: [kokoro, edge], kokoro_voice: af_heart, kokoro_speed: 1.05, edge_voice: en-US-AvaMultilingualNeural}
-    young_male: {engines: [edge, kokoro], edge_voice: en-US-BrianMultilingualNeural, edge_rate: "+10%", kokoro_voice: am_puck}
-    young_female: {engines: [edge, kokoro], edge_voice: en-US-EmmaMultilingualNeural, edge_rate: "+8%", kokoro_voice: af_bella}
-    old_male: {engines: [kokoro, edge], kokoro_voice: bm_george, kokoro_speed: 0.95, edge_voice: en-GB-RyanNeural}
-    deep_male: {engines: [kokoro, edge], kokoro_voice: am_onyx, kokoro_speed: 0.95, edge_voice: en-US-RogerNeural}
+    male:
+      - {engines: [edge, kokoro], edge_voice: en-US-AndrewMultilingualNeural, edge_rate: "+5%", kokoro_voice: am_michael}
+      - {engines: [edge, kokoro], edge_voice: en-US-ChristopherNeural, edge_rate: "+5%", kokoro_voice: am_eric}
+      - {engines: [edge, kokoro], edge_voice: en-US-SteffanNeural, edge_rate: "+5%", kokoro_voice: am_liam}
+      - {engines: [kokoro, edge], kokoro_voice: am_fenrir, edge_voice: en-US-EricNeural}
+      - {engines: [kokoro, edge], kokoro_voice: am_michael, edge_voice: en-US-AndrewMultilingualNeural}
+    female:
+      - {engines: [kokoro, edge], kokoro_voice: af_heart, kokoro_speed: 1.05, edge_voice: en-US-AvaMultilingualNeural}
+      - {engines: [edge, kokoro], edge_voice: en-US-AvaMultilingualNeural, edge_rate: "+5%", kokoro_voice: af_sarah}
+      - {engines: [kokoro, edge], kokoro_voice: af_sarah, kokoro_speed: 1.05, edge_voice: en-US-EmmaMultilingualNeural}
+      - {engines: [kokoro, edge], kokoro_voice: af_kore, kokoro_speed: 1.05, edge_voice: en-US-AvaMultilingualNeural}
+      - {engines: [kokoro, edge], kokoro_voice: bf_emma, kokoro_speed: 1.05, edge_voice: en-US-AvaMultilingualNeural}
+    young_male:
+      - {engines: [edge, kokoro], edge_voice: en-US-BrianMultilingualNeural, edge_rate: "+10%", kokoro_voice: am_puck}
+      - {engines: [kokoro, edge], kokoro_voice: am_puck, kokoro_speed: 1.08, edge_voice: en-US-BrianMultilingualNeural}
+      - {engines: [edge, kokoro], edge_voice: en-US-EricNeural, edge_rate: "+10%", kokoro_voice: am_echo}
+      - {engines: [kokoro, edge], kokoro_voice: am_liam, kokoro_speed: 1.08, edge_voice: en-US-SteffanNeural}
+    young_female:
+      - {engines: [edge, kokoro], edge_voice: en-US-EmmaMultilingualNeural, edge_rate: "+8%", kokoro_voice: af_bella}
+      - {engines: [kokoro, edge], kokoro_voice: af_bella, kokoro_speed: 1.08, edge_voice: en-US-EmmaMultilingualNeural}
+      - {engines: [kokoro, edge], kokoro_voice: af_sky, kokoro_speed: 1.08, edge_voice: en-US-EmmaMultilingualNeural}
+      - {engines: [kokoro, edge], kokoro_voice: bf_isabella, kokoro_speed: 1.08, edge_voice: en-US-EmmaMultilingualNeural}
+    old_male:
+      - {engines: [kokoro, edge], kokoro_voice: bm_george, kokoro_speed: 0.95, edge_voice: en-GB-RyanNeural}
+      - {engines: [kokoro, edge], kokoro_voice: bm_daniel, kokoro_speed: 0.95, edge_voice: en-GB-RyanNeural}
+      - {engines: [edge, kokoro], edge_voice: en-GB-RyanNeural, edge_rate: "-5%", kokoro_voice: bm_george}
+      - {engines: [edge, kokoro], edge_voice: en-US-RogerNeural, edge_rate: "-5%", kokoro_voice: bm_daniel}
+    deep_male:
+      - {engines: [kokoro, edge], kokoro_voice: am_onyx, kokoro_speed: 0.95, edge_voice: en-US-RogerNeural}
+      - {engines: [edge, kokoro], edge_voice: en-US-RogerNeural, kokoro_voice: am_onyx}
+      - {engines: [kokoro, edge], kokoro_voice: am_fenrir, kokoro_speed: 0.95, edge_voice: en-US-ChristopherNeural}
