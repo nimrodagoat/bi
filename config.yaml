@@ -21,9 +21,13 @@ upload:
   # NOTE: until your Google Cloud project passes YouTube's (free) API audit,
   # YouTube forces every API upload to private, whatever this says.
   privacy: public
-  category_id: "27"        # 27 = Education, 24 = Entertainment, 22 = People & Blogs
+  category_id: "24"        # 24 = Entertainment, 27 = Education, 22 = People & Blogs
   made_for_kids: false
   extra_tags: ["shorts"]   # added to every video's own tags
+  # Hashtags in every description, after the story's own tags (max_hashtags in total).
+  hashtags: [textstory, textingstory, storytime, texts, minecraftparkour, viral, fyp]
+  max_hashtags: 15
+  title_hashtags: [textstory, shorts]   # added to the title when it fits in 100 characters
 
 voice:
   # Tried in order until one works:

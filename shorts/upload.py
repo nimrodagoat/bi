@@ -26,6 +26,17 @@ def _clean(text: str, limit: int) -> str:
     return re.sub(r"[<>]", "", text).strip()[:limit]
 
 
+def _hashtags(tags: list[str], up: dict) -> list[str]:
+    """The story's own tags plus the channel's hashtags, as #words, no repeats.
+    YouTube ignores every hashtag on a video that has more than 60, so stay well under."""
+    out: list[str] = []
+    for t in [*tags, *up.get("hashtags", []), "shorts"]:
+        tag = "#" + re.sub(r"[^\w]", "", str(t).lower())
+        if len(tag) > 1 and tag not in out:
+            out.append(tag)
+    return out[: up.get("max_hashtags", 15)]
+
+
 def build_metadata(item: dict, cfg: dict) -> dict:
     title = _clean(str(item["title"]), 100)
     tags = [str(t).lstrip("#") for t in (item.get("tags") or [])]
@@ -38,21 +49,25 @@ def build_metadata(item: dict, cfg: dict) -> dict:
             break
         kept.append(t)
 
+    up = cfg.get("upload", {})
+    plain_title = title
+    # A couple of hashtags in the title too, when they fit.
+    for tag in up.get("title_hashtags", []):
+        if f"#{tag}".lower() not in title.lower() and len(title) + len(tag) + 2 <= 100:
+            title = f"{title} #{tag}"
+
     description = item.get("description")
     if not description and (item.get("dialogue") or item.get("messages")):
-        description = title  # a dialogue's first line reads oddly out of context
+        description = plain_title  # a dialogue's first line reads oddly out of context
     if not description:
         sentences = re.split(r"(?<=[.!?])\s+", spoken_text(item))
         description = " ".join(sentences[:2])
-    hashtags = " ".join(f"#{t.replace(' ', '')}" for t in kept[:3])
-    if "#shorts" not in description.lower():
-        hashtags = (hashtags + " #shorts").strip()
+    hashtags = " ".join(_hashtags(kept, up))
     credit = f"\n\nMusic: {item['music_credit']}" if item.get("music_credit") else ""
     if item.get("gameplay_credit"):
         credit += f"\n\n{item['gameplay_credit']}"
     description = _clean(f"{description}\n\n{hashtags}{credit}", 5000)
 
-    up = cfg.get("upload", {})
     lang = cfg.get("channel", {}).get("language", "en")
     return {
         "snippet": {
