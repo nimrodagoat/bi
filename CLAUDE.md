@@ -5,25 +5,28 @@ first entry of `content/queue.yaml`, renders a vertical Short and uploads it; th
 it moves the entry to `content/posted.yaml` and commits. Everything is free: Edge
 TTS (Piper fallback), ffmpeg, YouTube Data API.
 
-Current format: two original cartoon characters talk through a fact. Duos:
-- **Dave** (loud, clueless; Edge en-US-AndrewMultilingualNeural) + **Pip** (smug
-  know-it-all; Kokoro bm_lewis): money facts and short-form-content tips.
-- **Grug** (caveman, broken English: "Grug trade fish"; Kokoro am_onyx) + **Nova**
-  (time traveller; Kokoro af_heart): where money came from (history). Every third
-  video in the queue is a Grug episode.
-Each character has 5 expression pictures (face + hand gesture, "Notionists" art,
-public domain) in `assets/characters/<name>/` that rotate while they talk, a
-sticker outline, caption colour and outfit, all under `characters:` in
-`config.yaml`. Regenerate art with `tools/characters.mjs`, then `tools/sticker.py`
-(draws the lower body: shirt, belt, trousers, or a fur pelt; adds the outline),
-then `tools/design_sheet.py`. Music: the owner's tracks in `assets/music/`, else
-Kevin MacLeod meme tracks (CC BY 4.0, downloaded from incompetech.com; the credit
-is added to the description automatically). Never use copyrighted songs, and
-the owner disliked synthesised beats. Background: the owner's real gameplay
-(`assets/gameplay/`, also pulled from the repo's `gameplay` release), else
-**generated Minecraft-style parkour** (`shorts/parkour.py`), else Pixabay/Pexels
-stock clips, else a gradient. Never use real Minecraft/Subway Surfers footage
-downloaded from others.
+Current format: **text-message storytimes**. Each queue entry has `contact:` and
+`messages:` ([me, "..."] / [them, "..."]); `shorts/chat.py` draws an iMessage-style
+panel (bundled Inter font in `assets/fonts/`) that fills up one message at a time
+over the owner's Minecraft parkour clip (`assets/gameplay/minecraft-parkour.mp4`,
+cropped to vertical so the creator's watermark is outside the frame; credit
+"@rephyr2000 on TikTok" goes in the description via `visuals.gameplay_credits`).
+Each message is read out: `me:` / `them:` pick voice presets from `chat.voices`
+in `config.yaml` (male, female, young_male, young_female, old_male, deep_male).
+No music under stories by default (`chat.music`). Stories: 20–28 short messages,
+~90–150 words (≈45–60 s), lower-case texting style, a hook in the first message,
+a twist or punchline at the end; mix suspense-with-a-twist, comedy and wholesome;
+all original (never copy other channels' stories); no emoji inside messages (the
+font can't draw them; titles may have one).
+
+Older formats still work and are archived in `content/archive/`: cartoon duos
+(Dave & Pip, Grug & Nova; `dialogue:` entries, art in `assets/characters/`,
+regenerate with `tools/characters.mjs` → `tools/sticker.py` → `tools/design_sheet.py`),
+and narrated `script:` videos. Music for those: `assets/music/` or Kevin MacLeod
+CC BY tracks (credit added automatically); never copyrighted songs or
+synthesised beats. Background fallback when no gameplay file exists: generated
+Minecraft-style parkour (`shorts/parkour.py`). Never use footage downloaded
+from others unless the owner confirms it's free to use.
 
 Don't imitate copyrighted characters or real people's voices (e.g. Family Guy):
 the owner asked once and was steered to original characters; keep it that way.

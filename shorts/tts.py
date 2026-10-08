@@ -199,23 +199,27 @@ def _attach_punctuation(text: str, words: list[Word]) -> list[Word]:
 
 
 def synthesize_dialogue(
-    lines: list[tuple[str, str]], work_dir: Path, cfg: dict
+    lines: list[tuple[str, str]], work_dir: Path, cfg: dict,
+    voices: dict | None = None, gap: float = LINE_GAP,
 ) -> tuple[Path, list[Word], list[Turn]]:
-    """Voice a conversation: each (speaker, text) line in that character's voice,
+    """Voice a conversation: each (speaker, text) line in that speaker's voice,
     joined into one audio track. Returns the audio, every word's timing (tagged
-    with its speaker) and when each character is talking."""
-    characters = cfg.get("characters", {})
+    with its speaker) and when each speaker is talking.
+
+    Voices come from `voices` ({speaker: voice settings}) or else from the
+    characters in config.yaml; `gap` is the pause between lines."""
+    voices = voices if voices is not None else cfg.get("characters", {})
     parts, words, turns = [], [], []
     t = 0.0
     for i, (speaker, text) in enumerate(lines):
-        voice = {k: v for k, v in characters.get(speaker, {}).items() if k != "name"}
+        voice = {k: v for k, v in voices.get(speaker, {}).items() if k != "name"}
         audio, line_words = synthesize(text, work_dir, cfg, voice=voice, name=f"line{i:02d}")
         length = probe_duration(audio)
         for w in line_words:
             words.append(Word(w.text, w.start + t, w.end + t, speaker))
         turns.append(Turn(speaker, t, t + length, text))
         parts.append(audio)
-        t += length + LINE_GAP
+        t += length + gap
 
     out = work_dir / "dialogue.wav"
     args, filters = [], []
@@ -223,7 +227,7 @@ def synthesize_dialogue(
         args += ["-i", str(part.resolve())]
         filters.append(
             f"[{i}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono,"
-            f"apad=pad_dur={LINE_GAP}[a{i}]"
+            f"apad=pad_dur={gap}[a{i}]"
         )
     filters.append("".join(f"[a{i}]" for i in range(len(parts))) + f"concat=n={len(parts)}:v=0:a=1[out]")
     run_ffmpeg([*args, "-filter_complex", ";".join(filters), "-map", "[out]", str(out.resolve())])

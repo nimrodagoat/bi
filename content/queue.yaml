@@ -3,6 +3,9 @@
 #   id            unique name (letters, numbers, dashes)
 #   niche         optional; overrides the niche in config.yaml for this video
 #   title         YouTube title (max 100 characters)
+#   contact       text stories: the name at the top of the chat (e.g. Mom)
+#   messages      text stories: list of [me, "text"] / [them, "text"], in order
+#   me / them     optional voices for a text story (male, female, young_male, ...)
 #   dialogue      a conversation: list of [speaker, line]; speakers are the
 #                 characters in config.yaml (aim for 35-55 seconds, ~100-140 words)
 #   script        OR: one narrator reads this text instead of a dialogue
@@ -10,1125 +13,1153 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: penny-costs-more
-  title: A penny costs MORE than a penny to make 🪙
-  dialogue:
-  - - dave
-    - Pip, I'm rich. I found a whole jar full of pennies.
-  - - pip
-    - Congratulations. Each one cost the government almost four cents to make.
-  - - dave
-    - Wait, what? A penny costs more than a penny?
-  - - pip
-    - In 2024, the US Mint spent about 3.7 cents to make every single one. Mostly zinc, with a thin copper coat.
-  - - dave
-    - So they were losing money on purpose?
-  - - pip
-    - Hundreds of millions of dollars over the years. That's why in 2025 the US finally stopped making new pennies.
-  - - dave
-    - So my jar is a collector's item now!
-  - - pip
-    - No, Dave. They're still worth exactly one cent each.
-  - - dave
-    - Follow us before I spend them all.
-  search_terms:
-  - pennies coins
-  - coin jar
-  - money
-  - coins falling
+- id: babysitter-attic
+  title: The babysitter heard footsteps in our attic 😳
+  contact: Emma (babysitter)
+  me: female
+  them: young_female
+  messages:
+  - - them
+    - hey mrs parker, quick question
+  - - me
+    - hi emma! everything ok?
+  - - them
+    - kids are asleep. all good
+  - - them
+    - but i keep hearing footsteps above me
+  - - me
+    - footsteps?
+  - - them
+    - like someone walking around in the attic
+  - - them
+    - is that normal?? old house noises?
+  - - me
+    - emma
+  - - me
+    - we don't have an attic
+  - - them
+    - WHAT
+  - - them
+    - then what is above the hallway??
+  - - me
+    - nothing. it's a flat roof
+  - - them
+    - it just stopped
+  - - them
+    - right above the kids room
+  - - me
+    - get the kids and go to the neighbors NOW
+  - - me
+    - we're driving back
+  - - them
+    - ok ok going
+  - - them
+    - wait
+  - - them
+    - there's a little hatch in the ceiling of the closet
+  - - me
+    - DON'T open it
+  - - them
+    - too late
+  - - me
+    - EMMA?
+  - - them
+    - it's a raccoon
+  - - them
+    - a whole family of raccoons
+  - - them
+    - they're kind of cute not gonna lie
+  - - me
+    - i'm calling animal control. and giving you a raise
   tags:
-  - money facts
-  - penny
-  - finance
-  - fun facts
-  - did you know
-- id: shorts-monetization-rules
-  title: What it ACTUALLY takes to get paid for YouTube Shorts 💸
-  dialogue:
-  - - dave
-    - I'm gonna start getting paid for my Shorts tomorrow.
-  - - pip
-    - How many subscribers do you have?
-  - - dave
-    - Four. Five if my mom logs in.
-  - - pip
-    - To join the YouTube Partner Program with Shorts, you need 1,000 subscribers and 10 million Shorts views in 90 days.
-  - - dave
-    - Ten MILLION?
-  - - pip
-    - Or 4,000 hours of long video watch time in a year. Then Shorts ad money goes into a big pool, and creators keep 45 percent of their share.
-  - - dave
-    - So the secret is posting every single day.
-  - - pip
-    - The secret is posting every day and making each one better than the last.
-  - - dave
-    - Help me get to six subscribers. Follow.
-  search_terms:
-  - smartphone video
-  - content creator
-  - social media phone
-  - filming phone
+  - text story
+  - texting story
+  - scary texts
+  - storytime
+  - plot twist
+- id: wrong-number-grandma
+  title: A stranger's grandma texted me by mistake 🥺
+  contact: Unknown
+  me: young_male
+  them: female
+  messages:
+  - - them
+    - happy birthday sweetheart!
+  - - them
+    - did you get the card i sent? there's 20 dollars inside
+  - - me
+    - hi! i think you have the wrong number
+  - - them
+    - oh dear. is this not tyler?
+  - - me
+    - no sorry, i'm sam
+  - - them
+    - tyler gave me this number last christmas
+  - - them
+    - he must have changed it again
+  - - them
+    - i'm sorry to bother you sam
+  - - me
+    - no bother at all
+  - - me
+    - today's my birthday too actually
+  - - them
+    - really? well happy birthday to you too!
+  - - them
+    - are you doing anything nice?
+  - - me
+    - not really. my family lives far away
+  - - them
+    - that won't do
+  - - them
+    - i baked a whole lemon cake for tyler and he isn't coming
+  - - me
+    - aw i'm sorry
+  - - them
+    - don't be. do you like lemon cake?
+  - - me
+    - i love lemon cake
+  - - them
+    - then you're coming over. bring a friend
+  - - me
+    - wait really?
+  - - them
+    - i'm 82 sam. i don't waste cake
+  - - me
+    - i'll be there at 5
+  - - them
+    - wonderful. and sam?
+  - - me
+    - yes?
+  - - them
+    - you can keep this number. every grandma needs a spare grandson
   tags:
-  - youtube shorts
-  - make money online
-  - content creator
-  - youtube monetization
-  - shorts tips
-- id: grug-first-coins
-  title: A caveman sees a coin for the first time 🪙
-  dialogue:
-  - - grug
-    - Grug trade three fish for one shiny rock. Grug rich now.
-  - - nova
-    - That's a coin, Grug. And you just got scammed.
-  - - grug
-    - Coin? What coin?
-  - - nova
-    - The oldest known coins were made in Lydia, in what is now Turkey, around 600 BC. A mix of gold and silver, stamped with a lion.
-  - - grug
-    - Why lion on rock?
-  - - nova
-    - The stamp was a promise. The king guaranteed how much metal was inside, so people stopped weighing everything.
-  - - grug
-    - So nobody need to check fish anymore?
-  - - nova
-    - Exactly. Coins made trading way faster. That's why they spread everywhere.
-  - - grug
-    - Grug want lion rock. Follow for more Grug money lessons.
-  search_terms:
-  - ancient coins
-  - gold coins
-  - fish market
-  - ancient greece
+  - text story
+  - wholesome
+  - wrong number
+  - storytime
+  - texting story
+- id: dad-voice-to-text
+  title: My dad discovered voice to text 💀
+  contact: Dad
+  me: young_female
+  them: old_male
+  messages:
+  - - them
+    - HELLO SWEETHEART THIS IS YOUR FATHER
+  - - me
+    - dad why are you shouting
+  - - them
+    - I AM USING THE MICROPHONE BUTTON. NO MORE TYPING
+  - - me
+    - ok that's great dad
+  - - them
+    - PICK UP MILK ON THE WAY HOME comma AND BREAD period
+  - - me
+    - you don't have to say the punctuation out loud
+  - - them
+    - OH. HOW DOES IT KNOW
+  - - me
+    - it just does
+  - - them
+    - AMAZING. LINDA COME LOOK AT THIS
+  - - them
+    - NO I'M NOT TALKING TO YOU I'M TALKING TO THE PHONE
+  - - them
+    - LINDA STOP LAUGHING
+  - - me
+    - dad it's typing everything you say
+  - - them
+    - WHAT DO YOU MEAN EVERYTHING
+  - - them
+    - OH NO
+  - - them
+    - HOW DO I TURN IT OFF
+  - - them
+    - DELETE DELETE DELETE
+  - - me
+    - dad it's literally writing delete
+  - - them
+    - I AM GOING BACK TO TYPING
+  - - them
+    - ok
+  - - them
+    - miilk adn bred pleas
+  - - me
+    - honestly i prefer the shouting
+  - - them
+    - THANK YOU SWEETHEART
   tags:
-  - money history
-  - coins
-  - caveman
-  - ancient history
-  - fun facts
-- id: bitcoin-pizza
-  title: The billion dollar pizza 🍕
-  dialogue:
-  - - dave
-    - What's the most expensive pizza anyone ever bought?
-  - - pip
-    - May 22nd, 2010. A programmer paid 10,000 bitcoin for two pizzas.
-  - - dave
-    - Ten thousand bitcoin? That sounds like a lot.
-  - - pip
-    - Back then it was worth about 40 dollars.
-  - - dave
-    - Okay, so cheap pizza.
-  - - pip
-    - At bitcoin's peak prices, those same coins would be worth over a billion dollars.
-  - - dave
-    - A billion dollar pizza. Was it at least good?
-  - - pip
-    - It was Papa John's.
-  - - dave
-    - People celebrate that day every year as Bitcoin Pizza Day. Follow for more money facts.
-  search_terms:
+  - text story
+  - funny texts
+  - dad texts
+  - storytime
+  - texting story
+- id: future-me
+  title: Someone texting me claims to be ME from the future 😨
+  contact: Unknown
+  me: young_male
+  them: young_male
+  messages:
+  - - them
+    - don't freak out. this is you. from 2036
+  - - me
+    - lol ok
+  - - them
+    - you're wearing the grey hoodie with the hole in the sleeve
+  - - me
+    - lucky guess
+  - - them
+    - you have 14 dollars in your sock drawer
+  - - me
+    - how do you know that
+  - - them
+    - because i put it there. ten years ago
+  - - me
+    - ok this is creepy now
+  - - them
+    - listen. tomorrow at lunch. don't eat the tacos
+  - - me
+    - why
+  - - them
+    - trust me. you'll thank me
+  - - them
+    - also you still owe mom an apology
+  - - me
+    - for the vase? how do you know about the vase
+  - - them
+    - i know everything about you
+  - - them
+    - like how you still sleep with a stuffed dinosaur named gerald
+  - - me
+    - NOBODY knows about gerald
+  - - me
+    - wait
+  - - me
+    - gerald is in my room
+  - - me
+    - and my door is open
+  - - me
+    - LEO
+  - - them
+    - lol
+  - - them
+    - your diary is SO funny bro
+  - - me
+    - i'm going to destroy you
+  - - them
+    - future you says don't do it
+  - - them
+    - but seriously don't eat the tacos. i licked them
+  tags:
+  - text story
+  - plot twist
+  - funny texts
+  - brother prank
+  - storytime
+- id: roommate-cereal
+  title: My roommate thinks I'm stealing his cereal 🥣
+  contact: Jake (roommate)
+  me: young_male
+  them: male
+  messages:
+  - - them
+    - dude. did you eat my cereal again
+  - - me
+    - no?
+  - - them
+    - the box was full last night. now it's empty
+  - - me
+    - wasn't me i swear
+  - - them
+    - it's literally just us here
+  - - them
+    - and there's milk on the counter
+  - - me
+    - i was asleep all night
+  - - them
+    - that's what you said last week too
+  - - them
+    - i'm putting a camera in the kitchen
+  - - me
+    - go ahead. i'm innocent
+  - - them
+    - ok i checked the camera
+  - - me
+    - and?
+  - - them
+    - bro
+  - - them
+    - it's me
+  - - me
+    - WHAT
+  - - them
+    - 3am. i walk in. eyes closed. eat the whole box
+  - - them
+    - then i say thank you to the fridge and go back to bed
+  - - me
+    - you thanked the fridge??
+  - - them
+    - very politely too
+  - - me
+    - so you owe me an apology
+  - - them
+    - i owe you an apology
+  - - them
+    - and i owe the fridge a box of cereal apparently
+  - - me
+    - i'm hiding all the snacks tonight
+  - - them
+    - sleep me will find them
+  tags:
+  - text story
+  - funny texts
+  - roommate
+  - sleepwalking
+  - storytime
+- id: crush-screenshot
+  title: I sent my crush a screenshot of our own chat 😭
+  contact: Mia
+  me: young_male
+  them: young_female
+  messages:
+  - - me
+    - LOOK what she said. is she flirting??
+  - - me
+    - be honest. i'm dying
+  - - them
+    - um
+  - - them
+    - you sent this to me
+  - - them
+    - the she is me
+  - - me
+    - oh no
+  - - me
+    - oh no no no
+  - - me
+    - that was for my friend
+  - - them
+    - clearly
+  - - me
+    - can we pretend that never happened
+  - - them
+    - absolutely not
+  - - me
+    - i'm moving to another country
+  - - them
+    - wait don't leave yet
+  - - them
+    - i need to tell you something
+  - - me
+    - please be nice
+  - - them
+    - i've sent our chat to my best friend like six times
+  - - me
+    - WAIT. really?
+  - - them
+    - she says you're definitely flirting
+  - - me
+    - so is that a yes?
+  - - them
+    - to what? you never asked anything
+  - - me
+    - do you want to get ice cream saturday?
+  - - them
+    - 'yes'
+  - - them
+    - screenshotting this too btw
+  tags:
+  - text story
+  - crush
+  - funny texts
+  - storytime
+  - texting story
+- id: landlord-rules
+  title: My new landlord sent me some VERY strange rules 🏚️
+  contact: Mr. Hollis (landlord)
+  me: young_female
+  them: old_male
+  messages:
+  - - them
+    - welcome to the apartment. a few house rules
+  - - me
+    - sure!
+  - - them
+    - rule one. never open the kitchen window after midnight
+  - - me
+    - ok? why
+  - - them
+    - rule two. if you hear tapping on the wall, tap back twice
+  - - me
+    - that's oddly specific
+  - - them
+    - rule three. do not go in the basement. ever
+  - - me
+    - mr hollis is this place haunted
+  - - them
+    - haunted? no
+  - - me
+    - then what's with the rules
+  - - them
+    - the kitchen window. there's a cat next door who climbs in at night
+  - - them
+    - he will eat your entire dinner
+  - - me
+    - ok that's fair
+  - - me
+    - and the tapping?
+  - - them
+    - mrs kowalski. she's 90. tapping twice means you're alive
+  - - them
+    - if you don't tap back she calls the police
+  - - me
+    - that's actually sweet
+  - - me
+    - and the basement?
+  - - them
+    - that's where i keep my model train set
+  - - them
+    - it took 30 years. nobody touches the trains
+  - - me
+    - understood
+  - - them
+    - the cat's name is captain by the way. he's very persuasive
+  tags:
+  - text story
+  - plot twist
+  - landlord
+  - creepy rules
+  - storytime
+- id: lost-phone-kid
+  title: Someone found my lost phone and started texting me 📱
+  contact: My Phone
+  me: female
+  them: young_male
+  messages:
+  - - me
+    - hello? this is my phone. i lost it at the park
+  - - them
+    - hi. i found it under the slide
+  - - me
+    - oh thank god. can i come get it?
+  - - them
+    - maybe. what's it worth to you
+  - - me
+    - excuse me?
+  - - them
+    - i want a reward
+  - - me
+    - how much?
+  - - them
+    - one large pizza
+  - - me
+    - just a pizza?
+  - - them
+    - with extra cheese. and garlic bread
+  - - me
+    - how old are you
+  - - them
+    - nine and a half
+  - - me
+    - where are your parents?
+  - - them
+    - my mom is right here. she says say please
+  - - them
+    - PLEASE
+  - - me
+    - deal. where do i pick it up?
+  - - them
+    - the blue house next to the park
+  - - them
+    - also your lock screen is a dog. what's his name
+  - - me
+    - biscuit
+  - - them
+    - can biscuit come too
+  - - me
+    - biscuit can come too
+  - - them
+    - BEST DAY EVER
+  tags:
+  - text story
+  - wholesome
+  - lost phone
+  - storytime
+  - texting story
+- id: group-project
+  title: My group project partner ghosted me all semester 😤
+  contact: Ethan (group project)
+  me: young_female
+  them: young_male
+  messages:
+  - - me
+    - ethan. the project is due tomorrow
+  - - me
+    - you haven't answered in 3 months
+  - - me
+    - i'm telling the professor you did nothing
+  - - them
+    - wait
+  - - them
+    - check the shared folder
+  - - me
+    - there's nothing in the shared folder
+  - - them
+    - the OTHER shared folder
+  - - me
+    - what other folder
+  - - them
+    - the one i made in week one. i sent you the link
+  - - me
+    - you sent it to my school email?
+  - - them
+    - 'yes'
+  - - me
+    - nobody checks their school email ethan
+  - - me
+    - ok opening it
+  - - me
+    - WHAT
+  - - me
+    - it's 40 pages??
+  - - them
+    - and a slideshow. and a model
+  - - me
+    - you did the whole thing??
+  - - them
+    - i don't really talk. but i do homework
+  - - me
+    - i feel terrible
+  - - them
+    - you can do the presentation part
+  - - them
+    - i'd rather die than talk in front of people
+  - - me
+    - deal. and i'm buying you lunch for a month
+  - - them
+    - ok
+  tags:
+  - text story
+  - group project
+  - school
+  - plot twist
+  - storytime
+- id: mom-slang
+  title: My mom tried to use Gen Z slang 💀
+  contact: Mom
+  me: young_male
+  them: female
+  messages:
+  - - them
+    - hey bestie
+  - - me
+    - mom why are you calling me bestie
+  - - them
+    - dinner tonight is going to be bussin no cap
+  - - me
+    - who taught you that
+  - - them
+    - your little sister. i'm slaying
+  - - me
+    - please stop
+  - - them
+    - why are you so salty. it's giving drama
+  - - me
+    - mom
+  - - them
+    - sorry. it's giving main character
+  - - me
+    - that's not better
+  - - them
+    - ok but fr fr what do you want for dinner
+  - - me
+    - pasta
+  - - them
+    - pasta is mid
+  - - me
+    - MOM
+  - - them
+    - lol
+  - - them
+    - your dad wants to know what rizz means
+  - - me
+    - do NOT tell him
+  - - them
+    - too late. he says he has unspoken rizz
+  - - me
+    - i'm moving out
+  - - them
+    - ok but take out the trash first. that's on period
+  - - me
+    - it's on PERIOD?
+  - - them
+    - your sister says i ate
+  tags:
+  - text story
+  - funny texts
+  - mom texts
+  - gen z slang
+  - storytime
+- id: dog-sitter-talking
+  title: The dog sitter says my dog started TALKING 🐶
+  contact: Sam (dog sitter)
+  me: female
+  them: young_male
+  messages:
+  - - them
+    - hey quick weird question
+  - - them
+    - has your dog ever talked before
+  - - me
+    - talked?
+  - - them
+    - he just said outside. clearly. out loud
+  - - me
+    - you're joking
+  - - them
+    - now he said walk
+  - - them
+    - and then treat
+  - - them
+    - i'm kind of scared
+  - - me
+    - sam. is he near the buttons
+  - - them
+    - what buttons
+  - - me
+    - the big colorful buttons on the floor by the door
+  - - them
+    - oh
+  - - them
+    - he's standing on one right now
+  - - me
+    - they're talking buttons. we trained him for a year
+  - - them
+    - so he's not possessed
+  - - me
+    - he's not possessed
+  - - them
+    - ok he just pressed treat again. like eleven times
+  - - me
+    - don't fall for it. he's had three
+  - - them
+    - he pressed love you
+  - - me
+    - he's manipulating you
+  - - them
+    - it's working
+  - - them
+    - i gave him a treat
+  tags:
+  - text story
+  - dogs
+  - funny texts
+  - talking dog
+  - storytime
+- id: sister-borrowed-car
+  title: My sister borrowed my car and texted DON'T BE MAD 😳
+  contact: Lily (sister)
+  me: young_male
+  them: young_female
+  messages:
+  - - them
+    - ok so first of all don't be mad
+  - - me
+    - what did you do
+  - - them
+    - the car is totally fine
+  - - them
+    - mostly
+  - - me
+    - MOSTLY?
+  - - them
+    - there's a tiny scratch on the door
+  - - me
+    - lily
+  - - them
+    - and a flat tire. but that's the road's fault
+  - - me
+    - where are you
+  - - them
+    - that's the other thing
+  - - them
+    - i'm at the farm
+  - - me
+    - what farm
+  - - them
+    - the petting zoo farm. a goat got in the car
+  - - me
+    - a GOAT
+  - - them
+    - he ate the seat belt
+  - - them
+    - and the parking ticket. which honestly helps us
+  - - me
+    - i'm coming to get you
+  - - them
+    - bring snacks. the goat is still hungry
+  - - me
+    - why is the goat still in my car
+  - - them
+    - he won't leave. i think he lives here now
+  - - them
+    - i named him dave
+  - - me
+    - you are paying for EVERYTHING
+  - - them
+    - dave says sorry
+  tags:
+  - text story
+  - sister
+  - funny texts
+  - chaos
+  - storytime
+- id: boss-fire-text
+  title: My boss texted me "I'm going to fire you" 😰
+  contact: Boss - Karen
+  me: male
+  them: female
+  messages:
+  - - them
+    - come to my office first thing tomorrow
+  - - me
+    - sure. everything ok?
+  - - them
+    - i'm going to fire you all
+  - - me
+    - wait what
+  - - me
+    - all of us??
+  - - them
+    - sorry. typo
+  - - me
+    - oh thank god
+  - - them
+    - i'm going to fire UP the grill for all of you
+  - - them
+    - team barbecue on friday
+  - - me
+    - you scared me so much
+  - - them
+    - you thought you were being fired?
+  - - me
+    - for like 30 seconds yes
+  - - them
+    - why would i fire my best employee
+  - - me
+    - you think i'm your best employee?
+  - - them
+    - you're the only one who refills the coffee machine
+  - - me
+    - that's the bar?
+  - - them
+    - the bar is on the floor and you're the only one above it
+  - - me
+    - i'll take it
+  - - them
+    - also bring potato salad
+  - - me
+    - is that an order
+  - - them
+    - it's a career opportunity
+  tags:
+  - text story
+  - boss texts
+  - work
+  - plot twist
+  - storytime
+- id: baby-monitor-voice
+  title: We heard a stranger's voice on the baby monitor 😨
+  contact: Ryan (husband)
+  me: female
+  them: male
+  messages:
+  - - me
+    - ryan. are you upstairs
+  - - them
+    - no i'm in the garage why
+  - - me
+    - someone is talking on the baby monitor
+  - - them
+    - what are they saying
+  - - me
+    - they're singing a lullaby
+  - - me
+    - it's not your voice
+  - - them
+    - i'm coming inside right now
+  - - me
+    - now they're saying go to sleep little bean
+  - - them
+    - we don't call her bean
+  - - me
+    - i know
+  - - me
+    - i'm going up there
+  - - them
+    - wait for me
+  - - me
+    - she's asleep. nobody's in the room
+  - - me
+    - but the singing is still coming through
+  - - them
+    - ok i think i know what this is
+  - - them
+    - the neighbors just had a baby
+  - - them
+    - our monitors might be on the same channel
+  - - me
+    - so we're hearing their nursery?
+  - - them
+    - and they can probably hear ours
+  - - me
+    - oh no. they heard you singing the pizza song last night
+  - - them
+    - the pizza song is a banger
+  - - me
+    - i'm changing the channel
+  - - them
+    - or we invite them for dinner. they clearly know good music
+  tags:
+  - text story
+  - scary texts
+  - baby monitor
+  - plot twist
+  - storytime
+- id: pizza-wrong-house
+  title: My pizza got delivered to my neighbor 🍕
+  contact: Unknown
+  me: young_female
+  them: male
+  messages:
+  - - them
+    - hi. did you order a large pepperoni
+  - - me
+    - yes?? it says delivered but i don't have it
+  - - them
+    - i have it. wrong house
+  - - me
+    - oh no. which house are you
+  - - them
+    - the green one across the street
+  - - me
+    - ok coming to get it
+  - - them
+    - about that
+  - - them
+    - i thought it was mine. i had one slice
+  - - me
+    - you ATE my pizza
+  - - them
+    - in my defense my pizza is also late
+  - - me
+    - that's not a defense
+  - - them
+    - ok here's the deal. when mine arrives you get a full pizza
+  - - me
+    - and in the meantime?
+  - - them
+    - you can have 7 slices of yours
+  - - me
+    - that's literally just my pizza
+  - - them
+    - minus my rent
+  - - me
+    - you're charging me rent for my own pizza
+  - - them
+    - one slice. very fair
+  - - me
+    - fine. but i want garlic sauce
+  - - them
+    - the garlic sauce is gone
+  - - me
+    - UNBELIEVABLE
+  - - them
+    - my pizza is here. want to just eat both on the porch
+  - - me
+    - fine. but i'm picking the movie
+  tags:
+  - text story
   - pizza
-  - bitcoin
-  - cryptocurrency
-  - pizza slice
+  - neighbors
+  - funny texts
+  - storytime
+- id: exam-cancelled
+  title: My friend said the exam was cancelled... 😬
+  contact: Noah
+  me: young_male
+  them: young_male
+  messages:
+  - - them
+    - bro the exam is cancelled
+  - - me
+    - WHAT. for real?
+  - - them
+    - 100 percent. teacher is sick
+  - - me
+    - you just saved my life
+  - - me
+    - going back to sleep
+  - - them
+    - sleep well king
+  - - them
+    - wait
+  - - them
+    - wrong class
+  - - me
+    - WHAT
+  - - them
+    - the history exam is cancelled
+  - - them
+    - the math one is in 20 minutes
+  - - me
+    - WE HAVE MATH FIRST
+  - - them
+    - i know
+  - - them
+    - run
+  - - me
+    - i'm in my pajamas
+  - - them
+    - doesn't matter run
+  - - me
+    - i'm running
+  - - me
+    - i'm here. 2 minutes late
+  - - them
+    - where are you? i don't see you
+  - - me
+    - i'm in room 12
+  - - them
+    - the exam is in room 21
+  - - me
+    - i hate it here
+  - - them
+    - nice pajamas though
   tags:
-  - bitcoin
-  - money facts
-  - crypto history
-  - bitcoin pizza day
-  - fun facts
-- id: hook-first
-  title: Why nobody watches your Shorts past 1 second ⏱️
-  dialogue:
-  - - dave
-    - Nobody watches my Shorts past the first second.
-  - - pip
-    - What's your first line?
-  - - dave
-    - Hey guys, welcome back to my channel.
-  - - pip
-    - That's the problem. On Shorts, people decide almost instantly whether to keep watching.
-  - - dave
-    - So what should I say instead?
-  - - pip
-    - Start with the most interesting part. A surprising fact, a bold question, or show the result first.
-  - - dave
-    - Like, this pizza cost a billion dollars.
-  - - pip
-    - Exactly. Hook first, explain second. Never warm up.
-  - - dave
-    - Follow. See? I didn't say hey guys.
-  search_terms:
-  - scrolling phone
-  - smartphone
-  - video editing
-  - social media
+  - text story
+  - school
+  - exam
+  - funny texts
+  - storytime
+- id: old-friend-lego
+  title: My friend from 2nd grade found me after 15 years 🧱
+  contact: Unknown
+  me: male
+  them: male
+  messages:
+  - - them
+    - is this marcus from mrs taylor's second grade class?
+  - - me
+    - yes? who is this
+  - - them
+    - it's danny. we sat next to each other
+  - - me
+    - DANNY? the kid with the dinosaur lunchbox?
+  - - them
+    - that's me. i still have it
+  - - me
+    - how did you find my number
+  - - them
+    - took me two years honestly
+  - - me
+    - why were you looking for me?
+  - - them
+    - i owe you something
+  - - them
+    - in second grade i took your red lego brick
+  - - them
+    - the special one with the little window
+  - - me
+    - i blamed my brother for that for a decade
+  - - them
+    - i felt bad about it my whole life
+  - - them
+    - i'm mailing it back to you
+  - - me
+    - danny you didn't have to
+  - - them
+    - i also put in a full lego set. with interest
+  - - me
+    - that's the nicest thing anyone has done for me
+  - - them
+    - also tell your brother i'm sorry
+  - - me
+    - he's going to lose it
+  - - them
+    - coffee sometime?
+  - - me
+    - absolutely. bring the lunchbox
   tags:
-  - youtube shorts tips
-  - content creator
-  - hooks
-  - grow on youtube
-  - short form content
-- id: rule-of-72
-  title: The rule of 72 (how long until your money doubles) 📈
-  dialogue:
-  - - dave
-    - How long does it take to double my money?
-  - - pip
-    - Use the rule of 72. Divide 72 by your yearly return.
-  - - dave
-    - Okay, my savings account pays 1 percent.
-  - - pip
-    - 72 divided by 1. That's 72 years.
-  - - dave
-    - I'll be a hundred and something!
-  - - pip
-    - At 8 percent a year, it's about 9 years. At 12 percent, about 6.
-  - - dave
-    - So the number at the bottom matters way more than I thought.
-  - - pip
-    - Exactly. Small differences in growth turn into massive differences over time. It's an estimate, not a promise, but it's surprisingly accurate.
-  - - dave
-    - Follow for more math that's actually useful.
-  search_terms:
-  - stock chart
-  - calculator
-  - money growth
-  - savings
+  - text story
+  - wholesome
+  - childhood friends
+  - storytime
+  - texting story
+- id: wifi-name-war
+  title: My neighbor started a WiFi name war 📶
+  contact: Neighbor - Apt 4B
+  me: young_female
+  them: male
+  messages:
+  - - them
+    - did you just rename your wifi to stop playing drums at 2am
+  - - me
+    - maybe
+  - - them
+    - it's a passive aggressive wifi name
+  - - me
+    - it's an aggressive wifi name. there's nothing passive about it
+  - - them
+    - i renamed mine. go look
+  - - me
+    - never stopping drums. seriously?
+  - - them
+    - music is my passion
+  - - me
+    - my passion is sleep
+  - - them
+    - ok what if i stop at midnight
+  - - me
+    - ten
+  - - them
+    - eleven
+  - - me
+    - deal
+  - - them
+    - can we both rename our wifi now
+  - - me
+    - already did. it says thanks drummer guy
+  - - them
+    - that's actually nice
+  - - them
+    - mine says sorry 3A
+  - - me
+    - aw
+  - - them
+    - also my band has a show friday. want to come
+  - - me
+    - only if you play the 2am song
+  - - them
+    - it's called the 2am song now. you named it
   tags:
-  - rule of 72
-  - money facts
-  - compound interest
-  - finance basics
-  - personal finance
-- id: grug-yap-stones
-  title: The giant stone money that sank to the bottom of the sea 🗿
-  dialogue:
-  - - grug
-    - Grug understand money now. Money is rock. Big rock.
-  - - nova
-    - Weirdly, you're not wrong. On the island of Yap, people used giant stone discs as money.
-  - - grug
-    - How big?
-  - - nova
-    - Some are bigger than a person. They were carved on another island hundreds of kilometres away, and brought back by canoe.
-  - - grug
-    - How you carry big rock to shop?
-  - - nova
-    - You don't. The stone stays where it is. Everyone just remembers who owns it.
-  - - grug
-    - What if rock fall in sea?
-  - - nova
-    - That actually happened. One stone sank during the trip, and it was still used as money, because everyone agreed it existed.
-  - - grug
-    - Money is just everybody agree? Follow, Grug need to lie down.
-  search_terms:
-  - tropical island
-  - ocean waves
-  - stone circle
-  - canoe ocean
+  - text story
+  - neighbors
+  - wifi
+  - funny texts
+  - storytime
+- id: secret-santa-detective
+  title: I tried to figure out my Secret Santa 🎁
+  contact: Priya (coworker)
+  me: female
+  them: young_female
+  messages:
+  - - me
+    - priya. i need your help. who is my secret santa
+  - - them
+    - i'm not allowed to say
+  - - me
+    - so you know?
+  - - them
+    - i didn't say that
+  - - me
+    - clue one. they left me a cactus
+  - - them
+    - everyone likes cactuses
+  - - me
+    - clue two. a note that says you are sharp but kind
+  - - them
+    - very poetic person
+  - - me
+    - clue three. a coffee mug with a cat on it
+  - - them
+    - lots of people like cats
+  - - me
+    - you have six cats
+  - - them
+    - a coincidence
+  - - me
+    - clue four. the note smells like your vanilla hand cream
+  - - them
+    - that's a very popular hand cream
+  - - me
+    - priya
+  - - them
+    - ok fine it's me
+  - - them
+    - but i didn't get the cactus
+  - - me
+    - wait. then who left the cactus
+  - - them
+    - i don't know
+  - - me
+    - there's another one on my desk now
+  - - them
+    - i'm getting chills
+  - - me
+    - it says from your OTHER secret santa
+  - - them
+    - this office has gotten out of hand
   tags:
-  - money history
-  - yap island
-  - stone money
-  - fun facts
-  - did you know
-- id: cash-is-rare
-  title: Most money doesn't actually exist 🏦
-  dialogue:
-  - - dave
-    - I keep all my money under my mattress. Real money.
-  - - pip
-    - Fun fact. Most of the world's money doesn't exist as cash at all.
-  - - dave
-    - Then where is it?
-  - - pip
-    - It's numbers in bank computers. In the United States, physical cash is only about a tenth of the money supply.
-  - - dave
-    - So when I check my bank app...
-  - - pip
-    - You're looking at a record in a database. When you pay with a card, no coins or bills move anywhere. Just numbers changing.
-  - - dave
-    - So my mattress is the only real bank.
-  - - pip
-    - Your mattress doesn't pay interest, and it's not insured.
-  - - dave
-    - Follow us. I'm going to go check under the mattress.
-  search_terms:
-  - bank
-  - credit card payment
-  - cash money
-  - server room
+  - text story
+  - secret santa
+  - office
+  - funny texts
+  - storytime
+- id: grandpa-first-emoji
+  title: My grandpa just learned how to send texts 👴
+  contact: Grandpa
+  me: young_female
+  them: old_male
+  messages:
+  - - them
+    - hello this is grandpa
+  - - me
+    - grandpa! you figured out texting!
+  - - them
+    - your cousin showed me. very exciting
+  - - them
+    - how do i make the little yellow faces
+  - - me
+    - the emojis? there's a smiley button next to the space bar
+  - - them
+    - found it
+  - - them
+    - what does the eggplant mean
+  - - me
+    - grandpa just use the smiley one
+  - - them
+    - ok
+  - - them
+    - i sent your grandmother the eggplant and the peach
+  - - me
+    - 'NO'
+  - - them
+    - she says what is wrong with you
+  - - them
+    - i said i am making soup
+  - - me
+    - please just send hearts from now on
+  - - them
+    - hearts for everyone. very good
+  - - them
+    - i also sent one to the pastor
+  - - me
+    - that's fine actually
+  - - them
+    - and a skull. i thought it was a ghost
+  - - me
+    - grandpa
+  - - them
+    - he sent back laughing face. we are friends now
+  - - me
+    - you're doing amazing
+  - - them
+    - thank you sweetheart. heart heart heart
   tags:
-  - money facts
-  - banking
-  - digital money
-  - finance
-  - did you know
-- id: dollar-bills-cotton
-  title: Dollar bills aren't made of paper 💵
-  dialogue:
-  - - dave
-    - I washed my jeans and there was a twenty in the pocket. It survived!
-  - - pip
-    - Of course it did. Dollar bills aren't made of paper.
-  - - dave
-    - Then what are they made of?
-  - - pip
-    - 75 percent cotton and 25 percent linen. Basically fabric.
-  - - dave
-    - So my money is a tiny T-shirt.
-  - - pip
-    - In a way. That's why it doesn't fall apart in the wash like normal paper.
-  - - dave
-    - How long does a bill last?
-  - - pip
-    - A one dollar bill lasts around six and a half years. A hundred dollar bill lasts over twenty years, because people spend it less.
-  - - dave
-    - Follow, and check your pockets before laundry day.
-  search_terms:
-  - dollar bills
-  - washing machine
-  - cash money
-  - cotton field
-  tags:
-  - money facts
-  - dollar bill
-  - fun facts
-  - did you know
-  - cash
-- id: thousand-true-fans
-  title: You don't need millions of fans to make a living 🙌
-  dialogue:
-  - - dave
-    - To make a living online, you need millions of fans, right?
-  - - pip
-    - Not necessarily. There's a famous idea called one thousand true fans.
-  - - dave
-    - Only a thousand?
-  - - pip
-    - Writer Kevin Kelly argued that if a thousand people each spend 100 dollars a year on your work, that's 100,000 dollars.
-  - - dave
-    - That's way more realistic than a million.
-  - - pip
-    - The key word is true. People who buy what you make. Not just people who scroll past.
-  - - dave
-    - So views are nice, but real fans pay the bills.
-  - - pip
-    - Exactly. Build a small crowd that really cares.
-  - - dave
-    - Follow, and you're officially fan number one.
-  search_terms:
-  - crowd concert
-  - community
-  - laptop work
-  - happy people
-  tags:
-  - content creator
-  - make money online
-  - 1000 true fans
-  - creator economy
-  - grow audience
-- id: grug-cowrie-shells
-  title: When seashells were real money 🐚
-  dialogue:
-  - - grug
-    - Grug find shells on beach. Grug make necklace.
-  - - nova
-    - For thousands of years, those shells would have been money.
-  - - grug
-    - Shells? Money? Grug confused.
-  - - nova
-    - Cowrie shells were used as money across Africa and Asia. They're small, tough, hard to fake, and easy to count.
-  - - grug
-    - Grug have whole beach. Grug richest man ever!
-  - - nova
-    - Ha! That's the problem. When shells got too easy to collect, they became worth less.
-  - - grug
-    - So money must be hard to get?
-  - - nova
-    - Exactly. Good money is rare. In Chinese, the old character for money and wealth even comes from a picture of a shell.
-  - - grug
-    - Grug keep necklace anyway. Follow for more.
-  search_terms:
-  - seashells beach
-  - cowrie shells
-  - tropical beach
-  - shell necklace
-  tags:
-  - money history
-  - shells
-  - ancient money
-  - fun facts
-  - did you know
-- id: nike-swoosh-35
-  title: Nike's logo cost $35 ✔️
-  dialogue:
-  - - dave
-    - How much does a famous logo cost? Like a million dollars?
-  - - pip
-    - Nike's swoosh cost 35 dollars.
-  - - dave
-    - Thirty-five? For the swoosh?
-  - - pip
-    - In 1971, a design student named Carolyn Davidson made it for a small running shoe company. She charged by the hour.
-  - - dave
-    - She must be so mad.
-  - - pip
-    - Actually, Nike later gave her a gold swoosh ring and company shares. Those shares became worth a lot more than 35 dollars.
-  - - dave
-    - So the lesson is, always ask for shares.
-  - - pip
-    - The lesson is, small work for the right people can become huge.
-  - - dave
-    - Follow for more stories like this.
-  search_terms:
-  - running shoes
-  - sneakers
-  - graphic designer
-  - running
-  tags:
-  - nike
-  - business facts
-  - logo design
-  - money facts
-  - brand history
-- id: compound-100-a-month
-  title: What $100 a month turns into 🤯
-  dialogue:
-  - - dave
-    - A hundred dollars a month is nothing. Why bother saving it?
-  - - pip
-    - Let's do the math. 100 dollars a month for 40 years is 48,000 dollars.
-  - - dave
-    - Okay, that's something.
-  - - pip
-    - Now imagine it grows 7 percent a year, every year. You'd end up with roughly 260,000.
-  - - dave
-    - Where did the extra two hundred thousand come from?
-  - - pip
-    - Compound growth. Your money earns money, and then that money earns money too.
-  - - dave
-    - So time does most of the work.
-  - - pip
-    - Exactly. Real returns go up and down, so nothing is guaranteed. But starting early makes a huge difference.
-  - - dave
-    - Follow, I'm starting today. Well, tomorrow.
-  search_terms:
-  - piggy bank
-  - growing plant
-  - money stack
-  - calendar
-  tags:
-  - compound interest
-  - money facts
-  - saving money
-  - personal finance
-  - finance basics
-- id: instagram-13-employees
-  title: 13 employees, $1 billion 📸
-  dialogue:
-  - - dave
-    - How many people do you need to build a billion dollar company?
-  - - pip
-    - Instagram had 13 employees when Facebook bought it for 1 billion dollars in 2012.
-  - - dave
-    - Thirteen? My group chat has more people than that.
-  - - pip
-    - And the app was less than two years old.
-  - - dave
-    - What did they do differently?
-  - - pip
-    - They did one thing really well. Fast, simple photo sharing on phones, right when smartphones exploded.
-  - - dave
-    - So timing matters.
-  - - pip
-    - Timing, focus, and moving fast. Short-form video is in a moment like that right now.
-  - - dave
-    - Follow, and I'm hiring twelve people.
-  search_terms:
-  - smartphone photo
-  - startup office
-  - taking photo phone
-  - team meeting
-  tags:
-  - instagram
-  - business facts
-  - startup
-  - money facts
-  - tech history
-- id: grug-paper-money
-  title: The first paper money freaked people out 💴
-  dialogue:
-  - - grug
-    - Grug pay with paper? Paper not real. Paper burn.
-  - - nova
-    - That's exactly what people thought when China invented paper money, around a thousand years ago.
-  - - grug
-    - Why use paper? Coins heavy, but coins real.
-  - - nova
-    - That's the reason. Merchants were carrying huge strings of iron coins. Paper notes were much lighter to travel with.
-  - - grug
-    - But paper worth nothing.
-  - - nova
-    - Paper is worth whatever people trust it's worth. The government promised to accept it.
-  - - grug
-    - So money is promise again?
-  - - nova
-    - You're getting good at this, Grug. When the explorer Marco Polo saw it in China, he was amazed.
-  - - grug
-    - Grug also amazed. Follow for more Grug lessons.
-  search_terms:
-  - ancient china
-  - paper money
-  - old scroll
-  - chinese temple
-  tags:
-  - money history
-  - paper money
-  - ancient china
-  - fun facts
-  - economics
-- id: first-youtube-video
-  title: The first YouTube video was 19 seconds long 🐘
-  dialogue:
-  - - dave
-    - What was the first video ever uploaded to YouTube?
-  - - pip
-    - Nineteen seconds of a guy at the zoo, talking about elephants.
-  - - dave
-    - That's it?
-  - - pip
-    - That's it. It's called Me at the zoo, uploaded April 23rd, 2005, by one of YouTube's co-founders.
-  - - dave
-    - And now?
-  - - pip
-    - Now people watch over a billion hours of YouTube every single day.
-  - - dave
-    - So the first video was kind of bad and it still worked out.
-  - - pip
-    - That's the lesson. Your first video doesn't have to be good. It just has to exist.
-  - - dave
-    - Follow, my first video is also about elephants.
-  search_terms:
-  - elephants zoo
-  - video camera
-  - watching phone
-  - elephant
-  tags:
-  - youtube history
-  - content creator
-  - fun facts
-  - start creating
-  - youtube
-- id: cpm-by-niche
-  title: Why some YouTubers earn way more per view 💰
-  dialogue:
-  - - dave
-    - Why does my friend earn more per view than me?
-  - - pip
-    - What's his channel about?
-  - - dave
-    - Personal finance. Mine is about my cat.
-  - - pip
-    - There it is. Advertisers pay different amounts depending on who's watching.
-  - - dave
-    - My cat's fans are very valuable.
-  - - pip
-    - Banks, insurance companies, and software companies pay a lot to reach people who are thinking about money. So finance videos often earn several times more per thousand views than entertainment.
-  - - dave
-    - So I should make finance videos about my cat.
-  - - pip
-    - That's actually not the worst idea you've ever had.
-  - - dave
-    - Follow for my cat's money tips.
-  search_terms:
-  - cat
-  - laptop analytics
-  - advertising billboard
-  - money
-  tags:
-  - youtube money
-  - cpm
-  - content creator
-  - make money online
-  - youtube tips
-- id: zimbabwe-trillion
-  title: The $100 TRILLION bill you can buy for a few dollars 🤑
-  dialogue:
-  - - dave
-    - I want to be a trillionaire.
-  - - pip
-    - Easy. In 2008, Zimbabwe printed a 100 trillion dollar bill.
-  - - dave
-    - Where do I get one?
-  - - pip
-    - You can buy one online for a few dollars.
-  - - dave
-    - Wait, why is a trillion dollars so cheap?
-  - - pip
-    - Hyperinflation. The government printed so much money that at the worst point, prices were doubling about every day.
-  - - dave
-    - Every day?
-  - - pip
-    - Shop prices changed by the hour. In the end, the country stopped using its own currency.
-  - - dave
-    - So printing more money doesn't make everyone rich.
-  - - pip
-    - Correct. It just makes money worth less.
-  - - dave
-    - Follow for more money facts.
-  search_terms:
-  - money printing
-  - banknotes
-  - inflation prices
-  - cash pile
-  tags:
-  - inflation
-  - money facts
-  - zimbabwe dollar
-  - economics
-  - did you know
-- id: grug-first-atm
-  title: The first cash machine used radioactive vouchers ☢️
-  dialogue:
-  - - grug
-    - Grug see wall that spit out money. Grug hit wall with club.
-  - - nova
-    - Please don't. That's an ATM. The first one opened in 1967, at a bank in London.
-  - - grug
-    - How wall know Grug?
-  - - nova
-    - Back then, you didn't use a card. You used a special paper voucher. And it was very slightly radioactive, so the machine could detect it.
-  - - grug
-    - Radioactive money?! Grug scared.
-  - - nova
-    - Only a tiny bit, and it was soon replaced with plastic cards and a secret number. The PIN.
-  - - grug
-    - Why four numbers?
-  - - nova
-    - The story goes the inventor wanted six, but his wife said she could only remember four.
-  - - grug
-    - Grug remember zero. Follow anyway.
-  search_terms:
-  - atm machine
-  - london street
-  - bank
-  - credit card machine
-  tags:
-  - atm
-  - money history
-  - inventions
-  - fun facts
-  - banking
-- id: loop-trick
-  title: The loop trick that makes Shorts get replayed 🔁
-  dialogue:
-  - - pip
-    - One trick is the loop. The last sentence flows straight back into the first one.
-  - - dave
-    - Why does that help?
-  - - pip
-    - Because people watch it again without noticing. More rewatching tells the algorithm the video is worth showing.
-  - - dave
-    - That's sneaky.
-  - - pip
-    - It's just good editing. But it only works if the video is worth watching in the first place.
-  - - dave
-    - And a strong hook helps too?
-  - - pip
-    - Hook, short sentences, no filler. Every second has to earn the next one.
-  - - dave
-    - Okay, but seriously. How do some Shorts get way more views than they should?
-  search_terms:
-  - video editing
-  - scrolling phone
-  - timeline editing
-  - smartphone
-  tags:
-  - youtube shorts tips
-  - content creator
-  - editing tips
-  - short form content
-  - grow on youtube
-- id: inflation-100-dollars
-  title: Your $100 is shrinking right now 📉
-  dialogue:
-  - - dave
-    - My grandpa says a hundred dollars used to buy a lot.
-  - - pip
-    - He's right. What 100 dollars bought in the year 2000 would cost around 190 dollars today.
-  - - dave
-    - So my money is shrinking?
-  - - pip
-    - Its buying power is. That's inflation. Prices rise a little every year, and it adds up.
-  - - dave
-    - How much is a little?
-  - - pip
-    - The Federal Reserve aims for about 2 percent a year. At 2 percent, prices double in roughly 36 years.
-  - - dave
-    - The rule of 72 again!
-  - - pip
-    - You were listening. I'm proud of you.
-  - - dave
-    - Follow, because apparently I'm learning things now.
-  search_terms:
-  - grocery shopping
-  - price tags
-  - supermarket
-  - dollar bills
-  tags:
-  - inflation
-  - money facts
-  - personal finance
-  - economics
-  - saving money
-- id: double-eagle
-  title: The coin that sold for $18.9 million 🥇
-  dialogue:
-  - - dave
-    - What's the most money anyone ever paid for one coin?
-  - - pip
-    - 18.9 million dollars, in 2021, for a 1933 Double Eagle. A twenty dollar gold coin.
-  - - dave
-    - Why is that one so special?
-  - - pip
-    - In 1933, the US stopped making gold coins. Almost all of them were melted down before they were ever released.
-  - - dave
-    - Almost?
-  - - pip
-    - A few escaped. Only one is legal for a private person to own, and that's the one that sold.
-  - - dave
-    - So the most valuable coin is one that wasn't supposed to exist.
-  - - pip
-    - Rarity is everything in collecting.
-  - - dave
-    - Follow, I'm checking my couch cushions.
-  search_terms:
-  - gold coins
-  - auction
-  - gold
-  - coin collection
-  tags:
-  - rare coins
-  - money facts
-  - gold
-  - coin collecting
-  - did you know
-- id: grug-salary-salt
-  title: Why your salary is named after SALT 🧂
-  dialogue:
-  - - grug
-    - Grug get job! Boss pay Grug in salt.
-  - - nova
-    - Funny you say that. The word salary comes from the Latin salarium, linked to sal, the word for salt.
-  - - grug
-    - So Romans paid in salt?
-  - - nova
-    - That's the popular story. Historians still argue about it. But salt really was precious.
-  - - grug
-    - Why salt precious? Salt just taste.
-  - - nova
-    - Before fridges, salt was how you kept meat and fish from rotting. No salt, no food for winter.
-  - - grug
-    - So salt is like money that keep fish alive?
-  - - nova
-    - Kind of. That's where people say someone is worth their salt.
-  - - grug
-    - Grug worth much salt. Follow for more Grug facts.
-  search_terms:
-  - salt crystals
-  - ancient rome
-  - roman ruins
-  - salt flats
-  tags:
-  - money history
-  - word origins
-  - salary
-  - fun facts
-  - ancient rome
-- id: batching-content
-  title: How to make 10 Shorts in the time it takes to make 1 🎬
-  dialogue:
-  - - dave
-    - I spend all day making one Short.
-  - - pip
-    - Try batching. Write or film ten in one session instead of one a day.
-  - - dave
-    - Why is that faster?
-  - - pip
-    - Every time you switch tasks, your brain needs time to get back into focus. Batching means you set up once and stay in the zone.
-  - - dave
-    - So, one day for writing, one day for editing.
-  - - pip
-    - Exactly. Then you schedule them to post automatically.
-  - - dave
-    - Wait. That's what we do.
-  - - pip
-    - Correct. This video was probably made weeks ago.
-  - - dave
-    - Follow us from the past.
-  search_terms:
-  - video editing
-  - desk setup
-  - calendar planning
-  - camera filming
-  tags:
-  - content creator
-  - productivity
-  - youtube shorts tips
-  - batching
-  - short form content
-- id: powerball-odds
-  title: Your real odds of winning the lottery 🎰
-  dialogue:
-  - - dave
-    - I'm buying a lottery ticket. I can feel it this time.
-  - - pip
-    - The odds of winning the Powerball jackpot are about 1 in 292 million.
-  - - dave
-    - So there's a chance.
-  - - pip
-    - You're far more likely to be struck by lightning in your lifetime.
-  - - dave
-    - What if I buy ten tickets?
-  - - pip
-    - Then it's ten in 292 million. Still basically zero.
-  - - dave
-    - Okay, then why does anyone play?
-  - - pip
-    - For the dream. On average, players get back much less than they spend. That's how lotteries make money.
-  - - dave
-    - Follow. I'm keeping my ticket money this week.
-  search_terms:
-  - lottery balls
-  - lightning storm
-  - lottery ticket
-  - casino
-  tags:
-  - lottery
-  - money facts
-  - probability
-  - powerball
-  - did you know
-- id: coca-cola-9-drinks
-  title: Coca-Cola sold 9 drinks a day in its first year 🥤
-  dialogue:
-  - - dave
-    - Coca-Cola was probably famous from day one.
-  - - pip
-    - In its first year, in 1886, it sold about nine drinks a day.
-  - - dave
-    - Nine? My lemonade stand did better than that.
-  - - pip
-    - And in that first year, it reportedly spent more on advertising than it made in sales.
-  - - dave
-    - So it lost money?
-  - - pip
-    - At first. But they kept advertising and kept selling. Today, Coca-Cola is sold in more than 200 countries and territories.
-  - - dave
-    - So the lesson is, keep going even if the first year is slow.
-  - - pip
-    - Most big brands started small and boring.
-  - - dave
-    - Follow, my lemonade empire starts now.
-  search_terms:
-  - soda drink
-  - lemonade stand
-  - vintage shop
-  - cola bottles
-  tags:
-  - business facts
-  - coca cola
-  - brand history
-  - money facts
-  - entrepreneurship
-- id: grug-oldest-receipts
-  title: The oldest writing in the world is... a receipt? 🧾
-  dialogue:
-  - - grug
-    - Grug no need writing. Grug remember everything.
-  - - nova
-    - Do you remember who owes you three fish?
-  - - grug
-    - Grug forget.
-  - - nova
-    - That's why writing was invented. Some of the oldest writing ever found, from Mesopotamia, is basically records of grain, sheep, and beer.
-  - - grug
-    - Writing invented for beer?
-  - - nova
-    - For keeping track of it. One of the oldest names we know might belong to an accountant called Kushim, on a tablet about barley.
-  - - grug
-    - First famous man is money counter?
-  - - nova
-    - Possibly. Not a king, not a hero. The person tracking the receipts.
-  - - grug
-    - Grug start writing receipts. Follow for more.
-  search_terms:
-  - clay tablet
-  - ancient ruins desert
-  - wheat field
-  - sheep
-  tags:
-  - money history
-  - ancient history
-  - writing
-  - fun facts
-  - did you know
-- id: faceless-channels
-  title: You don't need to show your face to grow on YouTube 🙈
-  dialogue:
-  - - dave
-    - I want to make videos, but I don't want to show my face.
-  - - pip
-    - You don't have to. Faceless channels are some of the biggest on YouTube.
-  - - dave
-    - How does that even work?
-  - - pip
-    - Voiceovers, animation, gameplay, screen recordings. Viewers care about the story, not who's telling it.
-  - - dave
-    - Like us. Nobody's seen our real faces.
-  - - pip
-    - We're cartoons, Dave.
-  - - dave
-    - Right. So what's the catch?
-  - - pip
-    - You still need original value. YouTube doesn't reward copying other people's clips. Your script, your idea, your edit.
-  - - dave
-    - Follow us, the most handsome faceless channel.
-  search_terms:
-  - microphone recording
-  - animation
-  - video game
-  - screen recording laptop
-  tags:
-  - faceless youtube
-  - content creator
-  - make money online
-  - youtube tips
-  - short form content
-- id: amazon-garage
-  title: Amazon started in a garage selling only books 📦
-  dialogue:
-  - - dave
-    - Amazon must have started in a giant warehouse.
-  - - pip
-    - It started in a garage in Bellevue, Washington, in 1994, selling only books.
-  - - dave
-    - Just books?
-  - - pip
-    - Just books. And it was called Cadabra at first, until someone misheard it as cadaver.
-  - - dave
-    - Yeah, that's a bad name for a store.
-  - - pip
-    - So it was renamed Amazon, after one of the biggest rivers in the world, to sound huge.
-  - - dave
-    - So start small, but pick a big name.
-  - - pip
-    - And then grow into the name. One product, done well, first.
-  - - dave
-    - Follow for more business origin stories.
-  search_terms:
-  - garage
-  - books
-  - amazon river
-  - delivery boxes
-  tags:
-  - amazon
-  - business facts
-  - startup story
-  - entrepreneurship
-  - money facts
-- id: buffett-age-11
-  title: Warren Buffett bought his first stock at 11 📊
-  dialogue:
-  - - dave
-    - I'm way too young to think about investing.
-  - - pip
-    - Warren Buffett bought his first stock when he was eleven years old.
-  - - dave
-    - Eleven? At eleven I was eating glue.
-  - - pip
-    - He bought three shares for about 38 dollars each, then sold them when they went up a little.
-  - - dave
-    - Nice, a quick profit.
-  - - pip
-    - Except right after he sold, the price shot way up. He said it taught him patience.
-  - - dave
-    - So the lesson was to wait.
-  - - pip
-    - Patience, and starting early. Time is the biggest advantage young people have.
-  - - dave
-    - Follow. I'm starting at thirty-two, which is basically eleven.
-  search_terms:
-  - stock market
-  - newspaper finance
-  - kid reading
-  - stock chart
-  tags:
-  - warren buffett
-  - investing history
-  - money facts
-  - finance basics
-  - patience
-- id: grug-credit-card
-  title: The credit card exists because someone forgot their wallet 💳
-  dialogue:
-  - - grug
-    - Grug eat at restaurant. Grug forget meat money.
-  - - nova
-    - That's exactly how the first modern charge card was born. Diners Club, 1950.
-  - - grug
-    - Diners? Grug is diner!
-  - - nova
-    - The story goes a businessman forgot his wallet at a New York restaurant. So the idea was one card that works at many restaurants, and you pay the bill later.
-  - - grug
-    - Pay later? Grug love pay later.
-  - - nova
-    - Everyone does. That's the danger. The bill always comes, and with interest if you don't pay it.
-  - - grug
-    - What is interest?
-  - - nova
-    - Extra money you pay for borrowing. Like paying back four fish for borrowing three.
-  - - grug
-    - Grug pay now. Follow for more Grug lessons.
-  search_terms:
-  - restaurant dinner
-  - credit card payment
-  - new york city
-  - fish market
-  tags:
-  - credit card
-  - money history
-  - interest
-  - fun facts
-  - personal finance
-- id: fifty-thirty-twenty
-  title: Where does your money go every month? 🤔
-  dialogue:
-  - - dave
-    - Every month my money just disappears.
-  - - pip
-    - Try the 50 30 20 rule.
-  - - dave
-    - Sounds like a workout.
-  - - pip
-    - 50 percent of your take-home pay goes to needs, like rent and food. 30 percent to wants. 20 percent to savings or paying off debt.
-  - - dave
-    - So I'm allowed to have fun?
-  - - pip
-    - Thirty percent worth of fun. It's a simple starting point, not a law. Adjust it to your life.
-  - - dave
-    - What if my wants are already eighty percent?
-  - - pip
-    - Then you just found where your money is disappearing.
-  - - dave
-    - Follow. I need to have a serious talk with my snacks.
-  search_terms:
-  - budget planning
-  - wallet
-  - groceries
-  - notebook planning
-  tags:
-  - budgeting
-  - 50 30 20 rule
-  - personal finance
-  - saving money
-  - money tips
-- id: coffee-math
-  title: The real price of a $5 daily coffee ☕
-  dialogue:
-  - - dave
-    - It's just a five dollar coffee. Relax.
-  - - pip
-    - Every day?
-  - - dave
-    - Every single day.
-  - - pip
-    - That's 1,825 dollars a year.
-  - - dave
-    - Okay, that sounds bad when you say it like that.
-  - - pip
-    - Over ten years, that's more than 18,000 dollars. Before counting any growth.
-  - - dave
-    - So I should never drink coffee again?
-  - - pip
-    - No. Spend on what you love. Just know the real yearly price of your habits, then decide on purpose.
-  - - dave
-    - Follow. I'm still getting the coffee.
-  search_terms:
-  - coffee cup
-  - coffee shop
-  - barista
-  - latte art
-  tags:
-  - money tips
-  - saving money
-  - personal finance
-  - budgeting
-  - coffee
-- id: price-ends-in-99
-  title: Why everything costs $9.99 🏷️
-  dialogue:
-  - - dave
-    - Why does everything cost nine ninety-nine?
-  - - pip
-    - Because your brain reads the first number and rounds down.
-  - - dave
-    - No way. I'm smarter than that.
-  - - pip
-    - Is nine ninety-nine closer to nine or ten?
-  - - dave
-    - Nine. Obviously.
-  - - pip
-    - It's one cent away from ten. That's called the left digit effect. Studies show prices ending in nine often sell better.
-  - - dave
-    - So stores are tricking me with one cent.
-  - - pip
-    - One cent that makes things feel cheaper. Online creators use the same trick, selling things for 19 dollars instead of 20.
-  - - dave
-    - Follow. This video is worth nine ninety-nine.
-  search_terms:
-  - price tags
-  - shopping mall
-  - sale sign
-  - cash register
-  tags:
-  - marketing psychology
-  - pricing
-  - money facts
-  - business tips
-  - did you know
-- id: mansa-musa
-  title: The man so rich he crashed the price of gold 👑
-  dialogue:
-  - - dave
-    - Who's the richest person who ever lived?
-  - - pip
-    - Many historians point to Mansa Musa, ruler of the Mali Empire in the 1300s.
-  - - dave
-    - Richer than today's billionaires?
-  - - pip
-    - His wealth is almost impossible to measure. His empire controlled huge supplies of gold.
-  - - dave
-    - What did he do with it?
-  - - pip
-    - On a trip to Mecca in 1324, he gave away so much gold in Cairo that its value there dropped for years.
-  - - dave
-    - He was so rich he broke the economy.
-  - - pip
-    - By being generous. One of history's strangest money problems.
-  - - dave
-    - Follow for more money history.
-  search_terms:
-  - gold
-  - desert caravan
-  - camels desert
-  - ancient city
-  tags:
-  - mansa musa
-  - money history
-  - richest person
-  - fun facts
-  - gold
+  - text story
+  - grandpa
+  - funny texts
+  - wholesome
+  - storytime

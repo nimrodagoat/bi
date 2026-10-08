@@ -18,6 +18,9 @@ QUEUE_HEADER = """\
 #   id            unique name (letters, numbers, dashes)
 #   niche         optional; overrides the niche in config.yaml for this video
 #   title         YouTube title (max 100 characters)
+#   contact       text stories: the name at the top of the chat (e.g. Mom)
+#   messages      text stories: list of [me, "text"] / [them, "text"], in order
+#   me / them     optional voices for a text story (male, female, young_male, ...)
 #   dialogue      a conversation: list of [speaker, line]; speakers are the
 #                 characters in config.yaml (aim for 35-55 seconds, ~100-140 words)
 #   script        OR: one narrator reads this text instead of a dialogue
@@ -111,8 +114,17 @@ def validate_queue(items: list[dict]) -> list[str]:
         if len(str(item.get("title", ""))) > 100:
             problems.append(f"{label}: title is longer than 100 characters")
         dialogue = item.get("dialogue") or []
-        if not dialogue and not str(item.get("script", "")).strip():
-            problems.append(f"{label}: needs either 'script' or 'dialogue'")
+        texts = item.get("messages") or []
+        if not dialogue and not texts and not str(item.get("script", "")).strip():
+            problems.append(f"{label}: needs 'messages', 'dialogue' or 'script'")
+        presets = (load_config().get("chat") or {}).get("voices") or {}
+        for line in texts:
+            sender = next(iter(line)) if isinstance(line, dict) else (line[0] if line else None)
+            if sender not in ("me", "them"):
+                problems.append(f"{label}: message {line!r} should start with me or them")
+        for who in ("me", "them"):
+            if texts and item.get(who) and item[who] not in presets:
+                problems.append(f"{label}: unknown voice '{item[who]}' (choose from {', '.join(presets)})")
         text = str(item.get("script", ""))
         for line in dialogue:
             try:
@@ -123,7 +135,10 @@ def validate_queue(items: list[dict]) -> list[str]:
             if speaker not in characters:
                 problems.append(f"{label}: unknown speaker '{speaker}' (add it under characters: in config.yaml)")
             text += " " + str(said)
+        for line in texts:
+            text += " " + str(line[1] if isinstance(line, list) else next(iter(line.values())))
         words = len(text.split())
-        if words > 170:
+        limit = 260 if texts else 170  # text stories run up to ~100 seconds
+        if words > limit:
             problems.append(f"{label}: script has {words} words; keep it under ~150 so the Short stays under a minute")
     return problems

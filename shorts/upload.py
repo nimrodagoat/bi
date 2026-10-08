@@ -39,7 +39,7 @@ def build_metadata(item: dict, cfg: dict) -> dict:
         kept.append(t)
 
     description = item.get("description")
-    if not description and item.get("dialogue"):
+    if not description and (item.get("dialogue") or item.get("messages")):
         description = title  # a dialogue's first line reads oddly out of context
     if not description:
         sentences = re.split(r"(?<=[.!?])\s+", spoken_text(item))
@@ -48,6 +48,8 @@ def build_metadata(item: dict, cfg: dict) -> dict:
     if "#shorts" not in description.lower():
         hashtags = (hashtags + " #shorts").strip()
     credit = f"\n\nMusic: {item['music_credit']}" if item.get("music_credit") else ""
+    if item.get("gameplay_credit"):
+        credit += f"\n\n{item['gameplay_credit']}"
     description = _clean(f"{description}\n\n{hashtags}{credit}", 5000)
 
     up = cfg.get("upload", {})

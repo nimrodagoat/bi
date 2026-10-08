@@ -9,7 +9,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from . import captions, tts, visuals
+from . import captions, chat, tts, visuals
 from .media import probe_duration, run_ffmpeg
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,7 +29,7 @@ def dialogue_lines(item: dict) -> list[tuple[str, str]]:
 
 
 def spoken_text(item: dict) -> str:
-    lines = dialogue_lines(item)
+    lines = dialogue_lines(item) or chat.messages(item)
     if lines:
         return " ".join(text for _, text in lines)
     return " ".join(str(item.get("script", "")).split())
@@ -70,6 +70,15 @@ def expression_schedule(item: dict, turns: list, total: float, cfg: dict) -> dic
     return schedule
 
 
+def chat_voices(item: dict, cfg: dict) -> dict:
+    """Voices for a text story: "me" and "them" each get a preset from
+    config.yaml (chat.voices), chosen per story with `me:` / `them:`."""
+    c = cfg.get("chat", {})
+    presets = c.get("voices") or {}
+    picks = {"me": item.get("me", c.get("me", "male")), "them": item.get("them", c.get("them", "female"))}
+    return {who: presets.get(name, {}) for who, name in picks.items()}
+
+
 def pick_music(item: dict, cfg: dict) -> Path | None:
     """Your own tracks in assets/music/ first; otherwise a free meme track.
 
@@ -104,13 +113,19 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
 
     # 1. Voice
     lines = dialogue_lines(item)
-    if lines:
+    texts = chat.messages(item)
+    if texts:  # text story: every message is read out as it appears
+        spoken = [(sender, chat.speech(text)) for sender, text in texts]
+        gap = cfg.get("chat", {}).get("gap_seconds", 0.3)
+        audio, words, turns = tts.synthesize_dialogue(spoken, work_dir, cfg, voices=chat_voices(item, cfg), gap=gap)
+    elif lines:
         audio, words, turns = tts.synthesize_dialogue(lines, work_dir, cfg)
     else:
         audio, words = tts.synthesize(spoken_text(item), work_dir, cfg)
         turns = []
-    total = probe_duration(audio) + v.get("tail_seconds", 0.6)
-    captions.write_ass(words, work_dir / "captions.ass", cfg)
+    total = probe_duration(audio) + v.get("tail_seconds", 0.6) + (1.0 if texts else 0)
+    if not texts:  # the chat itself is the text; no captions needed
+        captions.write_ass(words, work_dir / "captions.ass", cfg)
 
     # 2. Background: gameplay → stock clips → gradient
     inputs: list[str] = []
@@ -123,7 +138,10 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
     )
     if gameplay:
         path, start = gameplay
-        inputs += ["-ss", f"{start:.2f}", "-t", f"{total + 0.5:.2f}", "-i", str(path.resolve())]
+        credit = (cfg.get("visuals", {}).get("gameplay_credits") or {}).get(path.name)
+        if credit:
+            item["gameplay_credit"] = credit
+        inputs += ["-stream_loop", "-1", "-ss", f"{start:.2f}", "-t", f"{total + 0.5:.2f}", "-i", str(path.resolve())]
         filters.append(f"[0:v]{fill},setpts=PTS-STARTPTS[bg]")
         n = 1
     elif clips:
@@ -141,6 +159,8 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
     # Darken real footage a little so captions stay readable.
     vis = cfg.get("visuals", {})
     dim = vis.get("gameplay_dim", 0.15) if gameplay else (vis.get("dim", 0.35) if clips else 0)
+    if texts:
+        dim = 0  # the chat panel is opaque; keep the gameplay bright
     filters.append(f"[bg]drawbox=c=black@{dim}:t=fill[base]")
     current = "base"
 
@@ -167,13 +187,25 @@ def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
         filters.append(f"[{current}][c{idx}]overlay=x={x}:y={y}:enable='{enable}':shortest=1[o{idx}]")
         current = f"o{idx}"
 
-    filters.append(f"[{current}]ass=captions.ass,format=yuv420p[vout]")
+    # 3b. Text story: the chat panel, filling up message by message.
+    if texts:
+        listing = chat.build_overlay(item, turns, total, work_dir, cfg)
+        inputs += ["-f", "concat", "-safe", "0", "-i", str(listing.resolve())]
+        c = cfg.get("chat", {})
+        x = (w - int(w * c.get("width", 0.70))) // 2
+        filters.append(f"[{n}:v]fps={fps},format=rgba[chat]")
+        filters.append(f"[{current}][chat]overlay=x={x}:y={c.get('top', 470)}:eof_action=repeat[withchat]")
+        current = "withchat"
+        n += 1
+        filters.append(f"[{current}]format=yuv420p[vout]")
+    else:
+        filters.append(f"[{current}]ass=captions.ass,format=yuv420p[vout]")
 
     # 4. Audio: voice (+ optional music)
     voice_idx = n
     inputs += ["-i", str(audio.resolve())]
     filters.append(f"[{voice_idx}:a]apad,atrim=0:{total:.3f}[voice]")
-    track = pick_music(item, cfg)
+    track = None if texts and not cfg.get("chat", {}).get("music", False) else pick_music(item, cfg)
     if track:
         inputs += ["-stream_loop", "-1", "-i", str(track.resolve())]
         vol = cfg.get("music", {}).get("volume", v.get("music_volume", 0.14))

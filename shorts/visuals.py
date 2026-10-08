@@ -35,18 +35,17 @@ def pick_gameplay(duration: float, cfg: dict, work_dir: Path, seed: str = "") ->
         return None  # stock footage or gradient only
     folder = ROOT / vis.get("gameplay_dir", "assets/gameplay")
     files = [f for f in folder.glob("*") if f.suffix.lower() in GAMEPLAY_EXTS] if folder.exists() else []
-    random.shuffle(files)
+    random.Random(f"gameplay-{seed}").shuffle(files)
     for f in files:
         try:
             length = probe_duration(f)
         except Exception as e:
             print(f"  visuals: can't read {f.name} ({e})", file=sys.stderr)
             continue
-        if length >= duration + 1:
-            start = random.uniform(0, length - duration - 0.5)
-            print(f"  visuals: gameplay {f.name} from {start:.0f}s")
-            return f, start
-        print(f"  visuals: {f.name} is shorter than the video, skipping", file=sys.stderr)
+        # A random part of the clip; clips shorter than the video simply loop.
+        start = random.uniform(0, length - duration - 0.5) if length >= duration + 1 else random.uniform(0, length * 0.5)
+        print(f"  visuals: gameplay {f.name} from {start:.0f}s")
+        return f, start
     if vis.get("parkour", True):
         return _parkour(duration, cfg, work_dir, seed)
     return None

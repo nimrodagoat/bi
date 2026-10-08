@@ -6,7 +6,7 @@
 channel:
   # The default topic for new videos. Each video in content/queue.yaml can
   # override this with its own "niche:" line.
-  niche: "Money facts and making money with short-form content"
+  niche: "Text message storytimes"
   language: en
 
 schedule:
@@ -46,6 +46,9 @@ visuals:
   # gameplay / parkour / pixabay / pexels / gradient = force one of these
   source: auto
   gameplay_dir: assets/gameplay
+  # Credit lines added to the description when a gameplay clip is used.
+  gameplay_credits:
+    minecraft-parkour.mp4: "Gameplay: @rephyr2000 on TikTok"
   parkour: true
   parkour_fov: 96               # camera field of view in degrees
   parkour_render_scale: 0.75    # lower = faster rendering, softer picture
@@ -178,3 +181,23 @@ music:
     - Carefree
     - Local Forecast - Elevator
   volume: 0.14            # how loud the music is under the voices (0-1)
+
+# Text-message stories ("messages:" in the queue): an iMessage-style chat over
+# gameplay. Every message is read out by a voice as it appears.
+chat:
+  top: 470            # where the chat panel starts, pixels from the top (of 1920)
+  width: 0.70         # panel width, as a share of the video width
+  max_height: 900     # older messages scroll off the top beyond this
+  font_size: 33
+  gap_seconds: 0.3    # pause between messages
+  time: "Today 3:42 PM"
+  music: false        # true = also play background music under the story
+  me: male            # default voices; a story can set me: / them: itself
+  them: female
+  voices:
+    male: {engines: [edge, kokoro], edge_voice: en-US-AndrewMultilingualNeural, edge_rate: "+5%", kokoro_voice: am_michael}
+    female: {engines: [kokoro, edge], kokoro_voice: af_heart, kokoro_speed: 1.05, edge_voice: en-US-AvaMultilingualNeural}
+    young_male: {engines: [edge, kokoro], edge_voice: en-US-BrianMultilingualNeural, edge_rate: "+10%", kokoro_voice: am_puck}
+    young_female: {engines: [edge, kokoro], edge_voice: en-US-EmmaMultilingualNeural, edge_rate: "+8%", kokoro_voice: af_bella}
+    old_male: {engines: [kokoro, edge], kokoro_voice: bm_george, kokoro_speed: 0.95, edge_voice: en-GB-RyanNeural}
+    deep_male: {engines: [kokoro, edge], kokoro_voice: am_onyx, kokoro_speed: 0.95, edge_voice: en-US-RogerNeural}
