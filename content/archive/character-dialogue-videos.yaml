@@ -1,47 +1,6 @@
-# Videos waiting to be posted, top to bottom. The daily job takes the first one.
-# Each entry:
-#   id            unique name (letters, numbers, dashes)
-#   niche         optional; overrides the niche in config.yaml for this video
-#   title         YouTube title (max 100 characters)
-#   dialogue      a conversation: list of [speaker, line]; speakers are the
-#                 characters in config.yaml (aim for 35-55 seconds, ~100-140 words)
-#   script        OR: one narrator reads this text instead of a dialogue
-#   search_terms  words used to find matching stock footage, one per scene
-#   tags          YouTube tags
-#   description   optional; generated from the script if missing
+# Archived cartoon-duo videos (not in the daily queue). Move entries back to
+# content/queue.yaml to post them.
 
-- id: penny-costs-more
-  title: A penny costs MORE than a penny to make 🪙
-  dialogue:
-  - - dave
-    - Pip, I'm rich. I found a whole jar full of pennies.
-  - - pip
-    - Congratulations. Each one cost the government almost four cents to make.
-  - - dave
-    - Wait, what? A penny costs more than a penny?
-  - - pip
-    - In 2024, the US Mint spent about 3.7 cents to make every single one. Mostly zinc, with a thin copper coat.
-  - - dave
-    - So they were losing money on purpose?
-  - - pip
-    - Hundreds of millions of dollars over the years. That's why in 2025 the US finally stopped making new pennies.
-  - - dave
-    - So my jar is a collector's item now!
-  - - pip
-    - No, Dave. They're still worth exactly one cent each.
-  - - dave
-    - Follow us before I spend them all.
-  search_terms:
-  - pennies coins
-  - coin jar
-  - money
-  - coins falling
-  tags:
-  - money facts
-  - penny
-  - finance
-  - fun facts
-  - did you know
 - id: shorts-monetization-rules
   title: What it ACTUALLY takes to get paid for YouTube Shorts 💸
   dialogue:
