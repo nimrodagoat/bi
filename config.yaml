@@ -10,8 +10,14 @@ channel:
   language: en
 
 schedule:
-  # How many videos to post each time the job runs (it runs 6 times a day).
-  # YouTube's free API quota allows about 6 uploads per day in total.
+  # Posting times (UTC). The job checks hourly and posts every slot that has
+  # passed but isn't posted yet, so late or skipped GitHub runs catch up.
+  # 08:37 UTC = 10:37 in Hungary in summer (09:37 in winter).
+  slots_utc: ["08:37", "11:37", "14:37", "17:37", "20:37", "23:37"]
+  # At most this many uploads per YouTube quota day (the free quota allows ~6;
+  # it resets at midnight California time).
+  max_per_day: 6
+  # Default count for manual runs of `python -m shorts run`.
   uploads_per_run: 1
   # The job warns in its log when fewer videos than this are left in the queue.
   low_queue_warning: 7

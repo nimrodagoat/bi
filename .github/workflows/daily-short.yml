@@ -2,11 +2,11 @@ name: Daily Short
 
 on:
   schedule:
-    # 6 videos a day, one every 3 hours: 08:37, 11:37 ... 23:37 UTC
-    # (= 10:37 ... 01:37 in Hungary in summer, an hour earlier in winter).
-    # YouTube's free quota (~6 uploads) resets at midnight California time, so all
-    # six slots sit inside one quota day. GitHub may start scheduled runs late.
-    - cron: "37 8,11,14,17,20,23 * * *"
+    # Checks every hour and posts whatever is due (see schedule.slots_utc in
+    # config.yaml: 6 slots a day). GitHub often starts scheduled runs late or
+    # skips them; the hourly check catches up on any missed slot, never posting
+    # more than schedule.max_per_day per YouTube quota day.
+    - cron: "37 * * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -28,7 +28,7 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -37,29 +37,47 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: How many videos are due?
+        id: due
+        run: |
+          pip install -q PyYAML
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            COUNT=$(python -m shorts.schedule)
+          else
+            COUNT="${{ inputs.videos }}"
+            COUNT="${COUNT:-1}"
+          fi
+          echo "Videos to make now: $COUNT"
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+
       - name: Install ffmpeg and fonts
+        if: steps.due.outputs.count != '0'
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg fonts-dejavu-core libegl1 libgl1-mesa-dri
 
       - name: Install Python packages
+        if: steps.due.outputs.count != '0'
         run: pip install -r requirements.txt
 
       - name: Get gameplay footage
+        if: steps.due.outputs.count != '0'
         # Videos attached to the repo's "gameplay" release (see SETUP.md).
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release download gameplay --dir assets/gameplay --skip-existing \
-            || echo "No 'gameplay' release: using generated parkour instead."
+            || echo "No 'gameplay' release: using the clips in assets/gameplay."
 
       - name: Cache voice models
+        if: steps.due.outputs.count != '0'
         uses: actions/cache@v4
         with:
           path: .cache
           key: voice-models-v2
 
       - name: Make and post video
+        if: steps.due.outputs.count != '0'
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
@@ -67,13 +85,10 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
-          COUNT="${{ inputs.videos }}"
-          ARGS=""
-          if [ -n "$COUNT" ]; then ARGS="--count $COUNT"; fi
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            python -m shorts run --dry-run $ARGS
+            python -m shorts run --dry-run --count "${{ steps.due.outputs.count }}"
           else
-            python -m shorts run $ARGS
+            python -m shorts run --count "${{ steps.due.outputs.count }}"
           fi
 
       - name: Make voice samples (test runs only)
@@ -81,7 +96,7 @@ jobs:
         run: python -m shorts voices
 
       - name: Save the video so you can watch it
-        if: always()
+        if: always() && steps.due.outputs.count != '0'
         uses: actions/upload-artifact@v4
         with:
           name: shorts-${{ github.run_number }}
@@ -99,7 +114,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Record posted videos
-        if: success() && inputs.dry_run != true
+        if: success() && inputs.dry_run != true && steps.due.outputs.count != '0'
         run: |
           git config user.name "shorts-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

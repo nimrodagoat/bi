@@ -1535,3 +1535,345 @@
   - surprise party
   - wholesome
   - storytime
+- id: housesitter-hiding-grandpa
+  title: The house sitter says someone is hiding in our house 😨
+  contact: Noah (house sitter)
+  me: male
+  them: young_male
+  messages:
+  - - them
+    - hey mr. collins. are you guys still in spain?
+  - - me
+    - yes, back sunday. why?
+  - - them
+    - the kitchen light just turned on by itself
+  - - me
+    - might be the timer
+  - - them
+    - and now the tv is on. sports channel
+  - - me
+    - we don't have a timer on the tv
+  - - them
+    - there are wet footprints going up the stairs
+  - - me
+    - noah get out of the house. now
+  - - them
+    - i'm outside. calling the police?
+  - - me
+    - wait. what size are the footprints
+  - - them
+    - big. and one of them is just a sock
+  - - me
+    - is there a smell of peppermint
+  - - them
+    - how did you know that
+  - - me
+    - oh no
+  - - me
+    - that's my dad
+  - - them
+    - your DAD?
+  - - me
+    - he was supposed to come back from his trip next week
+  - - them
+    - why is he hiding?
+  - - me
+    - check the living room. is the blue vase still there
+  - - them
+    - it's in three pieces behind the couch
+  - - me
+    - there it is
+  - - them
+    - he just waved at me from the window
+  - - them
+    - he's holding glue and a very sad face
+  - - me
+    - tell him mom already knows. she has the camera app
+  tags:
+  - text story
+  - scary texts
+  - plot twist
+  - house sitter
+  - storytime
+- id: mom-applied-for-job
+  title: I got a job offer for a job I NEVER applied for 💼
+  contact: Unknown
+  me: young_female
+  them: female
+  messages:
+  - - them
+    - hi, this is rachel from greenleaf bakery
+  - - them
+    - congratulations! we'd love to offer you the position
+  - - me
+    - what position?
+  - - them
+    - head of morning pastries
+  - - me
+    - i think there's a mistake. i never applied
+  - - them
+    - we have your application right here
+  - - them
+    - it says you can make 200 croissants an hour
+  - - me
+    - i have never made a croissant in my life
+  - - them
+    - it also says you speak fluent french
+  - - me
+    - i know how to say croissant
+  - - them
+    - and that you were the national baking champion in 2019
+  - - me
+    - i was 14 in 2019
+  - - them
+    - the reference is a linda. she says you're amazing
+  - - me
+    - linda is my mother
+  - - them
+    - she called four times to check on your application
+  - - me
+    - i'm so sorry. she's been worried i won't find a job
+  - - them
+    - honestly we're impressed by her dedication
+  - - them
+    - we'd like to offer HER the job
+  - - me
+    - she's going to scream
+  - - them
+    - we can also train you. if you want to start as a helper
+  - - me
+    - yes please. and maybe don't tell her it wasn't me
+  - - them
+    - too late. she's at the counter right now. buying croissants
+  tags:
+  - text story
+  - funny texts
+  - job offer
+  - mom
+  - storytime
+- id: elevator-stuck-puppies
+  title: My coworker got stuck in the elevator with 12 strangers 🛗
+  contact: Maya (work)
+  me: young_male
+  them: young_female
+  messages:
+  - - them
+    - i'm stuck in the elevator
+  - - me
+    - oh no. are you ok?
+  - - them
+    - it's been 20 minutes. there are 12 others in here
+  - - me
+    - i'll call maintenance
+  - - them
+    - please hurry. they keep breathing on me
+  - - me
+    - who does
+  - - them
+    - and one of them just licked my hand
+  - - me
+    - MAYA WHAT
+  - - them
+    - another one is chewing my shoelace
+  - - me
+    - i'm calling security
+  - - them
+    - no wait
+  - - them
+    - they're puppies
+  - - me
+    - puppies??
+  - - them
+    - the adoption event on the 5th floor. a whole crate of them
+  - - them
+    - the crate opened when the elevator stopped
+  - - me
+    - so you're trapped in a box of puppies
+  - - them
+    - honestly don't rush
+  - - me
+    - maintenance says 10 more minutes
+  - - them
+    - tell them to take their time
+  - - them
+    - i've named all of them. this one is muffin
+  - - me
+    - you're adopting one aren't you
+  - - them
+    - i'm adopting muffin. and possibly biscuit
+  tags:
+  - text story
+  - puppies
+  - work
+  - wholesome
+  - storytime
+- id: kid-lemonade-investor
+  title: The neighbor kid texted me a business proposal 🍋
+  contact: Leo (next door, age 10)
+  me: male
+  them: young_male
+  messages:
+  - - them
+    - hello sir. i have a business opportunity
+  - - me
+    - hi leo. what kind of opportunity
+  - - them
+    - lemonade. i need an investor
+  - - me
+    - how much do you need
+  - - them
+    - eight dollars
+  - - me
+    - and what do i get
+  - - them
+    - twenty percent of the company
+  - - me
+    - that's a lot for eight dollars
+  - - them
+    - the company is very small
+  - - me
+    - ok. what's the plan?
+  - - them
+    - lemons, sugar, cups. and a sign that says best lemonade in the world
+  - - me
+    - is it the best in the world?
+  - - them
+    - i haven't made it yet. but i'm confident
+  - - me
+    - deal. i'll bring the eight dollars
+  - - them
+    - thank you. you will not regret this
+  - - them
+    - update. we made 31 dollars
+  - - me
+    - leo that's amazing
+  - - them
+    - your share is 6 dollars and 20 cents
+  - - me
+    - so i lost money
+  - - them
+    - that's business sir
+  - - them
+    - but i'm also giving you a free lemonade for life
+  - - me
+    - now that's a good investment
+  tags:
+  - text story
+  - wholesome
+  - kids
+  - lemonade stand
+  - storytime
+- id: crow-gifts-doorstep
+  title: Someone keeps leaving strange gifts at my door every morning 🎁
+  contact: Mrs. Patel (neighbor)
+  me: young_female
+  them: female
+  messages:
+  - - me
+    - mrs patel, did you see who left something on my doormat
+  - - them
+    - no dear, what was it?
+  - - me
+    - a shiny button. yesterday a bottle cap. today a little key
+  - - them
+    - that's strange. every morning?
+  - - me
+    - every single morning for a week
+  - - them
+    - my doorbell camera faces your door. i'll check
+  - - me
+    - thank you. i'm a little scared honestly
+  - - them
+    - found it
+  - - them
+    - you're not going to believe this
+  - - me
+    - who is it??
+  - - them
+    - it's a crow
+  - - me
+    - a CROW?
+  - - them
+    - he lands at 6am, drops something, and leaves
+  - - me
+    - i've been leaving peanuts on my balcony for him
+  - - them
+    - well he's paying you back
+  - - me
+    - i read about this. crows can bring gifts to people who feed them
+  - - them
+    - today he brought you something new. look again
+  - - me
+    - it's a ring
+  - - them
+    - is it a real ring?
+  - - me
+    - it says property of mrs patel
+  - - them
+    - THAT'S MY RING. I LOST IT IN MAY
+  - - me
+    - so he's been stealing from you to pay me
+  - - them
+    - i'm putting out peanuts too. i want my earrings back
+  tags:
+  - text story
+  - crows
+  - plot twist
+  - neighbors
+  - storytime
+- id: best-man-speech-sent
+  title: The best man accidentally sent his speech to the BRIDE 💍
+  contact: Sophie (the bride)
+  me: young_male
+  them: young_female
+  messages:
+  - - me
+    - ok here's the speech. be honest, is the airport story too much
+  - - them
+    - um
+  - - them
+    - this is sophie
+  - - them
+    - the bride
+  - - me
+    - oh no
+  - - me
+    - that was meant for jake
+  - - them
+    - what airport story
+  - - me
+    - nothing. there is no airport story
+  - - them
+    - it's literally the second paragraph
+  - - me
+    - please don't read the second paragraph
+  - - them
+    - too late
+  - - them
+    - he cried because they took his shampoo at security??
+  - - me
+    - it was a very nice shampoo
+  - - them
+    - i'm wheezing
+  - - me
+    - are you mad
+  - - them
+    - mad? the third paragraph made me cry
+  - - me
+    - the part about how he talks about you?
+  - - them
+    - he really said i'm the calmest part of his life?
+  - - me
+    - every single day for four years
+  - - them
+    - keep everything. especially the shampoo
+  - - me
+    - you won't tell him you read it?
+  - - them
+    - never. but i'm buying him a giant bottle of shampoo for the honeymoon
+  tags:
+  - text story
+  - wedding
+  - funny texts
+  - wholesome
+  - storytime
