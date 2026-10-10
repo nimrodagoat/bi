@@ -1531,3 +1531,351 @@
   - funny texts
   - wholesome
   - storytime
+- id: grandma-tattoo-surprise
+  title: Why is there a TATTOO shop on grandma's card statement? 😳
+  contact: Grandma
+  me: young_male
+  them: female
+  messages:
+  - - me
+    - grandma why is there a tattoo shop on your card statement
+  - - them
+    - who told you
+  - - me
+    - mom. she's panicking
+  - - them
+    - it was a gift for myself
+  - - me
+    - you got a TATTOO?
+  - - them
+    - i'm 78. i can do what i want
+  - - me
+    - fair. where is it
+  - - them
+    - on my arm. it's very tasteful
+  - - me
+    - what is it
+  - - them
+    - a horse with a crown
+  - - me
+    - why a horse with a crown
+  - - them
+    - you drew it for me when you were five
+  - - me
+    - wait. the purple horse?
+  - - them
+    - the purple horse. i kept it on my fridge for 15 years
+  - - me
+    - grandma i'm actually crying
+  - - them
+    - the tattoo man said it's the worst drawing he ever copied
+  - - me
+    - rude
+  - - them
+    - he also said the horse has six legs
+  - - me
+    - it was running fast
+  - - them
+    - that's what i told him
+  - - me
+    - can i see it this weekend
+  - - them
+    - yes. and draw me a new one. i have another arm
+  tags:
+  - text story
+  - grandma
+  - wholesome
+  - funny texts
+  - storytime
+- id: hiker-followed-tour-group
+  title: My friend said something was following him in the woods 🌲
+  contact: Ben (hiking)
+  me: male
+  them: deep_male
+  messages:
+  - - them
+    - i think something is following me on the trail
+  - - me
+    - like an animal?
+  - - them
+    - i can hear footsteps when i walk. when i stop, they stop
+  - - me
+    - ben that's terrifying
+  - - them
+    - now i can hear whispering
+  - - me
+    - turn around and look
+  - - them
+    - i'm too scared
+  - - me
+    - ok then walk faster towards the parking lot
+  - - them
+    - i walked faster. they walked faster
+  - - them
+    - ok i looked
+  - - me
+    - WHAT IS IT
+  - - them
+    - about thirty old people with walking sticks
+  - - me
+    - what
+  - - them
+    - a tour group. they've been following me for an hour
+  - - me
+    - why are they following you
+  - - them
+    - i'm wearing an orange hat
+  - - them
+    - apparently so is their guide
+  - - me
+    - where is their guide
+  - - them
+    - no idea. they think i'm him
+  - - them
+    - a lady just asked me what this flower is called
+  - - me
+    - what did you say
+  - - them
+    - i said nature. they all clapped
+  - - me
+    - you're the guide now
+  - - them
+    - i'm the guide now. we're going for ice cream
+  tags:
+  - text story
+  - hiking
+  - plot twist
+  - funny texts
+  - storytime
+- id: mystery-coffee-payer
+  title: Someone has been secretly paying for my coffee for 2 months ☕
+  contact: Sam (little bro)
+  me: young_female
+  them: young_male
+  messages:
+  - - me
+    - ok weird thing. someone keeps paying for my coffee
+  - - them
+    - lucky
+  - - me
+    - every monday for two months
+  - - them
+    - maybe you have a secret admirer
+  - - me
+    - that's what i'm scared of
+  - - them
+    - or maybe the coffee is just free on mondays
+  - - me
+    - it's not. i asked
+  - - them
+    - did you ask who it was?
+  - - me
+    - they say the person wants to stay anonymous
+  - - them
+    - then let them be anonymous
+  - - me
+    - today there was a note on the cup
+  - - them
+    - what did it say
+  - - me
+    - thanks for every ride. and a smiley face with three hairs
+  - - them
+    - huh. weird
+  - - me
+    - sam
+  - - me
+    - you draw every smiley face with three hairs
+  - - them
+    - lots of people do that
+  - - me
+    - you started working at that cafe in august
+  - - them
+    - ok fine
+  - - them
+    - you drove me to school every morning for a whole year
+  - - them
+    - i wanted to pay you back with my first paycheck
+  - - me
+    - you're going to make me cry at a red light
+  - - them
+    - don't cry. it's only the small size
+  tags:
+  - text story
+  - siblings
+  - wholesome
+  - coffee
+  - storytime
+- id: roommate-stuck-wardrobe
+  title: My roommate texted me from INSIDE the wardrobe 🚪
+  contact: Tyler (roommate)
+  me: male
+  them: young_male
+  messages:
+  - - them
+    - when are you coming home
+  - - me
+    - around 7. why
+  - - them
+    - no reason
+  - - them
+    - ok there's a reason
+  - - me
+    - what did you do
+  - - them
+    - i built the new wardrobe
+  - - me
+    - nice. without me?
+  - - them
+    - i wanted to surprise you
+  - - me
+    - so what's the problem
+  - - them
+    - i'm inside it
+  - - me
+    - what do you mean inside it
+  - - them
+    - i was screwing in the last door from the inside
+  - - them
+    - the handles are on the outside
+  - - me
+    - how long have you been in there
+  - - them
+    - two hours. i have 4 percent battery
+  - - me
+    - just push the door
+  - - them
+    - if i push it the whole thing tips over
+  - - me
+    - tyler you're a man in a box
+  - - them
+    - i'm aware
+  - - me
+    - i'm leaving work now
+  - - them
+    - thank you. also bring snacks
+  - - me
+    - i'm home. where are you
+  - - them
+    - in your room. it's your wardrobe
+  tags:
+  - text story
+  - roommates
+  - funny texts
+  - furniture
+  - storytime
+- id: backyard-figure-halloween
+  title: My neighbor saw someone standing in our backyard at 3am 😨
+  contact: Mr. Hughes (next door)
+  me: young_female
+  them: old_male
+  messages:
+  - - them
+    - sorry to text so late. are you awake?
+  - - me
+    - yes. is everything ok?
+  - - them
+    - there's someone standing in your backyard
+  - - me
+    - WHAT
+  - - them
+    - by the fence. he hasn't moved for ten minutes
+  - - me
+    - my parents are away this weekend
+  - - them
+    - stay inside. lock your back door
+  - - me
+    - it's locked. what does he look like
+  - - them
+    - very tall. very thin. kind of leaning to the side
+  - - me
+    - i'm calling the police
+  - - them
+    - wait. he just bent forward really slowly
+  - - them
+    - now he's lying on the grass
+  - - me
+    - is he hurt??
+  - - them
+    - he's getting up again
+  - - them
+    - his head is just bouncing
+  - - me
+    - mr hughes
+  - - me
+    - is he white with a big smile
+  - - them
+    - yes. how did you know
+  - - me
+    - it's the inflatable skeleton my dad put up for halloween
+  - - them
+    - oh
+  - - them
+    - i was about to throw my slipper at it
+  - - me
+    - the fan is broken so it keeps deflating
+  - - them
+    - well he just waved at me. i'm going to bed
+  tags:
+  - text story
+  - halloween
+  - scary texts
+  - plot twist
+  - storytime
+- id: dad-sourdough-starter
+  title: My dad started making bread and it got out of control 🍞
+  contact: Dad
+  me: young_male
+  them: male
+  messages:
+  - - them
+    - quick question. how big is a sourdough starter supposed to get
+  - - me
+    - like a small jar. why
+  - - them
+    - ok so mine is not a small jar
+  - - me
+    - how big
+  - - them
+    - it was a jar on monday
+  - - them
+    - now it's a bowl
+  - - me
+    - dad did you feed it every day
+  - - them
+    - i fed it three times a day. it seemed hungry
+  - - me
+    - you're only supposed to feed it once
+  - - them
+    - well now it's in the big salad bowl
+  - - them
+    - and the lid is lifting
+  - - me
+    - just throw some away
+  - - them
+    - i can't throw away gerald
+  - - me
+    - you NAMED it?
+  - - them
+    - you name everything you love
+  - - me
+    - where is gerald now
+  - - them
+    - in the bathtub
+  - - me
+    - DAD
+  - - them
+    - your mother is not happy
+  - - me
+    - just make bread with it
+  - - them
+    - i made 14 loaves. the neighbors are hiding from me
+  - - me
+    - bring one to my place
+  - - them
+    - i'll bring six. and a little bit of gerald for you
+  tags:
+  - text story
+  - dad
+  - funny texts
+  - baking
+  - storytime
