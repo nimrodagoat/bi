@@ -1543,3 +1543,339 @@
   - funny texts
   - baking
   - storytime
+- id: office-fridge-lobster
+  title: Something in the office fridge is MOVING 😨
+  contact: Priya (work)
+  me: young_female
+  them: male
+  messages:
+  - - them
+    - don't open the office fridge
+  - - me
+    - why. i need my yogurt
+  - - them
+    - something in there is moving
+  - - me
+    - like mold?
+  - - them
+    - mold doesn't knock
+  - - me
+    - it's KNOCKING?
+  - - them
+    - from inside a paper bag. on the bottom shelf
+  - - me
+    - whose bag is it
+  - - them
+    - no name. just a sticker that says do not touch
+  - - me
+    - i'm calling the office manager
+  - - them
+    - wait. it's coming out of the bag
+  - - them
+    - it has claws
+  - - me
+    - WHAT KIND OF CLAWS
+  - - them
+    - red ones
+  - - me
+    - is it a lobster
+  - - them
+    - it's a very angry lobster
+  - - me
+    - who brings a live lobster to work
+  - - them
+    - the boss. he says it's for his anniversary dinner
+  - - me
+    - and he put it next to my yogurt
+  - - them
+    - update. his wife called. she doesn't eat lobster
+  - - me
+    - so what happens to it
+  - - them
+    - it lives in the break room tank now
+  - - them
+    - his name is kevin and he's our new manager
+  tags:
+  - text story
+  - office
+  - funny texts
+  - plot twist
+  - storytime
+- id: grandpa-gamer-secret
+  title: My grandpa joined my online game and destroyed EVERYONE 🎮
+  contact: Grandpa
+  me: young_male
+  them: old_male
+  messages:
+  - - me
+    - grandpa was that you in my game just now
+  - - them
+    - the username grandpa_reloaded? yes
+  - - me
+    - you won the whole match
+  - - them
+    - i know. it was easy
+  - - me
+    - grandpa you couldn't open a pdf last month
+  - - them
+    - i still can't. this is different
+  - - me
+    - how are you this good
+  - - them
+    - practice
+  - - me
+    - when do you practice?
+  - - them
+    - every night after your grandmother falls asleep
+  - - me
+    - with who??
+  - - them
+    - your friends. danny and the tall one
+  - - me
+    - MY friends?
+  - - them
+    - they call me the general
+  - - me
+    - they never told me
+  - - them
+    - i told them not to. it was a surprise
+  - - me
+    - what kind of surprise
+  - - them
+    - the tournament on saturday. we need a fourth player
+  - - me
+    - you want me on your team
+  - - them
+    - yes. but you have to stop running into walls
+  - - me
+    - that was one time
+  - - them
+    - it was eleven times. i counted
+  tags:
+  - text story
+  - grandpa
+  - gaming
+  - funny texts
+  - storytime
+- id: umbrella-stranger-wedding
+  title: A stranger texted me about an umbrella from a year ago ☔
+  contact: Unknown
+  me: female
+  them: young_male
+  messages:
+  - - them
+    - hi. you probably don't remember me
+  - - me
+    - who is this?
+  - - them
+    - last october. bus stop on king street. pouring rain
+  - - them
+    - you gave me your yellow umbrella and ran off
+  - - me
+    - oh my gosh. the guy in the suit?
+  - - them
+    - yes. i had a job interview in ten minutes
+  - - me
+    - did you get it?
+  - - them
+    - i got it. but that's not why i'm texting
+  - - me
+    - how did you even find my number
+  - - them
+    - it was written on the handle. in case lost
+  - - me
+    - my mom did that. i'm 31
+  - - them
+    - thank your mom. because after the interview i got on the bus
+  - - them
+    - and a girl said i love your umbrella
+  - - me
+    - no way
+  - - them
+    - we talked for six stops. then every day after that
+  - - them
+    - we're getting married in june
+  - - me
+    - i'm actually tearing up
+  - - them
+    - we'd love you to come to the wedding
+  - - me
+    - are you serious?
+  - - them
+    - you're the reason we met
+  - - them
+    - also we kept the umbrella. it's going to be in the photos
+  tags:
+  - text story
+  - wholesome
+  - wedding
+  - kindness
+  - storytime
+- id: mom-joined-lecture
+  title: My mom joined my college lecture using MY account 💻
+  contact: Zoe (stats class)
+  me: young_male
+  them: young_female
+  messages:
+  - - them
+    - is that your mom in the lecture right now
+  - - me
+    - what? i'm at work
+  - - them
+    - your name is on the screen. but it's definitely a mom
+  - - me
+    - what is she doing
+  - - them
+    - she just asked the professor to speak up
+  - - me
+    - oh no
+  - - them
+    - now she's asking why the homework is so hard
+  - - me
+    - i'm calling her
+  - - them
+    - she declined your call. she said shh i'm learning
+  - - me
+    - out loud??
+  - - them
+    - out loud. the whole class heard
+  - - me
+    - please tell me she's on mute now
+  - - them
+    - worse. she answered the professor's question
+  - - me
+    - and?
+  - - them
+    - she got it right. nobody else did
+  - - me
+    - she doesn't even know statistics
+  - - them
+    - apparently she does now
+  - - them
+    - the professor just said great answer and gave you participation points
+  - - me
+    - honestly that's the best grade i've had all month
+  - - them
+    - she's taking notes for you too
+  - - me
+    - ok she can stay
+  - - them
+    - she just invited the professor to sunday lunch
+  tags:
+  - text story
+  - mom
+  - college
+  - funny texts
+  - storytime
+- id: cabin-window-knocking
+  title: Something keeps knocking on our cabin window at night 🌲
+  contact: Jake (cabin trip)
+  me: deep_male
+  them: young_male
+  messages:
+  - - them
+    - you awake?
+  - - me
+    - i am now. what's up
+  - - them
+    - did you hear that knocking
+  - - me
+    - no. where
+  - - them
+    - the window by my bed. three knocks
+  - - me
+    - probably a branch
+  - - them
+    - there are no trees on this side
+  - - them
+    - there it is again. three knocks
+  - - me
+    - ok that's creepy
+  - - them
+    - it happens every ten minutes. exactly
+  - - me
+    - should we wake the others
+  - - them
+    - i'm going to open the curtain
+  - - me
+    - jake don't
+  - - them
+    - too late
+  - - me
+    - WHAT IS IT
+  - - them
+    - a bird
+  - - me
+    - a bird?
+  - - them
+    - a woodpecker. on the window frame
+  - - me
+    - at 2am??
+  - - them
+    - he's looking at his reflection. i think he's in love
+  - - me
+    - so he's knocking to see himself
+  - - them
+    - he just knocked again and bowed
+  - - me
+    - let him be. he's on a date
+  tags:
+  - text story
+  - scary texts
+  - cabin
+  - plot twist
+  - storytime
+- id: dog-second-family
+  title: My dog walker found out my dog has a SECRET second family 🐕
+  contact: Lily (dog walker)
+  me: female
+  them: young_female
+  messages:
+  - - them
+    - quick question. is your dog called biscuit
+  - - me
+    - yes? you've walked him for a year
+  - - them
+    - ok because today a lady across the park called him captain
+  - - me
+    - captain?
+  - - them
+    - and he ran straight to her
+  - - me
+    - he does love strangers
+  - - them
+    - she wasn't a stranger. she had his favorite treats in her pocket
+  - - me
+    - wait what
+  - - them
+    - she said captain visits her every day at 2
+  - - me
+    - he's with you at 2
+  - - them
+    - apparently he lets me sit on the bench and then disappears
+  - - me
+    - that's when he leaves you?
+  - - them
+    - i thought he was in the bushes
+  - - them
+    - he's having lunch at her house. she showed me photos
+  - - me
+    - he has PHOTOS there?
+  - - them
+    - he has a bed there. and a little sweater
+  - - me
+    - my dog is living a double life
+  - - them
+    - she's very sweet. she thought he was a stray
+  - - me
+    - i think we need to meet
+  - - them
+    - she said yes. she's bringing cake
+  - - them
+    - and captain is bringing his sweater
+  tags:
+  - text story
+  - dogs
+  - wholesome
+  - funny texts
+  - storytime
