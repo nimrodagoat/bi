@@ -1529,3 +1529,329 @@
   - wholesome
   - career day
   - storytime
+- id: treehouse-light-night
+  title: Someone is in our treehouse every night at 11pm 🌳
+  contact: Mom
+  me: young_female
+  them: female
+  messages:
+  - - me
+    - mom. the treehouse light is on again
+  - - them
+    - again?
+  - - me
+    - every night at 11. it goes off around 1
+  - - them
+    - nobody has used that treehouse in years
+  - - me
+    - and the rope ladder is pulled up
+  - - them
+    - ok now i'm worried
+  - - me
+    - i can hear clicking. like fast tapping
+  - - them
+    - is your dad asleep?
+  - - me
+    - i don't know. his door is closed
+  - - them
+    - i'm in bed and his side is empty
+  - - me
+    - MOM
+  - - them
+    - wait. what kind of clicking
+  - - me
+    - click click click. and sometimes someone whispers no no no
+  - - them
+    - oh
+  - - them
+    - that man
+  - - me
+    - who??
+  - - them
+    - i took his game console away a month ago
+  - - them
+    - because he played until 3am
+  - - me
+    - so he moved it to the TREEHOUSE
+  - - them
+    - with a 40 foot extension cord apparently
+  - - me
+    - he just shouted yes. i think he won
+  - - them
+    - tell him to enjoy it. he's sleeping up there tonight
+  tags:
+  - text story
+  - dad
+  - funny texts
+  - plot twist
+  - storytime
+- id: teddy-bear-plane-adventure
+  title: The airport sent photos of my daughter's lost teddy bear 🧸
+  contact: Lost & Found (airport)
+  me: male
+  them: young_female
+  messages:
+  - - them
+    - hello! we found a brown teddy bear on your flight
+  - - me
+    - oh thank goodness. that's mr buttons
+  - - me
+    - my daughter hasn't stopped crying since we landed
+  - - them
+    - he's safe. but he can't fly home until thursday
+  - - me
+    - she's going to be heartbroken
+  - - them
+    - we have an idea. can you show her these
+  - - them
+    - here's mr buttons in the pilot's seat
+  - - me
+    - is he wearing a tiny hat?
+  - - them
+    - the captain made it. he's very proud
+  - - me
+    - she stopped crying. she's staring at it
+  - - them
+    - next one. mr buttons checking the luggage
+  - - them
+    - and here he is eating a cracker with the crew
+  - - me
+    - she wants to know if he's being good
+  - - them
+    - tell her he's the best passenger we've ever had
+  - - me
+    - she says thank you for taking care of him
+  - - them
+    - thursday morning he'll be at your door
+  - - me
+    - update. he's home. with a little pilot badge
+  - - them
+    - the crew voted. he's an honorary pilot now
+  - - me
+    - now she wants to be a pilot too
+  - - them
+    - tell her the captain is saving a tiny hat for her too
+  tags:
+  - text story
+  - wholesome
+  - travel
+  - teddy bear
+  - storytime
+- id: grandma-dating-app-grandpa
+  title: Grandma asked me to help her reply to a man on a dating app 👵
+  contact: Grandma
+  me: young_female
+  them: female
+  messages:
+  - - them
+    - sweetheart i need help with an app
+  - - me
+    - sure grandma. which app
+  - - them
+    - a dating one
+  - - me
+    - GRANDMA. you're married
+  - - them
+    - i know. let me explain
+  - - them
+    - a man messaged me. he says i have a lovely smile
+  - - me
+    - grandma that's a scammer
+  - - them
+    - he says he likes gardening and old movies
+  - - me
+    - they always say that
+  - - them
+    - he says he's loved me since 1974
+  - - me
+    - wait what
+  - - them
+    - his name is harold
+  - - me
+    - grandpa's name is harold
+  - - them
+    - his photo is grandpa in his good tie
+  - - me
+    - so grandpa made a dating profile
+  - - them
+    - to ask me on a first date. again. after 50 years
+  - - me
+    - i'm not crying you're crying
+  - - them
+    - what do i reply
+  - - me
+    - say yes obviously
+  - - them
+    - i said yes. he's picking me up from the kitchen at 7
+  tags:
+  - text story
+  - grandparents
+  - wholesome
+  - dating app
+  - storytime
+- id: same-man-vacation-photos
+  title: The same stranger is in ALL our family vacation photos 📷
+  contact: Chloe (sister)
+  me: male
+  them: young_female
+  messages:
+  - - them
+    - i'm scanning mom's old photo albums
+  - - me
+    - nice. send me the bad haircuts
+  - - them
+    - something is wrong with the photos
+  - - me
+    - like what
+  - - them
+    - there's a man in the background. bald, red cap
+  - - me
+    - so? random tourist
+  - - them
+    - he's in the beach photo from 2006
+  - - them
+    - and the camping photo from 2009
+  - - them
+    - and the theme park from 2012
+  - - me
+    - ok stop. that's actually creepy
+  - - them
+    - he's always smiling at the camera
+  - - me
+    - show dad
+  - - them
+    - i did. he started laughing
+  - - me
+    - why is he laughing
+  - - them
+    - it's mr kowalski. our old neighbor
+  - - them
+    - he booked the same holiday weeks as us every year
+  - - me
+    - for 10 years??
+  - - them
+    - he said our family was more fun than his tours
+  - - them
+    - dad just called him. he has the same photos
+  - - me
+    - with us in the background?
+  - - them
+    - he made a whole album. it's called the neighbors
+  tags:
+  - text story
+  - family
+  - plot twist
+  - photos
+  - storytime
+- id: friend-parallel-parking
+  title: My friend tried to parallel park for an hour and got a CROWD 🚗
+  contact: Tim
+  me: deep_male
+  them: young_male
+  messages:
+  - - them
+    - quick update. still trying to park
+  - - me
+    - it's been 50 minutes
+  - - them
+    - the space is very small
+  - - me
+    - it's the size of a bus. i can see it from the window
+  - - them
+    - people are starting to watch
+  - - me
+    - how many people
+  - - them
+    - a man brought a chair
+  - - me
+    - TIM
+  - - them
+    - a kid is selling lemonade now
+  - - them
+    - someone just shouted you got this
+  - - me
+    - you do not got this
+  - - them
+    - attempt 47
+  - - them
+    - wait
+  - - them
+    - WAIT
+  - - them
+    - i'm in
+  - - me
+    - you're in?
+  - - them
+    - perfectly straight. the crowd is clapping
+  - - me
+    - i'm actually proud of you
+  - - them
+    - a lady is filming. she says i'm an inspiration
+  - - me
+    - ok come upstairs
+  - - them
+    - small problem
+  - - them
+    - i'm too close to the wall. i can't open the door
+  tags:
+  - text story
+  - driving
+  - funny texts
+  - friends
+  - storytime
+- id: dad-learning-sign-language
+  title: My dad has been secretly taking classes every Tuesday 🤟
+  contact: Dad
+  me: young_male
+  them: old_male
+  messages:
+  - - me
+    - dad where do you go every tuesday night
+  - - them
+    - nowhere special
+  - - me
+    - mom says you've been going for three months
+  - - them
+    - it's a class
+  - - me
+    - what kind of class
+  - - them
+    - i'll tell you at thanksgiving
+  - - me
+    - dad you're being weird
+  - - them
+    - i'm allowed to be weird. i'm 62
+  - - me
+    - is it cooking?
+  - - them
+    - 'no'
+  - - me
+    - dancing?
+  - - them
+    - absolutely not
+  - - me
+    - just tell me
+  - - them
+    - ok. it's sign language
+  - - me
+    - sign language?
+  - - them
+    - you're bringing ava for thanksgiving
+  - - them
+    - i don't want her to sit there while we all talk
+  - - me
+    - dad
+  - - them
+    - i want to ask her about her art. and tell her my bad jokes
+  - - me
+    - she's going to love you
+  - - them
+    - don't tell her. i want to surprise her
+  - - them
+    - but i can't remember the sign for turkey. i keep doing chicken
+  tags:
+  - text story
+  - dad
+  - wholesome
+  - family
+  - storytime
