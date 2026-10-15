@@ -1511,3 +1511,329 @@
   - wholesome
   - family
   - storytime
+- id: morse-code-flashlight
+  title: A light across the street blinks a secret code every night 🔦
+  contact: Dana (across the street)
+  me: deep_male
+  them: female
+  messages:
+  - - them
+    - hi, sorry, weird question. is someone in your attic
+  - - me
+    - no. why
+  - - them
+    - a light keeps blinking from your attic window
+  - - me
+    - i don't even go up there
+  - - them
+    - short and long flashes. every night at 9
+  - - me
+    - that's not funny dana
+  - - them
+    - i'm serious. my husband thinks it's morse code
+  - - me
+    - ok what does it say
+  - - them
+    - he wrote it down. s, e, n, d
+  - - me
+    - send?
+  - - them
+    - send snacks
+  - - me
+    - who is asking for snacks from my attic
+  - - them
+    - wait. there's a light answering. from our house
+  - - me
+    - from where
+  - - them
+    - owen's bedroom window
+  - - me
+    - where's my son
+  - - me
+    - oh
+  - - me
+    - his phone was taken away for a week
+  - - them
+    - so was owen's
+  - - me
+    - so they learned morse code to keep talking
+  - - them
+    - honestly that's more studying than they've done all year
+  - - me
+    - tell owen my son wants cheese crackers
+  tags:
+  - text story
+  - plot twist
+  - kids
+  - neighbors
+  - storytime
+- id: grandpa-hearing-aid-bluetooth
+  title: My grandpa's hearing aids connected to MY phone 🎧
+  contact: Grandpa
+  me: young_female
+  them: old_male
+  messages:
+  - - them
+    - who is this man talking about workouts in my ear
+  - - me
+    - what? grandpa what are you hearing
+  - - them
+    - a young man. he says never skip leg day
+  - - me
+    - that's my podcast
+  - - them
+    - why is your podcast in my head
+  - - me
+    - did you get new hearing aids?
+  - - them
+    - yes. bluetooth. the lady set them up at your house
+  - - me
+    - oh no. she connected them to my phone
+  - - them
+    - that explains a lot
+  - - me
+    - what do you mean
+  - - them
+    - yesterday i heard you ordering pizza
+  - - them
+    - and tuesday you sang in the shower for 40 minutes
+  - - me
+    - GRANDPA
+  - - them
+    - the high notes were brave
+  - - me
+    - i'm unpairing you right now
+  - - them
+    - wait. can you finish the cooking video first
+  - - me
+    - the pasta one?
+  - - them
+    - i'm making it for dinner. i need to know what al dente means
+  - - me
+    - i'll come over and cook it with you
+  - - them
+    - good. and bring the gym man. i did leg day
+  tags:
+  - text story
+  - grandpa
+  - funny texts
+  - technology
+  - storytime
+- id: pawn-shop-girl-bike
+  title: A little girl tried to sell her bike to buy a present for her dad 🚲
+  contact: Frank's Pawn Shop
+  me: male
+  them: deep_male
+  messages:
+  - - them
+    - is this lucy's dad? your number is on her helmet
+  - - me
+    - yes! is she ok?
+  - - them
+    - she's fine. she's in my shop with her bike
+  - - me
+    - she said she was going to the park
+  - - them
+    - she wants to sell it. for 20 dollars
+  - - me
+    - why would she sell her bike
+  - - them
+    - she says it's your birthday on saturday
+  - - them
+    - she wants to buy you the watch in my window
+  - - me
+    - oh no. i said i liked it last week
+  - - them
+    - she's been staring at it for ages
+  - - me
+    - please don't take the bike. she loves that bike
+  - - them
+    - don't worry. i have a plan
+  - - them
+    - i told her the watch costs what's in her piggy bank
+  - - me
+    - how much is in her piggy bank
+  - - them
+    - four dollars and a button
+  - - me
+    - frank you can't do that
+  - - them
+    - done. she's riding home. with the bike
+  - - them
+    - act surprised on saturday
+  - - me
+    - i'm going to cry when she gives it to me
+  - - them
+    - i'm keeping the button. it's my favorite sale this year
+  tags:
+  - text story
+  - wholesome
+  - dad
+  - kindness
+  - storytime
+- id: wedding-cake-retirement
+  title: The bakery sent the WRONG cake to my wedding 🎂
+  contact: Sweet Crumbs Bakery
+  me: young_female
+  them: female
+  messages:
+  - - me
+    - hi. we just cut our wedding cake
+  - - them
+    - congratulations! how did it look?
+  - - me
+    - it says happy retirement barbara
+  - - them
+    - oh no
+  - - me
+    - there's a little sugar golf cart on top
+  - - them
+    - i am so sorry. there were two cakes today
+  - - me
+    - so barbara got our cake?
+  - - them
+    - i'm calling her party now
+  - - them
+    - ok. they cut it already
+  - - me
+    - what did ours say
+  - - them
+    - together forever. with two little hearts
+  - - me
+    - oh no. poor barbara
+  - - them
+    - her coworkers think she's marrying the company
+  - - me
+    - honestly that's hilarious
+  - - them
+    - we'll refund everything of course
+  - - me
+    - the guests are actually loving it
+  - - me
+    - my uncle is giving a speech about retirement
+  - - them
+    - is he retired?
+  - - me
+    - no. he's 34
+  - - them
+    - barbara's boss just made a toast to her and the company
+  - - me
+    - send her our love. tell her to enjoy the honeymoon
+  tags:
+  - text story
+  - wedding
+  - funny texts
+  - mix up
+  - storytime
+- id: car-moves-at-night
+  title: Every morning my car is parked in a DIFFERENT spot 🚗
+  contact: Josh (my son)
+  me: female
+  them: young_male
+  messages:
+  - - me
+    - josh did you take my car last night
+  - - them
+    - no. i don't even have my license
+  - - me
+    - it's parked on the other side of the street again
+  - - them
+    - again?
+  - - me
+    - third time this week. and the seat is moved
+  - - them
+    - moved how
+  - - me
+    - all the way forward. like a very short person drove it
+  - - them
+    - mom that's creepy
+  - - me
+    - i'm putting my phone on the dashboard tonight to record
+  - - them
+    - send me the video when you wake up
+  - - me
+    - ok. i watched it
+  - - them
+    - WHO IS IT
+  - - me
+    - 5am. someone in a bathrobe gets in
+  - - me
+    - drives to the end of the street. then back. very slowly
+  - - them
+    - a ghost?
+  - - me
+    - worse. it's grandma
+  - - them
+    - GRANDMA CAN'T DRIVE
+  - - me
+    - she's practicing. her driving test is on friday
+  - - them
+    - she's 81
+  - - me
+    - she says she wants to drive us to the beach this summer
+  - - them
+    - ok but who taught her
+  - - me
+    - she says youtube. and the man at the gas station
+  tags:
+  - text story
+  - grandma
+  - plot twist
+  - family
+  - storytime
+- id: brother-detective-cake
+  title: My little brother opened a detective agency and I'm his first suspect 🔍
+  contact: Theo (little bro)
+  me: male
+  them: young_male
+  messages:
+  - - them
+    - good evening. this is detective theo
+  - - me
+    - hi theo
+  - - them
+    - please call me detective
+  - - me
+    - hi detective
+  - - them
+    - a crime has happened. a slice of my birthday cake is missing
+  - - me
+    - that's terrible
+  - - them
+    - i have three suspects. you, mom and the dog
+  - - me
+    - i bet it was the dog
+  - - them
+    - the dog has an alibi. he was at the vet
+  - - me
+    - then it was mom
+  - - them
+    - mom was at work. i checked her badge
+  - - me
+    - you checked her badge?
+  - - them
+    - i'm very professional
+  - - them
+    - also i found evidence
+  - - me
+    - what evidence
+  - - them
+    - chocolate frosting on the tv remote
+  - - them
+    - and on your phone screen
+  - - me
+    - that's not frosting
+  - - them
+    - i licked it. it's frosting
+  - - me
+    - ok i ate the cake
+  - - them
+    - the case is closed. your fine is one new cake
+  - - them
+    - and you have to say detective every time you see me
+  tags:
+  - text story
+  - siblings
+  - funny texts
+  - kids
+  - storytime
