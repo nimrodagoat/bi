@@ -1495,3 +1495,327 @@
   - funny texts
   - kids
   - storytime
+- id: hotel-already-checked-in
+  title: The hotel says I already checked in... but I just got here 😨
+  contact: Hotel Front Desk
+  me: young_female
+  them: male
+  messages:
+  - - me
+    - hi, i'm in the lobby but my key card doesn't work
+  - - them
+    - let me check. under which name
+  - - me
+    - nora james. room 408
+  - - them
+    - that's strange. nora james checked in two hours ago
+  - - me
+    - that's impossible. i just landed
+  - - them
+    - she had your booking number. and your birthday
+  - - me
+    - someone is in my room??
+  - - them
+    - i'm sending security up now
+  - - me
+    - please be careful
+  - - them
+    - security says the door is open. there are balloons
+  - - me
+    - balloons?
+  - - them
+    - and a banner. it says happy 25th
+  - - me
+    - oh my gosh
+  - - them
+    - there's a woman inside holding a cake
+  - - them
+    - she says she's your mom
+  - - me
+    - MY MOM?
+  - - them
+    - she flew in this morning to surprise you
+  - - them
+    - she says you always forget to celebrate your birthday when you travel
+  - - me
+    - i'm crying in your lobby
+  - - them
+    - the staff would like some cake if that's ok
+  - - me
+    - send everyone up. she brought enough for the whole hotel
+  tags:
+  - text story
+  - plot twist
+  - mom
+  - birthday
+  - storytime
+- id: friend-joined-grandma-choir
+  title: My friend joined a choir to impress a girl. It's ALL grandmas 🎤
+  contact: Marcus
+  me: male
+  them: young_male
+  messages:
+  - - them
+    - so i joined the choir
+  - - me
+    - you can't sing
+  - - them
+    - i know. but maya is in it
+  - - me
+    - ah. how was the first rehearsal
+  - - them
+    - maya isn't in it
+  - - me
+    - what
+  - - them
+    - she's in the church choir. this is the community choir
+  - - me
+    - who's in the community choir
+  - - them
+    - fourteen grandmas
+  - - me
+    - MARCUS
+  - - them
+    - and me
+  - - me
+    - just leave
+  - - them
+    - i can't. they gave me a folder with my name on it
+  - - them
+    - one of them knitted me a scarf during the break
+  - - me
+    - how did she knit a whole scarf in a break
+  - - them
+    - she's very fast. her name is doris
+  - - them
+    - update. i'm doing a solo on sunday
+  - - me
+    - how??
+  - - them
+    - i'm the only one who can hit the low notes
+  - - me
+    - i'm coming to watch
+  - - them
+    - doris says maya is coming too. she's doris's granddaughter
+  tags:
+  - text story
+  - friends
+  - funny texts
+  - plot twist
+  - storytime
+- id: kid-broke-window-allowance
+  title: The neighbor kid broke my window and left me a note ⚾
+  contact: Sam (next door, age 9)
+  me: old_male
+  them: young_male
+  messages:
+  - - them
+    - hello mr harris. it's sam from next door
+  - - me
+    - hello sam. did you leave a note under my door
+  - - them
+    - yes. did you read it
+  - - me
+    - it says sorry i broke your window. here is my allowance
+  - - them
+    - it was a good hit. but an accident
+  - - me
+    - there's 3 dollars and a baseball card in here
+  - - them
+    - the card is my best one
+  - - me
+    - sam, the window costs more than that
+  - - them
+    - i know. i can work for you
+  - - me
+    - what kind of work
+  - - them
+    - i can water your plants. and talk to your cat
+  - - me
+    - my cat doesn't talk
+  - - them
+    - i will talk. he can listen
+  - - me
+    - ok. saturday at 10. we'll fix the window together
+  - - them
+    - thank you. i'll bring my dad's tools
+  - - me
+    - the window is fixed. your dad paid the rest
+  - - them
+    - do i still have to come on saturday
+  - - me
+    - yes. the cat misses you already
+  - - them
+    - and can i have my card back
+  - - me
+    - no. i'm framing it. it's the most honest thing i own
+  tags:
+  - text story
+  - wholesome
+  - neighbors
+  - kids
+  - storytime
+- id: dad-drone-sausage
+  title: My dad's new drone came back from the neighbors with a SAUSAGE 🌭
+  contact: Dad
+  me: young_female
+  them: male
+  messages:
+  - - them
+    - the drone is up
+  - - me
+    - dad please be careful with it
+  - - them
+    - i'm a natural. it's flying over the garden
+  - - me
+    - you crashed it into the fence yesterday
+  - - them
+    - the fence moved
+  - - them
+    - ok it's going over the fence now
+  - - me
+    - why is it going over the fence
+  - - them
+    - the wind. it has a mind of its own
+  - - them
+    - it's above the millers' barbecue
+  - - me
+    - DAD
+  - - them
+    - they're waving. i think they like it
+  - - them
+    - mr miller is putting something on it
+  - - me
+    - what is he putting on it
+  - - them
+    - it's coming back
+  - - them
+    - it's carrying a sausage
+  - - me
+    - a SAUSAGE?
+  - - them
+    - with mustard. on a little plate taped to the bottom
+  - - me
+    - this is the best thing you've ever done
+  - - them
+    - i sent it back with a beer
+  - - them
+    - we've been doing this for an hour. i'm full
+  - - me
+    - i'm coming home. send it to me next
+  tags:
+  - text story
+  - dad
+  - funny texts
+  - neighbors
+  - storytime
+- id: elevator-floor-thirteen
+  title: Our elevator stops at a floor that doesn't EXIST every midnight 🛗
+  contact: Mr. Okafor (night doorman)
+  me: female
+  them: deep_male
+  messages:
+  - - me
+    - mr okafor, weird question
+  - - them
+    - of course. it's 1am. weird is normal
+  - - me
+    - the elevator stopped between 12 and 14 again
+  - - them
+    - we don't have a 13th floor
+  - - me
+    - exactly. the doors opened and it was dark
+  - - them
+    - did you hear anything
+  - - me
+    - piano music. really beautiful piano music
+  - - them
+    - that floor is just storage
+  - - me
+    - so who plays piano there at midnight
+  - - them
+    - i'll go check. stay in your apartment
+  - - me
+    - please text me when you get there
+  - - them
+    - i'm here. the music is coming from the back room
+  - - me
+    - who is it
+  - - them
+    - it's eddie. the janitor
+  - - me
+    - the quiet janitor?
+  - - them
+    - there's an old piano up here. from the 1960s lobby
+  - - them
+    - he plays it every night after his shift
+  - - me
+    - he's amazing
+  - - them
+    - he used to play in concert halls. forty years ago
+  - - me
+    - we need to get that piano back in the lobby
+  - - them
+    - i just asked him. he said only if you all come to listen
+  tags:
+  - text story
+  - mystery
+  - wholesome
+  - neighbors
+  - storytime
+- id: barber-sneezed-haircut
+  title: My friend's barber SNEEZED in the middle of his haircut 💈
+  contact: Kevin
+  me: young_male
+  them: male
+  messages:
+  - - them
+    - i need your honest opinion
+  - - me
+    - about what
+  - - them
+    - if a haircut is only on one side, is that a style
+  - - me
+    - kevin what happened
+  - - them
+    - the barber sneezed
+  - - me
+    - oh no
+  - - them
+    - he had the clippers on my head
+  - - me
+    - how bad is it
+  - - them
+    - there's a road. down the middle of my left side
+  - - me
+    - send a photo
+  - - them
+    - 'no'
+  - - me
+    - please
+  - - them
+    - ok. don't laugh
+  - - me
+    - i'm not laughing. i'm wheezing
+  - - them
+    - the barber is crying. he says it's his first sneeze in 20 years
+  - - me
+    - just shave it all
+  - - them
+    - that's the plan. but there's a twist
+  - - me
+    - what
+  - - them
+    - the barber feels so bad he shaved his own head too
+  - - them
+    - and now the guy waiting wants the same
+  - - me
+    - you started a trend
+  - - them
+    - there are five bald men here now. we're getting lunch
+  tags:
+  - text story
+  - haircut
+  - funny texts
+  - friends
+  - storytime
