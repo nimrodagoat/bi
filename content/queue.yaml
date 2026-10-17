@@ -13,58 +13,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: library-old-book
-  title: An old man asked me to find a book he read 60 years ago 📚
-  contact: Mr. Ellis (library)
-  me: young_male
-  them: old_male
-  messages:
-  - - them
-    - hello. it's mr ellis from the library
-  - - me
-    - hi mr ellis! any luck remembering the book?
-  - - them
-    - only that it had a blue cover. and a dog who could fly
-  - - me
-    - i'll check our old storage room
-  - - them
-    - i read it every week as a boy
-  - - me
-    - update. i think i found it
-  - - me
-    - the flying dog of willow lane. blue cover
-  - - them
-    - that's it. i can't believe it
-  - - me
-    - from 1958. the old card is still in the back
-  - - them
-    - the card with the names?
-  - - me
-    - yes. and every name on it is the same
-  - - them
-    - let me guess
-  - - me
-    - thomas ellis. twenty two times
-  - - them
-    - i was the only one who ever read it
-  - - me
-    - that means it's been waiting for you
-  - - them
-    - can i borrow it one more time
-  - - me
-    - the head librarian says it's yours to keep
-  - - them
-    - i'm going to read it to my great granddaughter
-  - - me
-    - she's going to love the flying dog
-  - - them
-    - she already asked the dog's name. it's pepper
-  tags:
-  - text story
-  - library
-  - wholesome
-  - books
-  - storytime
 - id: mom-smartwatch-steps
   title: Mom's smartwatch says she ran a marathon from the couch ⌚
   contact: Mom
