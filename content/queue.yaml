@@ -1487,3 +1487,327 @@
   - funny texts
   - friends
   - storytime
+- id: door-in-the-field
+  title: Our GPS led us to a DOOR in the middle of an empty field 🚪
+  contact: Bella (road trip)
+  me: female
+  them: young_female
+  messages:
+  - - them
+    - ok this is weird. the gps says we've arrived
+  - - me
+    - arrived where? at the cabin?
+  - - them
+    - no. we're in a field. there's nothing here
+  - - them
+    - except a door
+  - - me
+    - a door to what
+  - - them
+    - nothing. it's just a door. standing in the grass
+  - - me
+    - please get back in the car
+  - - them
+    - there's a sign on it
+  - - me
+    - what does it say
+  - - them
+    - knock if you're lost
+  - - me
+    - do NOT knock
+  - - them
+    - jade already knocked
+  - - me
+    - BELLA
+  - - them
+    - someone knocked back
+  - - me
+    - drive away right now
+  - - them
+    - the door is opening
+  - - them
+    - it's a grandma. with a pie
+  - - me
+    - WHAT
+  - - them
+    - she says the gps sends people here every week
+  - - them
+    - so she built a door and started selling pie
+  - - me
+    - is it good pie
+  - - them
+    - it's the best pie of my life. and she gave us directions
+  tags:
+  - text story
+  - road trip
+  - plot twist
+  - funny texts
+  - storytime
+- id: grandpa-show-and-tell
+  title: My daughter brought her GRANDPA to show and tell 👴
+  contact: Ms. Lopez (teacher)
+  me: male
+  them: female
+  messages:
+  - - them
+    - hi mr reed. quick update about show and tell today
+  - - me
+    - oh no. what did she bring
+  - - them
+    - her grandpa
+  - - me
+    - she brought my DAD?
+  - - them
+    - he was sitting on the carpet with the kids at 9am
+  - - me
+    - i'm so sorry. i thought she was bringing a rock
+  - - them
+    - she said grandpa is better than a rock
+  - - me
+    - that's fair
+  - - them
+    - she introduced him. she said he's 79 and he has a tractor
+  - - me
+    - how did the kids react
+  - - them
+    - they asked him 40 questions
+  - - them
+    - he told them about growing up on a farm with no tv
+  - - me
+    - they must have been shocked
+  - - them
+    - one boy cried. he said how did you live
+  - - me
+    - i'm coming to pick him up
+  - - them
+    - please don't. he's teaching them how to whistle with grass
+  - - them
+    - the class voted. they want him back every friday
+  - - me
+    - he's going to say yes
+  - - them
+    - he already said yes. he's bringing the tractor next week
+  - - me
+    - of course he is. that tractor is his rock
+  tags:
+  - text story
+  - grandpa
+  - school
+  - wholesome
+  - storytime
+- id: grandma-orders-one-banana
+  title: The delivery driver says my grandma orders ONE banana every day 🍌
+  contact: Tom (grocery delivery)
+  me: young_male
+  them: deep_male
+  messages:
+  - - them
+    - hi, i deliver groceries to your grandma, mrs bell
+  - - me
+    - hi! is she ok?
+  - - them
+    - she's fine. but i noticed something
+  - - them
+    - every day she orders one banana
+  - - me
+    - just one?
+  - - them
+    - one banana. every day. for two months
+  - - me
+    - that's strange. she used to order once a week
+  - - them
+    - she makes me tea every time. we talk for twenty minutes
+  - - me
+    - oh
+  - - them
+    - i think she orders the banana so someone will visit
+  - - me
+    - i moved abroad in august. i didn't realize she was lonely
+  - - them
+    - she talks about you a lot. she's very proud of you
+  - - me
+    - thank you for telling me
+  - - me
+    - i'm going to call her every evening from now on
+  - - them
+    - that's great. she'll love that
+  - - me
+    - update. we do video calls every night now
+  - - them
+    - i know. she showed me. she still orders the banana
+  - - me
+    - she does?
+  - - them
+    - she says the tea time is our thing now
+  - - me
+    - then i'm sending you a box of tea. you've earned it
+  tags:
+  - text story
+  - grandma
+  - wholesome
+  - kindness
+  - storytime
+- id: prom-fake-tan-orange
+  title: My prom date's fake tan went VERY wrong 🍊
+  contact: Ava (prom date)
+  me: young_male
+  them: young_female
+  messages:
+  - - them
+    - we have a problem
+  - - me
+    - what kind of problem. prom is in two hours
+  - - them
+    - i tried a new fake tan
+  - - me
+    - ok
+  - - them
+    - i'm orange
+  - - me
+    - like a little orange?
+  - - them
+    - like a traffic cone
+  - - me
+    - send a pic
+  - - them
+    - absolutely not
+  - - me
+    - it can't be that bad
+  - - them
+    - my little brother called me a carrot and ran away
+  - - me
+    - ok it's that bad
+  - - them
+    - i tried scrubbing. now i'm orange and red
+  - - me
+    - don't worry. i have an idea
+  - - them
+    - what idea
+  - - me
+    - trust me. i'll pick you up at 7
+  - - them
+    - ok i'm outside
+  - - them
+    - WHY ARE YOU WEARING AN ORANGE SUIT
+  - - me
+    - we match now
+  - - them
+    - where did you even find that
+  - - me
+    - my uncle's wedding in 2009. it was a bold wedding
+  - - them
+    - we just won best couple. i'm keeping the tan
+  tags:
+  - text story
+  - prom
+  - funny texts
+  - dating
+  - storytime
+- id: stranger-streaming-penguins
+  title: Someone is secretly using my streaming account at 3am 📺
+  contact: Ethan (brother)
+  me: female
+  them: male
+  messages:
+  - - me
+    - someone is using my streaming account
+  - - them
+    - change the password
+  - - me
+    - wait. i want to know who it is first
+  - - them
+    - what are they watching
+  - - me
+    - the same penguin documentary. 41 times
+  - - them
+    - 41 TIMES?
+  - - me
+    - always at 3am. always the same episode
+  - - them
+    - that's actually creepy
+  - - me
+    - and they made a profile. it's called penguin lady
+  - - them
+    - where is it logged in
+  - - me
+    - a tv in our town. 2 miles away
+  - - them
+    - who do we know 2 miles away
+  - - me
+    - oh
+  - - them
+    - what
+  - - me
+    - grandma
+  - - them
+    - you gave grandma your password?
+  - - me
+    - years ago. for one movie at christmas
+  - - them
+    - she can't sleep. she said that last week
+  - - me
+    - i just called her. she said the baby penguin falls over at minute 12
+  - - them
+    - she watches it 41 times for that?
+  - - me
+    - she says it gets funnier every time. i'm keeping her on my plan
+  tags:
+  - text story
+  - grandma
+  - plot twist
+  - funny texts
+  - storytime
+- id: teacher-needs-a-vet
+  title: My old teacher found the letter I wrote in 3rd grade 📝
+  contact: Mr. Klein (3rd grade teacher)
+  me: male
+  them: old_male
+  messages:
+  - - them
+    - hello. is this daniel park? from my class in 2006?
+  - - me
+    - mr klein? wow. yes it's me
+  - - them
+    - i'm clearing out my old classroom. i'm retiring
+  - - me
+    - congratulations!
+  - - them
+    - i found the letters you all wrote. to your future selves
+  - - me
+    - oh no. what did mine say
+  - - them
+    - dear future daniel. i hope you are a vet
+  - - them
+    - and that you still have no fear of big dogs
+  - - me
+    - that's amazing. i am a vet now
+  - - them
+    - i was hoping you'd say that
+  - - them
+    - i have a big dog. his name is bruno
+  - - them
+    - he's 13 and his legs are getting tired
+  - - me
+    - bring him in on monday. no charge
+  - - them
+    - i couldn't
+  - - me
+    - you taught me to read. it's the least i can do
+  - - them
+    - update. bruno loved you. he's already feeling better
+  - - me
+    - he was a very good boy
+  - - them
+    - i'm mailing you the letter. there's a p.s. at the bottom
+  - - me
+    - what does it say
+  - - them
+    - p.s. i still want a pet dinosaur
+  - - me
+    - keep that part secret please
+  tags:
+  - text story
+  - teacher
+  - wholesome
+  - dogs
+  - storytime
