@@ -13,58 +13,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: teddy-bear-plane-adventure
-  title: The airport sent photos of my daughter's lost teddy bear 🧸
-  contact: Lost & Found (airport)
-  me: male
-  them: young_female
-  messages:
-  - - them
-    - hello! we found a brown teddy bear on your flight
-  - - me
-    - oh thank goodness. that's mr buttons
-  - - me
-    - my daughter hasn't stopped crying since we landed
-  - - them
-    - he's safe. but he can't fly home until thursday
-  - - me
-    - she's going to be heartbroken
-  - - them
-    - we have an idea. can you show her these
-  - - them
-    - here's mr buttons in the pilot's seat
-  - - me
-    - is he wearing a tiny hat?
-  - - them
-    - the captain made it. he's very proud
-  - - me
-    - she stopped crying. she's staring at it
-  - - them
-    - next one. mr buttons checking the luggage
-  - - them
-    - and here he is eating a cracker with the crew
-  - - me
-    - she wants to know if he's being good
-  - - them
-    - tell her he's the best passenger we've ever had
-  - - me
-    - she says thank you for taking care of him
-  - - them
-    - thursday morning he'll be at your door
-  - - me
-    - update. he's home. with a little pilot badge
-  - - them
-    - the crew voted. he's an honorary pilot now
-  - - me
-    - now she wants to be a pilot too
-  - - them
-    - tell her the captain is saving a tiny hat for her too
-  tags:
-  - text story
-  - wholesome
-  - travel
-  - teddy bear
-  - storytime
 - id: grandma-dating-app-grandpa
   title: Grandma asked me to help her reply to a man on a dating app 👵
   contact: Grandma
