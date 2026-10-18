@@ -1479,3 +1479,327 @@
   - wholesome
   - dogs
   - storytime
+- id: childhood-house-height-marks
+  title: A stranger keeps texting me photos of my childhood home 🏠
+  contact: Unknown
+  me: female
+  them: young_male
+  messages:
+  - - them
+    - hi. is this rosie?
+  - - me
+    - who is this?
+  - - them
+    - i live in your old house. on maple street
+  - - me
+    - how do you have my number
+  - - them
+    - it's in the closet. call rosie if you find the treasure
+  - - me
+    - oh my gosh. i wrote that when i was eight
+  - - them
+    - i'm ten. i found the treasure
+  - - me
+    - the tin box under the floorboard?
+  - - them
+    - a key ring, a marble and a hamster photo
+  - - me
+    - that's mr nibbles. he was the best hamster
+  - - them
+    - i also found the lines on the kitchen door
+  - - me
+    - my height marks. they didn't paint over them?
+  - - them
+    - my mom wanted to. i said no
+  - - them
+    - now my lines are next to yours
+  - - me
+    - that's the sweetest thing i've ever heard
+  - - them
+    - i'm taller than you were at ten. by two centimeters
+  - - me
+    - congratulations. you win
+  - - them
+    - can i keep the treasure
+  - - me
+    - yes. but add something of yours for the next kid
+  - - them
+    - ok. i'm adding my best trading card and my number
+  tags:
+  - text story
+  - wholesome
+  - childhood
+  - plot twist
+  - storytime
+- id: dad-standing-desk-stuck
+  title: My dad has been standing at his desk for 9 HOURS 🖥️
+  contact: Dad
+  me: young_female
+  them: male
+  messages:
+  - - me
+    - how's the new standing desk
+  - - them
+    - great. very healthy
+  - - me
+    - how long have you been standing
+  - - them
+    - since 8am
+  - - me
+    - dad it's 5pm
+  - - them
+    - i'm aware
+  - - me
+    - you're supposed to switch. sit, then stand
+  - - them
+    - i would love to sit
+  - - me
+    - then lower it
+  - - them
+    - how
+  - - me
+    - there are buttons. under the front
+  - - them
+    - i pressed them. it went higher
+  - - me
+    - how high
+  - - them
+    - i'm typing with my arms up like a zombie
+  - - me
+    - press the down arrow
+  - - them
+    - there's no down arrow. there's a 1, a 2 and a little man
+  - - me
+    - press the little man
+  - - them
+    - IT'S MOVING
+  - - them
+    - it's going down. it's still going
+  - - me
+    - let go
+  - - them
+    - it's at floor level. i'm working on my knees now
+  - - me
+    - i'm coming over
+  tags:
+  - text story
+  - dad
+  - funny texts
+  - technology
+  - storytime
+- id: son-passed-the-ball
+  title: My son's coach texted me about the last minute of the game ⚽
+  contact: Coach Hannah
+  me: deep_male
+  them: female
+  messages:
+  - - them
+    - hi, do you have a minute? it's about finn and today's game
+  - - me
+    - did he do something wrong
+  - - them
+    - last minute. tied game. finn had the ball in front of the goal
+  - - me
+    - oh no. he missed?
+  - - them
+    - he didn't shoot
+  - - me
+    - why not?
+  - - them
+    - he passed it. to oliver
+  - - me
+    - the little guy who never gets the ball?
+  - - them
+    - oliver has never scored. not once in two seasons
+  - - them
+    - he scored. we won
+  - - me
+    - are you serious
+  - - them
+    - the whole team carried oliver around the field
+  - - them
+    - his mom was crying in the stands. so was i
+  - - me
+    - i'm crying in my car right now
+  - - them
+    - i asked finn why he passed
+  - - me
+    - what did he say
+  - - them
+    - he said i score every week. oliver never gets to feel it
+  - - me
+    - i'm so proud of him
+  - - them
+    - you should be. we're giving him the team award
+  - - them
+    - but he asked if oliver can hold the trophy first
+  tags:
+  - text story
+  - wholesome
+  - kids
+  - sports
+  - storytime
+- id: grandpa-ordered-200-ducks
+  title: My grandpa accidentally ordered 200 rubber ducks 🦆
+  contact: Grandpa
+  me: young_male
+  them: old_male
+  messages:
+  - - them
+    - a big box arrived. it's very heavy
+  - - me
+    - what did you order
+  - - them
+    - two rubber ducks. for the bathtub
+  - - me
+    - two ducks shouldn't be heavy
+  - - them
+    - i opened it. there are many ducks
+  - - me
+    - how many
+  - - them
+    - i'm counting. i'm at 140
+  - - me
+    - grandpa you typed 200
+  - - them
+    - the little box said quantity. i thought it meant size
+  - - me
+    - we can send them back
+  - - them
+    - the return costs more than the ducks
+  - - me
+    - ok then what are you going to do with 200 ducks
+  - - them
+    - i have a plan
+  - - me
+    - i'm scared
+  - - them
+    - update. i put one on every bench in the park
+  - - them
+    - with a note. you found a lucky duck
+  - - me
+    - grandpa that's actually adorable
+  - - them
+    - people are posting them online. they call me the duck man
+  - - me
+    - you're famous
+  - - them
+    - the mayor wants to meet me
+  - - them
+    - i ordered 500 more. on purpose this time
+  tags:
+  - text story
+  - grandpa
+  - funny texts
+  - wholesome
+  - storytime
+- id: diary-red-pen-corrections
+  title: Someone is reading my diary... and CORRECTING it 📓
+  contact: Kai (best friend)
+  me: young_female
+  them: young_male
+  messages:
+  - - me
+    - someone is reading my diary
+  - - them
+    - how do you know
+  - - me
+    - there are notes in it. in red pen
+  - - them
+    - WHAT notes
+  - - me
+    - they corrected my spelling
+  - - them
+    - that's terrifying
+  - - me
+    - i wrote definately and someone fixed it
+  - - them
+    - to be fair it's definitely
+  - - me
+    - KAI
+  - - them
+    - sorry. who has access to your room
+  - - me
+    - my mom, my dad, and the cat
+  - - them
+    - cats can't spell
+  - - me
+    - dad can't either honestly
+  - - them
+    - so it's your mom
+  - - me
+    - she's an english teacher
+  - - them
+    - case closed
+  - - me
+    - there's more. at the bottom of yesterday's page
+  - - them
+    - what does it say
+  - - me
+    - the boy you wrote about seems nice. invite him for dinner
+  - - them
+    - wait. which boy did you write about
+  - - me
+    - nobody. go to sleep
+  - - them
+    - is it me
+  tags:
+  - text story
+  - funny texts
+  - mom
+  - crush
+  - storytime
+- id: son-florist-roses
+  title: 30 roses showed up on our porch with a mystery note 🌹
+  contact: Sarah (wife)
+  me: male
+  them: female
+  messages:
+  - - them
+    - did you send me flowers?
+  - - me
+    - no. why
+  - - them
+    - there are thirty roses on the porch
+  - - me
+    - thirty?
+  - - them
+    - with a note. for the best woman in the world
+  - - me
+    - that wasn't me. i'm a little worried now
+  - - them
+    - the handwriting is very messy
+  - - me
+    - like a doctor?
+  - - them
+    - like a six year old
+  - - me
+    - where's sam?
+  - - them
+    - in his room. very quiet
+  - - me
+    - check his toy shelf
+  - - them
+    - it's empty
+  - - them
+    - all his toy cars are gone
+  - - me
+    - the flower shop at the corner. he asked me about it last week
+  - - them
+    - i just called them
+  - - them
+    - he traded his cars for roses. one car per rose
+  - - me
+    - oh no. he loved those cars
+  - - them
+    - the florist is keeping them safe. she says he can have them back
+  - - me
+    - we're paying for those roses
+  - - them
+    - already did. and i'm keeping the note forever
+  tags:
+  - text story
+  - wholesome
+  - kids
+  - family
+  - storytime
