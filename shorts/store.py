@@ -24,6 +24,8 @@ QUEUE_HEADER = """\
 #   dialogue      a conversation: list of [speaker, line]; speakers are the
 #                 characters in config.yaml (aim for 35-55 seconds, ~100-140 words)
 #   script        OR: one narrator reads this text instead of a dialogue
+#   shots         stickman stories (format: stickman): list of scenes, each with
+#                 what the narrator says; see shorts/stick/README.md
 #   search_terms  words used to find matching stock footage, one per scene
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
@@ -113,6 +115,10 @@ def validate_queue(items: list[dict]) -> list[str]:
         seen.add(item.get("id"))
         if len(str(item.get("title", ""))) > 100:
             problems.append(f"{label}: title is longer than 100 characters")
+        if item.get("shots"):
+            from .stick.check import problems as story_problems
+            problems += [f"{label}: {p}" for p in story_problems(item)]
+            continue
         dialogue = item.get("dialogue") or []
         texts = item.get("messages") or []
         if not dialogue and not texts and not str(item.get("script", "")).strip():

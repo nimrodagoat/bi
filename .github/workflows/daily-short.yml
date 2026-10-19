@@ -54,7 +54,7 @@ jobs:
         if: steps.due.outputs.count != '0'
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core libegl1 libgl1-mesa-dri
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core libegl1 libgl1-mesa-dri libcairo2-dev pkg-config
 
       - name: Install Python packages
         if: steps.due.outputs.count != '0'

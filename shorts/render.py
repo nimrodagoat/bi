@@ -29,6 +29,9 @@ def dialogue_lines(item: dict) -> list[tuple[str, str]]:
 
 
 def spoken_text(item: dict) -> str:
+    if item.get("shots"):
+        from .stick.episode import spoken_text as story_text
+        return story_text(item)
     lines = dialogue_lines(item) or chat.messages(item)
     if lines:
         return " ".join(text for _, text in lines)
@@ -115,6 +118,9 @@ def pick_music(item: dict, cfg: dict) -> Path | None:
 
 
 def render(item: dict, out_path: Path, work_dir: Path, cfg: dict) -> Path:
+    if item.get("shots"):  # animated stickman story
+        from .stick import episode
+        return episode.render(item, out_path, work_dir, cfg)
     work_dir.mkdir(parents=True, exist_ok=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     v = cfg.get("video", {})

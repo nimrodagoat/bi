@@ -19,6 +19,16 @@ a twist or punchline at the end; mix suspense-with-a-twist, comedy and wholesome
 all original (never copy other channels' stories); no emoji inside messages (the
 font can't draw them; titles may have one).
 
+New format in testing (owner asked for it on Oct 19; not in the queue until they
+approve the test video): **stickman stories** (`format: stickman`, `shots:`),
+an original animated survival series in the style of an example reel the owner
+sent: day counter + clock + place + light meter in the corner, numbered rules,
+inventory board, radio, blueprint map, cliffhanger "X or Y? comment below",
+"follow for day N+1". Engine and options: `shorts/stick/README.md`; draft
+episodes in `content/drafts/`. Series so far: BLACKOUT (lights died at 9 PM,
+creatures that avoid light, neighbor Mrs. Alvarez taken; Day 1 ends with her
+voice calling your name). Keep every series original.
+
 Older formats still work and are archived in `content/archive/`: cartoon duos
 (Dave & Pip, Grug & Nova; `dialogue:` entries, art in `assets/characters/`,
 regenerate with `tools/characters.mjs` → `tools/sticker.py` → `tools/design_sheet.py`),

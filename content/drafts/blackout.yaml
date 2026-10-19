@@ -1,0 +1,132 @@
+- id: blackout-day-1
+  format: stickman
+  series: BLACKOUT
+  day: 1
+  place: APT 6B
+  title: "Every light in the city died at 9 PM. Day 1 🔦"
+  tags: [stickman, animation, horror, survival, blackout, story]
+  shots:
+    - scene: hallway
+      time: "9:00 PM"
+      lights: dying
+      off: dies
+      say: "At nine PM, every light in the city dies. All at once."
+    - scene: peephole
+      time: "9:01 PM"
+      lights: "off"
+      dark: 0.82
+      rolling: {from: 1.2, to: 4.6}
+      figures: [{who: creature, z: 8.2, x: 0.25, cue: without}]
+      say: "Through your peephole, you watch Mrs. Alvarez's flashlight roll down the hallway... without her."
+    - scene: title
+      say: "Blackout. Day one."
+    - scene: room
+      time: "9:14 PM"
+      dark: 0.8
+      light: 100
+      rule: {n: 1, text: Keep a light on}
+      you: {x: 0.5, light: true, aim: -0.05}
+      say: "Rule number one. Keep a light on. Whatever took her... won't step into it."
+    - scene: room
+      time: "10:02 PM"
+      dark: 0.84
+      light: 96
+      camera: {zoom: [1.05, 1.15], focus: [0.4, 0.55]}
+      you: {x: 0.55, light: true, aim: 0.1, facing: -1}
+      creatures:
+        - {x: 0.1, facing: 1, cue: edge}
+        - {x: 0.86, facing: -1, cue: tall, scale: 1.1}
+      say: "You see them at the edge of the beam. Tall. Thin. Waiting for it to die."
+    - scene: inventory
+      time: "11:40 PM"
+      light: 94
+      rule: {n: 2, text: Count your light}
+      items:
+        - {icon: flashlight, count: 2, label: flashlights, cue: flashlights}
+        - {icon: battery, count: 11, label: batteries, cue: batteries}
+        - {icon: candle, count: 6, label: candles, cue: candles}
+        - {icon: matches, count: 1, label: matches, cue: matches}
+      total: {text: "= 2 nights", cue: nights}
+      say: "Rule number two. Count your light. Two flashlights. Eleven batteries. Six candles. One box of matches. That's two nights, if you're careful."
+    - scene: radio
+      time: "12:00 AM"
+      light: 92
+      on: crackles
+      chip: {text: "Shelter · Stadium · 6:00 AM", cue: doors, y: 470}
+      say:
+        - "At midnight, the radio crackles."
+        - radio: "Emergency shelter at Northgate Stadium. Floodlights on generators. Doors close at six AM."
+    - scene: map
+      time: "12:03 AM"
+      light: 92
+      route: [[0.08, 0.95], [0.08, 0.62], [0.55, 0.62], [0.55, 0.22], [0.92, 0.22], [0.92, 0.04]]
+      route_cue: stadium
+      route_end: away
+      target: {label: "Northgate Stadium", cue: stadium}
+      bracket: {label: 9 blocks, cue: nine}
+      lamps: {cue: dead}
+      danger:
+        - {x: 0.3, y: 0.62, r: 0.1, cue: dead}
+        - {x: 0.55, y: 0.4, r: 0.09, cue: dead}
+        - {x: 0.75, y: 0.22, r: 0.1, cue: dead}
+      say: "The stadium is nine blocks away. Every streetlight between you and it... is dead."
+    - scene: room
+      time: "4:50 AM"
+      dark: 0.8
+      light: 70
+      rule: {n: 3, text: Light first. Then step.}
+      barricade: {start: 0.4, end: "end-1", remove: true}
+      you: {x: 0.6, action: push, facing: 1, light: false}
+      say: "Rule number three. Never step where your light hasn't been first."
+    - scene: street
+      time: "5:02 AM"
+      place: 4TH AVE
+      light: 64
+      pace: walk
+      lurkers: 3
+      say: "At five AM, you step outside. One sweep of light. One step."
+    - scene: street
+      time: "5:21 AM"
+      place: 7TH AVE
+      light: [40, 24]
+      pace: walk
+      speed: 220
+      offset: 2400
+      lurkers: 4
+      counter:
+        - {text: "4", label: blocks, cue: four}
+        - {text: "5", label: blocks, cue: five}
+        - {text: "6", label: blocks, cue: six}
+      say: "Four blocks. Five. Six."
+    - scene: closeup
+      time: "5:33 AM"
+      place: 7TH AVE
+      light: [14, 5]
+      flicker: flickers
+      say: "Then your flashlight flickers."
+    - scene: street
+      time: "5:34 AM"
+      place: 7TH AVE
+      light: 0
+      pace: walk
+      stop: 0.2
+      offset: 5200
+      lurkers: 4
+      dies: 0.1
+      eyes: {cue: dark, n: 30}
+      heartbeat: 0.0
+      shake_at: [voice]
+      say: "And somewhere in the dark... someone calls your name. In Mrs. Alvarez's voice."
+    - scene: choice
+      time: "5:35 AM"
+      light: 0
+      base: {scene: street, pace: walk, stop: 0.0, offset: 5300, lurkers: 4, dies: 0.0, eyes: {cue: 0, n: 30}}
+      question: "Swap or run?"
+      options:
+        - {text: Swap, cue: change}
+        - {text: Run, cue: run}
+      say: "Do you stop to change the batteries... or do you run?"
+    - scene: endcard
+      time: "5:35 AM"
+      hold: 1.6
+      say: "Follow for day two."

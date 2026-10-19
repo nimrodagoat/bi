@@ -50,6 +50,8 @@ def build_metadata(item: dict, cfg: dict) -> dict:
         kept.append(t)
 
     up = cfg.get("upload", {})
+    if item.get("shots"):  # stickman stories have their own hashtags
+        up = {**up, **(cfg.get("stickman", {}).get("upload") or {})}
     plain_title = title
     # A couple of hashtags in the title too, when they fit.
     for tag in up.get("title_hashtags", []):
@@ -57,7 +59,7 @@ def build_metadata(item: dict, cfg: dict) -> dict:
             title = f"{title} #{tag}"
 
     description = item.get("description")
-    if not description and (item.get("dialogue") or item.get("messages")):
+    if not description and (item.get("dialogue") or item.get("messages") or item.get("shots")):
         description = plain_title  # a dialogue's first line reads oddly out of context
     if not description:
         sentences = re.split(r"(?<=[.!?])\s+", spoken_text(item))
