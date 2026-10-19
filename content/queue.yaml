@@ -1477,3 +1477,321 @@
   - kids
   - family
   - storytime
+- id: garden-hose-at-2am
+  title: Someone turns on our garden hose every night at 2am 🎃
+  contact: Dad
+  me: young_female
+  them: deep_male
+  messages:
+  - - me
+    - dad the water bill came. it's three times higher
+  - - them
+    - that's strange
+  - - me
+    - and i heard the garden hose running last night. at 2am
+  - - them
+    - probably the neighbors
+  - - me
+    - it's OUR hose. the grass was soaked this morning
+  - - them
+    - very strange
+  - - me
+    - i'm checking the doorbell camera
+  - - them
+    - no need. i'll look into it
+  - - me
+    - too late. someone in a hoodie with a flashlight
+  - - me
+    - walking to the back of the garden
+  - - them
+    - could be anyone
+  - - me
+    - the hoodie says world's best dad
+  - - them
+    - ok
+  - - me
+    - DAD what is at the back of the garden
+  - - them
+    - come see. but don't tell your mother
+  - - me
+    - oh my gosh
+  - - me
+    - why is there a pumpkin the size of a car
+  - - them
+    - his name is big ron
+  - - them
+    - the town contest is on saturday. he needs 200 liters a night
+  - - me
+    - that explains the bill
+  - - them
+    - if he wins, the prize pays for the water
+  - - me
+    - fine. i'm on night shift tomorrow
+  tags:
+  - text story
+  - dad
+  - halloween
+  - plot twist
+  - storytime
+- id: tiny-portions-fancy-date
+  title: My brother took his date to a fancy restaurant and panicked 🍽️
+  contact: Ryan (brother)
+  me: young_female
+  them: young_male
+  messages:
+  - - them
+    - help. i'm at the fancy restaurant
+  - - me
+    - how's the date going
+  - - them
+    - good. but the food is very small
+  - - me
+    - it's fine dining. it's supposed to be small
+  - - them
+    - my steak is the size of a stamp
+  - - me
+    - just eat slowly
+  - - them
+    - i ate it in one bite. she saw
+  - - me
+    - ryan
+  - - them
+    - now they brought a foam. just foam. on a spoon
+  - - me
+    - what flavor
+  - - them
+    - the waiter said it's the idea of a carrot
+  - - me
+    - i'm crying
+  - - them
+    - the bill is 140 dollars and i'm starving
+  - - me
+    - be honest with her
+  - - them
+    - ok i told her i'm still hungry
+  - - me
+    - and?
+  - - them
+    - she laughed so hard she snorted
+  - - them
+    - she said she's starving too
+  - - me
+    - so what now
+  - - them
+    - we're at the burger place across the street
+  - - them
+    - she ordered two burgers. i think i'm in love
+  tags:
+  - text story
+  - dating
+  - funny texts
+  - siblings
+  - storytime
+- id: tooth-fairy-phone
+  title: My daughter texted the Tooth Fairy... and I'm the Tooth Fairy 🧚
+  contact: Mia (age 7)
+  me: male
+  them: young_female
+  messages:
+  - - them
+    - hello is this the tooth fairy
+  - - me
+    - yes. this is the tooth fairy. hello mia
+  - - them
+    - how do you know my name
+  - - me
+    - i know every child with a wiggly tooth
+  - - them
+    - wow. i have a question
+  - - me
+    - of course
+  - - them
+    - how much do you pay for a tooth
+  - - me
+    - it depends. how clean is it
+  - - them
+    - very clean. i brushed it after it fell out
+  - - me
+    - that's very professional
+  - - them
+    - can you give my money to someone else
+  - - me
+    - who?
+  - - them
+    - ella in my class. her tooth fell out at the park and she lost it
+  - - them
+    - she cried. she thinks you won't come
+  - - me
+    - that's very kind of you mia
+  - - them
+    - can you give her my coin
+  - - me
+    - i have a better idea. you both get one
+  - - them
+    - really?
+  - - me
+    - fairies have extra coins for kind kids
+  - - them
+    - thank you tooth fairy. also why is your number in dad's phone
+  tags:
+  - text story
+  - wholesome
+  - kids
+  - dad
+  - storytime
+- id: grandma-doorbell-camera
+  title: My neighbor's doorbell started YELLING at me 🔔
+  contact: Mrs. Hill (next door)
+  me: male
+  them: female
+  messages:
+  - - me
+    - hi mrs hill. are you home?
+  - - them
+    - no dear, i'm in florida visiting my sister
+  - - me
+    - then why did your doorbell just yell at me
+  - - them
+    - oh that was me
+  - - me
+    - you?
+  - - them
+    - my grandson set up the camera app. i can talk through it
+  - - me
+    - you told me to stop touching your pumpkins
+  - - them
+    - you were touching my pumpkins
+  - - me
+    - i was putting your package next to them
+  - - them
+    - oh. thank you dear
+  - - me
+    - also you yelled at the mailman
+  - - them
+    - he was late
+  - - me
+    - and a squirrel
+  - - them
+    - that squirrel knows what he did
+  - - me
+    - mrs hill how many hours a day do you watch the camera
+  - - them
+    - only from breakfast to dinner
+  - - me
+    - that's all day
+  - - them
+    - florida is very boring. my sister naps a lot
+  - - me
+    - do you want me to just come over and chat on the camera
+  - - them
+    - yes please. bring tea. and tell that squirrel i'm watching
+  tags:
+  - text story
+  - neighbors
+  - funny texts
+  - grandma
+  - storytime
+- id: fridge-magnet-messages
+  title: Someone keeps leaving messages with my fridge magnets 🧲
+  contact: Rosa (cleaner)
+  me: young_male
+  them: female
+  messages:
+  - - me
+    - hi rosa, weird question. did you move my fridge magnets
+  - - them
+    - why do you ask
+  - - me
+    - every tuesday they spell something
+  - - me
+    - last week it said you can do it
+  - - them
+    - that's interesting
+  - - me
+    - the week before it said drink water
+  - - them
+    - good advice
+  - - me
+    - today it says big day friday
+  - - them
+    - is it a big day friday?
+  - - me
+    - it's my final exam. how does the fridge know
+  - - them
+    - maybe the fridge reads your calendar
+  - - me
+    - my calendar is on the fridge
+  - - them
+    - then the fridge is very smart
+  - - me
+    - rosa it's you isn't it
+  - - them
+    - ok it's me
+  - - them
+    - my son had exams last year. he was so stressed
+  - - them
+    - the magnets made him smile. so i do it for you too
+  - - me
+    - that's honestly the nicest thing ever
+  - - them
+    - now go study. the fridge is watching
+  - - me
+    - update. i passed. the fridge says proud of you
+  tags:
+  - text story
+  - wholesome
+  - exams
+  - kindness
+  - storytime
+- id: dad-same-job-interview
+  title: My retired dad showed up at MY job interview 💼
+  contact: Dad
+  me: young_female
+  them: old_male
+  messages:
+  - - me
+    - dad why are you in the lobby of my interview
+  - - them
+    - i could ask you the same thing
+  - - me
+    - i have an interview at 10 for the marketing job
+  - - them
+    - i have one at 10:30. for the internship
+  - - me
+    - an INTERNSHIP? you're 67
+  - - them
+    - retirement is boring. your mother says i talk to the plants
+  - - me
+    - do you
+  - - them
+    - they're good listeners
+  - - me
+    - please don't tell them you're my dad
+  - - them
+    - too late. i told the receptionist. she gave me a cookie
+  - - me
+    - dad
+  - - them
+    - good luck sweetheart. you've got this
+  - - me
+    - update. i got the job
+  - - them
+    - so did i
+  - - me
+    - wait what
+  - - them
+    - i'm the new marketing intern
+  - - me
+    - so you work for my team
+  - - them
+    - i work FOR you. you're my boss
+  - - me
+    - this is the weirdest day of my life
+  - - them
+    - first question boss. can i bring a plant for my desk
+  tags:
+  - text story
+  - dad
+  - work
+  - funny texts
+  - storytime
