@@ -14,6 +14,9 @@ schedule:
   # passed but isn't posted yet, so late or skipped GitHub runs catch up.
   # 08:37 UTC = 10:37 in Hungary in summer (09:37 in winter).
   slots_utc: ["08:37", "11:37", "14:37", "17:37", "20:37", "23:37"]
+  # Stickman series (owner, Oct 19): one part every 6 hours instead of the slots
+  # above. Remove this line to go back to the slots.
+  every_hours: 6
   # At most this many uploads per YouTube quota day (the free quota allows ~6;
   # it resets at midnight California time).
   max_per_day: 6
@@ -247,11 +250,11 @@ stickman:
   narrator: narrator
   voices:
     narrator:
-      engines: [kokoro, edge]
-      kokoro_voice: am_onyx
-      kokoro_speed: 0.92
+      engines: [edge, kokoro]
       edge_voice: en-US-ChristopherNeural
-      edge_rate: "-6%"
+      edge_rate: "-4%"
+      kokoro_voice: am_michael
+      kokoro_speed: 1.0
   drone_volume: 0.09
   upload:
     hashtags: [stickman, animation, stickmananimation, horror, survival, story, scary]

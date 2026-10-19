@@ -138,7 +138,7 @@ def _pause_after(sentence: str) -> float:
     return PAUSE_SENTENCE
 
 
-def _load_audio(path: Path) -> np.ndarray:
+def _load_audio(path: Path) -> tuple[np.ndarray, float]:
     out = subprocess.run(
         ["ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le", "-ac", "1", "-ar", str(sound.SR), "-"],
         check=True, capture_output=True,
@@ -147,19 +147,23 @@ def _load_audio(path: Path) -> np.ndarray:
     # trim leading/trailing silence so pauses are ours to decide
     thr = 0.01 * (np.max(np.abs(x)) or 1)
     idx = np.nonzero(np.abs(x) > thr)[0]
+    lead = 0.0
     if len(idx):
         a = max(idx[0] - int(0.02 * sound.SR), 0)
         b = min(idx[-1] + int(0.06 * sound.SR), len(x))
         x = x[a:b]
-    return x
+        lead = a / sound.SR
+    return x, lead
 
 
 def _speak(text: str, work: Path, cfg: dict, voice: dict, name: str) -> tuple[np.ndarray, list[tts.Word]]:
     path, words = tts.synthesize(text, work, cfg, voice=voice, name=name)
-    raw = _load_audio(path)
+    raw, lead = _load_audio(path)
     full = len(raw) / sound.SR
-    # word timings were measured on the untrimmed audio; rescale to the trimmed one
+    # word timings were measured on the untrimmed audio: shift them by the
+    # silence we cut off the front, and squeeze them in if they overrun
     if words:
+        words = [tts.Word(w.text, max(w.start - lead, 0.0), max(w.end - lead, 0.0)) for w in words]
         span = max(words[-1].end, 1e-3)
         k = full / span if span > full else 1.0
         words = [tts.Word(w.text, w.start * k, w.end * k) for w in words]
