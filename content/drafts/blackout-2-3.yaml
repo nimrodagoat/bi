@@ -1,0 +1,224 @@
+- id: blackout-day-2
+  format: stickman
+  series: BLACKOUT
+  day: 2
+  place: 7TH AVE
+  title: "Something called my name in my neighbor's voice. Day 2 🔦"
+  tags: [stickman, animation, horror, survival, blackout, story]
+  shots:
+    - scene: closeup
+      time: "5:34 AM"
+      light: 0
+      dies: 0
+      relight: click
+      eyes: 7
+      eyes_cue: 0
+      say: "You swap the batteries in the dark. Your hands shake. You drop one... and you don't look for it."
+    - scene: street
+      time: "5:35 AM"
+      light: 100
+      pace: walk
+      stop: 0.0
+      offset: 5300
+      lurkers: 4
+      dies: 0
+      relight: click
+      eyes: {cue: 0, n: 30}
+      say: "Click. The light comes back... and every pair of eyes slides back into the dark."
+    - scene: title
+      say: "Blackout. Day two."
+    - scene: street
+      time: "5:38 AM"
+      light: 92
+      pace: walk
+      offset: 5600
+      lurkers: 4
+      rule: {n: 4, text: Never answer them}
+      heartbeat: still
+      say: "Rule number four. Never answer them. Mrs. Alvarez is still calling. She says she's hurt. She says she's cold. She says your name... too slowly."
+    - scene: inventory
+      time: "5:41 AM"
+      light: 88
+      items:
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+        - {icon: battery, count: 9, label: batteries, cue: nine}
+        - {icon: candle, count: 6, label: candles, cue: candles}
+      total: {text: "= 1 night", cue: night}
+      say: "You count again while you walk. One flashlight. Nine batteries. Six candles. One night of light. Maybe."
+    - scene: map
+      time: "5:44 AM"
+      place: 8TH AVE
+      route: [[0.3, 0.9], [0.3, 0.62], [0.08, 0.62], [0.08, 0.22], [0.55, 0.22], [0.55, 0.04]]
+      route_cue: only
+      route_end: garage
+      target: {label: "Northgate Stadium", cue: two}
+      bracket: {label: 2 blocks, cue: two}
+      danger:
+        - {x: 0.55, y: 0.55, r: 0.16, n: 30, cue: ninth}
+        - {x: 0.8, y: 0.4, r: 0.1, cue: ninth}
+      x_marks: [{x: 0.55, y: 0.62, cue: full}]
+      say: "Two blocks left. But Ninth Street is full of them, standing under the dead streetlights. The only way around... is the parking garage."
+    - scene: hallway
+      time: "5:49 AM"
+      place: "GARAGE · P1"
+      light: 80
+      lights: flicker
+      dark: 0.85
+      wall: "#4f545b"
+      floor: "#26282c"
+      carpet: "#33363b"
+      ceiling: "#1c1e21"
+      exit_color: "#27d466"
+      say: "Inside, one emergency light still works. It flickers every few seconds."
+    - scene: hallway
+      time: "5:51 AM"
+      light: 76
+      lights: flicker
+      dark: 0.85
+      wall: "#4f545b"
+      floor: "#26282c"
+      carpet: "#33363b"
+      ceiling: "#1c1e21"
+      exit_color: "#27d466"
+      rule: {n: 5, text: When it flickers freeze}
+      figures:
+        - {who: creature, z: 8.5, to_z: 5.5, x: -0.3, cue: closer}
+        - {who: creature, z: 8.0, to_z: 4.8, x: 0.35, cue: closer}
+      say: "Rule number five. When it flickers, freeze. Because every time it comes back... they're closer."
+    - scene: choice
+      time: "5:55 AM"
+      light: 72
+      base:
+        scene: hallway
+        lights: flicker
+        dark: 0.85
+        wall: "#4f545b"
+        floor: "#26282c"
+        carpet: "#33363b"
+        ceiling: "#1c1e21"
+        exit_color: "#27d466"
+        figures:
+          - {who: creature, z: 4.2, x: -0.3}
+          - {who: creature, z: 3.6, x: 0.35}
+      question: "Run or wait?"
+      options:
+        - {text: Run, cue: run}
+        - {text: Wait, cue: wait}
+      say: "The exit is twenty steps away. The stadium doors close in five minutes. Do you run for it... or wait for the light?"
+    - scene: endcard
+      time: "5:55 AM"
+      hold: 1.6
+      say: "Follow for day three."
+
+- id: blackout-day-3
+  format: stickman
+  series: BLACKOUT
+  day: 3
+  place: "GARAGE · P1"
+  title: "We made it to the safe zone... then I saw HER. Day 3 🔦"
+  tags: [stickman, animation, horror, survival, blackout, story]
+  shots:
+    - scene: hallway
+      time: "5:56 AM"
+      light: 70
+      lights: flicker
+      dark: 0.85
+      wall: "#4f545b"
+      floor: "#26282c"
+      carpet: "#33363b"
+      ceiling: "#1c1e21"
+      exit_color: "#27d466"
+      camera: {zoom: [1.0, 1.9], focus: [0.5, 0.45]}
+      figures:
+        - {who: creature, z: 3.0, x: -0.4, action: reach}
+        - {who: creature, z: 2.6, x: 0.45, action: reach}
+      heartbeat: 0
+      say: "You run. Twenty steps. Fifteen. Ten."
+    - scene: street
+      time: "5:57 AM"
+      place: 9TH AVE
+      light: 66
+      pace: run
+      chasers: {n: 3, cue: behind}
+      floodlights: floodlights
+      say: "Out of the exit, onto Ninth. Behind you, the dark starts running too. Then you see them. The floodlights."
+    - scene: title
+      say: "Blackout. Day three."
+    - scene: hallway
+      time: "6:00 AM"
+      place: NORTHGATE STADIUM
+      light: 64
+      lights: "on"
+      wall: "#6b7079"
+      floor: "#3a3d42"
+      carpet: "#2e6b3c"
+      ceiling: "#2b2e33"
+      exit_color: "#27d466"
+      figures:
+        - {who: person, z: 2.6, x: -0.55, facing: 1}
+        - {who: person, z: 3.4, x: 0.5, facing: -1}
+        - {who: person, z: 4.6, x: -0.2, facing: 1}
+        - {who: person, z: 6.0, x: 0.3, facing: -1}
+      say: "You slip through the gate at six AM exactly. It locks behind you. Hundreds of people. All standing in the light."
+    - scene: inventory
+      time: "8:20 AM"
+      light: 64
+      rule: {n: 6, text: Stay in the light}
+      items:
+        - {icon: can, count: 4, label: fuel cans, cue: four}
+      total: {text: "= 12 hours", cue: twelve}
+      say: "Rule number six. Stay in the light. Always. The generators have four cans of fuel left. Twelve hours of light."
+    - scene: radio
+      time: "12:00 PM"
+      light: 64
+      on: crackles
+      chip: {text: "Power back · 3 days", cue: three, y: 470}
+      say:
+        - "At noon, the radio crackles again."
+        - radio: "Power restoration expected in three days."
+    - scene: hallway
+      time: "12:14 PM"
+      lights: "on"
+      wall: "#6b7079"
+      floor: "#3a3d42"
+      carpet: "#2e6b3c"
+      ceiling: "#2b2e33"
+      exit_color: "#27d466"
+      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.45]}
+      figures:
+        - {who: person, z: 5.2, x: 0.0, facing: -1, cue: see, stare: true}
+      say: "Then, by the north gate, you see her. Mrs. Alvarez. Alive. Smiling."
+    - scene: hallway
+      time: "12:15 PM"
+      lights: "on"
+      wall: "#6b7079"
+      floor: "#3a3d42"
+      carpet: "#2e6b3c"
+      ceiling: "#2b2e33"
+      exit_color: "#27d466"
+      camera: {zoom: [1.25, 1.7], focus: [0.5, 0.45]}
+      figures:
+        - {who: person, z: 4.4, x: 0.0, facing: -1, stare: true}
+      heartbeat: 0
+      say: "She's standing right at the edge of the light. And she hasn't blinked... not once."
+    - scene: choice
+      time: "12:16 PM"
+      base:
+        scene: hallway
+        lights: "on"
+        wall: "#6b7079"
+        floor: "#3a3d42"
+        carpet: "#2e6b3c"
+        ceiling: "#2b2e33"
+        exit_color: "#27d466"
+        figures: [{who: person, z: 3.8, x: 0.0, facing: -1, stare: true}]
+      question: "Tell or watch?"
+      options:
+        - {text: Tell, cue: tell}
+        - {text: Watch, cue: watch}
+      say: "Do you tell the guards... or keep quiet and watch her?"
+    - scene: endcard
+      time: "12:16 PM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."

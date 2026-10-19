@@ -48,7 +48,9 @@ def fill(ctx, pts, color, alpha=1.0):
 
 
 def light_strength(shot, t: float) -> float:
-    f, d = shot.get("flicker"), shot.get("dies")
+    f, d, r = shot.get("flicker"), shot.get("dies"), shot.get("relight")
+    if r is not None and t >= shot.cue(r, 1e9):
+        return 1.0
     if f is None and d is None:
         return 1.0
     dt = shot.cue(d, 1e9) if d is not None else 1e9
@@ -252,7 +254,9 @@ def hallway(cv, shot, t):
     ctx = cv.ctx
     o = shot.spec
     lights = o.get("lights", "on")
-    wall, floor, carpet, ceil = o.get("wall", "#33554e"), "#2a2420", "#742424", "#222a28"
+    wall, floor = o.get("wall", "#33554e"), o.get("floor", "#2a2420")
+    carpet, ceil = o.get("carpet", "#742424"), o.get("ceiling", "#222a28")
+    exit_col = o.get("exit_color", "#ff2a1a")
     zs = [Z0 * (ZF / Z0) ** (k / 16) for k in range(17)]
     for za, zb in zip(zs[:-1], zs[1:]):
         k = 1 / (1 + 0.17 * (za - Z0))
@@ -272,9 +276,9 @@ def hallway(cv, shot, t):
     ctx.set_source_rgba(*shade(wall, 0.35), 1)
     ctx.fill()
     ex, ey = proj(0, 0.85, ZF)
-    glow(ctx, ex, ey, 60, "#ff2a1a", 0.6)
+    glow(ctx, ex, ey, 60, exit_col, 0.6)
     ctx.rectangle(ex - 16, ey - 7, 32, 14)
-    set_color(ctx, "#ff4a3a")
+    set_color(ctx, exit_col)
     ctx.fill()
     # doors
     open_doors = o.get("open_doors") or []
@@ -346,7 +350,7 @@ def hallway(cv, shot, t):
         s = 2.2 / z
         props.torch_icon(ctx, px, py, 90 * s)
         beam = (px, py, -0.15 + 0.6 * math.sin(spin))
-    figures = []
+    figures, stares = [], []
     for k, f in enumerate(o.get("figures") or []):
         if t < shot.cue(f.get("cue"), 0.0):
             continue
@@ -364,7 +368,9 @@ def hallway(cv, shot, t):
             j = F.draw_creature(ctx, pose, fx, gy, sc, facing, eye_alpha=0 if lights != "on" else 1)
             figures.append((j, sc, facing))
         else:
-            F.draw_stickman(ctx, pose, fx, gy, sc, facing)
+            pj = F.draw_stickman(ctx, pose, fx, gy, sc, facing)
+            if f.get("stare"):
+                stares.append((pj, sc, facing))
     if lights != "on":
         d = cv.dark
         d.begin(ctx.get_matrix(), float(o.get("dark", 0.8)))
@@ -378,9 +384,11 @@ def hallway(cv, shot, t):
         d.apply(ctx)
         if beam:
             beam_tint(ctx, beam[0], beam[1], beam[2], 520, 0.32, 0.12)
-        glow(ctx, ex, ey, 70, "#ff2a1a", 0.45)
+        glow(ctx, ex, ey, 70, exit_col, 0.45)
         for j, sc, facing in figures:
             creature_eyes(ctx, j, sc, facing)
+    for j, sc, facing in stares:  # a person whose eyes shine like theirs
+        eyes(ctx, j.head[0] + 4 * sc * facing, j.head[1] - 2 * sc, 3.2 * sc, 0.9, gap=11 * sc)
 
 
 # ------------------------------------------------------------------ peephole
@@ -789,10 +797,25 @@ def street(cv, shot, t):
     if pace == "run" and moving and you.get("light_running", True) is not False:
         hand = j.hand_f
         beam = (hand[0] + 30, hand[1], -0.05 + 0.1 * math.sin(t * 9))
+    fl = o.get("floodlights")
+    flood = 0.0
+    if fl is not None:
+        flood = ease_out((t - shot.cue(fl, 0.0)) / 1.2)
+    extra = [("radial", 830, 380, 700, 0.35), ("radial", W / 2, base - 300, 1100, 0.22)]
+    if flood > 0:
+        extra.append(("radial", W + 120, base - 380, 1150, 0.95 * flood))
     if dark > 0:
-        _apply_dark(cv, shot, t, dark, beam, j, extra=[("radial", 830, 380, 700, 0.35), ("radial", W / 2, base - 300, 1100, 0.22)], beam_len=820, spread=0.27)
+        _apply_dark(cv, shot, t, dark, beam, j, extra=extra, beam_len=820, spread=0.27)
         for cj, sc, fc in lurkers + chasers:
             creature_eyes(ctx, cj, sc, fc)
+    if flood > 0:
+        for k in range(3):  # floodlight towers over the wall
+            fx = W - 40 + k * 90
+            stroke_line(ctx, [(fx, base - 120), (fx - 30, 420)], 8, "#3a3f4a", flood)
+            glow(ctx, fx - 30, 420, 260, "#ffffff", 0.55 * flood)
+            set_color(ctx, "#ffffff", flood)
+            ctx.arc(fx - 30, 420, 16, 0, 2 * math.pi)
+            ctx.fill()
     ey = o.get("eyes")
     if ey:
         at = shot.cue(ey.get("cue") if isinstance(ey, dict) else ey, 0.0)
@@ -805,7 +828,7 @@ def street(cv, shot, t):
             ex = (k * 211 + 70) % (W + 100) - 50
             eyy = 420 + (k * 137) % 900
             blink = 0.0 if math.sin(t * 1.3 + k * 2.7) > 0.985 else 1.0
-            eyes(ctx, ex + 6 * math.sin(t + k), eyy, 4 + (k % 3), a * blink)
+            eyes(ctx, ex + 6 * math.sin(t + k), eyy, 4 + (k % 3), a * blink * (1 - 0.85 * s_light))
 
 
 # ------------------------------------------------------------------ close-ups

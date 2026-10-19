@@ -382,7 +382,9 @@ def add_effects(shots: list[Shot], mix: sound.Mixer, total: float) -> None:
             at = shot.cue(shot.get("heartbeat"))
             mix.add(s + at, sfx.heartbeat(max(total - s - at, 1.0), 84, seed=i), 0.35)
         if sc == "endcard":
-            mix.add(shot.end - 1.0, sfx.boom(seed=77), 0.7)
+            mix.add(s + 0.9 if shot.get("final") else shot.end - 1.0, sfx.boom(seed=77), 0.7)
+        if shot.get("relight") is not None:
+            mix.add(s + shot.cue(shot.get("relight")), sfx.click(seed=i + 5), 0.7)
         for e in shot.get("sfx") or []:
             fn = sfx.EFFECTS.get(e.get("name"))
             if fn:

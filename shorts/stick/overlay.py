@@ -232,15 +232,24 @@ def draw_endcard(cv, shot, t):
     draw_surface(ctx, text(series, "title", 92, "#ece8e0", glow_color="#ffffff", glow_radius=5), W / 2, 560, alpha=a)
     from .episode import format_time
     hm, ap = format_time(shot.minutes_at(t))
+    final = bool(shot.get("final"))
+    if final:
+        switch = 1e9
     if t < switch:
         draw_surface(ctx, text(f"DAY {day}", "title", 230, "#f6f3ec", glow_color="#ffffff", glow_radius=10), W / 2, 720, alpha=a)
+        if final:
+            k = t - 0.9
+            if k > 0:
+                f = 1 if k > 0.35 else gfx.flicker(k, 4, 30)
+                draw_surface(ctx, text("THE END?", "title", 120, "#ff4436", glow_color=RED, glow_radius=10), W / 2, 1040, 1, f)
     else:
         k = t - switch
         f = 1 if k > 0.35 else gfx.flicker(k, 9, 30)
         draw_surface(ctx, text(f"DAY {day + 1}", "title", 230, "#ff4436", glow_color=RED, glow_radius=14),
                      W / 2, 720, 1 + 0.06 * (1 - ease_out(k / 0.3)), f)
     draw_surface(ctx, text(f"{hm} {ap}", "mono", 30, "#cfcac0", tracking=3), W / 2, 850, alpha=a)
-    pill(ctx, W / 2, 935, f"FOLLOW FOR DAY {day + 1}", "caption", 26, WHITE, "#2a0d0b", 0.9, border="#c0392b",
+    label = "FOLLOW FOR A NEW STORY" if final else f"FOLLOW FOR DAY {day + 1}"
+    pill(ctx, W / 2, 935, label, "caption", 26, WHITE, "#2a0d0b", 0.9, border="#c0392b",
          scale=back_out((t - 0.4) / 0.3), alpha=gfx.clamp((t - 0.4) / 0.15), pad_x=26, pad_y=12)
 
 
