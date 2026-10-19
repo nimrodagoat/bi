@@ -13,58 +13,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: grandma-dating-app-grandpa
-  title: Grandma asked me to help her reply to a man on a dating app 👵
-  contact: Grandma
-  me: young_female
-  them: female
-  messages:
-  - - them
-    - sweetheart i need help with an app
-  - - me
-    - sure grandma. which app
-  - - them
-    - a dating one
-  - - me
-    - GRANDMA. you're married
-  - - them
-    - i know. let me explain
-  - - them
-    - a man messaged me. he says i have a lovely smile
-  - - me
-    - grandma that's a scammer
-  - - them
-    - he says he likes gardening and old movies
-  - - me
-    - they always say that
-  - - them
-    - he says he's loved me since 1974
-  - - me
-    - wait what
-  - - them
-    - his name is harold
-  - - me
-    - grandpa's name is harold
-  - - them
-    - his photo is grandpa in his good tie
-  - - me
-    - so grandpa made a dating profile
-  - - them
-    - to ask me on a first date. again. after 50 years
-  - - me
-    - i'm not crying you're crying
-  - - them
-    - what do i reply
-  - - me
-    - say yes obviously
-  - - them
-    - i said yes. he's picking me up from the kitchen at 7
-  tags:
-  - text story
-  - grandparents
-  - wholesome
-  - dating app
-  - storytime
 - id: same-man-vacation-photos
   title: The same stranger is in ALL our family vacation photos 📷
   contact: Chloe (sister)
