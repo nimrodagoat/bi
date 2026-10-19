@@ -56,8 +56,13 @@ Cues (when something happens) are a word the narrator says in that shot
 - `closeup`: `object: flashlight|phone|alarm`.
 - `title`: series name + day over the previous picture.
 - `choice`: `question`, `options: [{text, cue}, {text, cue}]`, `base: {a scene to show behind}`.
-- `endcard`: "follow for day N+1"; flips to the next day at the end.
+- `endcard`: "follow for day N+1"; flips to the next day at the end. `final: true` on the
+  last part: "THE END?" and "follow for a new story".
 
-Any shot: `flicker: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,
+Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a garage or a
+stadium tunnel); a `who: person` figure can have `stare: true` (shining eyes).
+Street: `floodlights: cue` (bright lights ahead). Closeup flashlight: `eyes: N`, `eyes_cue`.
+
+Any shot: `fog: {top: 0.6, rise: [0.8, 0.5], cue, density, color}` (rolling fog), `flicker: cue`, `relight: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,
 `shake_at: [cue]`, `camera: {zoom: [1, 1.1], focus: [x, y], shift}`, `hold` (extra seconds),
 `sfx: [{name: knock|boom|hit|click|whoosh|tick, at: cue, gain}]`, `no_hud`.

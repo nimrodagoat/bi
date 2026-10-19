@@ -26,6 +26,44 @@ def scene(name):
 
 def paint(cv, shot, t: float) -> None:
     SCENES.get(shot.scene, SCENES["room"])(cv, shot, t)
+    if shot.get("fog"):
+        fog(cv.ctx, shot, t, shot.get("fog"))
+
+
+def fog(ctx, shot, t, spec):
+    """Rolling fog from the bottom of the frame up to `top` (share of the height).
+    `rise: [from, to]` moves the fog line during the shot."""
+    spec = spec if isinstance(spec, dict) else {}
+    top = float(spec.get("top", 0.6))
+    if spec.get("rise"):
+        a, b = spec["rise"]
+        start = shot.cue(spec.get("cue"), 0.0)
+        top = a + (b - a) * ease_in_out((t - start) / max(shot.dur - start, 0.1))
+    dens = float(spec.get("density", 0.7))
+    col = rgb(spec.get("color", "#9aa6b2"))
+    y0 = top * H
+    for k in range(4):
+        y = y0 + k * 70 + 18 * math.sin(t * 0.5 + k * 1.7)
+        g = cairo.LinearGradient(0, y - 160, 0, y + 140)
+        g.add_color_stop_rgba(0, *col, 0)
+        g.add_color_stop_rgba(1, *col, 0.22 * dens)
+        ctx.set_source(g)
+        ctx.rectangle(-400, y - 160, W + 800, H + 400 - y)
+        ctx.fill()
+    for k in range(9):  # drifting puffs along the fog line
+        x = ((k * 263 + t * (30 + 12 * (k % 3))) % (W + 700)) - 350
+        y = y0 + 40 + (k % 3) * 70
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.scale(1, 0.4)
+        r = 320 + 60 * (k % 4)
+        g = cairo.RadialGradient(0, 0, 0, 0, 0, r)
+        g.add_color_stop_rgba(0, *col, 0.28 * dens)
+        g.add_color_stop_rgba(1, *col, 0)
+        ctx.set_source(g)
+        ctx.arc(0, 0, r, 0, 2 * math.pi)
+        ctx.fill()
+        ctx.restore()
 
 
 # ------------------------------------------------------------------ shared helpers
