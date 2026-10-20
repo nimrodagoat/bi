@@ -36,9 +36,21 @@ def _times(posted: list[dict]) -> list[dt.datetime]:
     return out
 
 
+def _pauses(sched: dict) -> list[tuple[dt.datetime, dt.datetime]]:
+    """schedule.pauses_utc: [["2026-10-20 21:00", "2026-10-21 06:00"], ...]; nothing posts inside them."""
+    out = []
+    for a, b in sched.get("pauses_utc") or []:
+        f = "%Y-%m-%d %H:%M"
+        out.append((dt.datetime.strptime(str(a), f).replace(tzinfo=dt.timezone.utc),
+                    dt.datetime.strptime(str(b), f).replace(tzinfo=dt.timezone.utc)))
+    return out
+
+
 def due_now(cfg: dict, posted: list[dict], now: dt.datetime | None = None) -> int:
     now = now or dt.datetime.now(dt.timezone.utc)
     sched = cfg.get("schedule", {})
+    if any(a <= now < b for a, b in _pauses(sched)):
+        return 0
     start = quota_day_start(now)
     cap = sched.get("max_per_day", 6)
     every = sched.get("every_hours")
@@ -69,11 +81,17 @@ def seconds_until_due(cfg: dict, posted: list[dict], now: dt.datetime | None = N
     sched = cfg.get("schedule", {})
     every = sched.get("every_hours")
     times = _times(posted)
+    for a, b in _pauses(sched):
+        if a <= now < b:
+            return max(int((b - now).total_seconds()) + 30, 60)
     if every and times:
         nxt = max(times) + dt.timedelta(hours=float(every), minutes=-int(sched.get("early_minutes", 20)))
         start = quota_day_start(now)
         if nxt <= now:  # waiting on the daily cap: try again when the quota day turns over
             nxt = start + dt.timedelta(days=1, minutes=5)
+        for a, b in _pauses(sched):
+            if a <= nxt < b:
+                nxt = b
         return max(int((nxt - now).total_seconds()) + 30, 60)
     # slot mode: look again in a quarter of an hour
     return 900

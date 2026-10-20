@@ -17,6 +17,10 @@ schedule:
   # Stickman series (owner, Oct 19): one part every 6 hours instead of the slots
   # above. Remove this line to go back to the slots.
   every_hours: 6
+  # No uploads inside these windows (UTC). Owner, Oct 20: Night Shift part 1
+  # tonight, the rest from tomorrow (06:00 UTC = 8:00 in Hungary).
+  pauses_utc:
+    - ["2026-10-20 21:00", "2026-10-21 06:00"]
   # At most this many uploads per YouTube quota day (the free quota allows ~6;
   # it resets at midnight California time).
   max_per_day: 6
