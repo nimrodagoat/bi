@@ -61,5 +61,28 @@ def due_now(cfg: dict, posted: list[dict], now: dt.datetime | None = None) -> in
     return max(0, min(passed, cap) - done)
 
 
+def seconds_until_due(cfg: dict, posted: list[dict], now: dt.datetime | None = None) -> int:
+    """How long until the next video is due (0 = now). Used by the timer workflow."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    if due_now(cfg, posted, now):
+        return 0
+    sched = cfg.get("schedule", {})
+    every = sched.get("every_hours")
+    times = _times(posted)
+    if every and times:
+        nxt = max(times) + dt.timedelta(hours=float(every), minutes=-int(sched.get("early_minutes", 20)))
+        start = quota_day_start(now)
+        if nxt <= now:  # waiting on the daily cap: try again when the quota day turns over
+            nxt = start + dt.timedelta(days=1, minutes=5)
+        return max(int((nxt - now).total_seconds()) + 30, 60)
+    # slot mode: look again in a quarter of an hour
+    return 900
+
+
 if __name__ == "__main__":
-    print(due_now(store.load_config(), store.load_posted()))
+    import sys
+
+    if "--wait" in sys.argv:
+        print(seconds_until_due(store.load_config(), store.load_posted()))
+    else:
+        print(due_now(store.load_config(), store.load_posted()))

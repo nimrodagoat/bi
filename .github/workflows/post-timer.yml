@@ -1,0 +1,59 @@
+name: Post timer
+
+# GitHub often skips scheduled runs for hours, so this job keeps time itself:
+# it waits until the next video is due (schedule.every_hours after the last
+# upload), starts "Daily Short", then starts a fresh copy of itself. Only one
+# copy runs at a time. The cron line restarts the chain if it ever stops.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 */4 * * *"
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: post-timer
+  cancel-in-progress: false
+
+jobs:
+  wait-and-post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Wait until the next video is due
+        run: |
+          pip install -q PyYAML
+          git pull -q origin "${GITHUB_REF_NAME}"
+          WAIT=$(python -m shorts.schedule --wait)
+          # never sleep past the job's time limit; the next copy carries on
+          if [ "$WAIT" -gt 19800 ]; then WAIT=19800; fi
+          echo "Waiting $WAIT seconds"
+          sleep "$WAIT"
+
+      - name: Post it if it's still due
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git pull -q origin "${GITHUB_REF_NAME}"
+          if [ "$(python -m shorts.schedule)" != "0" ]; then
+            gh workflow run daily-short.yml --ref "${GITHUB_REF_NAME}" -f dry_run=false -f videos=auto
+            echo "Started Daily Short"
+          else
+            echo "Nothing due (already posted by another run)"
+          fi
+
+      - name: Start the next timer
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sleep 240  # let Daily Short record the upload before the next copy reads it
+          gh workflow run post-timer.yml --ref "${GITHUB_REF_NAME}"

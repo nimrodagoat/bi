@@ -14,9 +14,9 @@ on:
         type: boolean
         default: true
       videos:
-        description: "How many videos from the top of the queue to make (and post, if not a test)"
-        type: number
-        default: 1
+        description: "How many videos from the top of the queue to make (and post, if not a test); 'auto' = whatever is due"
+        type: string
+        default: "1"
 
 permissions:
   contents: write   # to record posted videos back into content/
@@ -41,7 +41,9 @@ jobs:
         id: due
         run: |
           pip install -q PyYAML
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          # read the latest upload log (a manual run starts from an older commit)
+          git pull -q origin "${GITHUB_REF_NAME}" || true
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.videos }}" = "auto" ]; then
             COUNT=$(python -m shorts.schedule)
           else
             COUNT="${{ inputs.videos }}"
