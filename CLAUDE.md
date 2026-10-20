@@ -22,17 +22,21 @@ font can't draw them; titles may have one).
 **Current format since Oct 19 (owner loved the test): stickman stories**
 (`format: stickman`, `shots:`): original animated survival series in the style
 of an example reel the owner sent: day counter + clock + place + meter in the
-corner, numbered rules, inventory board, radio, blueprint map, cliffhanger
-"X or Y? comment below", "follow for day N+1". 3 parts per series (Day 3 ends
-with a twist, `final: true`), every series a new story, one part every 6 hours
-(`schedule.every_hours: 6`), narrator Edge en-US-ChristopherNeural (the owner
-found the Kokoro voice glitchy). Stickman episodes sit at the top of the queue;
-the text stories below are paused fallback. Engine and options:
-`shorts/stick/README.md`; every series also saved in `content/drafts/`.
-Series so far: BLACKOUT (lights die, creatures avoid light; Mrs. Alvarez),
-FOG LINE (Gull Harbor fog takes people; "Mom" calling), SNOWBOUND (Pine Hollow
-Motel, room seven; you were the guest all along). Never reuse a premise; keep
-every series original (never copy other channels, e.g. "14 Floors Up").
+corner, numbered rules, inventory board, radio, blueprint map, CCTV feeds,
+cliffhanger "X or Y? comment below", "follow for day/night N+1". One part every
+6 hours (`schedule.every_hours: 6`; the "Post timer" workflow keeps time because
+GitHub skips scheduled runs). Rendered at 1080x1920, 60 fps, CRF 18, with soft
+crossfades between shots. Narrator: Edge en-US-AndrewMultilingualNeural (owner
+asked for a better voice twice: Kokoro was glitchy, Christopher was replaced).
+On Oct 20 the owner asked for higher quality and an easier-to-follow story:
+NIGHT SHIFT is 6 parts with one place, one job, the same cast every part, a
+one-line "previously" recap (`recap: true`) at the start of parts 2+, every rule
+explained in plain words, and a clear goal per part. Write new series that way.
+Stickman episodes sit at the top of the queue; the text stories below are a
+paused fallback. Engine and options: `shorts/stick/README.md`; every series is
+also saved in `content/drafts/`. Series so far: BLACKOUT (3, posted), NIGHT SHIFT
+(6), FOG LINE (3), SNOWBOUND (3). Never reuse a premise; keep every series
+original (never copy other channels, e.g. "14 Floors Up").
 
 Older formats still work and are archived in `content/archive/`: cartoon duos
 (Dave & Pip, Grug & Nova; `dialogue:` entries, art in `assets/characters/`,

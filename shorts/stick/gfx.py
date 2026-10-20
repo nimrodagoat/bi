@@ -17,7 +17,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = Path(__file__).resolve().parents[2]
 FONTS = ROOT / "assets" / "fonts"
 
-W, H, FPS = 1080, 1920, 30
+W, H, FPS = 1080, 1920, 60
 
 FONT_FILES = {
     "title": "BebasNeue-Regular.ttf",
@@ -368,6 +368,6 @@ class FilmLook:
     def apply(self, ctx: cairo.Context, frame: int) -> None:
         ctx.save()
         ctx.identity_matrix()
-        ctx.set_source_surface(self.frames[(frame // 4) % len(self.frames)], 0, 0)
+        ctx.set_source_surface(self.frames[(frame // 8) % len(self.frames)], 0, 0)
         ctx.paint()
         ctx.restore()

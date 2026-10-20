@@ -15,6 +15,917 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
+- id: night-shift-1
+  format: stickman
+  series: NIGHT SHIFT
+  day: 1
+  day_label: NIGHT
+  cap: true
+  meter_label: BATTERY
+  place: HOLLOWBROOK MALL
+  title: 'I took the night guard job at an empty mall. Rule 1: never be late 🔦'
+  tags:
+  - stickman
+  - animation
+  - horror
+  - nightshift
+  - mall
+  - story
+  shots:
+  - scene: cctv
+    time: 10:00 PM
+    cam: CAM 01 · MAIN HALL
+    view:
+      scene: hallway
+      lights: 'on'
+      shops: true
+      wall: '#3f4650'
+      floor: '#2a2d33'
+      carpet: '#5b6068'
+      ceiling: '#1e2126'
+      exit_color: '#27d466'
+    say: You take the night guard job at Hollowbrook Mall, because it pays three times more than anything else in town.
+  - scene: room
+    time: 10:05 PM
+    place: SECURITY OFFICE
+    light: 100
+    wall: '#5e6a72'
+    furniture: false
+    monitors: true
+    desk: true
+    clock: true
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: 'Your manager, Ms. Reyes, hands you a key ring, a flashlight, and a list of rules. Then she says: follow every single one. And she leaves.'
+  - scene: title
+    say: Night shift. Night one.
+  - scene: map
+    time: 10:10 PM
+    route:
+    - - 0.08
+      - 0.95
+    - - 0.08
+      - 0.05
+    - - 0.92
+      - 0.05
+    - - 0.92
+      - 0.95
+    - - 0.08
+      - 0.95
+    route_cue: route
+    route_end: hour
+    target:
+      label: Security office
+      cue: 0
+      icon: pin
+    rule:
+      n: 1
+      text: Rounds every hour
+    say: Rule number one. Walk your rounds every hour, on the hour.
+  - scene: hallway
+    time: 11:00 PM
+    place: MAIN HALL
+    light: 96
+    lights: 'on'
+    shops: true
+    wall: '#3f4650'
+    floor: '#2a2d33'
+    carpet: '#5b6068'
+    ceiling: '#1e2126'
+    exit_color: '#27d466'
+    camera:
+      zoom:
+      - 1.0
+      - 1.35
+      focus:
+      - 0.5
+      - 0.45
+    say: At eleven, the mall is silent. Your footsteps echo all the way to the food court.
+  - scene: room
+    time: 11:20 PM
+    place: STORE 14
+    light: 94
+    wall: '#d9d2c7'
+    dark: 0.55
+    furniture: false
+    door: false
+    rule:
+      n: 2
+      text: Mannequins face the window
+    mannequins:
+    - x: 0.12
+      facing: -1
+    - x: 0.3
+      facing: -1
+      turn: facing
+    - x: 0.5
+      facing: -1
+    you:
+      x: 0.8
+      light: true
+      aim: 0.05
+      facing: -1
+    say: Rule number two. In store fourteen, the mannequins always face the window. If one is ever facing you, walk out. Don't run. Don't look back.
+  - scene: radio
+    time: 12:00 AM
+    place: SECURITY OFFICE
+    true: clicks
+    chip:
+      text: Frank · old guard · 20 years
+      cue: frank
+      y: 470
+    say:
+    - At midnight, your radio clicks. It's Frank, the old guard.
+    - radio: Did she give you the rules? Good. Whatever happens... never miss the three AM round.
+  - scene: inventory
+    time: 1:00 AM
+    light: 88
+    items:
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    - icon: battery
+      count: 4
+      label: batteries
+      cue: four
+    - icon: key
+      count: 12
+      label: keys
+      cue: twelve
+    total:
+      text: 6 hours to go
+      cue: six
+    say: One flashlight. Four batteries. Twelve keys. Six hours until the doors unlock.
+  - scene: closeup
+    object: alarm
+    time: 2:58 AM
+    place: RESTROOMS
+    ring: late
+    say: At two fifty eight, you're at the far end of the mall. You're going to be late.
+  - scene: cctv
+    time: 3:02 AM
+    cam: CAM 06 · OFFICE
+    light: 80
+    src_y: 520
+    view:
+      scene: room
+      wall: '#5e6a72'
+      furniture: false
+      monitors: true
+      desk: true
+      you:
+        x: 0.42
+        action: idle
+        facing: 1
+        cap: true
+    heartbeat: someone
+    say: You check the office camera on your phone. Someone is sitting in your chair. Wearing your uniform.
+  - scene: choice
+    time: 3:03 AM
+    base:
+      scene: cctv
+      cam: CAM 06 · OFFICE
+      src_y: 520
+      view:
+        scene: room
+        wall: '#5e6a72'
+        furniture: false
+        monitors: true
+        desk: true
+        you:
+          x: 0.42
+          action: idle
+          facing: -1
+          cap: true
+    question: Go back or hide?
+    options:
+    - text: Go back
+      cue: back
+    - text: Hide
+      cue: hide
+    say: It turns and looks straight at the camera. Do you go back to your office... or hide until six?
+  - scene: endcard
+    time: 3:03 AM
+    hold: 1.6
+    say: Follow for night two.
+- id: night-shift-2
+  format: stickman
+  series: NIGHT SHIFT
+  day: 2
+  day_label: NIGHT
+  cap: true
+  meter_label: BATTERY
+  place: SECURITY OFFICE
+  title: Something walked my security rounds for me. Night 2 🔦
+  tags:
+  - stickman
+  - animation
+  - horror
+  - nightshift
+  - mall
+  - story
+  shots:
+  - scene: cctv
+    recap: true
+    time: 3:03 AM
+    cam: CAM 06 · OFFICE
+    src_y: 520
+    view:
+      scene: room
+      wall: '#5e6a72'
+      furniture: false
+      monitors: true
+      desk: true
+      you:
+        x: 0.42
+        action: idle
+        facing: -1
+        cap: true
+    say: Last night, someone sat in your chair, wearing your uniform.
+  - scene: title
+    say: Night shift. Night two.
+  - scene: hallway
+    time: 3:06 AM
+    light: 78
+    lights: flicker
+    dark: 0.7
+    wall: '#4b555d'
+    floor: '#2a2d33'
+    carpet: '#4c5158'
+    ceiling: '#1e2126'
+    exit_color: '#27d466'
+    say: You go back. The office is empty. But the chair is still warm... and there's a note on your desk.
+  - scene: closeup
+    object: phone
+    time: 3:07 AM
+    screen: Note on desk
+    sub: Your handwriting
+    message: YOU WERE LATE.
+    message_cue: late
+    say: Three words. In your own handwriting. You were late.
+  - scene: radio
+    time: 3:10 AM
+    true: radio
+    chip:
+      text: Frank · on the radio
+      cue: 0
+      y: 470
+    say:
+    - On the radio, Frank goes quiet. Then he explains.
+    - radio: Every night at three, this mall counts its guards. If you're not on your route, something else walks it for you. And every time it does, it learns a little more of you.
+  - scene: room
+    time: 10:00 PM
+    place: SECURITY OFFICE
+    light: 100
+    wall: '#5e6a72'
+    furniture: false
+    monitors: true
+    desk: true
+    clock: true
+    rule:
+      n: 3
+      text: Never miss three AM
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: Rule number three. Never miss the three AM round. Not by one minute.
+  - scene: map
+    time: 3:00 AM
+    light: 70
+    route:
+    - - 0.08
+      - 0.95
+    - - 0.08
+      - 0.05
+    - - 0.92
+      - 0.05
+    route_cue: start
+    route_end: direction
+    target:
+      label: You
+      cue: 0
+      icon: pin
+    danger:
+    - x: 0.92
+      y: 0.6
+      r: 0.05
+      n: 8
+      cue: second
+    say: The next night, at three sharp, you start your round. On the camera map, a second dot starts moving too. Same route. Opposite direction.
+  - scene: hallway
+    time: 3:14 AM
+    place: WEST WING
+    light: 66
+    lights: flicker
+    dark: 0.65
+    shops: true
+    signs_lit: false
+    wall: '#3f4650'
+    floor: '#2a2d33'
+    carpet: '#5b6068'
+    ceiling: '#1e2126'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 7.5
+      to_z: 4.0
+      x: 0.05
+      facing: -1
+      action: walk
+      speed: 0.8
+      cap: true
+      cue: west
+    say: In the west wing, you see it. A guard. Your height. Your walk. Your name tag.
+  - scene: choice
+    time: 3:15 AM
+    light: 64
+    base:
+      scene: hallway
+      lights: flicker
+      dark: 0.65
+      shops: true
+      signs_lit: false
+      wall: '#3f4650'
+      floor: '#2a2d33'
+      carpet: '#5b6068'
+      ceiling: '#1e2126'
+      exit_color: '#27d466'
+      figures:
+      - who: person
+        z: 3.6
+        x: 0.05
+        facing: -1
+        action: walk
+        speed: 0.8
+        cap: true
+    question: Keep walking or run?
+    options:
+    - text: Walk
+      cue: walking
+    - text: Run
+      cue: run
+    say: It's walking straight toward you. Do you keep walking your route... or run?
+  - scene: endcard
+    time: 3:15 AM
+    hold: 1.6
+    say: Follow for night three.
+- id: night-shift-3
+  format: stickman
+  series: NIGHT SHIFT
+  day: 3
+  day_label: NIGHT
+  cap: true
+  meter_label: BATTERY
+  place: WEST WING
+  title: My double walked right past me. It smiled. Night 3 🔦
+  tags:
+  - stickman
+  - animation
+  - horror
+  - nightshift
+  - mall
+  - story
+  shots:
+  - scene: hallway
+    recap: true
+    time: 3:15 AM
+    light: 64
+    lights: flicker
+    dark: 0.65
+    shops: true
+    signs_lit: false
+    wall: '#3f4650'
+    floor: '#2a2d33'
+    carpet: '#5b6068'
+    ceiling: '#1e2126'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 3.6
+      x: 0.05
+      facing: -1
+      action: walk
+      speed: 0.8
+      cap: true
+    say: Last night, your copy walked your route, straight toward you.
+  - scene: title
+    say: Night shift. Night three.
+  - scene: hallway
+    time: 3:16 AM
+    light: 62
+    lights: flicker
+    dark: 0.6
+    shops: true
+    signs_lit: false
+    wall: '#3f4650'
+    floor: '#2a2d33'
+    carpet: '#5b6068'
+    ceiling: '#1e2126'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 3.4
+      to_z: 1.0
+      x: -0.45
+      facing: -1
+      action: walk
+      speed: 0.8
+      cap: true
+    heartbeat: 0
+    say: You keep walking. It walks right past you. Close enough to touch. It doesn't look at you... but it smiles.
+  - scene: room
+    time: 3:30 AM
+    place: STORE 14
+    light: 58
+    wall: '#d9d2c7'
+    dark: 0.6
+    furniture: false
+    door: false
+    rule:
+      n: 4
+      text: Don't let it see your face
+    mannequins:
+    - x: 0.12
+      facing: -1
+    - x: 0.3
+      facing: -1
+    - x: 0.5
+      facing: -1
+      turn: except
+    you:
+      x: 0.82
+      action: crouch
+      facing: -1
+    say: Rule number four. If you meet your copy, don't let it see your face. So you hide in store fourteen. Every mannequin faces the window. Except one.
+  - scene: radio
+    time: 4:00 AM
+    place: STORE 14
+    true: radio
+    chip:
+      text: Frank · on the radio
+      cue: 0
+      y: 470
+    say:
+    - On the radio, Frank's voice is shaking.
+    - radio: I saw mine twenty years ago. I followed every rule. That's the only reason I'm still me.
+  - scene: inventory
+    time: 4:20 AM
+    light: 40
+    items:
+    - icon: battery
+      count: 2
+      label: batteries left
+      cue: two
+    - icon: key
+      count: 12
+      label: keys
+      cue: keys
+    total:
+      text: 2 hours to go
+      cue: hours
+    say: Two batteries left. Twelve keys. Two hours until the doors unlock.
+  - scene: radio
+    time: 4:31 AM
+    true: 0
+    say:
+    - Then Frank whispers one last thing.
+    - radio: Listen to me, kid. After midnight... don't trust my voice.
+  - scene: choice
+    time: 5:00 AM
+    light: 34
+    base:
+      scene: radio
+      true: 0
+    question: Answer or switch off?
+    options:
+    - text: Answer
+      cue: answer
+    - text: Switch off
+      cue: switch
+    sfx:
+    - name: click
+      at: crackles
+      gain: 0.6
+    say: The radio goes silent. A minute later, it crackles. Frank's voice, asking where you are. Do you answer... or switch it off?
+  - scene: endcard
+    time: 5:00 AM
+    hold: 1.6
+    say: Follow for night four.
+- id: night-shift-4
+  format: stickman
+  series: NIGHT SHIFT
+  day: 4
+  day_label: NIGHT
+  cap: true
+  meter_label: BATTERY
+  place: SECURITY OFFICE
+  title: Something outside the mall used MY voice. Night 4 🔦
+  tags:
+  - stickman
+  - animation
+  - horror
+  - nightshift
+  - mall
+  - story
+  shots:
+  - scene: radio
+    recap: true
+    time: 5:00 AM
+    true: 0
+    say: 'Last night, Frank warned you: after midnight, don''t trust his voice.'
+  - scene: title
+    say: Night shift. Night four.
+  - scene: radio
+    time: 1:00 AM
+    light: 100
+    true: back
+    chip:
+      text: Frank? · 1:00 AM
+      cue: 0
+      y: 470
+    say:
+    - The next night, at one AM, Frank's voice is back. Calm. Friendly.
+    - radio: Hey kid. I'm out at the loading dock. Open the big door for me, will you?
+  - scene: room
+    time: 1:02 AM
+    light: 98
+    wall: '#5e6a72'
+    furniture: false
+    monitors: true
+    desk: true
+    clock: true
+    rule:
+      n: 5
+      text: Frank never asks
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    say: Rule number five, written at the very bottom of the list. Frank has a key to every door. Frank never asks you to open one.
+  - scene: closeup
+    object: phone
+    time: 1:10 AM
+    screen: Frank's logbook
+    sub: Last page
+    message: |-
+      Night 4. It asked me to open the dock.
+      I didn't. Then it used MY voice.
+    message_cue: last
+    say: In the desk drawer, you find Frank's old logbook. The last page is from twenty years ago. Night four. It asked me to open the dock. I didn't. Then it used my own voice.
+  - scene: map
+    time: 1:20 AM
+    light: 94
+    route:
+    - - 0.5
+      - 0.95
+    - - 0.5
+      - 0.5
+    - - 0.92
+      - 0.5
+    route_cue: dock
+    route_end: shut
+    target:
+      label: Loading dock
+      cue: dock
+      icon: pin
+    danger:
+    - x: 0.98
+      y: 0.5
+      r: 0.08
+      n: 14
+      cue: banging
+    say: The loading dock is at the end of the east hall. And right now, the big door is banging. Hard.
+  - scene: hallway
+    time: 1:24 AM
+    place: LOADING DOCK
+    light: 90
+    lights: flicker
+    dark: 0.75
+    wall: '#55595f'
+    floor: '#26282c'
+    carpet: '#33363b'
+    ceiling: '#1c1e21'
+    exit_color: '#ff2a1a'
+    shake_at:
+    - banging
+    - name
+    sfx:
+    - name: knock
+      at: banging
+      gain: 0.9
+    - name: knock
+      at: name
+      gain: 0.9
+    say: Bang. Bang. Bang. Then someone outside calls your name. In your own voice.
+  - scene: choice
+    time: 1:25 AM
+    base:
+      scene: hallway
+      lights: flicker
+      dark: 0.75
+      wall: '#55595f'
+      floor: '#26282c'
+      carpet: '#33363b'
+      ceiling: '#1c1e21'
+      exit_color: '#ff2a1a'
+    question: Open or hold?
+    options:
+    - text: Open
+      cue: open
+    - text: Hold
+      cue: hold
+    say: Do you open the door to see who's out there... or hold it shut until six?
+  - scene: endcard
+    time: 1:25 AM
+    hold: 1.6
+    say: Follow for night five.
+- id: night-shift-5
+  format: stickman
+  series: NIGHT SHIFT
+  day: 5
+  day_label: NIGHT
+  cap: true
+  meter_label: BATTERY
+  place: LOADING DOCK
+  title: My manager finally told me what the mall really is. Night 5 🔦
+  tags:
+  - stickman
+  - animation
+  - horror
+  - nightshift
+  - mall
+  - story
+  shots:
+  - scene: hallway
+    recap: true
+    time: 1:25 AM
+    lights: flicker
+    dark: 0.75
+    wall: '#55595f'
+    floor: '#26282c'
+    carpet: '#33363b'
+    ceiling: '#1c1e21'
+    exit_color: '#ff2a1a'
+    say: Last night, something outside the loading dock called your name, in your own voice.
+  - scene: title
+    say: Night shift. Night five.
+  - scene: room
+    time: 6:05 AM
+    place: SECURITY OFFICE
+    light: 20
+    wall: '#5e6a72'
+    furniture: false
+    monitors: 'off'
+    desk: true
+    clock: true
+    you:
+      x: 0.55
+      action: crouch
+      facing: -1
+    say: You hold the door until six. In the morning, Ms. Reyes finds you on the office floor. And she finally tells you the truth.
+  - scene: cctv
+    time: 6:10 AM
+    cam: CAM 02 · WEST WING
+    view:
+      scene: hallway
+      lights: 'on'
+      shops: true
+      signs_lit: false
+      wall: '#3f4650'
+      floor: '#2a2d33'
+      carpet: '#5b6068'
+      ceiling: '#1e2126'
+      exit_color: '#27d466'
+      figures:
+      - who: person
+        z: 4.5
+        x: 0.0
+        facing: -1
+        action: walk
+        speed: 0.6
+        cap: true
+    say: Hollowbrook copies its guards. The longer you work here, the better the copy gets. Frank's copy has walked these halls every night for twenty years.
+  - scene: radio
+    time: 6:12 AM
+    true: 0
+    say: That voice on the radio, the one who warned you? That was the real Frank. The part of him that's left. Still trying to help.
+  - scene: room
+    time: 6:15 AM
+    light: 20
+    wall: '#5e6a72'
+    furniture: false
+    monitors: 'off'
+    desk: true
+    clock: true
+    rule:
+      n: 6
+      text: Seven nights and it keeps you
+    you:
+      x: 0.45
+      action: scared
+      facing: 1
+    say: Rule number six. The one she never wrote down. If your copy walks seven nights of your rounds... it keeps your life. And you stay here instead.
+  - scene: inventory
+    time: 6:20 AM
+    items:
+    - icon: key
+      count: 5
+      label: nights you worked
+      cue: five
+    - icon: battery
+      count: 2
+      label: rounds it walked
+      cue: two
+    total:
+      text: 1 night left
+      cue: one
+    say: You've worked five nights. It has already walked two of your rounds. You have one night left to finish this.
+  - scene: choice
+    time: 6:21 AM
+    base:
+      scene: cctv
+      cam: CAM 02 · WEST WING
+      view:
+        scene: hallway
+        lights: 'on'
+        shops: true
+        signs_lit: false
+        wall: '#3f4650'
+        floor: '#2a2d33'
+        carpet: '#5b6068'
+        ceiling: '#1e2126'
+        exit_color: '#27d466'
+        figures:
+        - who: person
+          z: 3.2
+          x: 0.0
+          facing: -1
+          action: idle
+          cap: true
+          stare: true
+    question: Quit or finish?
+    options:
+    - text: Quit
+      cue: quit
+    - text: Finish
+      cue: work
+    say: Do you quit right now and never come back... or work one last night and take your life back?
+  - scene: endcard
+    time: 6:21 AM
+    hold: 1.6
+    say: Follow for night six. The last one.
+- id: night-shift-6
+  format: stickman
+  series: NIGHT SHIFT
+  day: 6
+  day_label: NIGHT
+  cap: true
+  meter_label: BATTERY
+  place: SECURITY OFFICE
+  title: My last night shift. Only one of us could leave. Night 6 🔦
+  tags:
+  - stickman
+  - animation
+  - horror
+  - nightshift
+  - mall
+  - story
+  shots:
+  - scene: room
+    recap: true
+    time: 6:21 AM
+    light: 20
+    wall: '#5e6a72'
+    furniture: false
+    monitors: 'off'
+    desk: true
+    clock: true
+    you:
+      x: 0.45
+      action: idle
+      facing: 1
+    say: Last night, you learned the truth. One more night, and your copy keeps your life.
+  - scene: title
+    say: Night shift. Night six.
+  - scene: map
+    time: 10:00 PM
+    light: 100
+    route:
+    - - 0.08
+      - 0.95
+    - - 0.08
+      - 0.05
+    - - 0.92
+      - 0.05
+    - - 0.92
+      - 0.95
+    - - 0.08
+      - 0.95
+    route_cue: every
+    route_end: time
+    target:
+      label: Security office
+      cue: 0
+      icon: pin
+    say: So you work. Every round. Every hour. On time. The copy follows you all night... always one hallway behind.
+  - scene: hallway
+    time: 3:00 AM
+    place: MAIN HALL
+    light: 60
+    lights: flicker
+    dark: 0.6
+    shops: true
+    signs_lit: false
+    wall: '#3f4650'
+    floor: '#2a2d33'
+    carpet: '#5b6068'
+    ceiling: '#1e2126'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 7.0
+      x: 0.3
+      facing: -1
+      action: idle
+      cap: true
+      stare: true
+    say: At three AM, the mall counts its guards. And this time... it counts you.
+  - scene: cctv
+    time: 5:59 AM
+    cam: CAM 01 · FRONT DOORS
+    light: 22
+    view:
+      scene: hallway
+      lights: 'on'
+      wall: '#3f4650'
+      floor: '#2a2d33'
+      carpet: '#5b6068'
+      ceiling: '#1e2126'
+      exit_color: '#27d466'
+      figures:
+      - who: person
+        z: 3.4
+        x: -0.35
+        facing: 1
+        action: idle
+        cap: true
+      - who: person
+        z: 3.4
+        x: 0.35
+        facing: -1
+        action: idle
+        cap: true
+        stare: true
+    rule:
+      n: 7
+      text: Doors open for the one who finished
+    say: Five fifty nine. On the camera by the front doors, two guards are waiting. You... and you. Rule number seven. The doors only open for the guard who finished the shift.
+  - scene: street
+    time: 6:00 AM
+    place: PARKING LOT
+    light: 18
+    dark: 0.05
+    dawn: true
+    pace: walk
+    you:
+      light: false
+    say: Six AM. The doors unlock... for you. You walk out into the sun. Behind the glass, your copy stays inside. And waves.
+  - scene: closeup
+    object: phone
+    time: 6:04 AM
+    ring: 0
+    screen: Ms. Reyes
+    sub: New message
+    message: |-
+      Thank you for a great week.
+      Your replacement starts tonight.
+    message_cue: thank
+    say: Then your phone buzzes. A message from Ms. Reyes. Thank you for a great week. Your replacement starts tonight.
+  - scene: choice
+    time: 6:05 AM
+    base:
+      scene: street
+      dark: 0.05
+      dawn: true
+      stop: 0
+      you:
+        light: false
+    question: Warn them or walk away?
+    options:
+    - text: Warn
+      cue: warn
+    - text: Walk away
+      cue: walk
+    say: Do you go back and warn the new guard... or walk away and never look back?
+  - scene: endcard
+    time: 6:05 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: fog-line-day-1
   format: stickman
   series: FOG LINE
@@ -361,7 +1272,8 @@
   - scene: street
     time: 5:58 AM
     rooftop: true
-    dark: 0.25
+    dawn: true
+    dark: 0.15
     stop: 0
     you:
       light: false

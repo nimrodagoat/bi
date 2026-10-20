@@ -150,11 +150,30 @@ def hero(cv, shot, t, spec, ground, scale=1.25, default_x=0.5):
         pose = F.pose_for(action, t, speed=float(spec.get("speed", 1.0)))
     F.draw_shadow(cv.ctx, x, ground, scale)
     j = F.draw_stickman(cv.ctx, pose, x, ground, scale, facing, prop="flashlight" if has_light else None)
+    if spec.get("cap") or (cv.item.get("cap") and spec.get("cap") is not False):
+        draw_cap(cv.ctx, j.head, scale, facing)
     beam = None
     if has_light:
         tip = F.flashlight_tip(j, scale)
         beam = (tip[0], tip[1], j.hand_angle)
     return j, beam
+
+
+def draw_cap(ctx, head, scale, facing, alpha=1.0):
+    """A security guard's cap."""
+    ctx.save()
+    ctx.translate(head[0], head[1] - 20 * scale)
+    ctx.move_to(-28 * scale, 6 * scale)
+    ctx.curve_to(-26 * scale, -22 * scale, 26 * scale, -22 * scale, 28 * scale, 6 * scale)
+    ctx.close_path()
+    set_color(ctx, "#1f2a44", alpha)
+    ctx.fill()
+    ctx.rectangle(-28 * scale if facing < 0 else 0, 2 * scale, 50 * scale, 7 * scale)
+    ctx.fill()
+    set_color(ctx, "#d4ac0d", alpha)
+    ctx.arc(0, -6 * scale, 5 * scale, 0, 2 * math.pi)
+    ctx.fill()
+    ctx.restore()
 
 
 def creature_eyes(ctx, j, scale, facing, alpha=1.0):
@@ -235,7 +254,34 @@ def room(cv, shot, t):
                 bp = 1 - bp
         else:
             bp = 1.0
-    if o.get("window", True):
+    if o.get("monitors"):  # a security office: a wall of camera screens
+        ctx.rectangle(380, 450, 340, 360)
+        set_color(ctx, "#1a1a1d")
+        ctx.fill()
+        for r in range(2):
+            for c in range(2):
+                mx_, my_ = 395 + c * 165, 465 + r * 170
+                ctx.rectangle(mx_, my_, 150, 155)
+                on = o.get("monitors") != "off"
+                lit = 0.75 + 0.25 * flicker(t, r * 2 + c, 6) if on else 0.1
+                ctx.set_source_rgba(0.16 * lit, 0.26 * lit, 0.28 * lit, 1)
+                ctx.fill()
+                if on:  # each screen shows a little corridor
+                    cxm, cym = mx_ + 75, my_ + 70
+                    ctx.set_line_width(2)
+                    ctx.set_source_rgba(0.6, 0.85, 0.85, 0.55 * lit)
+                    for ex, ey in ((mx_, my_ + 155), (mx_ + 150, my_ + 155), (mx_, my_ + 10), (mx_ + 150, my_ + 10)):
+                        ctx.move_to(cxm + (ex - cxm) * 0.15, cym + (ey - cym) * 0.15)
+                        ctx.line_to(ex, ey)
+                    ctx.rectangle(cxm - 11, cym - 9, 22, 18)
+                    ctx.stroke()
+                    draw_surface(ctx, text(f"CAM 0{r * 2 + c + 1}", "mono", 14, "#cfe9e6"), mx_ + 8, my_ + 14, anchor="l")
+                for y in range(my_, my_ + 155, 6):
+                    ctx.rectangle(mx_, y, 150, 2)
+                ctx.set_source_rgba(0, 0, 0, 0.18)
+                ctx.fill()
+        glow(ctx, 550, 630, 420, "#7fb6c4", 0.18)
+    elif o.get("window", True):
         props.window(ctx, 400, 470, 300, 330, t, moon=True, city_lights=float(o.get("city_lights", 0)))
         wf = float(o.get("window_fog", 0))
         if wf > 0:
@@ -247,9 +293,11 @@ def room(cv, shot, t):
                 ctx.set_source(g)
                 ctx.rectangle(407, y - 60, 286, 800 - y + 60 - 7)
                 ctx.fill()
+    furniture = o.get("furniture", True)
     minutes = shot.minutes_at(t)
-    props.wall_clock(ctx, 170, 630, 48, minutes // 60, minutes % 60, dark=dark > 0.5)
-    if o.get("picture", True):
+    if furniture or o.get("clock"):
+        props.wall_clock(ctx, 170, 630, 48, minutes // 60, minutes % 60, dark=dark > 0.5)
+    if furniture and o.get("picture", True):
         ctx.rectangle(745, 540, 70, 90)
         set_color(ctx, "#e7e1d2")
         ctx.fill()
@@ -259,16 +307,40 @@ def room(cv, shot, t):
         set_color(ctx, "#d9822b")
         ctx.arc(780, 590, 14, 0, 2 * math.pi)
         ctx.fill()
-    props.door(ctx, 840, 760, 200, 445, open_amount=float(o.get("door_open", 0)))
-    props.floor_lamp(ctx, 770, 860, FLOOR_Y, on=1.0 if o.get("lamp") else 0.0)
-    # barricade: the couch slides to the door and the shelf tips against it
-    cx = 330 + (690 - 330) * bp
-    props.couch(ctx, cx, 1015 + 20 * bp, 380, 190)
-    ctx.save()
-    ctx.translate(300 + (1000 - 300) * bp, FLOOR_Y)
-    ctx.rotate(-0.32 * ease_in_out(bp))
-    props.bookshelf(ctx, -260, -505, 260, 505)
-    ctx.restore()
+    if o.get("door", True):
+        props.door(ctx, 840, 760, 200, 445, open_amount=float(o.get("door_open", 0)))
+    if furniture:
+        props.floor_lamp(ctx, 770, 860, FLOOR_Y, on=1.0 if o.get("lamp") else 0.0)
+        # barricade: the couch slides to the door and the shelf tips against it
+        cx = 330 + (690 - 330) * bp
+        props.couch(ctx, cx, 1015 + 20 * bp, 380, 190)
+        ctx.save()
+        ctx.translate(300 + (1000 - 300) * bp, FLOOR_Y)
+        ctx.rotate(-0.32 * ease_in_out(bp))
+        props.bookshelf(ctx, -260, -505, 260, 505)
+        ctx.restore()
+    if o.get("desk"):  # a guard's desk with a mug and a radio
+        ctx.rectangle(330, 1040, 420, 30)
+        set_color(ctx, "#3b2b20")
+        ctx.fill()
+        for lx in (350, 715):
+            ctx.rectangle(lx, 1070, 18, 150)
+            ctx.fill()
+        ctx.rectangle(400, 1000, 44, 40)
+        set_color(ctx, "#d9d4c8")
+        ctx.fill()
+        props.radio(ctx, 620, 1000, 120, t, 0.6, 0, 0.2)
+    # mannequins: pale figures that turn to face you when nobody is looking
+    for k, mq in enumerate(o.get("mannequins") or []):
+        mx_ = float(mq.get("x", 0.3)) * W
+        facing = int(mq.get("facing", -1))
+        if mq.get("turn") is not None and t >= shot.cue(mq.get("turn"), 1e9):
+            facing = -facing
+        mpose = F.Pose(lean=0.0, sh_f=0.25, el_f=0.35, sh_b=-0.15, el_b=0.3, hip_f=0.06, hip_b=-0.06,
+                       head=0.25 if mq.get("turn") is not None and t >= shot.cue(mq.get("turn"), 1e9) else 0.0)
+        gy = float(mq.get("ground", FLOOR_Y + 60))
+        F.draw_shadow(ctx, mx_, gy, 1.1, 0.25)
+        F.draw_stickman(ctx, mpose, mx_, gy, float(mq.get("scale", 1.1)), facing, color="#d8c7ad", outline="#6d5d47")
     for box in o.get("boxes", []) or []:
         bx, bw = float(box[0]) * W, float(box[1]) * W
         ctx.rectangle(bx, FLOOR_Y + 30 - bw * 0.7, bw, bw * 0.7)
@@ -278,7 +350,8 @@ def room(cv, shot, t):
     crs = draw_creatures(cv, shot, t, o.get("creatures"), ground, dark > 0)
     j, beam = hero(cv, shot, t, o.get("you"), ground)
     if dark > 0:
-        _apply_dark(cv, shot, t, dark, beam, j, extra=[("radial", 550, 640, 520, 0.45), ("radial", 540, 1000, 900, 0.25)] if o.get("window", True) else [])
+        lit = o.get("window", True) or o.get("monitors")
+        _apply_dark(cv, shot, t, dark, beam, j, extra=[("radial", 550, 640, 520, 0.45), ("radial", 540, 1000, 900, 0.25)] if lit else [])
         for cj, sc, fc, a in crs:
             creature_eyes(ctx, cj, sc, fc, a)
     if o.get("lamp"):
@@ -352,6 +425,16 @@ def hallway(cv, shot, t):
         pts = [proj(sx, -1, z), proj(sx, 0.75, z), proj(sx, 0.75, z + 0.5), proj(sx, -1, z + 0.5)]
         fill(ctx, pts, shade("#2a1a10", sh))
         inner = [proj(sx, -1, z + 0.04), proj(sx, 0.7, z + 0.04), proj(sx, 0.7, z + 0.46), proj(sx, -1, z + 0.46)]
+        if o.get("shops"):  # a mall: wide dark shop windows with a sign strip above
+            shop = [proj(sx, -1, z - 0.25), proj(sx, 0.55, z - 0.25), proj(sx, 0.55, z + 0.75), proj(sx, -1, z + 0.75)]
+            fill(ctx, shop, shade("#1b2a33", sh))
+            gl = [proj(sx, -0.9, z - 0.2), proj(sx, 0.45, z - 0.2), proj(sx, 0.45, z + 0.7), proj(sx, -0.9, z + 0.7)]
+            fill(ctx, gl, shade("#2c4552", sh * 0.9), 0.85)
+            sign_cols = ["#c0392b", "#2980b9", "#27ae60", "#8e44ad", "#d35400", "#16a085", "#7f8c8d"]
+            signs = o.get("signs_lit", True)
+            sg = [proj(sx, 0.62, z - 0.2), proj(sx, 0.85, z - 0.2), proj(sx, 0.85, z + 0.7), proj(sx, 0.62, z + 0.7)]
+            fill(ctx, sg, shade(sign_cols[k % len(sign_cols)], sh * (1.0 if signs else 0.35)))
+            continue
         if k in open_doors:
             fill(ctx, inner, (0.01, 0.01, 0.01))
             hinge = z + 0.04
@@ -432,8 +515,14 @@ def hallway(cv, shot, t):
         if who == "creature":
             j = F.draw_creature(ctx, pose, fx, gy, sc, facing, eye_alpha=0 if lights != "on" else 1)
             figures.append((j, sc, facing))
+        elif who == "mannequin":
+            mp = F.Pose(sh_f=0.25, el_f=0.35, sh_b=-0.15, el_b=0.3, hip_f=0.06, hip_b=-0.06)
+            F.draw_stickman(ctx, mp, fx, gy, sc, facing, color="#d8c7ad", outline="#6d5d47")
         else:
-            pj = F.draw_stickman(ctx, pose, fx, gy, sc, facing)
+            col = f.get("color", "#f2f2f2")
+            pj = F.draw_stickman(ctx, pose, fx, gy, sc, facing, color=col)
+            if f.get("cap"):
+                draw_cap(ctx, pj.head, sc, facing)
             if f.get("stare"):
                 stares.append((pj, sc, facing))
     if lights != "on":
@@ -806,11 +895,15 @@ def street(cv, shot, t):
         moving = True
     scroll += float(o.get("offset", 0))
     base = 1340
-    vgradient(ctx, -300, -300, W + 600, base + 300, "#03050a", "#101624")
-    glow(ctx, 830, 380, 260, "#cfdcff", 0.12)
-    set_color(ctx, "#dfe6f5")
-    ctx.arc(830, 380, 34, 0, 2 * math.pi)
-    ctx.fill()
+    if o.get("dawn"):
+        vgradient(ctx, -300, -300, W + 600, base + 300, "#2b3a5c", "#e9a26b")
+        glow(ctx, 300, base - 80, 520, "#ffd28a", 0.55)
+    else:
+        vgradient(ctx, -300, -300, W + 600, base + 300, "#03050a", "#101624")
+        glow(ctx, 830, 380, 260, "#cfdcff", 0.12)
+        set_color(ctx, "#dfe6f5")
+        ctx.arc(830, 380, 34, 0, 2 * math.pi)
+        ctx.fill()
     roof = bool(o.get("rooftop"))
     if roof:  # up on a roof: the town is below, only a few tops stick out
         _buildings(ctx, scroll * 0.1, base + 260, "#111725", 1, 300, 560)
@@ -1079,3 +1172,64 @@ def endcard(cv, shot, t):
     ctx.set_source_rgba(0, 0, 0, 0.6 * clamp(t / 0.4))
     ctx.paint()
     ctx.restore()
+
+
+# ------------------------------------------------------------------ security camera
+
+@scene("cctv")
+def cctv(cv, shot, t):
+    """A security-camera feed on a monitor: any scene (`view`), tinted, with
+    scanlines, CAM label, REC light and timestamp."""
+    ctx = cv.ctx
+    o = shot.spec
+    vgradient(ctx, -300, -300, W + 600, H + 600, "#0d0f12", "#050607")
+    mx, my, mw, mh = 70, 400, 940, 760
+    rounded_rect(ctx, mx - 26, my - 26, mw + 52, mh + 52, 28)
+    set_color(ctx, "#1d2025")
+    ctx.fill()
+    glow(ctx, W / 2, my + mh / 2, 760, "#8fc3cf", 0.12)
+    view = {**(o.get("view") or {"scene": "hallway", "lights": "on"})}
+    for k in ("flicker", "dies", "relight"):
+        if o.get(k) is not None and k not in view:
+            view[k] = o[k]
+    ctx.save()
+    ctx.rectangle(mx, my, mw, mh)
+    ctx.clip()
+    src_y = float(o.get("src_y", 470))
+    s = mw / W * float(o.get("zoom", 1.0))
+    ctx.translate(mx + mw / 2, my)
+    ctx.scale(s, s)
+    ctx.translate(-W / 2, -src_y)
+    paint(cv, shot.sub({**view, "scene": view.get("scene", "hallway")}), t)
+    ctx.restore()
+    ctx.save()
+    ctx.rectangle(mx, my, mw, mh)
+    ctx.clip()
+    ctx.set_source_rgba(0.35, 0.55, 0.5, 0.18)  # cheap camera colour
+    ctx.paint()
+    for y in range(int(my), int(my + mh), 5):
+        ctx.rectangle(mx, y, mw, 2)
+    ctx.set_source_rgba(0, 0, 0, 0.16)
+    ctx.fill()
+    band = my + (t * 220) % (mh + 200) - 100
+    g = cairo.LinearGradient(0, band - 40, 0, band + 40)
+    g.add_color_stop_rgba(0, 1, 1, 1, 0)
+    g.add_color_stop_rgba(0.5, 1, 1, 1, 0.06)
+    g.add_color_stop_rgba(1, 1, 1, 1, 0)
+    ctx.set_source(g)
+    ctx.rectangle(mx, band - 40, mw, 80)
+    ctx.fill()
+    if o.get("glitch") is not None and t >= shot.cue(o.get("glitch"), 1e9) and flicker(t, 5, 18) < 0.9:
+        ctx.set_source_rgba(1, 1, 1, 0.12)
+        ctx.paint()
+    ctx.restore()
+    from .episode import format_time
+    draw_surface(ctx, text(str(o.get("cam", "CAM 01")).upper(), "mono", 30, "#e8f1ee", shadow=2), mx + 30, my + 45, anchor="l")
+    if math.sin(t * 5) > -0.2:
+        set_color(ctx, RED)
+        ctx.arc(mx + mw - 120, my + 45, 11, 0, 2 * math.pi)
+        ctx.fill()
+    draw_surface(ctx, text("REC", "mono", 28, "#e8f1ee", shadow=2), mx + mw - 100, my + 45, anchor="l")
+    hm, ap = format_time(shot.minutes_at(t))
+    draw_surface(ctx, text(f"{hm}:{int(t * 7) % 60:02d} {ap}", "mono", 26, "#e8f1ee", shadow=2),
+                 mx + 30, my + mh - 40, anchor="l")

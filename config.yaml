@@ -251,8 +251,8 @@ stickman:
   voices:
     narrator:
       engines: [edge, kokoro]
-      edge_voice: en-US-ChristopherNeural
-      edge_rate: "-4%"
+      edge_voice: en-US-AndrewMultilingualNeural
+      edge_rate: "-3%"
       kokoro_voice: am_michael
       kokoro_speed: 1.0
   drone_volume: 0.09

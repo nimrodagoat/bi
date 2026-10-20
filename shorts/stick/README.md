@@ -17,6 +17,7 @@ sentence at a time so captions stay in sync. Preview one entry quickly:
 - id: blackout-day-2
   format: stickman
   series: BLACKOUT          # title card / end card name
+  day_label: NIGHT          # optional: count NIGHT 1, 2... instead of DAY
   day: 2
   place: APT 6B             # shown under the clock until a shot changes it
   title: "..."
@@ -38,13 +39,18 @@ Cues (when something happens) are a word the narrator says in that shot
 
 ## Scenes and their options
 
-- `room`: apartment. `dark` (0-1), `you: {x, to, action, move, then, light, aim, facing, go, arrive}`,
+- `room`: apartment. `furniture: false` (empty room / shop), `monitors: true` (security
+  office wall of screens instead of the window), `desk`, `door: false`, `clock`,
+  `mannequins: [{x, facing, turn: cue}]` (pale figures that snap round at the cue), `dark` (0-1), `you: {x, to, action, move, then, light, aim, facing, go, arrive}`,
   `creatures: [{x, facing, cue, action, scale, to}]`, `lamp`, `door_open`,
   `barricade: true | {start, end, remove}`, `window`, `picture`.
 - `hallway`: corridor seen from the door. `lights: on|off|flicker|dying` (`off: cue` for dying),
   `dark`, `rolling: {from, to}` (a flashlight rolling away), `figures: [{who: creature|person, z, x, cue, to_z}]`,
   `open_doors: [0, 3]`, `marks` (drag marks).
 - `peephole`: the hallway through a peephole (same options).
+- `cctv`: a security-camera monitor showing another scene: `view: {scene: hallway, ...}`,
+  `cam: CAM 03`, `src_y` (which part of the view), `zoom`, `glitch: cue`.
+  Hallway `shops: true` turns the doors into mall shop windows with signs.
 - `inventory`: `items: [{icon, count, label, cue}]` (icons: battery, candle, matches,
   flashlight, can, bottle, key), `total: {text, cue}`.
 - `radio`: `on: cue`; radio lines in `say` get teal captions and a radio sound.
@@ -62,8 +68,9 @@ Cues (when something happens) are a word the narrator says in that shot
 
 Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a garage or a
 stadium tunnel); a `who: person` figure can have `stare: true` (shining eyes).
-Street: `floodlights: cue` (bright lights ahead). Closeup flashlight: `eyes: N`, `eyes_cue`.
+Street: `floodlights: cue` (bright lights ahead), `dawn: true` (sunrise sky), `rooftop: true`,
+`people: [{x, action, cue, fade, facing, drift}]` (other people). Closeup flashlight: `eyes: N`, `eyes_cue`.
 
-Any shot: `snow: {n, speed, wind}` (or `snow: true`), `fog: {top: 0.6, rise: [0.8, 0.5], cue, density, color}` (rolling fog), `flicker: cue`, `relight: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,
+Any shot: `recap: true` (shows PREVIOUSLY; use it for the opening line of parts 2+), `snow: {n, speed, wind}` (or `snow: true`), `fog: {top: 0.6, rise: [0.8, 0.5], cue, density, color}` (rolling fog), `flicker: cue`, `relight: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,
 `shake_at: [cue]`, `camera: {zoom: [1, 1.1], focus: [x, y], shift}`, `hold` (extra seconds),
 `sfx: [{name: knock|boom|hit|click|whoosh|tick, at: cue, gain}]`, `no_hud`.

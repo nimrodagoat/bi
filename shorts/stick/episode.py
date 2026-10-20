@@ -297,10 +297,37 @@ def camera(shot: Shot, t: float) -> cairo.Matrix:
             sx += math.sin(k * 90) * a
             sy += math.cos(k * 77) * a
     shift = float(cam.get("shift", SCENE_SHIFT.get(shot.scene, 0)))
+    if not cam.get("steady"):  # a slow handheld drift, so nothing sits perfectly still
+        ts = shot.start + t
+        sx += 4 * gfx.noise(ts * 0.35, 1)
+        sy += 4 * gfx.noise(ts * 0.3, 2)
     m.translate(W * fx + sx, H * fy + sy + shift)
+    if not cam.get("steady"):
+        m.rotate(0.0025 * gfx.noise((shot.start + t) * 0.25, 3))
     m.scale(z, z)
     m.translate(-W * fx, -H * fy)
     return m
+
+
+XFADE = 0.3  # seconds of soft blend from the previous shot
+
+
+def crossfade(cv: Canvas, shot: Shot, t: float) -> None:
+    """Blend the last picture of the previous shot over the start of this one,
+    drifting slightly, instead of a hard cut."""
+    if shot.index == 0 or t >= XFADE or shot.get("cut") == "hard" or shot.scene in ("title",):
+        return
+    a = 1 - gfx.ease_in_out(t / XFADE)
+    ctx = cv.ctx
+    ctx.save()
+    ctx.identity_matrix()
+    z = 1 + 0.05 * (1 - a)
+    ctx.translate(W / 2, H / 2)
+    ctx.scale(z, z)
+    ctx.translate(-W / 2, -H / 2)
+    ctx.set_source_surface(cv.prev, 0, 0)
+    ctx.paint_with_alpha(a)
+    ctx.restore()
 
 
 def render_frames(cv: Canvas, out_video: Path) -> None:
@@ -308,7 +335,7 @@ def render_frames(cv: Canvas, out_video: Path) -> None:
     proc = subprocess.Popen(
         ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
          "-f", "rawvideo", "-pix_fmt", "bgra", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
-         "-c:v", "libx264", "-preset", "veryfast", "-crf", "22", "-pix_fmt", "yuv420p",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
          str(out_video)],
         stdin=subprocess.PIPE,
     )
@@ -333,6 +360,7 @@ def render_frames(cv: Canvas, out_video: Path) -> None:
         scenes.paint(cv, shot, t)
         ctx.identity_matrix()
         cv.film.apply(ctx, f)
+        crossfade(cv, shot, t)
         cv.keep_picture()
         overlay.paint(cv, shot, t, now)
         cv.surface.flush()
@@ -412,7 +440,9 @@ def render(item: dict, out_path: Path, work: Path, cfg: dict) -> Path:
     render_frames(cv, video)
     run_ffmpeg([
         "-i", str(video), "-i", str(raw),
-        "-filter_complex", "[1:a]loudnorm=I=-14:TP=-1.5:LRA=11,aresample=44100[a]",
+        "-filter_complex",
+        "[1:a]acompressor=threshold=-20dB:ratio=2.5:attack=8:release=150:makeup=2,"
+        "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[a]",
         "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
         "-shortest", "-movflags", "+faststart", str(out_path),
     ])

@@ -201,7 +201,8 @@
     - scene: street
       time: "5:58 AM"
       rooftop: true
-      dark: 0.25
+      dawn: true
+      dark: 0.15
       stop: 0
       you: {light: false}
       fog: {rise: [0.6, 0.9], cue: sinking, density: 0.9}

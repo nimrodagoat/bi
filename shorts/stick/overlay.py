@@ -87,12 +87,18 @@ def draw_caption(ctx, chunk, hl: int, age: float, alpha: float = 1.0):
     scale = min(scale, 1.0 if total < W * 0.86 else W * 0.86 / total)
     a = alpha * gfx.clamp(age / 0.06)
     x = W / 2 - total * scale / 2
+    y = CAPTION_Y + 14 * (1 - ease_out(age / 0.22))
     for p, w in zip(pieces, widths):
-        draw_surface(ctx, p, x + w * scale / 2, CAPTION_Y, scale, a)
+        draw_surface(ctx, p, x + w * scale / 2, y, scale, a)
         x += (w + space) * scale
 
 
 # ------------------------------------------------------------------ HUD
+
+def dl(cv) -> str:
+    """What the counter counts: DAY (default) or e.g. NIGHT."""
+    return str(cv.item.get("day_label", "DAY")).upper()
+
 
 def draw_hud(cv, shot, t):
     from .episode import format_time
@@ -100,12 +106,12 @@ def draw_hud(cv, shot, t):
     ctx = cv.ctx
     day = shot.get("day", item.get("day", 1))
     x0, y0 = 62, 150
-    blink = 0.55 + 0.45 * (math.sin(cv.frame / 30 * 4) > 0)
+    blink = 0.55 + 0.45 * (math.sin(cv.frame / gfx.FPS * 4) > 0)
     gfx.glow(ctx, x0 + 8, y0, 18, RED, 0.35 * blink)
     set_color(ctx, RED, blink)
     ctx.arc(x0 + 8, y0, 7, 0, 2 * math.pi)
     ctx.fill()
-    draw_surface(ctx, text(f"DAY {day}", "mono", 24, "#d8d4cc", tracking=4), x0 + 26, y0, anchor="l")
+    draw_surface(ctx, text(f"{dl(cv)} {day}", "mono", 24, "#d8d4cc", tracking=4), x0 + 26, y0, anchor="l")
     hm, ap = format_time(shot.minutes_at(t))
     big = text(hm, "mono", 66, "#f2efe8", shadow=3)
     draw_surface(ctx, big, x0 - 8, y0 + 62, anchor="l")
@@ -125,16 +131,17 @@ def draw_hud(cv, shot, t):
             light = a + (b - a) * p
         level = gfx.clamp(float(light) / 100)
         col = "#39d353" if level > 0.5 else ("#ffd34d" if level > 0.2 else RED)
-        if level <= 0.2 and math.sin(cv.frame / 30 * 9) < 0:
+        if level <= 0.2 and math.sin(cv.frame / gfx.FPS * 9) < 0:
             col = "#5a1a16"
         label = str(shot.get("meter_label") or item.get("meter_label", "LIGHT")).upper()
         draw_surface(ctx, text(label, "mono", 20, "#a8a39a", tracking=3), x0 - 4, y0 + 170, anchor="l")
+        bx = x0 + max(96, gfx.text_width(label, "mono", 20, 3) + 22)
         for k in range(5):
             on = level > k / 5 + 0.01
             set_color(ctx, col if on else "#3a3a3a")
-            gfx.rounded_rect(ctx, x0 + 96 + k * 30, y0 + 160, 24, 20, 3)
+            gfx.rounded_rect(ctx, bx + k * 30, y0 + 160, 24, 20, 3)
             ctx.fill()
-        draw_surface(ctx, text(f"{round(level * 100)}%", "mono", 20, col), x0 + 252, y0 + 170, anchor="l")
+        draw_surface(ctx, text(f"{round(level * 100)}%", "mono", 20, col), bx + 156, y0 + 170, anchor="l")
 
 
 # ------------------------------------------------------------------ rule card
@@ -184,7 +191,7 @@ def draw_title(cv, shot, t):
     sc = 1.0 + 0.04 * gfx.ease_out(t / max(shot.dur, 0.1))
     draw_surface(ctx, text(series, "title", 190, "#f4f1ea", glow_color="#ffffff", glow_radius=10), W / 2, 800, sc, on)
     ap = gfx.clamp((t - 0.5) / 0.15) * (1 if t > 0.9 else gfx.flicker(t, 5, 25))
-    draw_surface(ctx, text(f"DAY {day}", "title", 140, "#ff4436", glow_color=RED, glow_radius=12), W / 2, 960, sc, ap)
+    draw_surface(ctx, text(f"{dl(cv)} {day}", "title", 140, "#ff4436", glow_color=RED, glow_radius=12), W / 2, 960, sc, ap)
     lw = 330 * ease_out((t - 0.6) / 0.4)
     set_color(ctx, RED, ap)
     ctx.rectangle(W / 2 - lw / 2, 1040, lw, 6)
@@ -237,7 +244,7 @@ def draw_endcard(cv, shot, t):
     if final:
         switch = 1e9
     if t < switch:
-        draw_surface(ctx, text(f"DAY {day}", "title", 230, "#f6f3ec", glow_color="#ffffff", glow_radius=10), W / 2, 720, alpha=a)
+        draw_surface(ctx, text(f"{dl(cv)} {day}", "title", 230, "#f6f3ec", glow_color="#ffffff", glow_radius=10), W / 2, 720, alpha=a)
         if final:
             k = t - 0.9
             if k > 0:
@@ -246,10 +253,10 @@ def draw_endcard(cv, shot, t):
     else:
         k = t - switch
         f = 1 if k > 0.35 else gfx.flicker(k, 9, 30)
-        draw_surface(ctx, text(f"DAY {day + 1}", "title", 230, "#ff4436", glow_color=RED, glow_radius=14),
+        draw_surface(ctx, text(f"{dl(cv)} {day + 1}", "title", 230, "#ff4436", glow_color=RED, glow_radius=14),
                      W / 2, 720, 1 + 0.06 * (1 - ease_out(k / 0.3)), f)
     draw_surface(ctx, text(f"{hm} {ap}", "mono", 30, "#cfcac0", tracking=3), W / 2, 850, alpha=a)
-    label = "FOLLOW FOR A NEW STORY" if final else f"FOLLOW FOR DAY {day + 1}"
+    label = "FOLLOW FOR A NEW STORY" if final else f"FOLLOW FOR {dl(cv)} {day + 1}"
     pill(ctx, W / 2, 935, label, "caption", 26, WHITE, "#2a0d0b", 0.9, border="#c0392b",
          scale=back_out((t - 0.4) / 0.3), alpha=gfx.clamp((t - 0.4) / 0.15), pad_x=26, pad_y=12)
 
@@ -268,6 +275,10 @@ def paint(cv, shot, t: float, now: float) -> None:
     elif sc == "endcard":
         draw_endcard(cv, shot, t)
     draw_rule(cv, shot, t)
+    if shot.get("recap"):
+        a = gfx.clamp(t / 0.25) * gfx.clamp((shot.dur - t) / 0.25)
+        pill(ctx, W / 2, 470, "PREVIOUSLY", "mono", 24, "#f2efe8", "#000000", 0.6, border="#8a8478",
+             alpha=a, pad_x=18, pad_y=8, tracking=4)
     chip = shot.get("chip")
     if chip:
         k = t - shot.cue(chip.get("cue"), 0.5)
