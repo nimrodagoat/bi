@@ -2,11 +2,11 @@ name: Daily Short
 
 on:
   schedule:
-    # Checks every hour and posts whatever is due (see schedule.slots_utc in
+    # Checks every 15 minutes (GitHub skips many scheduled runs) and posts whatever is due (see schedule.slots_utc in
     # config.yaml: 6 slots a day). GitHub often starts scheduled runs late or
     # skips them; the hourly check catches up on any missed slot, never posting
     # more than schedule.max_per_day per YouTube quota day.
-    - cron: "37 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       dry_run:

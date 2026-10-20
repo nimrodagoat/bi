@@ -197,6 +197,431 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: fog-line-day-1
+  format: stickman
+  series: FOG LINE
+  day: 1
+  place: HARBOR ST
+  title: Anyone who walks into the fog stops answering. Day 1 🌫️
+  tags:
+  - stickman
+  - animation
+  - horror
+  - survival
+  - fog
+  - story
+  shots:
+  - scene: street
+    time: 6:12 PM
+    dark: 0.5
+    pace: walk
+    you:
+      light: false
+    fog:
+      rise:
+      - 0.95
+      - 0.66
+      density: 0.9
+    people:
+    - x: 0.78
+      fade: stop
+    say: At six twelve PM, the fog rolls in off the harbor. The man walking ahead of you steps into it... and his footsteps just stop.
+  - scene: title
+    say: Fog Line. Day one.
+  - scene: map
+    time: 6:14 PM
+    route:
+    - - 0.1
+      - 0.92
+    - - 0.1
+      - 0.55
+    - - 0.6
+      - 0.55
+    - - 0.6
+      - 0.12
+    route_cue: home
+    route_end: up
+    target:
+      label: Home · 3rd floor
+      cue: home
+      icon: pin
+    bracket:
+      label: 6 blocks
+      cue: six
+    fog_zone:
+      level:
+      - 0.12
+      - 0.42
+      cue: fills
+      label: Fog line
+    say: It fills the low streets first. Your building is on the hill. Six blocks up.
+  - scene: street
+    time: 6:16 PM
+    dark: 0.5
+    pace: run
+    you:
+      light: false
+    rule:
+      n: 1
+      text: Stay above the fog
+    fog:
+      rise:
+      - 0.9
+      - 0.7
+      density: 1.0
+    say: Rule number one. Stay above the fog. So you run uphill... and you don't look back.
+  - scene: room
+    time: 6:31 PM
+    place: APT 3C
+    dark: 0.35
+    lamp: true
+    window_fog: 0.9
+    you:
+      x: 0.62
+      action: idle
+      facing: -1
+    say: Third floor. You lock the door. Outside, the fog stops right below your window.
+  - scene: inventory
+    time: 7:40 PM
+    items:
+    - icon: bottle
+      count: 6
+      label: water
+      cue: six
+    - icon: can
+      count: 5
+      label: soup
+      cue: five
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    total:
+      text: = 3 days
+      cue: three
+    say: Six bottles of water. Five cans of soup. One flashlight. Three days, if it stays down there.
+  - scene: closeup
+    object: phone
+    time: 10:02 PM
+    ring: 0
+    screen: Mom
+    sub: Incoming call
+    say: At ten PM, your phone rings. It's your mom. She says she's downstairs, in the fog. She says open the window and pull her up.
+  - scene: room
+    time: 10:03 PM
+    dark: 0.45
+    lamp: true
+    window_fog: 1.0
+    rule:
+      n: 2
+      text: Never open a window
+    you:
+      x: 0.55
+      action: scared
+      facing: -1
+    say: Rule number two. Never open a window. Not for anyone. Because your mom... lives four hundred miles away.
+  - scene: radio
+    time: 12:00 AM
+    true: crackles
+    chip:
+      text: Fog rising · 1 floor / hour
+      cue: rising
+      y: 470
+    say:
+    - At midnight, the radio crackles.
+    - radio: Coast guard. The fog is rising one floor every hour. Get as high as you can.
+  - scene: choice
+    time: 1:00 AM
+    base:
+      scene: room
+      dark: 0.5
+      lamp: true
+      window_fog: 1.0
+      fog:
+        rise:
+        - 0.97
+        - 0.85
+      you:
+        x: 0.55
+        action: idle
+        facing: 1
+    question: Roof or stay?
+    options:
+    - text: Roof
+      cue: roof
+    - text: Stay
+      cue: stay
+    sfx:
+    - name: boom
+      at: once
+      gain: 0.5
+    say: Then the foghorn blows. Once. Twice. Three times. Do you go up to the roof... or stay and seal the door?
+  - scene: endcard
+    time: 1:01 AM
+    hold: 1.6
+    say: Follow for day two.
+- id: fog-line-day-2
+  format: stickman
+  series: FOG LINE
+  day: 2
+  place: APT 3C
+  title: My neighbor was standing in the fog, smiling. Day 2 🌫️
+  tags:
+  - stickman
+  - animation
+  - horror
+  - survival
+  - fog
+  - story
+  shots:
+  - scene: hallway
+    time: 1:04 AM
+    place: 3RD FLOOR
+    lights: flicker
+    dark: 0.6
+    wall: '#5d6066'
+    carpet: '#4a3b33'
+    fog:
+      top: 0.78
+      density: 0.9
+    say: You choose the roof. In the hallway, the fog is already ankle deep.
+  - scene: title
+    say: Fog Line. Day two.
+  - scene: hallway
+    time: 1:05 AM
+    lights: flicker
+    dark: 0.6
+    wall: '#5d6066'
+    carpet: '#4a3b33'
+    fog:
+      top: 0.74
+      density: 1.0
+    camera:
+      zoom:
+      - 1.0
+      - 1.25
+      focus:
+      - 0.5
+      - 0.45
+    figures:
+    - who: person
+      z: 5.0
+      x: 0.1
+      facing: -1
+      action: idle
+      stare: true
+      cue: neighbor
+    say: Your neighbor, Mr. Price, is standing at the end of the hall. Knee deep in fog. Smiling at you.
+  - scene: street
+    time: 1:09 AM
+    place: ROOF
+    rooftop: true
+    dark: 0.55
+    stop: 0
+    you:
+      light: false
+    fog:
+      top: 0.66
+      density: 1.0
+    say: On the roof, the whole town is gone. Just fog. And the tops of three buildings.
+  - scene: map
+    time: 1:20 AM
+    route:
+    - - 0.6
+      - 0.12
+    - - 0.6
+      - 0.12
+    target:
+      label: You · roof
+      cue: 0
+      icon: pin
+    fog_zone:
+      level:
+      - 0.45
+      - 0.62
+      cue: rises
+    rule:
+      n: 3
+      text: Three horns means it rises
+    say: Rule number three. Every time the foghorn blows three times... the fog rises. You've heard it twice since midnight.
+  - scene: inventory
+    time: 2:10 AM
+    items:
+    - icon: bottle
+      count: 2
+      label: water
+      cue: two
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    total:
+      text: + the radio
+      cue: radio
+    say: You brought two bottles of water, the flashlight, and the radio.
+  - scene: radio
+    time: 3:00 AM
+    true: says
+    chip:
+      text: Rescue · rooftops · 6:00 AM
+      cue: six
+      y: 470
+    say:
+    - 'At three AM, the coast guard says:'
+    - radio: Boats will search the rooftops at sunrise. Six AM. Stay where we can see you.
+  - scene: street
+    time: 4:00 AM
+    rooftop: true
+    dark: 0.6
+    stop: 0
+    light: 60
+    you:
+      light: true
+      aim: -0.2
+    fog:
+      rise:
+      - 0.7
+      - 0.6
+      cue: climbs
+      density: 1.1
+    heartbeat: climbs
+    say: At four AM, the horn blows three times. And the fog climbs over the edge of the roof.
+  - scene: choice
+    time: 4:02 AM
+    base:
+      scene: street
+      rooftop: true
+      dark: 0.6
+      stop: 0
+      you:
+        light: true
+        aim: -0.25
+      fog:
+        top: 0.6
+        density: 1.1
+    question: Help or push?
+    options:
+    - text: Help
+      cue: help
+    - text: Push
+      cue: push
+    say: A hand comes up with it. It grabs the ledge. It's wearing your mom's ring. Do you help it up... or push it back down?
+  - scene: endcard
+    time: 4:03 AM
+    hold: 1.6
+    say: Follow for day three.
+- id: fog-line-day-3
+  format: stickman
+  series: FOG LINE
+  day: 3
+  place: ROOF
+  title: The fog finally left... then my phone got a message. Day 3 🌫️
+  tags:
+  - stickman
+  - animation
+  - horror
+  - survival
+  - fog
+  - story
+  shots:
+  - scene: street
+    time: 4:03 AM
+    rooftop: true
+    dark: 0.6
+    stop: 0
+    you:
+      action: push
+      light: false
+    fog:
+      top: 0.6
+      density: 1.1
+    shake_at:
+    - push
+    say: You push. It doesn't scream. It just... lets go.
+  - scene: title
+    say: Fog Line. Day three.
+  - scene: street
+    time: 5:58 AM
+    rooftop: true
+    dark: 0.25
+    stop: 0
+    you:
+      light: false
+    fog:
+      rise:
+      - 0.6
+      - 0.9
+      cue: sinking
+      density: 0.9
+    say: At six AM, the sun comes up. And the fog starts sinking.
+  - scene: map
+    time: 6:40 AM
+    route:
+    - - 0.6
+      - 0.12
+    - - 0.6
+      - 0.12
+    target:
+      label: You · roof
+      cue: 0
+      icon: pin
+    fog_zone:
+      level:
+      - 0.55
+      - 0.02
+      cue: street
+      label: Fog line
+    say: Street by street, the town comes back. Empty. Every car still running. Every door wide open.
+  - scene: street
+    time: 7:10 AM
+    place: HARBOR ST
+    dark: 0.15
+    pace: walk
+    you:
+      light: false
+    rule:
+      n: 4
+      text: Nobody comes back
+    say: Rule number four, the one nobody told you. The fog gives the streets back. Not the people.
+  - scene: radio
+    time: 7:30 AM
+    true: radio
+    say: The radio only hisses. No boats. No coast guard. Nobody.
+  - scene: closeup
+    object: phone
+    time: 7:31 AM
+    ring: 0
+    screen: Mom
+    sub: New message · yesterday
+    message: |-
+      They say everyone in Gull Harbor is gone.
+      Who keeps answering your phone?
+    message_cue: gone
+    heartbeat: 0
+    say: Then your phone finds a signal. One message from your mom. Sent yesterday. They say everyone in Gull Harbor is gone. Who keeps answering your phone?
+  - scene: choice
+    time: 7:32 AM
+    base:
+      scene: street
+      dark: 0.15
+      stop: 0
+      you:
+        light: false
+      fog:
+        top: 0.88
+        density: 0.6
+    question: Call or run?
+    options:
+    - text: Call
+      cue: call
+    - text: Run
+      cue: run
+    say: Do you call her back... or throw the phone in the harbor and run?
+  - scene: endcard
+    time: 7:32 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa

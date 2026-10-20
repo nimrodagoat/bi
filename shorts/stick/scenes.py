@@ -220,6 +220,16 @@ def room(cv, shot, t):
             bp = 1.0
     if o.get("window", True):
         props.window(ctx, 400, 470, 300, 330, t, moon=True, city_lights=float(o.get("city_lights", 0)))
+        wf = float(o.get("window_fog", 0))
+        if wf > 0:
+            for k in range(3):
+                y = 470 + 330 * (0.35 + 0.18 * k) + 8 * math.sin(t * 0.6 + k)
+                g = cairo.LinearGradient(0, y - 60, 0, y + 60)
+                g.add_color_stop_rgba(0, 0.62, 0.66, 0.7, 0)
+                g.add_color_stop_rgba(1, 0.62, 0.66, 0.7, 0.45 * wf)
+                ctx.set_source(g)
+                ctx.rectangle(407, y - 60, 286, 800 - y + 60 - 7)
+                ctx.fill()
     minutes = shot.minutes_at(t)
     props.wall_clock(ctx, 170, 630, 48, minutes // 60, minutes % 60, dark=dark > 0.5)
     if o.get("picture", True):
@@ -638,6 +648,21 @@ def city_map(cv, shot, t):
             set_color(ctx, "#ff4b3e", a * 0.9)
             ctx.arc(px, py, 6, 0, 2 * math.pi)
             ctx.fill()
+    fz = o.get("fog_zone")
+    if fz:  # fog covering the map from the bottom (harbour side) up
+        a0, a1 = fz.get("level", [0.3, 0.6]) if isinstance(fz.get("level"), list) else (fz.get("level", 0.4),) * 2
+        at = shot.cue(fz.get("cue"), 0.0)
+        lv = a0 + (a1 - a0) * ease_in_out((t - at) / max(shot.dur - at, 0.1))
+        fy = my + mh * (1 - lv)
+        g = cairo.LinearGradient(0, fy - 60, 0, fy + 80)
+        g.add_color_stop_rgba(0, 0.75, 0.8, 0.86, 0)
+        g.add_color_stop_rgba(1, 0.75, 0.8, 0.86, 0.5)
+        ctx.set_source(g)
+        ctx.rectangle(mx - 40, fy - 60, mw + 80, my + mh + 40 - fy + 60)
+        ctx.fill()
+        stroke_line(ctx, [(mx - 40, fy), (mx + mw + 40, fy)], 3, "#dfe7f2", 0.6)
+        pill(ctx, mx + mw - 90, fy - 30, str(fz.get("label", "FOG LINE")).upper(), "mono", 20, "#0b1d38", "#dfe7f2",
+             0.9, pad_x=12, pad_y=5, tracking=2)
     # route, drawn progressively
     r0 = shot.cue(o.get("route_cue"), 0.3)
     r1 = shot.cue(o.get("route_end"), shot.dur * 0.7)
@@ -680,6 +705,17 @@ def city_map(cv, shot, t):
             k = back_out((t - at) / 0.3)
             tx, ty = route[-1]
             glow(ctx, tx, ty, 120, "#5fe8cf", 0.35)
+        if t >= at and tg.get("icon") == "pin":
+            set_color(ctx, TEAL)
+            ctx.arc(tx, ty - 34 * k, 22 * k, 0, 2 * math.pi)
+            ctx.fill()
+            ctx.move_to(tx - 18 * k, ty - 26 * k)
+            ctx.line_to(tx, ty)
+            ctx.line_to(tx + 18 * k, ty - 26 * k)
+            ctx.fill()
+            pill(ctx, tx, ty + 50, str(tg.get("label", "")).upper(), "caption", 22, "#062019", TEAL, 0.95,
+                 scale=k, pad_x=14, pad_y=6)
+        elif t >= at:
             ctx.save()
             ctx.translate(tx, ty)
             ctx.scale(k, k * 0.62)
@@ -758,8 +794,12 @@ def street(cv, shot, t):
     set_color(ctx, "#dfe6f5")
     ctx.arc(830, 380, 34, 0, 2 * math.pi)
     ctx.fill()
-    _buildings(ctx, scroll * 0.15, base - 120, "#111725", 1, 380, 820)
-    _buildings(ctx, scroll * 0.45, base, "#1b2131", 2, 300, 620, windows=float(o.get("windows", 0)))
+    roof = bool(o.get("rooftop"))
+    if roof:  # up on a roof: the town is below, only a few tops stick out
+        _buildings(ctx, scroll * 0.1, base + 260, "#111725", 1, 300, 560)
+    else:
+        _buildings(ctx, scroll * 0.15, base - 120, "#111725", 1, 380, 820)
+        _buildings(ctx, scroll * 0.45, base, "#1b2131", 2, 300, 620, windows=float(o.get("windows", 0)))
     # big counters (block numbers) passing by
     for c in o.get("counter") or []:
         tc = shot.cue(c.get("cue"), 0.0)
@@ -769,26 +809,57 @@ def street(cv, shot, t):
             draw_surface(ctx, text(str(c.get("label", "")).upper(), "mono", 26, "#e9e4da", tracking=4), wx, 1010, alpha=0.3)
     # lamp posts (dead)
     k0 = int(math.floor(scroll / 560)) - 1
-    for k in range(k0, k0 + 4):
+    for k in range(k0, k0 + (0 if roof else 4)):
         lx = k * 560 + 200 - scroll
         stroke_line(ctx, [(lx, base + 10), (lx, 780), (lx + 70, 760)], 12, "#2c3038")
         ctx.rectangle(lx + 50, 752, 60, 20)
         set_color(ctx, "#3a3f4a")
         ctx.fill()
-    ctx.rectangle(-300, base, W + 600, 40)
-    set_color(ctx, "#262a31")
-    ctx.fill()
-    ctx.rectangle(-300, base + 40, W + 600, H)
-    set_color(ctx, "#121418")
-    ctx.fill()
-    ctx.set_line_width(10)
-    set_color(ctx, "#3b3f46")
-    k0 = int(math.floor(scroll * 1.15 / 260)) - 1
-    for k in range(k0, k0 + 7):
-        x = k * 260 - scroll * 1.15
-        ctx.move_to(x, base + 300)
-        ctx.line_to(x + 120, base + 300)
-    ctx.stroke()
+    if roof:
+        ctx.rectangle(110, base - 330, 210, 250)  # water tank
+        set_color(ctx, "#1d2028")
+        ctx.fill()
+        for lx in (130, 300):
+            stroke_line(ctx, [(lx, base - 80), (lx, base)], 10, "#1d2028")
+        ctx.save()
+        ctx.translate(215, base - 330)
+        ctx.scale(1, 0.25)
+        ctx.arc(0, 0, 105, math.pi, 2 * math.pi)
+        ctx.restore()
+        set_color(ctx, "#1d2028")
+        ctx.fill()
+        ctx.rectangle(-300, base, W + 600, H)
+        set_color(ctx, "#25272d")
+        ctx.fill()
+        ctx.rectangle(W - 60, base - 60, 400, 60)  # the ledge
+        set_color(ctx, "#33363d")
+        ctx.fill()
+    else:
+        ctx.rectangle(-300, base, W + 600, 40)
+        set_color(ctx, "#262a31")
+        ctx.fill()
+        ctx.rectangle(-300, base + 40, W + 600, H)
+        set_color(ctx, "#121418")
+        ctx.fill()
+        ctx.set_line_width(10)
+        set_color(ctx, "#3b3f46")
+        k0 = int(math.floor(scroll * 1.15 / 260)) - 1
+        for k in range(k0, k0 + 7):
+            x = k * 260 - scroll * 1.15
+            ctx.move_to(x, base + 300)
+            ctx.line_to(x + 120, base + 300)
+        ctx.stroke()
+    for k, p in enumerate(o.get("people") or []):  # other people out on the street
+        at = shot.cue(p.get("cue"), 0.0)
+        if t < at:
+            continue
+        a = 1.0 - clamp((t - shot.cue(p.get("fade"), 1e9)) / 0.9)
+        if a <= 0:
+            continue
+        px = float(p.get("x", 0.75)) * W + float(p.get("drift", 0)) * (t - at)
+        act = p.get("action", "walk" if moving else "idle")
+        F.draw_stickman(ctx, F.pose_for(act, t + k * 0.4, speed=0.9), px, base + 6, 1.05,
+                        int(p.get("facing", 1)), color="#d9d9d9", alpha=a)
     hx = float(o.get("hero_x", 0.4)) * W
     dark = float(o.get("dark", 0.82))
     # lurkers stand in the dark ahead, and back off from the beam
@@ -824,6 +895,7 @@ def street(cv, shot, t):
             j = F.draw_creature(ctx, pose, sx, base + 8 + 6 * k, 1.1, 1, eye_alpha=0)
             chasers.append((j, 1.1, 1))
     you = dict(o.get("you") or {})
+    wants_light = you.get("light", True)
     you.setdefault("x", hx / W)
     you.setdefault("light", True)
     if moving:
@@ -832,7 +904,7 @@ def street(cv, shot, t):
     if pace == "run" and moving:
         you["light"] = False if not you.get("light_running") else True
     j, beam = hero(cv, shot, t, you, base + 6, 1.15)
-    if pace == "run" and moving and you.get("light_running", True) is not False:
+    if pace == "run" and moving and wants_light and you.get("light_running", True) is not False:
         hand = j.hand_f
         beam = (hand[0] + 30, hand[1], -0.05 + 0.1 * math.sin(t * 9))
     fl = o.get("floodlights")
@@ -913,9 +985,21 @@ def closeup(cv, shot, t):
             a = clamp((t - shot.cue(o.get("eyes_cue"), 0.0) - k * 0.25) / 0.4)
             eyes(ctx, 760 + (k * 97) % 280, 520 + (k * 173) % 760, 5, a * (1 - s))
     elif obj == "phone":
+        ring = t >= shot.cue(o.get("ring"), 1e9)
+        buzz = math.sin(t * 70) * 6 if ring and (t * 2) % 1 < 0.5 else 0
+        ctx.save()
+        ctx.translate(buzz, 0)
         props.phone(ctx, W / 2, 860, 640, t, lit=1.0)
-        draw_surface(ctx, text(str(o.get("screen", "NO SIGNAL")).upper(), "bold", 40, "#f2f2f2"), W / 2, 820)
-        draw_surface(ctx, text(str(o.get("sub", "")).upper(), "mono", 24, "#9fb6d6"), W / 2, 880)
+        draw_surface(ctx, text(str(o.get("screen", "NO SIGNAL")).upper(), "bold", 54, "#f2f2f2"), W / 2, 780)
+        draw_surface(ctx, text(str(o.get("sub", "")).upper(), "mono", 26, "#9fb6d6"), W / 2, 850)
+        if o.get("message"):
+            k = t - shot.cue(o.get("message_cue"), 0.0)
+            if k >= 0:
+                y = 950
+                for line in str(o["message"]).split("\n"):
+                    draw_surface(ctx, text(line, "bold", 30, "#f2f2f2"), W / 2, y, alpha=clamp(k / 0.3))
+                    y += 44
+        ctx.restore()
     elif obj == "alarm":
         m = shot.minutes_at(t)
         props.alarm_clock(ctx, W / 2, 860, 260, m // 60, m % 60, t, clamp((t - shot.cue(o.get("ring"), 1e9)) * 3))
