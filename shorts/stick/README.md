@@ -24,7 +24,8 @@ sentence at a time so captions stay in sync. Preview one entry quickly:
   shots:
     - scene: room           # see scenes below
       time: "9:14 PM"       # clock; small jumps to the next shot tick by
-      light: 82             # LIGHT meter (0-100), or [from, to] across the shot
+      light: 82             # the meter (0-100), or [from, to] across the shot
+      meter_label: WARMTH   # optional; the meter is called LIGHT unless set (also on the entry)
       rule: {n: 4, text: Never answer}   # big rule card, then it shrinks to the top
       say: "One or more sentences. Pauses come from the punctuation..."
 ```
@@ -63,6 +64,6 @@ Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a gara
 stadium tunnel); a `who: person` figure can have `stare: true` (shining eyes).
 Street: `floodlights: cue` (bright lights ahead). Closeup flashlight: `eyes: N`, `eyes_cue`.
 
-Any shot: `fog: {top: 0.6, rise: [0.8, 0.5], cue, density, color}` (rolling fog), `flicker: cue`, `relight: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,
+Any shot: `snow: {n, speed, wind}` (or `snow: true`), `fog: {top: 0.6, rise: [0.8, 0.5], cue, density, color}` (rolling fog), `flicker: cue`, `relight: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,
 `shake_at: [cue]`, `camera: {zoom: [1, 1.1], focus: [x, y], shift}`, `hold` (extra seconds),
 `sfx: [{name: knock|boom|hit|click|whoosh|tick, at: cue, gain}]`, `no_hud`.

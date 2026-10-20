@@ -28,6 +28,23 @@ def paint(cv, shot, t: float) -> None:
     SCENES.get(shot.scene, SCENES["room"])(cv, shot, t)
     if shot.get("fog"):
         fog(cv.ctx, shot, t, shot.get("fog"))
+    if shot.get("snow"):
+        snow(cv.ctx, t, shot.get("snow"))
+
+
+def snow(ctx, t, spec):
+    """Falling snow; `{n, speed, wind}` or just true."""
+    spec = spec if isinstance(spec, dict) else {}
+    n = int(spec.get("n", 140))
+    speed = float(spec.get("speed", 140))
+    wind = float(spec.get("wind", 60))
+    for k in range(n):
+        depth = 0.5 + (k * 0.618) % 1
+        x = (k * 197.3 + wind * depth * t + 30 * math.sin(t * 0.8 + k)) % (W + 200) - 100
+        y = (k * 131.7 + speed * depth * t) % (H + 200) - 100
+        ctx.arc(x, y, 1.6 + 2.4 * depth, 0, 2 * math.pi)
+        ctx.set_source_rgba(0.95, 0.97, 1.0, 0.35 + 0.4 * (depth - 0.5))
+        ctx.fill()
 
 
 def fog(ctx, shot, t, spec):

@@ -179,7 +179,7 @@ def narrator_voice(item: dict, cfg: dict) -> dict:
     return {k: val for k, val in v.items() if k != "name"}
 
 
-INHERIT = ("place", "light")
+INHERIT = ("place", "light", "meter_label")
 
 
 def make_shots(item: dict) -> list[Shot]:

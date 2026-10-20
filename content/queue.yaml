@@ -622,6 +622,421 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: snowbound-day-1
+  format: stickman
+  series: SNOWBOUND
+  day: 1
+  place: ROUTE 9
+  meter_label: WARMTH
+  title: Never open the door for the guest in room 7. Day 1 ❄️
+  tags:
+  - stickman
+  - animation
+  - horror
+  - survival
+  - snow
+  - story
+  shots:
+  - scene: street
+    time: 4:00 PM
+    dark: 0.45
+    pace: walk
+    you:
+      light: false
+    snow:
+      n: 220
+      speed: 160
+      wind: 140
+    light: 100
+    say: At four PM, the blizzard closes the mountain road. The only light for miles... is the Pine Hollow Motel.
+  - scene: title
+    say: Snowbound. Day one.
+  - scene: hallway
+    time: 4:20 PM
+    place: PINE HOLLOW MOTEL
+    lights: 'on'
+    wall: '#6e5640'
+    carpet: '#5c2626'
+    floor: '#2e2219'
+    ceiling: '#2a211a'
+    rule:
+      n: 1
+      text: Never open for room seven
+    say: The owner hands you the key to room twelve, and one rule written on the tag. Never open your door for the guest in room seven.
+  - scene: room
+    time: 4:31 PM
+    place: ROOM 12
+    wall: '#7d6a55'
+    lamp: true
+    window_fog: 0.6
+    snow:
+      n: 60
+      speed: 90
+      wind: 80
+    you:
+      x: 0.6
+      action: idle
+      facing: -1
+    say: There are three other guests. A trucker. An old woman in a red scarf. And room seven... who nobody has seen.
+  - scene: inventory
+    time: 6:10 PM
+    light: 90
+    rule:
+      n: 2
+      text: Keep the fire burning
+    items:
+    - icon: candle
+      count: 4
+      label: candles
+      cue: four
+    - icon: bottle
+      count: 3
+      label: water
+      cue: three
+    - icon: can
+      count: 2
+      label: beans
+      cue: two
+    - icon: matches
+      count: 1
+      label: matches
+      cue: matches
+    total:
+      text: = 3 nights
+      cue: nights
+    say: Rule number two. Keep the fire burning. Four candles. Three bottles of water. Two cans of beans. Matches. Three nights, if the wood lasts.
+  - scene: radio
+    time: 9:00 PM
+    light: 84
+    true: crackles
+    chip:
+      text: Plows · route 9 · 3 days
+      cue: three
+      y: 470
+    say:
+    - At nine PM, the radio crackles.
+    - radio: Snowplows will reach Route Nine in three days. Stay inside. Stay warm.
+  - scene: hallway
+    time: 12:00 AM
+    light: 78
+    lights: flicker
+    dark: 0.75
+    wall: '#6e5640'
+    carpet: '#5c2626'
+    floor: '#2e2219'
+    ceiling: '#2a211a'
+    sfx:
+    - name: knock
+      at: knocks
+      gain: 0.9
+    shake_at:
+    - knocks
+    say: At midnight, someone knocks on your door. Three slow knocks.
+  - scene: peephole
+    time: 12:01 AM
+    lights: flicker
+    dark: 0.7
+    wall: '#6e5640'
+    carpet: '#5c2626'
+    floor: '#2e2219'
+    ceiling: '#2a211a'
+    figures:
+    - who: person
+      z: 2.2
+      x: 0.05
+      facing: -1
+      action: idle
+      stare: true
+    say: Through the peephole, a man in a soaked coat. Snow on his shoulders. He's holding a key. Room seven.
+  - scene: choice
+    time: 12:02 AM
+    base:
+      scene: peephole
+      lights: flicker
+      dark: 0.7
+      wall: '#6e5640'
+      carpet: '#5c2626'
+      floor: '#2e2219'
+      ceiling: '#2a211a'
+      figures:
+      - who: person
+        z: 1.9
+        x: 0.05
+        facing: -1
+        action: knock
+        stare: true
+    question: Open or ignore?
+    options:
+    - text: Open
+      cue: open
+    - text: Ignore
+      cue: freeze
+    say: He says his fire went out. He says he's freezing. Do you open the door... or let him freeze?
+  - scene: endcard
+    time: 12:02 AM
+    hold: 1.6
+    say: Follow for day two.
+- id: snowbound-day-2
+  format: stickman
+  series: SNOWBOUND
+  day: 2
+  place: ROOM 12
+  meter_label: WARMTH
+  title: The trucker's footprints led to room 7 and never came back. Day 2 ❄️
+  tags:
+  - stickman
+  - animation
+  - horror
+  - survival
+  - snow
+  - story
+  shots:
+  - scene: room
+    time: 12:03 AM
+    light: 76
+    wall: '#7d6a55'
+    dark: 0.55
+    lamp: true
+    window_fog: 0.6
+    barricade: true
+    you:
+      x: 0.55
+      action: crouch
+      facing: 1
+    say: You don't open it. He knocks until four AM. Then the knocking just... stops.
+  - scene: title
+    say: Snowbound. Day two.
+  - scene: street
+    time: 7:10 AM
+    place: PARKING LOT
+    light: 62
+    dark: 0.2
+    stop: 0
+    you:
+      light: false
+    snow:
+      n: 120
+      speed: 90
+      wind: 60
+    rule:
+      n: 3
+      text: Count the guests
+    say: Rule number three. Count the guests every morning. The trucker's footprints go across the lot to room seven. None come back.
+  - scene: map
+    time: 7:20 AM
+    route:
+    - - 0.62
+      - 0.9
+    - - 0.62
+      - 0.9
+    target:
+      label: You · room 12
+      cue: 0
+      icon: pin
+    x_marks:
+    - x: 0.12
+      y: 0.3
+      cue: trucker
+    danger:
+    - x: 0.38
+      y: 0.3
+      r: 0.08
+      n: 10
+      cue: seven
+    say: Room three, the trucker... gone. Room nine, the old woman... still there. Room seven... the curtains are open now.
+  - scene: room
+    time: 3:00 PM
+    light:
+    - 40
+    - 18
+    wall: '#7d6a55'
+    dark: 0.5
+    window_fog: 0.8
+    you:
+      x: 0.5
+      action: scared
+      facing: -1
+    say: By the afternoon, your firewood is gone. The room gets colder every minute.
+  - scene: map
+    time: 3:30 PM
+    route:
+    - - 0.62
+      - 0.9
+    - - 0.62
+      - 0.62
+    - - 0.38
+      - 0.62
+    - - 0.38
+      - 0.38
+    route_cue: shed
+    route_end: seven
+    target:
+      label: Wood shed
+      cue: shed
+      icon: pin
+    danger:
+    - x: 0.38
+      y: 0.22
+      r: 0.07
+      n: 10
+      cue: seven
+    say: The wood shed is across the lot. Right next to room seven.
+  - scene: street
+    time: 3:42 PM
+    place: PARKING LOT
+    light: 14
+    dark: 0.35
+    pace: walk
+    you:
+      light: false
+    snow:
+      n: 200
+      speed: 150
+      wind: 120
+    people:
+    - x: 0.82
+      action: idle
+      facing: -1
+      cue: window
+    say: Through the snow, you see someone in the window of room seven. A red scarf.
+  - scene: choice
+    time: 3:43 PM
+    light: 12
+    base:
+      scene: street
+      dark: 0.4
+      stop: 0
+      you:
+        light: false
+      snow:
+        n: 200
+        speed: 150
+        wind: 120
+      people:
+      - x: 0.82
+        action: idle
+        facing: -1
+    question: Shed or burn it?
+    options:
+    - text: Shed
+      cue: shed
+    - text: Burn
+      cue: burn
+    say: Do you run for the shed... or go back and burn the furniture?
+  - scene: endcard
+    time: 3:43 PM
+    hold: 1.6
+    say: Follow for day three.
+- id: snowbound-day-3
+  format: stickman
+  series: SNOWBOUND
+  day: 3
+  place: PARKING LOT
+  meter_label: WARMTH
+  title: I found my own name in the motel guestbook. Day 3 ❄️
+  tags:
+  - stickman
+  - animation
+  - horror
+  - survival
+  - snow
+  - story
+  shots:
+  - scene: street
+    time: 3:44 PM
+    light: 10
+    dark: 0.4
+    pace: run
+    you:
+      light: false
+    snow:
+      n: 220
+      speed: 170
+      wind: 150
+    say: You run for the shed. Halfway there, the door of room seven swings open.
+  - scene: title
+    say: Snowbound. Day three.
+  - scene: room
+    time: 3:45 PM
+    place: ROOM 7
+    wall: '#5a4636'
+    dark: 0.35
+    lamp: true
+    window_fog: 0.7
+    camera:
+      zoom:
+      - 1.0
+      - 1.12
+      focus:
+      - 0.5
+      - 0.5
+    you:
+      x: 0.2
+      to: 0.45
+      move: walk
+      then: idle
+      facing: 1
+    say: Inside, it's warmer than your room. A fire is burning. Nobody is there.
+  - scene: closeup
+    object: phone
+    time: 3:46 PM
+    screen: Guestbook
+    sub: Pine Hollow Motel
+    message: |-
+      Room 12 · checked in Jan 1987
+      Never checked out
+    message_cue: twelve
+    heartbeat: 0
+    say: On the table, the old guestbook is open. Room twelve. Checked in, January nineteen eighty seven. Never checked out.
+  - scene: room
+    time: 3:47 PM
+    place: ROOM 7
+    light: 8
+    wall: '#5a4636'
+    dark: 0.45
+    lamp: true
+    rule:
+      n: 4
+      text: You are room seven
+    you:
+      x: 0.5
+      action: scared
+      facing: -1
+    say: Rule number four. The one written on the back of your key. You are the guest in room seven.
+  - scene: radio
+    time: 3:50 PM
+    true: radio
+    chip:
+      text: Plows · arriving now
+      cue: arriving
+      y: 470
+    say:
+    - The radio crackles.
+    - radio: Plows arriving at Pine Hollow. No guests registered since nineteen eighty seven.
+  - scene: choice
+    time: 3:51 PM
+    base:
+      scene: street
+      dark: 0.3
+      stop: 0
+      you:
+        light: false
+      snow:
+        n: 160
+        speed: 120
+        wind: 90
+    question: Leave or stay?
+    options:
+    - text: Leave
+      cue: leave
+    - text: Stay
+      cue: stay
+    say: Headlights at the gate. Do you walk out to the plows... or stay by the fire, where it's warm?
+  - scene: endcard
+    time: 3:51 PM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa

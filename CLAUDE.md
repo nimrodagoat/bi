@@ -19,15 +19,20 @@ a twist or punchline at the end; mix suspense-with-a-twist, comedy and wholesome
 all original (never copy other channels' stories); no emoji inside messages (the
 font can't draw them; titles may have one).
 
-New format in testing (owner asked for it on Oct 19; not in the queue until they
-approve the test video): **stickman stories** (`format: stickman`, `shots:`),
-an original animated survival series in the style of an example reel the owner
-sent: day counter + clock + place + light meter in the corner, numbered rules,
-inventory board, radio, blueprint map, cliffhanger "X or Y? comment below",
-"follow for day N+1". Engine and options: `shorts/stick/README.md`; draft
-episodes in `content/drafts/`. Series so far: BLACKOUT (lights died at 9 PM,
-creatures that avoid light, neighbor Mrs. Alvarez taken; Day 1 ends with her
-voice calling your name). Keep every series original.
+**Current format since Oct 19 (owner loved the test): stickman stories**
+(`format: stickman`, `shots:`): original animated survival series in the style
+of an example reel the owner sent: day counter + clock + place + meter in the
+corner, numbered rules, inventory board, radio, blueprint map, cliffhanger
+"X or Y? comment below", "follow for day N+1". 3 parts per series (Day 3 ends
+with a twist, `final: true`), every series a new story, one part every 6 hours
+(`schedule.every_hours: 6`), narrator Edge en-US-ChristopherNeural (the owner
+found the Kokoro voice glitchy). Stickman episodes sit at the top of the queue;
+the text stories below are paused fallback. Engine and options:
+`shorts/stick/README.md`; every series also saved in `content/drafts/`.
+Series so far: BLACKOUT (lights die, creatures avoid light; Mrs. Alvarez),
+FOG LINE (Gull Harbor fog takes people; "Mom" calling), SNOWBOUND (Pine Hollow
+Motel, room seven; you were the guest all along). Never reuse a premise; keep
+every series original (never copy other channels, e.g. "14 Floors Up").
 
 Older formats still work and are archived in `content/archive/`: cartoon duos
 (Dave & Pip, Grug & Nova; `dialogue:` entries, art in `assets/characters/`,

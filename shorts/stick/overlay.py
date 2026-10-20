@@ -127,7 +127,8 @@ def draw_hud(cv, shot, t):
         col = "#39d353" if level > 0.5 else ("#ffd34d" if level > 0.2 else RED)
         if level <= 0.2 and math.sin(cv.frame / 30 * 9) < 0:
             col = "#5a1a16"
-        draw_surface(ctx, text("LIGHT", "mono", 20, "#a8a39a", tracking=3), x0 - 4, y0 + 170, anchor="l")
+        label = str(shot.get("meter_label") or item.get("meter_label", "LIGHT")).upper()
+        draw_surface(ctx, text(label, "mono", 20, "#a8a39a", tracking=3), x0 - 4, y0 + 170, anchor="l")
         for k in range(5):
             on = level > k / 5 + 0.01
             set_color(ctx, col if on else "#3a3a3a")
