@@ -279,7 +279,7 @@ class Canvas:
         c.paint()
 
 
-SCENE_SHIFT = {"room": -140, "street": -170}
+SCENE_SHIFT = {"room": -140, "street": -170, "train": -140}
 
 
 def camera(shot: Shot, t: float) -> cairo.Matrix:

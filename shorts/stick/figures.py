@@ -101,6 +101,13 @@ def crouch(t: float) -> Pose:
                 sh_f=0.7, el_f=0.6, sh_b=0.4, el_b=0.8, drop=0)
 
 
+def sit(t: float) -> Pose:
+    """Sitting on a bench: thighs level, shins straight down, hands on the lap."""
+    b = math.sin(t * 1.9) * 0.015
+    return Pose(lean=-0.04 + b, hip_f=math.pi / 2 - 0.05, knee_f=math.pi / 2 - 0.12, hip_b=math.pi / 2 - 0.15,
+                knee_b=math.pi / 2 - 0.05, sh_f=0.35, el_f=0.95, sh_b=0.2, el_b=1.0, head=b)
+
+
 def listen(t: float) -> Pose:
     """Ear against a door: leaning in, one hand on it."""
     b = math.sin(t * 1.5) * 0.02
@@ -136,7 +143,7 @@ def creep(t: float, speed: float = 0.6) -> Pose:
 POSES = {
     "idle": idle, "walk": walk, "run": run, "push": push, "knock": knock,
     "scared": scared, "crouch": crouch, "listen": listen, "flashlight": flashlight,
-    "reach": reach, "lurk": lurk, "creep": creep,
+    "reach": reach, "lurk": lurk, "creep": creep, "sit": sit,
 }
 
 

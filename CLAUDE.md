@@ -35,7 +35,7 @@ explained in plain words, and a clear goal per part. Write new series that way.
 Stickman episodes sit at the top of the queue; the text stories below are a
 paused fallback. Engine and options: `shorts/stick/README.md`; every series is
 also saved in `content/drafts/`. Series so far: BLACKOUT (3, posted), NIGHT SHIFT
-(6), FOG LINE (3), SNOWBOUND (3). Never reuse a premise; keep every series
+(6, posted), FOG LINE (3), SNOWBOUND (3), LAST TRAIN (6, subway; `train` and `tunnel` scenes). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 
 Older formats still work and are archived in `content/archive/`: cartoon duos

@@ -56,11 +56,19 @@ Cues (when something happens) are a word the narrator says in that shot
 - `radio`: `on: cue`; radio lines in `say` get teal captions and a radio sound.
 - `map`: blueprint map. `route: [[x, y], ...]` (0-1), `route_cue`, `route_end`, `target: {label, cue}`,
   `bracket: {label, cue}`, `lamps: {cue}` (street lights going dead), `danger: [{x, y, r, cue}]`,
-  `x_marks: [{x, y, cue}]`.
+  `x_marks: [{x, y, cue}]`, `stops: [{x, y, label, cue, ghost, left}]` (named stations; `ghost` = red).
 - `street`: side-scrolling night street. `pace: walk|run`, `speed`, `offset`, `stop: cue`,
   `lurkers: N` (creatures that back away from the beam), `chasers: {n, cue}`,
   `counter: [{text, label, cue}]` (big numbers passing by), `eyes: {cue, n}`.
 - `closeup`: `object: flashlight|phone|alarm`.
+- `train`: inside a subway car, seen from the side. `passengers: [{x, sit, color, coat, asleep, stare, cue, fade, turn}]`
+  (`coat: true` = the man in the grey coat), `next: "NEXT: CANAL"` (or `[[text, cue], ...]`) on the sign over the door,
+  `lights: on|flicker|off|dying` (or `[[state, cue], ...]`), `stop: cue` (brakes), `start: cue`, `parked: true`,
+  `speed`, `station: {name, color, sign, flicker, people: [{x, facing, turn, stare, coat}]}` (the platform slides in as
+  the train stops), `doors: {open, close}`, `tunnel_eyes: N`, `eyes_cue`, `you` (`action: sit` works), `creatures`.
+- `tunnel`: the driver's view down the tunnel, with the dashboard and a speed gauge. `speed`, `stop`, `start`, `parked`,
+  `signal: red|green|yellow` (or `[[colour, cue], ...]`), `next`, `station: {name, park, flicker, people: [{dz, x, turn, stare, coat}]}`,
+  `figures` (like the hallway's; they stand still so the train closes in), `headlights: false`, `dies`/`flicker`/`relight`.
 - `title`: series name + day over the previous picture.
 - `choice`: `question`, `options: [{text, cue}, {text, cue}]`, `base: {a scene to show behind}`.
 - `endcard`: "follow for day N+1"; flips to the next day at the end. `final: true` on the

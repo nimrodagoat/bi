@@ -203,7 +203,8 @@ def draw_choice(cv, shot, t):
     q = str(shot.get("question", "")).upper()
     k = t - shot.cue(shot.get("question_cue"), 0.0)
     if q and k >= 0:
-        draw_surface(ctx, text(q, "title", 128, "#f6f3ec", shadow=6), W / 2, 430, back_out(k / 0.3) * 0.15 + 0.85,
+        size = min(128, int(128 * (W - 100) / max(gfx.text_width(q, "title", 128), 1)))  # long questions shrink to fit
+        draw_surface(ctx, text(q, "title", size, "#f6f3ec", shadow=6), W / 2, 430, back_out(k / 0.3) * 0.15 + 0.85,
                      gfx.clamp(k / 0.15))
     opts = shot.get("options") or []
     colors = [("#1d6b2e", "#4cd964"), ("#7d1717", "#ff5a4f")]

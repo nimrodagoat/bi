@@ -788,6 +788,26 @@ def city_map(cv, shot, t):
         left -= seg
     ctx.stroke()
     ctx.set_dash([])
+    for k, sp in enumerate(o.get("stops") or []):  # named stations along a train line
+        at = shot.cue(sp.get("cue"), 0.0) + k * 0.06
+        if t < at:
+            continue
+        a = clamp((t - at) / 0.25)
+        px, py = P((sp["x"], sp["y"]))
+        ghost = sp.get("ghost")
+        col = "#ff3b30" if ghost else "#ffffff"
+        if ghost:
+            glow(ctx, px, py, 70, RED, 0.35 * a)
+        set_color(ctx, "#0b1d38", a)
+        ctx.arc(px, py, 17, 0, 2 * math.pi)
+        ctx.fill()
+        ctx.set_line_width(6)
+        set_color(ctx, col, a)
+        ctx.arc(px, py, 14, 0, 2 * math.pi)
+        ctx.stroke()
+        side = -1 if sp.get("left") else 1
+        draw_surface(ctx, text(str(sp.get("label", "")).upper(), "mono", 26, col, shadow=2, tracking=2),
+                     px + side * 34, py, anchor="l" if side > 0 else "r", alpha=a)
     for xm in o.get("x_marks") or []:
         at = shot.cue(xm.get("cue"), 0.0)
         if t >= at:
@@ -1233,3 +1253,492 @@ def cctv(cv, shot, t):
     hm, ap = format_time(shot.minutes_at(t))
     draw_surface(ctx, text(f"{hm}:{int(t * 7) % 60:02d} {ap}", "mono", 26, "#e8f1ee", shadow=2),
                  mx + 30, my + mh - 40, anchor="l")
+
+
+# ------------------------------------------------------------------ subway car
+
+def _travel(shot, t, speed):
+    """Distance the train has covered at t, braking to a stop at `stop` and
+    pulling away at `start` (each over about two seconds). `parked: true`
+    means it stands still until `start`."""
+    brake = 2.2
+    if shot.get("parked"):
+        d, moving = 0.0, False
+    else:
+        st = shot.cue(shot.get("stop"), 1e9) if shot.get("stop") is not None else 1e9
+        d = speed * min(t, st)
+        if t > st:
+            tau = min(t - st, brake)
+            d += speed * (tau - tau * tau / (2 * brake))
+        moving = t < st + brake
+    go = shot.cue(shot.get("start"), 1e9) if shot.get("start") is not None else 1e9
+    if t > go:
+        tau = t - go
+        d += speed * (tau * tau / 4.0 if tau < 2.0 else 1.0 + (tau - 2.0))
+        moving = True
+    return d, moving
+
+
+def _until_stop(shot, t, speed):
+    """How far the train still has to go before it stops (0 once stopped,
+    negative after it pulls away again)."""
+    d = _travel(shot, t, speed)[0]
+    if shot.get("stop") is not None:
+        end = _travel(shot, shot.cue(shot.get("stop")) + 5, speed)[0] if shot.get("start") is None else \
+            _travel(shot, shot.cue(shot.get("start")), speed)[0]
+        return end - d
+    if shot.get("start") is not None:
+        return _travel(shot, shot.cue(shot.get("start")), speed)[0] - d
+    return 0.0
+
+
+def _waiting(ctx, shot, t, people, ground, scale):
+    """People standing still (on a platform); `turn: cue` makes them face you."""
+    out = []
+    for k, p in enumerate(people or []):
+        if t < shot.cue(p.get("cue"), 0.0):
+            continue
+        facing = int(p.get("facing", 1))
+        turned = p.get("turn") is not None and t >= shot.cue(p.get("turn"), 1e9)
+        if turned:
+            facing = int(p.get("to_facing", -facing))
+        x = float(p.get("x", 0.5)) * W
+        pose = F.Pose(lean=0.0, sh_f=0.1, el_f=0.12, sh_b=-0.1, el_b=0.12, head=0.2 if turned else 0.0)
+        col = p.get("color", "#cfd3d8")
+        j = F.draw_stickman(ctx, pose, x, ground, scale, facing, color=col, outline="#1b1b1b")
+        if p.get("coat"):
+            _coat(ctx, j, scale, p["coat"] if isinstance(p["coat"], str) else "#6e737b", facing)
+        if p.get("stare", turned):
+            out.append((j, scale, facing))
+    return out
+
+
+def _coat(ctx, j, scale, color, facing):
+    """A long coat over the torso (the man in the grey coat)."""
+    w = 22 * scale
+    nx, ny = j.neck
+    hx, hy = j.hip
+    fill(ctx, [(nx - w, ny + 4), (nx + w, ny + 4), (hx + w * 1.35, hy + 46 * scale), (hx - w * 1.35, hy + 46 * scale)],
+         color)
+    ctx.move_to(nx + 4 * facing, ny + 10)
+    ctx.line_to(hx + 6 * facing, hy + 40 * scale)
+    ctx.set_line_width(3)
+    ctx.set_source_rgba(0, 0, 0, 0.35)
+    ctx.stroke()
+
+
+def _led(ctx, x, y, w, msg, alpha=1.0):
+    rounded_rect(ctx, x - w / 2, y - 30, w, 60, 8)
+    set_color(ctx, "#0b0b0c")
+    ctx.fill()
+    draw_surface(ctx, text(str(msg).upper(), "mono", 30, "#ff9a2a", glow_color="#ff7a00", glow_radius=6,
+                           tracking=2), x, y, alpha=alpha)
+
+
+def _cue_list(shot, t, value):
+    """A value or a list of [value, cue] pairs: the latest one whose cue has passed."""
+    if not isinstance(value, list):
+        return value
+    cur = None
+    for v, cue in value:
+        if t >= shot.cue(cue, 0.0):
+            cur = v
+    return cur
+
+
+@scene("train")
+def train(cv, shot, t):
+    """Inside a subway car, seen from the side: windows onto the tunnel (or a
+    station), benches, poles, a sliding door in the middle."""
+    ctx = cv.ctx
+    o = shot.spec
+    speed = float(o.get("speed", 1700))
+    dist, moving = _travel(shot, t, speed)
+    sway = 3 * math.sin(t * 7.3) * (1 if moving else 0)
+    lights = _cue_list(shot, t, o.get("lights", "on"))  # or [[off, 0], [on, cue]]
+    top, wall_bot, floor_y = 300, 1205, 1205
+    win_y0, win_y1 = 520, 860
+    station = o.get("station")
+    door_open = 0.0
+    if o.get("doors") is not None:
+        d = o.get("doors")
+        a = shot.cue(d.get("open") if isinstance(d, dict) else d, 0.0)
+        door_open = ease_out((t - a) / 0.8) if t >= a else 0.0
+        if isinstance(d, dict) and d.get("close") is not None:
+            door_open *= 1 - ease_out((t - shot.cue(d["close"])) / 0.6) if t >= shot.cue(d["close"]) else 1
+    # outside: the tunnel rushing past, or a station platform
+    ctx.save()
+    ctx.translate(0, sway)
+    vgradient(ctx, -300, top, W + 600, wall_bot - top, "#06070a", "#0d0f13")
+    stares = []
+    if station:
+        st = station if isinstance(station, dict) else {"name": station}
+        x_off = _until_stop(shot, t, speed)  # the platform slides in as the train brakes
+        if x_off < 3000:
+            ctx.save()
+            ctx.translate(x_off, 0)
+            tile = st.get("color", "#cfc6a8")
+            vgradient(ctx, -1400, top, W + 2800, 700, shade(tile, 0.75), shade(tile, 0.55))
+            for gx in range(-1400, W + 1400, 60):
+                ctx.rectangle(gx, top, 2, 700)
+            for gy in range(top, top + 700, 40):
+                ctx.rectangle(-1400, gy, W + 2800, 2)
+            ctx.set_source_rgba(0, 0, 0, 0.12)
+            ctx.fill()
+            ctx.rectangle(-1400, 980, W + 2800, 260)
+            set_color(ctx, "#3a3a3e")
+            ctx.fill()
+            ctx.rectangle(-1400, 975, W + 2800, 14)
+            set_color(ctx, "#e5c01e")
+            ctx.fill()
+            for k, sx in enumerate((-900, 200, 1300, 2400)):  # name signs along the wall
+                rounded_rect(ctx, sx - 170, 600, 340, 80, 10)
+                set_color(ctx, st.get("sign", "#1d3d6b"))
+                ctx.fill()
+                draw_surface(ctx, text(str(st.get("name", "STATION")).upper(), "title", 58, "#f4f1e8", tracking=3),
+                             sx, 641)
+            for k, lx in enumerate(range(-1300, W + 1400, 420)):
+                b = flicker(t, k, 7) if st.get("flicker") else 1.0
+                glow(ctx, lx, 380, 260, "#fff2c8", 0.45 * b)
+            stares += _waiting(ctx, shot, t, st.get("people"), 980, 1.0)
+            ctx.restore()
+    if not station or abs(x_off) > 0:  # tunnel wall with lamps and cables streaming by
+        ctx.save()
+        if station:  # only where the platform isn't
+            if x_off > 0:
+                ctx.rectangle(-300, top, max(x_off - 1100, 0), wall_bot - top)
+            else:
+                ctx.rectangle(x_off + W + 1400, top, W + 600, wall_bot - top)
+            ctx.clip()
+        for k in range(3):
+            y = 640 + k * 26
+            ctx.rectangle(-300, y, W + 600, 5)
+        ctx.set_source_rgba(0.25, 0.26, 0.28, 1)
+        ctx.fill()
+        gap = 700
+        for k in range(4):
+            lx = (k * gap - dist) % (gap * 4) - 400
+            glow(ctx, lx, 760, 110, "#ffb35c", 0.6)
+            ctx.rectangle(lx - 18, 752, 36, 16)
+            set_color(ctx, "#ffd9a0")
+            ctx.fill()
+        if moving:  # streaks of the tunnel wall rushing by
+            for k in range(14):
+                sy = 540 + (k * 97) % 300
+                sx = (k * 523 - dist * 1.3) % (W + 900) - 450
+                ctx.rectangle(sx, sy, 160 + (k * 37) % 220, 3)
+            ctx.set_source_rgba(0.6, 0.62, 0.66, 0.18)
+            ctx.fill()
+        for k in range(int(o.get("tunnel_eyes", 0))):  # eyes in the tunnel, keeping pace
+            ex = 150 + k * 330 + 30 * math.sin(t + k)
+            if t >= shot.cue(o.get("eyes_cue"), 0.0):
+                eyes(ctx, ex, 700 + 50 * math.sin(k * 2.3), 5, 0.9)
+        ctx.restore()
+    ctx.restore()
+    # the car: wall with window holes (and the door gap when it opens)
+    ctx.save()
+    ctx.translate(0, sway)
+    body = o.get("wall", "#c9ccd1")
+    ctx.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)
+    ctx.rectangle(-300, top, W + 600, wall_bot - top)
+    wins = [(-260, 330), (750, 1340)]
+    for wx0, wx1 in wins:
+        rounded_rect(ctx, wx0 + 40, win_y0, wx1 - wx0 - 80, win_y1 - win_y0, 26)
+    dx0, dx1 = 400, 680
+    gapw = (dx1 - dx0) * 0.5 * door_open
+    if gapw > 1:
+        ctx.rectangle(540 - gapw, 440, gapw * 2, wall_bot - 440)
+    g = cairo.LinearGradient(0, top, 0, wall_bot)
+    g.add_color_stop_rgb(0, *shade(body, 0.8))
+    g.add_color_stop_rgb(0.3, *rgb(body))
+    g.add_color_stop_rgb(1, *shade(body, 0.7))
+    ctx.set_source(g)
+    ctx.fill()
+    ctx.set_fill_rule(cairo.FILL_RULE_WINDING)
+    for wx0, wx1 in wins:  # window frames + a faint reflection
+        rounded_rect(ctx, wx0 + 40, win_y0, wx1 - wx0 - 80, win_y1 - win_y0, 26)
+        ctx.set_line_width(10)
+        set_color(ctx, "#7d838c")
+        ctx.stroke()
+        ctx.move_to(wx0 + 120, win_y0 + 20)
+        ctx.line_to(wx0 + 60, win_y0 + 110)
+        ctx.set_line_width(14)
+        ctx.set_source_rgba(1, 1, 1, 0.05)
+        ctx.stroke()
+    # sliding door leaves
+    for side in (-1, 1):
+        lw = (dx1 - dx0) / 2
+        x0 = (540 - lw if side < 0 else 540) + side * gapw
+        ctx.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)
+        ctx.rectangle(x0, 440, lw, wall_bot - 440)
+        rounded_rect(ctx, x0 + 22, 520, lw - 44, 300, 14)
+        set_color(ctx, shade(body, 0.86))
+        ctx.fill()
+        ctx.set_fill_rule(cairo.FILL_RULE_WINDING)
+        ctx.rectangle(x0, 440, lw, wall_bot - 440)
+        ctx.set_line_width(4)
+        set_color(ctx, "#6b7079")
+        ctx.stroke()
+    ctx.rectangle(dx0 - 14, 430, 14, wall_bot - 430)
+    ctx.rectangle(dx1, 430, 14, wall_bot - 430)
+    set_color(ctx, "#8e949c")
+    ctx.fill()
+    # ceiling, light strip, the next-stop sign over the door, ad panels
+    vgradient(ctx, -300, top - 400, W + 600, 520, "#15161a", shade(body, 0.55))
+    strip = []
+    for k, lx in enumerate(range(-200, W + 300, 260)):
+        if lights == "on":
+            b = 1.0
+        elif lights == "flicker":
+            b = flicker(t, k, 9)
+        elif lights == "dying":
+            b = 1.0 if t < shot.cue(o.get("off"), 0.8) - k * 0.12 else 0.0
+        else:
+            b = 0.0
+        rounded_rect(ctx, lx - 100, 330, 200, 26, 12)
+        set_color(ctx, "#fffaf0" if b > 0.5 else "#4a4c50")
+        ctx.fill()
+        if b > 0:
+            glow(ctx, lx, 360, 220, "#fff6e0", 0.35 * b)
+            strip.append((lx, 380, 480, b))
+    nxt = _cue_list(shot, t, o.get("next"))
+    if nxt:
+        _led(ctx, 540, 395, 470, nxt)
+    for ax in (100, 870):
+        ctx.rectangle(ax - 90, 395, 180, 90)
+        set_color(ctx, "#e9e4d8")
+        ctx.fill()
+        ctx.rectangle(ax - 80, 405, 70, 70)
+        set_color(ctx, "#4f7aa8" if ax < 500 else "#b5523b")
+        ctx.fill()
+    # benches and the floor
+    for bx0, bx1 in ((-300, 380), (700, W + 300)):
+        rounded_rect(ctx, bx0, 1110, bx1 - bx0, 60, 14)
+        set_color(ctx, o.get("seats", "#2f5d8c"))
+        ctx.fill()
+        ctx.rectangle(bx0, 1170, bx1 - bx0, 35)
+        set_color(ctx, "#53575e")
+        ctx.fill()
+    ctx.restore()
+    g = cairo.LinearGradient(0, floor_y, 0, H + 200)
+    g.add_color_stop_rgb(0, *rgb("#4b4e55"))
+    g.add_color_stop_rgb(1, *rgb("#2e3036"))
+    ctx.set_source(g)
+    ctx.rectangle(-300, floor_y, W + 600, H)
+    ctx.fill()
+    for k in range(-6, 7):
+        ctx.arc(540 + k * 160 + (sway * 0.5), 1300 + 40 * (k % 2), 3, 0, 2 * math.pi)
+    ctx.set_source_rgba(1, 1, 1, 0.06)
+    ctx.fill()
+    if gapw > 1:  # platform edge through the open door
+        ctx.rectangle(540 - gapw, floor_y, gapw * 2, 8)
+        set_color(ctx, "#e5c01e" if station else "#111111")
+        ctx.fill()
+    # poles and the grab rail
+    for px in [float(x) * W for x in o.get("poles", [0.3, 0.74])]:
+        stroke_line(ctx, [(px, top + 20 + sway), (px, floor_y + 160)], 14, "#c9ced6", 1.0, "#5e636b")
+    stroke_line(ctx, [(-300, 470 + sway), (W + 300, 470 + sway)], 10, "#b9bec6", 1.0, "#5e636b")
+    # passengers on the benches (or standing), then creatures, then you
+    seat_ground = 1262
+    for k, p in enumerate(o.get("passengers") or []):
+        if t < shot.cue(p.get("cue"), 0.0):
+            continue
+        a = 1.0 - clamp((t - shot.cue(p.get("fade"), 1e9)) / 0.6)
+        if a <= 0:
+            continue
+        sitting = p.get("sit", True)
+        facing = int(p.get("facing", 1))
+        if p.get("turn") is not None and t >= shot.cue(p.get("turn"), 1e9):
+            facing = -facing
+        sc = float(p.get("scale", 1.0 if sitting else 1.15))
+        g_y = seat_ground + sway if sitting else float(o.get("ground", 1430))
+        pose = F.pose_for("sit" if sitting else p.get("action", "idle"), t + k * 0.7, seed=k)
+        if p.get("asleep"):
+            pose.head = 0.55
+        col = p.get("color", "#d9d9d9")
+        j = F.draw_stickman(ctx, pose, float(p.get("x", 0.2)) * W, g_y, sc, facing, color=col, alpha=a)
+        if p.get("coat"):
+            _coat(ctx, j, sc, p.get("coat") if isinstance(p.get("coat"), str) else "#6e737b", facing)
+            ctx.arc(j.head[0], j.head[1], (F.HEAD + 3) * sc, 0, 2 * math.pi)
+            set_color(ctx, "#1b1b1b", a)
+            ctx.fill()
+            ctx.arc(j.head[0], j.head[1], F.HEAD * sc, 0, 2 * math.pi)
+            set_color(ctx, col, a)
+            ctx.fill()
+        if p.get("stare") is not None and t >= shot.cue(p.get("stare"), 0.0) if not isinstance(p.get("stare"), bool) \
+                else p.get("stare"):
+            stares.append((j, sc, facing))
+    dark = float(o.get("dark", 0 if lights in ("on", "flicker") else 0.85))
+    ground = float(o.get("ground", 1430))
+    crs = draw_creatures(cv, shot, t, o.get("creatures"), ground, dark > 0)
+    j, beam = hero(cv, shot, t, o.get("you"), ground if (o.get("you") or {}).get("action") != "sit" else seat_ground,
+                   1.0 if (o.get("you") or {}).get("action") == "sit" else 1.25)
+    if dark > 0:
+        extra = [("radial", lx, ly, r * 1.2, b * 0.9) for lx, ly, r, b in strip]
+        if station:
+            extra += [("radial", 160, 690, 420, 0.6), ("radial", 920, 690, 420, 0.6)] if abs(x_off) < 200 else []
+        _apply_dark(cv, shot, t, dark, beam, j, extra=extra)
+        for cj, sc, fc, a in crs:
+            creature_eyes(ctx, cj, sc, fc, a)
+    for sj, sc, fc in stares:
+        eyes(ctx, sj.head[0] + 4 * sc * fc, sj.head[1] - 2 * sc, 3.2 * sc, 0.9, gap=11 * sc)
+
+
+# ------------------------------------------------------------------ the driver's view
+
+@scene("tunnel")
+def tunnel(cv, shot, t):
+    """From the driver's cab: the tunnel ahead in the headlights, rails, signals,
+    a station platform sliding up on the right, figures on the tracks."""
+    ctx = cv.ctx
+    o = shot.spec
+    speed = float(o.get("speed", 3.2))  # depth units per second
+    dist, moving = _travel(shot, t, speed)
+    vgradient(ctx, -300, -300, W + 600, H + 600, "#020203", "#07080a")
+    rw, rh = 1.35, 1.5
+    gap = 1.1
+    # rings of the tunnel lining
+    k0 = int(dist // gap)
+    for k in range(k0 + 30, k0 - 1, -1):
+        z = k * gap - dist + Z0
+        if z < Z0 or z > 16:
+            continue
+        sh = 1 / (1 + 0.22 * (z - Z0))
+        pts = [proj(-rw, -1, z), proj(-rw, rh * 0.55, z)] + \
+              [proj(-rw * math.cos(a), rh * 0.55 + rh * 0.45 * math.sin(a), z) for a in [i * math.pi / 12 for i in range(13)]] + \
+              [proj(rw, -1, z)]
+        ctx.move_to(*pts[0])
+        for p in pts[1:]:
+            ctx.line_to(*p)
+        ctx.set_line_width(max(1.0, 9 * sh))
+        ctx.set_source_rgba(*shade("#5d6066", sh), 1)
+        ctx.stroke()
+        if k % 3 == 0:  # a work lamp on the left wall
+            lx, ly = proj(-rw + 0.02, 0.35, z)
+            glow(ctx, lx, ly, 120 * sh, "#ffb35c", 0.7 * sh)
+    # track bed, sleepers and rails
+    fill(ctx, [proj(-rw, -1, Z0), proj(rw, -1, Z0), proj(rw, -1, 16), proj(-rw, -1, 16)], (0.08, 0.075, 0.07))
+    for k in range(int(dist // 0.45), int(dist // 0.45) + 40):
+        z = k * 0.45 - dist + Z0
+        if Z0 <= z <= 16:
+            a, b = proj(-0.6, -1, z), proj(0.6, -1, z)
+            stroke_line(ctx, [a, b], max(1, 16 / z), "#2b2620")
+    for x in (-0.36, 0.36):
+        stroke_line(ctx, [proj(x, -1, Z0), proj(x, -1, 16)], 5, "#9ea3aa")
+    # a station platform on the right
+    station = o.get("station")
+    lit = []
+    if station:
+        st = station if isinstance(station, dict) else {"name": station}
+        zf = float(st.get("park", 1.2)) + _until_stop(shot, t, speed)
+        if zf < 30:
+            zb = zf + 9
+            tile = st.get("color", "#cfc6a8")
+            px0, ptop = 0.95, -0.35
+            fill(ctx, [proj(px0, ptop, zf), proj(3.5, ptop, zf), proj(3.5, ptop, zb), proj(px0, ptop, zb)], shade("#55565a", 0.9))
+            fill(ctx, [proj(px0, -1, zf), proj(px0, ptop, zf), proj(px0, ptop, zb), proj(px0, -1, zb)], shade("#2a2a2c", 1))
+            stroke_line(ctx, [proj(px0 + 0.05, ptop, zf), proj(px0 + 0.05, ptop, zb)], 6, "#e5c01e")
+            fill(ctx, [proj(2.4, ptop, zf), proj(2.4, 1.6, zf), proj(2.4, 1.6, zb), proj(2.4, ptop, zb)], shade(tile, 0.8))
+            sx, sy = proj(2.38, 0.75, zf + 2.0)
+            draw_surface(ctx, text(str(st.get("name", "")).upper(), "title", max(12, int(150 / (zf + 2.0))), "#f4f1e8",
+                                   tracking=2), sx, sy)
+            for k in range(4):
+                lz = zf + 0.5 + k * 2.2
+                lx, ly = proj(1.6, 1.45, lz)
+                b = flicker(t, k, 7) if st.get("flicker") else 1.0
+                glow(ctx, lx, ly, 260 / lz, "#fff2c8", 0.6 * b)
+                lit.append((lx, ly + 200 / lz, 700 / lz, 0.8 * b))
+            for k, p in enumerate(st.get("people") or []):
+                pz = zf + float(p.get("dz", 1 + k))
+                fx, gy = proj(float(p.get("x", 1.6)), ptop, pz)
+                facing = int(p.get("facing", -1))
+                turned = p.get("turn") is not None and t >= shot.cue(p.get("turn"), 1e9)
+                pose = F.Pose(sh_f=0.1, el_f=0.12, sh_b=-0.1, el_b=0.12, head=0.2 if turned else 0.0)
+                pj = F.draw_stickman(ctx, pose, fx, gy, 3.0 / pz, -1 if turned else facing, color=p.get("color", "#cfd3d8"))
+                if p.get("coat"):
+                    _coat(ctx, pj, 3.0 / pz, p["coat"] if isinstance(p["coat"], str) else "#6e737b", facing)
+                if turned or p.get("stare"):
+                    eyes(ctx, pj.head[0] - 4 * 3.0 / pz, pj.head[1] - 6 / pz, 9.6 / pz, 0.9, gap=33 / pz)
+    # a signal ahead
+    sig = _cue_list(shot, t, o.get("signal"))
+    if sig:
+        sx, sy = proj(-0.95, 0.4, 6.0)
+        rounded_rect(ctx, sx - 16, sy - 30, 32, 60, 8)
+        set_color(ctx, "#111111")
+        ctx.fill()
+        col = {"red": "#ff3b30", "green": "#34e07a", "yellow": "#ffcc00"}.get(sig, "#ff3b30")
+        glow(ctx, sx, sy - 10, 90, col, 0.8)
+        set_color(ctx, col)
+        ctx.arc(sx, sy - 10, 9, 0, 2 * math.pi)
+        ctx.fill()
+        lit.append((sx, sy, 120, 0.4))
+    # figures on (or beside) the tracks, like the hallway's
+    figs = []
+    for k, f in enumerate(o.get("figures") or []):
+        if t < shot.cue(f.get("cue"), 0.0):
+            continue
+        z = float(f.get("z", 6.0))
+        if f.get("fixed", True):  # stands still in the tunnel, so it comes closer as we move
+            z -= dist - _travel(shot, shot.cue(f.get("cue"), 0.0), speed)[0]
+        if z < 0.7:
+            continue
+        fx, gy = proj(float(f.get("x", 0)), -1, z)
+        sc = 3.0 / z
+        who = f.get("who", "creature")
+        pose = F.pose_for(f.get("action", "lurk" if who == "creature" else "idle"), t + k, seed=k)
+        facing = int(f.get("facing", -1))
+        if who == "creature":
+            figs.append((F.draw_creature(ctx, pose, fx, gy, sc, facing, eye_alpha=0), sc, facing))
+        else:
+            pj = F.draw_stickman(ctx, pose, fx, gy, sc, facing, color=f.get("color", "#cfd3d8"))
+            if f.get("coat"):
+                _coat(ctx, pj, sc, f.get("coat") if isinstance(f.get("coat"), str) else "#6e737b", facing)
+    # headlights
+    s = light_strength(shot, t) if o.get("headlights", True) else 0.0
+    d = cv.dark
+    d.begin(ctx.get_matrix(), float(o.get("dark", 0.9)))
+    if s > 0:
+        d.radial(CX, CY + 360, 900, 0.75 * s, 1.0, 0.55)
+        d.radial(CX, CY, 520, 0.5 * s)
+    for lx, ly, r, b in lit:
+        d.radial(lx, ly, r, b)
+    d.apply(ctx)
+    for j, sc, facing in figs:
+        creature_eyes(ctx, j, sc, facing)
+    if o.get("cab", True):  # windscreen frame and the dashboard
+        ctx.save()
+        ctx.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)
+        ctx.rectangle(-400, -400, W + 800, H + 800)
+        rounded_rect(ctx, 40, 330, W - 80, 900, 40)
+        set_color(ctx, "#121317")
+        ctx.fill()
+        ctx.restore()
+        rounded_rect(ctx, 40, 330, W - 80, 900, 40)
+        ctx.set_line_width(14)
+        set_color(ctx, "#26282e")
+        ctx.stroke()
+        stroke_line(ctx, [(W / 2, 330), (W / 2, 1230)], 16, "#1a1b20")
+        vgradient(ctx, -300, 1240, W + 600, 700, "#202227", "#0d0e11")
+        for k, (bx, col) in enumerate(((180, "#34e07a"), (250, "#ffcc00"), (320, "#ff3b30"))):
+            on = 0.35 + 0.65 * (math.sin(t * 2 + k) > 0)
+            glow(ctx, bx, 1330, 40, col, 0.4 * on)
+            set_color(ctx, col, on)
+            ctx.arc(bx, 1330, 12, 0, 2 * math.pi)
+            ctx.fill()
+        nxt = _cue_list(shot, t, o.get("next"))
+        if nxt:
+            _led(ctx, 740, 1330, 520, nxt)
+        # speed gauge
+        v = (_travel(shot, t + 0.05, speed)[0] - _travel(shot, t, speed)[0]) / 0.05 / max(speed, 0.01)
+        gx, gy, gr = W / 2, 1640, 150
+        ctx.set_line_width(16)
+        set_color(ctx, "#2c2f36")
+        ctx.arc(gx, gy, gr, math.pi * 0.8, math.pi * 2.2)
+        ctx.stroke()
+        set_color(ctx, "#ff9a2a", 0.85)
+        ctx.arc(gx, gy, gr, math.pi * 0.8, math.pi * (0.8 + 1.4 * 0.75 * clamp(v)))
+        ctx.stroke()
+        ang = math.pi * (0.8 + 1.4 * 0.75 * clamp(v)) + 0.01 * math.sin(t * 13) * (v > 0.05)
+        stroke_line(ctx, [(gx, gy), (gx + math.cos(ang) * (gr - 30), gy + math.sin(ang) * (gr - 30))], 8, "#f4f1e8")
+        draw_surface(ctx, text(f"{int(round(60 * clamp(v)))}", "title", 70, "#f4f1e8"), gx, gy + 70)
+        draw_surface(ctx, text("KM/H", "mono", 22, "#8a8f98", tracking=3), gx, gy + 120)
