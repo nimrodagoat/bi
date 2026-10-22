@@ -15,169 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: fog-line-day-1
-  format: stickman
-  series: FOG LINE
-  day: 1
-  place: HARBOR ST
-  title: Anyone who walks into the fog stops answering. Day 1 🌫️
-  tags:
-  - stickman
-  - animation
-  - horror
-  - survival
-  - fog
-  - story
-  shots:
-  - scene: street
-    time: 6:12 PM
-    dark: 0.5
-    pace: walk
-    you:
-      light: false
-    fog:
-      rise:
-      - 0.95
-      - 0.66
-      density: 0.9
-    people:
-    - x: 0.78
-      fade: stop
-    say: At six twelve PM, the fog rolls in off the harbor. The man walking ahead of you steps into it... and his footsteps just stop.
-  - scene: title
-    say: Fog Line. Day one.
-  - scene: map
-    time: 6:14 PM
-    route:
-    - - 0.1
-      - 0.92
-    - - 0.1
-      - 0.55
-    - - 0.6
-      - 0.55
-    - - 0.6
-      - 0.12
-    route_cue: home
-    route_end: up
-    target:
-      label: Home · 3rd floor
-      cue: home
-      icon: pin
-    bracket:
-      label: 6 blocks
-      cue: six
-    fog_zone:
-      level:
-      - 0.12
-      - 0.42
-      cue: fills
-      label: Fog line
-    say: It fills the low streets first. Your building is on the hill. Six blocks up.
-  - scene: street
-    time: 6:16 PM
-    dark: 0.5
-    pace: run
-    you:
-      light: false
-    rule:
-      n: 1
-      text: Stay above the fog
-    fog:
-      rise:
-      - 0.9
-      - 0.7
-      density: 1.0
-    say: Rule number one. Stay above the fog. So you run uphill... and you don't look back.
-  - scene: room
-    time: 6:31 PM
-    place: APT 3C
-    dark: 0.35
-    lamp: true
-    window_fog: 0.9
-    you:
-      x: 0.62
-      action: idle
-      facing: -1
-    say: Third floor. You lock the door. Outside, the fog stops right below your window.
-  - scene: inventory
-    time: 7:40 PM
-    items:
-    - icon: bottle
-      count: 6
-      label: water
-      cue: six
-    - icon: can
-      count: 5
-      label: soup
-      cue: five
-    - icon: flashlight
-      count: 1
-      label: flashlight
-      cue: flashlight
-    total:
-      text: = 3 days
-      cue: three
-    say: Six bottles of water. Five cans of soup. One flashlight. Three days, if it stays down there.
-  - scene: closeup
-    object: phone
-    time: 10:02 PM
-    ring: 0
-    screen: Mom
-    sub: Incoming call
-    say: At ten PM, your phone rings. It's your mom. She says she's downstairs, in the fog. She says open the window and pull her up.
-  - scene: room
-    time: 10:03 PM
-    dark: 0.45
-    lamp: true
-    window_fog: 1.0
-    rule:
-      n: 2
-      text: Never open a window
-    you:
-      x: 0.55
-      action: scared
-      facing: -1
-    say: Rule number two. Never open a window. Not for anyone. Because your mom... lives four hundred miles away.
-  - scene: radio
-    time: 12:00 AM
-    true: crackles
-    chip:
-      text: Fog rising · 1 floor / hour
-      cue: rising
-      y: 470
-    say:
-    - At midnight, the radio crackles.
-    - radio: Coast guard. The fog is rising one floor every hour. Get as high as you can.
-  - scene: choice
-    time: 1:00 AM
-    base:
-      scene: room
-      dark: 0.5
-      lamp: true
-      window_fog: 1.0
-      fog:
-        rise:
-        - 0.97
-        - 0.85
-      you:
-        x: 0.55
-        action: idle
-        facing: 1
-    question: Roof or stay?
-    options:
-    - text: Roof
-      cue: roof
-    - text: Stay
-      cue: stay
-    sfx:
-    - name: boom
-      at: once
-      gain: 0.5
-    say: Then the foghorn blows. Once. Twice. Three times. Do you go up to the roof... or stay and seal the door?
-  - scene: endcard
-    time: 1:01 AM
-    hold: 1.6
-    say: Follow for day two.
 - id: fog-line-day-2
   format: stickman
   series: FOG LINE
@@ -864,139 +701,251 @@
   cap: true
   meter_label: POWER
   place: LINE 9
-  title: "My last train stopped at a station that isn't on the map. Night 1 🚇"
-  tags: [stickman, animation, horror, subway, lasttrain, story]
+  title: My last train stopped at a station that isn't on the map. Night 1 🚇
+  tags:
+  - stickman
+  - animation
+  - horror
+  - subway
+  - lasttrain
+  - story
   shots:
-    - scene: tunnel
-      time: "12:30 AM"
-      light: 100
-      next: "LINE 9 · LAST TRAIN"
-      signal: green
-      say: "You take the job nobody else wants. Driving the last train of the night on Line 9."
-    - scene: radio
-      time: "12:31 AM"
-      on: radio
-      chip: {text: "Marta · night dispatch", cue: marta, y: 470}
-      say:
-        - "Your dispatcher, Marta, is only ever a voice on the radio."
-        - radio: "Welcome, driver. Two rules. Learn them."
-    - scene: title
-      say: "Last train. Night one."
-    - scene: map
-      time: "12:32 AM"
-      route: [[0.3, 0.94], [0.3, 0.04]]
-      route_cue: 0
-      route_end: six
-      stops:
-        - {x: 0.3, y: 0.94, left: true, label: Central, cue: six}
-        - {x: 0.3, y: 0.78, label: Market St, cue: six}
-        - {x: 0.3, y: 0.62, label: Old Mill, cue: six}
-        - {x: 0.3, y: 0.46, label: Riverside, cue: six}
-        - {x: 0.3, y: 0.18, label: Canal, cue: six}
-      target: {label: "Harbor · end of line", cue: six, icon: pin}
-      rule: {n: 1, text: Stop only at map stations}
-      say: "Rule number one. There are six stations on your map. Stop only at those six."
-    - scene: train
-      time: "12:34 AM"
-      place: CENTRAL
+  - scene: tunnel
+    time: 12:30 AM
+    light: 100
+    next: LINE 9 · LAST TRAIN
+    signal: green
+    say: You take the job nobody else wants. Driving the last train of the night on Line 9.
+  - scene: radio
+    time: 12:31 AM
+    true: radio
+    chip:
+      text: Marta · night dispatch
+      cue: marta
+      y: 470
+    say:
+    - Your dispatcher, Marta, is only ever a voice on the radio.
+    - radio: Welcome, driver. Two rules. Learn them.
+  - scene: title
+    say: Last train. Night one.
+  - scene: map
+    time: 12:32 AM
+    route:
+    - - 0.3
+      - 0.94
+    - - 0.3
+      - 0.04
+    route_cue: 0
+    route_end: six
+    stops:
+    - x: 0.3
+      y: 0.94
+      left: true
+      label: Central
+      cue: six
+    - x: 0.3
+      y: 0.78
+      label: Market St
+      cue: six
+    - x: 0.3
+      y: 0.62
+      label: Old Mill
+      cue: six
+    - x: 0.3
+      y: 0.46
+      label: Riverside
+      cue: six
+    - x: 0.3
+      y: 0.18
+      label: Canal
+      cue: six
+    target:
+      label: Harbor · end of line
+      cue: six
+      icon: pin
+    rule:
+      n: 1
+      text: Stop only at map stations
+    say: Rule number one. There are six stations on your map. Stop only at those six.
+  - scene: train
+    time: 12:34 AM
+    place: CENTRAL
+    parked: true
+    station:
+      name: CENTRAL
+    doors:
+      open: 0
+      close: end-0.8
+    next: 'THIS IS: CENTRAL'
+    rule:
+      n: 2
+      text: Count your passengers
+    passengers:
+    - x: 0.06
+      cue: count
+    - x: 0.17
+      cue: count
+    - x: 0.28
+      cue: number
+    - x: 0.67
+      cue: number
+    - x: 0.78
+      cue: match
+    you:
+      x: 0.5
+      action: idle
+      facing: 1
+    say: Rule number two. Count your passengers at every stop. The number that gets on must match the number that gets off.
+  - scene: train
+    time: 12:36 AM
+    place: LINE 9
+    next: 'NEXT: MARKET ST'
+    passengers:
+    - x: 0.06
+    - x: 0.17
+      asleep: true
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+      cue: sixth
+    you:
+      x: 0.5
+      to: 0.62
+      go: sixth
+      arrive: end-0.5
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.18
+      focus:
+      - 0.7
+      - 0.5
+    say: Five people get on at Central. But there's a sixth. A man in a grey coat, in the last seat. You never saw him get on.
+  - scene: inventory
+    time: 12:40 AM
+    light: 100
+    items:
+    - icon: key
+      count: 1
+      label: cab key
+      cue: key
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    - icon: battery
+      count: 2
+      label: batteries
+      cue: two
+    total:
+      text: 40 min to Harbor
+      cue: forty
+    say: One cab key. One flashlight. Two spare batteries. Forty minutes to Harbor.
+  - scene: tunnel
+    time: 1:12 AM
+    place: PAST RIVERSIDE
+    light:
+    - 100
+    - 90
+    next: 'NEXT: CANAL'
+    signal:
+    - - green
+      - 0
+    - - red
+      - slowing
+    stop: slowing
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+    say: At one twelve, just past Riverside, the train starts slowing down. You never touched the brake.
+  - scene: tunnel
+    time: 1:13 AM
+    place: ASHGROVE
+    light: 90
+    parked: true
+    next: 'NEXT: ASHGROVE'
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.2
+      - dz: 3.0
+      - dz: 4.6
+      - dz: 6.5
+    camera:
+      zoom:
+      - 1.0
+      - 1.25
+      focus:
+      - 0.62
+      - 0.45
+    heartbeat: map
+    say: A platform slides out of the dark. The sign says Ashgrove. It's not on your map.
+  - scene: train
+    time: 1:13 AM
+    parked: true
+    lights: flicker
+    station:
+      name: ASHGROVE
+      flicker: true
+      people:
+      - x: 0.05
+        facing: 1
+      - x: 0.2
+        facing: 1
+      - x: 0.8
+        facing: -1
+      - x: 0.93
+        facing: -1
+    next: 'NEXT: ASHGROVE'
+    passengers:
+    - x: 0.06
+    - x: 0.17
+      asleep: true
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      action: scared
+      facing: 1
+    say: People are waiting on the platform. Not moving. All of them facing your doors.
+  - scene: choice
+    time: 1:14 AM
+    base:
+      scene: tunnel
       parked: true
-      station: {name: CENTRAL}
-      doors: {open: 0, close: "end-0.8"}
-      next: "THIS IS: CENTRAL"
-      rule: {n: 2, text: Count your passengers}
-      passengers:
-        - {x: 0.06, cue: count}
-        - {x: 0.17, cue: count}
-        - {x: 0.28, cue: number}
-        - {x: 0.67, cue: number}
-        - {x: 0.78, cue: match}
-      you: {x: 0.5, action: idle, facing: 1}
-      say: "Rule number two. Count your passengers at every stop. The number that gets on must match the number that gets off."
-    - scene: train
-      time: "12:36 AM"
-      place: LINE 9
-      next: "NEXT: MARKET ST"
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17, asleep: true}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1, cue: sixth}
-      you: {x: 0.5, to: 0.62, go: sixth, arrive: "end-0.5", facing: 1}
-      camera: {zoom: [1.0, 1.18], focus: [0.7, 0.5]}
-      say: "Five people get on at Central. But there's a sixth. A man in a grey coat, in the last seat. You never saw him get on."
-    - scene: inventory
-      time: "12:40 AM"
-      light: 100
-      items:
-        - {icon: key, count: 1, label: cab key, cue: key}
-        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
-        - {icon: battery, count: 2, label: batteries, cue: two}
-      total: {text: "40 min to Harbor", cue: forty}
-      say: "One cab key. One flashlight. Two spare batteries. Forty minutes to Harbor."
-    - scene: tunnel
-      time: "1:12 AM"
-      place: PAST RIVERSIDE
-      light: [100, 90]
-      next: "NEXT: CANAL"
-      signal: [[green, 0], [red, slowing]]
-      stop: slowing
-      station: {name: ASHGROVE, park: 1.4, flicker: true}
-      say: "At one twelve, just past Riverside, the train starts slowing down. You never touched the brake."
-    - scene: tunnel
-      time: "1:13 AM"
-      place: ASHGROVE
-      light: 90
-      parked: true
-      next: "NEXT: ASHGROVE"
+      next: 'DOORS: RELEASE?'
       station:
         name: ASHGROVE
         park: 1.4
         flicker: true
-        people: [{dz: 1.2}, {dz: 3.0}, {dz: 4.6}, {dz: 6.5}]
-      camera: {zoom: [1.0, 1.25], focus: [0.62, 0.45]}
-      heartbeat: map
-      say: "A platform slides out of the dark. The sign says Ashgrove. It's not on your map."
-    - scene: train
-      time: "1:13 AM"
-      parked: true
-      lights: flicker
-      station:
-        name: ASHGROVE
-        flicker: true
         people:
-          - {x: 0.05, facing: 1}
-          - {x: 0.2, facing: 1}
-          - {x: 0.8, facing: -1}
-          - {x: 0.93, facing: -1}
-      next: "NEXT: ASHGROVE"
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17, asleep: true}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1}
-      you: {x: 0.5, action: scared, facing: 1}
-      say: "People are waiting on the platform. Not moving. All of them facing your doors."
-    - scene: choice
-      time: "1:14 AM"
-      base:
-        scene: tunnel
-        parked: true
-        next: "DOORS: RELEASE?"
-        station: {name: ASHGROVE, park: 1.4, flicker: true, people: [{dz: 1.2, stare: true}, {dz: 3.0, stare: true}, {dz: 4.6}]}
-      question: "Open the doors or drive past?"
-      options:
-        - {text: Open, cue: open}
-        - {text: Drive past, cue: drive}
-      say: "Then the door button lights up on its own. Do you open the doors... or drive past?"
-    - scene: endcard
-      time: "1:14 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+        - dz: 1.2
+          stare: true
+        - dz: 3.0
+          stare: true
+        - dz: 4.6
+    question: Open the doors or drive past?
+    options:
+    - text: Open
+      cue: open
+    - text: Drive past
+      cue: drive
+    say: Then the door button lights up on its own. Do you open the doors... or drive past?
+  - scene: endcard
+    time: 1:14 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: last-train-2
   format: stickman
   series: LAST TRAIN
@@ -1005,130 +954,230 @@
   cap: true
   meter_label: POWER
   place: ASHGROVE
-  title: "The station that isn't on my map closed in 1987. Night 2 🚇"
-  tags: [stickman, animation, horror, subway, lasttrain, story]
+  title: The station that isn't on my map closed in 1987. Night 2 🚇
+  tags:
+  - stickman
+  - animation
+  - horror
+  - subway
+  - lasttrain
+  - story
   shots:
-    - scene: tunnel
-      recap: true
-      time: "1:14 AM"
-      light: 90
+  - scene: tunnel
+    recap: true
+    time: 1:14 AM
+    light: 90
+    parked: true
+    next: 'NEXT: ASHGROVE'
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.2
+      - dz: 3.0
+      - dz: 4.6
+    say: Last night, your train stopped at a station that isn't on the map.
+  - scene: title
+    say: Last train. Night two.
+  - scene: tunnel
+    time: 1:14 AM
+    light: 90
+    parked: true
+    start: throttle
+    next: 'NEXT: CANAL'
+    signal: green
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.2
+        turn: head
+      - dz: 3.0
+        turn: head
+      - dz: 4.6
+        turn: head
+      - dz: 6.5
+        turn: head
+    say: You keep the doors shut and push the throttle. As you pull away, every head on the platform turns to follow you.
+  - scene: radio
+    time: 1:40 AM
+    place: HARBOR
+    true: radio
+    chip:
+      text: Marta · night dispatch
+      cue: 0
+      y: 470
+    say:
+    - At Harbor, you call Marta.
+    - radio: Ashgrove closed in 1987. That year, the last train went into the tunnel past Riverside and never came out. Now, for six nights every year, the station opens again. It wants a full train.
+  - scene: map
+    time: 1:42 AM
+    route:
+    - - 0.3
+      - 0.94
+    - - 0.3
+      - 0.04
+    route_cue: 0
+    route_end: anyone
+    stops:
+    - x: 0.3
+      y: 0.94
+      left: true
+      label: Central
+    - x: 0.3
+      y: 0.78
+      label: Market St
+    - x: 0.3
+      y: 0.62
+      label: Old Mill
+    - x: 0.3
+      y: 0.46
+      label: Riverside
+    - x: 0.3
+      y: 0.32
+      label: Ashgrove
+      ghost: true
+      cue: ashgrove
+    - x: 0.3
+      y: 0.18
+      label: Canal
+    target:
+      label: Harbor · end of line
+      cue: 0
+      icon: pin
+    rule:
+      n: 3
+      text: Never open at Ashgrove
+    say: Rule number three. Never open the doors at Ashgrove. Not for anyone.
+  - scene: train
+    time: 12:34 AM
+    place: LINE 9
+    light: 100
+    next: 'NEXT: MARKET ST'
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      action: idle
+      facing: 1
+    say: The next night, your goal is simple. Get to Harbor with the right count.
+  - scene: train
+    time: 1:13 AM
+    place: ASHGROVE
+    speed: 2100
+    lights: flicker
+    next: 'NEXT: CANAL'
+    tunnel_eyes: 4
+    eyes_cue: flickers
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      action: idle
+      facing: -1
+    say: At one thirteen, Ashgrove flickers past the windows. This time, you don't slow down.
+  - scene: train
+    time: 1:40 AM
+    place: HARBOR
+    parked: true
+    station:
+      name: HARBOR
+      color: '#b9c7cf'
+      sign: '#7a2a2a'
+    doors:
+      open: 0
+    next: 'THIS IS: HARBOR'
+    passengers:
+    - x: 0.06
+      fade: five
+    - x: 0.17
+      fade: five
+    - x: 0.28
+      fade: five
+    - x: 0.67
+      fade: five
+    - x: 0.78
+      fade: five
+    - x: 0.89
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      action: idle
+      facing: 1
+    say: At Harbor, five people get off. Five got on. The count is right.
+  - scene: train
+    time: 1:41 AM
+    parked: true
+    station:
+      name: HARBOR
+      color: '#b9c7cf'
+      sign: '#7a2a2a'
+    next: 'THIS IS: HARBOR'
+    passengers:
+    - x: 0.89
+      coat: true
+      facing: -1
+      stare: whispers
+    you:
+      x: 0.45
+      to: 0.74
+      go: 0
+      arrive: 50%
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.3
+      focus:
+      - 0.8
+      - 0.5
+    say: 'But the man in the grey coat is still in the last seat. You tell him it''s the end of the line. He looks up and whispers: she''s not telling you everything.'
+  - scene: choice
+    time: 1:42 AM
+    base:
+      scene: train
       parked: true
-      next: "NEXT: ASHGROVE"
-      station: {name: ASHGROVE, park: 1.4, flicker: true, people: [{dz: 1.2}, {dz: 3.0}, {dz: 4.6}]}
-      say: "Last night, your train stopped at a station that isn't on the map."
-    - scene: title
-      say: "Last train. Night two."
-    - scene: tunnel
-      time: "1:14 AM"
-      light: 90
-      parked: true
-      start: throttle
-      next: "NEXT: CANAL"
-      signal: green
       station:
-        name: ASHGROVE
-        park: 1.4
-        flicker: true
-        people: [{dz: 1.2, turn: head}, {dz: 3.0, turn: head}, {dz: 4.6, turn: head}, {dz: 6.5, turn: head}]
-      say: "You keep the doors shut and push the throttle. As you pull away, every head on the platform turns to follow you."
-    - scene: radio
-      time: "1:40 AM"
-      place: HARBOR
-      on: radio
-      chip: {text: "Marta · night dispatch", cue: 0, y: 470}
-      say:
-        - "At Harbor, you call Marta."
-        - radio: "Ashgrove closed in 1987. That year, the last train went into the tunnel past Riverside and never came out. Now, for six nights every year, the station opens again. It wants a full train."
-    - scene: map
-      time: "1:42 AM"
-      route: [[0.3, 0.94], [0.3, 0.04]]
-      route_cue: 0
-      route_end: anyone
-      stops:
-        - {x: 0.3, y: 0.94, left: true, label: Central}
-        - {x: 0.3, y: 0.78, label: Market St}
-        - {x: 0.3, y: 0.62, label: Old Mill}
-        - {x: 0.3, y: 0.46, label: Riverside}
-        - {x: 0.3, y: 0.32, label: Ashgrove, ghost: true, cue: ashgrove}
-        - {x: 0.3, y: 0.18, label: Canal}
-      target: {label: "Harbor · end of line", cue: 0, icon: pin}
-      rule: {n: 3, text: Never open at Ashgrove}
-      say: "Rule number three. Never open the doors at Ashgrove. Not for anyone."
-    - scene: train
-      time: "12:34 AM"
-      place: LINE 9
-      light: 100
-      next: "NEXT: MARKET ST"
+        name: HARBOR
+        color: '#b9c7cf'
+        sign: '#7a2a2a'
       passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1}
-      you: {x: 0.5, action: idle, facing: 1}
-      say: "The next night, your goal is simple. Get to Harbor with the right count."
-    - scene: train
-      time: "1:13 AM"
-      place: ASHGROVE
-      speed: 2100
-      lights: flicker
-      next: "NEXT: CANAL"
-      tunnel_eyes: 4
-      eyes_cue: flickers
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1}
-      you: {x: 0.5, action: idle, facing: -1}
-      say: "At one thirteen, Ashgrove flickers past the windows. This time, you don't slow down."
-    - scene: train
-      time: "1:40 AM"
-      place: HARBOR
-      parked: true
-      station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-      doors: {open: 0}
-      next: "THIS IS: HARBOR"
-      passengers:
-        - {x: 0.06, fade: five}
-        - {x: 0.17, fade: five}
-        - {x: 0.28, fade: five}
-        - {x: 0.67, fade: five}
-        - {x: 0.78, fade: five}
-        - {x: 0.89, coat: true, facing: -1}
-      you: {x: 0.5, action: idle, facing: 1}
-      say: "At Harbor, five people get off. Five got on. The count is right."
-    - scene: train
-      time: "1:41 AM"
-      parked: true
-      station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-      next: "THIS IS: HARBOR"
-      passengers:
-        - {x: 0.89, coat: true, facing: -1, stare: whispers}
-      you: {x: 0.45, to: 0.74, go: 0, arrive: "50%", facing: 1}
-      camera: {zoom: [1.0, 1.3], focus: [0.8, 0.5]}
-      say: "But the man in the grey coat is still in the last seat. You tell him it's the end of the line. He looks up and whispers: she's not telling you everything."
-    - scene: choice
-      time: "1:42 AM"
-      base:
-        scene: train
-        parked: true
-        station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-        passengers: [{x: 0.89, coat: true, facing: -1, stare: true}]
-        you: {x: 0.74, action: idle, facing: 1}
-      question: "Ask him or throw him off?"
-      options:
-        - {text: Ask him, cue: ask}
-        - {text: Throw him off, cue: throw}
-      say: "Do you ask him what he means... or throw him off the train?"
-    - scene: endcard
-      time: "1:42 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+      - x: 0.89
+        coat: true
+        facing: -1
+        stare: true
+      you:
+        x: 0.74
+        action: idle
+        facing: 1
+    question: Ask him or throw him off?
+    options:
+    - text: Ask him
+      cue: ask
+    - text: Throw him off
+      cue: throw
+    say: Do you ask him what he means... or throw him off the train?
+  - scene: endcard
+    time: 1:42 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: last-train-3
   format: stickman
   series: LAST TRAIN
@@ -1137,125 +1186,234 @@
   cap: true
   meter_label: POWER
   place: HARBOR
-  title: "My train lost power right next to the station that closed in 1987. Night 3 🚇"
-  tags: [stickman, animation, horror, subway, lasttrain, story]
+  title: My train lost power right next to the station that closed in 1987. Night 3 🚇
+  tags:
+  - stickman
+  - animation
+  - horror
+  - subway
+  - lasttrain
+  - story
   shots:
-    - scene: train
-      recap: true
-      time: "1:42 AM"
+  - scene: train
+    recap: true
+    time: 1:42 AM
+    parked: true
+    station:
+      name: HARBOR
+      color: '#b9c7cf'
+      sign: '#7a2a2a'
+    passengers:
+    - x: 0.89
+      coat: true
+      facing: -1
+      stare: true
+    you:
+      x: 0.74
+      action: idle
+      facing: 1
+    say: Last night, the man in the grey coat said Marta isn't telling you everything.
+  - scene: title
+    say: Last train. Night three.
+  - scene: train
+    time: 1:43 AM
+    parked: true
+    station:
+      name: HARBOR
+      color: '#b9c7cf'
+      sign: '#7a2a2a'
+    passengers:
+    - x: 0.89
+      coat: true
+      facing: -1
+      fade: end-0.6
+    you:
+      x: 0.74
+      action: idle
+      facing: 1
+    camera:
+      zoom:
+      - 1.2
+      - 1.3
+      focus:
+      - 0.8
+      - 0.5
+    say: You ask him what he means. He only says one thing. When the lights go out, don't stop. Then he's gone.
+  - scene: radio
+    time: 1:45 AM
+    true: radio
+    chip:
+      text: Marta · night dispatch
+      cue: 0
+      y: 470
+    say:
+    - You tell Marta. She goes quiet.
+    - radio: Don't talk to him, driver. And never let him in your cab.
+  - scene: closeup
+    object: phone
+    time: 12:20 AM
+    place: CENTRAL
+    screen: Driver rulebook
+    sub: Page 4
+    message: |-
+      IF POWER FAILS IN A TUNNEL,
+      DO NOT STOP.
+    message_cue: power
+    rule:
+      n: 4
+      text: Never stop in the dark
+    say: But rule number four is in the rulebook too. If the power fails in a tunnel, don't stop. Let the train roll to the next station.
+  - scene: map
+    time: 12:30 AM
+    route:
+    - - 0.3
+      - 0.46
+    - - 0.3
+      - 0.18
+    route_cue: stretch
+    route_end: canal
+    stops:
+    - x: 0.3
+      y: 0.94
+      left: true
+      label: Central
+    - x: 0.3
+      y: 0.78
+      label: Market St
+    - x: 0.3
+      y: 0.62
+      label: Old Mill
+    - x: 0.3
+      y: 0.46
+      left: true
+      label: Riverside
+    - x: 0.3
+      y: 0.32
+      label: Ashgrove
+      ghost: true
+    - x: 0.3
+      y: 0.18
+      label: Canal
+    danger:
+    - x: 0.3
+      y: 0.32
+      r: 0.07
+      n: 12
+      cue: stretch
+    say: 'Tonight''s goal: roll through the stretch past Riverside, all the way to Canal.'
+  - scene: tunnel
+    time: 1:12 AM
+    place: PAST RIVERSIDE
+    light:
+    - 100
+    - 40
+    next: 'NEXT: CANAL'
+    flicker: lamps
+    dies: headlights
+    say: At one twelve, the tunnel lamps flicker. Then your headlights die.
+  - scene: train
+    time: 1:12 AM
+    light:
+    - 40
+    - 0
+    speed: 1100
+    lights:
+    - - flicker
+      - 0
+    - - 'off'
+      - zero
+    tunnel_eyes: 4
+    eyes_cue: slower
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      light: true
+      aim: -0.1
+      facing: -1
+    say: Your power meter drops to zero. The train rolls on in the dark. Slower. And slower.
+  - scene: train
+    time: 1:13 AM
+    light: 0
+    lights: 'off'
+    stop: 0.3
+    sfx:
+    - name: knock
+      at: knocking
+    - name: knock
+      at: outside
+    - name: knock
+      at: both
+      gain: 1.3
+    shake_at:
+    - both
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      light: true
+      aim: 0.05
+      facing: 1
+      action_at:
+        both: scared
+    say: Then the knocking starts. On the outside of the doors. On both sides of the train.
+  - scene: tunnel
+    time: 1:13 AM
+    place: ASHGROVE
+    light: 0
+    parked: true
+    headlights: false
+    next: 'NEXT: ASHGROVE'
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.2
+        stare: true
+      - dz: 3.0
+        stare: true
+    say: The train stops. Outside the window, a sign flickers. Ashgrove.
+  - scene: choice
+    time: 1:14 AM
+    base:
+      scene: train
+      lights: 'off'
       parked: true
-      station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-      passengers: [{x: 0.89, coat: true, facing: -1, stare: true}]
-      you: {x: 0.74, action: idle, facing: 1}
-      say: "Last night, the man in the grey coat said Marta isn't telling you everything."
-    - scene: title
-      say: "Last train. Night three."
-    - scene: train
-      time: "1:43 AM"
-      parked: true
-      station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-      passengers: [{x: 0.89, coat: true, facing: -1, fade: "end-0.6"}]
-      you: {x: 0.74, action: idle, facing: 1}
-      camera: {zoom: [1.2, 1.3], focus: [0.8, 0.5]}
-      say: "You ask him what he means. He only says one thing. When the lights go out, don't stop. Then he's gone."
-    - scene: radio
-      time: "1:45 AM"
-      on: radio
-      chip: {text: "Marta · night dispatch", cue: 0, y: 470}
-      say:
-        - "You tell Marta. She goes quiet."
-        - radio: "Don't talk to him, driver. And never let him in your cab."
-    - scene: closeup
-      object: phone
-      time: "12:20 AM"
-      place: CENTRAL
-      screen: Driver rulebook
-      sub: Page 4
-      message: "IF POWER FAILS IN A TUNNEL,\nDO NOT STOP."
-      message_cue: power
-      rule: {n: 4, text: Never stop in the dark}
-      say: "But rule number four is in the rulebook too. If the power fails in a tunnel, don't stop. Let the train roll to the next station."
-    - scene: map
-      time: "12:30 AM"
-      route: [[0.3, 0.46], [0.3, 0.18]]
-      route_cue: stretch
-      route_end: canal
-      stops:
-        - {x: 0.3, y: 0.94, left: true, label: Central}
-        - {x: 0.3, y: 0.78, label: Market St}
-        - {x: 0.3, y: 0.62, label: Old Mill}
-        - {x: 0.3, y: 0.46, left: true, label: Riverside}
-        - {x: 0.3, y: 0.32, label: Ashgrove, ghost: true}
-        - {x: 0.3, y: 0.18, label: Canal}
-      danger: [{x: 0.3, y: 0.32, r: 0.07, n: 12, cue: stretch}]
-      say: "Tonight's goal: roll through the stretch past Riverside, all the way to Canal."
-    - scene: tunnel
-      time: "1:12 AM"
-      place: PAST RIVERSIDE
-      light: [100, 40]
-      next: "NEXT: CANAL"
-      flicker: lamps
-      dies: headlights
-      say: "At one twelve, the tunnel lamps flicker. Then your headlights die."
-    - scene: train
-      time: "1:12 AM"
-      light: [40, 0]
-      speed: 1100
-      lights: [["flicker", 0], ["off", zero]]
-      tunnel_eyes: 4
-      eyes_cue: slower
       passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1}
-      you: {x: 0.5, light: true, aim: -0.1, facing: -1}
-      say: "Your power meter drops to zero. The train rolls on in the dark. Slower. And slower."
-    - scene: train
-      time: "1:13 AM"
-      light: 0
-      lights: "off"
-      stop: 0.3
-      sfx: [{name: knock, at: knocking}, {name: knock, at: outside}, {name: knock, at: both, gain: 1.3}]
-      shake_at: [both]
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1}
-      you: {x: 0.5, light: true, aim: 0.05, facing: 1, action_at: {both: scared}}
-      say: "Then the knocking starts. On the outside of the doors. On both sides of the train."
-    - scene: tunnel
-      time: "1:13 AM"
-      place: ASHGROVE
-      light: 0
-      parked: true
-      headlights: false
-      next: "NEXT: ASHGROVE"
-      station: {name: ASHGROVE, park: 1.4, flicker: true, people: [{dz: 1.2, stare: true}, {dz: 3.0, stare: true}]}
-      say: "The train stops. Outside the window, a sign flickers. Ashgrove."
-    - scene: choice
-      time: "1:14 AM"
-      base:
-        scene: train
-        lights: "off"
-        parked: true
-        passengers: [{x: 0.89, coat: true, facing: -1}]
-        you: {x: 0.5, light: true, aim: 0.05, facing: 1}
-      question: "Wait or restart?"
-      options:
-        - {text: Wait, cue: wait}
-        - {text: Restart, cue: restart}
-      say: "Do you wait in the dark for help... or try to restart the train?"
-    - scene: endcard
-      time: "1:14 AM"
-      hold: 1.6
-      say: "Follow for night four."
-
+      - x: 0.89
+        coat: true
+        facing: -1
+      you:
+        x: 0.5
+        light: true
+        aim: 0.05
+        facing: 1
+    question: Wait or restart?
+    options:
+    - text: Wait
+      cue: wait
+    - text: Restart
+      cue: restart
+    say: Do you wait in the dark for help... or try to restart the train?
+  - scene: endcard
+    time: 1:14 AM
+    hold: 1.6
+    say: Follow for night four.
 - id: last-train-4
   format: stickman
   series: LAST TRAIN
@@ -1264,125 +1422,231 @@
   cap: true
   meter_label: POWER
   place: ASHGROVE
-  title: "The man in the grey coat says he drove this train in 1987. Night 4 🚇"
-  tags: [stickman, animation, horror, subway, lasttrain, story]
+  title: The man in the grey coat says he drove this train in 1987. Night 4 🚇
+  tags:
+  - stickman
+  - animation
+  - horror
+  - subway
+  - lasttrain
+  - story
   shots:
-    - scene: tunnel
-      recap: true
-      time: "1:14 AM"
-      light: 0
+  - scene: tunnel
+    recap: true
+    time: 1:14 AM
+    light: 0
+    parked: true
+    headlights: false
+    next: 'NEXT: ASHGROVE'
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.2
+        stare: true
+      - dz: 3.0
+        stare: true
+    say: Last night, your train lost power right next to Ashgrove.
+  - scene: title
+    say: Last train. Night four.
+  - scene: train
+    time: 1:15 AM
+    light: 0
+    lights: 'off'
+    parked: true
+    sfx:
+    - name: click
+      at: turn
+    - name: click
+      at: nothing
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      light: true
+      aim: -0.2
+      facing: -1
+    say: You try to restart. You turn the key. Nothing.
+  - scene: train
+    time: 1:15 AM
+    light: 0
+    lights: 'off'
+    parked: true
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.7
+      sit: false
+      coat: true
+      facing: -1
+    you:
+      x: 0.4
+      light: true
+      aim: 0.0
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.2
+      focus:
+      - 0.6
+      - 0.5
+    say: Then the man in the grey coat is standing right behind you. Turn it twice, he says. Then hold it. I know this train.
+  - scene: radio
+    time: 1:16 AM
+    true: radio
+    chip:
+      text: Marta · night dispatch
+      cue: 0
+      y: 470
+    say:
+    - Marta is shouting.
+    - radio: Driver, don't listen to him! Don't let him in!
+  - scene: train
+    time: 1:16 AM
+    light:
+    - 0
+    - 70
+    parked: true
+    lights:
+    - - 'off'
+      - 0
+    - - flicker
+      - flicker
+    - - 'on'
+      - back
+    sfx:
+    - name: click
+      at: twice
+    - name: boom
+      at: back
+      gain: 0.7
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.7
+      sit: false
+      coat: true
+      facing: -1
+    you:
+      x: 0.4
+      light: true
+      aim: 0.0
+      facing: 1
+    say: You turn the key twice, and hold it. The lights flicker... and come back on.
+  - scene: tunnel
+    time: 1:17 AM
+    light: 70
+    parked: true
+    start: away
+    next: 'NEXT: CANAL'
+    signal: green
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.2
+        turn: 0
+        stare: true
+      - dz: 3.0
+        turn: 0
+        stare: true
+      - dz: 4.6
+        turn: 0
+    say: The train pulls away from Ashgrove. Behind you, the people on the platform step right up to the edge.
+  - scene: train
+    time: 1:25 AM
+    place: CANAL
+    light: 70
+    parked: true
+    station:
+      name: CANAL
+      color: '#a9c4b0'
+      sign: '#2b5d3a'
+    passengers:
+    - x: 0.78
+      coat: true
+      facing: -1
+      stare: true
+    you:
+      x: 0.62
+      action: idle
+      facing: 1
+    say: 'At Canal, you finally ask him. Who are you? He says: I drove the last train in 1987.'
+  - scene: train
+    time: 1:26 AM
+    parked: true
+    station:
+      name: CANAL
+      color: '#a9c4b0'
+      sign: '#2b5d3a'
+    passengers:
+    - x: 0.78
+      coat: true
+      facing: -1
+      stare: true
+    you:
+      x: 0.62
+      action: idle
+      facing: 1
+    camera:
+      zoom:
+      - 1.1
+      - 1.35
+      focus:
+      - 0.75
+      - 0.5
+    say: The dispatcher told me to stop at Ashgrove. So I stopped, and I opened the doors. I've been riding this line ever since.
+  - scene: radio
+    time: 1:27 AM
+    true: radio
+    chip:
+      text: Marta · night dispatch
+      cue: 0
+      y: 470
+    say:
+    - The radio clicks.
+    - radio: Driver. Whatever he told you... he's the one who opened the doors. Not me.
+  - scene: choice
+    time: 1:27 AM
+    base:
+      scene: train
       parked: true
-      headlights: false
-      next: "NEXT: ASHGROVE"
-      station: {name: ASHGROVE, park: 1.4, flicker: true, people: [{dz: 1.2, stare: true}, {dz: 3.0, stare: true}]}
-      say: "Last night, your train lost power right next to Ashgrove."
-    - scene: title
-      say: "Last train. Night four."
-    - scene: train
-      time: "1:15 AM"
-      light: 0
-      lights: "off"
-      parked: true
-      sfx: [{name: click, at: turn}, {name: click, at: nothing}]
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1}
-      you: {x: 0.5, light: true, aim: -0.2, facing: -1}
-      say: "You try to restart. You turn the key. Nothing."
-    - scene: train
-      time: "1:15 AM"
-      light: 0
-      lights: "off"
-      parked: true
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.7, sit: false, coat: true, facing: -1}
-      you: {x: 0.4, light: true, aim: 0.0, facing: 1}
-      camera: {zoom: [1.0, 1.2], focus: [0.6, 0.5]}
-      say: "Then the man in the grey coat is standing right behind you. Turn it twice, he says. Then hold it. I know this train."
-    - scene: radio
-      time: "1:16 AM"
-      on: radio
-      chip: {text: "Marta · night dispatch", cue: 0, y: 470}
-      say:
-        - "Marta is shouting."
-        - radio: "Driver, don't listen to him! Don't let him in!"
-    - scene: train
-      time: "1:16 AM"
-      light: [0, 70]
-      parked: true
-      lights: [["off", 0], ["flicker", flicker], ["on", back]]
-      sfx: [{name: click, at: twice}, {name: boom, at: back, gain: 0.7}]
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.7, sit: false, coat: true, facing: -1}
-      you: {x: 0.4, light: true, aim: 0.0, facing: 1}
-      say: "You turn the key twice, and hold it. The lights flicker... and come back on."
-    - scene: tunnel
-      time: "1:17 AM"
-      light: 70
-      parked: true
-      start: away
-      next: "NEXT: CANAL"
-      signal: green
       station:
-        name: ASHGROVE
-        park: 1.4
-        flicker: true
-        people: [{dz: 1.2, turn: 0, stare: true}, {dz: 3.0, turn: 0, stare: true}, {dz: 4.6, turn: 0}]
-      say: "The train pulls away from Ashgrove. Behind you, the people on the platform step right up to the edge."
-    - scene: train
-      time: "1:25 AM"
-      place: CANAL
-      light: 70
-      parked: true
-      station: {name: CANAL, color: "#a9c4b0", sign: "#2b5d3a"}
+        name: CANAL
+        color: '#a9c4b0'
+        sign: '#2b5d3a'
       passengers:
-        - {x: 0.78, coat: true, facing: -1, stare: true}
-      you: {x: 0.62, action: idle, facing: 1}
-      say: "At Canal, you finally ask him. Who are you? He says: I drove the last train in 1987."
-    - scene: train
-      time: "1:26 AM"
-      parked: true
-      station: {name: CANAL, color: "#a9c4b0", sign: "#2b5d3a"}
-      passengers:
-        - {x: 0.78, coat: true, facing: -1, stare: true}
-      you: {x: 0.62, action: idle, facing: 1}
-      camera: {zoom: [1.1, 1.35], focus: [0.75, 0.5]}
-      say: "The dispatcher told me to stop at Ashgrove. So I stopped, and I opened the doors. I've been riding this line ever since."
-    - scene: radio
-      time: "1:27 AM"
-      on: radio
-      chip: {text: "Marta · night dispatch", cue: 0, y: 470}
-      say:
-        - "The radio clicks."
-        - radio: "Driver. Whatever he told you... he's the one who opened the doors. Not me."
-    - scene: choice
-      time: "1:27 AM"
-      base:
-        scene: train
-        parked: true
-        station: {name: CANAL, color: "#a9c4b0", sign: "#2b5d3a"}
-        passengers: [{x: 0.78, coat: true, facing: -1, stare: true}]
-        you: {x: 0.62, action: idle, facing: 1}
-      question: "Trust Marta or the man?"
-      options:
-        - {text: Marta, cue: marta}
-        - {text: The man, cue: man}
-      say: "So who do you trust? Marta... or the man in the grey coat?"
-    - scene: endcard
-      time: "1:27 AM"
-      hold: 1.6
-      say: "Follow for night five."
-
+      - x: 0.78
+        coat: true
+        facing: -1
+        stare: true
+      you:
+        x: 0.62
+        action: idle
+        facing: 1
+    question: Trust Marta or the man?
+    options:
+    - text: Marta
+      cue: marta
+    - text: The man
+      cue: man
+    say: So who do you trust? Marta... or the man in the grey coat?
+  - scene: endcard
+    time: 1:27 AM
+    hold: 1.6
+    say: Follow for night five.
 - id: last-train-5
   format: stickman
   series: LAST TRAIN
@@ -1391,111 +1655,188 @@
   cap: true
   meter_label: POWER
   place: CANAL
-  title: "I looked up who was on the radio the night the last train vanished. Night 5 🚇"
-  tags: [stickman, animation, horror, subway, lasttrain, story]
+  title: I looked up who was on the radio the night the last train vanished. Night 5 🚇
+  tags:
+  - stickman
+  - animation
+  - horror
+  - subway
+  - lasttrain
+  - story
   shots:
-    - scene: train
-      recap: true
-      time: "1:27 AM"
+  - scene: train
+    recap: true
+    time: 1:27 AM
+    parked: true
+    station:
+      name: CANAL
+      color: '#a9c4b0'
+      sign: '#2b5d3a'
+    passengers:
+    - x: 0.78
+      coat: true
+      facing: -1
+      stare: true
+    you:
+      x: 0.62
+      action: idle
+      facing: 1
+    say: Last night, the man in the grey coat said he drove the last train in 1987.
+  - scene: title
+    say: Last train. Night five.
+  - scene: closeup
+    object: phone
+    time: 11:40 PM
+    place: HOME
+    screen: 'Search: Line 9 1987'
+    sub: City News archive
+    message: |-
+      LAST TRAIN VANISHES
+      IN LINE 9 TUNNEL
+    message_cue: vanishes
+    say: Before your shift, you search the news from 1987. Last train vanishes in Line 9 tunnel.
+  - scene: closeup
+    object: phone
+    time: 11:41 PM
+    screen: City News · 1987
+    sub: Article
+    message: |-
+      Driver: Eli Hale.
+      Dispatcher on duty: Marta Voss.
+    message_cue: dispatcher
+    say: It names the driver. Eli Hale. And the dispatcher on duty that night. Marta Voss.
+  - scene: closeup
+    object: phone
+    time: 11:42 PM
+    screen: City News · 1988
+    sub: Article
+    message: |-
+      NIGHT DISPATCH OFFICE
+      CLOSED FOR GOOD
+    message_cue: closed
+    say: One year later, the night dispatch office closed for good. Nobody has worked there since.
+  - scene: cctv
+    time: 12:00 AM
+    cam: CAM 02 · DISPATCH
+    src_y: 520
+    view:
+      scene: room
+      wall: '#4f5a60'
+      furniture: false
+      monitors: 'off'
+      desk: true
+      dark: 0.35
+    glitch: radio
+    say: So you check the old dispatch office camera. Empty. Dusty. But the radio on the desk is on.
+  - scene: radio
+    time: 12:01 AM
+    true: clicks
+    chip:
+      text: Marta · night dispatch
+      cue: 0
+      y: 470
+    say:
+    - At midnight, it clicks.
+    - radio: Good evening, driver. Tomorrow is the last night.
+  - scene: map
+    time: 12:30 AM
+    route:
+    - - 0.3
+      - 0.94
+    - - 0.3
+      - 0.04
+    route_cue: 0
+    route_end: ashgrove
+    stops:
+    - x: 0.3
+      y: 0.94
+      left: true
+      label: Central
+    - x: 0.3
+      y: 0.78
+      label: Market St
+    - x: 0.3
+      y: 0.62
+      label: Old Mill
+    - x: 0.3
+      y: 0.46
+      label: Riverside
+    - x: 0.3
+      y: 0.32
+      label: Ashgrove
+      ghost: true
+    - x: 0.3
+      y: 0.18
+      label: Canal
+    x_marks:
+    - x: 0.3
+      y: 0.32
+      cue: never
+    target:
+      label: Harbor · end of line
+      cue: 0
+      icon: pin
+    say: Your goal is clear now. Two more runs. Six stations. Never Ashgrove.
+  - scene: radio
+    time: 1:13 AM
+    place: PAST RIVERSIDE
+    true: radio
+    say:
+    - Then, at one thirteen, Marta speaks again.
+    - radio: Tomorrow, at Ashgrove, open the doors. Just once. And it ends forever.
+  - scene: train
+    time: 1:14 AM
+    place: LINE 9
+    next: 'NEXT: CANAL'
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.67
+    - x: 0.78
+    - x: 0.89
+      coat: true
+      facing: -1
+      stare: exactly
+    you:
+      x: 0.62
+      action: idle
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.3
+      focus:
+      - 0.85
+      - 0.5
+    say: The man in the grey coat looks right at you. That's exactly what she told me, he says.
+  - scene: choice
+    time: 1:15 AM
+    base:
+      scene: tunnel
       parked: true
-      station: {name: CANAL, color: "#a9c4b0", sign: "#2b5d3a"}
-      passengers: [{x: 0.78, coat: true, facing: -1, stare: true}]
-      you: {x: 0.62, action: idle, facing: 1}
-      say: "Last night, the man in the grey coat said he drove the last train in 1987."
-    - scene: title
-      say: "Last train. Night five."
-    - scene: closeup
-      object: phone
-      time: "11:40 PM"
-      place: HOME
-      screen: "Search: Line 9 1987"
-      sub: City News archive
-      message: "LAST TRAIN VANISHES\nIN LINE 9 TUNNEL"
-      message_cue: vanishes
-      say: "Before your shift, you search the news from 1987. Last train vanishes in Line 9 tunnel."
-    - scene: closeup
-      object: phone
-      time: "11:41 PM"
-      screen: City News · 1987
-      sub: Article
-      message: "Driver: Eli Hale.\nDispatcher on duty: Marta Voss."
-      message_cue: dispatcher
-      say: "It names the driver. Eli Hale. And the dispatcher on duty that night. Marta Voss."
-    - scene: closeup
-      object: phone
-      time: "11:42 PM"
-      screen: City News · 1988
-      sub: Article
-      message: "NIGHT DISPATCH OFFICE\nCLOSED FOR GOOD"
-      message_cue: closed
-      say: "One year later, the night dispatch office closed for good. Nobody has worked there since."
-    - scene: cctv
-      time: "12:00 AM"
-      cam: "CAM 02 · DISPATCH"
-      src_y: 520
-      view: {scene: room, wall: "#4f5a60", furniture: false, monitors: "off", desk: true, dark: 0.35}
-      glitch: radio
-      say: "So you check the old dispatch office camera. Empty. Dusty. But the radio on the desk is on."
-    - scene: radio
-      time: "12:01 AM"
-      on: clicks
-      chip: {text: "Marta · night dispatch", cue: 0, y: 470}
-      say:
-        - "At midnight, it clicks."
-        - radio: "Good evening, driver. Tomorrow is the last night."
-    - scene: map
-      time: "12:30 AM"
-      route: [[0.3, 0.94], [0.3, 0.04]]
-      route_cue: 0
-      route_end: ashgrove
-      stops:
-        - {x: 0.3, y: 0.94, left: true, label: Central}
-        - {x: 0.3, y: 0.78, label: Market St}
-        - {x: 0.3, y: 0.62, label: Old Mill}
-        - {x: 0.3, y: 0.46, label: Riverside}
-        - {x: 0.3, y: 0.32, label: Ashgrove, ghost: true}
-        - {x: 0.3, y: 0.18, label: Canal}
-      x_marks: [{x: 0.3, y: 0.32, cue: never}]
-      target: {label: "Harbor · end of line", cue: 0, icon: pin}
-      say: "Your goal is clear now. Two more runs. Six stations. Never Ashgrove."
-    - scene: radio
-      time: "1:13 AM"
-      place: PAST RIVERSIDE
-      on: radio
-      say:
-        - "Then, at one thirteen, Marta speaks again."
-        - radio: "Tomorrow, at Ashgrove, open the doors. Just once. And it ends forever."
-    - scene: train
-      time: "1:14 AM"
-      place: LINE 9
-      next: "NEXT: CANAL"
-      passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.67}
-        - {x: 0.78}
-        - {x: 0.89, coat: true, facing: -1, stare: exactly}
-      you: {x: 0.62, action: idle, facing: 1}
-      camera: {zoom: [1.0, 1.3], focus: [0.85, 0.5]}
-      say: "The man in the grey coat looks right at you. That's exactly what she told me, he says."
-    - scene: choice
-      time: "1:15 AM"
-      base:
-        scene: tunnel
-        parked: true
-        next: "DOORS: RELEASE?"
-        station: {name: ASHGROVE, park: 1.4, flicker: true, people: [{dz: 1.2, stare: true}, {dz: 3.0, stare: true}, {dz: 4.6}]}
-      question: "Open the doors or drive past?"
-      options:
-        - {text: Open, cue: open}
-        - {text: Drive past, cue: drive}
-      say: "Tomorrow, at Ashgrove... do you open the doors, or drive past?"
-    - scene: endcard
-      time: "1:15 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+      next: 'DOORS: RELEASE?'
+      station:
+        name: ASHGROVE
+        park: 1.4
+        flicker: true
+        people:
+        - dz: 1.2
+          stare: true
+        - dz: 3.0
+          stare: true
+        - dz: 4.6
+    question: Open the doors or drive past?
+    options:
+    - text: Open
+      cue: open
+    - text: Drive past
+      cue: drive
+    say: Tomorrow, at Ashgrove... do you open the doors, or drive past?
+  - scene: endcard
+    time: 1:15 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: last-train-6
   format: stickman
   series: LAST TRAIN
@@ -1504,129 +1845,233 @@
   cap: true
   meter_label: POWER
   place: CENTRAL
-  title: "My last run on the last train. Six got on. Seven got off. Night 6 🚇"
-  tags: [stickman, animation, horror, subway, lasttrain, story]
+  title: My last run on the last train. Six got on. Seven got off. Night 6 🚇
+  tags:
+  - stickman
+  - animation
+  - horror
+  - subway
+  - lasttrain
+  - story
   shots:
-    - scene: closeup
-      recap: true
-      object: phone
-      time: "12:20 AM"
-      screen: City News · 1987
-      sub: Article
-      message: "Driver: Eli Hale.\nDispatcher on duty: Marta Voss."
-      message_cue: 0
-      say: "Last night, you found out Marta was the dispatcher on duty in 1987."
-    - scene: title
-      say: "Last train. Night six."
-    - scene: train
-      time: "12:34 AM"
-      place: CENTRAL
+  - scene: closeup
+    recap: true
+    object: phone
+    time: 12:20 AM
+    screen: City News · 1987
+    sub: Article
+    message: |-
+      Driver: Eli Hale.
+      Dispatcher on duty: Marta Voss.
+    message_cue: 0
+    say: Last night, you found out Marta was the dispatcher on duty in 1987.
+  - scene: title
+    say: Last train. Night six.
+  - scene: train
+    time: 12:34 AM
+    place: CENTRAL
+    parked: true
+    station:
+      name: CENTRAL
+    doors:
+      open: 0
+      close: end-0.6
+    next: 'THIS IS: CENTRAL'
+    passengers:
+    - x: 0.06
+      cue: six
+    - x: 0.17
+      cue: six
+    - x: 0.28
+      cue: count
+    - x: 0.67
+      cue: count
+    - x: 0.78
+      cue: twice
+    - x: 0.84
+      cue: twice
+    - x: 0.9
+      coat: true
+      facing: -1
+    you:
+      x: 0.5
+      action: idle
+      facing: 1
+    say: Six people get on at Central tonight. You count them twice. Six. Plus the man in the grey coat.
+  - scene: tunnel
+    time: 1:12 AM
+    place: PAST RIVERSIDE
+    light: 100
+    next: 'NEXT: CANAL'
+    signal:
+    - - green
+      - 0
+    - - red
+      - brakes
+    stop: brakes
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.2
+      - dz: 3.0
+      - dz: 4.6
+      - dz: 6.5
+    say: At one twelve, the brakes pull on by themselves. Ashgrove slides out of the dark.
+  - scene: radio
+    time: 1:13 AM
+    place: ASHGROVE
+    true: radio
+    chip:
+      text: Marta · night dispatch
+      cue: 0
+      y: 470
+    say:
+    - The radio crackles.
+    - radio: Open the doors, driver. Just once, and it's over.
+  - scene: train
+    time: 1:13 AM
+    parked: true
+    lights: flicker
+    station:
+      name: ASHGROVE
+      flicker: true
+      people:
+      - x: 0.05
+        facing: 1
+      - x: 0.2
+        facing: 1
+      - x: 0.8
+        facing: -1
+      - x: 0.93
+        facing: -1
+    passengers:
+    - x: 0.06
+    - x: 0.17
+    - x: 0.28
+    - x: 0.78
+    - x: 0.84
+    - x: 0.64
+      sit: false
+      coat: true
+      facing: -1
+    you:
+      x: 0.42
+      action: idle
+      facing: 1
+    say: The man in the grey coat stands up. Keep them shut, he says. This time, I'm the one getting off.
+  - scene: tunnel
+    time: 1:14 AM
+    parked: true
+    start: drive
+    next: 'NEXT: CANAL'
+    signal: green
+    station:
+      name: ASHGROVE
+      park: 1.4
+      flicker: true
+      people:
+      - dz: 1.0
+        coat: true
+        x: 1.3
+      - dz: 1.6
+        turn: 0
+      - dz: 3.0
+        turn: 0
+      - dz: 4.6
+        turn: 0
+    say: He steps out through your cab door, onto the platform. The waiting people turn to him. You drive, and you don't look back.
+  - scene: train
+    time: 1:40 AM
+    place: HARBOR
+    parked: true
+    station:
+      name: HARBOR
+      color: '#b9c7cf'
+      sign: '#7a2a2a'
+    doors:
+      open: 0
+    next: 'THIS IS: HARBOR'
+    passengers:
+    - x: 0.06
+      fade: one
+    - x: 0.17
+      fade: two
+    - x: 0.28
+      fade: three
+    - x: 0.67
+      fade: four
+    - x: 0.78
+      fade: five
+    - x: 0.84
+      fade: six
+    - x: 0.9
+      color: '#e8d9c8'
+      facing: -1
+      cue: seven
+    you:
+      x: 0.5
+      action: idle
+      facing: 1
+    say: At Harbor, you count them off. One. Two. Three. Four. Five. Six. Seven.
+  - scene: train
+    time: 1:41 AM
+    parked: true
+    station:
+      name: HARBOR
+      color: '#b9c7cf'
+      sign: '#7a2a2a'
+    passengers:
+    - x: 0.8
+      sit: false
+      color: '#e8d9c8'
+      facing: -1
+      stare: smiles
+    you:
+      x: 0.5
+      action: scared
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.3
+      focus:
+      - 0.7
+      - 0.5
+    heartbeat: seven
+    say: Seven. But only six got on. The last one off turns and smiles at you. Thank you, driver, she says, in a voice you know from the radio.
+  - scene: choice
+    time: 1:42 AM
+    base:
+      scene: train
       parked: true
-      station: {name: CENTRAL}
-      doors: {open: 0, close: "end-0.6"}
-      next: "THIS IS: CENTRAL"
-      passengers:
-        - {x: 0.06, cue: six}
-        - {x: 0.17, cue: six}
-        - {x: 0.28, cue: count}
-        - {x: 0.67, cue: count}
-        - {x: 0.78, cue: twice}
-        - {x: 0.84, cue: twice}
-        - {x: 0.9, coat: true, facing: -1}
-      you: {x: 0.5, action: idle, facing: 1}
-      say: "Six people get on at Central tonight. You count them twice. Six. Plus the man in the grey coat."
-    - scene: tunnel
-      time: "1:12 AM"
-      place: PAST RIVERSIDE
-      light: 100
-      next: "NEXT: CANAL"
-      signal: [[green, 0], [red, brakes]]
-      stop: brakes
-      station: {name: ASHGROVE, park: 1.4, flicker: true, people: [{dz: 1.2}, {dz: 3.0}, {dz: 4.6}, {dz: 6.5}]}
-      say: "At one twelve, the brakes pull on by themselves. Ashgrove slides out of the dark."
-    - scene: radio
-      time: "1:13 AM"
-      place: ASHGROVE
-      on: radio
-      chip: {text: "Marta · night dispatch", cue: 0, y: 470}
-      say:
-        - "The radio crackles."
-        - radio: "Open the doors, driver. Just once, and it's over."
-    - scene: train
-      time: "1:13 AM"
-      parked: true
-      lights: flicker
       station:
-        name: ASHGROVE
-        flicker: true
-        people: [{x: 0.05, facing: 1}, {x: 0.2, facing: 1}, {x: 0.8, facing: -1}, {x: 0.93, facing: -1}]
+        name: HARBOR
+        color: '#b9c7cf'
+        sign: '#7a2a2a'
       passengers:
-        - {x: 0.06}
-        - {x: 0.17}
-        - {x: 0.28}
-        - {x: 0.78}
-        - {x: 0.84}
-        - {x: 0.64, sit: false, coat: true, facing: -1}
-      you: {x: 0.42, action: idle, facing: 1}
-      say: "The man in the grey coat stands up. Keep them shut, he says. This time, I'm the one getting off."
-    - scene: tunnel
-      time: "1:14 AM"
-      parked: true
-      start: drive
-      next: "NEXT: CANAL"
-      signal: green
-      station:
-        name: ASHGROVE
-        park: 1.4
-        flicker: true
-        people: [{dz: 1.0, coat: true, x: 1.3}, {dz: 1.6, turn: 0}, {dz: 3.0, turn: 0}, {dz: 4.6, turn: 0}]
-      say: "He steps out through your cab door, onto the platform. The waiting people turn to him. You drive, and you don't look back."
-    - scene: train
-      time: "1:40 AM"
-      place: HARBOR
-      parked: true
-      station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-      doors: {open: 0}
-      next: "THIS IS: HARBOR"
-      passengers:
-        - {x: 0.06, fade: one}
-        - {x: 0.17, fade: two}
-        - {x: 0.28, fade: three}
-        - {x: 0.67, fade: four}
-        - {x: 0.78, fade: five}
-        - {x: 0.84, fade: six}
-        - {x: 0.9, color: "#e8d9c8", facing: -1, cue: seven}
-      you: {x: 0.5, action: idle, facing: 1}
-      say: "At Harbor, you count them off. One. Two. Three. Four. Five. Six. Seven."
-    - scene: train
-      time: "1:41 AM"
-      parked: true
-      station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-      passengers:
-        - {x: 0.8, sit: false, color: "#e8d9c8", facing: -1, stare: smiles}
-      you: {x: 0.5, action: scared, facing: 1}
-      camera: {zoom: [1.0, 1.3], focus: [0.7, 0.5]}
-      heartbeat: seven
-      say: "Seven. But only six got on. The last one off turns and smiles at you. Thank you, driver, she says, in a voice you know from the radio."
-    - scene: choice
-      time: "1:42 AM"
-      base:
-        scene: train
-        parked: true
-        station: {name: HARBOR, color: "#b9c7cf", sign: "#7a2a2a"}
-        passengers: [{x: 0.8, sit: false, color: "#e8d9c8", facing: -1, stare: true}]
-        you: {x: 0.5, action: scared, facing: 1}
-      question: "Follow her or let her go?"
-      options:
-        - {text: Follow her, cue: follow}
-        - {text: Let her go, cue: go}
-      say: "Do you follow her up the stairs... or let her go?"
-    - scene: endcard
-      time: "1:42 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+      - x: 0.8
+        sit: false
+        color: '#e8d9c8'
+        facing: -1
+        stare: true
+      you:
+        x: 0.5
+        action: scared
+        facing: 1
+    question: Follow her or let her go?
+    options:
+    - text: Follow her
+      cue: follow
+    - text: Let her go
+      cue: go
+    say: Do you follow her up the stairs... or let her go?
+  - scene: endcard
+    time: 1:42 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
