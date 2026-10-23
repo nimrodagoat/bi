@@ -1,0 +1,688 @@
+# LINE FOUR (6 parts). You host the overnight show at Radio 97.4, a tiny
+# station on a hill above the town of Pine Hollow.
+# Cast: you (night host), Gus (old engineer, only on the intercom from
+# downstairs), the voice on line four (a calm caller).
+# Core idea, said plainly: line four was cut off in 1979, the night host Danny
+# Ross put it on air and vanished. The voice on it knows what happens next, and
+# whatever it says on air comes true for the whole town. Goal: six shows, and
+# never let it on air. Twist: Gus died in 1979; he's been helping all along.
+- id: line-four-1
+  format: stickman
+  series: LINE FOUR
+  day: 1
+  day_label: NIGHT
+  meter_label: SIGNAL
+  place: RADIO 97.4
+  title: "I host a radio show at night. Rule 1: never put line four on air 📻"
+  tags: [stickman, animation, horror, radio, linefour, story]
+  shots:
+    - scene: room
+      time: "11:58 PM"
+      light: 100
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: [["off", 0], ["on", midnight]]
+      you: {x: 0.42, action: idle, facing: 1}
+      say: "You take the night show at a tiny radio station on a hill. Midnight to five AM. Nobody else wants it."
+    - scene: radio
+      time: "12:01 AM"
+      on: radio
+      chip: {text: "Gus · engineer · downstairs", cue: gus, y: 470}
+      radio_label: "INTERCOM · GUS"
+      say:
+        - "Your only coworker is Gus, the old engineer. He stays downstairs, and talks to you on the intercom."
+        - radio: "Two rules, kid. Learn them."
+    - scene: title
+      say: "Line four. Night one."
+    - scene: closeup
+      object: phone
+      time: "12:03 AM"
+      screen: "LINE 4"
+      sub: "Studio phone"
+      rule: {n: 1, text: Never put line four on air}
+      say: "Rule number one. The studio phone has four lines. Never put line four on air. Not for anything."
+    - scene: room
+      time: "12:05 AM"
+      light: 100
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      rule: {n: 2, text: Never go silent}
+      you: {x: 0.42, action: idle, facing: 1}
+      say: "Rule number two. Never let the station go silent. Music, talking, anything. Silence is called dead air, and it's never allowed."
+    - scene: inventory
+      time: "12:10 AM"
+      light: 100
+      items:
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+        - {icon: key, count: 1, label: studio key, cue: key}
+        - {icon: bottle, count: 3, label: coffee, cue: three}
+      total: {text: "5 hours on air", cue: five}
+      say: "One flashlight. One studio key. Three cups of coffee. Five hours on air."
+    - scene: map
+      time: "12:15 AM"
+      route: [[0.5, 0.12], [0.5, 0.78]]
+      route_cue: below
+      route_end: listening
+      stops:
+        - {x: 0.5, y: 0.12, left: true, label: Radio 97.4}
+      target: {label: "Pine Hollow", cue: town, icon: pin}
+      lamps: {cue: "end+5"}
+      say: "Below the hill, the whole town of Pine Hollow is listening. Or sleeping."
+    - scene: room
+      time: "2:59 AM"
+      light: 92
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      dark: 0.35
+      you: {x: 0.42, action: idle, facing: 1}
+      camera: {zoom: [1.0, 1.15], focus: [0.4, 0.5]}
+      say: "At two fifty nine, you're playing an old song. The studio is quiet."
+    - scene: closeup
+      object: phone
+      time: "3:00 AM"
+      light: 90
+      screen: "LINE 4"
+      sub: Incoming call
+      ring: 0
+      heartbeat: four
+      say: "At three AM exactly, a light starts blinking on the phone. Line four."
+    - scene: radio
+      time: "3:00 AM"
+      on: radio
+      chip: {text: "Gus · engineer · downstairs", cue: 0, y: 470}
+      radio_label: "INTERCOM · GUS"
+      say:
+        - "You call Gus."
+        - radio: "Line four was cut off in 1979. It's not connected to anything."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: closeup, object: phone, screen: "LINE 4", sub: Incoming call, ring: 0}
+      question: "Answer or let it ring?"
+      options:
+        - {text: Answer, cue: answer}
+        - {text: Let it ring, cue: ring}
+      say: "It keeps ringing. Do you answer it... or let it ring?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: line-four-2
+  format: stickman
+  series: LINE FOUR
+  day: 2
+  day_label: NIGHT
+  meter_label: SIGNAL
+  place: RADIO 97.4
+  title: "The voice on line four knows what happens next. Night 2 📻"
+  tags: [stickman, animation, horror, radio, linefour, story]
+  shots:
+    - scene: closeup
+      recap: true
+      object: phone
+      time: "3:01 AM"
+      light: 90
+      screen: "LINE 4"
+      sub: Incoming call
+      ring: 0
+      say: "Last night, a phone line that isn't connected to anything started ringing."
+    - scene: title
+      say: "Line four. Night two."
+    - scene: radio
+      time: "3:01 AM"
+      on: radio
+      chip: {text: "Line four · caller", cue: voice, y: 470}
+      radio_label: "LINE 4 · OFF AIR"
+      say:
+        - "You answer. Off air. A calm voice says your name. Then it says:"
+        - radio: "In one minute, the lights on Elm Street go out."
+    - scene: map
+      time: "3:02 AM"
+      route: [[0.5, 0.12], [0.5, 0.78]]
+      route_cue: 0
+      route_end: minute
+      stops:
+        - {x: 0.5, y: 0.12, left: true, label: Radio 97.4}
+      target: {label: "Elm Street", cue: elm, icon: pin}
+      lamps: {cue: dark}
+      say: "One minute later, every street light on Elm Street goes dark."
+    - scene: radio
+      time: "3:05 AM"
+      on: radio
+      chip: {text: "Gus · engineer · downstairs", cue: 0, y: 470}
+      radio_label: "INTERCOM · GUS"
+      say:
+        - "Gus is quiet for a long time. Then he explains."
+        - radio: "In 1979, the night host, Danny Ross, put line four on air. Whatever that voice said came true, all over town. Danny walked out of the studio that night, and never came back."
+    - scene: room
+      time: "3:10 AM"
+      light: 85
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      rule: {n: 3, text: Never repeat it on air}
+      you: {x: 0.42, action: idle, facing: 1}
+      say: "Rule number three. Never repeat what line four says. Not one word, on air."
+    - scene: room
+      time: "3:12 AM"
+      light: 85
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      you: {x: 0.42, action: idle, facing: -1}
+      say: "Tonight's goal: finish the show, and keep that voice off the air."
+    - scene: room
+      time: "4:58 AM"
+      light: [80, 60]
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      dark: 0.4
+      sfx: [{name: click, at: stops}]
+      you: {x: 0.42, action: listen, facing: 1}
+      say: "At four fifty eight, the music stops on its own."
+    - scene: room
+      time: "4:58 AM"
+      light: [60, 30]
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: [["on", 0], ["flicker", switches]]
+      dark: 0.55
+      heartbeat: dead
+      shake_at: [talking]
+      you: {x: 0.42, action: scared, facing: 1}
+      say: "Dead air. Five seconds. Six. Then line four switches itself on. On air. And the voice starts talking to the whole town."
+    - scene: choice
+      time: "4:59 AM"
+      base:
+        scene: room
+        wall: "#3b4a5a"
+        furniture: false
+        desk: true
+        clock: true
+        on_air: flicker
+        dark: 0.55
+        you: {x: 0.42, action: scared, facing: 1}
+      question: "Pull the plug or talk over it?"
+      options:
+        - {text: Pull the plug, cue: pull}
+        - {text: Talk over it, cue: talk}
+      say: "Do you pull the plug on the station... or talk over the voice?"
+    - scene: endcard
+      time: "4:59 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: line-four-3
+  format: stickman
+  series: LINE FOUR
+  day: 3
+  day_label: NIGHT
+  meter_label: SIGNAL
+  place: RADIO 97.4
+  title: "I followed the phone cable from line four up the hill. Night 3 📻"
+  tags: [stickman, animation, horror, radio, linefour, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "4:59 AM"
+      light: 30
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: flicker
+      dark: 0.55
+      you: {x: 0.42, action: scared, facing: 1}
+      say: "Last night, the voice on line four got on air."
+    - scene: title
+      say: "Line four. Night three."
+    - scene: room
+      time: "4:59 AM"
+      light: [30, 80]
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: [["flicker", 0], ["on", gives]]
+      dark: 0.3
+      you: {x: 0.42, action: idle, facing: 1}
+      say: "You talk over it. You read the weather, the traffic, anything. After a minute, the voice gives up."
+    - scene: radio
+      time: "5:00 AM"
+      on: radio
+      chip: {text: "Gus · engineer · downstairs", cue: 0, y: 470}
+      radio_label: "INTERCOM · GUS"
+      say:
+        - "Gus sounds scared."
+        - radio: "Good. Nobody heard it. But it will try again."
+    - scene: map
+      time: "12:30 AM"
+      route: [[0.5, 0.6], [0.5, 0.2]]
+      route_cue: runs
+      route_end: shed
+      stops:
+        - {x: 0.5, y: 0.6, left: true, label: Studio}
+      target: {label: "Transmitter shed", cue: shed, icon: pin}
+      say: "The next night, your goal is to find where line four comes from. The old phone cable runs up the hill, to the transmitter shed."
+    - scene: street
+      time: "3:00 AM"
+      place: THE HILL
+      light: [80, 70]
+      pace: walk
+      fog: {top: 0.62, density: 0.6}
+      you: {light: true}
+      say: "At three, you put on a long song, and walk up the hill with your flashlight."
+    - scene: room
+      time: "3:08 AM"
+      place: TRANSMITTER SHED
+      light: 70
+      wall: "#4a3b2e"
+      furniture: false
+      door: false
+      window: false
+      dark: 0.85
+      boxes: [[0.08, 0.16], [0.22, 0.12]]
+      sfx: [{name: tick, at: ringing}, {name: tick, at: "end-0.6"}]
+      you: {x: 0.6, light: true, aim: 0.25, facing: -1}
+      say: "Inside the shed, there's an old phone on the wall. Its cord is cut. And it's ringing."
+    - scene: room
+      time: "3:10 AM"
+      light: 70
+      wall: "#4a3b2e"
+      furniture: false
+      door: false
+      window: false
+      dark: 0.85
+      boxes: [[0.08, 0.16], [0.22, 0.12]]
+      you: {x: 0.4, light: true, aim: -0.35, facing: -1, action_at: {box: crouch}}
+      camera: {zoom: [1.0, 1.25], focus: [0.3, 0.6]}
+      say: "Under it, there's a box. Inside, a cassette tape. The label says: Danny Ross. Last show. 1979."
+    - scene: radio
+      time: "3:11 AM"
+      on: crackles
+      chip: {text: "Line four · caller", cue: voice, y: 470}
+      radio_label: "LINE 4 · OFF AIR"
+      say:
+        - "Your pocket radio crackles. It's the voice from line four."
+        - radio: "Play the tape. You should know what happened."
+    - scene: choice
+      time: "3:12 AM"
+      base:
+        scene: room
+        wall: "#4a3b2e"
+        furniture: false
+        door: false
+        window: false
+        dark: 0.85
+        boxes: [[0.08, 0.16], [0.22, 0.12]]
+        you: {x: 0.4, light: true, aim: -0.35, facing: -1, action: crouch}
+      question: "Play it or burn it?"
+      options:
+        - {text: Play it, cue: play}
+        - {text: Burn it, cue: burn}
+      say: "Do you play the tape... or burn it?"
+    - scene: endcard
+      time: "3:12 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: line-four-4
+  format: stickman
+  series: LINE FOUR
+  day: 4
+  day_label: NIGHT
+  meter_label: SIGNAL
+  place: TRANSMITTER SHED
+  title: "I played the tape of the radio host who vanished in 1979. Night 4 📻"
+  tags: [stickman, animation, horror, radio, linefour, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:12 AM"
+      light: 70
+      wall: "#4a3b2e"
+      furniture: false
+      door: false
+      window: false
+      dark: 0.85
+      boxes: [[0.08, 0.16], [0.22, 0.12]]
+      you: {x: 0.4, light: true, aim: -0.35, facing: -1, action: crouch}
+      say: "Last night, you found Danny Ross's last show, on a tape, in the shed."
+    - scene: title
+      say: "Line four. Night four."
+    - scene: room
+      time: "3:20 AM"
+      place: RADIO 97.4
+      light: 85
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      you: {x: 0.42, action: listen, facing: 1}
+      say: "Back in the studio, you play it. Off air. It's 1979. Danny is taking calls."
+    - scene: radio
+      time: "3:21 AM"
+      on: radio
+      chip: {text: "Tape · Nov 1979", cue: 0, y: 470}
+      radio_label: "TAPE · 1979"
+      say:
+        - radio: "Line four, you're on the air."
+        - "Then the voice. The same calm voice."
+        - radio: "Danny Ross is leaving the studio now. He won't come back."
+    - scene: hallway
+      time: "3:22 AM"
+      lights: flicker
+      dark: 0.7
+      wall: "#3b4a5a"
+      floor: "#2a2d33"
+      carpet: "#4c5158"
+      ceiling: "#1e2126"
+      exit_color: "#ff2d2d"
+      open_doors: [3]
+      sfx: [{name: knock, at: footsteps, gain: 0.5}, {name: click, at: door}]
+      say: "On the tape, footsteps. A door. Then nothing but static."
+    - scene: radio
+      time: "3:23 AM"
+      on: radio
+      chip: {text: "Tape · Nov 1979", cue: 0, y: 470}
+      radio_label: "TAPE · 1979"
+      say:
+        - "And one more voice. Young, and scared."
+        - radio: "Danny? Danny! It's Gus! Where are you?"
+    - scene: room
+      time: "3:25 AM"
+      light: 80
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      you: {x: 0.42, action: idle, facing: -1}
+      camera: {zoom: [1.0, 1.2], focus: [0.42, 0.5]}
+      say: "Gus was there that night. Tonight's goal: ask him what really happened."
+    - scene: radio
+      time: "3:30 AM"
+      on: static
+      say: "But for the first time, Gus doesn't answer the intercom. Just static."
+    - scene: room
+      time: "4:00 AM"
+      light: 75
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      dark: 0.4
+      sfx: [{name: knock, at: knocks}, {name: knock, at: door, gain: 1.2}]
+      shake_at: [door]
+      you: {x: 0.42, action: idle, facing: 1, action_at: {door: scared}}
+      say: "At four AM, someone knocks on the studio door."
+    - scene: room
+      time: "4:00 AM"
+      light: 75
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      dark: 0.4
+      you: {x: 0.55, action: listen, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.75, 0.5]}
+      say: "Then Gus's voice, right outside. Kid, it's me. Open up."
+    - scene: choice
+      time: "4:01 AM"
+      base:
+        scene: room
+        wall: "#3b4a5a"
+        furniture: false
+        desk: true
+        clock: true
+        on_air: "on"
+        dark: 0.4
+        you: {x: 0.55, action: listen, facing: 1}
+      question: "Open or stay inside?"
+      options:
+        - {text: Open, cue: open}
+        - {text: Stay inside, cue: stay}
+      say: "But Gus never comes upstairs. Do you open the door... or stay inside?"
+    - scene: endcard
+      time: "4:01 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: line-four-5
+  format: stickman
+  series: LINE FOUR
+  day: 5
+  day_label: NIGHT
+  meter_label: SIGNAL
+  place: RADIO 97.4
+  title: "Something knocked on the studio door with my coworker's voice. Night 5 📻"
+  tags: [stickman, animation, horror, radio, linefour, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "4:01 AM"
+      light: 75
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      dark: 0.4
+      you: {x: 0.55, action: listen, facing: 1}
+      say: "Last night, something knocked on the studio door, using Gus's voice."
+    - scene: title
+      say: "Line four. Night five."
+    - scene: room
+      time: "4:02 AM"
+      light: 75
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      dark: 0.4
+      sfx: [{name: click, at: clicks}]
+      you: {x: 0.55, to: 0.42, go: stops, arrive: "end-0.5", facing: -1}
+      say: "You stay inside. The knocking stops. Then the intercom clicks."
+    - scene: radio
+      time: "4:03 AM"
+      on: radio
+      chip: {text: "Gus · engineer · downstairs", cue: 0, y: 470}
+      radio_label: "INTERCOM · GUS"
+      say:
+        - radio: "Don't open that door, kid. I'm downstairs. I never come up."
+        - "You ask him about 1979."
+        - radio: "I was Danny's engineer. When he put line four on air, I could have pulled the plug. I didn't. I've been trying to make up for it ever since."
+    - scene: room
+      time: "4:05 AM"
+      light: 75
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      rule: {n: 4, text: Never open the door before five}
+      you: {x: 0.42, action: idle, facing: 1}
+      say: "Rule number four. Never open the studio door before five AM. Whatever voice is outside."
+    - scene: closeup
+      object: alarm
+      time: "4:30 AM"
+      light: 70
+      say: "The next night, your goal: make it to five AM with the door shut."
+    - scene: closeup
+      object: phone
+      time: "4:45 AM"
+      light: 65
+      screen: "LINE 4"
+      sub: Incoming call
+      ring: 0
+      say: "At four forty five, line four rings again. You answer, off air."
+    - scene: radio
+      time: "4:45 AM"
+      on: radio
+      chip: {text: "Line four · caller", cue: 0, y: 470}
+      radio_label: "LINE 4 · OFF AIR"
+      say:
+        - radio: "Tomorrow is your last night. Put me on air, and Danny Ross comes home."
+    - scene: room
+      time: "4:50 AM"
+      light: 60
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      dark: 0.5
+      you: {x: 0.6, action: listen, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.75, 0.5]}
+      heartbeat: danny
+      say: "Behind the door, a young man whispers. Is anyone there? It's Danny."
+    - scene: choice
+      time: "4:51 AM"
+      base:
+        scene: room
+        wall: "#3b4a5a"
+        furniture: false
+        desk: true
+        clock: true
+        on_air: "on"
+        dark: 0.5
+        you: {x: 0.6, action: listen, facing: 1}
+      question: "On air or never?"
+      options:
+        - {text: On air, cue: air}
+        - {text: Never, cue: never}
+      say: "Tomorrow, do you put line four on air for Danny... or never?"
+    - scene: endcard
+      time: "4:51 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: line-four-6
+  format: stickman
+  series: LINE FOUR
+  day: 6
+  day_label: NIGHT
+  meter_label: SIGNAL
+  place: RADIO 97.4
+  title: "My last night on the radio. Who was on the intercom all along? Night 6 📻"
+  tags: [stickman, animation, horror, radio, linefour, story]
+  shots:
+    - scene: radio
+      recap: true
+      time: "4:51 AM"
+      on: radio
+      radio_label: "LINE 4 · OFF AIR"
+      say: "Last night, line four promised to bring Danny Ross home."
+    - scene: title
+      say: "Line four. Night six."
+    - scene: room
+      time: "12:00 AM"
+      light: 100
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "on"
+      you: {x: 0.42, action: idle, facing: 1}
+      say: "Your last night. You decide: never. Line four stays off the air."
+    - scene: closeup
+      object: phone
+      time: "3:00 AM"
+      light: 85
+      screen: "LINE 4"
+      sub: Incoming call
+      ring: 0
+      say: "It rings all night. At three. At four. At four thirty."
+    - scene: room
+      time: "4:58 AM"
+      light: [70, 40]
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: flicker
+      dark: 0.55
+      sfx: [{name: click, at: stops}]
+      you: {x: 0.42, action: scared, facing: 1}
+      say: "At four fifty eight, the music stops again. Dead air."
+    - scene: room
+      time: "4:59 AM"
+      light: [40, 90]
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: [["flicker", 0], ["on", town]]
+      dark: 0.3
+      you: {x: 0.42, action: idle, facing: 1}
+      camera: {zoom: [1.0, 1.2], focus: [0.42, 0.5]}
+      say: "This time, you don't read the weather. You tell the whole town the story of Danny Ross, and the voice on line four. So nobody ever answers it again."
+    - scene: closeup
+      object: phone
+      time: "5:00 AM"
+      light: 100
+      screen: "LINE 4"
+      sub: Disconnected
+      say: "The light on line four goes out. For good."
+    - scene: street
+      time: "5:30 AM"
+      place: THE HILL
+      dark: 0.05
+      dawn: true
+      stop: 0
+      you: {light: false}
+      people: [{x: 0.78, action: walk, facing: -1, drift: -60, cue: rosa}]
+      say: "At dawn, the morning host, Rosa, walks up the hill."
+    - scene: room
+      time: "5:32 AM"
+      place: RADIO 97.4
+      light: 100
+      wall: "#3b4a5a"
+      furniture: false
+      desk: true
+      clock: true
+      on_air: "off"
+      you: {x: 0.42, action: idle, facing: 1}
+      say: "She frowns. Who were you talking to on the intercom? The engineer's room has been locked since 1979."
+    - scene: radio
+      time: "5:33 AM"
+      on: clicks
+      chip: {text: "Gus · engineer · downstairs", cue: 0, y: 470}
+      radio_label: "INTERCOM · GUS"
+      say:
+        - "Then the intercom clicks, one last time."
+        - radio: "Good show, kid. Now I can go home too."
+    - scene: choice
+      time: "5:33 AM"
+      base: {scene: radio, on: 0}
+      question: "Gus or Danny?"
+      options:
+        - {text: Gus, cue: gus}
+        - {text: Danny, cue: danny}
+      say: "So who was on the intercom all along? Gus... or Danny?"
+    - scene: endcard
+      time: "5:33 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."

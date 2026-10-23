@@ -309,6 +309,15 @@ def room(cv, shot, t):
         ctx.fill()
     if o.get("door", True):
         props.door(ctx, 840, 760, 200, 445, open_amount=float(o.get("door_open", 0)))
+    air = _cue_list(shot, t, o.get("on_air"))  # a radio studio's ON AIR sign: on|off|flicker
+    if air:
+        b = {"on": 1.0, "flicker": flicker(t, 3, 8), True: 1.0}.get(air, 0.0)
+        rounded_rect(ctx, 850, 690, 180, 50, 10)
+        set_color(ctx, mix("#3a1414", "#ff2d2d", b))
+        ctx.fill()
+        if b > 0.5:
+            glow(ctx, 940, 715, 160, "#ff2d2d", 0.35 * b)
+        draw_surface(ctx, text("ON AIR", "title", 40, "#ffe9e9" if b > 0.5 else "#7a4a4a", tracking=3), 940, 716)
     if furniture:
         props.floor_lamp(ctx, 770, 860, FLOOR_Y, on=1.0 if o.get("lamp") else 0.0)
         # barricade: the couch slides to the door and the shelf tips against it

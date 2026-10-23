@@ -26,6 +26,7 @@
       time: "12:31 AM"
       on: radio
       chip: {text: "Marta · night dispatch", cue: marta, y: 470}
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "Your dispatcher, Marta, is only ever a voice on the radio."
         - radio: "Welcome, driver. Two rules. Learn them."
@@ -185,6 +186,7 @@
       place: HARBOR
       on: radio
       chip: {text: "Marta · night dispatch", cue: 0, y: 470}
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "At Harbor, you call Marta."
         - radio: "Ashgrove closed in 1987. That year, the last train went into the tunnel past Riverside and never came out. Now, for six nights every year, the station opens again. It wants a full train."
@@ -311,6 +313,7 @@
       time: "1:45 AM"
       on: radio
       chip: {text: "Marta · night dispatch", cue: 0, y: 470}
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "You tell Marta. She goes quiet."
         - radio: "Don't talk to him, driver. And never let him in your cab."
@@ -459,6 +462,7 @@
       time: "1:16 AM"
       on: radio
       chip: {text: "Marta · night dispatch", cue: 0, y: 470}
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "Marta is shouting."
         - radio: "Driver, don't listen to him! Don't let him in!"
@@ -511,6 +515,7 @@
       time: "1:27 AM"
       on: radio
       chip: {text: "Marta · night dispatch", cue: 0, y: 470}
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "The radio clicks."
         - radio: "Driver. Whatever he told you... he's the one who opened the doors. Not me."
@@ -589,6 +594,7 @@
       time: "12:01 AM"
       on: clicks
       chip: {text: "Marta · night dispatch", cue: 0, y: 470}
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "At midnight, it clicks."
         - radio: "Good evening, driver. Tomorrow is the last night."
@@ -611,6 +617,7 @@
       time: "1:13 AM"
       place: PAST RIVERSIDE
       on: radio
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "Then, at one thirteen, Marta speaks again."
         - radio: "Tomorrow, at Ashgrove, open the doors. Just once. And it ends forever."
@@ -698,6 +705,7 @@
       place: ASHGROVE
       on: radio
       chip: {text: "Marta · night dispatch", cue: 0, y: 470}
+      radio_label: "DISPATCH RADIO · MARTA"
       say:
         - "The radio crackles."
         - radio: "Open the doors, driver. Just once, and it's over."

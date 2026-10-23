@@ -289,7 +289,8 @@ def paint(cv, shot, t: float, now: float) -> None:
     # radio label while the radio speaks
     for a, b, style in shot.voice_spans:
         if style == "radio" and a - 0.2 <= now <= b + 0.3:
-            pill(ctx, W / 2, CAPTION_Y - 78, "EMERGENCY BROADCAST · RADIO", "bold", 20, TEAL, "#06201c", 0.85,
+            label = str(shot.get("radio_label", "EMERGENCY BROADCAST · RADIO")).upper()
+            pill(ctx, W / 2, CAPTION_Y - 78, label, "bold", 20, TEAL, "#06201c", 0.85,
                  border="#2a8f80", pad_x=16, pad_y=7, tracking=2)
             break
     if not hasattr(cv, "captions"):

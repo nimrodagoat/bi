@@ -43,7 +43,7 @@ Cues (when something happens) are a word the narrator says in that shot
   office wall of screens instead of the window), `desk`, `door: false`, `clock`,
   `mannequins: [{x, facing, turn: cue}]` (pale figures that snap round at the cue), `dark` (0-1), `you: {x, to, action, move, then, light, aim, facing, go, arrive}`,
   `creatures: [{x, facing, cue, action, scale, to}]`, `lamp`, `door_open`,
-  `barricade: true | {start, end, remove}`, `window`, `picture`.
+  `barricade: true | {start, end, remove}`, `window`, `picture`, `on_air: on|off|flicker` (or `[[state, cue], ...]`: a radio studio's ON AIR sign).
 - `hallway`: corridor seen from the door. `lights: on|off|flicker|dying` (`off: cue` for dying),
   `dark`, `rolling: {from, to}` (a flashlight rolling away), `figures: [{who: creature|person, z, x, cue, to_z}]`,
   `open_doors: [0, 3]`, `marks` (drag marks).
@@ -53,7 +53,8 @@ Cues (when something happens) are a word the narrator says in that shot
   Hallway `shops: true` turns the doors into mall shop windows with signs.
 - `inventory`: `items: [{icon, count, label, cue}]` (icons: battery, candle, matches,
   flashlight, can, bottle, key), `total: {text, cue}`.
-- `radio`: `on: cue`; radio lines in `say` get teal captions and a radio sound.
+- `radio`: `on: cue`; radio lines in `say` get teal captions and a radio sound. `radio_label` (any shot) replaces
+  the "EMERGENCY BROADCAST · RADIO" tag shown while a radio line plays (e.g. `INTERCOM`).
 - `map`: blueprint map. `route: [[x, y], ...]` (0-1), `route_cue`, `route_end`, `target: {label, cue}`,
   `bracket: {label, cue}`, `lamps: {cue}` (street lights going dead), `danger: [{x, y, r, cue}]`,
   `x_marks: [{x, y, cue}]`, `stops: [{x, y, label, cue, ghost, left}]` (named stations; `ghost` = red).
