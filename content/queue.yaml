@@ -15,178 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: line-four-1
-  format: stickman
-  series: LINE FOUR
-  day: 1
-  day_label: NIGHT
-  meter_label: SIGNAL
-  place: RADIO 97.4
-  title: 'I host a radio show at night. Rule 1: never put line four on air 📻'
-  tags:
-  - stickman
-  - animation
-  - horror
-  - radio
-  - linefour
-  - story
-  shots:
-  - scene: room
-    time: 11:58 PM
-    light: 100
-    wall: '#3b4a5a'
-    furniture: false
-    desk: true
-    clock: true
-    on_air:
-    - - 'off'
-      - 0
-    - - 'on'
-      - midnight
-    you:
-      x: 0.42
-      action: idle
-      facing: 1
-    say: You take the night show at a tiny radio station on a hill. Midnight to five AM. Nobody else wants it.
-  - scene: radio
-    time: 12:01 AM
-    true: radio
-    chip:
-      text: Gus · engineer · downstairs
-      cue: gus
-      y: 470
-    radio_label: INTERCOM · GUS
-    say:
-    - Your only coworker is Gus, the old engineer. He stays downstairs, and talks to you on the intercom.
-    - radio: Two rules, kid. Learn them.
-  - scene: title
-    say: Line four. Night one.
-  - scene: closeup
-    object: phone
-    time: 12:03 AM
-    screen: LINE 4
-    sub: Studio phone
-    rule:
-      n: 1
-      text: Never put line four on air
-    say: Rule number one. The studio phone has four lines. Never put line four on air. Not for anything.
-  - scene: room
-    time: 12:05 AM
-    light: 100
-    wall: '#3b4a5a'
-    furniture: false
-    desk: true
-    clock: true
-    on_air: 'on'
-    rule:
-      n: 2
-      text: Never go silent
-    you:
-      x: 0.42
-      action: idle
-      facing: 1
-    say: Rule number two. Never let the station go silent. Music, talking, anything. Silence is called dead air, and it's never allowed.
-  - scene: inventory
-    time: 12:10 AM
-    light: 100
-    items:
-    - icon: flashlight
-      count: 1
-      label: flashlight
-      cue: flashlight
-    - icon: key
-      count: 1
-      label: studio key
-      cue: key
-    - icon: bottle
-      count: 3
-      label: coffee
-      cue: three
-    total:
-      text: 5 hours on air
-      cue: five
-    say: One flashlight. One studio key. Three cups of coffee. Five hours on air.
-  - scene: map
-    time: 12:15 AM
-    route:
-    - - 0.5
-      - 0.12
-    - - 0.5
-      - 0.78
-    route_cue: below
-    route_end: listening
-    stops:
-    - x: 0.5
-      y: 0.12
-      left: true
-      label: Radio 97.4
-    target:
-      label: Pine Hollow
-      cue: town
-      icon: pin
-    lamps:
-      cue: end+5
-    say: Below the hill, the whole town of Pine Hollow is listening. Or sleeping.
-  - scene: room
-    time: 2:59 AM
-    light: 92
-    wall: '#3b4a5a'
-    furniture: false
-    desk: true
-    clock: true
-    on_air: 'on'
-    dark: 0.35
-    you:
-      x: 0.42
-      action: idle
-      facing: 1
-    camera:
-      zoom:
-      - 1.0
-      - 1.15
-      focus:
-      - 0.4
-      - 0.5
-    say: At two fifty nine, you're playing an old song. The studio is quiet.
-  - scene: closeup
-    object: phone
-    time: 3:00 AM
-    light: 90
-    screen: LINE 4
-    sub: Incoming call
-    ring: 0
-    heartbeat: four
-    say: At three AM exactly, a light starts blinking on the phone. Line four.
-  - scene: radio
-    time: 3:00 AM
-    true: radio
-    chip:
-      text: Gus · engineer · downstairs
-      cue: 0
-      y: 470
-    radio_label: INTERCOM · GUS
-    say:
-    - You call Gus.
-    - radio: Line four was cut off in 1979. It's not connected to anything.
-  - scene: choice
-    time: 3:01 AM
-    base:
-      scene: closeup
-      object: phone
-      screen: LINE 4
-      sub: Incoming call
-      ring: 0
-    question: Answer or let it ring?
-    options:
-    - text: Answer
-      cue: answer
-    - text: Let it ring
-      cue: ring
-    say: It keeps ringing. Do you answer it... or let it ring?
-  - scene: endcard
-    time: 3:01 AM
-    hold: 1.6
-    say: Follow for night two.
 - id: line-four-2
   format: stickman
   series: LINE FOUR
@@ -1044,125 +872,221 @@
   day_label: NIGHT
   meter_label: OIL
   place: GULL ROCK
-  title: "I'm the caretaker of a tiny island. Every night the sea cuts it off 🌊"
-  tags: [stickman, animation, horror, island, hightide, story]
+  title: I'm the caretaker of a tiny island. Every night the sea cuts it off 🌊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - island
+  - hightide
+  - story
   shots:
-    - scene: street
-      time: "6:40 PM"
-      place: THE CAUSEWAY
-      light: 100
-      sea: true
+  - scene: street
+    time: 6:40 PM
+    place: THE CAUSEWAY
+    light: 100
+    sea: true
+    dark: 0.55
+    pace: walk
+    you:
+      light: false
+    say: You take a job nobody else wants. Six nights as caretaker of Gull Rock, a tiny island with one stone cottage.
+  - scene: map
+    time: 6:45 PM
+    route:
+    - - 0.2
+      - 0.92
+    - - 0.45
+      - 0.6
+    - - 0.62
+      - 0.3
+    route_cue: 0
+    route_end: causeway
+    stops:
+    - x: 0.2
+      y: 0.92
+      left: true
+      label: Mainland
+    target:
+      label: Gull Rock
+      cue: rock
+      icon: pin
+    fog_zone:
+      level:
+      - 0.0
+      - 0.75
+      cue: sea
+      label: HIGH TIDE
+    say: Every night, the sea covers the only path back to land. A stone causeway, half a mile long.
+  - scene: title
+    say: High tide. Night one.
+  - scene: closeup
+    object: phone
+    time: 7:10 PM
+    place: COTTAGE
+    light: 100
+    screen: Note on the table
+    sub: From the last caretaker
+    message: BE INSIDE BEFORE THE TIDE.
+    message_cue: inside
+    rule:
+      n: 1
+      text: Be inside before the tide
+    say: The last caretaker left you a note. Rule number one. Be inside before the tide covers the causeway. Every night.
+  - scene: room
+    place: COTTAGE
+    time: 7:15 PM
+    light: 100
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    rule:
+      n: 2
+      text: Keep the lamp lit
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: Rule number two. Keep the lamp by the window lit all night. It must never go out.
+  - scene: inventory
+    time: 7:20 PM
+    light: 100
+    items:
+    - icon: bottle
+      count: 3
+      label: lamp oil
+      cue: oil
+    - icon: matches
+      count: 1
+      label: matches
+      cue: matches
+    - icon: can
+      count: 4
+      label: soup
+      cue: soup
+    total:
+      text: 6 nights to go
+      cue: six
+    say: Three bottles of lamp oil. One box of matches. Four cans of soup. Six nights to go.
+  - scene: street
+    time: 11:40 PM
+    place: THE CAUSEWAY
+    light: 100
+    sea: true
+    dark: 0.7
+    pace: run
+    fog:
+      top: 0.9
+      rise:
+      - 0.92
+      - 0.7
+      cue: rising
+      density: 1.0
+      color: '#2f5d7a'
+    you:
+      light: true
+    say: But on your first night, you lose track of time out on the causeway. The water starts rising around your feet.
+  - scene: room
+    place: COTTAGE
+    time: 11:58 PM
+    light: 98
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    door_open:
+    - - 0.8
+      - 0
+    - - 0
+      - slam
+    sfx:
+    - name: hit
+      at: slam
+    you:
+      x: 0.85
+      to: 0.6
+      go: 0
+      arrive: 40%
+      facing: -1
+    say: You make it inside, and slam the door, just as the sea swallows the path.
+  - scene: room
+    place: COTTAGE
+    time: 12:00 AM
+    light: 96
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.5
+    sfx:
+    - name: knock
+      at: three
+    - name: knock
+      at: slow
+    - name: knock
+      at: knocks
+    you:
+      x: 0.6
+      action: idle
+      facing: 1
+      action_at:
+        knocks: scared
+    say: At midnight, high tide. Then three slow knocks on the door.
+  - scene: room
+    place: COTTAGE
+    time: 12:01 AM
+    light: 96
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+      cue: tall
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.25
+      focus:
+      - 0.5
+      - 0.42
+    heartbeat: dripping
+    say: Through the window, you see it. Something tall, standing in the water, dripping. Right at your door.
+  - scene: choice
+    time: 12:02 AM
+    base:
+      scene: room
+      wall: '#6b5a48'
+      lamp: true
+      clock: true
       dark: 0.55
-      pace: walk
-      you: {light: false}
-      say: "You take a job nobody else wants. Six nights as caretaker of Gull Rock, a tiny island with one stone cottage."
-    - scene: map
-      time: "6:45 PM"
-      route: [[0.2, 0.92], [0.45, 0.6], [0.62, 0.3]]
-      route_cue: 0
-      route_end: causeway
-      stops:
-        - {x: 0.2, y: 0.92, left: true, label: Mainland}
-      target: {label: "Gull Rock", cue: rock, icon: pin}
-      fog_zone: {level: [0.0, 0.75], cue: sea, label: HIGH TIDE}
-      say: "Every night, the sea covers the only path back to land. A stone causeway, half a mile long."
-    - scene: title
-      say: "High tide. Night one."
-    - scene: closeup
-      object: phone
-      time: "7:10 PM"
-      place: COTTAGE
-      light: 100
-      screen: Note on the table
-      sub: From the last caretaker
-      message: "BE INSIDE BEFORE THE TIDE."
-      message_cue: inside
-      rule: {n: 1, text: Be inside before the tide}
-      say: "The last caretaker left you a note. Rule number one. Be inside before the tide covers the causeway. Every night."
-    - scene: room
-      place: COTTAGE
-      time: "7:15 PM"
-      light: 100
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      rule: {n: 2, text: Keep the lamp lit}
-      you: {x: 0.3, action: idle, facing: 1}
-      say: "Rule number two. Keep the lamp by the window lit all night. It must never go out."
-    - scene: inventory
-      time: "7:20 PM"
-      light: 100
-      items:
-        - {icon: bottle, count: 3, label: lamp oil, cue: oil}
-        - {icon: matches, count: 1, label: matches, cue: matches}
-        - {icon: can, count: 4, label: soup, cue: soup}
-      total: {text: "6 nights to go", cue: six}
-      say: "Three bottles of lamp oil. One box of matches. Four cans of soup. Six nights to go."
-    - scene: street
-      time: "11:40 PM"
-      place: THE CAUSEWAY
-      light: 100
-      sea: true
-      dark: 0.7
-      pace: run
-      fog: {top: 0.9, rise: [0.92, 0.7], cue: rising, density: 1.0, color: "#2f5d7a"}
-      you: {light: true}
-      say: "But on your first night, you lose track of time out on the causeway. The water starts rising around your feet."
-    - scene: room
-      place: COTTAGE
-      time: "11:58 PM"
-      light: 98
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      door_open: [[0.8, 0], [0, slam]]
-      sfx: [{name: hit, at: slam}]
-      you: {x: 0.85, to: 0.6, go: 0, arrive: "40%", facing: -1}
-      say: "You make it inside, and slam the door, just as the sea swallows the path."
-    - scene: room
-      place: COTTAGE
-      time: "12:00 AM"
-      light: 96
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.5
-      sfx: [{name: knock, at: three}, {name: knock, at: slow}, {name: knock, at: knocks}]
-      you: {x: 0.6, action: idle, facing: 1, action_at: {knocks: scared}}
-      say: "At midnight, high tide. Then three slow knocks on the door."
-    - scene: room
-      place: COTTAGE
-      time: "12:01 AM"
-      light: 96
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.55
-      creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1, cue: tall}]
-      you: {x: 0.3, action: scared, facing: 1}
-      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.42]}
-      heartbeat: dripping
-      say: "Through the window, you see it. Something tall, standing in the water, dripping. Right at your door."
-    - scene: choice
-      time: "12:02 AM"
-      base:
-        scene: room
-        wall: "#6b5a48"
-        lamp: true
-        clock: true
-        dark: 0.55
-        creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-        you: {x: 0.3, action: scared, facing: 1}
-      question: "Answer or stay quiet?"
-      options:
-        - {text: Answer, cue: answer}
-        - {text: Stay quiet, cue: quiet}
-      say: "Do you answer the door... or stay quiet?"
-    - scene: endcard
-      time: "12:02 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+      creatures:
+      - x: 0.5
+        ground: 800
+        scale: 0.68
+        action: lurk
+        facing: 1
+      you:
+        x: 0.3
+        action: scared
+        facing: 1
+    question: Answer or stay quiet?
+    options:
+    - text: Answer
+      cue: answer
+    - text: Stay quiet
+      cue: quiet
+    say: Do you answer the door... or stay quiet?
+  - scene: endcard
+    time: 12:02 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: high-tide-2
   format: stickman
   series: HIGH TIDE
@@ -1170,116 +1094,194 @@
   day_label: NIGHT
   meter_label: OIL
   place: COTTAGE
-  title: "Something walks out of the sea at high tide and knocks. Night 2 🌊"
-  tags: [stickman, animation, horror, island, hightide, story]
+  title: Something walks out of the sea at high tide and knocks. Night 2 🌊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - island
+  - hightide
+  - story
   shots:
-    - scene: room
-      place: COTTAGE
-      recap: true
-      time: "12:02 AM"
-      light: 96
-      wall: "#6b5a48"
-      lamp: true
+  - scene: room
+    place: COTTAGE
+    recap: true
+    time: 12:02 AM
+    light: 96
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    say: Last night, at high tide, something knocked on your door three times.
+  - scene: title
+    say: High tide. Night two.
+  - scene: room
+    place: COTTAGE
+    time: 6:30 AM
+    light: 90
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    door_open: 0.8
+    you:
+      x: 0.62
+      action: crouch
+      facing: 1
+    say: You stay quiet. After an hour, the knocking stops. In the morning, wet footprints go all the way around the cottage.
+  - scene: street
+    time: 10:00 AM
+    place: THE CAUSEWAY
+    sea: true
+    dawn: true
+    dark: 0.05
+    stop: 0
+    you:
+      light: false
+    people:
+    - x: 0.85
+      action: walk
+      facing: -1
+      drift: -70
+      cue: moira
+      color: '#e6d3b3'
+    say: At low tide, Moira, the old ferrywoman, walks across with your supplies.
+  - scene: street
+    place: THE CAUSEWAY
+    time: 10:05 AM
+    sea: true
+    dawn: true
+    dark: 0.05
+    stop: 0
+    you:
+      light: false
+      facing: 1
+    people:
+    - x: 0.6
+      action: idle
+      facing: -1
+      color: '#e6d3b3'
+    say: When you tell her about the knocking, she goes pale. She calls it the Walker. Something that comes up out of the sea at high tide, and knocks.
+  - scene: room
+    place: COTTAGE
+    time: 10:10 AM
+    light: 90
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    rule:
+      n: 3
+      text: Never open at high tide
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: It can't come in by itself. Only if you open the door, or if your lamp goes out. Rule number three. Never open the door at high tide.
+  - scene: street
+    place: THE CAUSEWAY
+    time: 10:15 AM
+    sea: true
+    dawn: true
+    dark: 0.05
+    stop: 0
+    you:
+      light: false
+      facing: 1
+    people:
+    - x: 0.6
+      action: knock
+      facing: -1
+      color: '#e6d3b3'
+    sfx:
+    - name: knock
+      at: four
+    - name: knock
+      at: times
+    say: And she gives you a sign. I always knock four times. Three knocks is never me.
+  - scene: room
+    place: COTTAGE
+    time: 11:00 PM
+    light: 85
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.45
+    you:
+      x: 0.55
+      action: idle
+      facing: 1
+    say: 'Tonight''s goal: keep the lamp burning until the tide goes out.'
+  - scene: room
+    place: COTTAGE
+    time: 1:00 AM
+    light:
+    - 80
+    - 0
+    wall: '#6b5a48'
+    lamp:
+    - - flicker
+      - 0
+    - - false
+      - out
+    clock: true
+    dark:
+    - - 0.5
+      - 0
+    - - 0.88
+      - out
+    sfx:
+    - name: whoosh
+      at: wind
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+      cue: out
+    you:
+      x: 0.55
+      action: scared
+      facing: 1
+    say: At one AM, the wind howls down the chimney. The lamp flickers... and goes out.
+  - scene: choice
+    time: 1:01 AM
+    base:
+      scene: room
+      wall: '#6b5a48'
+      lamp: false
       clock: true
-      dark: 0.55
-      creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-      you: {x: 0.3, action: scared, facing: 1}
-      say: "Last night, at high tide, something knocked on your door three times."
-    - scene: title
-      say: "High tide. Night two."
-    - scene: room
-      place: COTTAGE
-      time: "6:30 AM"
-      light: 90
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      door_open: 0.8
-      you: {x: 0.62, action: crouch, facing: 1}
-      say: "You stay quiet. After an hour, the knocking stops. In the morning, wet footprints go all the way around the cottage."
-    - scene: street
-      time: "10:00 AM"
-      place: THE CAUSEWAY
-      sea: true
-      dawn: true
-      dark: 0.05
-      stop: 0
-      you: {light: false}
-      people: [{x: 0.85, action: walk, facing: -1, drift: -70, cue: moira, color: "#e6d3b3"}]
-      say: "At low tide, Moira, the old ferrywoman, walks across with your supplies."
-    - scene: street
-      place: THE CAUSEWAY
-      time: "10:05 AM"
-      sea: true
-      dawn: true
-      dark: 0.05
-      stop: 0
-      you: {light: false, facing: 1}
-      people: [{x: 0.6, action: idle, facing: -1, color: "#e6d3b3"}]
-      say: "When you tell her about the knocking, she goes pale. She calls it the Walker. Something that comes up out of the sea at high tide, and knocks."
-    - scene: room
-      place: COTTAGE
-      time: "10:10 AM"
-      light: 90
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      rule: {n: 3, text: Never open at high tide}
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "It can't come in by itself. Only if you open the door, or if your lamp goes out. Rule number three. Never open the door at high tide."
-    - scene: street
-      place: THE CAUSEWAY
-      time: "10:15 AM"
-      sea: true
-      dawn: true
-      dark: 0.05
-      stop: 0
-      you: {light: false, facing: 1}
-      people: [{x: 0.6, action: knock, facing: -1, color: "#e6d3b3"}]
-      sfx: [{name: knock, at: four}, {name: knock, at: times}]
-      say: "And she gives you a sign. I always knock four times. Three knocks is never me."
-    - scene: room
-      place: COTTAGE
-      time: "11:00 PM"
-      light: 85
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.45
-      you: {x: 0.55, action: idle, facing: 1}
-      say: "Tonight's goal: keep the lamp burning until the tide goes out."
-    - scene: room
-      place: COTTAGE
-      time: "1:00 AM"
-      light: [80, 0]
-      wall: "#6b5a48"
-      lamp: [["flicker", 0], [false, out]]
-      clock: true
-      dark: [[0.5, 0], [0.88, out]]
-      sfx: [{name: whoosh, at: wind}]
-      creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1, cue: out}]
-      you: {x: 0.55, action: scared, facing: 1}
-      say: "At one AM, the wind howls down the chimney. The lamp flickers... and goes out."
-    - scene: choice
-      time: "1:01 AM"
-      base:
-        scene: room
-        wall: "#6b5a48"
-        lamp: false
-        clock: true
-        dark: 0.88
-        creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-        you: {x: 0.55, action: scared, facing: 1}
-      question: "Relight it or hide?"
-      options:
-        - {text: Relight it, cue: relight}
-        - {text: Hide, cue: hide}
-      say: "Do you try to relight it in the dark... or hide?"
-    - scene: endcard
-      time: "1:01 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+      dark: 0.88
+      creatures:
+      - x: 0.5
+        ground: 800
+        scale: 0.68
+        action: lurk
+        facing: 1
+      you:
+        x: 0.55
+        action: scared
+        facing: 1
+    question: Relight it or hide?
+    options:
+    - text: Relight it
+      cue: relight
+    - text: Hide
+      cue: hide
+    say: Do you try to relight it in the dark... or hide?
+  - scene: endcard
+    time: 1:01 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: high-tide-3
   format: stickman
   series: HIGH TIDE
@@ -1287,111 +1289,193 @@
   day_label: NIGHT
   meter_label: OIL
   place: COTTAGE
-  title: "I found the last caretaker's logbook. Read the last page. Night 3 🌊"
-  tags: [stickman, animation, horror, island, hightide, story]
+  title: I found the last caretaker's logbook. Read the last page. Night 3 🌊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - island
+  - hightide
+  - story
   shots:
-    - scene: room
-      place: COTTAGE
-      recap: true
-      time: "1:01 AM"
-      light: 0
-      wall: "#6b5a48"
-      lamp: false
-      clock: true
-      dark: 0.88
-      creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-      you: {x: 0.55, action: scared, facing: 1}
-      say: "Last night, at high tide, your lamp went out."
-    - scene: title
-      say: "High tide. Night three."
-    - scene: room
-      place: COTTAGE
-      time: "1:02 AM"
-      light: [0, 70]
-      wall: "#6b5a48"
-      lamp: [[false, 0], [true, catches]]
-      clock: true
-      dark: [[0.88, 0], [0.45, catches]]
-      sfx: [{name: click, at: match}, {name: click, at: third}]
-      creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1, to: 0.62, arrive: "end"}]
-      you: {x: 0.68, action: crouch, facing: 1}
-      say: "You strike a match. Your hands are shaking. On the third match, the lamp catches. Outside, something steps back into the water."
-    - scene: inventory
-      time: "1:05 AM"
-      light: 70
-      items:
-        - {icon: matches, count: 11, label: matches left, cue: eleven}
-        - {icon: bottle, count: 2, label: lamp oil, cue: two}
-      total: {text: "4 nights to go", cue: four}
-      say: "Eleven matches left. Two bottles of oil. Four nights to go."
-    - scene: map
-      time: "9:00 AM"
-      route: [[0.62, 0.3], [0.8, 0.12]]
-      route_cue: 0
-      route_end: shed
-      stops:
-        - {x: 0.62, y: 0.3, left: true, label: Cottage}
-      target: {label: "Boat shed", cue: shed, icon: pin}
-      say: "Tonight's goal: find out what the Walker is. The last caretaker kept a logbook, in the boat shed."
-    - scene: street
-      time: "7:30 PM"
-      place: GULL ROCK
-      light: 70
-      sea: true
-      dark: 0.6
-      pace: walk
-      you: {light: true}
-      say: "Before the tide, you walk to the boat shed with your flashlight."
-    - scene: room
-      time: "7:40 PM"
-      place: BOAT SHED
-      light: 70
-      wall: "#4a3b2e"
-      furniture: false
-      door: false
-      window: false
-      dark: 0.85
-      boxes: [[0.08, 0.16], [0.22, 0.12]]
-      you: {x: 0.4, light: true, aim: -0.35, facing: -1, action_at: {logbook: crouch}}
-      say: "Inside, under a pile of nets, there's a logbook. The last page is from his sixth night."
-    - scene: closeup
-      object: phone
-      time: "7:41 PM"
-      screen: Logbook
-      sub: Night six
-      message: "FOUR KNOCKS. MOIRA'S KNOCK.\nI'M OPENING THE DOOR."
-      message_cue: four
-      heartbeat: opening
-      say: "It says: Four knocks. Moira's knock. I'm opening the door."
-    - scene: street
-      time: "7:50 PM"
-      place: GULL ROCK
-      light: 65
+  - scene: room
+    place: COTTAGE
+    recap: true
+    time: 1:01 AM
+    light: 0
+    wall: '#6b5a48'
+    lamp: false
+    clock: true
+    dark: 0.88
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+    you:
+      x: 0.55
+      action: scared
+      facing: 1
+    say: Last night, at high tide, your lamp went out.
+  - scene: title
+    say: High tide. Night three.
+  - scene: room
+    place: COTTAGE
+    time: 1:02 AM
+    light:
+    - 0
+    - 70
+    wall: '#6b5a48'
+    lamp:
+    - - false
+      - 0
+    - - true
+      - catches
+    clock: true
+    dark:
+    - - 0.88
+      - 0
+    - - 0.45
+      - catches
+    sfx:
+    - name: click
+      at: match
+    - name: click
+      at: third
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+      to: 0.62
+      arrive: end
+    you:
+      x: 0.68
+      action: crouch
+      facing: 1
+    say: You strike a match. Your hands are shaking. On the third match, the lamp catches. Outside, something steps back into the water.
+  - scene: inventory
+    time: 1:05 AM
+    light: 70
+    items:
+    - icon: matches
+      count: 11
+      label: matches left
+      cue: eleven
+    - icon: bottle
+      count: 2
+      label: lamp oil
+      cue: two
+    total:
+      text: 4 nights to go
+      cue: four
+    say: Eleven matches left. Two bottles of oil. Four nights to go.
+  - scene: map
+    time: 9:00 AM
+    route:
+    - - 0.62
+      - 0.3
+    - - 0.8
+      - 0.12
+    route_cue: 0
+    route_end: shed
+    stops:
+    - x: 0.62
+      y: 0.3
+      left: true
+      label: Cottage
+    target:
+      label: Boat shed
+      cue: shed
+      icon: pin
+    say: 'Tonight''s goal: find out what the Walker is. The last caretaker kept a logbook, in the boat shed.'
+  - scene: street
+    time: 7:30 PM
+    place: GULL ROCK
+    light: 70
+    sea: true
+    dark: 0.6
+    pace: walk
+    you:
+      light: true
+    say: Before the tide, you walk to the boat shed with your flashlight.
+  - scene: room
+    time: 7:40 PM
+    place: BOAT SHED
+    light: 70
+    wall: '#4a3b2e'
+    furniture: false
+    door: false
+    window: false
+    dark: 0.85
+    boxes:
+    - - 0.08
+      - 0.16
+    - - 0.22
+      - 0.12
+    you:
+      x: 0.4
+      light: true
+      aim: -0.35
+      facing: -1
+      action_at:
+        logbook: crouch
+    say: Inside, under a pile of nets, there's a logbook. The last page is from his sixth night.
+  - scene: closeup
+    object: phone
+    time: 7:41 PM
+    screen: Logbook
+    sub: Night six
+    message: |-
+      FOUR KNOCKS. MOIRA'S KNOCK.
+      I'M OPENING THE DOOR.
+    message_cue: four
+    heartbeat: opening
+    say: 'It says: Four knocks. Moira''s knock. I''m opening the door.'
+  - scene: street
+    time: 7:50 PM
+    place: GULL ROCK
+    light: 65
+    sea: true
+    dark: 0.65
+    pace: run
+    fog:
+      top: 0.9
+      rise:
+      - 0.9
+      - 0.72
+      cue: water
+      density: 1.0
+      color: '#2f5d7a'
+    you:
+      light: true
+    say: Then you hear the water. The tide is coming in early. And the cottage is on the other side of the rocks.
+  - scene: choice
+    time: 7:51 PM
+    base:
+      scene: street
       sea: true
       dark: 0.65
-      pace: run
-      fog: {top: 0.9, rise: [0.9, 0.72], cue: water, density: 1.0, color: "#2f5d7a"}
-      you: {light: true}
-      say: "Then you hear the water. The tide is coming in early. And the cottage is on the other side of the rocks."
-    - scene: choice
-      time: "7:51 PM"
-      base:
-        scene: street
-        sea: true
-        dark: 0.65
-        stop: 0
-        fog: {top: 0.72, density: 1.0, color: "#2f5d7a"}
-        you: {light: true}
-      question: "Run back or stay in the shed?"
-      options:
-        - {text: Run back, cue: run}
-        - {text: Stay, cue: stay}
-      say: "Do you run back to the cottage... or stay in the shed?"
-    - scene: endcard
-      time: "7:51 PM"
-      hold: 1.6
-      say: "Follow for night four."
-
+      stop: 0
+      fog:
+        top: 0.72
+        density: 1.0
+        color: '#2f5d7a'
+      you:
+        light: true
+    question: Run back or stay in the shed?
+    options:
+    - text: Run back
+      cue: run
+    - text: Stay
+      cue: stay
+    say: Do you run back to the cottage... or stay in the shed?
+  - scene: endcard
+    time: 7:51 PM
+    hold: 1.6
+    say: Follow for night four.
 - id: high-tide-4
   format: stickman
   series: HIGH TIDE
@@ -1399,105 +1483,179 @@
   day_label: NIGHT
   meter_label: OIL
   place: GULL ROCK
-  title: "At high tide, someone knocked four times. Moira's knock. Night 4 🌊"
-  tags: [stickman, animation, horror, island, hightide, story]
+  title: At high tide, someone knocked four times. Moira's knock. Night 4 🌊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - island
+  - hightide
+  - story
   shots:
-    - scene: street
-      place: THE CAUSEWAY
-      recap: true
-      time: "7:51 PM"
-      light: 65
-      sea: true
-      dark: 0.65
-      stop: 0
-      fog: {top: 0.72, density: 1.0, color: "#2f5d7a"}
-      you: {light: true}
-      say: "Last night, the tide came in early, while you were at the boat shed."
-    - scene: title
-      say: "High tide. Night four."
-    - scene: street
-      place: THE CAUSEWAY
-      time: "7:52 PM"
-      light: 65
-      sea: true
-      dark: 0.65
-      pace: run
-      fog: {top: 0.72, rise: [0.72, 0.62], density: 1.0, color: "#2f5d7a"}
-      lurkers: 2
-      you: {light: true}
-      say: "You run. The water is at your knees by the time you reach the cottage."
-    - scene: room
-      time: "7:55 PM"
-      place: COTTAGE
-      light: 65
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.45
-      door_open: [[0.8, 0], [0, slam]]
-      sfx: [{name: hit, at: slam}, {name: knock, at: three}, {name: knock, at: knocks}, {name: knock, at: "end-0.4"}]
-      you: {x: 0.85, to: 0.55, go: 0, arrive: "35%", facing: -1}
-      say: "You slam the door. Right behind you, three knocks. The Walker followed you all the way home."
-    - scene: radio
-      time: "9:00 PM"
-      on: crackles
-      say:
-        - "Your little radio crackles."
-        - radio: "Storm warning for the coast. The highest tide in fifty years arrives in two nights. Stay off the causeways."
-    - scene: room
-      place: COTTAGE
-      time: "12:30 AM"
-      light: 60
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.5
-      sfx: [{name: knock, at: four}, {name: knock, at: knocks}, {name: knock, at: "moira's"}, {name: knock, at: knock}]
-      you: {x: 0.55, action: listen, facing: 1}
-      say: "Then the knocking changes. Four knocks. Moira's knock. But the tide is high. Nobody can walk here now."
-    - scene: room
-      place: COTTAGE
-      time: "12:31 AM"
-      light: 60
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      rule: {n: 4, text: "At high tide, don't trust the knock"}
-      you: {x: 0.55, action: idle, facing: -1}
-      say: "Rule number four. You write it on the note yourself. At high tide, don't trust the knock."
-    - scene: room
-      place: COTTAGE
-      time: "12:40 AM"
-      light: 60
-      wall: "#6b5a48"
+  - scene: street
+    place: THE CAUSEWAY
+    recap: true
+    time: 7:51 PM
+    light: 65
+    sea: true
+    dark: 0.65
+    stop: 0
+    fog:
+      top: 0.72
+      density: 1.0
+      color: '#2f5d7a'
+    you:
+      light: true
+    say: Last night, the tide came in early, while you were at the boat shed.
+  - scene: title
+    say: High tide. Night four.
+  - scene: street
+    place: THE CAUSEWAY
+    time: 7:52 PM
+    light: 65
+    sea: true
+    dark: 0.65
+    pace: run
+    fog:
+      top: 0.72
+      rise:
+      - 0.72
+      - 0.62
+      density: 1.0
+      color: '#2f5d7a'
+    lurkers: 2
+    you:
+      light: true
+    say: You run. The water is at your knees by the time you reach the cottage.
+  - scene: room
+    time: 7:55 PM
+    place: COTTAGE
+    light: 65
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.45
+    door_open:
+    - - 0.8
+      - 0
+    - - 0
+      - slam
+    sfx:
+    - name: hit
+      at: slam
+    - name: knock
+      at: three
+    - name: knock
+      at: knocks
+    - name: knock
+      at: end-0.4
+    you:
+      x: 0.85
+      to: 0.55
+      go: 0
+      arrive: 35%
+      facing: -1
+    say: You slam the door. Right behind you, three knocks. The Walker followed you all the way home.
+  - scene: radio
+    time: 9:00 PM
+    true: crackles
+    say:
+    - Your little radio crackles.
+    - radio: Storm warning for the coast. The highest tide in fifty years arrives in two nights. Stay off the causeways.
+  - scene: room
+    place: COTTAGE
+    time: 12:30 AM
+    light: 60
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.5
+    sfx:
+    - name: knock
+      at: four
+    - name: knock
+      at: knocks
+    - name: knock
+      at: moira's
+    - name: knock
+      at: knock
+    you:
+      x: 0.55
+      action: listen
+      facing: 1
+    say: Then the knocking changes. Four knocks. Moira's knock. But the tide is high. Nobody can walk here now.
+  - scene: room
+    place: COTTAGE
+    time: 12:31 AM
+    light: 60
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    rule:
+      n: 4
+      text: At high tide, don't trust the knock
+    you:
+      x: 0.55
+      action: idle
+      facing: -1
+    say: Rule number four. You write it on the note yourself. At high tide, don't trust the knock.
+  - scene: room
+    place: COTTAGE
+    time: 12:40 AM
+    light: 60
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.75
+      action: lurk
+      facing: 1
+      cue: 0
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.3
+      focus:
+      - 0.5
+      - 0.4
+    heartbeat: glass
+    say: In the window, the Walker leans close. Its face is pressed to the glass. It looks almost like a man. A man who has been in the water for a very long time.
+  - scene: choice
+    time: 12:41 AM
+    base:
+      scene: room
+      wall: '#6b5a48'
       lamp: true
       clock: true
       dark: 0.55
-      creatures: [{x: 0.5, ground: 800, scale: 0.75, action: lurk, facing: 1, cue: 0}]
-      you: {x: 0.3, action: scared, facing: 1}
-      camera: {zoom: [1.0, 1.3], focus: [0.5, 0.4]}
-      heartbeat: glass
-      say: "In the window, the Walker leans close. Its face is pressed to the glass. It looks almost like a man. A man who has been in the water for a very long time."
-    - scene: choice
-      time: "12:41 AM"
-      base:
-        scene: room
-        wall: "#6b5a48"
-        lamp: true
-        clock: true
-        dark: 0.55
-        creatures: [{x: 0.5, ground: 800, scale: 0.75, action: lurk, facing: 1}]
-        you: {x: 0.3, action: scared, facing: 1}
-      question: "Look closer or cover it?"
-      options:
-        - {text: Look closer, cue: closer}
-        - {text: Cover it, cue: cover}
-      say: "Do you look closer... or cover the window?"
-    - scene: endcard
-      time: "12:41 AM"
-      hold: 1.6
-      say: "Follow for night five."
-
+      creatures:
+      - x: 0.5
+        ground: 800
+        scale: 0.75
+        action: lurk
+        facing: 1
+      you:
+        x: 0.3
+        action: scared
+        facing: 1
+    question: Look closer or cover it?
+    options:
+    - text: Look closer
+      cue: closer
+    - text: Cover it
+      cue: cover
+    say: Do you look closer... or cover the window?
+  - scene: endcard
+    time: 12:41 AM
+    hold: 1.6
+    say: Follow for night five.
 - id: high-tide-5
   format: stickman
   series: HIGH TIDE
@@ -1505,114 +1663,205 @@
   day_label: NIGHT
   meter_label: OIL
   place: COTTAGE
-  title: "The thing at my window was wearing a caretaker's coat. Night 5 🌊"
-  tags: [stickman, animation, horror, island, hightide, story]
+  title: The thing at my window was wearing a caretaker's coat. Night 5 🌊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - island
+  - hightide
+  - story
   shots:
-    - scene: room
-      place: COTTAGE
-      recap: true
-      time: "12:41 AM"
-      light: 60
-      wall: "#6b5a48"
+  - scene: room
+    place: COTTAGE
+    recap: true
+    time: 12:41 AM
+    light: 60
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.75
+      action: lurk
+      facing: 1
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    say: Last night, the Walker pressed its face to your window.
+  - scene: room
+    place: COTTAGE
+    time: 12:42 AM
+    light: 60
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.75
+      action: lurk
+      facing: 1
+    you:
+      x: 0.3
+      to: 0.42
+      go: 0
+      arrive: 40%
+      facing: 1
+    camera:
+      zoom:
+      - 1.1
+      - 1.35
+      focus:
+      - 0.5
+      - 0.42
+    say: You look closer. It's wearing a long caretaker's coat. The same coat that hangs by your door.
+  - scene: title
+    say: High tide. Night five.
+  - scene: street
+    place: THE CAUSEWAY
+    time: 10:00 AM
+    sea: true
+    dawn: true
+    dark: 0.05
+    stop: 0
+    you:
+      light: false
+      facing: 1
+    people:
+    - x: 0.6
+      action: idle
+      facing: -1
+      color: '#e6d3b3'
+    say: At low tide, you show Moira the logbook. She reads the last page, and sits down on the rocks.
+  - scene: street
+    place: THE CAUSEWAY
+    time: 10:05 AM
+    sea: true
+    dawn: true
+    dark: 0.05
+    stop: 0
+    you:
+      light: false
+      facing: 1
+    people:
+    - x: 0.6
+      action: idle
+      facing: -1
+      color: '#e6d3b3'
+    say: She says the last caretaker opened the door on his sixth night. In the morning, he was gone. And the next night, the knocking started.
+  - scene: map
+    time: 10:10 AM
+    route:
+    - - 0.2
+      - 0.92
+    - - 0.45
+      - 0.6
+    - - 0.62
+      - 0.3
+    route_cue: 0
+    route_end: sea
+    stops:
+    - x: 0.2
+      y: 0.92
+      left: true
+      label: Mainland
+    target:
+      label: Gull Rock
+      cue: 0
+      icon: pin
+    fog_zone:
+      level:
+      - 0.3
+      - 0.6
+      cue: 0
+      label: HIGH TIDE
+    say: Here's what she thinks. Whoever opens the door at high tide goes into the sea. And whoever was knocking... comes home.
+  - scene: inventory
+    time: 10:15 AM
+    light: 55
+    items:
+    - icon: bottle
+      count: 1
+      label: lamp oil
+      cue: oil
+    - icon: matches
+      count: 4
+      label: matches
+      cue: four
+    total:
+      text: 1 night left
+      cue: night
+    say: One bottle of oil. Four matches. One night left. And the biggest tide in fifty years.
+  - scene: street
+    place: THE CAUSEWAY
+    time: 10:20 AM
+    sea: true
+    dawn: true
+    dark: 0.05
+    stop: 0
+    you:
+      light: false
+      facing: 1
+    people:
+    - x: 0.6
+      action: idle
+      facing: -1
+      color: '#e6d3b3'
+    say: 'Your goal: survive the last night. Moira promises to come with her boat at dawn, and take you home.'
+  - scene: room
+    place: COTTAGE
+    time: 12:00 AM
+    light: 50
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+      cue: water
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: That night, the Walker doesn't knock at all. It just stands in the water, waiting.
+  - scene: choice
+    time: 12:01 AM
+    base:
+      scene: room
+      wall: '#6b5a48'
       lamp: true
       clock: true
       dark: 0.55
-      creatures: [{x: 0.5, ground: 800, scale: 0.75, action: lurk, facing: 1}]
-      you: {x: 0.3, action: scared, facing: 1}
-      say: "Last night, the Walker pressed its face to your window."
-    - scene: room
-      place: COTTAGE
-      time: "12:42 AM"
-      light: 60
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.55
-      creatures: [{x: 0.5, ground: 800, scale: 0.75, action: lurk, facing: 1}]
-      you: {x: 0.3, to: 0.42, go: 0, arrive: "40%", facing: 1}
-      camera: {zoom: [1.1, 1.35], focus: [0.5, 0.42]}
-      say: "You look closer. It's wearing a long caretaker's coat. The same coat that hangs by your door."
-    - scene: title
-      say: "High tide. Night five."
-    - scene: street
-      place: THE CAUSEWAY
-      time: "10:00 AM"
-      sea: true
-      dawn: true
-      dark: 0.05
-      stop: 0
-      you: {light: false, facing: 1}
-      people: [{x: 0.6, action: idle, facing: -1, color: "#e6d3b3"}]
-      say: "At low tide, you show Moira the logbook. She reads the last page, and sits down on the rocks."
-    - scene: street
-      place: THE CAUSEWAY
-      time: "10:05 AM"
-      sea: true
-      dawn: true
-      dark: 0.05
-      stop: 0
-      you: {light: false, facing: 1}
-      people: [{x: 0.6, action: idle, facing: -1, color: "#e6d3b3"}]
-      say: "She says the last caretaker opened the door on his sixth night. In the morning, he was gone. And the next night, the knocking started."
-    - scene: map
-      time: "10:10 AM"
-      route: [[0.2, 0.92], [0.45, 0.6], [0.62, 0.3]]
-      route_cue: 0
-      route_end: sea
-      stops:
-        - {x: 0.2, y: 0.92, left: true, label: Mainland}
-      target: {label: "Gull Rock", cue: 0, icon: pin}
-      fog_zone: {level: [0.3, 0.6], cue: 0, label: HIGH TIDE}
-      say: "Here's what she thinks. Whoever opens the door at high tide goes into the sea. And whoever was knocking... comes home."
-    - scene: inventory
-      time: "10:15 AM"
-      light: 55
-      items:
-        - {icon: bottle, count: 1, label: lamp oil, cue: oil}
-        - {icon: matches, count: 4, label: matches, cue: four}
-      total: {text: "1 night left", cue: night}
-      say: "One bottle of oil. Four matches. One night left. And the biggest tide in fifty years."
-    - scene: street
-      place: THE CAUSEWAY
-      time: "10:20 AM"
-      sea: true
-      dawn: true
-      dark: 0.05
-      stop: 0
-      you: {light: false, facing: 1}
-      people: [{x: 0.6, action: idle, facing: -1, color: "#e6d3b3"}]
-      say: "Your goal: survive the last night. Moira promises to come with her boat at dawn, and take you home."
-    - scene: room
-      place: COTTAGE
-      time: "12:00 AM"
-      light: 50
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.55
-      creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1, cue: water}]
-      you: {x: 0.3, action: idle, facing: 1}
-      say: "That night, the Walker doesn't knock at all. It just stands in the water, waiting."
-    - scene: choice
-      time: "12:01 AM"
-      base:
-        scene: room
-        wall: "#6b5a48"
-        lamp: true
-        clock: true
-        dark: 0.55
-        creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-        you: {x: 0.3, action: idle, facing: 1}
-      question: "Sleep or keep watch?"
-      options:
-        - {text: Sleep, cue: sleep}
-        - {text: Keep watch, cue: watch}
-      say: "Do you get some sleep... or keep watch all night?"
-    - scene: endcard
-      time: "12:01 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+      creatures:
+      - x: 0.5
+        ground: 800
+        scale: 0.68
+        action: lurk
+        facing: 1
+      you:
+        x: 0.3
+        action: idle
+        facing: 1
+    question: Sleep or keep watch?
+    options:
+    - text: Sleep
+      cue: sleep
+    - text: Keep watch
+      cue: watch
+    say: Do you get some sleep... or keep watch all night?
+  - scene: endcard
+    time: 12:01 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: high-tide-6
   format: stickman
   series: HIGH TIDE
@@ -1620,127 +1869,222 @@
   day_label: NIGHT
   meter_label: OIL
   place: COTTAGE
-  title: "My last night on the island. At dawn, Moira knocked four times. Night 6 🌊"
-  tags: [stickman, animation, horror, island, hightide, story]
+  title: My last night on the island. At dawn, Moira knocked four times. Night 6 🌊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - island
+  - hightide
+  - story
   shots:
-    - scene: room
-      place: COTTAGE
-      recap: true
-      time: "12:01 AM"
-      light: 50
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.55
-      creatures: [{x: 0.5, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-      you: {x: 0.3, action: idle, facing: 1}
-      say: "Last night, the Walker didn't knock. It just waited."
-    - scene: title
-      say: "High tide. Night six."
-    - scene: map
-      time: "9:00 PM"
-      route: [[0.2, 0.92], [0.45, 0.6], [0.62, 0.3]]
-      route_cue: 0
-      route_end: causeway
-      stops:
-        - {x: 0.2, y: 0.92, left: true, label: Mainland}
-      target: {label: "Gull Rock", cue: 0, icon: pin}
-      fog_zone: {level: [0.4, 0.95], cue: 0, label: HIGH TIDE}
-      say: "The last night. The biggest tide in fifty years covers the causeway, and half the island."
-    - scene: room
-      place: COTTAGE
-      time: "12:00 AM"
-      light: [40, 20]
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.55
-      sfx: [{name: knock, at: three}, {name: knock, at: knocks}, {name: knock, at: "end-0.6"}]
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "You keep watch. Lamp lit. Door locked. At midnight, three knocks. You don't move."
-    - scene: closeup
-      object: alarm
-      time: "5:58 AM"
-      light: 15
-      ring: 0
-      say: "Then, finally, dawn. The tide starts going out. The boat should be here."
-    - scene: room
-      place: COTTAGE
-      time: "6:00 AM"
-      light: 15
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.35
-      sfx: [{name: knock, at: four}, {name: knock, at: knocks}, {name: knock, at: and}, {name: knock, at: "moira's"}]
-      you: {x: 0.55, action: listen, facing: 1}
-      say: "Four knocks. And Moira's voice: It's me. The boat is here. Let's go home."
-    - scene: room
-      place: COTTAGE
-      time: "6:01 AM"
-      light: 15
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      dark: 0.35
-      door_open: [[0, 0], [0.85, open]]
-      you: {x: 0.6, to: 0.75, go: 0, arrive: "30%", facing: 1, then: scared}
-      creatures: [{x: 0.93, action: reach, facing: -1, cue: boat, scale: 1.2}]
-      heartbeat: boat
-      say: "You open the door. There's no Moira. There's no boat."
-    - scene: street
-      time: "6:02 AM"
-      place: THE CAUSEWAY
-      light: 10
-      sea: true
-      dark: 0.6
-      stop: 0
-      fog: {top: 0.75, density: 1.0, color: "#2f5d7a"}
-      you: {x: 0.4, light: false, action: scared}
-      chasers: {n: 1, cue: hands}
-      say: "Cold hands grab your arms, and pull you into the water. And the Walker steps past you, into your warm cottage."
-    - scene: room
-      place: COTTAGE
-      time: "6:05 AM"
-      light: 100
-      wall: "#6b5a48"
-      lamp: true
-      clock: true
-      door_open: [[0.85, 0], [0, door]]
-      you: {x: 0.75, action: idle, facing: -1, cap: false}
-      say: "He takes off his wet coat. He hangs it by the door. He's a man again."
-    - scene: street
-      time: "6:10 AM"
-      place: THE CAUSEWAY
-      light: 0
+  - scene: room
+    place: COTTAGE
+    recap: true
+    time: 12:01 AM
+    light: 50
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.5
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: Last night, the Walker didn't knock. It just waited.
+  - scene: title
+    say: High tide. Night six.
+  - scene: map
+    time: 9:00 PM
+    route:
+    - - 0.2
+      - 0.92
+    - - 0.45
+      - 0.6
+    - - 0.62
+      - 0.3
+    route_cue: 0
+    route_end: causeway
+    stops:
+    - x: 0.2
+      y: 0.92
+      left: true
+      label: Mainland
+    target:
+      label: Gull Rock
+      cue: 0
+      icon: pin
+    fog_zone:
+      level:
+      - 0.4
+      - 0.95
+      cue: 0
+      label: HIGH TIDE
+    say: The last night. The biggest tide in fifty years covers the causeway, and half the island.
+  - scene: room
+    place: COTTAGE
+    time: 12:00 AM
+    light:
+    - 40
+    - 20
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.55
+    sfx:
+    - name: knock
+      at: three
+    - name: knock
+      at: knocks
+    - name: knock
+      at: end-0.6
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: You keep watch. Lamp lit. Door locked. At midnight, three knocks. You don't move.
+  - scene: closeup
+    object: alarm
+    time: 5:58 AM
+    light: 15
+    ring: 0
+    say: Then, finally, dawn. The tide starts going out. The boat should be here.
+  - scene: room
+    place: COTTAGE
+    time: 6:00 AM
+    light: 15
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.35
+    sfx:
+    - name: knock
+      at: four
+    - name: knock
+      at: knocks
+    - name: knock
+      at: and
+    - name: knock
+      at: moira's
+    you:
+      x: 0.55
+      action: listen
+      facing: 1
+    say: 'Four knocks. And Moira''s voice: It''s me. The boat is here. Let''s go home.'
+  - scene: room
+    place: COTTAGE
+    time: 6:01 AM
+    light: 15
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    dark: 0.35
+    door_open:
+    - - 0
+      - 0
+    - - 0.85
+      - open
+    you:
+      x: 0.6
+      to: 0.75
+      go: 0
+      arrive: 30%
+      facing: 1
+      then: scared
+    creatures:
+    - x: 0.93
+      action: reach
+      facing: -1
+      cue: boat
+      scale: 1.2
+    heartbeat: boat
+    say: You open the door. There's no Moira. There's no boat.
+  - scene: street
+    time: 6:02 AM
+    place: THE CAUSEWAY
+    light: 10
+    sea: true
+    dark: 0.6
+    stop: 0
+    fog:
+      top: 0.75
+      density: 1.0
+      color: '#2f5d7a'
+    you:
+      x: 0.4
+      light: false
+      action: scared
+    chasers:
+      n: 1
+      cue: hands
+    say: Cold hands grab your arms, and pull you into the water. And the Walker steps past you, into your warm cottage.
+  - scene: room
+    place: COTTAGE
+    time: 6:05 AM
+    light: 100
+    wall: '#6b5a48'
+    lamp: true
+    clock: true
+    door_open:
+    - - 0.85
+      - 0
+    - - 0
+      - door
+    you:
+      x: 0.75
+      action: idle
+      facing: -1
+      cap: false
+    say: He takes off his wet coat. He hangs it by the door. He's a man again.
+  - scene: street
+    time: 6:10 AM
+    place: THE CAUSEWAY
+    light: 0
+    sea: true
+    dark: 0.75
+    stop: 0
+    fog:
+      top: 0.72
+      density: 1.0
+      color: '#2f5d7a'
+    lurkers: 1
+    you:
+      x: -0.4
+      light: false
+    say: And you're the one standing in the sea now. Waiting for the next caretaker.
+  - scene: choice
+    time: 6:10 AM
+    base:
+      scene: street
       sea: true
       dark: 0.75
       stop: 0
-      fog: {top: 0.72, density: 1.0, color: "#2f5d7a"}
+      fog:
+        top: 0.72
+        density: 1.0
+        color: '#2f5d7a'
       lurkers: 1
-      you: {x: -0.4, light: false}
-      say: "And you're the one standing in the sea now. Waiting for the next caretaker."
-    - scene: choice
-      time: "6:10 AM"
-      base:
-        scene: street
-        sea: true
-        dark: 0.75
-        stop: 0
-        fog: {top: 0.72, density: 1.0, color: "#2f5d7a"}
-        lurkers: 1
-        you: {x: -0.4, light: false}
-      question: "Three knocks or four?"
-      options:
-        - {text: Three, cue: three}
-        - {text: Four, cue: four}
-      say: "When the new one arrives... do you knock three times, or four?"
-    - scene: endcard
-      time: "6:10 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+      you:
+        x: -0.4
+        light: false
+    question: Three knocks or four?
+    options:
+    - text: Three
+      cue: three
+    - text: Four
+      cue: four
+    say: When the new one arrives... do you knock three times, or four?
+  - scene: endcard
+    time: 6:10 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
