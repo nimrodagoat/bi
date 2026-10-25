@@ -43,7 +43,7 @@ Cues (when something happens) are a word the narrator says in that shot
   office wall of screens instead of the window), `desk`, `door: false`, `clock`,
   `mannequins: [{x, facing, turn: cue}]` (pale figures that snap round at the cue), `dark` (0-1), `you: {x, to, action, move, then, light, aim, facing, go, arrive}`,
   `creatures: [{x, facing, cue, action, scale, to}]`, `lamp`, `door_open`,
-  `barricade: true | {start, end, remove}`, `window`, `picture`, `on_air: on|off|flicker` (or `[[state, cue], ...]`: a radio studio's ON AIR sign).
+  `barricade: true | {start, end, remove}`, `window`, `picture`, `dark`/`lamp`/`door_open` also take `[[value, cue], ...]`, `on_air: on|off|flicker` (or `[[state, cue], ...]`: a radio studio's ON AIR sign).
 - `hallway`: corridor seen from the door. `lights: on|off|flicker|dying` (`off: cue` for dying),
   `dark`, `rolling: {from, to}` (a flashlight rolling away), `figures: [{who: creature|person, z, x, cue, to_z}]`,
   `open_doors: [0, 3]`, `marks` (drag marks).
@@ -77,7 +77,8 @@ Cues (when something happens) are a word the narrator says in that shot
 
 Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a garage or a
 stadium tunnel); a `who: person` figure can have `stare: true` (shining eyes).
-Street: `floodlights: cue` (bright lights ahead), `dawn: true` (sunrise sky), `rooftop: true`,
+Street: `floodlights: cue` (bright lights ahead), `dawn: true` (sunrise sky), `rooftop: true`, `sea: true` (open water instead
+of buildings: a causeway or pier; pair it with a blue `fog` for rising water),
 `people: [{x, action, cue, fade, facing, drift}]` (other people). Closeup flashlight: `eyes: N`, `eyes_cue`.
 
 Any shot: `recap: true` (shows PREVIOUSLY; use it for the opening line of parts 2+), `snow: {n, speed, wind}` (or `snow: true`), `fog: {top: 0.6, rise: [0.8, 0.5], cue, density, color}` (rolling fog), `flicker: cue`, `relight: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,

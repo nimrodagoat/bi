@@ -242,7 +242,9 @@ def room(cv, shot, t):
     ctx = cv.ctx
     o = shot.spec
     _room_back(ctx, o, t, cv, shot)
-    dark = float(o.get("dark", 0))
+    dark = float(_cue_list(shot, t, o.get("dark", 0)) or 0)  # or [[value, cue], ...]
+    lamp = _cue_list(shot, t, o.get("lamp"))  # true/false/flicker, or [[state, cue], ...]
+    lamp_on = flicker(t, 4, 10) if lamp == "flicker" else (1.0 if lamp else 0.0)
     barricade = o.get("barricade")
     bp = 0.0
     if barricade:
@@ -308,7 +310,7 @@ def room(cv, shot, t):
         ctx.arc(780, 590, 14, 0, 2 * math.pi)
         ctx.fill()
     if o.get("door", True):
-        props.door(ctx, 840, 760, 200, 445, open_amount=float(o.get("door_open", 0)))
+        props.door(ctx, 840, 760, 200, 445, open_amount=float(_cue_list(shot, t, o.get("door_open", 0)) or 0))
     air = _cue_list(shot, t, o.get("on_air"))  # a radio studio's ON AIR sign: on|off|flicker
     if air:
         b = {"on": 1.0, "flicker": flicker(t, 3, 8), True: 1.0}.get(air, 0.0)
@@ -319,7 +321,7 @@ def room(cv, shot, t):
             glow(ctx, 940, 715, 160, "#ff2d2d", 0.35 * b)
         draw_surface(ctx, text("ON AIR", "title", 40, "#ffe9e9" if b > 0.5 else "#7a4a4a", tracking=3), 940, 716)
     if furniture:
-        props.floor_lamp(ctx, 770, 860, FLOOR_Y, on=1.0 if o.get("lamp") else 0.0)
+        props.floor_lamp(ctx, 770, 860, FLOOR_Y, on=lamp_on)
         # barricade: the couch slides to the door and the shelf tips against it
         cx = 330 + (690 - 330) * bp
         props.couch(ctx, cx, 1015 + 20 * bp, 380, 190)
@@ -360,11 +362,14 @@ def room(cv, shot, t):
     j, beam = hero(cv, shot, t, o.get("you"), ground)
     if dark > 0:
         lit = o.get("window", True) or o.get("monitors")
-        _apply_dark(cv, shot, t, dark, beam, j, extra=[("radial", 550, 640, 520, 0.45), ("radial", 540, 1000, 900, 0.25)] if lit else [])
+        extra = [("radial", 550, 640, 520, 0.45), ("radial", 540, 1000, 900, 0.25)] if lit else []
+        if lamp_on > 0 and furniture:
+            extra.append(("radial", 770, 900, 520, 0.7 * lamp_on))
+        _apply_dark(cv, shot, t, dark, beam, j, extra=extra)
         for cj, sc, fc, a in crs:
             creature_eyes(ctx, cj, sc, fc, a)
-    if o.get("lamp"):
-        glow(ctx, 770, 900, 300, "#ffd89a", 0.12)
+    if lamp_on > 0:
+        glow(ctx, 770, 900, 300, "#ffd89a", 0.12 * lamp_on)
 
 
 def _apply_dark(cv, shot, t, dark, beam, hero_joints=None, extra=(), beam_len=950, spread=0.3):
@@ -934,7 +939,16 @@ def street(cv, shot, t):
         ctx.arc(830, 380, 34, 0, 2 * math.pi)
         ctx.fill()
     roof = bool(o.get("rooftop"))
-    if roof:  # up on a roof: the town is below, only a few tops stick out
+    sea = bool(o.get("sea"))
+    if sea:  # open water to the horizon (a causeway, a pier)
+        vgradient(ctx, -300, base - 420, W + 600, 420, "#0b1626", "#16304a")
+        for k in range(26):  # moonlight glinting on the waves
+            wy = base - 400 + (k * 37) % 390
+            wx = 830 + 90 * math.sin(k * 2.3) - ((scroll * 0.2 + k * 40) % 60)
+            ctx.rectangle(wx - 30 - k % 4 * 10, wy, 60 + k % 4 * 20, 3)
+        ctx.set_source_rgba(0.8, 0.86, 1.0, 0.18)
+        ctx.fill()
+    elif roof:  # up on a roof: the town is below, only a few tops stick out
         _buildings(ctx, scroll * 0.1, base + 260, "#111725", 1, 300, 560)
     else:
         _buildings(ctx, scroll * 0.15, base - 120, "#111725", 1, 380, 820)
@@ -948,7 +962,7 @@ def street(cv, shot, t):
             draw_surface(ctx, text(str(c.get("label", "")).upper(), "mono", 26, "#e9e4da", tracking=4), wx, 1010, alpha=0.3)
     # lamp posts (dead)
     k0 = int(math.floor(scroll / 560)) - 1
-    for k in range(k0, k0 + (0 if roof else 4)):
+    for k in range(k0, k0 + (0 if roof or sea else 4)):
         lx = k * 560 + 200 - scroll
         stroke_line(ctx, [(lx, base + 10), (lx, 780), (lx + 70, 760)], 12, "#2c3038")
         ctx.rectangle(lx + 50, 752, 60, 20)
