@@ -1,0 +1,650 @@
+# LOOKOUT (6 parts). You watch the forest for fires from a tower on Cedar
+# Ridge, 120 steps up, from sunset to sunrise.
+# Cast: you (new lookout), Hank (ranger, on the radio), the voice from the
+# closed Pine Ridge tower (on a dead channel).
+# Core idea, said plainly: blue lights in the forest are not fires. They go to
+# whatever place someone names on the radio. The old Pine Ridge lookout sent
+# them to you. Twist: you send them back to Pine Ridge, the same night Hank's
+# new lookout starts there; now the new one hears the whisper.
+# Map grid: columns A-D, rows 1-5. Cedar Ridge = C4, Pine Ridge = A1, station = D5.
+- id: lookout-1
+  format: stickman
+  series: LOOKOUT
+  day: 1
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: CEDAR RIDGE
+  title: "I watch a forest for fires from a tower. Last night I saw blue lights 🌲"
+  tags: [stickman, animation, horror, forest, lookout, story]
+  shots:
+    - scene: room
+      time: "8:00 PM"
+      light: 100
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "You take a summer job nobody else wants. Lookout in a fire tower on Cedar Ridge, a hundred and twenty steps above the forest."
+    - scene: radio
+      time: "8:05 PM"
+      on: radio
+      chip: {text: "Hank · ranger station", cue: hank, y: 470}
+      radio_label: "RANGER RADIO · HANK"
+      say:
+        - "Your only contact is Hank, the ranger, on the radio."
+        - radio: "Welcome up, kid. Your job is simple. Watch the forest. Report every fire."
+    - scene: title
+      say: "Lookout. Night one."
+    - scene: map
+      time: "8:10 PM"
+      route: [[0.625, 0.7], [0.625, 0.7]]
+      route_cue: 0
+      stops:
+        - {x: 0.625, y: 0.7, left: true, label: "Cedar Ridge · C4"}
+        - {x: 0.125, y: 0.1, label: "Pine Ridge · A1"}
+        - {x: 0.875, y: 0.9, left: true, label: "Station · D5"}
+      rule: {n: 1, text: Report every fire by square}
+      say: "Rule number one. The forest is a grid of squares. If you see an orange glow, report its square on the radio."
+    - scene: room
+      time: "8:15 PM"
+      light: 100
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      rule: {n: 2, text: Never go down at night}
+      you: {x: 0.75, action: idle, facing: 1}
+      say: "Rule number two. Never go down the stairs before sunrise. Not for anything."
+    - scene: inventory
+      time: "8:20 PM"
+      light: 100
+      items:
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+        - {icon: battery, count: 4, label: batteries, cue: four}
+        - {icon: can, count: 6, label: beans, cue: six}
+      total: {text: "10 hours to sunrise", cue: ten}
+      say: "One flashlight. Four batteries. Six cans of beans. Ten hours until sunrise."
+    - scene: room
+      time: "1:00 AM"
+      light: 95
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.5
+      window_view: forest
+      window_lights: [{x: 0.12, y: 0.66, color: "#4fb3ff", n: 3, cue: lights, drift: 4}]
+      you: {x: 0.3, action: idle, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.42]}
+      say: "At one AM, you see lights. Far away, near the old Pine Ridge tower. Not orange. Blue."
+    - scene: map
+      time: "1:02 AM"
+      route: [[0.625, 0.7], [0.625, 0.7]]
+      route_cue: 0
+      stops:
+        - {x: 0.625, y: 0.7, left: true, label: "Cedar Ridge · C4"}
+        - {x: 0.125, y: 0.1, label: "Pine Ridge · A1"}
+      danger: [{x: 0.15, y: 0.16, r: 0.07, n: 7, cue: move, color: "#4fb3ff"}]
+      say: "They don't flicker like fire. They move, slowly, between the trees."
+    - scene: radio
+      time: "3:00 AM"
+      on: crackles
+      radio_label: "DEAD CHANNEL"
+      say:
+        - "At three AM, your radio crackles, on a channel nobody uses. A whisper."
+        - radio: "Cedar Ridge."
+    - scene: room
+      time: "3:01 AM"
+      light: 90
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.55
+      window_view: forest
+      window_lights: [{x: 0.12, y: 0.66, color: "#4fb3ff", n: 3}]
+      you: {x: 0.3, action: scared, facing: 1}
+      heartbeat: stop
+      say: "And far away, the blue lights stop moving. All at once. As if they heard it too."
+    - scene: choice
+      time: "3:02 AM"
+      base:
+        scene: room
+        wall: "#6e5236"
+        furniture: false
+        desk: true
+        clock: true
+        dark: 0.55
+        window_view: forest
+        window_lights: [{x: 0.12, y: 0.66, color: "#4fb3ff", n: 3}]
+        you: {x: 0.3, action: scared, facing: 1}
+      question: "Report them or stay silent?"
+      options:
+        - {text: Report them, cue: report}
+        - {text: Stay silent, cue: silent}
+      say: "Do you report the lights to Hank... or stay silent?"
+    - scene: endcard
+      time: "3:02 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: lookout-2
+  format: stickman
+  series: LOOKOUT
+  day: 2
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: CEDAR RIDGE
+  title: "The blue lights went to the exact square I said on the radio. Night 2 🌲"
+  tags: [stickman, animation, horror, forest, lookout, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:02 AM"
+      light: 90
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.55
+      window_view: forest
+      window_lights: [{x: 0.12, y: 0.66, color: "#4fb3ff", n: 3}]
+      you: {x: 0.3, action: scared, facing: 1}
+      say: "Last night, blue lights appeared in the forest, and a whisper on the radio said your tower's name."
+    - scene: title
+      say: "Lookout. Night two."
+    - scene: radio
+      time: "3:05 AM"
+      on: radio
+      chip: {text: "Hank · ranger station", cue: 0, y: 470}
+      radio_label: "RANGER RADIO · HANK"
+      say:
+        - "You tell Hank. He goes quiet."
+        - radio: "Don't ever report blue lights, kid. They're not fires. And whatever you say on this radio, they hear."
+    - scene: room
+      time: "3:10 AM"
+      light: 88
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      rule: {n: 3, text: Never shine your light at them}
+      you: {x: 0.3, light: true, aim: -0.3, facing: -1}
+      say: "Rule number three. Never point your flashlight at a blue light. They follow light, like moths."
+    - scene: room
+      time: "8:00 PM"
+      light: 100
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "The next night, your goal is simple. Report only real fires."
+    - scene: room
+      time: "11:40 PM"
+      light: 92
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.5
+      window_view: forest
+      window_lights: [{x: 0.3, y: 0.8, color: "#ff8a1e", n: 4, cue: glow}]
+      you: {x: 0.3, action: idle, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.42]}
+      say: "At eleven forty, there's an orange glow in the valley. A real fire. Square B3."
+    - scene: radio
+      time: "11:41 PM"
+      on: radio
+      chip: {text: "Hank · ranger station", cue: 0, y: 470}
+      radio_label: "RANGER RADIO · HANK"
+      say:
+        - "You report it."
+        - radio: "Copy, Cedar Ridge. Fire in B3. Crew's on the way."
+    - scene: map
+      time: "11:50 PM"
+      route: [[0.625, 0.7], [0.625, 0.7]]
+      route_cue: 0
+      stops:
+        - {x: 0.625, y: 0.7, left: true, label: "Cedar Ridge · C4"}
+        - {x: 0.125, y: 0.1, label: "Pine Ridge · A1"}
+      danger:
+        - {x: 0.375, y: 0.5, r: 0.06, n: 10, cue: 0, color: "#ff8a1e"}
+        - {x: 0.36, y: 0.46, r: 0.08, n: 9, cue: blue, color: "#4fb3ff"}
+      say: "Ten minutes later, the blue lights are in B3 too. Every single one."
+    - scene: radio
+      time: "12:30 AM"
+      on: radio
+      chip: {text: "Fire crew · B3", cue: 0, y: 470}
+      radio_label: "RANGER RADIO · CREW"
+      say:
+        - "Then the fire crew calls in."
+        - radio: "Base, the fire's out. But there are people out here, with blue lanterns. They're just standing there."
+    - scene: choice
+      time: "12:31 AM"
+      base: {scene: radio, on: 0}
+      question: "Call Hank or go down?"
+      options:
+        - {text: Call Hank, cue: call}
+        - {text: Go down, cue: down}
+      say: "Then the crew stops answering. Do you call Hank... or go down the stairs to help?"
+    - scene: endcard
+      time: "12:31 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: lookout-3
+  format: stickman
+  series: LOOKOUT
+  day: 3
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: CEDAR RIDGE
+  title: "Something was climbing the 120 stairs to my fire tower. Night 3 🌲"
+  tags: [stickman, animation, horror, forest, lookout, story]
+  shots:
+    - scene: map
+      recap: true
+      time: "12:31 AM"
+      route: [[0.625, 0.7], [0.625, 0.7]]
+      route_cue: 0
+      stops:
+        - {x: 0.625, y: 0.7, left: true, label: "Cedar Ridge · C4"}
+      danger: [{x: 0.36, y: 0.46, r: 0.08, n: 9, cue: 0, color: "#4fb3ff"}]
+      say: "Last night, the blue lights went to the exact square you said on the radio."
+    - scene: title
+      say: "Lookout. Night three."
+    - scene: radio
+      time: "12:40 AM"
+      on: radio
+      chip: {text: "Hank · ranger station", cue: 0, y: 470}
+      radio_label: "RANGER RADIO · HANK"
+      say:
+        - "You call Hank. He's out of breath."
+        - radio: "Crew's back, they're fine. But they all say the same thing. The lights were already waiting for them."
+    - scene: room
+      time: "12:45 AM"
+      light: 85
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      rule: {n: 4, text: Never say a place on the radio}
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "Now you understand. The blue lights go wherever someone names on the radio. Rule number four. Never say a place on the radio again."
+    - scene: inventory
+      time: "8:00 PM"
+      light: 80
+      items:
+        - {icon: battery, count: 3, label: batteries, cue: three}
+        - {icon: can, count: 4, label: beans, cue: four}
+      total: {text: "Radio: quiet", cue: quiet}
+      say: "Three batteries. Four cans. Tonight's goal: keep the radio quiet. No squares. No names."
+    - scene: room
+      time: "2:00 AM"
+      light: 78
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.55
+      window_view: forest
+      window_lights: [{x: 0.35, y: 0.85, color: "#4fb3ff", n: 5, cue: 0, drift: 3}]
+      you: {x: 0.3, action: idle, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.42]}
+      say: "At two AM, the blue lights are closer. Square B4. Right next to your hill."
+    - scene: radio
+      time: "2:10 AM"
+      on: crackles
+      radio_label: "DEAD CHANNEL"
+      say:
+        - "Then the whisper again, on the dead channel. This time it says your square."
+        - radio: "Cedar Ridge. C4."
+    - scene: room
+      time: "2:11 AM"
+      light: 75
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.6
+      window_view: forest
+      window_lights: [{x: 0.4, y: 0.92, color: "#4fb3ff", n: 6, cue: 0, drift: 10}]
+      sfx: [{name: knock, at: footsteps, gain: 0.5}, {name: knock, at: stairs, gain: 0.6}, {name: knock, at: coming, gain: 0.7}]
+      you: {x: 0.3, action: scared, facing: 1}
+      heartbeat: footsteps
+      say: "Below the tower, every blue light turns toward you. Then you hear footsteps, on the stairs. Coming up."
+    - scene: choice
+      time: "2:12 AM"
+      base:
+        scene: room
+        wall: "#6e5236"
+        furniture: false
+        desk: true
+        clock: true
+        dark: 0.6
+        window_view: forest
+        window_lights: [{x: 0.4, y: 0.92, color: "#4fb3ff", n: 6}]
+        you: {x: 0.3, action: scared, facing: 1}
+      question: "Lock the hatch or shine your light?"
+      options:
+        - {text: Lock the hatch, cue: lock}
+        - {text: Shine the light, cue: shine}
+      say: "Do you lock the hatch... or shine your flashlight down the stairs?"
+    - scene: endcard
+      time: "2:12 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: lookout-4
+  format: stickman
+  series: LOOKOUT
+  day: 4
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: CEDAR RIDGE
+  title: "A voice from a tower that closed in 1994 answered my radio. Night 4 🌲"
+  tags: [stickman, animation, horror, forest, lookout, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "2:12 AM"
+      light: 75
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.6
+      window_view: forest
+      window_lights: [{x: 0.4, y: 0.92, color: "#4fb3ff", n: 6}]
+      you: {x: 0.3, action: scared, facing: 1}
+      say: "Last night, something started climbing the stairs to your tower."
+    - scene: title
+      say: "Lookout. Night four."
+    - scene: room
+      time: "2:13 AM"
+      light: 75
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.6
+      window_view: forest
+      window_lights: [{x: 0.4, y: 0.92, color: "#4fb3ff", n: 6}]
+      sfx: [{name: hit, at: lock}, {name: knock, at: stop, gain: 0.6}]
+      shake_at: [stop]
+      you: {x: 0.75, action: push, facing: -1}
+      say: "You lock the hatch, and push the desk on top of it. The footsteps stop. Right under the floor."
+    - scene: closeup
+      object: alarm
+      time: "6:10 AM"
+      light: 70
+      ring: 0
+      say: "You don't sleep. At sunrise, whatever it was is gone."
+    - scene: radio
+      time: "6:20 AM"
+      on: radio
+      chip: {text: "Hank · ranger station", cue: 0, y: 470}
+      radio_label: "RANGER RADIO · HANK"
+      say:
+        - "You tell Hank about the whisper. He's quiet for a long time."
+        - radio: "There's only one other radio out there, kid. Pine Ridge tower. Closed since 1994. The last lookout never came down."
+    - scene: map
+      time: "6:25 AM"
+      route: [[0.625, 0.7], [0.625, 0.7]]
+      route_cue: 0
+      stops:
+        - {x: 0.625, y: 0.7, left: true, label: "Cedar Ridge · C4"}
+        - {x: 0.125, y: 0.1, label: "Pine Ridge · A1", ghost: true, cue: pine}
+      say: "Pine Ridge. Square A1. Exactly where the blue lights first came from."
+    - scene: room
+      time: "8:00 PM"
+      light: 70
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "Tonight's goal: find out who is on the Pine Ridge radio. Without saying a single place."
+    - scene: radio
+      time: "12:00 AM"
+      on: radio
+      radio_label: "DEAD CHANNEL"
+      say:
+        - "At midnight, you switch to the dead channel, and ask: who's there?"
+        - radio: "Someone who got rid of them. The night you arrived."
+    - scene: room
+      time: "12:01 AM"
+      light: 68
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.55
+      window_view: forest
+      window_lights: [{x: 0.4, y: 0.92, color: "#4fb3ff", n: 6, cue: 0, drift: 8}]
+      you: {x: 0.3, action: listen, facing: 1}
+      camera: {zoom: [1.0, 1.2], focus: [0.4, 0.5]}
+      say: "Outside, the lights gather at the bottom of your hill, like they're listening too."
+    - scene: choice
+      time: "12:02 AM"
+      base: {scene: radio, on: 0}
+      question: "Keep talking or switch off?"
+      options:
+        - {text: Keep talking, cue: talking}
+        - {text: Switch off, cue: switch}
+      say: "Do you keep talking to the voice... or switch the radio off?"
+    - scene: endcard
+      time: "12:02 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: lookout-5
+  format: stickman
+  series: LOOKOUT
+  day: 5
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: CEDAR RIDGE
+  title: "The old lookout told me why the blue lights came for me. Night 5 🌲"
+  tags: [stickman, animation, horror, forest, lookout, story]
+  shots:
+    - scene: radio
+      recap: true
+      time: "12:02 AM"
+      on: radio
+      say: "Last night, a voice from the closed Pine Ridge tower answered your radio."
+    - scene: title
+      say: "Lookout. Night five."
+    - scene: radio
+      time: "12:03 AM"
+      on: radio
+      radio_label: "DEAD CHANNEL · PINE RIDGE"
+      say:
+        - "You keep talking."
+        - radio: "Thirty summers, I watched those lights circle my tower. Then I learned their trick. Say a place, and they go there. So the night you arrived, I said yours."
+    - scene: map
+      time: "12:05 AM"
+      route: [[0.625, 0.7], [0.625, 0.7]]
+      route_cue: 0
+      stops:
+        - {x: 0.625, y: 0.7, left: true, label: "Cedar Ridge · C4"}
+        - {x: 0.125, y: 0.1, label: "Pine Ridge · A1", ghost: true}
+      danger: [{x: 0.62, y: 0.78, r: 0.08, n: 12, cue: tonight, color: "#4fb3ff"}]
+      say: "The lights came to you because someone sent them. And tonight, they're at the foot of your tower."
+    - scene: inventory
+      time: "6:30 AM"
+      light: 60
+      items:
+        - {icon: battery, count: 1, label: battery, cue: battery}
+        - {icon: can, count: 2, label: beans, cue: two}
+      total: {text: "1 night left", cue: night}
+      say: "In the morning, you count what's left. One battery. Two cans. One night until the season ends."
+    - scene: radio
+      time: "6:40 AM"
+      on: radio
+      chip: {text: "Hank · ranger station", cue: 0, y: 470}
+      radio_label: "RANGER RADIO · HANK"
+      say:
+        - "Hank has news."
+        - radio: "Last night of the season, kid. At sunrise I drive up and get you. And we're finally opening Pine Ridge again. First new lookout in thirty years."
+    - scene: room
+      time: "8:00 PM"
+      light: 60
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "Your goal: last until sunrise. And never say a place on the radio."
+    - scene: room
+      time: "3:00 AM"
+      light: 55
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.6
+      window_view: forest
+      window_lights:
+        - {x: 0.1, y: 0.9, color: "#4fb3ff", n: 6, cue: 0, drift: 6}
+        - {x: 0.45, y: 0.82, color: "#4fb3ff", n: 5, cue: dozens, drift: -4}
+      you: {x: 0.3, action: scared, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.42]}
+      say: "At three AM, the blue lights start climbing the hill. Dozens of them."
+    - scene: choice
+      time: "3:01 AM"
+      base:
+        scene: room
+        wall: "#6e5236"
+        furniture: false
+        desk: true
+        clock: true
+        dark: 0.6
+        window_view: forest
+        window_lights:
+          - {x: 0.1, y: 0.9, color: "#4fb3ff", n: 6}
+          - {x: 0.45, y: 0.82, color: "#4fb3ff", n: 5}
+        you: {x: 0.3, action: scared, facing: 1}
+      question: "Send them away or wait?"
+      options:
+        - {text: Send them away, cue: send}
+        - {text: Wait, cue: wait}
+      say: "You could say any place, and send them away. Do you send them somewhere... or wait for sunrise?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: lookout-6
+  format: stickman
+  series: LOOKOUT
+  day: 6
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: CEDAR RIDGE
+  title: "On my last night in the tower, I said a place on the radio. Night 6 🌲"
+  tags: [stickman, animation, horror, forest, lookout, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:01 AM"
+      light: 55
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.6
+      window_view: forest
+      window_lights:
+        - {x: 0.1, y: 0.9, color: "#4fb3ff", n: 6}
+        - {x: 0.45, y: 0.82, color: "#4fb3ff", n: 5}
+      you: {x: 0.3, action: scared, facing: 1}
+      say: "Last night, the blue lights started climbing toward your tower."
+    - scene: title
+      say: "Lookout. Night six."
+    - scene: room
+      time: "3:30 AM"
+      light: [20, 5]
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.75
+      window_view: forest
+      window_lights: [{x: 0.3, y: 0.95, color: "#4fb3ff", n: 8}]
+      sfx: [{name: knock, at: hatch}, {name: knock, at: shaking}, {name: hit, at: dying}]
+      shake_at: [shaking]
+      flicker: flashlight
+      you: {x: 0.6, light: true, aim: -0.6, facing: 1}
+      say: "Now they're on the stairs. The hatch is shaking. And your flashlight is dying."
+    - scene: radio
+      time: "3:31 AM"
+      on: radio
+      radio_label: "DEAD CHANNEL · PINE RIDGE"
+      say:
+        - "The voice from Pine Ridge whispers."
+        - radio: "Do it, kid. Say a place. It's the only way."
+    - scene: room
+      time: "3:32 AM"
+      light: 5
+      wall: "#6e5236"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.75
+      window_view: forest
+      window_lights: [{x: 0.3, y: 0.95, color: "#4fb3ff", n: 8}]
+      you: {x: 0.45, action: idle, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.45, 0.5]}
+      say: "So you pick up the radio, and say the place that started all of this. Pine Ridge. Square A1."
+    - scene: map
+      time: "3:33 AM"
+      route: [[0.625, 0.7], [0.625, 0.7]]
+      route_cue: 0
+      stops:
+        - {x: 0.625, y: 0.7, left: true, label: "Cedar Ridge · C4"}
+        - {x: 0.125, y: 0.1, label: "Pine Ridge · A1", ghost: true}
+      danger: [{x: 0.15, y: 0.16, r: 0.09, n: 16, cue: pours, color: "#4fb3ff"}]
+      say: "Every blue light turns, and pours down the hill, toward Pine Ridge."
+    - scene: radio
+      time: "3:34 AM"
+      on: radio
+      radio_label: "DEAD CHANNEL · PINE RIDGE"
+      say:
+        - radio: "No. No, no, no..."
+        - "Then only static."
+    - scene: closeup
+      object: alarm
+      time: "6:10 AM"
+      ring: 0
+      say: "At sunrise, Hank's truck pulls up the hill. You made it."
+    - scene: radio
+      time: "6:15 AM"
+      on: radio
+      chip: {text: "New lookout · Pine Ridge", cue: voice, y: 470}
+      radio_label: "RANGER RADIO · PINE RIDGE"
+      say:
+        - "Then Hank's radio clicks. A new voice. Young, and scared."
+        - radio: "Base, this is Pine Ridge. First night on the job. There are blue lights in my trees... and someone just whispered my tower's name."
+    - scene: choice
+      time: "6:16 AM"
+      base: {scene: radio, on: 0}
+      question: "Teach the trick or stay silent?"
+      options:
+        - {text: Teach the trick, cue: teach}
+        - {text: Stay silent, cue: silent}
+      say: "Do you teach the new lookout the trick... or stay silent?"
+    - scene: endcard
+      time: "6:16 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."

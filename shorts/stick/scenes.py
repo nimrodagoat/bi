@@ -284,7 +284,25 @@ def room(cv, shot, t):
                 ctx.fill()
         glow(ctx, 550, 630, 420, "#7fb6c4", 0.18)
     elif o.get("window", True):
-        props.window(ctx, 400, 470, 300, 330, t, moon=True, city_lights=float(o.get("city_lights", 0)))
+        props.window(ctx, 400, 470, 300, 330, t, moon=True, city_lights=float(o.get("city_lights", 0)),
+                     forest=o.get("window_view") == "forest")
+        ctx.save()  # lights out in the night beyond the glass: [{x, y, color, cue, n, drift}]
+        ctx.rectangle(407, 477, 286, 316)
+        ctx.clip()
+        for k, wl in enumerate(o.get("window_lights") or []):
+            at = shot.cue(wl.get("cue"), 0.0)
+            if t < at:
+                continue
+            a = clamp((t - at) / 0.6)
+            for m in range(int(wl.get("n", 1))):
+                lx = 400 + 300 * float(wl.get("x", 0.5)) + m * 26 + float(wl.get("drift", 0)) * (t - at) + 3 * math.sin(t * 2 + m)
+                ly = 470 + 330 * float(wl.get("y", 0.7)) + 6 * math.sin(t * 1.3 + m * 2)
+                b = a * (0.7 + 0.3 * flicker(t, k * 5 + m, 6))
+                glow(ctx, lx, ly, 30, wl.get("color", "#ff9a2a"), 0.6 * b)
+                set_color(ctx, wl.get("color", "#ff9a2a"), b)
+                ctx.arc(lx, ly, 4, 0, 2 * math.pi)
+                ctx.fill()
+        ctx.restore()
         wf = float(o.get("window_fog", 0))
         if wf > 0:
             for k in range(3):
@@ -759,13 +777,14 @@ def city_map(cv, shot, t):
         a = clamp((t - at) / 0.4)
         zx, zy = P((z.get("x", 0.5), z.get("y", 0.5)))
         zr = float(z.get("r", 0.12)) * mw
-        glow(ctx, zx, zy, zr * 1.3, RED, 0.2 * a)
+        zc = z.get("color", RED)  # e.g. orange for a fire, blue for strange lights
+        glow(ctx, zx, zy, zr * 1.3, zc, 0.2 * a)
         for d in range(int(z.get("n", 18))):
             ang = d * 2.39996 + k
             rr = zr * math.sqrt((d + 0.5) / int(z.get("n", 18)))
             px = zx + math.cos(ang) * rr + 4 * math.sin(t * 3 + d)
             py = zy + math.sin(ang) * rr + 4 * math.cos(t * 2.6 + d)
-            set_color(ctx, "#ff4b3e", a * 0.9)
+            set_color(ctx, z.get("color", "#ff4b3e"), a * 0.9)
             ctx.arc(px, py, 6, 0, 2 * math.pi)
             ctx.fill()
     fz = o.get("fog_zone")

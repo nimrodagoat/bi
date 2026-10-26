@@ -353,7 +353,7 @@ def door(ctx, x, y, w, h, alpha=1.0, color="#6b3f22", open_amount=0.0, dark=Fals
     ctx.fill()
 
 
-def window(ctx, x, y, w, h, t=0.0, moon=True, alpha=1.0, city_lights=0.0):
+def window(ctx, x, y, w, h, t=0.0, moon=True, alpha=1.0, city_lights=0.0, forest=False):
     g = cairo.LinearGradient(0, y, 0, y + h)
     g.add_color_stop_rgb(0, *rgb("#0b1530"))
     g.add_color_stop_rgb(1, *rgb("#1c2440"))
@@ -365,7 +365,25 @@ def window(ctx, x, y, w, h, t=0.0, moon=True, alpha=1.0, city_lights=0.0):
         set_color(ctx, "#e8ecf5")
         ctx.arc(x + w * 0.72, y + h * 0.25, w * 0.07, 0, 2 * math.pi)
         ctx.fill()
-    bx = x
+    if forest:  # pine tops below a high window (a lookout tower)
+        for row, (base, col) in enumerate(((0.62, "#0c1424"), (0.82, "#070b14"))):
+            k = 0
+            px = x - 20 + row * 18
+            while px < x + w + 20:
+                th = h * (0.16 + 0.06 * ((k * 7 + row) % 3))
+                tw = w * 0.09
+                ctx.move_to(px - tw, y + h * base + th * 0.5)
+                ctx.line_to(px, y + h * base - th * 0.5)
+                ctx.line_to(px + tw, y + h * base + th * 0.5)
+                ctx.close_path()
+                set_color(ctx, col)
+                ctx.fill()
+                px += tw * 1.3
+                k += 1
+            ctx.rectangle(x, y + h * base + h * 0.05, w, h * (1 - base))
+            set_color(ctx, col)
+            ctx.fill()
+    bx = x + w if forest else x
     k = 0
     while bx < x + w:
         bw = w * (0.12 + 0.08 * ((k * 31) % 4) / 3)

@@ -36,7 +36,8 @@ Stickman episodes sit at the top of the queue; the text stories below are a
 paused fallback. Engine and options: `shorts/stick/README.md`; every series is
 also saved in `content/drafts/`. Series so far: BLACKOUT (3, posted), NIGHT SHIFT
 (6, posted), FOG LINE (3, posted), SNOWBOUND (3, posted), LAST TRAIN (6, posted; subway; `train` and `tunnel` scenes), LINE FOUR (6, night radio host; `on_air` sign,
-`radio_label`), HIGH TIDE (6, tidal-island caretaker; street `sea: true` + blue fog as water). Never reuse a premise; keep every series
+`radio_label`), HIGH TIDE (6, tidal-island caretaker; street `sea: true` + blue fog as water), LOOKOUT (6, fire-lookout tower;
+`window_view: forest`, `window_lights`, coloured map `danger`). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 
 Older formats still work and are archived in `content/archive/`: cartoon duos

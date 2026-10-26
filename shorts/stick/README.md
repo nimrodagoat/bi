@@ -43,7 +43,8 @@ Cues (when something happens) are a word the narrator says in that shot
   office wall of screens instead of the window), `desk`, `door: false`, `clock`,
   `mannequins: [{x, facing, turn: cue}]` (pale figures that snap round at the cue), `dark` (0-1), `you: {x, to, action, move, then, light, aim, facing, go, arrive}`,
   `creatures: [{x, facing, cue, action, scale, to}]`, `lamp`, `door_open`,
-  `barricade: true | {start, end, remove}`, `window`, `picture`, `dark`/`lamp`/`door_open` also take `[[value, cue], ...]`, `on_air: on|off|flicker` (or `[[state, cue], ...]`: a radio studio's ON AIR sign).
+  `barricade: true | {start, end, remove}`, `window`, `picture`, `dark`/`lamp`/`door_open` also take `[[value, cue], ...]`, `window_view: forest` (pine tops instead of a city),
+  `window_lights: [{x, y, color, cue, n, drift}]` (glows outside the window, 0-1 inside it), `on_air: on|off|flicker` (or `[[state, cue], ...]`: a radio studio's ON AIR sign).
 - `hallway`: corridor seen from the door. `lights: on|off|flicker|dying` (`off: cue` for dying),
   `dark`, `rolling: {from, to}` (a flashlight rolling away), `figures: [{who: creature|person, z, x, cue, to_z}]`,
   `open_doors: [0, 3]`, `marks` (drag marks).
@@ -56,7 +57,7 @@ Cues (when something happens) are a word the narrator says in that shot
 - `radio`: `on: cue`; radio lines in `say` get teal captions and a radio sound. `radio_label` (any shot) replaces
   the "EMERGENCY BROADCAST · RADIO" tag shown while a radio line plays (e.g. `INTERCOM`).
 - `map`: blueprint map. `route: [[x, y], ...]` (0-1), `route_cue`, `route_end`, `target: {label, cue}`,
-  `bracket: {label, cue}`, `lamps: {cue}` (street lights going dead), `danger: [{x, y, r, cue}]`,
+  `bracket: {label, cue}`, `lamps: {cue}` (street lights going dead), `danger: [{x, y, r, cue, n, color}]`,
   `x_marks: [{x, y, cue}]`, `stops: [{x, y, label, cue, ghost, left}]` (named stations; `ghost` = red).
 - `street`: side-scrolling night street. `pace: walk|run`, `speed`, `offset`, `stop: cue`,
   `lurkers: N` (creatures that back away from the beam), `chasers: {n, cue}`,
