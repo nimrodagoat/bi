@@ -15,180 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: lookout-2
-  format: stickman
-  series: LOOKOUT
-  day: 2
-  day_label: NIGHT
-  meter_label: BATTERY
-  place: CEDAR RIDGE
-  title: The blue lights went to the exact square I said on the radio. Night 2 🌲
-  tags:
-  - stickman
-  - animation
-  - horror
-  - forest
-  - lookout
-  - story
-  shots:
-  - scene: room
-    recap: true
-    time: 3:02 AM
-    light: 90
-    wall: '#6e5236'
-    furniture: false
-    desk: true
-    clock: true
-    dark: 0.55
-    window_view: forest
-    window_lights:
-    - x: 0.12
-      y: 0.66
-      color: '#4fb3ff'
-      n: 3
-    you:
-      x: 0.3
-      action: scared
-      facing: 1
-    say: Last night, blue lights appeared in the forest, and a whisper on the radio said your tower's name.
-  - scene: title
-    say: Lookout. Night two.
-  - scene: radio
-    time: 3:05 AM
-    true: radio
-    chip:
-      text: Hank · ranger station
-      cue: 0
-      y: 470
-    radio_label: RANGER RADIO · HANK
-    say:
-    - You tell Hank. He goes quiet.
-    - radio: Don't ever report blue lights, kid. They're not fires. And whatever you say on this radio, they hear.
-  - scene: room
-    time: 3:10 AM
-    light: 88
-    wall: '#6e5236'
-    furniture: false
-    desk: true
-    clock: true
-    window_view: forest
-    rule:
-      n: 3
-      text: Never shine your light at them
-    you:
-      x: 0.3
-      light: true
-      aim: -0.3
-      facing: -1
-    say: Rule number three. Never point your flashlight at a blue light. They follow light, like moths.
-  - scene: room
-    time: 8:00 PM
-    light: 100
-    wall: '#6e5236'
-    furniture: false
-    desk: true
-    clock: true
-    window_view: forest
-    you:
-      x: 0.3
-      action: idle
-      facing: 1
-    say: The next night, your goal is simple. Report only real fires.
-  - scene: room
-    time: 11:40 PM
-    light: 92
-    wall: '#6e5236'
-    furniture: false
-    desk: true
-    clock: true
-    dark: 0.5
-    window_view: forest
-    window_lights:
-    - x: 0.3
-      y: 0.8
-      color: '#ff8a1e'
-      n: 4
-      cue: glow
-    you:
-      x: 0.3
-      action: idle
-      facing: 1
-    camera:
-      zoom:
-      - 1.0
-      - 1.25
-      focus:
-      - 0.5
-      - 0.42
-    say: At eleven forty, there's an orange glow in the valley. A real fire. Square B3.
-  - scene: radio
-    time: 11:41 PM
-    true: radio
-    chip:
-      text: Hank · ranger station
-      cue: 0
-      y: 470
-    radio_label: RANGER RADIO · HANK
-    say:
-    - You report it.
-    - radio: Copy, Cedar Ridge. Fire in B3. Crew's on the way.
-  - scene: map
-    time: 11:50 PM
-    route:
-    - - 0.625
-      - 0.7
-    - - 0.625
-      - 0.7
-    route_cue: 0
-    stops:
-    - x: 0.625
-      y: 0.7
-      left: true
-      label: Cedar Ridge · C4
-    - x: 0.125
-      y: 0.1
-      label: Pine Ridge · A1
-    danger:
-    - x: 0.375
-      y: 0.5
-      r: 0.06
-      n: 10
-      cue: 0
-      color: '#ff8a1e'
-    - x: 0.36
-      y: 0.46
-      r: 0.08
-      n: 9
-      cue: blue
-      color: '#4fb3ff'
-    say: Ten minutes later, the blue lights are in B3 too. Every single one.
-  - scene: radio
-    time: 12:30 AM
-    true: radio
-    chip:
-      text: Fire crew · B3
-      cue: 0
-      y: 470
-    radio_label: RANGER RADIO · CREW
-    say:
-    - Then the fire crew calls in.
-    - radio: Base, the fire's out. But there are people out here, with blue lanterns. They're just standing there.
-  - scene: choice
-    time: 12:31 AM
-    base:
-      scene: radio
-      true: 0
-    question: Call Hank or go down?
-    options:
-    - text: Call Hank
-      cue: call
-    - text: Go down
-      cue: down
-    say: Then the crew stops answering. Do you call Hank... or go down the stairs to help?
-  - scene: endcard
-    time: 12:31 AM
-    hold: 1.6
-    say: Follow for night three.
 - id: lookout-3
   format: stickman
   series: LOOKOUT
@@ -876,110 +702,174 @@
   day_label: NIGHT
   meter_label: LAMPS
   place: HALDEN LIBRARY
-  title: "I work nights alone in a 100-year-old library. Rule 1: lock the reading room 📚"
-  tags: [stickman, animation, horror, library, thestacks, story]
+  title: 'I work nights alone in a 100-year-old library. Rule 1: lock the reading room 📚'
+  tags:
+  - stickman
+  - animation
+  - horror
+  - library
+  - thestacks
+  - story
   shots:
-    - scene: hallway
-      time: "10:00 PM"
-      place: THE STACKS
-      light: 100
-      lights: "on"
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.45]}
-      say: "You start the night job at the old Halden Library. Ten PM to six AM. Alone, with a hundred thousand books."
-    - scene: closeup
-      object: phone
-      time: "10:05 PM"
-      place: RETURNS DESK
-      screen: Note on the desk
-      sub: For the night archivist
-      message: "LOCK THE READING ROOM\nAT MIDNIGHT."
-      message_cue: lock
-      rule: {n: 1, text: Lock the reading room at midnight}
-      say: "On the returns desk, there's a note from Mrs. Pell, the head librarian. Rule number one. Lock the reading room at midnight."
-    - scene: title
-      say: "The stacks. Night one."
-    - scene: hallway
-      time: "10:10 PM"
-      place: THE STACKS
-      light: 100
-      lights: "on"
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      rule: {n: 2, text: Keep every lamp on}
-      say: "Rule number two. Keep every lamp in the stacks switched on. All night. No matter what."
-    - scene: inventory
-      time: "10:15 PM"
-      light: 100
-      items:
-        - {icon: key, count: 3, label: keys, cue: three}
-        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
-        - {icon: battery, count: 2, label: batteries, cue: two}
-      total: {text: "1 cart to shelve", cue: cart}
-      say: "Three keys. One flashlight. Two batteries. And one cart of returned books to shelve before sunrise."
-    - scene: hallway
-      time: "11:00 PM"
-      place: THE STACKS
-      light: 96
-      lights: flicker
-      dark: 0.5
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      say: "At eleven, the lamps flicker every time you walk past. Old wiring, you tell yourself. The building is a hundred years old."
-    - scene: room
-      time: "12:00 AM"
-      place: READING ROOM
-      light: 94
-      wall: "#5a4632"
-      lamp: true
+  - scene: hallway
+    time: 10:00 PM
+    place: THE STACKS
+    light: 100
+    lights: 'on'
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    camera:
+      zoom:
+      - 1.0
+      - 1.25
+      focus:
+      - 0.5
+      - 0.45
+    say: You start the night job at the old Halden Library. Ten PM to six AM. Alone, with a hundred thousand books.
+  - scene: closeup
+    object: phone
+    time: 10:05 PM
+    place: RETURNS DESK
+    screen: Note on the desk
+    sub: For the night archivist
+    message: |-
+      LOCK THE READING ROOM
+      AT MIDNIGHT.
+    message_cue: lock
+    rule:
+      n: 1
+      text: Lock the reading room at midnight
+    say: On the returns desk, there's a note from Mrs. Pell, the head librarian. Rule number one. Lock the reading room at midnight.
+  - scene: title
+    say: The stacks. Night one.
+  - scene: hallway
+    time: 10:10 PM
+    place: THE STACKS
+    light: 100
+    lights: 'on'
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    rule:
+      n: 2
+      text: Keep every lamp on
+    say: Rule number two. Keep every lamp in the stacks switched on. All night. No matter what.
+  - scene: inventory
+    time: 10:15 PM
+    light: 100
+    items:
+    - icon: key
+      count: 3
+      label: keys
+      cue: three
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    - icon: battery
+      count: 2
+      label: batteries
+      cue: two
+    total:
+      text: 1 cart to shelve
+      cue: cart
+    say: Three keys. One flashlight. Two batteries. And one cart of returned books to shelve before sunrise.
+  - scene: hallway
+    time: 11:00 PM
+    place: THE STACKS
+    light: 96
+    lights: flicker
+    dark: 0.5
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    say: At eleven, the lamps flicker every time you walk past. Old wiring, you tell yourself. The building is a hundred years old.
+  - scene: room
+    time: 12:00 AM
+    place: READING ROOM
+    light: 94
+    wall: '#5a4632'
+    lamp: true
+    clock: true
+    people:
+    - x: 0.6
+      action: idle
+      facing: -1
+      color: '#f0b8a8'
+      cue: someone
+    you:
+      x: 0.9
+      to: 0.82
+      go: 0
+      arrive: 30%
+      facing: -1
+    say: At midnight, you go to lock the reading room. Someone is still inside. A young woman, reading under a lamp.
+  - scene: room
+    time: 12:01 AM
+    light: 90
+    wall: '#5a4632'
+    lamp:
+    - - true
+      - 0
+    - - false
+      - switches
+    dark:
+    - - 0.2
+      - 0
+    - - 0.85
+      - switches
+    clock: true
+    people:
+    - x: 0.6
+      action: idle
+      facing: 1
+      color: '#f0b8a8'
+      action_at:
+        white: scared
+    you:
+      x: 0.82
+      action: idle
+      facing: -1
+    heartbeat: switches
+    say: She looks up at you. Her face goes white. And she switches off her lamp.
+  - scene: choice
+    time: 12:02 AM
+    base:
+      scene: room
+      wall: '#5a4632'
+      lamp: false
+      dark: 0.85
       clock: true
-      people: [{x: 0.6, action: idle, facing: -1, color: "#f0b8a8", cue: someone}]
-      you: {x: 0.9, to: 0.82, go: 0, arrive: "30%", facing: -1}
-      say: "At midnight, you go to lock the reading room. Someone is still inside. A young woman, reading under a lamp."
-    - scene: room
-      time: "12:01 AM"
-      light: 90
-      wall: "#5a4632"
-      lamp: [[true, 0], [false, switches]]
-      dark: [[0.2, 0], [0.85, switches]]
-      clock: true
-      people: [{x: 0.6, action: idle, facing: 1, color: "#f0b8a8", action_at: {white: scared}}]
-      you: {x: 0.82, action: idle, facing: -1}
-      heartbeat: switches
-      say: "She looks up at you. Her face goes white. And she switches off her lamp."
-    - scene: choice
-      time: "12:02 AM"
-      base:
-        scene: room
-        wall: "#5a4632"
-        lamp: false
-        dark: 0.85
-        clock: true
-        people: [{x: 0.6, action: scared, facing: 1, color: "#f0b8a8"}]
-        you: {x: 0.82, action: idle, facing: -1}
-      question: "Lock the door or go in?"
-      options:
-        - {text: Lock it, cue: lock}
-        - {text: Go in, cue: go}
-      say: "Do you lock the door... or go in after her?"
-    - scene: endcard
-      time: "12:02 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+      people:
+      - x: 0.6
+        action: scared
+        facing: 1
+        color: '#f0b8a8'
+      you:
+        x: 0.82
+        action: idle
+        facing: -1
+    question: Lock the door or go in?
+    options:
+    - text: Lock it
+      cue: lock
+    - text: Go in
+      cue: go
+    say: Do you lock the door... or go in after her?
+  - scene: endcard
+    time: 12:02 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: stacks-2
   format: stickman
   series: THE STACKS
@@ -987,119 +877,155 @@
   day_label: NIGHT
   meter_label: LAMPS
   place: READING ROOM
-  title: "Someone left a newspaper from 1998 open in the library. Night 2 📚"
-  tags: [stickman, animation, horror, library, thestacks, story]
+  title: Someone left a newspaper from 1998 open in the library. Night 2 📚
+  tags:
+  - stickman
+  - animation
+  - horror
+  - library
+  - thestacks
+  - story
   shots:
-    - scene: room
-      recap: true
-      time: "12:02 AM"
-      light: 90
-      wall: "#5a4632"
-      lamp: false
+  - scene: room
+    recap: true
+    time: 12:02 AM
+    light: 90
+    wall: '#5a4632'
+    lamp: false
+    dark: 0.85
+    clock: true
+    people:
+    - x: 0.6
+      action: scared
+      facing: 1
+      color: '#f0b8a8'
+    you:
+      x: 0.82
+      action: idle
+      facing: -1
+    say: Last night, a stranger in the reading room saw you, and switched off her lamp.
+  - scene: title
+    say: The stacks. Night two.
+  - scene: room
+    time: 12:03 AM
+    light: 88
+    wall: '#5a4632'
+    lamp: false
+    dark: 0.85
+    clock: true
+    you:
+      x: 0.82
+      to: 0.45
+      go: 0
+      arrive: 60%
+      light: true
+      aim: -0.2
+      facing: -1
+    say: You go in with your flashlight. Nobody is there. Just a book, left open on the table.
+  - scene: closeup
+    object: phone
+    time: 12:04 AM
+    screen: City Herald · 1998
+    sub: Bound newspapers
+    message: FIRE AT HALDEN LIBRARY
+    message_cue: fire
+    say: It's a book of old newspapers, open at one page. Fire at Halden Library, 1998.
+  - scene: closeup
+    object: phone
+    time: 12:05 AM
+    screen: City Herald · 1998
+    sub: Photo
+    message: |-
+      NIGHT ARCHIVIST
+      (FACE SCRATCHED OUT)
+    message_cue: photo
+    heartbeat: scratched
+    say: Someone has circled a photo of the night archivist who died in that fire. His face is scratched out.
+  - scene: room
+    time: 12:10 AM
+    place: RETURNS DESK
+    light: 86
+    wall: '#5a4632'
+    furniture: false
+    desk: true
+    clock: true
+    rule:
+      n: 3
+      text: Don't follow turning pages
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: Back at the desk, there's a second note. Rule number three. If you hear pages turning in the dark, don't follow the sound.
+  - scene: hallway
+    time: 1:00 AM
+    place: THE STACKS
+    light: 84
+    lights: 'on'
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    say: 'Tonight''s goal: shelve the whole cart before three AM.'
+  - scene: hallway
+    time: 2:55 AM
+    light:
+    - 80
+    - 40
+    lights: dying
+    'off': go
+    dark: 0.8
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    say: At five to three, the lamps ahead of you go out. One by one. As if something is walking toward you.
+  - scene: hallway
+    time: 2:56 AM
+    light: 40
+    lights: 'off'
+    dark: 0.85
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    sfx:
+    - name: whoosh
+      at: pages
+      gain: 0.5
+    - name: whoosh
+      at: slowly
+      gain: 0.5
+    say: Then, somewhere in the dark stacks, pages turning. Slowly. Like someone reading.
+  - scene: choice
+    time: 2:57 AM
+    base:
+      scene: hallway
+      lights: 'off'
       dark: 0.85
-      clock: true
-      people: [{x: 0.6, action: scared, facing: 1, color: "#f0b8a8"}]
-      you: {x: 0.82, action: idle, facing: -1}
-      say: "Last night, a stranger in the reading room saw you, and switched off her lamp."
-    - scene: title
-      say: "The stacks. Night two."
-    - scene: room
-      time: "12:03 AM"
-      light: 88
-      wall: "#5a4632"
-      lamp: false
-      dark: 0.85
-      clock: true
-      you: {x: 0.82, to: 0.45, go: 0, arrive: "60%", light: true, aim: -0.2, facing: -1}
-      say: "You go in with your flashlight. Nobody is there. Just a book, left open on the table."
-    - scene: closeup
-      object: phone
-      time: "12:04 AM"
-      screen: City Herald · 1998
-      sub: Bound newspapers
-      message: "FIRE AT HALDEN LIBRARY"
-      message_cue: fire
-      say: "It's a book of old newspapers, open at one page. Fire at Halden Library, 1998."
-    - scene: closeup
-      object: phone
-      time: "12:05 AM"
-      screen: City Herald · 1998
-      sub: Photo
-      message: "NIGHT ARCHIVIST\n(FACE SCRATCHED OUT)"
-      message_cue: photo
-      heartbeat: scratched
-      say: "Someone has circled a photo of the night archivist who died in that fire. His face is scratched out."
-    - scene: room
-      time: "12:10 AM"
-      place: RETURNS DESK
-      light: 86
-      wall: "#5a4632"
-      furniture: false
-      desk: true
-      clock: true
-      rule: {n: 3, text: "Don't follow turning pages"}
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "Back at the desk, there's a second note. Rule number three. If you hear pages turning in the dark, don't follow the sound."
-    - scene: hallway
-      time: "1:00 AM"
-      place: THE STACKS
-      light: 84
-      lights: "on"
       shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      say: "Tonight's goal: shelve the whole cart before three AM."
-    - scene: hallway
-      time: "2:55 AM"
-      light: [80, 40]
-      lights: dying
-      "off": go
-      dark: 0.8
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      say: "At five to three, the lamps ahead of you go out. One by one. As if something is walking toward you."
-    - scene: hallway
-      time: "2:56 AM"
-      light: 40
-      lights: "off"
-      dark: 0.85
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      sfx: [{name: whoosh, at: pages, gain: 0.5}, {name: whoosh, at: slowly, gain: 0.5}]
-      say: "Then, somewhere in the dark stacks, pages turning. Slowly. Like someone reading."
-    - scene: choice
-      time: "2:57 AM"
-      base:
-        scene: hallway
-        lights: "off"
-        dark: 0.85
-        shelves: true
-        wall: "#4a3a2a"
-        floor: "#2a2018"
-        carpet: "#5a2a24"
-        ceiling: "#1e1812"
-        exit_color: "#27d466"
-      question: "Follow the sound or go back?"
-      options:
-        - {text: Follow it, cue: follow}
-        - {text: Go back, cue: back}
-      say: "Do you follow the sound... or go back to the desk?"
-    - scene: endcard
-      time: "2:57 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+      wall: '#4a3a2a'
+      floor: '#2a2018'
+      carpet: '#5a2a24'
+      ceiling: '#1e1812'
+      exit_color: '#27d466'
+    question: Follow the sound or go back?
+    options:
+    - text: Follow it
+      cue: follow
+    - text: Go back
+      cue: back
+    say: Do you follow the sound... or go back to the desk?
+  - scene: endcard
+    time: 2:57 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: stacks-3
   format: stickman
   series: THE STACKS
@@ -1107,101 +1033,154 @@
   day_label: NIGHT
   meter_label: LAMPS
   place: THE STACKS
-  title: "The library camera glitches every time I walk past it. Night 3 📚"
-  tags: [stickman, animation, horror, library, thestacks, story]
+  title: The library camera glitches every time I walk past it. Night 3 📚
+  tags:
+  - stickman
+  - animation
+  - horror
+  - library
+  - thestacks
+  - story
   shots:
-    - scene: hallway
-      recap: true
-      time: "2:57 AM"
-      light: 40
-      lights: "off"
-      dark: 0.85
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      say: "Last night, you heard pages turning in the dark stacks."
-    - scene: title
-      say: "The stacks. Night three."
-    - scene: hallway
-      time: "2:58 AM"
-      light: [40, 90]
-      lights: [["off", 0], ["on", back]]
-      dark: 0.85
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      say: "You go back to the desk. The pages stop. And behind you, the lamps come back on. The moment you're gone."
-    - scene: closeup
-      object: phone
-      time: "6:00 AM"
-      place: RETURNS DESK
-      screen: Note on the desk
-      sub: From Mrs. Pell
-      message: "HE WAS IN THE STACKS AGAIN.\nKEEP THE LAMPS ON."
-      message_cue: he
-      say: "In the morning, there's a new note. He was in the stacks again. Keep the lamps on."
-    - scene: room
-      time: "10:00 PM"
-      light: 90
-      wall: "#5a4632"
-      furniture: false
-      desk: true
+  - scene: hallway
+    recap: true
+    time: 2:57 AM
+    light: 40
+    lights: 'off'
+    dark: 0.85
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    say: Last night, you heard pages turning in the dark stacks.
+  - scene: title
+    say: The stacks. Night three.
+  - scene: hallway
+    time: 2:58 AM
+    light:
+    - 40
+    - 90
+    lights:
+    - - 'off'
+      - 0
+    - - 'on'
+      - back
+    dark: 0.85
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    say: You go back to the desk. The pages stop. And behind you, the lamps come back on. The moment you're gone.
+  - scene: closeup
+    object: phone
+    time: 6:00 AM
+    place: RETURNS DESK
+    screen: Note on the desk
+    sub: From Mrs. Pell
+    message: |-
+      HE WAS IN THE STACKS AGAIN.
+      KEEP THE LAMPS ON.
+    message_cue: he
+    say: In the morning, there's a new note. He was in the stacks again. Keep the lamps on.
+  - scene: room
+    time: 10:00 PM
+    light: 90
+    wall: '#5a4632'
+    furniture: false
+    desk: true
+    clock: true
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: 'He? You''ve only ever seen a woman in this building. And she''s terrified of something. Tonight''s goal: find out who she is.'
+  - scene: cctv
+    time: 12:00 AM
+    cam: CAM 03 · READING ROOM
+    light: 88
+    src_y: 520
+    view:
+      scene: room
+      wall: '#5a4632'
+      lamp: true
       clock: true
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "He? You've only ever seen a woman in this building. And she's terrified of something. Tonight's goal: find out who she is."
-    - scene: cctv
-      time: "12:00 AM"
-      cam: "CAM 03 · READING ROOM"
-      light: 88
-      src_y: 520
-      view: {scene: room, wall: "#5a4632", lamp: true, clock: true, people: [{x: 0.5, action: idle, facing: -1, color: "#f0b8a8"}]}
-      say: "At midnight, you check the reading room camera. She's there again, reading."
-    - scene: cctv
-      time: "12:05 AM"
-      cam: "CAM 03 · READING ROOM"
-      light: 86
-      src_y: 520
-      glitch: glitches
-      view: {scene: room, wall: "#5a4632", lamp: true, clock: true, people: [{x: 0.5, action: idle, facing: 1, color: "#f0b8a8"}]}
-      say: "You walk into the room, under the camera. Later, you check the tape. The picture glitches the whole time you're in it."
-    - scene: room
-      time: "12:06 AM"
-      place: READING ROOM
-      light: 85
-      wall: "#5a4632"
+      people:
+      - x: 0.5
+        action: idle
+        facing: -1
+        color: '#f0b8a8'
+    say: At midnight, you check the reading room camera. She's there again, reading.
+  - scene: cctv
+    time: 12:05 AM
+    cam: CAM 03 · READING ROOM
+    light: 86
+    src_y: 520
+    glitch: glitches
+    view:
+      scene: room
+      wall: '#5a4632'
+      lamp: true
+      clock: true
+      people:
+      - x: 0.5
+        action: idle
+        facing: 1
+        color: '#f0b8a8'
+    say: You walk into the room, under the camera. Later, you check the tape. The picture glitches the whole time you're in it.
+  - scene: room
+    time: 12:06 AM
+    place: READING ROOM
+    light: 85
+    wall: '#5a4632'
+    lamp: true
+    dark: 0.3
+    clock: true
+    people:
+    - x: 0.68
+      action: scared
+      facing: -1
+      color: '#f0b8a8'
+      cue: behind
+    you:
+      x: 0.4
+      action: idle
+      facing: -1
+      action_at:
+        turn: idle
+    heartbeat: behind
+    say: Then you slowly turn around. She's standing right behind you. Shaking. Holding a book like a shield.
+  - scene: choice
+    time: 12:07 AM
+    base:
+      scene: room
+      wall: '#5a4632'
       lamp: true
       dark: 0.3
       clock: true
-      people: [{x: 0.68, action: scared, facing: -1, color: "#f0b8a8", cue: behind}]
-      you: {x: 0.4, action: idle, facing: -1, action_at: {turn: idle}}
-      heartbeat: behind
-      say: "Then you slowly turn around. She's standing right behind you. Shaking. Holding a book like a shield."
-    - scene: choice
-      time: "12:07 AM"
-      base:
-        scene: room
-        wall: "#5a4632"
-        lamp: true
-        dark: 0.3
-        clock: true
-        people: [{x: 0.68, action: scared, facing: -1, color: "#f0b8a8"}]
-        you: {x: 0.4, action: idle, facing: 1}
-      question: "Talk to her or back away?"
-      options:
-        - {text: Talk to her, cue: talk}
-        - {text: Back away, cue: back}
-      say: "Do you try to talk to her... or back away slowly?"
-    - scene: endcard
-      time: "12:07 AM"
-      hold: 1.6
-      say: "Follow for night four."
-
+      people:
+      - x: 0.68
+        action: scared
+        facing: -1
+        color: '#f0b8a8'
+      you:
+        x: 0.4
+        action: idle
+        facing: 1
+    question: Talk to her or back away?
+    options:
+    - text: Talk to her
+      cue: talk
+    - text: Back away
+      cue: back
+    say: Do you try to talk to her... or back away slowly?
+  - scene: endcard
+    time: 12:07 AM
+    hold: 1.6
+    say: Follow for night four.
 - id: stacks-4
   format: stickman
   series: THE STACKS
@@ -1209,113 +1188,172 @@
   day_label: NIGHT
   meter_label: LAMPS
   place: READING ROOM
-  title: "She dropped her phone. The message said: don't talk to it. Night 4 📚"
-  tags: [stickman, animation, horror, library, thestacks, story]
+  title: 'She dropped her phone. The message said: don''t talk to it. Night 4 📚'
+  tags:
+  - stickman
+  - animation
+  - horror
+  - library
+  - thestacks
+  - story
   shots:
-    - scene: room
-      recap: true
-      time: "12:07 AM"
-      light: 85
-      wall: "#5a4632"
-      lamp: true
-      dark: 0.3
-      clock: true
-      people: [{x: 0.68, action: scared, facing: -1, color: "#f0b8a8"}]
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "Last night, the woman from the reading room was standing right behind you."
-    - scene: title
-      say: "The stacks. Night four."
-    - scene: room
-      time: "12:08 AM"
-      light: 84
-      wall: "#5a4632"
-      lamp: true
-      dark: 0.3
-      clock: true
-      people: [{x: 0.68, to: 1.2, go: runs, arrive: "end", action: idle, facing: 1, color: "#f0b8a8", action_at: {screams: scared, runs: run}}]
-      sfx: [{name: hit, at: screams}]
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "You say hello. She screams. She drops her phone, and runs into the stacks."
-    - scene: closeup
-      object: phone
-      time: "12:09 AM"
-      screen: Messages
-      sub: Mrs. Pell
-      message: "DON'T TALK TO IT.\nIT DOESN'T KNOW."
-      message_cue: don't
-      ring: 0
-      say: "Her phone lights up on the floor. A message from Mrs. Pell. Don't talk to it. It doesn't know."
-    - scene: room
-      time: "12:10 AM"
-      light: 82
-      wall: "#5a4632"
-      lamp: true
-      dark: 0.35
-      clock: true
-      you: {x: 0.5, action: idle, facing: -1}
-      camera: {zoom: [1.0, 1.2], focus: [0.5, 0.5]}
-      say: "It? Doesn't know what? You look around the empty room. Suddenly, you feel very cold. Even the lamp dims when you get close to it."
-    - scene: room
-      time: "12:20 AM"
-      place: RETURNS DESK
-      light: 80
-      wall: "#5a4632"
-      furniture: false
-      desk: true
-      clock: true
-      rule: {n: 4, text: "Never let him see the 1998 papers"}
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "On the desk, the last note. Rule number four. Never let him see the newspapers from 1998."
-    - scene: hallway
-      time: "1:00 AM"
-      place: THE STACKS
-      light: 78
-      lights: dying
-      "off": dark
+  - scene: room
+    recap: true
+    time: 12:07 AM
+    light: 85
+    wall: '#5a4632'
+    lamp: true
+    dark: 0.3
+    clock: true
+    people:
+    - x: 0.68
+      action: scared
+      facing: -1
+      color: '#f0b8a8'
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: Last night, the woman from the reading room was standing right behind you.
+  - scene: title
+    say: The stacks. Night four.
+  - scene: room
+    time: 12:08 AM
+    light: 84
+    wall: '#5a4632'
+    lamp: true
+    dark: 0.3
+    clock: true
+    people:
+    - x: 0.68
+      to: 1.2
+      go: runs
+      arrive: end
+      action: idle
+      facing: 1
+      color: '#f0b8a8'
+      action_at:
+        screams: scared
+        runs: run
+    sfx:
+    - name: hit
+      at: screams
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: You say hello. She screams. She drops her phone, and runs into the stacks.
+  - scene: closeup
+    object: phone
+    time: 12:09 AM
+    screen: Messages
+    sub: Mrs. Pell
+    message: |-
+      DON'T TALK TO IT.
+      IT DOESN'T KNOW.
+    message_cue: don't
+    ring: 0
+    say: Her phone lights up on the floor. A message from Mrs. Pell. Don't talk to it. It doesn't know.
+  - scene: room
+    time: 12:10 AM
+    light: 82
+    wall: '#5a4632'
+    lamp: true
+    dark: 0.35
+    clock: true
+    you:
+      x: 0.5
+      action: idle
+      facing: -1
+    camera:
+      zoom:
+      - 1.0
+      - 1.2
+      focus:
+      - 0.5
+      - 0.5
+    say: It? Doesn't know what? You look around the empty room. Suddenly, you feel very cold. Even the lamp dims when you get close to it.
+  - scene: room
+    time: 12:20 AM
+    place: RETURNS DESK
+    light: 80
+    wall: '#5a4632'
+    furniture: false
+    desk: true
+    clock: true
+    rule:
+      n: 4
+      text: Never let him see the 1998 papers
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: On the desk, the last note. Rule number four. Never let him see the newspapers from 1998.
+  - scene: hallway
+    time: 1:00 AM
+    place: THE STACKS
+    light: 78
+    lights: dying
+    'off': dark
+    dark: 0.8
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    say: 'Your goal: find the thing they''re all scared of, and keep her safe. But in the stacks, every lamp you walk past goes dark.'
+  - scene: hallway
+    time: 1:05 AM
+    light: 70
+    lights: 'off'
+    dark: 0.8
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 6.0
+      to_z: 4.5
+      x: 0.0
+      facing: -1
+      action: scared
+      color: '#f0b8a8'
+      cue: end
+    say: 'At the end of the aisle, she''s pointing her flashlight straight at you. She screams: go away!'
+  - scene: choice
+    time: 1:06 AM
+    base:
+      scene: hallway
+      lights: 'off'
       dark: 0.8
       shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      say: "Your goal: find the thing they're all scared of, and keep her safe. But in the stacks, every lamp you walk past goes dark."
-    - scene: hallway
-      time: "1:05 AM"
-      light: 70
-      lights: "off"
-      dark: 0.8
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      figures: [{who: person, z: 6.0, to_z: 4.5, x: 0.0, facing: -1, action: scared, color: "#f0b8a8", cue: end}]
-      say: "At the end of the aisle, she's pointing her flashlight straight at you. She screams: go away!"
-    - scene: choice
-      time: "1:06 AM"
-      base:
-        scene: hallway
-        lights: "off"
-        dark: 0.8
-        shelves: true
-        wall: "#4a3a2a"
-        floor: "#2a2018"
-        carpet: "#5a2a24"
-        ceiling: "#1e1812"
-        exit_color: "#27d466"
-        figures: [{who: person, z: 4.5, x: 0.0, facing: -1, action: scared, color: "#f0b8a8"}]
-      question: "Leave her or explain?"
-      options:
-        - {text: Leave her, cue: leave}
-        - {text: Explain, cue: explain}
-      say: "Do you leave her alone... or try to explain?"
-    - scene: endcard
-      time: "1:06 AM"
-      hold: 1.6
-      say: "Follow for night five."
-
+      wall: '#4a3a2a'
+      floor: '#2a2018'
+      carpet: '#5a2a24'
+      ceiling: '#1e1812'
+      exit_color: '#27d466'
+      figures:
+      - who: person
+        z: 4.5
+        x: 0.0
+        facing: -1
+        action: scared
+        color: '#f0b8a8'
+    question: Leave her or explain?
+    options:
+    - text: Leave her
+      cue: leave
+    - text: Explain
+      cue: explain
+    say: Do you leave her alone... or try to explain?
+  - scene: endcard
+    time: 1:06 AM
+    hold: 1.6
+    say: Follow for night five.
 - id: stacks-5
   format: stickman
   series: THE STACKS
@@ -1323,124 +1361,184 @@
   day_label: NIGHT
   meter_label: LAMPS
   place: THE STACKS
-  title: "I read the newspapers they told me never to read. Night 5 📚"
-  tags: [stickman, animation, horror, library, thestacks, story]
+  title: I read the newspapers they told me never to read. Night 5 📚
+  tags:
+  - stickman
+  - animation
+  - horror
+  - library
+  - thestacks
+  - story
   shots:
-    - scene: hallway
-      recap: true
-      time: "1:06 AM"
-      light: 70
-      lights: "off"
-      dark: 0.8
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      figures: [{who: person, z: 4.5, x: 0.0, facing: -1, action: scared, color: "#f0b8a8"}]
-      say: "Last night, the woman in the stacks screamed at you to go away."
-    - scene: title
-      say: "The stacks. Night five."
-    - scene: hallway
-      time: "1:07 AM"
-      light: 70
-      lights: "off"
-      dark: 0.8
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      figures: [{who: person, z: 4.5, to_z: 9, x: 0.0, facing: 1, action: run, speed: 1.4, color: "#f0b8a8"}]
-      say: "You try to explain. She runs, and locks herself in the reading room."
-    - scene: room
-      time: "1:30 AM"
-      place: BASEMENT
-      light: 68
-      wall: "#3f352b"
-      furniture: false
-      door: false
-      window: false
-      dark: 0.8
-      boxes: [[0.08, 0.16], [0.24, 0.12], [0.7, 0.14]]
-      you: {x: 0.45, light: true, aim: -0.3, facing: -1, action_at: {papers: crouch}}
-      say: "So you break rule four. In the basement, you find the papers from 1998."
-    - scene: closeup
-      object: phone
-      time: "1:35 AM"
-      screen: City Herald · 1998
-      sub: Page one
-      message: "NIGHT ARCHIVIST LOST\nIN LIBRARY FIRE"
-      message_cue: archivist
-      say: "Fire at Halden Library. One person didn't get out. The night archivist."
-    - scene: closeup
-      object: phone
-      time: "1:36 AM"
-      screen: City Herald · 1998
-      sub: Page one
-      message: "HE WAS SHELVING THE RETURNS\nWHEN THE LAMPS WENT OUT."
-      message_cue: shelving
-      say: "He was shelving the returns cart, when the lamps went out."
-    - scene: hallway
-      time: "2:00 AM"
-      place: THE STACKS
-      light: 65
-      lights: flicker
-      dark: 0.7
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      say: "Now Mrs. Pell's notes make sense. There's a ghost in this library. And it only walks in the dark."
-    - scene: inventory
-      time: "2:05 AM"
-      light: 62
-      items:
-        - {icon: battery, count: 1, label: battery, cue: battery}
-        - {icon: key, count: 3, label: keys, cue: keys}
-      total: {text: "1 night left", cue: night}
-      say: "One battery left. Three keys. Tomorrow is your last night. Your goal: find the ghost, and make it leave her alone."
-    - scene: hallway
-      time: "4:00 AM"
-      light: 55
-      lights: "off"
+  - scene: hallway
+    recap: true
+    time: 1:06 AM
+    light: 70
+    lights: 'off'
+    dark: 0.8
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 4.5
+      x: 0.0
+      facing: -1
+      action: scared
+      color: '#f0b8a8'
+    say: Last night, the woman in the stacks screamed at you to go away.
+  - scene: title
+    say: The stacks. Night five.
+  - scene: hallway
+    time: 1:07 AM
+    light: 70
+    lights: 'off'
+    dark: 0.8
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 4.5
+      to_z: 9
+      x: 0.0
+      facing: 1
+      action: run
+      speed: 1.4
+      color: '#f0b8a8'
+    say: You try to explain. She runs, and locks herself in the reading room.
+  - scene: room
+    time: 1:30 AM
+    place: BASEMENT
+    light: 68
+    wall: '#3f352b'
+    furniture: false
+    door: false
+    window: false
+    dark: 0.8
+    boxes:
+    - - 0.08
+      - 0.16
+    - - 0.24
+      - 0.12
+    - - 0.7
+      - 0.14
+    you:
+      x: 0.45
+      light: true
+      aim: -0.3
+      facing: -1
+      action_at:
+        papers: crouch
+    say: So you break rule four. In the basement, you find the papers from 1998.
+  - scene: closeup
+    object: phone
+    time: 1:35 AM
+    screen: City Herald · 1998
+    sub: Page one
+    message: |-
+      NIGHT ARCHIVIST LOST
+      IN LIBRARY FIRE
+    message_cue: archivist
+    say: Fire at Halden Library. One person didn't get out. The night archivist.
+  - scene: closeup
+    object: phone
+    time: 1:36 AM
+    screen: City Herald · 1998
+    sub: Page one
+    message: |-
+      HE WAS SHELVING THE RETURNS
+      WHEN THE LAMPS WENT OUT.
+    message_cue: shelving
+    say: He was shelving the returns cart, when the lamps went out.
+  - scene: hallway
+    time: 2:00 AM
+    place: THE STACKS
+    light: 65
+    lights: flicker
+    dark: 0.7
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    say: Now Mrs. Pell's notes make sense. There's a ghost in this library. And it only walks in the dark.
+  - scene: inventory
+    time: 2:05 AM
+    light: 62
+    items:
+    - icon: battery
+      count: 1
+      label: battery
+      cue: battery
+    - icon: key
+      count: 3
+      label: keys
+      cue: keys
+    total:
+      text: 1 night left
+      cue: night
+    say: 'One battery left. Three keys. Tomorrow is your last night. Your goal: find the ghost, and make it leave her alone.'
+  - scene: hallway
+    time: 4:00 AM
+    light: 55
+    lights: 'off'
+    dark: 0.85
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 3.2
+      x: 0.55
+      facing: -1
+      action: idle
+      color: '#9aa3ad'
+      cue: shape
+      stare: true
+    heartbeat: shape
+    say: At four AM, at the end of the last aisle, there's a shape in the glass of an old cabinet. Watching you.
+  - scene: choice
+    time: 4:01 AM
+    base:
+      scene: hallway
+      lights: 'off'
       dark: 0.85
       shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      figures: [{who: person, z: 3.2, x: 0.55, facing: -1, action: idle, color: "#9aa3ad", cue: shape, stare: true}]
-      heartbeat: shape
-      say: "At four AM, at the end of the last aisle, there's a shape in the glass of an old cabinet. Watching you."
-    - scene: choice
-      time: "4:01 AM"
-      base:
-        scene: hallway
-        lights: "off"
-        dark: 0.85
-        shelves: true
-        wall: "#4a3a2a"
-        floor: "#2a2018"
-        carpet: "#5a2a24"
-        ceiling: "#1e1812"
-        exit_color: "#27d466"
-        figures: [{who: person, z: 3.2, x: 0.55, facing: -1, action: idle, color: "#9aa3ad", stare: true}]
-      question: "Face it or run?"
-      options:
-        - {text: Face it, cue: face}
-        - {text: Run, cue: run}
-      say: "Do you face it... or run?"
-    - scene: endcard
-      time: "4:01 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+      wall: '#4a3a2a'
+      floor: '#2a2018'
+      carpet: '#5a2a24'
+      ceiling: '#1e1812'
+      exit_color: '#27d466'
+      figures:
+      - who: person
+        z: 3.2
+        x: 0.55
+        facing: -1
+        action: idle
+        color: '#9aa3ad'
+        stare: true
+    question: Face it or run?
+    options:
+    - text: Face it
+      cue: face
+    - text: Run
+      cue: run
+    say: Do you face it... or run?
+  - scene: endcard
+    time: 4:01 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: stacks-6
   format: stickman
   series: THE STACKS
@@ -1448,126 +1546,195 @@
   day_label: NIGHT
   meter_label: LAMPS
   place: THE STACKS
-  title: "On my last night at the library, I found out who the ghost was. Night 6 📚"
-  tags: [stickman, animation, horror, library, thestacks, story]
+  title: On my last night at the library, I found out who the ghost was. Night 6 📚
+  tags:
+  - stickman
+  - animation
+  - horror
+  - library
+  - thestacks
+  - story
   shots:
-    - scene: hallway
-      recap: true
-      time: "4:01 AM"
-      light: 55
-      lights: "off"
-      dark: 0.85
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      figures: [{who: person, z: 3.2, x: 0.55, facing: -1, action: idle, color: "#9aa3ad", stare: true}]
-      say: "Last night, you saw a shape watching you from the glass."
-    - scene: title
-      say: "The stacks. Night six."
-    - scene: hallway
-      time: "4:02 AM"
-      light: 50
-      lights: "off"
-      dark: 0.85
-      shelves: true
-      wall: "#4a3a2a"
-      floor: "#2a2018"
-      carpet: "#5a2a24"
-      ceiling: "#1e1812"
-      exit_color: "#27d466"
-      figures: [{who: person, z: 3.2, x: 0.55, facing: -1, action: idle, color: "#9aa3ad", stare: true}]
-      camera: {zoom: [1.0, 1.4], focus: [0.6, 0.5]}
-      say: "You face it. It's your reflection. Your shape. Your keys. But the glass shows the aisle behind you, right through you."
-    - scene: closeup
-      object: phone
-      time: "4:10 AM"
-      place: BASEMENT
-      screen: City Herald · 1998
-      sub: Photo, cleaned
-      message: "NIGHT ARCHIVIST, 1998"
-      message_cue: photo
-      say: "You run down to the basement, and wipe the dust off the photo of the night archivist."
-    - scene: closeup
-      object: phone
-      time: "4:11 AM"
-      screen: City Herald · 1998
-      sub: Photo, cleaned
-      message: "IT'S YOU."
-      message_cue: you
-      heartbeat: face
-      say: "It's you. Your face. Your shirt. The same three keys."
-    - scene: room
-      time: "4:20 AM"
-      place: RETURNS DESK
-      light: 45
-      wall: "#5a4632"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.5
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "The notes on the desk were never for you. They were for her. The new night archivist."
-    - scene: room
-      time: "4:30 AM"
-      place: READING ROOM
-      light: 40
-      wall: "#5a4632"
-      lamp: true
-      clock: true
-      people: [{x: 0.6, action: scared, facing: 1, color: "#f0b8a8"}]
-      you: {x: 0.3, action: idle, facing: 1}
-      say: "And the thing she was told to fear, the thing that only walks in the dark... is you."
-    - scene: room
-      time: "6:00 AM"
-      place: RETURNS DESK
-      light: 100
-      wall: "#5a4632"
+  - scene: hallway
+    recap: true
+    time: 4:01 AM
+    light: 55
+    lights: 'off'
+    dark: 0.85
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 3.2
+      x: 0.55
+      facing: -1
+      action: idle
+      color: '#9aa3ad'
+      stare: true
+    say: Last night, you saw a shape watching you from the glass.
+  - scene: title
+    say: The stacks. Night six.
+  - scene: hallway
+    time: 4:02 AM
+    light: 50
+    lights: 'off'
+    dark: 0.85
+    shelves: true
+    wall: '#4a3a2a'
+    floor: '#2a2018'
+    carpet: '#5a2a24'
+    ceiling: '#1e1812'
+    exit_color: '#27d466'
+    figures:
+    - who: person
+      z: 3.2
+      x: 0.55
+      facing: -1
+      action: idle
+      color: '#9aa3ad'
+      stare: true
+    camera:
+      zoom:
+      - 1.0
+      - 1.4
+      focus:
+      - 0.6
+      - 0.5
+    say: You face it. It's your reflection. Your shape. Your keys. But the glass shows the aisle behind you, right through you.
+  - scene: closeup
+    object: phone
+    time: 4:10 AM
+    place: BASEMENT
+    screen: City Herald · 1998
+    sub: Photo, cleaned
+    message: NIGHT ARCHIVIST, 1998
+    message_cue: photo
+    say: You run down to the basement, and wipe the dust off the photo of the night archivist.
+  - scene: closeup
+    object: phone
+    time: 4:11 AM
+    screen: City Herald · 1998
+    sub: Photo, cleaned
+    message: IT'S YOU.
+    message_cue: you
+    heartbeat: face
+    say: It's you. Your face. Your shirt. The same three keys.
+  - scene: room
+    time: 4:20 AM
+    place: RETURNS DESK
+    light: 45
+    wall: '#5a4632'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.5
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: The notes on the desk were never for you. They were for her. The new night archivist.
+  - scene: room
+    time: 4:30 AM
+    place: READING ROOM
+    light: 40
+    wall: '#5a4632'
+    lamp: true
+    clock: true
+    people:
+    - x: 0.6
+      action: scared
+      facing: 1
+      color: '#f0b8a8'
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: And the thing she was told to fear, the thing that only walks in the dark... is you.
+  - scene: room
+    time: 6:00 AM
+    place: RETURNS DESK
+    light: 100
+    wall: '#5a4632'
+    furniture: false
+    desk: true
+    clock: true
+    people:
+    - x: 0.55
+      action: idle
+      facing: 1
+      color: '#f0b8a8'
+    - x: 0.95
+      to: 0.75
+      go: 0
+      arrive: 30%
+      action: walk
+      facing: -1
+      color: '#c9b8e0'
+      action_at:
+        right: idle
+    you:
+      x: 0.2
+      action: idle
+      facing: 1
+    say: At six, Mrs. Pell walks in, right past you. Was he here? Yes, the new girl whispers. He shelved the whole cart again.
+  - scene: room
+    time: 6:01 AM
+    light: 100
+    wall: '#5a4632'
+    furniture: false
+    desk: true
+    clock: true
+    people:
+    - x: 0.55
+      action: idle
+      facing: 1
+      color: '#f0b8a8'
+    - x: 0.75
+      action: idle
+      facing: -1
+      color: '#c9b8e0'
+    you:
+      x: 0.2
+      action: idle
+      facing: 1
+    say: Mrs. Pell smiles, sadly. He always does.
+  - scene: choice
+    time: 6:02 AM
+    base:
+      scene: room
+      wall: '#5a4632'
       furniture: false
       desk: true
       clock: true
       people:
-        - {x: 0.55, action: idle, facing: 1, color: "#f0b8a8"}
-        - {x: 0.95, to: 0.75, go: 0, arrive: "30%", action: walk, facing: -1, color: "#c9b8e0", action_at: {right: idle}}
-      you: {x: 0.2, action: idle, facing: 1}
-      say: "At six, Mrs. Pell walks in, right past you. Was he here? Yes, the new girl whispers. He shelved the whole cart again."
-    - scene: room
-      time: "6:01 AM"
-      light: 100
-      wall: "#5a4632"
-      furniture: false
-      desk: true
-      clock: true
-      people:
-        - {x: 0.55, action: idle, facing: 1, color: "#f0b8a8"}
-        - {x: 0.75, action: idle, facing: -1, color: "#c9b8e0"}
-      you: {x: 0.2, action: idle, facing: 1}
-      say: "Mrs. Pell smiles, sadly. He always does."
-    - scene: choice
-      time: "6:02 AM"
-      base:
-        scene: room
-        wall: "#5a4632"
-        furniture: false
-        desk: true
-        clock: true
-        people:
-          - {x: 0.55, action: idle, facing: 1, color: "#f0b8a8"}
-          - {x: 0.75, action: idle, facing: -1, color: "#c9b8e0"}
-        you: {x: 0.2, action: idle, facing: 1}
-      question: "Keep shelving or walk out?"
-      options:
-        - {text: Keep shelving, cue: keep}
-        - {text: Walk out, cue: walk}
-      say: "Do you keep doing your job... or finally walk out into the morning?"
-    - scene: endcard
-      time: "6:02 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+      - x: 0.55
+        action: idle
+        facing: 1
+        color: '#f0b8a8'
+      - x: 0.75
+        action: idle
+        facing: -1
+        color: '#c9b8e0'
+      you:
+        x: 0.2
+        action: idle
+        facing: 1
+    question: Keep shelving or walk out?
+    options:
+    - text: Keep shelving
+      cue: keep
+    - text: Walk out
+      cue: walk
+    say: Do you keep doing your job... or finally walk out into the morning?
+  - scene: endcard
+    time: 6:02 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
