@@ -370,6 +370,29 @@ def room(cv, shot, t):
         gy = float(mq.get("ground", FLOOR_Y + 60))
         F.draw_shadow(ctx, mx_, gy, 1.1, 0.25)
         F.draw_stickman(ctx, mpose, mx_, gy, float(mq.get("scale", 1.1)), facing, color="#d8c7ad", outline="#6d5d47")
+    stares = []
+    for k, pp in enumerate(o.get("people") or []):  # other people: [{x, action, facing, color, cue, fade, stare, scale}]
+        if t < shot.cue(pp.get("cue"), 0.0):
+            continue
+        a = 1.0 - clamp((t - shot.cue(pp.get("fade"), 1e9)) / 0.6)
+        if a <= 0:
+            continue
+        sc = float(pp.get("scale", 1.2))
+        pg = float(pp.get("ground", 1430))
+        px = float(pp.get("x", 0.6)) * W
+        if pp.get("to") is not None:
+            pr = clamp((t - shot.cue(pp.get("go"), 0.0)) / max(shot.cue(pp.get("arrive"), shot.dur) - shot.cue(pp.get("go"), 0.0), 0.01))
+            px += (float(pp["to"]) * W - px) * pr
+        act = pp.get("action", "idle")
+        if pp.get("action_at"):
+            for cue, act2 in pp["action_at"].items():
+                if t >= shot.cue(cue, 1e9):
+                    act = act2
+        F.draw_shadow(ctx, px, pg, sc, 0.3 * a)
+        pj = F.draw_stickman(ctx, F.pose_for(act, t + k * 0.9, seed=k), px, pg, sc, int(pp.get("facing", -1)),
+                             color=pp.get("color", "#e6d3b3"), alpha=a)
+        if pp.get("stare"):
+            stares.append((pj, sc, int(pp.get("facing", -1))))
     for box in o.get("boxes", []) or []:
         bx, bw = float(box[0]) * W, float(box[1]) * W
         ctx.rectangle(bx, FLOOR_Y + 30 - bw * 0.7, bw, bw * 0.7)
@@ -388,6 +411,8 @@ def room(cv, shot, t):
             creature_eyes(ctx, cj, sc, fc, a)
     if lamp_on > 0:
         glow(ctx, 770, 900, 300, "#ffd89a", 0.12 * lamp_on)
+    for sj, sc, fc in stares:
+        eyes(ctx, sj.head[0] + 4 * sc * fc, sj.head[1] - 2 * sc, 3.2 * sc, 0.9, gap=11 * sc)
 
 
 def _apply_dark(cv, shot, t, dark, beam, hero_joints=None, extra=(), beam_len=950, spread=0.3):
@@ -457,6 +482,20 @@ def hallway(cv, shot, t):
         pts = [proj(sx, -1, z), proj(sx, 0.75, z), proj(sx, 0.75, z + 0.5), proj(sx, -1, z + 0.5)]
         fill(ctx, pts, shade("#2a1a10", sh))
         inner = [proj(sx, -1, z + 0.04), proj(sx, 0.7, z + 0.04), proj(sx, 0.7, z + 0.46), proj(sx, -1, z + 0.46)]
+        if o.get("shelves"):  # a library: tall bookcases instead of doors
+            case = [proj(sx, -1, z - 0.3), proj(sx, 0.95, z - 0.3), proj(sx, 0.95, z + 0.8), proj(sx, -1, z + 0.8)]
+            fill(ctx, case, shade("#3a2414", sh))
+            spines = ["#8e3b2f", "#2f5d7a", "#6b7a3a", "#a07a2c", "#5a3a6b", "#7a2f3f"]
+            for row in range(5):
+                y0, y1 = -0.95 + row * 0.38, -0.95 + row * 0.38 + 0.3
+                for b in range(7):
+                    za, zb = z - 0.27 + b * 0.15, z - 0.27 + b * 0.15 + 0.11
+                    top = y1 - 0.06 * ((b * 3 + row) % 3)
+                    fill(ctx, [proj(sx, y0, za), proj(sx, top, za), proj(sx, top, zb), proj(sx, y0, zb)],
+                         shade(spines[(b + row * 2 + k) % len(spines)], sh * 0.9))
+                fill(ctx, [proj(sx, y0 - 0.04, z - 0.3), proj(sx, y0, z - 0.3), proj(sx, y0, z + 0.8),
+                           proj(sx, y0 - 0.04, z + 0.8)], shade("#22150c", sh))
+            continue
         if o.get("shops"):  # a mall: wide dark shop windows with a sign strip above
             shop = [proj(sx, -1, z - 0.25), proj(sx, 0.55, z - 0.25), proj(sx, 0.55, z + 0.75), proj(sx, -1, z + 0.75)]
             fill(ctx, shop, shade("#1b2a33", sh))

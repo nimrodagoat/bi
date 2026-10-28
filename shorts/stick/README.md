@@ -43,7 +43,7 @@ Cues (when something happens) are a word the narrator says in that shot
   office wall of screens instead of the window), `desk`, `door: false`, `clock`,
   `mannequins: [{x, facing, turn: cue}]` (pale figures that snap round at the cue), `dark` (0-1), `you: {x, to, action, move, then, light, aim, facing, go, arrive}`,
   `creatures: [{x, facing, cue, action, scale, to}]`, `lamp`, `door_open`,
-  `barricade: true | {start, end, remove}`, `window`, `picture`, `dark`/`lamp`/`door_open` also take `[[value, cue], ...]`, `window_view: forest` (pine tops instead of a city),
+  `barricade: true | {start, end, remove}`, `window`, `picture`, `dark`/`lamp`/`door_open` also take `[[value, cue], ...]`, `window_view: forest` (pine tops instead of a city), `people: [{x, action, facing, color, cue, fade, to, go, arrive, action_at, stare}]` (other people in the room),
   `window_lights: [{x, y, color, cue, n, drift}]` (glows outside the window, 0-1 inside it), `on_air: on|off|flicker` (or `[[state, cue], ...]`: a radio studio's ON AIR sign).
 - `hallway`: corridor seen from the door. `lights: on|off|flicker|dying` (`off: cue` for dying),
   `dark`, `rolling: {from, to}` (a flashlight rolling away), `figures: [{who: creature|person, z, x, cue, to_z}]`,
@@ -76,7 +76,7 @@ Cues (when something happens) are a word the narrator says in that shot
 - `endcard`: "follow for day N+1"; flips to the next day at the end. `final: true` on the
   last part: "THE END?" and "follow for a new story".
 
-Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a garage or a
+Hallway `shelves: true` turns the doors into tall bookcases (library stacks). Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a garage or a
 stadium tunnel); a `who: person` figure can have `stare: true` (shining eyes).
 Street: `floodlights: cue` (bright lights ahead), `dawn: true` (sunrise sky), `rooftop: true`, `sea: true` (open water instead
 of buildings: a causeway or pier; pair it with a blue `fog` for rising water),
