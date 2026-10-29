@@ -353,7 +353,7 @@ def door(ctx, x, y, w, h, alpha=1.0, color="#6b3f22", open_amount=0.0, dark=Fals
     ctx.fill()
 
 
-def window(ctx, x, y, w, h, t=0.0, moon=True, alpha=1.0, city_lights=0.0, forest=False):
+def window(ctx, x, y, w, h, t=0.0, moon=True, alpha=1.0, city_lights=0.0, forest=False, cinema=False):
     g = cairo.LinearGradient(0, y, 0, y + h)
     g.add_color_stop_rgb(0, *rgb("#0b1530"))
     g.add_color_stop_rgb(1, *rgb("#1c2440"))
@@ -364,6 +364,21 @@ def window(ctx, x, y, w, h, t=0.0, moon=True, alpha=1.0, city_lights=0.0, forest
         glow(ctx, x + w * 0.72, y + h * 0.25, w * 0.35, "#dfe7ff", 0.25)
         set_color(ctx, "#e8ecf5")
         ctx.arc(x + w * 0.72, y + h * 0.25, w * 0.07, 0, 2 * math.pi)
+        ctx.fill()
+    if cinema:  # a projection booth: the hall below, the lit screen far away, rows of heads
+        ctx.rectangle(x, y, w, h)
+        set_color(ctx, "#050507")
+        ctx.fill()
+        sx, sy, sw, sh = x + w * 0.18, y + h * 0.14, w * 0.64, h * 0.34
+        glow(ctx, sx + sw / 2, sy + sh / 2, w * 0.5, "#cfd8ff", 0.25)
+        ctx.rectangle(sx, sy, sw, sh)
+        set_color(ctx, "#dfe6ff", 0.85 + 0.1 * math.sin(t * 7))
+        ctx.fill()
+        for r in range(3):
+            for c in range(9):
+                hx = x + w * (0.08 + c * 0.105) + (r % 2) * 8
+                ctx.arc(hx, y + h * (0.66 + r * 0.12), 7 + r * 2, 0, 2 * math.pi)
+        set_color(ctx, "#15151c")
         ctx.fill()
     if forest:  # pine tops below a high window (a lookout tower)
         for row, (base, col) in enumerate(((0.62, "#0c1424"), (0.82, "#070b14"))):
@@ -383,7 +398,7 @@ def window(ctx, x, y, w, h, t=0.0, moon=True, alpha=1.0, city_lights=0.0, forest
             ctx.rectangle(x, y + h * base + h * 0.05, w, h * (1 - base))
             set_color(ctx, col)
             ctx.fill()
-    bx = x + w if forest else x
+    bx = x + w if forest or cinema else x
     k = 0
     while bx < x + w:
         bw = w * (0.12 + 0.08 * ((k * 31) % 4) / 3)

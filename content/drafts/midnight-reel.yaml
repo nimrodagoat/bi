@@ -1,0 +1,568 @@
+# MIDNIGHT REEL (6 parts). You are the night projectionist at the Rialto, a
+# 90-year-old cinema, for a week of six midnight shows.
+# Cast: you (projectionist), Vera (the old manager, in person), the audience
+# (silent figures that fill the seats when the projector runs; no tickets sold).
+# Core idea, said plainly: the audience comes for one thing, a good story.
+# Reel seven has no label: it shows the Rialto live, and it shows you. Little
+# clues every night: a clock, a night counter, captions under you on that reel.
+# Twist: you are the story. Your week has a counter, rules and a choice at the
+# end of every part, because someone is watching it on a small glowing screen.
+- id: reel-1
+  format: stickman
+  series: MIDNIGHT REEL
+  day: 1
+  day_label: NIGHT
+  meter_label: BULB
+  place: THE RIALTO
+  title: "I run the midnight film at an old cinema. Zero tickets sold. Every seat full 🎞️"
+  tags: [stickman, animation, horror, cinema, midnightreel, story]
+  shots:
+    - scene: cinema
+      time: "11:30 PM"
+      light: 100
+      audience: 0
+      screen: "THE RIALTO"
+      say: "You take a job nobody else wants. Night projectionist at the Rialto, a ninety-year-old cinema, for six midnight shows."
+    - scene: room
+      time: "11:35 PM"
+      place: PROJECTION BOOTH
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.7, action: idle, facing: -1, color: "#e0b070", cue: vera}]
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "The manager, Vera, shows you the booth. Then she gives you her rules. Very seriously."
+    - scene: title
+      say: "Midnight reel. Night one."
+    - scene: room
+      time: "11:40 PM"
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.7, action: idle, facing: -1, color: "#e0b070"}]
+      rule: {n: 1, text: Play the reels in order}
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "Rule number one. Play the reels in order, one to six. Never play a reel without a label."
+    - scene: room
+      time: "11:42 PM"
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.7, action: idle, facing: -1, color: "#e0b070"}]
+      rule: {n: 2, text: Never watch the audience}
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "Rule number two. While the film is running, watch the screen. Never look at the audience."
+    - scene: inventory
+      time: "11:45 PM"
+      light: 100
+      items:
+        - {icon: key, count: 1, label: booth key, cue: key}
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+        - {icon: can, count: 6, label: film reels, cue: six}
+      total: {text: "0 tickets sold", cue: zero}
+      say: "One booth key. One flashlight. Six reels of film. And zero tickets sold for tonight."
+    - scene: cinema
+      time: "12:00 AM"
+      light: 98
+      audience: 0
+      screen: "REEL 1"
+      say: "At midnight, you start reel one. The hall is completely empty."
+    - scene: cctv
+      time: "12:30 AM"
+      cam: "CAM 02 · HALL"
+      light: 96
+      src_y: 700
+      view: {scene: cinema, audience: 0.9, screen: "REEL 1"}
+      heartbeat: full
+      say: "At twelve thirty, you check the hall camera. Every seat is full. Nobody came in."
+    - scene: room
+      time: "2:00 AM"
+      light: 92
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      you: {x: 0.4, action: idle, facing: 1}
+      camera: {zoom: [1.0, 1.25], focus: [0.4, 0.55]}
+      say: "When the film ends, the seats are empty again. And on your desk, there's a reel you've never seen. No label."
+    - scene: choice
+      time: "2:01 AM"
+      base:
+        scene: room
+        wall: "#3a3030"
+        furniture: false
+        desk: true
+        clock: true
+        window_view: cinema
+        you: {x: 0.4, action: idle, facing: 1}
+      question: "Play it or lock it away?"
+      options:
+        - {text: Play it, cue: play}
+        - {text: Lock it away, cue: lock}
+      say: "Do you play it... or lock it away?"
+    - scene: endcard
+      time: "2:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: reel-2
+  format: stickman
+  series: MIDNIGHT REEL
+  day: 2
+  day_label: NIGHT
+  meter_label: BULB
+  place: PROJECTION BOOTH
+  title: "The reel with no label showed my cinema. Live. Night 2 🎞️"
+  tags: [stickman, animation, horror, cinema, midnightreel, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "2:01 AM"
+      light: 92
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Last night, an extra reel with no label appeared on your desk."
+    - scene: title
+      say: "Midnight reel. Night two."
+    - scene: room
+      time: "11:55 PM"
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      you: {x: 0.6, to: 0.4, go: 0, arrive: "50%", facing: -1}
+      say: "You lock it in a drawer. But the next night, it's already in the projector. Running."
+    - scene: cinema
+      time: "12:00 AM"
+      place: THE RIALTO
+      light: 98
+      audience: 0.9
+      screen: [["LIVE: THE LOBBY", 0], ["LIVE: THE BOOTH", changes]]
+      screen_size: 90
+      say: "On the screen is the Rialto's lobby. Right now. Then the picture changes. It's your booth. And something is standing behind you."
+    - scene: room
+      time: "12:01 AM"
+      place: PROJECTION BOOTH
+      light: 96
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      door_open: [[0, 0], [0.8, creaks]]
+      sfx: [{name: whoosh, at: spin}, {name: click, at: creaks}]
+      you: {x: 0.4, action: idle, facing: -1, action_at: {creaks: scared}}
+      say: "You spin around. Nobody's there. One minute later, exactly like on the screen, the booth door creaks open."
+    - scene: room
+      time: "12:02 AM"
+      light: 96
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      door_open: 0.8
+      people: [{x: 0.82, action: idle, facing: -1, color: "#e0b070"}]
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "It's Vera. She sees the reel, and goes pale. That's reel seven, she whispers. It shows what happens next."
+    - scene: room
+      time: "12:05 AM"
+      light: 95
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.82, action: idle, facing: -1, color: "#e0b070"}]
+      rule: {n: 3, text: Never let the screen go dark}
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Rule number three. Never let the screen go dark while they're in their seats."
+    - scene: cinema
+      time: "2:00 AM"
+      light: [90, 40]
+      audience: 0.9
+      flicker: true
+      screen: "REEL 5"
+      say: "Tonight's goal: get to the end of reel six. But at two AM, the projector bulb starts to flicker."
+    - scene: choice
+      time: "2:01 AM"
+      base: {scene: cinema, audience: 0.9, flicker: true, screen: "REEL 5"}
+      question: "Change the bulb or keep it running?"
+      options:
+        - {text: Change it, cue: change}
+        - {text: Keep it running, cue: keep}
+      say: "Changing it means one minute of darkness. Do you change the bulb... or keep it running?"
+    - scene: endcard
+      time: "2:01 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: reel-3
+  format: stickman
+  series: MIDNIGHT REEL
+  day: 3
+  day_label: NIGHT
+  meter_label: BULB
+  place: THE RIALTO
+  title: "I broke the rule and looked at the audience. Night 3 🎞️"
+  tags: [stickman, animation, horror, cinema, midnightreel, story]
+  shots:
+    - scene: cinema
+      recap: true
+      time: "2:01 AM"
+      light: 40
+      audience: 0.9
+      flicker: true
+      screen: "REEL 5"
+      say: "Last night, the projector bulb started to die in the middle of the show."
+    - scene: title
+      say: "Midnight reel. Night three."
+    - scene: cinema
+      time: "2:02 AM"
+      light: [40, 20]
+      audience: 0.9
+      flicker: true
+      screen: "REEL 6"
+      say: "You keep it running. It flickers until dawn, but it never goes dark. And the audience never moves."
+    - scene: room
+      time: "9:00 AM"
+      place: PROJECTION BOOTH
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.7, action: idle, facing: -1, color: "#e0b070"}]
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "In the morning, Vera explains. The audience has come since the cinema opened. Nobody knows who they are. They only come when a film is playing, and they only want one thing. A good story."
+    - scene: room
+      time: "11:50 PM"
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Tonight's goal: keep reel seven out of the projector."
+    - scene: cinema
+      time: "12:00 AM"
+      place: THE RIALTO
+      light: 100
+      audience: 0.9
+      screen: [["LIVE: THE BOOTH", 0], ["12:00 AM", clock]]
+      screen_size: 110
+      say: "But at midnight, reel seven is back. And in the corner of the picture, there's a little clock. It shows the exact time in your booth."
+    - scene: cinema
+      time: "1:00 AM"
+      light: 100
+      audience: 0.9
+      turn: turns
+      screen: "LIVE: THE BOOTH"
+      screen_size: 90
+      heartbeat: turns
+      say: "At one AM, you break rule two. You look down at the audience. And every head in the hall turns around... and looks up at your window."
+    - scene: choice
+      time: "1:01 AM"
+      base: {scene: cinema, audience: 0.9, turn: 0, screen: "LIVE: THE BOOTH", screen_size: 90}
+      question: "Look away or wave?"
+      options:
+        - {text: Look away, cue: look}
+        - {text: Wave, cue: wave}
+      say: "Do you look away... or wave back?"
+    - scene: endcard
+      time: "1:01 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: reel-4
+  format: stickman
+  series: MIDNIGHT REEL
+  day: 4
+  day_label: NIGHT
+  meter_label: BULB
+  place: THE RIALTO
+  title: "Reel seven showed my exact thoughts as subtitles. Night 4 🎞️"
+  tags: [stickman, animation, horror, cinema, midnightreel, story]
+  shots:
+    - scene: cinema
+      recap: true
+      time: "1:01 AM"
+      light: 100
+      audience: 0.9
+      turn: 0
+      screen: "LIVE: THE BOOTH"
+      screen_size: 90
+      say: "Last night, the whole audience turned around and looked up at you."
+    - scene: title
+      say: "Midnight reel. Night four."
+    - scene: room
+      time: "1:02 AM"
+      place: PROJECTION BOOTH
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      you: {x: 0.45, action: knock, facing: 1}
+      say: "You wave. Slowly, the whole audience waves back. Then, one by one, they point at the screen."
+    - scene: cinema
+      time: "1:03 AM"
+      place: THE RIALTO
+      light: 100
+      audience: 0.9
+      screen: [["LIVE: THE BOOTH", 0], ["\"WHY ARE THEY POINTING?\"", words]]
+      screen_size: 70
+      say: "Reel seven is playing again. On the screen, you, in the booth. And under you, words, like subtitles. Your exact thoughts."
+    - scene: room
+      time: "9:00 AM"
+      place: PROJECTION BOOTH
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.7, action: idle, facing: -1, color: "#e0b070"}]
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "Vera says it happens every year. They choose one projectionist, and they watch his story, every night, until it ends."
+    - scene: room
+      time: "9:05 AM"
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.7, action: idle, facing: -1, color: "#e0b070"}]
+      rule: {n: 4, text: Never stop a story early}
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "Rule number four. Never stop a story before the end. They hate that more than anything."
+    - scene: room
+      time: "11:50 PM"
+      light: 100
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Your goal: finish the festival. Two more nights. Then leave, and never come back."
+    - scene: cinema
+      time: "3:00 AM"
+      place: THE RIALTO
+      light: 95
+      audience: 0.9
+      screen: "LIVE: THE BOOTH DOOR"
+      screen_size: 80
+      heartbeat: tall
+      say: "At three AM, reel seven shows something new. Your booth door, opening. And something tall, stepping in."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: cinema, audience: 0.9, screen: "LIVE: THE BOOTH DOOR", screen_size: 80}
+      question: "Block the door or keep watching?"
+      options:
+        - {text: Block the door, cue: block}
+        - {text: Keep watching, cue: watching}
+      say: "On the screen, it hasn't happened yet. Do you block the door... or keep watching to see what it is?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: reel-5
+  format: stickman
+  series: MIDNIGHT REEL
+  day: 5
+  day_label: NIGHT
+  meter_label: BULB
+  place: PROJECTION BOOTH
+  title: "Every old projectionist's reel ends on night six. Night 5 🎞️"
+  tags: [stickman, animation, horror, cinema, midnightreel, story]
+  shots:
+    - scene: cinema
+      recap: true
+      time: "3:01 AM"
+      light: 95
+      audience: 0.9
+      screen: "LIVE: THE BOOTH DOOR"
+      screen_size: 80
+      say: "Last night, reel seven showed something tall stepping into your booth."
+    - scene: title
+      say: "Midnight reel. Night five."
+    - scene: room
+      time: "3:02 AM"
+      place: PROJECTION BOOTH
+      light: 90
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      barricade: {start: 0, end: "60%"}
+      sfx: [{name: knock, at: knocks}, {name: knock, at: once}]
+      you: {x: 0.6, action: push, facing: 1}
+      say: "You push a film cabinet against the door. Something knocks, once. Then it walks away."
+    - scene: room
+      time: "9:00 AM"
+      place: STORE ROOM
+      light: 85
+      wall: "#3f352b"
+      furniture: false
+      door: false
+      window: false
+      dark: 0.7
+      boxes: [[0.08, 0.16], [0.24, 0.12], [0.7, 0.14]]
+      you: {x: 0.45, light: true, aim: -0.3, facing: -1, action_at: {reels: crouch}}
+      say: "In the morning, you search the store room. There's a box of old reel sevens. One for every projectionist, every year."
+    - scene: closeup
+      object: phone
+      time: "9:10 AM"
+      screen: "Reel 7 · 1987"
+      sub: Last frame
+      message: "NIGHT 6\nTHE END?"
+      message_cue: same
+      say: "You check the last frame of each one. They all end the same way. Night six. The end."
+    - scene: room
+      time: "9:20 AM"
+      place: PROJECTION BOOTH
+      light: 85
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      people: [{x: 0.7, action: idle, facing: -1, color: "#e0b070"}]
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "Vera won't look at you. After night six, she says, none of them ever came back to work."
+    - scene: inventory
+      time: "11:00 PM"
+      light: 80
+      items:
+        - {icon: can, count: 1, label: reel left, cue: reel}
+        - {icon: battery, count: 1, label: spare bulb, cue: bulb}
+      total: {text: "1 night left", cue: night}
+      say: "One reel left. One spare bulb. One night. Your goal: make it to the end of the festival."
+    - scene: cinema
+      time: "12:00 AM"
+      place: THE RIALTO
+      light: 80
+      audience: 1.0
+      turn: 0
+      screen: "TOMORROW: THE END"
+      screen_size: 80
+      say: "At midnight, every seat is taken. And reel seven is waiting in the projector, with a title card. Tomorrow: the end."
+    - scene: choice
+      time: "12:01 AM"
+      base: {scene: cinema, audience: 1.0, turn: 0, screen: "TOMORROW: THE END", screen_size: 80}
+      question: "Burn the reels or play the ending?"
+      options:
+        - {text: Burn them, cue: burn}
+        - {text: Play the ending, cue: play}
+      say: "Do you burn every reel seven... or play the ending tomorrow?"
+    - scene: endcard
+      time: "12:01 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: reel-6
+  format: stickman
+  series: MIDNIGHT REEL
+  day: 6
+  day_label: NIGHT
+  meter_label: BULB
+  place: THE RIALTO
+  title: "On the last night, I found out who the audience really is. Night 6 🎞️"
+  tags: [stickman, animation, horror, cinema, midnightreel, story]
+  shots:
+    - scene: cinema
+      recap: true
+      time: "12:01 AM"
+      light: 80
+      audience: 1.0
+      turn: 0
+      screen: "TOMORROW: THE END"
+      screen_size: 80
+      say: "Last night, reel seven promised you an ending."
+    - scene: title
+      say: "Midnight reel. Night six."
+    - scene: cinema
+      time: "12:00 AM"
+      light: 75
+      audience: 1.0
+      screen: "REEL 7"
+      say: "The last night. You play reel seven. You have to see how it ends."
+    - scene: cinema
+      time: "12:05 AM"
+      light: 70
+      audience: 1.0
+      screen: [["LIVE: THE BOOTH", 0], ["NIGHT 6 · 12:05 AM", corner]]
+      screen_size: 80
+      say: "On the screen is you, in the booth. In the corner, a clock with your time. A counter that says night six. A little meter, running low."
+    - scene: room
+      time: "12:06 AM"
+      place: PROJECTION BOOTH
+      light: 65
+      wall: "#3a3030"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: cinema
+      you: {x: 0.45, action: scared, facing: 1}
+      camera: {zoom: [1.0, 1.3], focus: [0.45, 0.45]}
+      say: "And you realize your whole week looked like that. A counter. Rules on cards. And a question at the end of every night."
+    - scene: cinema
+      time: "12:07 AM"
+      light: 60
+      audience: 1.0
+      screen: "FOLLOW FOR A NEW STORY"
+      screen_size: 74
+      say: "Then the screen shows the last line of reel seven. Follow for a brand new story."
+    - scene: cinema
+      time: "12:08 AM"
+      light: 55
+      audience: 1.0
+      turn: turn
+      screen: "YOU"
+      screen_size: 160
+      heartbeat: turn
+      say: "The audience turns around. Not to your window. Past it. Toward someone holding a small, glowing screen."
+    - scene: cinema
+      time: "12:09 AM"
+      light: 50
+      audience: 1.0
+      turn: 0
+      screen: "YOUR CHOICE"
+      screen_size: 120
+      say: "Because you were never the one watching. You are the story. And right now, someone is watching you. Deciding how it ends."
+    - scene: choice
+      time: "12:10 AM"
+      base: {scene: cinema, audience: 1.0, turn: 0, screen: "YOUR CHOICE", screen_size: 120}
+      question: "Set them free or one more night?"
+      options:
+        - {text: Set free, cue: let}
+        - {text: One more, cue: one}
+      say: "So, you decide. Let the projectionist go... or one more night?"
+    - scene: endcard
+      time: "12:10 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."

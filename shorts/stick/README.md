@@ -63,6 +63,9 @@ Cues (when something happens) are a word the narrator says in that shot
   `lurkers: N` (creatures that back away from the beam), `chasers: {n, cue}`,
   `counter: [{text, label, cue}]` (big numbers passing by), `eyes: {cue, n}`.
 - `closeup`: `object: flashlight|phone|alarm`.
+- `cinema`: an old cinema hall from the back row. `audience` (0-1 share of seats taken), `turn: cue` (every head turns
+  round, eyes glowing), `screen: "TEXT"` (or `[[text, cue], ...]`), `screen_size`, `screen_off: cue`, `flicker`, `you`.
+  Room `window_view: cinema` = a projection booth window over the hall.
 - `train`: inside a subway car, seen from the side. `passengers: [{x, sit, color, coat, asleep, stare, cue, fade, turn}]`
   (`coat: true` = the man in the grey coat), `next: "NEXT: CANAL"` (or `[[text, cue], ...]`) on the sign over the door,
   `lights: on|flicker|off|dying` (or `[[state, cue], ...]`), `stop: cue` (brakes), `start: cue`, `parked: true`,

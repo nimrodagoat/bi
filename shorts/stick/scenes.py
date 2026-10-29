@@ -285,7 +285,7 @@ def room(cv, shot, t):
         glow(ctx, 550, 630, 420, "#7fb6c4", 0.18)
     elif o.get("window", True):
         props.window(ctx, 400, 470, 300, 330, t, moon=True, city_lights=float(o.get("city_lights", 0)),
-                     forest=o.get("window_view") == "forest")
+                     forest=o.get("window_view") == "forest", cinema=o.get("window_view") == "cinema")
         ctx.save()  # lights out in the night beyond the glass: [{x, y, color, cue, n, drift}]
         ctx.rectangle(407, 477, 286, 316)
         ctx.clip()
@@ -1823,3 +1823,76 @@ def tunnel(cv, shot, t):
         stroke_line(ctx, [(gx, gy), (gx + math.cos(ang) * (gr - 30), gy + math.sin(ang) * (gr - 30))], 8, "#f4f1e8")
         draw_surface(ctx, text(f"{int(round(60 * clamp(v)))}", "title", 70, "#f4f1e8"), gx, gy + 70)
         draw_surface(ctx, text("KM/H", "mono", 22, "#8a8f98", tracking=3), gx, gy + 120)
+
+
+# ------------------------------------------------------------------ cinema hall
+
+@scene("cinema")
+def cinema(cv, shot, t):
+    """An old cinema seen from the back row: the lit screen, red curtains, rows of
+    seats with an audience (`audience`: share of seats taken) whose heads turn
+    round at `turn` (glowing eyes). `screen` puts big text on the screen;
+    `screen_off: cue` blacks it out."""
+    ctx = cv.ctx
+    o = shot.spec
+    vgradient(ctx, -300, -300, W + 600, H + 600, "#0a090c", "#050407")
+    off = o.get("screen_off") is not None and t >= shot.cue(o.get("screen_off"), 1e9)
+    sx, sy, sw, sh = 120, 360, 840, 470
+    lum = 0.0 if off else (0.85 + 0.1 * flicker(t, 2, 6) if o.get("flicker") else 0.95)
+    if lum > 0:
+        glow(ctx, W / 2, sy + sh / 2, 900, "#cfd8ff", 0.22 * lum)
+    ctx.rectangle(sx, sy, sw, sh)
+    set_color(ctx, mix("#0c0c10", "#e6ecff", lum))
+    ctx.fill()
+    msg = _cue_list(shot, t, o.get("screen"))
+    if msg and lum > 0:
+        draw_surface(ctx, text(str(msg).upper(), "title", int(o.get("screen_size", 120)), "#1a1d26", tracking=4),
+                     W / 2, sy + sh / 2, alpha=lum)
+    for side in (-1, 1):  # curtains
+        cx = sx - 60 if side < 0 else sx + sw + 60
+        g = cairo.LinearGradient(cx - 110, 0, cx + 110, 0)
+        g.add_color_stop_rgb(0, *rgb("#4a0d12"))
+        g.add_color_stop_rgb(0.5, *rgb("#7a1820"))
+        g.add_color_stop_rgb(1, *rgb("#4a0d12"))
+        ctx.set_source(g)
+        ctx.rectangle(cx - 120, sy - 140, 240, sh + 260)
+        ctx.fill()
+    ctx.rectangle(-300, sy - 160, W + 600, 70)
+    set_color(ctx, "#5e1118")
+    ctx.fill()
+    # rows of seats, back of the hall nearest the camera
+    share = float(o.get("audience", 0.0))
+    turned = o.get("turn") is not None and t >= shot.cue(o.get("turn"), 1e9)
+    heads = []
+    for r in range(6):
+        k = 0.55 + r * 0.11
+        y = 960 + r * (70 + r * 18)
+        n = 11 - r
+        gap = (W + 160) / n
+        for c in range(n):
+            x = -80 + gap * (c + 0.5) + (r % 2) * gap * 0.3
+            rounded_rect(ctx, x - 40 * k, y, 80 * k, 70 * k, 14 * k)
+            set_color(ctx, shade("#5a1219", 0.45 + 0.08 * r))
+            ctx.fill()
+            if ((c * 7 + r * 3) % 10) / 10 < share:
+                hy = y - 22 * k + 2 * math.sin(t * 0.7 + c + r)
+                ctx.arc(x, hy, 30 * k, 0, 2 * math.pi)
+                set_color(ctx, "#2a2a32" if turned else "#121217")
+                ctx.fill()
+                heads.append((x, hy, k))
+    if lum > 0:  # the projector beam over the heads
+        g = cairo.LinearGradient(0, H, 0, sy)
+        g.add_color_stop_rgba(0, 0.85, 0.9, 1.0, 0.0)
+        g.add_color_stop_rgba(1, 0.85, 0.9, 1.0, 0.07 * lum)
+        ctx.set_source(g)
+        ctx.move_to(W / 2 - 30, H + 100)
+        ctx.line_to(sx, sy)
+        ctx.line_to(sx + sw, sy)
+        ctx.line_to(W / 2 + 30, H + 100)
+        ctx.close_path()
+        ctx.fill()
+    if o.get("you"):
+        hero(cv, shot, t, o.get("you"), float(o.get("ground", 1820)), 1.3)
+    if turned:
+        for x, hy, k in heads:
+            eyes(ctx, x, hy - 2 * k, 5 * k, 0.95, gap=20 * k)
