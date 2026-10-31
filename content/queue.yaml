@@ -15,158 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: reel-2
-  format: stickman
-  series: MIDNIGHT REEL
-  day: 2
-  day_label: NIGHT
-  meter_label: BULB
-  place: PROJECTION BOOTH
-  title: The reel with no label showed my cinema. Live. Night 2 🎞️
-  tags:
-  - stickman
-  - animation
-  - horror
-  - cinema
-  - midnightreel
-  - story
-  shots:
-  - scene: room
-    recap: true
-    time: 2:01 AM
-    light: 92
-    wall: '#3a3030'
-    furniture: false
-    desk: true
-    clock: true
-    window_view: cinema
-    you:
-      x: 0.4
-      action: idle
-      facing: 1
-    say: Last night, an extra reel with no label appeared on your desk.
-  - scene: title
-    say: Midnight reel. Night two.
-  - scene: room
-    time: 11:55 PM
-    light: 100
-    wall: '#3a3030'
-    furniture: false
-    desk: true
-    clock: true
-    window_view: cinema
-    you:
-      x: 0.6
-      to: 0.4
-      go: 0
-      arrive: 50%
-      facing: -1
-    say: You lock it in a drawer. But the next night, it's already in the projector. Running.
-  - scene: cinema
-    time: 12:00 AM
-    place: THE RIALTO
-    light: 98
-    audience: 0.9
-    screen:
-    - - 'LIVE: THE LOBBY'
-      - 0
-    - - 'LIVE: THE BOOTH'
-      - changes
-    screen_size: 90
-    say: On the screen is the Rialto's lobby. Right now. Then the picture changes. It's your booth. And something is standing behind you.
-  - scene: room
-    time: 12:01 AM
-    place: PROJECTION BOOTH
-    light: 96
-    wall: '#3a3030'
-    furniture: false
-    desk: true
-    clock: true
-    window_view: cinema
-    door_open:
-    - - 0
-      - 0
-    - - 0.8
-      - creaks
-    sfx:
-    - name: whoosh
-      at: spin
-    - name: click
-      at: creaks
-    you:
-      x: 0.4
-      action: idle
-      facing: -1
-      action_at:
-        creaks: scared
-    say: You spin around. Nobody's there. One minute later, exactly like on the screen, the booth door creaks open.
-  - scene: room
-    time: 12:02 AM
-    light: 96
-    wall: '#3a3030'
-    furniture: false
-    desk: true
-    clock: true
-    window_view: cinema
-    door_open: 0.8
-    people:
-    - x: 0.82
-      action: idle
-      facing: -1
-      color: '#e0b070'
-    you:
-      x: 0.4
-      action: idle
-      facing: 1
-    say: It's Vera. She sees the reel, and goes pale. That's reel seven, she whispers. It shows what happens next.
-  - scene: room
-    time: 12:05 AM
-    light: 95
-    wall: '#3a3030'
-    furniture: false
-    desk: true
-    clock: true
-    window_view: cinema
-    people:
-    - x: 0.82
-      action: idle
-      facing: -1
-      color: '#e0b070'
-    rule:
-      n: 3
-      text: Never let the screen go dark
-    you:
-      x: 0.4
-      action: idle
-      facing: 1
-    say: Rule number three. Never let the screen go dark while they're in their seats.
-  - scene: cinema
-    time: 2:00 AM
-    light:
-    - 90
-    - 40
-    audience: 0.9
-    flicker: true
-    screen: REEL 5
-    say: 'Tonight''s goal: get to the end of reel six. But at two AM, the projector bulb starts to flicker.'
-  - scene: choice
-    time: 2:01 AM
-    base:
-      scene: cinema
-      audience: 0.9
-      flicker: true
-      screen: REEL 5
-    question: Change the bulb or keep it running?
-    options:
-    - text: Change it
-      cue: change
-    - text: Keep it running
-      cue: keep
-    say: Changing it means one minute of darkness. Do you change the bulb... or keep it running?
-  - scene: endcard
-    time: 2:01 AM
-    hold: 1.6
-    say: Follow for night three.
 - id: reel-3
   format: stickman
   series: MIDNIGHT REEL
@@ -668,103 +516,180 @@
   day_label: NIGHT
   meter_label: LIGHTS
   place: LAST STOP GAS
-  title: "I work nights at the only gas station on Route 9. Rule 1: keep the lights on ⛽"
-  tags: [stickman, animation, horror, gasstation, routenine, story]
+  title: 'I work nights at the only gas station on Route 9. Rule 1: keep the lights on ⛽'
+  tags:
+  - stickman
+  - animation
+  - horror
+  - gasstation
+  - routenine
+  - story
   shots:
-    - scene: street
-      time: "9:55 PM"
-      place: ROUTE 9
-      light: 100
-      pace: walk
-      dark: 0.6
-      you: {light: false}
-      say: "You take the night shift nobody wants. Last Stop Gas, the only station on Route 9. Ten PM to six AM."
-    - scene: closeup
-      object: phone
-      time: "10:00 PM"
-      place: LAST STOP GAS
-      screen: Note on the till
-      sub: From Dale, the owner
-      message: "KEEP THE FORECOURT\nLIGHTS ON. ALL NIGHT."
-      message_cue: lights
-      rule: {n: 1, text: Keep the lights on}
-      say: "The owner, Dale, left a note on the till. Rule number one. Keep the forecourt lights on. All night."
-    - scene: title
-      say: "Route nine. Night one."
-    - scene: room
-      time: "10:05 PM"
-      light: 100
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      rule: {n: 2, text: Sell nothing after 3 AM}
-      you: {x: 0.42, action: idle, facing: 1}
-      say: "Rule number two. After three AM, sell nothing. Not gas, not coffee. To anyone."
-    - scene: inventory
-      time: "10:10 PM"
-      light: 100
-      items:
-        - {icon: key, count: 1, label: store key, cue: key}
-        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
-        - {icon: battery, count: 3, label: spare bulbs, cue: three}
-      total: {text: "8 forecourt lights", cue: eight}
-      say: "One store key. One flashlight. Three spare bulbs. And eight lights over the forecourt."
-    - scene: map
-      time: "10:15 PM"
-      route: [[0.1, 0.8], [0.9, 0.8], [0.9, 0.2], [0.1, 0.2], [0.1, 0.8]]
-      route_cue: 0
-      route_end: dark
-      stops:
-        - {x: 0.5, y: 0.5, label: "Pumps 1-4", cue: pumps}
-      target: {label: "Store", cue: 0, icon: pin}
-      say: "The forecourt is a square of light around the pumps. Past the edge, the road is completely dark."
-    - scene: room
-      time: "3:10 AM"
-      light: 98
-      wall: "#5c6a58"
+  - scene: street
+    time: 9:55 PM
+    place: ROUTE 9
+    light: 100
+    pace: walk
+    dark: 0.6
+    you:
+      light: false
+    say: You take the night shift nobody wants. Last Stop Gas, the only station on Route 9. Ten PM to six AM.
+  - scene: closeup
+    object: phone
+    time: 10:00 PM
+    place: LAST STOP GAS
+    screen: Note on the till
+    sub: From Dale, the owner
+    message: |-
+      KEEP THE FORECOURT
+      LIGHTS ON. ALL NIGHT.
+    message_cue: lights
+    rule:
+      n: 1
+      text: Keep the lights on
+    say: The owner, Dale, left a note on the till. Rule number one. Keep the forecourt lights on. All night.
+  - scene: title
+    say: Route nine. Night one.
+  - scene: room
+    time: 10:05 PM
+    light: 100
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    rule:
+      n: 2
+      text: Sell nothing after 3 AM
+    you:
+      x: 0.42
+      action: idle
+      facing: 1
+    say: Rule number two. After three AM, sell nothing. Not gas, not coffee. To anyone.
+  - scene: inventory
+    time: 10:10 PM
+    light: 100
+    items:
+    - icon: key
+      count: 1
+      label: store key
+      cue: key
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    - icon: battery
+      count: 3
+      label: spare bulbs
+      cue: three
+    total:
+      text: 8 forecourt lights
+      cue: eight
+    say: One store key. One flashlight. Three spare bulbs. And eight lights over the forecourt.
+  - scene: map
+    time: 10:15 PM
+    route:
+    - - 0.1
+      - 0.8
+    - - 0.9
+      - 0.8
+    - - 0.9
+      - 0.2
+    - - 0.1
+      - 0.2
+    - - 0.1
+      - 0.8
+    route_cue: 0
+    route_end: dark
+    stops:
+    - x: 0.5
+      y: 0.5
+      label: Pumps 1-4
+      cue: pumps
+    target:
+      label: Store
+      cue: 0
+      icon: pin
+    say: The forecourt is a square of light around the pumps. Past the edge, the road is completely dark.
+  - scene: room
+    time: 3:10 AM
+    light: 98
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.4
+    creatures:
+    - x: 0.48
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+      cue: tall
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    camera:
+      zoom:
+      - 1.0
+      - 1.25
+      focus:
+      - 0.5
+      - 0.42
+    say: At three ten, you see him through the window. A tall man, standing right at the edge of the light. Thumb out, like a hitchhiker.
+  - scene: room
+    time: 3:12 AM
+    light: 98
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.4
+    creatures:
+    - x: 0.48
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+    sfx:
+    - name: knock
+      at: taps
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    heartbeat: coffee
+    say: He taps on the glass, and smiles. Just one coffee, friend. I can pay.
+  - scene: choice
+    time: 3:13 AM
+    base:
+      scene: room
+      wall: '#5c6a58'
       furniture: false
       desk: true
       clock: true
       dark: 0.4
-      creatures: [{x: 0.48, ground: 800, scale: 0.68, action: lurk, facing: 1, cue: tall}]
-      you: {x: 0.3, action: idle, facing: 1}
-      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.42]}
-      say: "At three ten, you see him through the window. A tall man, standing right at the edge of the light. Thumb out, like a hitchhiker."
-    - scene: room
-      time: "3:12 AM"
-      light: 98
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.4
-      creatures: [{x: 0.48, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-      sfx: [{name: knock, at: taps}]
-      you: {x: 0.3, action: scared, facing: 1}
-      heartbeat: coffee
-      say: "He taps on the glass, and smiles. Just one coffee, friend. I can pay."
-    - scene: choice
-      time: "3:13 AM"
-      base:
-        scene: room
-        wall: "#5c6a58"
-        furniture: false
-        desk: true
-        clock: true
-        dark: 0.4
-        creatures: [{x: 0.48, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-        you: {x: 0.3, action: scared, facing: 1}
-      question: "Sell him a coffee or say no?"
-      options:
-        - {text: Sell it, cue: sell}
-        - {text: Say no, cue: say}
-      say: "Do you sell him a coffee... or say no?"
-    - scene: endcard
-      time: "3:13 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+      creatures:
+      - x: 0.48
+        ground: 800
+        scale: 0.68
+        action: lurk
+        facing: 1
+      you:
+        x: 0.3
+        action: scared
+        facing: 1
+    question: Sell him a coffee or say no?
+    options:
+    - text: Sell it
+      cue: sell
+    - text: Say no
+      cue: say
+    say: Do you sell him a coffee... or say no?
+  - scene: endcard
+    time: 3:13 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: route-nine-2
   format: stickman
   series: ROUTE NINE
@@ -772,83 +697,152 @@
   day_label: NIGHT
   meter_label: LIGHTS
   place: LAST STOP GAS
-  title: "He can't step into the light. Tonight, a light went out. Night 2 ⛽"
-  tags: [stickman, animation, horror, gasstation, routenine, story]
+  title: He can't step into the light. Tonight, a light went out. Night 2 ⛽
+  tags:
+  - stickman
+  - animation
+  - horror
+  - gasstation
+  - routenine
+  - story
   shots:
-    - scene: room
-      recap: true
-      time: "3:13 AM"
-      light: 98
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.4
-      creatures: [{x: 0.48, ground: 800, scale: 0.68, action: lurk, facing: 1}]
-      you: {x: 0.3, action: scared, facing: 1}
-      say: "Last night, a tall hitchhiker tried to buy a coffee after three AM."
-    - scene: title
-      say: "Route nine. Night two."
-    - scene: room
-      time: "3:14 AM"
-      light: 98
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.4
-      creatures: [{x: 0.48, ground: 800, scale: 0.68, action: lurk, facing: 1, to: 0.36, arrive: "end"}]
-      you: {x: 0.3, action: idle, facing: 1}
-      say: "You say no. He doesn't argue. He just smiles, like he has all the time in the world, and steps back into the dark."
-    - scene: radio
-      time: "6:10 AM"
-      on: radio
-      chip: {text: "Dale · owner · on the phone", cue: dale, y: 470}
-      radio_label: "PHONE · DALE"
-      say:
-        - "In the morning, you call Dale."
-        - radio: "He can't step into the light. And he can't come inside, unless you sell him something. Selling is an invitation."
-    - scene: map
-      time: "10:00 PM"
-      route: [[0.1, 0.8], [0.9, 0.8], [0.9, 0.2], [0.1, 0.2], [0.1, 0.8]]
-      route_cue: 0
-      route_end: lights
-      lamps: {cue: "end+5"}
-      target: {label: "Store", cue: 0, icon: pin}
-      say: "Tonight's goal: keep all eight forecourt lights on, until sunrise. As long as they're on, he can't come near the pumps."
-    - scene: map
-      time: "3:30 AM"
-      route: [[0.1, 0.8], [0.9, 0.8], [0.9, 0.2], [0.1, 0.2], [0.1, 0.8]]
-      route_cue: 0
-      route_end: 0.5
-      x_marks: [{x: 0.9, y: 0.5, cue: pop}]
-      target: {label: "Store", cue: 0, icon: pin}
-      sfx: [{name: hit, at: pop}]
-      say: "At three thirty, there's a pop. The light over pump four goes out."
-    - scene: street
-      time: "3:31 AM"
-      place: PUMP 4
-      light: [90, 75]
+  - scene: room
+    recap: true
+    time: 3:13 AM
+    light: 98
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.4
+    creatures:
+    - x: 0.48
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    say: Last night, a tall hitchhiker tried to buy a coffee after three AM.
+  - scene: title
+    say: Route nine. Night two.
+  - scene: room
+    time: 3:14 AM
+    light: 98
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.4
+    creatures:
+    - x: 0.48
+      ground: 800
+      scale: 0.68
+      action: lurk
+      facing: 1
+      to: 0.36
+      arrive: end
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: You say no. He doesn't argue. He just smiles, like he has all the time in the world, and steps back into the dark.
+  - scene: radio
+    time: 6:10 AM
+    true: radio
+    chip:
+      text: Dale · owner · on the phone
+      cue: dale
+      y: 470
+    radio_label: PHONE · DALE
+    say:
+    - In the morning, you call Dale.
+    - radio: He can't step into the light. And he can't come inside, unless you sell him something. Selling is an invitation.
+  - scene: map
+    time: 10:00 PM
+    route:
+    - - 0.1
+      - 0.8
+    - - 0.9
+      - 0.8
+    - - 0.9
+      - 0.2
+    - - 0.1
+      - 0.2
+    - - 0.1
+      - 0.8
+    route_cue: 0
+    route_end: lights
+    lamps:
+      cue: end+5
+    target:
+      label: Store
+      cue: 0
+      icon: pin
+    say: 'Tonight''s goal: keep all eight forecourt lights on, until sunrise. As long as they''re on, he can''t come near the pumps.'
+  - scene: map
+    time: 3:30 AM
+    route:
+    - - 0.1
+      - 0.8
+    - - 0.9
+      - 0.8
+    - - 0.9
+      - 0.2
+    - - 0.1
+      - 0.2
+    - - 0.1
+      - 0.8
+    route_cue: 0
+    route_end: 0.5
+    x_marks:
+    - x: 0.9
+      y: 0.5
+      cue: pop
+    target:
+      label: Store
+      cue: 0
+      icon: pin
+    sfx:
+    - name: hit
+      at: pop
+    say: At three thirty, there's a pop. The light over pump four goes out.
+  - scene: street
+    time: 3:31 AM
+    place: PUMP 4
+    light:
+    - 90
+    - 75
+    dark: 0.8
+    stop: 0
+    lurkers: 1
+    you:
+      light: true
+    flicker: end-1
+    heartbeat: closer
+    say: In the new dark patch by pump four, the tall man is standing. Ten steps closer than before.
+  - scene: choice
+    time: 3:32 AM
+    base:
+      scene: street
       dark: 0.8
       stop: 0
       lurkers: 1
-      you: {light: true}
-      flicker: "end-1"
-      heartbeat: closer
-      say: "In the new dark patch by pump four, the tall man is standing. Ten steps closer than before."
-    - scene: choice
-      time: "3:32 AM"
-      base: {scene: street, dark: 0.8, stop: 0, lurkers: 1, you: {light: true}}
-      question: "Fix the light or stay inside?"
-      options:
-        - {text: Fix it, cue: fix}
-        - {text: Stay inside, cue: stay}
-      say: "Do you go out and change the bulb... or stay inside, and let him get closer?"
-    - scene: endcard
-      time: "3:32 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+      you:
+        light: true
+    question: Fix the light or stay inside?
+    options:
+    - text: Fix it
+      cue: fix
+    - text: Stay inside
+      cue: stay
+    say: Do you go out and change the bulb... or stay inside, and let him get closer?
+  - scene: endcard
+    time: 3:32 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: route-nine-3
   format: stickman
   series: ROUTE NINE
@@ -856,89 +850,131 @@
   day_label: NIGHT
   meter_label: LIGHTS
   place: PUMP 4
-  title: "A woman begged me for gas at 3 AM. I'm not allowed to sell. Night 3 ⛽"
-  tags: [stickman, animation, horror, gasstation, routenine, story]
+  title: A woman begged me for gas at 3 AM. I'm not allowed to sell. Night 3 ⛽
+  tags:
+  - stickman
+  - animation
+  - horror
+  - gasstation
+  - routenine
+  - story
   shots:
-    - scene: street
-      recap: true
-      time: "3:32 AM"
-      light: 75
-      dark: 0.8
-      stop: 0
-      lurkers: 1
-      you: {light: true}
-      say: "Last night, a light went out, and the hitchhiker stepped closer."
-    - scene: title
-      say: "Route nine. Night three."
-    - scene: street
-      time: "3:33 AM"
-      light: [75, 90]
-      dark: 0.8
-      pace: run
-      lurkers: 1
-      you: {light: true}
-      say: "You run out with a spare bulb. From the dark, he whispers: I could fix that for you. Just sell me something."
-    - scene: inventory
-      time: "3:40 AM"
-      light: 90
-      items:
-        - {icon: battery, count: 2, label: spare bulbs, cue: two}
-        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
-      total: {text: "Lights: 8 of 8", cue: all}
-      say: "You fix it. Your hands are shaking the whole time. All eight lights are back on. But now you only have two spare bulbs."
-    - scene: room
-      time: "10:00 PM"
-      place: LAST STOP GAS
-      light: 100
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      rule: {n: 3, text: Take nothing from him}
-      you: {x: 0.42, action: idle, facing: 1}
-      say: "Dale adds rule number three. Never take anything from him, either. Not even help. Whatever he offers, it always costs something."
-    - scene: room
-      time: "10:05 PM"
-      light: 100
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      you: {x: 0.42, action: idle, facing: 1}
-      say: "Tonight's goal: sell nothing after three. To anyone."
-    - scene: street
-      time: "3:20 AM"
-      place: PUMP 2
-      light: 90
+  - scene: street
+    recap: true
+    time: 3:32 AM
+    light: 75
+    dark: 0.8
+    stop: 0
+    lurkers: 1
+    you:
+      light: true
+    say: Last night, a light went out, and the hitchhiker stepped closer.
+  - scene: title
+    say: Route nine. Night three.
+  - scene: street
+    time: 3:33 AM
+    light:
+    - 75
+    - 90
+    dark: 0.8
+    pace: run
+    lurkers: 1
+    you:
+      light: true
+    say: 'You run out with a spare bulb. From the dark, he whispers: I could fix that for you. Just sell me something.'
+  - scene: inventory
+    time: 3:40 AM
+    light: 90
+    items:
+    - icon: battery
+      count: 2
+      label: spare bulbs
+      cue: two
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    total:
+      text: 'Lights: 8 of 8'
+      cue: all
+    say: You fix it. Your hands are shaking the whole time. All eight lights are back on. But now you only have two spare bulbs.
+  - scene: room
+    time: 10:00 PM
+    place: LAST STOP GAS
+    light: 100
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    rule:
+      n: 3
+      text: Take nothing from him
+    you:
+      x: 0.42
+      action: idle
+      facing: 1
+    say: Dale adds rule number three. Never take anything from him, either. Not even help. Whatever he offers, it always costs something.
+  - scene: room
+    time: 10:05 PM
+    light: 100
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    you:
+      x: 0.42
+      action: idle
+      facing: 1
+    say: 'Tonight''s goal: sell nothing after three. To anyone.'
+  - scene: street
+    time: 3:20 AM
+    place: PUMP 2
+    light: 90
+    dark: 0.6
+    stop: 0
+    people:
+    - x: 0.75
+      action: knock
+      facing: -1
+      color: '#e0a0b8'
+      cue: woman
+    you:
+      x: 0.3
+      light: false
+      facing: 1
+    say: At three twenty, a car pulls up. A woman runs to your window. Please, I'm almost out of gas. My kids are in the car.
+  - scene: closeup
+    object: alarm
+    time: 3:21 AM
+    light: 90
+    ring: 0
+    say: The clock says three twenty one. Rule two says sell nothing. But she's crying, and she looks terrified.
+  - scene: choice
+    time: 3:22 AM
+    base:
+      scene: street
       dark: 0.6
       stop: 0
-      people: [{x: 0.75, action: knock, facing: -1, color: "#e0a0b8", cue: woman}]
-      you: {x: 0.3, light: false, facing: 1}
-      say: "At three twenty, a car pulls up. A woman runs to your window. Please, I'm almost out of gas. My kids are in the car."
-    - scene: closeup
-      object: alarm
-      time: "3:21 AM"
-      light: 90
-      ring: 0
-      say: "The clock says three twenty one. Rule two says sell nothing. But she's crying, and she looks terrified."
-    - scene: choice
-      time: "3:22 AM"
-      base:
-        scene: street
-        dark: 0.6
-        stop: 0
-        people: [{x: 0.75, action: knock, facing: -1, color: "#e0a0b8"}]
-        you: {x: 0.3, light: false, facing: 1}
-      question: "Sell her gas or refuse?"
-      options:
-        - {text: Sell her gas, cue: sell}
-        - {text: Refuse, cue: refuse}
-      say: "Do you sell her the gas... or refuse?"
-    - scene: endcard
-      time: "3:22 AM"
-      hold: 1.6
-      say: "Follow for night four."
-
+      people:
+      - x: 0.75
+        action: knock
+        facing: -1
+        color: '#e0a0b8'
+      you:
+        x: 0.3
+        light: false
+        facing: 1
+    question: Sell her gas or refuse?
+    options:
+    - text: Sell her gas
+      cue: sell
+    - text: Refuse
+      cue: refuse
+    say: Do you sell her the gas... or refuse?
+  - scene: endcard
+    time: 3:22 AM
+    hold: 1.6
+    say: Follow for night four.
 - id: route-nine-4
   format: stickman
   series: ROUTE NINE
@@ -946,97 +982,159 @@
   day_label: NIGHT
   meter_label: LIGHTS
   place: PUMP 2
-  title: "I refused to sell her gas. Then I saw her car drive off. Night 4 ⛽"
-  tags: [stickman, animation, horror, gasstation, routenine, story]
+  title: I refused to sell her gas. Then I saw her car drive off. Night 4 ⛽
+  tags:
+  - stickman
+  - animation
+  - horror
+  - gasstation
+  - routenine
+  - story
   shots:
-    - scene: street
-      recap: true
-      time: "3:22 AM"
-      light: 90
-      dark: 0.6
-      stop: 0
-      people: [{x: 0.75, action: knock, facing: -1, color: "#e0a0b8"}]
-      you: {x: 0.3, light: false, facing: 1}
-      say: "Last night, a crying woman begged you for gas after three AM."
-    - scene: title
-      say: "Route nine. Night four."
-    - scene: street
-      time: "3:23 AM"
-      light: 90
-      dark: 0.6
-      stop: 0
-      people: [{x: 0.75, action: walk, facing: 1, color: "#e0a0b8", drift: 120, fade: "end-1"}]
-      you: {x: 0.3, light: false, facing: 1}
-      say: "You refuse. She stops crying. All at once. Then she walks back to her car, without a word."
-    - scene: street
-      time: "3:24 AM"
-      place: ROUTE 9
-      light: 90
-      dark: 0.8
-      stop: 0
-      eyes: {cue: eyes, n: 2}
-      you: {x: 0.3, light: false, facing: 1}
-      heartbeat: eyes
-      say: "The car drives off into the dark. And far down the road, its two headlights turn into two eyes."
-    - scene: radio
-      time: "6:10 AM"
-      on: radio
-      chip: {text: "Dale · owner · on the phone", cue: 0, y: 470}
-      radio_label: "PHONE · DALE"
-      say:
-        - "Dale isn't surprised."
-        - radio: "He'll wear any face, kid. A mom, a cop, even me. If it's after three, it's him. Every single time."
-    - scene: room
-      time: "10:00 PM"
-      place: LAST STOP GAS
-      light: 100
-      wall: "#5c6a58"
+  - scene: street
+    recap: true
+    time: 3:22 AM
+    light: 90
+    dark: 0.6
+    stop: 0
+    people:
+    - x: 0.75
+      action: knock
+      facing: -1
+      color: '#e0a0b8'
+    you:
+      x: 0.3
+      light: false
+      facing: 1
+    say: Last night, a crying woman begged you for gas after three AM.
+  - scene: title
+    say: Route nine. Night four.
+  - scene: street
+    time: 3:23 AM
+    light: 90
+    dark: 0.6
+    stop: 0
+    people:
+    - x: 0.75
+      action: walk
+      facing: 1
+      color: '#e0a0b8'
+      drift: 120
+      fade: end-1
+    you:
+      x: 0.3
+      light: false
+      facing: 1
+    say: You refuse. She stops crying. All at once. Then she walks back to her car, without a word.
+  - scene: street
+    time: 3:24 AM
+    place: ROUTE 9
+    light: 90
+    dark: 0.8
+    stop: 0
+    eyes:
+      cue: eyes
+      n: 2
+    you:
+      x: 0.3
+      light: false
+      facing: 1
+    heartbeat: eyes
+    say: The car drives off into the dark. And far down the road, its two headlights turn into two eyes.
+  - scene: radio
+    time: 6:10 AM
+    true: radio
+    chip:
+      text: Dale · owner · on the phone
+      cue: 0
+      y: 470
+    radio_label: PHONE · DALE
+    say:
+    - Dale isn't surprised.
+    - radio: He'll wear any face, kid. A mom, a cop, even me. If it's after three, it's him. Every single time.
+  - scene: room
+    time: 10:00 PM
+    place: LAST STOP GAS
+    light: 100
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    rule:
+      n: 4
+      text: After 3 AM, it's him
+    you:
+      x: 0.42
+      action: idle
+      facing: 1
+    say: Rule number four. After three AM, whoever shows up, it's him.
+  - scene: room
+    time: 2:58 AM
+    light:
+    - 100
+    - 0
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark:
+    - - 0.1
+      - 0
+    - - 0.9
+      - dark
+    sfx:
+    - name: boom
+      at: dark
+    you:
+      x: 0.42
+      action: idle
+      facing: 1
+      action_at:
+        dark: scared
+    say: 'Tonight''s goal: get through the night. But at two fifty eight, the whole station goes dark. Every light.'
+  - scene: map
+    time: 2:59 AM
+    route:
+    - - 0.5
+      - 0.2
+    - - 0.5
+      - 0.92
+    route_cue: generator
+    route_end: back
+    stops:
+    - x: 0.5
+      y: 0.2
+      left: true
+      label: Store
+    target:
+      label: Generator
+      cue: generator
+      icon: pin
+    say: The backup generator is in the shed out back. Forty steps through the dark, past the edge of the light.
+  - scene: choice
+    time: 3:00 AM
+    base:
+      scene: room
+      wall: '#5c6a58'
       furniture: false
       desk: true
       clock: true
-      rule: {n: 4, text: "After 3 AM, it's him"}
-      you: {x: 0.42, action: idle, facing: 1}
-      say: "Rule number four. After three AM, whoever shows up, it's him."
-    - scene: room
-      time: "2:58 AM"
-      light: [100, 0]
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: [[0.1, 0], [0.9, dark]]
-      sfx: [{name: boom, at: dark}]
-      you: {x: 0.42, action: idle, facing: 1, action_at: {dark: scared}}
-      say: "Tonight's goal: get through the night. But at two fifty eight, the whole station goes dark. Every light."
-    - scene: map
-      time: "2:59 AM"
-      route: [[0.5, 0.2], [0.5, 0.92]]
-      route_cue: generator
-      route_end: back
-      stops:
-        - {x: 0.5, y: 0.2, left: true, label: Store}
-      target: {label: "Generator", cue: generator, icon: pin}
-      say: "The backup generator is in the shed out back. Forty steps through the dark, past the edge of the light."
-    - scene: choice
-      time: "3:00 AM"
-      base:
-        scene: room
-        wall: "#5c6a58"
-        furniture: false
-        desk: true
-        clock: true
-        dark: 0.9
-        you: {x: 0.42, action: scared, facing: 1}
-      question: "Run for the generator or wait?"
-      options:
-        - {text: Run for it, cue: run}
-        - {text: Wait for dawn, cue: wait}
-      say: "Do you run for the generator... or wait in the dark for dawn?"
-    - scene: endcard
-      time: "3:00 AM"
-      hold: 1.6
-      say: "Follow for night five."
-
+      dark: 0.9
+      you:
+        x: 0.42
+        action: scared
+        facing: 1
+    question: Run for the generator or wait?
+    options:
+    - text: Run for it
+      cue: run
+    - text: Wait for dawn
+      cue: wait
+    say: Do you run for the generator... or wait in the dark for dawn?
+  - scene: endcard
+    time: 3:00 AM
+    hold: 1.6
+    say: Follow for night five.
 - id: route-nine-5
   format: stickman
   series: ROUTE NINE
@@ -1044,83 +1142,128 @@
   day_label: NIGHT
   meter_label: LIGHTS
   place: LAST STOP GAS
-  title: "Dale told me the one rule the hitchhiker has to follow too. Night 5 ⛽"
-  tags: [stickman, animation, horror, gasstation, routenine, story]
+  title: Dale told me the one rule the hitchhiker has to follow too. Night 5 ⛽
+  tags:
+  - stickman
+  - animation
+  - horror
+  - gasstation
+  - routenine
+  - story
   shots:
-    - scene: room
-      recap: true
-      time: "3:00 AM"
-      light: 0
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.9
-      you: {x: 0.42, action: scared, facing: 1}
-      say: "Last night, the whole station went dark, just before three AM."
-    - scene: title
-      say: "Route nine. Night five."
-    - scene: street
-      time: "3:01 AM"
-      place: BACK LOT
-      light: 0
-      dark: 0.85
-      pace: run
-      chasers: {n: 1, cue: footsteps}
-      you: {light: true}
-      say: "You run for the generator. Behind you, long footsteps. Getting closer."
-    - scene: room
-      time: "3:02 AM"
-      place: GENERATOR SHED
-      light: [0, 60]
-      wall: "#3f352b"
-      furniture: false
-      door: false
-      window: false
-      dark: [[0.85, 0], [0.3, roars]]
-      boxes: [[0.1, 0.18], [0.7, 0.14]]
-      sfx: [{name: click, at: pull}, {name: boom, at: roars, gain: 0.8}]
-      you: {x: 0.45, action: push, facing: 1}
-      say: "You pull the cord. Once. Twice. On the third pull, it roars, and the forecourt lights blaze on."
-    - scene: street
-      time: "3:03 AM"
-      place: ROUTE 9
-      light: 60
-      dark: 0.5
-      stop: 0
-      floodlights: 0
-      lurkers: 1
-      you: {light: false}
-      say: "He's caught out on the forecourt. He covers his face, and slides back into the dark."
-    - scene: radio
-      time: "6:10 AM"
-      on: radio
-      chip: {text: "Dale · owner · on the phone", cue: 0, y: 470}
-      radio_label: "PHONE · DALE"
-      say:
-        - "In the morning, Dale tells you one more thing. The most important one."
-        - radio: "The rules aren't just for you, kid. Anyone who buys something here has to follow them. Even him. That's why he's never bought a thing."
-    - scene: inventory
-      time: "6:15 AM"
-      light: 60
-      items:
-        - {icon: battery, count: 1, label: spare bulb, cue: bulb}
-        - {icon: can, count: 1, label: generator fuel, cue: fuel}
-      total: {text: "1 night left", cue: night}
-      say: "One spare bulb. One can of fuel. One night left. Your goal: make it to six AM, and leave for good."
-    - scene: choice
-      time: "6:16 AM"
-      base: {scene: radio, on: 0}
-      question: "Use Dale's rule or just survive?"
-      options:
-        - {text: Use the rule, cue: use}
-        - {text: Just survive, cue: survive}
-      say: "You have an idea. A crazy one. Do you use Dale's rule against him... or just try to survive?"
-    - scene: endcard
-      time: "6:16 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+  - scene: room
+    recap: true
+    time: 3:00 AM
+    light: 0
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.9
+    you:
+      x: 0.42
+      action: scared
+      facing: 1
+    say: Last night, the whole station went dark, just before three AM.
+  - scene: title
+    say: Route nine. Night five.
+  - scene: street
+    time: 3:01 AM
+    place: BACK LOT
+    light: 0
+    dark: 0.85
+    pace: run
+    chasers:
+      n: 1
+      cue: footsteps
+    you:
+      light: true
+    say: You run for the generator. Behind you, long footsteps. Getting closer.
+  - scene: room
+    time: 3:02 AM
+    place: GENERATOR SHED
+    light:
+    - 0
+    - 60
+    wall: '#3f352b'
+    furniture: false
+    door: false
+    window: false
+    dark:
+    - - 0.85
+      - 0
+    - - 0.3
+      - roars
+    boxes:
+    - - 0.1
+      - 0.18
+    - - 0.7
+      - 0.14
+    sfx:
+    - name: click
+      at: pull
+    - name: boom
+      at: roars
+      gain: 0.8
+    you:
+      x: 0.45
+      action: push
+      facing: 1
+    say: You pull the cord. Once. Twice. On the third pull, it roars, and the forecourt lights blaze on.
+  - scene: street
+    time: 3:03 AM
+    place: ROUTE 9
+    light: 60
+    dark: 0.5
+    stop: 0
+    floodlights: 0
+    lurkers: 1
+    you:
+      light: false
+    say: He's caught out on the forecourt. He covers his face, and slides back into the dark.
+  - scene: radio
+    time: 6:10 AM
+    true: radio
+    chip:
+      text: Dale · owner · on the phone
+      cue: 0
+      y: 470
+    radio_label: PHONE · DALE
+    say:
+    - In the morning, Dale tells you one more thing. The most important one.
+    - radio: The rules aren't just for you, kid. Anyone who buys something here has to follow them. Even him. That's why he's never bought a thing.
+  - scene: inventory
+    time: 6:15 AM
+    light: 60
+    items:
+    - icon: battery
+      count: 1
+      label: spare bulb
+      cue: bulb
+    - icon: can
+      count: 1
+      label: generator fuel
+      cue: fuel
+    total:
+      text: 1 night left
+      cue: night
+    say: 'One spare bulb. One can of fuel. One night left. Your goal: make it to six AM, and leave for good.'
+  - scene: choice
+    time: 6:16 AM
+    base:
+      scene: radio
+      true: 0
+    question: Use Dale's rule or just survive?
+    options:
+    - text: Use the rule
+      cue: use
+    - text: Just survive
+      cue: survive
+    say: You have an idea. A crazy one. Do you use Dale's rule against him... or just try to survive?
+  - scene: endcard
+    time: 6:16 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: route-nine-6
   format: stickman
   series: ROUTE NINE
@@ -1128,103 +1271,161 @@
   day_label: NIGHT
   meter_label: LIGHTS
   place: LAST STOP GAS
-  title: "On my last night shift, I finally sold the hitchhiker something. Night 6 ⛽"
-  tags: [stickman, animation, horror, gasstation, routenine, story]
+  title: On my last night shift, I finally sold the hitchhiker something. Night 6 ⛽
+  tags:
+  - stickman
+  - animation
+  - horror
+  - gasstation
+  - routenine
+  - story
   shots:
-    - scene: radio
-      recap: true
-      time: "6:16 AM"
-      on: 0
-      say: "Last night, Dale said anyone who buys something here has to follow the rules."
-    - scene: title
-      say: "Route nine. Night six."
-    - scene: room
-      time: "3:00 AM"
-      light: 40
-      wall: "#5c6a58"
+  - scene: radio
+    recap: true
+    time: 6:16 AM
+    true: 0
+    say: Last night, Dale said anyone who buys something here has to follow the rules.
+  - scene: title
+    say: Route nine. Night six.
+  - scene: room
+    time: 3:00 AM
+    light: 40
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.5
+    creatures:
+    - x: 0.48
+      ground: 800
+      scale: 0.75
+      action: lurk
+      facing: 1
+      cue: 0
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    say: Your last night. At three, the forecourt lights start dying one by one. And he's at the window, smiling.
+  - scene: room
+    time: 3:05 AM
+    light: 30
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.55
+    creatures:
+    - x: 0.48
+      ground: 800
+      scale: 0.75
+      action: lurk
+      facing: 1
+    you:
+      x: 0.42
+      action: knock
+      facing: 1
+    say: 'So you open the window, and say: I''ll sell you something. The night shift. One dollar.'
+  - scene: room
+    time: 3:06 AM
+    light: 30
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.5
+    door_open:
+    - - 0
+      - 0
+    - - 0.85
+      - door
+    creatures:
+    - x: 0.95
+      action: lurk
+      facing: -1
+      to: 0.6
+      arrive: end
+      cue: door
+      scale: 1.2
+    you:
+      x: 0.3
+      action: idle
+      facing: 1
+    heartbeat: door
+    say: He laughs. He slaps a dollar on the counter. And he walks in through the door. Inside, at last.
+  - scene: room
+    time: 3:07 AM
+    light: 30
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    dark: 0.45
+    creatures:
+    - x: 0.6
+      action: lurk
+      facing: -1
+      scale: 1.2
+    you:
+      x: 0.9
+      to: 1.2
+      go: keys
+      arrive: end
+      facing: 1
+    say: 'You hand him the keys, and Dale''s note. The shift is his now. And rule one says: keep the lights on. Never leave the light.'
+  - scene: street
+    time: 6:00 AM
+    place: ROUTE 9
+    light: 100
+    dark: 0.05
+    dawn: true
+    pace: walk
+    you:
+      light: false
+    say: At six AM, you walk away down Route 9. Behind you, he's still behind the counter. He can't step outside. Not ever.
+  - scene: room
+    time: 3:00 AM
+    place: LAST STOP GAS
+    light: 100
+    wall: '#5c6a58'
+    furniture: false
+    desk: true
+    clock: true
+    creatures:
+    - x: 0.45
+      action: idle
+      facing: 1
+      scale: 1.2
+    you:
+      x: -0.5
+    say: And that's why Last Stop Gas is open twenty four hours. Someone tall always works the night shift.
+  - scene: choice
+    time: 3:01 AM
+    base:
+      scene: room
+      wall: '#5c6a58'
       furniture: false
       desk: true
       clock: true
-      dark: 0.5
-      creatures: [{x: 0.48, ground: 800, scale: 0.75, action: lurk, facing: 1, cue: 0}]
-      you: {x: 0.3, action: idle, facing: 1}
-      say: "Your last night. At three, the forecourt lights start dying one by one. And he's at the window, smiling."
-    - scene: room
-      time: "3:05 AM"
-      light: 30
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.55
-      creatures: [{x: 0.48, ground: 800, scale: 0.75, action: lurk, facing: 1}]
-      you: {x: 0.42, action: knock, facing: 1}
-      say: "So you open the window, and say: I'll sell you something. The night shift. One dollar."
-    - scene: room
-      time: "3:06 AM"
-      light: 30
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.5
-      door_open: [[0, 0], [0.85, door]]
-      creatures: [{x: 0.95, action: lurk, facing: -1, to: 0.6, arrive: "end", cue: door, scale: 1.2}]
-      you: {x: 0.3, action: idle, facing: 1}
-      heartbeat: door
-      say: "He laughs. He slaps a dollar on the counter. And he walks in through the door. Inside, at last."
-    - scene: room
-      time: "3:07 AM"
-      light: 30
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      dark: 0.45
-      creatures: [{x: 0.6, action: lurk, facing: -1, scale: 1.2}]
-      you: {x: 0.9, to: 1.2, go: keys, arrive: "end", facing: 1}
-      say: "You hand him the keys, and Dale's note. The shift is his now. And rule one says: keep the lights on. Never leave the light."
-    - scene: street
-      time: "6:00 AM"
-      place: ROUTE 9
-      light: 100
-      dark: 0.05
-      dawn: true
-      pace: walk
-      you: {light: false}
-      say: "At six AM, you walk away down Route 9. Behind you, he's still behind the counter. He can't step outside. Not ever."
-    - scene: room
-      time: "3:00 AM"
-      place: LAST STOP GAS
-      light: 100
-      wall: "#5c6a58"
-      furniture: false
-      desk: true
-      clock: true
-      creatures: [{x: 0.45, action: idle, facing: 1, scale: 1.2}]
-      you: {x: -0.5}
-      say: "And that's why Last Stop Gas is open twenty four hours. Someone tall always works the night shift."
-    - scene: choice
-      time: "3:01 AM"
-      base:
-        scene: room
-        wall: "#5c6a58"
-        furniture: false
-        desk: true
-        clock: true
-        creatures: [{x: 0.45, action: idle, facing: 1, scale: 1.2}]
-        you: {x: -0.5}
-      question: "Stop for coffee or drive past?"
-      options:
-        - {text: Stop for coffee, cue: stop}
-        - {text: Drive past, cue: drive}
-      say: "So, if you're ever on Route 9 at three AM... do you stop for coffee, or drive past?"
-    - scene: endcard
-      time: "3:01 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+      creatures:
+      - x: 0.45
+        action: idle
+        facing: 1
+        scale: 1.2
+      you:
+        x: -0.5
+    question: Stop for coffee or drive past?
+    options:
+    - text: Stop for coffee
+      cue: stop
+    - text: Drive past
+      cue: drive
+    say: So, if you're ever on Route 9 at three AM... do you stop for coffee, or drive past?
+  - scene: endcard
+    time: 3:01 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
