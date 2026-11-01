@@ -1041,6 +1041,614 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: ward-c-1
+  format: stickman
+  series: WARD C
+  day: 1
+  day_label: NIGHT
+  meter_label: LIGHTS
+  place: GREYHILL HOSPITAL
+  title: "I work nights in an old hospital. The patient in room 13 knows what I'll do next 🏥"
+  tags: [stickman, animation, horror, hospital, wardc, story]
+  shots:
+    - scene: hallway
+      time: "10:00 PM"
+      place: WARD C
+      light: 100
+      lights: "on"
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      camera: {zoom: [1.0, 1.25], focus: [0.5, 0.45]}
+      say: "You take the job nobody wants. Night porter at Greyhill Hospital. Trays, laundry, and the long corridor of Ward C."
+    - scene: room
+      time: "10:05 PM"
+      place: NURSE STATION
+      light: 100
+      wall: "#8fa8a4"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      people: [{x: 0.72, action: idle, facing: -1, color: "#9ad0c8", cue: june}]
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "The night nurse, June, has worked here for thirty years. She gives you two rules."
+    - scene: title
+      say: "Ward C. Night one."
+    - scene: hallway
+      time: "10:10 PM"
+      place: WARD C
+      light: 100
+      lights: "on"
+      open_doors: [0, 1, 2, 3, 4]
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      rule: {n: 1, text: Close every door at 3:33}
+      say: "Rule number one. At three thirty three, close every patient's door. Every single one."
+    - scene: room
+      time: "10:12 PM"
+      place: NURSE STATION
+      light: 100
+      wall: "#8fa8a4"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      people: [{x: 0.72, action: idle, facing: -1, color: "#9ad0c8"}]
+      rule: {n: 2, text: Never take the east lift}
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "Rule number two. After midnight, never take the east lift. Use the stairs."
+    - scene: room
+      time: "11:00 PM"
+      place: ROOM 13
+      light: 98
+      wall: "#a7b4b2"
+      furniture: false
+      door: true
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8", cue: man}]
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "Your first job: a tray for room thirteen. An old man, Mr. Ashby, looks up and smiles. You're going to drop that, he says."
+    - scene: room
+      time: "11:01 PM"
+      light: 98
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      sfx: [{name: hit, at: drop}]
+      shake_at: [drop]
+      you: {x: 0.3, action: idle, facing: 1, action_at: {drop: scared}}
+      say: "One second later, you drop it. He doesn't even look surprised."
+    - scene: hallway
+      time: "3:33 AM"
+      place: WARD C
+      light: [95, 30]
+      lights: dying
+      "off": out
+      dark: 0.8
+      open_doors: [0, 1, 2, 3, 4]
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      figures: [{who: creature, z: 8.0, x: 0.0, cue: end, facing: -1}]
+      heartbeat: end
+      say: "At three thirty three, the corridor lights go out, one by one. And at the far end, something tall is standing."
+    - scene: choice
+      time: "3:34 AM"
+      base:
+        scene: hallway
+        lights: "off"
+        dark: 0.8
+        open_doors: [0, 1, 2, 3, 4]
+        wall: "#a3b1af"
+        floor: "#7d8b89"
+        carpet: "#9fb0ad"
+        ceiling: "#7f8b8a"
+        exit_color: "#27d466"
+        figures: [{who: creature, z: 8.0, x: 0.0, facing: -1}]
+      question: "Close the doors or hide?"
+      options:
+        - {text: Close them, cue: close}
+        - {text: Hide, cue: hide}
+      say: "Five doors are still open. The thing is walking closer. Do you run and close them... or hide?"
+    - scene: endcard
+      time: "3:34 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: ward-c-2
+  format: stickman
+  series: WARD C
+  day: 2
+  day_label: NIGHT
+  meter_label: LIGHTS
+  place: WARD C
+  title: "Something walks the hospital at 3:33 and looks into every open door. Night 2 🏥"
+  tags: [stickman, animation, horror, hospital, wardc, story]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "3:34 AM"
+      light: 30
+      lights: "off"
+      dark: 0.8
+      open_doors: [0, 1, 2, 3, 4]
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      figures: [{who: creature, z: 8.0, x: 0.0, facing: -1}]
+      say: "Last night, at three thirty three, something tall appeared at the end of the corridor."
+    - scene: title
+      say: "Ward C. Night two."
+    - scene: hallway
+      time: "3:35 AM"
+      light: 30
+      lights: "off"
+      dark: 0.8
+      open_doors: [0, 1]
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      figures: [{who: creature, z: 8.0, to_z: 5.0, x: 0.0, facing: -1, action: creep}]
+      sfx: [{name: hit, at: slam}, {name: hit, at: another}]
+      say: "You run and slam the doors. One. Another. It walks slowly toward you, looking into every room it passes."
+    - scene: hallway
+      time: "3:36 AM"
+      light: 30
+      lights: "off"
+      dark: 0.8
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      figures: [{who: creature, z: 5.0, to_z: 9, x: 0.0, facing: 1, action: creep, cue: turns}]
+      say: "When the last door shuts, it stops. Then it turns, and walks back into the dark."
+    - scene: room
+      time: "6:00 AM"
+      place: NURSE STATION
+      light: 90
+      wall: "#8fa8a4"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      people: [{x: 0.72, action: idle, facing: -1, color: "#9ad0c8"}]
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "June explains. They call it the Night Visitor. It looks into open rooms. Nobody knows what it takes. The rooms are just empty in the morning."
+    - scene: closeup
+      object: phone
+      time: "10:00 PM"
+      screen: Calendar
+      sub: Nurse station
+      message: "OCTOBER 31"
+      message_cue: october
+      say: "The next night, you notice the calendar on June's desk. October thirty first. Same as yesterday. June didn't change it, she says."
+    - scene: room
+      time: "11:00 PM"
+      place: ROOM 13
+      light: 95
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "In room thirteen, Mr. Ashby whispers: tonight it comes up the east lift. At three twenty."
+    - scene: room
+      time: "11:05 PM"
+      place: NURSE STATION
+      light: 95
+      wall: "#8fa8a4"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Tonight's goal: close every door before three twenty, not three thirty three."
+    - scene: choice
+      time: "11:06 PM"
+      base: {scene: room, wall: "#a7b4b2", furniture: false, clock: true, people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}], you: {x: 0.3, action: idle, facing: 1}}
+      question: "Trust Ashby or the rules?"
+      options:
+        - {text: Trust Ashby, cue: ashby}
+        - {text: Follow the rules, cue: rules}
+      say: "Do you trust Mr. Ashby... or just follow June's rules?"
+    - scene: endcard
+      time: "11:06 PM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: ward-c-3
+  format: stickman
+  series: WARD C
+  day: 3
+  day_label: NIGHT
+  meter_label: LIGHTS
+  place: WARD C
+  title: "Every night in this hospital, the calendar says the same date. Night 3 🏥"
+  tags: [stickman, animation, horror, hospital, wardc, story]
+  shots:
+    - scene: room
+      recap: true
+      time: "11:06 PM"
+      place: ROOM 13
+      light: 95
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "Last night, Mr. Ashby told you the Visitor would come early. Up the east lift."
+    - scene: title
+      say: "Ward C. Night three."
+    - scene: hallway
+      time: "3:15 AM"
+      place: WARD C
+      light: 90
+      lights: "on"
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      say: "You trust him. At three fifteen, every single door is already shut, and you wait."
+    - scene: cctv
+      time: "3:20 AM"
+      cam: "CAM 04 · EAST LIFT"
+      light: 88
+      view: {scene: hallway, lights: flicker, dark: 0.6, wall: "#a3b1af", floor: "#7d8b89", carpet: "#9fb0ad", ceiling: "#7f8b8a", exit_color: "#27d466", figures: [{who: creature, z: 6.0, to_z: 4.0, x: 0.0, facing: -1, cue: ding}]}
+      sfx: [{name: click, at: ding}]
+      heartbeat: ding
+      say: "At three twenty exactly, the east lift goes ding. On the camera, it steps out. Thirteen minutes early. Just like he said."
+    - scene: room
+      time: "6:00 AM"
+      place: ROOM 13
+      light: 85
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "In the morning, you ask him. How did you know? He just says: I've seen this night before. Many times."
+    - scene: room
+      time: "6:05 AM"
+      place: NURSE STATION
+      light: 85
+      wall: "#8fa8a4"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      rule: {n: 3, text: "Don't trust the date"}
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Rule number three, your own: don't trust the date. Because the calendar still says October thirty first."
+    - scene: map
+      time: "10:00 PM"
+      route: [[0.1, 0.9], [0.1, 0.5], [0.9, 0.5]]
+      route_cue: 0
+      route_end: lift
+      stops:
+        - {x: 0.1, y: 0.9, left: true, label: Stairs}
+        - {x: 0.5, y: 0.5, label: "Room 13"}
+      target: {label: "East lift", cue: lift, icon: pin}
+      say: "Tonight's goal: find out why it keeps coming. And it always starts at the east lift."
+    - scene: hallway
+      time: "12:30 AM"
+      place: EAST LIFT
+      light: 80
+      lights: flicker
+      dark: 0.6
+      wall: "#9fb0ad"
+      floor: "#6f7c7a"
+      carpet: "#8a9a98"
+      ceiling: "#c9d2d1"
+      exit_color: "#ff3b30"
+      say: "At half past twelve, the east lift doors open by themselves. Empty. Waiting for you."
+    - scene: choice
+      time: "12:31 AM"
+      base: {scene: hallway, lights: flicker, dark: 0.6, wall: "#9fb0ad", floor: "#6f7c7a", carpet: "#8a9a98", ceiling: "#c9d2d1", exit_color: "#ff3b30"}
+      question: "Get in or take the stairs?"
+      options:
+        - {text: Get in, cue: get}
+        - {text: Take the stairs, cue: stairs}
+      say: "Rule two says never take it. Do you get in... or take the stairs?"
+    - scene: endcard
+      time: "12:31 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: ward-c-4
+  format: stickman
+  series: WARD C
+  day: 4
+  day_label: NIGHT
+  meter_label: LIGHTS
+  place: EAST LIFT
+  title: "I took the lift I was told never to take. It went to floor zero. Night 4 🏥"
+  tags: [stickman, animation, horror, hospital, wardc, story]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "12:31 AM"
+      light: 80
+      lights: flicker
+      dark: 0.6
+      wall: "#9fb0ad"
+      floor: "#6f7c7a"
+      carpet: "#8a9a98"
+      ceiling: "#c9d2d1"
+      exit_color: "#ff3b30"
+      say: "Last night, the east lift opened by itself, waiting for you."
+    - scene: title
+      say: "Ward C. Night four."
+    - scene: closeup
+      object: phone
+      time: "12:32 AM"
+      screen: East lift
+      sub: Floor
+      message: "0"
+      message_cue: zero
+      say: "You get in. The doors close. There's no button for it, but the lift goes down, to floor zero. Your ears pop on the way down."
+    - scene: hallway
+      time: "12:35 AM"
+      place: FLOOR ZERO
+      light: 70
+      lights: "off"
+      dark: 0.85
+      open_doors: [0, 2, 4]
+      wall: "#6f7c7a"
+      floor: "#3f4847"
+      carpet: "#55605e"
+      ceiling: "#4d5655"
+      exit_color: "#ff3b30"
+      rolling: {from: 1.3, to: 4.5}
+      say: "Down here it's an old ward. Closed for fifty years. Your flashlight rolls out of your hand, down the corridor."
+    - scene: room
+      time: "12:40 AM"
+      place: OLD RECORDS
+      light: 65
+      wall: "#3f352b"
+      furniture: false
+      door: false
+      window: false
+      dark: 0.85
+      boxes: [[0.08, 0.16], [0.24, 0.12], [0.7, 0.14]]
+      you: {x: 0.45, light: true, aim: -0.3, facing: -1, action_at: {file: crouch}}
+      say: "In an old office, there's one file on the desk. A night porter's file. Started October thirty first. Never signed out. The photo is torn off."
+    - scene: room
+      time: "12:45 AM"
+      light: 65
+      wall: "#3f352b"
+      furniture: false
+      door: false
+      window: false
+      dark: 0.85
+      boxes: [[0.08, 0.16], [0.24, 0.12], [0.7, 0.14]]
+      rule: {n: 4, text: Be back before 3:33}
+      you: {x: 0.45, light: true, aim: -0.3, facing: 1}
+      say: "Rule number four. Be back upstairs before three thirty three. Or there's nobody to close the doors."
+    - scene: closeup
+      object: alarm
+      time: "3:25 AM"
+      light: 60
+      ring: 0
+      say: "You look at your watch. Three twenty five. Somehow, hours are gone. The Visitor comes at three thirty three."
+    - scene: choice
+      time: "3:26 AM"
+      base: {scene: closeup, object: alarm, ring: 0}
+      question: "Lift or stairs?"
+      options:
+        - {text: The lift, cue: lift}
+        - {text: The stairs, cue: stairs}
+      say: "Eight minutes. The lift is fast but it brought you here. Do you take the lift... or run the stairs?"
+    - scene: endcard
+      time: "3:26 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: ward-c-5
+  format: stickman
+  series: WARD C
+  day: 5
+  day_label: NIGHT
+  meter_label: LIGHTS
+  place: FLOOR ZERO
+  title: "The old patient in room 13 asked me to read his wristband. Night 5 🏥"
+  tags: [stickman, animation, horror, hospital, wardc, story]
+  shots:
+    - scene: closeup
+      recap: true
+      object: alarm
+      time: "3:26 AM"
+      light: 60
+      ring: 0
+      say: "Last night, you were stuck on floor zero, eight minutes before three thirty three."
+    - scene: title
+      say: "Ward C. Night five."
+    - scene: street
+      time: "3:27 AM"
+      place: STAIRS
+      light: 55
+      dark: 0.8
+      pace: run
+      you: {light: true}
+      say: "You run the stairs. Two at a time. Five floors. Your legs are burning."
+    - scene: hallway
+      time: "3:33 AM"
+      place: WARD C
+      light: [55, 25]
+      lights: dying
+      "off": out
+      dark: 0.8
+      open_doors: [3]
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      figures: [{who: creature, z: 7.0, to_z: 5.0, x: 0.0, facing: -1, action: creep, cue: out}]
+      sfx: [{name: hit, at: slam}]
+      say: "You reach Ward C as the lights go out, and slam the last door. It's room thirteen."
+    - scene: room
+      time: "6:00 AM"
+      place: ROOM 13
+      light: 50
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "In the morning, Mr. Ashby looks tired. He holds out his wrist. Read it, he says. You're ready now. It's time you knew."
+    - scene: closeup
+      object: phone
+      time: "6:01 AM"
+      screen: Patient wristband
+      sub: Room 13
+      message: "NAME: NIGHT PORTER\nADMITTED: OCTOBER 31"
+      message_cue: porter
+      heartbeat: porter
+      say: "The wristband doesn't have a name. Just a job. Night porter. Admitted, October thirty first."
+    - scene: room
+      time: "6:02 AM"
+      light: 50
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: scared, facing: 1}
+      say: "Same job as yours. Same date as the calendar. He smiles, sadly. Tomorrow, you'll understand."
+    - scene: inventory
+      time: "6:05 AM"
+      light: 50
+      items:
+        - {icon: key, count: 1, label: ward key, cue: key}
+        - {icon: battery, count: 1, label: battery, cue: battery}
+      total: {text: "1 night left", cue: night}
+      say: "One ward key. One battery. One night left in your contract. Your goal: get out of Greyhill, for good."
+    - scene: choice
+      time: "6:06 AM"
+      base: {scene: room, wall: "#a7b4b2", furniture: false, clock: true, people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}], you: {x: 0.3, action: scared, facing: 1}}
+      question: "Ask him or run?"
+      options:
+        - {text: Ask him, cue: ask}
+        - {text: Run, cue: run}
+      say: "Do you ask Mr. Ashby who he really is... or just run, and never look back?"
+    - scene: endcard
+      time: "6:06 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: ward-c-6
+  format: stickman
+  series: WARD C
+  day: 6
+  day_label: NIGHT
+  meter_label: LIGHTS
+  place: ROOM 13
+  title: "On my last night at the hospital, I found out who Mr. Ashby really was. Night 6 🏥"
+  tags: [stickman, animation, horror, hospital, wardc, story]
+  shots:
+    - scene: closeup
+      recap: true
+      object: phone
+      time: "6:06 AM"
+      screen: Patient wristband
+      sub: Room 13
+      message: "NAME: NIGHT PORTER\nADMITTED: OCTOBER 31"
+      message_cue: 0
+      say: "Last night, Mr. Ashby's wristband said: night porter. Admitted October thirty first."
+    - scene: title
+      say: "Ward C. Night six."
+    - scene: room
+      time: "11:00 PM"
+      place: ROOM 13
+      light: 50
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "You ask him who he really is. He takes your hand. His hand has the same scar as yours."
+    - scene: room
+      time: "11:01 PM"
+      light: 50
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: scared, facing: 1}
+      camera: {zoom: [1.0, 1.3], focus: [0.5, 0.45]}
+      say: "I'm you, he says. Fifty years from now. It's always October thirty first here. I've lived this night over and over, trying to get it right."
+    - scene: room
+      time: "11:02 PM"
+      light: 50
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      people: [{x: 0.66, action: idle, facing: -1, color: "#c9c3b8"}]
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "The Visitor isn't taking patients. It's taking time. Every open door, another year. Tonight, close all of them, and the night finally ends."
+    - scene: hallway
+      time: "3:33 AM"
+      place: WARD C
+      light: [40, 20]
+      lights: dying
+      "off": out
+      dark: 0.8
+      wall: "#a3b1af"
+      floor: "#7d8b89"
+      carpet: "#9fb0ad"
+      ceiling: "#7f8b8a"
+      exit_color: "#27d466"
+      figures: [{who: creature, z: 7.0, to_z: 9, x: 0.0, facing: 1, action: creep, cue: out}]
+      say: "At three thirty three, every door is closed. The Visitor stops. Then it walks away, into the dark."
+    - scene: room
+      time: "6:00 AM"
+      place: ROOM 13
+      light: 100
+      wall: "#a7b4b2"
+      furniture: false
+      clock: true
+      you: {x: 0.3, action: idle, facing: 1}
+      say: "At six AM, the sun comes up. Room thirteen is empty. Just a note on the bed. Thank you. See you soon."
+    - scene: closeup
+      object: phone
+      day: 1
+      time: "10:00 PM"
+      place: GREYHILL HOSPITAL
+      screen: Calendar
+      sub: Nurse station
+      message: "OCTOBER 31"
+      message_cue: october
+      heartbeat: october
+      say: "Then you blink. It's ten PM. You're at the nurse station. And the calendar says October thirty first. Look at the corner. Night one."
+    - scene: choice
+      day: 1
+      time: "10:01 PM"
+      base: {scene: closeup, object: phone, screen: Calendar, sub: Nurse station, message: "OCTOBER 31"}
+      question: "Break the loop or try again?"
+      options:
+        - {text: Break it, cue: break}
+        - {text: Try again, cue: try}
+      say: "Fifty years of nights. Do you try to break the loop... or live it again, and get it right?"
+    - scene: endcard
+      time: "10:01 PM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
+
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa

@@ -38,9 +38,10 @@ also saved in `content/drafts/`. Series so far: BLACKOUT (3, posted), NIGHT SHIF
 (6, posted), FOG LINE (3, posted), SNOWBOUND (3, posted), LAST TRAIN (6, posted; subway; `train` and `tunnel` scenes), LINE FOUR (6, posted; night radio host; `on_air` sign,
 `radio_label`), HIGH TIDE (6, posted; tidal-island caretaker; street `sea: true` + blue fog as water), LOOKOUT (6, posted; fire-lookout tower;
 `window_view: forest`, `window_lights`, coloured map `danger`), THE STACKS (6, posted; night library; hallway `shelves`,
-room `people`; twist: you were the ghost), MIDNIGHT REEL (6, cinema projectionist; `cinema` scene, booth
+room `people`; twist: you were the ghost), MIDNIGHT REEL (6, posted; cinema projectionist; `cinema` scene, booth
 `window_view: cinema`; meta twist: the viewer is the audience), ROUTE NINE (6, gas-station night
-clerk vs a hitchhiker who needs to be sold something; clever-win twist). Never reuse a premise; keep every series
+clerk vs a hitchhiker who needs to be sold something; clever-win twist), WARD C (6, hospital night porter;
+time-loop twist; a shot-level `day: 1` resets the corner counter). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 
 Older formats still work and are archived in `content/archive/`: cartoon duos
