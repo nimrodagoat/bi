@@ -432,3 +432,29 @@ def cutaway(cv, shot, t):
             _label(ctx, part, ease_out(a))
         elif kind == "big":
             _big(ctx, part, a)
+
+
+# ------------------------------------------------------------------ pre-rendered footage (e.g. Blender)
+
+_FRAMES: dict = {}
+
+
+@scene("footage")
+def footage(cv, shot, t):
+    """Plays an image sequence (`frames`: a folder of PNGs, `fps`) as the picture,
+    holding the last frame once it runs out. Used for 3D renders."""
+    from pathlib import Path
+    folder = Path(shot.get("frames"))
+    if folder not in _FRAMES:
+        _FRAMES[folder] = sorted(folder.glob("*.png"))
+    files = _FRAMES[folder]
+    if not files:
+        return
+    k = min(int((t + float(shot.get("offset", 0))) * float(shot.get("fps", 30))), len(files) - 1)
+    img = cairo.ImageSurface.create_from_png(str(files[k]))
+    ctx = cv.ctx
+    ctx.save()
+    ctx.scale(W / img.get_width(), H / img.get_height())
+    ctx.set_source_surface(img, 0, 0)
+    ctx.paint()
+    ctx.restore()

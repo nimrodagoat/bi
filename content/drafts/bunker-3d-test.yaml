@@ -1,0 +1,18 @@
+# 5-second 3D test: Blender renders the picture (tools/blender/bunker3d.py, frames in
+# output/b3d), the usual engine adds the Andrew voice, one-word captions and sound.
+- id: bunker-3d-test
+  format: stickman
+  style: explainer
+  series: HOW IT WORKS
+  day: 1
+  title: "3D test: wizards build a bunker"
+  tags: [howitworks, test]
+  shots:
+    - scene: footage
+      frames: output/b3d
+      fps: 30
+      time: "12:00 PM"
+      camera: {zoom: [1.0, 1.0], steady: true}
+      hold: 0.6
+      sfx: [{name: whoosh, at: 0.2, gain: 0.5}, {name: hit, at: 1.25, gain: 0.8}, {name: boom, at: 1.3, gain: 0.4}]
+      say: "The wizards drop a giant steel pipe into a trench, bury it under a meter of dirt, and move in."

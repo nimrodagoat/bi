@@ -1,0 +1,79 @@
+name: Preview 3D
+
+# Renders the 3D test in Blender on 10 machines at once (each takes a slice of the
+# frames), then adds the voice and captions and puts a small copy on the
+# "previews" branch. Nothing is uploaded to YouTube and the queue isn't touched.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: preview-3d
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        part: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Blender (as a Python module)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libxrender1 libxxf86vm1 libxfixes3 libxi6 libxkbcommon0 libsm6 libgl1 libegl1
+          pip install -q bpy==4.2.0
+      - name: Render frames
+        run: |
+          START=$(( ${{ matrix.part }} * 15 + 1 ))
+          END=$(( START + 14 ))
+          python tools/blender/bunker3d.py output/b3d --samples 24 --start $START --end $END
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frames-${{ matrix.part }}
+          path: output/b3d/*.png
+          retention-days: 1
+
+  compose:
+    needs: render
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frames-*
+          path: output/b3d
+          merge-multiple: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install ffmpeg and fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core libcairo2-dev pkg-config
+      - run: pip install -r requirements.txt
+      - name: Add voice and captions
+        run: |
+          ls output/b3d | wc -l
+          python tools/render_draft.py content/drafts/bunker-3d-test.yaml bunker-3d-test output/bunker-3d-test.mp4
+      - name: Publish a small copy to the previews branch
+        run: |
+          mkdir -p /tmp/pv
+          ffmpeg -loglevel error -y -i output/bunker-3d-test.mp4 -vf scale=720:-2 -c:v libx264 -crf 22 \
+            -preset veryfast -c:a aac -b:a 128k /tmp/pv/bunker-3d-test.mp4
+          cd /tmp/pv
+          git init -q -b previews
+          git config user.name "shorts-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -q -m "Preview bunker-3d-test (run ${{ github.run_number }})"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" previews
