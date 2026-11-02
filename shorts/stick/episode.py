@@ -425,8 +425,9 @@ def render(item: dict, out_path: Path, work: Path, cfg: dict) -> Path:
     print("  voicing the narration…")
     shots, mix, total = build_timeline(item, cfg, work)
     add_effects(shots, mix, total)
-    bed = sound.drone(total)
-    mix.add(0, bed, float(cfg.get("stickman", {}).get("drone_volume", 0.09)))
+    if item.get("style") != "explainer":  # the low horror drone only under stories
+        bed = sound.drone(total)
+        mix.add(0, bed, float(cfg.get("stickman", {}).get("drone_volume", 0.09)))
     audio = mix.finish(total)
     raw = work / "mix.wav"
     with wave.open(str(raw), "wb") as f:

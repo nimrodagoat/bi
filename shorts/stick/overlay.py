@@ -54,10 +54,10 @@ def _highlight(chunk) -> int:
     return best
 
 
-def caption_plan(shots):
+def caption_plan(shots, max_words: int = 3):
     plan = []
     words = [w for s in shots for w in s.words]
-    groups = chunks(words)
+    groups = chunks(words, max_words)
     for i, g in enumerate(groups):
         start = g[0].start
         nxt = groups[i + 1][0].start if i + 1 < len(groups) else g[-1].end + 0.8
@@ -262,19 +262,35 @@ def draw_endcard(cv, shot, t):
          scale=back_out((t - 0.4) / 0.3), alpha=gfx.clamp((t - 0.4) / 0.15), pad_x=26, pad_y=12)
 
 
+def draw_explainer_end(cv, shot, t):
+    """End card for how-it-works videos: the topic, then a follow prompt."""
+    ctx = cv.ctx
+    item = cv.item
+    a = gfx.clamp(t / 0.3)
+    draw_surface(ctx, text(str(item.get("series", "HOW IT WORKS")).upper(), "title", 92, "#ece8e0",
+                           glow_color="#ffffff", glow_radius=5), W / 2, 560, alpha=a)
+    big = str(shot.get("big", item.get("end_big", "NEXT: ?"))).upper()
+    draw_surface(ctx, text(big, "title", 150, "#ffd34d", glow_color="#ffb300", glow_radius=10), W / 2, 740,
+                 back_out(gfx.clamp(t / 0.35)) * 0.1 + 0.9, a)
+    label = str(shot.get("label", "FOLLOW FOR MORE HOW IT WORKS")).upper()
+    pill(ctx, W / 2, 900, label, "caption", 26, WHITE, "#1a1400", 0.9, border="#ffd34d",
+         scale=back_out((t - 0.4) / 0.3), alpha=gfx.clamp((t - 0.4) / 0.15), pad_x=26, pad_y=12)
+
+
 # ------------------------------------------------------------------ main entry
 
 def paint(cv, shot, t: float, now: float) -> None:
     ctx = cv.ctx
     sc = shot.scene
-    if sc not in ("title", "endcard") and not shot.get("no_hud"):
+    explainer = cv.item.get("style") == "explainer"  # how-it-works videos: no counter, one word at a time
+    if sc not in ("title", "endcard") and not shot.get("no_hud") and not explainer:
         draw_hud(cv, shot, t)
     if sc == "title":
         draw_title(cv, shot, t)
     elif sc == "choice":
         draw_choice(cv, shot, t)
     elif sc == "endcard":
-        draw_endcard(cv, shot, t)
+        (draw_explainer_end if explainer else draw_endcard)(cv, shot, t)
     draw_rule(cv, shot, t)
     if shot.get("recap"):
         a = gfx.clamp(t / 0.25) * gfx.clamp((shot.dur - t) / 0.25)
@@ -294,7 +310,7 @@ def paint(cv, shot, t: float, now: float) -> None:
                  border="#2a8f80", pad_x=16, pad_y=7, tracking=2)
             break
     if not hasattr(cv, "captions"):
-        cv.captions = caption_plan(cv.shots)
+        cv.captions = caption_plan(cv.shots, 1 if explainer else 3)
     for start, end, chunk, hl in cv.captions:
         if start <= now < end:
             fade = gfx.clamp((end - now) / 0.12)

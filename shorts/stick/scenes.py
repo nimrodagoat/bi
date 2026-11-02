@@ -1896,3 +1896,6 @@ def cinema(cv, shot, t):
     if turned:
         for x, hy, k in heads:
             eyes(ctx, x, hy - 2 * k, 5 * k, 0.95, gap=20 * k)
+
+
+from . import cutaway  # noqa: E402,F401  (registers the how-it-works "cutaway" scene)

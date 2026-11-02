@@ -88,3 +88,14 @@ of buildings: a causeway or pier; pair it with a blue `fog` for rising water),
 Any shot: `recap: true` (shows PREVIOUSLY; use it for the opening line of parts 2+), `snow: {n, speed, wind}` (or `snow: true`), `fog: {top: 0.6, rise: [0.8, 0.5], cue, density, color}` (rolling fog), `flicker: cue`, `relight: cue`, `dies: cue` (the flashlight fails), `heartbeat: cue`,
 `shake_at: [cue]`, `camera: {zoom: [1, 1.1], focus: [x, y], shift}`, `hold` (extra seconds),
 `sfx: [{name: knock|boom|hit|click|whoosh|tick, at: cue, gain}]`, `no_hud`.
+
+
+## How-it-works explainers (`style: explainer`)
+
+An entry with `style: explainer` has no corner counter, one big word per caption,
+no horror drone, and an end card with `big` (e.g. "NEXT: SUBMARINES?") and `label`.
+Scene `cutaway`: a slice through a back yard (sky, house, lawn, soil) with
+`parts: [{type, cue, anim, ...}]` (hole, pipe, shaft, vent, backfill, bunks, supplies,
+dust, shield, measure, label, big) and `wizards: [{x, y, action, facing, to, go, dur, spell}]`
+(stickman wizards). Example and generator: `tools/explainer_bunker.py` →
+`content/drafts/explainer-bunker.yaml` (test only, not in the queue).
