@@ -1,0 +1,18 @@
+# 5-second 3D test, version 2: more detail, rendered at 1440x2560 (tools/blender/bunker3d_v2.py,
+# frames in output/b3d), then the usual engine adds the Andrew voice, captions and sound.
+- id: bunker-3d-v2
+  format: stickman
+  style: explainer
+  series: HOW IT WORKS
+  day: 1
+  title: "3D test v2: wizards build a bunker"
+  tags: [howitworks, test]
+  shots:
+    - scene: footage
+      frames: output/b3d
+      fps: 30
+      time: "12:00 PM"
+      camera: {zoom: [1.0, 1.0], steady: true}
+      hold: 0.3
+      sfx: [{name: whoosh, at: 0.3, gain: 0.5}, {name: hit, at: 1.2, gain: 0.8}, {name: boom, at: 1.25, gain: 0.4}]
+      say: "The wizards bury a steel bunker in the back yard... and move right in."
