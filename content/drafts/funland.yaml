@@ -219,7 +219,7 @@
         - {x: 0.3, action: idle, facing: 1, color: "#8a5a3a", mascot: "#8a5a3a"}
         - {x: 0.5, action: idle, facing: 1, color: "#c98a3a", mascot: "#c98a3a"}
       you: {x: 0.75, light: true, aim: 0.0, facing: -1}
-      say: "Taped to the wall, rule number four, in Rudy's handwriting. If a suit is missing, hide. Don't let it hug you."
+      say: "Taped to the wall, rule number four, in Rudy's handwriting. If a suit is missing, hide. Don't let it hug you. Whatever it says."
     - scene: room
       time: "2:12 AM"
       light: 76
@@ -301,7 +301,7 @@
       chip: {text: "Rudy · park manager", cue: 0, y: 470}
       radio_label: "RADIO · RUDY"
       say:
-        - "Rudy doesn't laugh this time."
+        - "You run back to the booth and call Rudy. He doesn't laugh this time."
         - radio: "Just stay in the booth, pal. Whatever happens, last until six."
     - scene: room
       time: "3:00 AM"
@@ -406,7 +406,7 @@
         - {icon: battery, count: 1, label: battery, cue: battery}
         - {icon: key, count: 9, label: ride keys, cue: keys}
       total: {text: "1 night left", cue: night}
-      say: "One battery. Nine keys. One night left. Your goal: find out who's testing you, and why."
+      say: "One battery. Nine keys. One night left. Your goal: find out who's been testing you all week, and why."
     - scene: radio
       time: "11:20 PM"
       on: radio
