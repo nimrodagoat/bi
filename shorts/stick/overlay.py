@@ -66,6 +66,16 @@ def caption_plan(shots, max_words: int = 3):
     return plan
 
 
+def draw_caption_top(ctx, chunk, age: float, alpha: float = 1.0):
+    """Fact-wizard captions: blue hand lettering along the top of the white page."""
+    words = " ".join(_clean(w.text) for w in chunk if _clean(w.text))
+    if not words:
+        return
+    s = text(words, "comic", 78, "#1d4fa0")
+    sc = min(1.0, W * 0.88 / max(s.get_width(), 1)) * (back_out(age / 0.16, 2.0) * 0.12 + 0.88 if age < 0.16 else 1.0)
+    draw_surface(ctx, s, W / 2, 250, sc, alpha * gfx.clamp(age / 0.06))
+
+
 def draw_caption(ctx, chunk, hl: int, age: float, alpha: float = 1.0):
     radio = chunk[0].style == "radio"
     pieces = []
@@ -282,7 +292,8 @@ def draw_explainer_end(cv, shot, t):
 def paint(cv, shot, t: float, now: float) -> None:
     ctx = cv.ctx
     sc = shot.scene
-    explainer = cv.item.get("style") == "explainer"  # how-it-works videos: no counter, one word at a time
+    style = cv.item.get("style")
+    explainer = style in ("explainer", "whiteboard")  # how-it-works / fact videos: no counter
     if sc not in ("title", "endcard") and not shot.get("no_hud") and not explainer:
         draw_hud(cv, shot, t)
     if sc == "title":
@@ -303,16 +314,19 @@ def paint(cv, shot, t: float, now: float) -> None:
             pill(ctx, W / 2, float(chip.get("y", 520)), str(chip.get("text", "")).upper(), "caption", 28, "#0b1e1b",
                  TEAL, 0.95, scale=back_out(k / 0.25), alpha=gfx.clamp(k / 0.1), pad_x=22, pad_y=10)
     # radio label while the radio speaks
-    for a, b, style in shot.voice_spans:
-        if style == "radio" and a - 0.2 <= now <= b + 0.3:
+    for a, b, vstyle in shot.voice_spans:
+        if vstyle == "radio" and a - 0.2 <= now <= b + 0.3:
             label = str(shot.get("radio_label", "EMERGENCY BROADCAST · RADIO")).upper()
             pill(ctx, W / 2, CAPTION_Y - 78, label, "bold", 20, TEAL, "#06201c", 0.85,
                  border="#2a8f80", pad_x=16, pad_y=7, tracking=2)
             break
     if not hasattr(cv, "captions"):
-        cv.captions = caption_plan(cv.shots, 1 if explainer else 3)
+        cv.captions = caption_plan(cv.shots, {"explainer": 1, "whiteboard": 3}.get(style, 3))
     for start, end, chunk, hl in cv.captions:
         if start <= now < end:
             fade = gfx.clamp((end - now) / 0.12)
-            draw_caption(ctx, chunk, hl, now - start, fade)
+            if style == "whiteboard":
+                draw_caption_top(ctx, chunk, now - start, fade)
+            else:
+                draw_caption(ctx, chunk, hl, now - start, fade)
             break

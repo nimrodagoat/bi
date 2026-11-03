@@ -259,6 +259,13 @@ stickman:
       edge_rate: "-3%"
       kokoro_voice: am_michael
       kokoro_speed: 1.0
+    wizard:  # the fact wizard: an older, deeper British voice, a little slower
+      engines: [edge, kokoro]
+      edge_voice: en-GB-RyanNeural
+      edge_rate: "-8%"
+      edge_pitch: "-12Hz"
+      kokoro_voice: bm_george
+      kokoro_speed: 0.92
   drone_volume: 0.09
   upload:
     hashtags: [stickman, animation, stickmananimation, horror, survival, story, scary]

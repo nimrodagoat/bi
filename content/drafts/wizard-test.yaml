@@ -1,0 +1,29 @@
+# 10-second fact-wizard test: white page, cartoon wizard, real pictures (Wikimedia
+# Commons, public domain / open licences only, credited in the description).
+- id: wizard-dancing-plague
+  format: stickman
+  style: whiteboard
+  narrator: wizard
+  series: WIZARD'S TALES
+  day: 1
+  title: "In 1518 a woman started dancing in the street. She didn't stop for days 🧙"
+  tags: [history, legends, facts, wizard, strasbourg]
+  shots:
+    - scene: whiteboard
+      camera: {zoom: [1.0, 1.0], steady: true}
+      pictures:
+        - {image: {search: "Nuremberg Chronicle Strasbourg woodcut"}, x: 0.5, y: 0.37, w: 0.8, max_h: 0.36, cue: strasbourg, label: "Strasbourg, 1518"}
+      wizard: {x: 0.5, y: 0.93, scale: 1.05, pose: idle, pose_at: {strasbourg: point}, point: 0.9}
+      say: "In fifteen eighteen, a woman in Strasbourg started dancing in the street."
+    - scene: whiteboard
+      camera: {zoom: [1.0, 1.0], steady: true}
+      pictures:
+        - {image: {search: "dancing mania Molenbeek Hondius engraving"}, x: 0.5, y: 0.37, w: 0.82, max_h: 0.36, cue: 0.1}
+      wizard: {x: 0.5, y: 0.93, scale: 1.05, pose: point, point: 0.9}
+      say: "She didn't stop for days. Soon, dozens joined her."
+    - scene: whiteboard
+      camera: {zoom: [1.0, 1.0], steady: true}
+      big: {text: "?", cue: nobody, y: 0.36, size: 260}
+      wizard: {x: 0.5, y: 0.93, scale: 1.05, pose: shrug}
+      hold: 0.5
+      say: "Nobody knows why."

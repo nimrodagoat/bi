@@ -359,7 +359,8 @@ def render_frames(cv: Canvas, out_video: Path) -> None:
         ctx.set_matrix(camera(shot, t))
         scenes.paint(cv, shot, t)
         ctx.identity_matrix()
-        cv.film.apply(ctx, f)
+        if cv.item.get("style") != "whiteboard":  # no grain or vignette on the white page
+            cv.film.apply(ctx, f)
         crossfade(cv, shot, t)
         cv.keep_picture()
         overlay.paint(cv, shot, t, now)
@@ -425,7 +426,10 @@ def render(item: dict, out_path: Path, work: Path, cfg: dict) -> Path:
     print("  voicing the narration…")
     shots, mix, total = build_timeline(item, cfg, work)
     add_effects(shots, mix, total)
-    if item.get("style") != "explainer":  # the low horror drone only under stories
+    from . import images
+    for spec in images.specs_in(item):  # real pictures (fact videos), fetched once and cached
+        images.ensure(spec)
+    if item.get("style") not in ("explainer", "whiteboard"):  # the low horror drone only under stories
         bed = sound.drone(total)
         mix.add(0, bed, float(cfg.get("stickman", {}).get("drone_volume", 0.09)))
     audio = mix.finish(total)
@@ -519,6 +523,7 @@ def _draw(cv: Canvas, shot: Shot, t: float, now: float) -> None:
     ctx.set_matrix(camera(shot, t))
     scenes.paint(cv, shot, t)
     ctx.identity_matrix()
-    cv.film.apply(ctx, cv.frame)
+    if cv.item.get("style") != "whiteboard":
+        cv.film.apply(ctx, cv.frame)
     cv.keep_picture()
     overlay.paint(cv, shot, t, now)

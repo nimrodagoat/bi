@@ -25,6 +25,7 @@ FONT_FILES = {
     "bold": "Montserrat-ExtraBold.ttf",
     "mono": "JetBrainsMono-Bold.ttf",
     "mono_light": "JetBrainsMono-Regular.ttf",
+    "comic": "ComicNeue-Bold.ttf",
 }
 
 LIME = "#c8f135"

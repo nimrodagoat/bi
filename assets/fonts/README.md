@@ -11,3 +11,6 @@ Stickman-story videos (all SIL Open Font License 1.1 as well):
   Ulanovsky (captions).
 - `JetBrainsMono-Bold.ttf`, `JetBrainsMono-Regular.ttf`: **JetBrains Mono** by
   JetBrains (the day / clock counter).
+
+- `ComicNeue-Bold.ttf`: **Comic Neue** by Craig Rozynski and Hrant Papazian (SIL Open Font
+  License 1.1): the hand-lettered captions in fact-wizard videos.

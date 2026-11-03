@@ -68,6 +68,11 @@ def build_metadata(item: dict, cfg: dict) -> dict:
     credit = f"\n\nMusic: {item['music_credit']}" if item.get("music_credit") else ""
     if item.get("gameplay_credit"):
         credit += f"\n\n{item['gameplay_credit']}"
+    if item.get("shots"):  # real pictures in fact videos: credit each one
+        from .stick import images
+        pics = [c for c in (images.credit(sp) for sp in images.specs_in(item)) if c]
+        if pics:
+            credit += "\n\nPictures: " + "; ".join(dict.fromkeys(pics))
     description = _clean(f"{description}\n\n{hashtags}{credit}", 5000)
 
     lang = cfg.get("channel", {}).get("language", "en")

@@ -1916,6 +1916,7 @@ def cinema(cv, shot, t):
 
 
 from . import cutaway  # noqa: E402,F401  (registers the how-it-works "cutaway" scene)
+from . import whiteboard  # noqa: E402,F401  (registers the fact-wizard "whiteboard" scene)
 
 
 @scene("carousel")
