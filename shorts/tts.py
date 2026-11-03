@@ -68,7 +68,30 @@ def synthesize(
     raise RuntimeError("every voice engine failed:\n  " + "\n  ".join(errors))
 
 
+_edge_down = False  # set once Edge has failed even after waiting
+EDGE_RETRY_WAITS = (5, 20, 60, 120)  # Microsoft's server sometimes refuses a voice for a few minutes
+
+
 def _edge(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
+    """Edge with patience: retry with growing pauses before giving up on the voice."""
+    global _edge_down
+    import time
+
+    if _edge_down:  # stay on the fallback for the rest of this run so one video never mixes voices
+        raise RuntimeError("edge unavailable earlier in this run")
+    waits = EDGE_RETRY_WAITS
+    for attempt in range(len(waits) + 1):
+        try:
+            return _edge_once(text, work_dir, vcfg)
+        except Exception as e:
+            if attempt == len(waits):
+                _edge_down = True
+                raise
+            print(f"  edge voice busy ({e}); trying again in {waits[attempt]} s", file=sys.stderr)
+            time.sleep(waits[attempt])
+
+
+def _edge_once(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
     import edge_tts
 
     out = work_dir / f"{vcfg['_name']}.mp3"
