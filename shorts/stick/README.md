@@ -63,6 +63,9 @@ Cues (when something happens) are a word the narrator says in that shot
   `lurkers: N` (creatures that back away from the beam), `chasers: {n, cue}`,
   `counter: [{text, label, cue}]` (big numbers passing by), `eyes: {cue, n}`.
 - `closeup`: `object: flashlight|phone|alarm`.
+- `carousel`: a night carousel. `spin: cue` / `spinning: true`, `stop: cue`, `bulbs: on|off|flicker`, `rider: {color, cue,
+  fade, horse, empty}` (a small figure in a raincoat; `empty` leaves only the coat), `you`, `dark`. Room `people` also take
+  `coat: colour` and `mascot: true|colour` (big-headed bear costume).
 - `cinema`: an old cinema hall from the back row. `audience` (0-1 share of seats taken), `turn: cue` (every head turns
   round, eyes glowing), `screen: "TEXT"` (or `[[text, cue], ...]`), `screen_size`, `screen_off: cue`, `flicker`, `you`.
   Room `window_view: cinema` = a projection booth window over the hall.

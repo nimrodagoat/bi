@@ -391,6 +391,23 @@ def room(cv, shot, t):
         F.draw_shadow(ctx, px, pg, sc, 0.3 * a)
         pj = F.draw_stickman(ctx, F.pose_for(act, t + k * 0.9, seed=k), px, pg, sc, int(pp.get("facing", -1)),
                              color=pp.get("color", "#e6d3b3"), alpha=a)
+        if pp.get("coat"):
+            _coat(ctx, pj, sc, pp["coat"] if isinstance(pp["coat"], str) else "#6e737b", int(pp.get("facing", -1)))
+        if pp.get("mascot"):  # a big-headed bear costume
+            hc = pp.get("mascot") if isinstance(pp.get("mascot"), str) else "#8a5a3a"
+            hx, hy = pj.head
+            for ex in (-1, 1):
+                ctx.arc(hx + ex * 34 * sc, hy - 38 * sc, 16 * sc, 0, 2 * math.pi)
+            ctx.arc(hx, hy - 6 * sc, 46 * sc, 0, 2 * math.pi)
+            set_color(ctx, hc, a)
+            ctx.fill()
+            ctx.arc(hx + 6 * sc * int(pp.get("facing", -1)), hy + 6 * sc, 18 * sc, 0, 2 * math.pi)
+            set_color(ctx, "#e8cfa8", a)
+            ctx.fill()
+            for ex in (-1, 1):
+                ctx.arc(hx + ex * 15 * sc, hy - 16 * sc, 5 * sc, 0, 2 * math.pi)
+            set_color(ctx, "#101010", a)
+            ctx.fill()
         if pp.get("stare"):
             stares.append((pj, sc, int(pp.get("facing", -1))))
     for box in o.get("boxes", []) or []:
@@ -1899,3 +1916,117 @@ def cinema(cv, shot, t):
 
 
 from . import cutaway  # noqa: E402,F401  (registers the how-it-works "cutaway" scene)
+
+
+@scene("carousel")
+def carousel(cv, shot, t):
+    """A night-time carousel: canopy, bulbs, poles and horses going round
+    (`spin: cue` starts it, `stop: cue` stops it), `bulbs: on|off|flicker`,
+    `rider: {color, cue, fade, empty}` (a small figure on the front horse; `empty`
+    leaves just her raincoat), plus `you` in front and the usual `dark`."""
+    ctx = cv.ctx
+    o = shot.spec
+    vgradient(ctx, -300, -300, W + 600, H + 600, "#070912", "#151a2a")
+    glow(ctx, 860, 300, 220, "#cfdcff", 0.1)
+    ground = 1420
+    ctx.rectangle(-300, ground - 20, W + 600, H)
+    set_color(ctx, "#1d1f26")
+    ctx.fill()
+    spin_at = shot.cue(o.get("spin"), 1e9) if o.get("spin") is not None else (0.0 if o.get("spinning") else 1e9)
+    stop_at = shot.cue(o.get("stop"), 1e9) if o.get("stop") is not None else 1e9
+    run_t = max(0.0, min(t, stop_at) - spin_at)
+    ang = run_t * 0.9 + (0.9 * 1.2 * ease_out(min(t - stop_at, 1.2) / 1.2) if t > stop_at else 0)
+    cx, top, base, rad = W / 2, 560, 1300, 430
+    bulbs = _cue_list(shot, t, o.get("bulbs", "on"))
+    lit = {"on": 1.0, "flicker": flicker(t, 6, 9), True: 1.0}.get(bulbs, 0.0)
+    if lit > 0:
+        glow(ctx, cx, 900, 700, "#ffcf7a", 0.25 * lit)
+    # platform
+    ctx.save()
+    ctx.translate(cx, base)
+    ctx.scale(1, 0.22)
+    ctx.arc(0, 0, rad + 20, 0, 2 * math.pi)
+    ctx.restore()
+    set_color(ctx, "#5a1e2a")
+    ctx.fill()
+    ctx.rectangle(cx - rad - 20, base, 2 * rad + 40, 60)
+    set_color(ctx, "#3e1520")
+    ctx.fill()
+    # centre column
+    ctx.rectangle(cx - 60, top + 60, 120, base - top - 60)
+    set_color(ctx, "#7a2f3f")
+    ctx.fill()
+    # horses on poles: drawn back to front
+    horses = []
+    for k in range(8):
+        a = ang + k * math.pi / 4
+        horses.append((math.sin(a), math.cos(a), k))
+    horses.sort()
+    rider = o.get("rider")
+    for depth, side, k in horses:
+        x = cx + side * rad * 0.82
+        bob = 30 * math.sin(ang * 3 + k)
+        y = 1000 + bob - depth * 30
+        sc = 0.75 + 0.25 * (depth + 1) / 2
+        stroke_line(ctx, [(x, top + 120), (x, base - 10)], 8 * sc, "#e8d27a", 1.0, "#6a5a20")
+        col = ["#f2efe8", "#e0c9a6", "#c9d6e8", "#f0d0d8"][k % 4]
+        d = 1 if (side < 0) == (depth < 0) else -1  # which way this horse faces on screen
+        gal = math.sin(ang * 3 + k)  # galloping legs
+        for lx, sw in ((-42, -0.5), (-28, -0.2), (30, 0.5), (44, 0.8)):  # legs
+            kx, ky = x + d * lx * sc, y + 22 * sc
+            fx, fy = kx + d * (sw + 0.3 * gal) * 30 * sc, ky + 55 * sc
+            stroke_line(ctx, [(kx, ky), (fx, fy)], 10 * sc, col, 1.0, "#4a4a4a")
+        ctx.save()  # body
+        ctx.translate(x, y)
+        ctx.scale(1, 0.5)
+        ctx.arc(0, 0, 70 * sc, 0, 2 * math.pi)
+        ctx.restore()
+        set_color(ctx, col)
+        ctx.fill()
+        nx0, ny0 = x + d * 48 * sc, y - 10 * sc  # neck up and forward, then the head
+        nx1, ny1 = x + d * 78 * sc, y - 70 * sc
+        stroke_line(ctx, [(nx0, ny0), (nx1, ny1)], 30 * sc, col, 1.0, "#4a4a4a")
+        ctx.save()
+        ctx.translate(nx1 + d * 18 * sc, ny1 + 6 * sc)
+        ctx.rotate(d * 0.5)
+        ctx.scale(1, 0.55)
+        ctx.arc(0, 0, 30 * sc, 0, 2 * math.pi)
+        ctx.restore()
+        set_color(ctx, col)
+        ctx.fill()
+        stroke_line(ctx, [(nx0 - d * 4 * sc, ny0 - 10 * sc), (nx1 - d * 10 * sc, ny1 - 8 * sc)], 9 * sc,
+                    ["#b03a48", "#3a5ab0", "#d4ac0d", "#3a8a5a"][k % 4])  # mane
+        rounded_rect(ctx, x - 26 * sc, y - 40 * sc, 52 * sc, 16 * sc, 6 * sc)  # saddle
+        set_color(ctx, ["#b03a48", "#3a5ab0", "#d4ac0d", "#3a8a5a"][k % 4])
+        ctx.fill()
+        if rider and k == int(rider.get("horse", 0)) and t >= shot.cue(rider.get("cue"), 0.0):
+            ra = 1.0 - clamp((t - shot.cue(rider.get("fade"), 1e9)) / 0.6)
+            rc = rider.get("color", "#ffd34d")
+            if rider.get("empty"):
+                fill(ctx, [(x - 24 * sc, y - 30 * sc), (x + 24 * sc, y - 30 * sc), (x + 34 * sc, y + 10 * sc),
+                           (x - 34 * sc, y + 10 * sc)], rc, 0.9)
+            elif ra > 0:
+                j = F.draw_stickman(ctx, F.sit(t), x, y + 40 * sc, 0.7 * sc, 1, color="#f2f2f2", alpha=ra)
+                _coat(ctx, j, 0.7 * sc, rc, 1)
+                ctx.arc(j.head[0], j.head[1] - 6 * sc, F.HEAD * 0.8 * sc, math.pi, 2 * math.pi)  # hood
+                set_color(ctx, rc, ra)
+                ctx.fill()
+    # canopy with bulbs
+    fill(ctx, [(cx - rad - 60, top + 120), (cx, top - 60), (cx + rad + 60, top + 120)], "#b03a48")
+    for k in range(9):
+        x0 = cx - rad - 60 + k * (2 * rad + 120) / 9
+        fill(ctx, [(x0, top + 120), (x0 + (2 * rad + 120) / 18, top + 160), (x0 + (2 * rad + 120) / 9, top + 120)],
+             "#f2efe8" if k % 2 else "#b03a48")
+    for k in range(17):
+        bx = cx - rad - 50 + k * (2 * rad + 100) / 16
+        b = lit * (0.6 + 0.4 * flicker(t + k, k, 5))
+        set_color(ctx, mix("#3a3020", "#ffe08a", b))
+        ctx.arc(bx, top + 130, 9, 0, 2 * math.pi)
+        ctx.fill()
+        if b > 0.5:
+            glow(ctx, bx, top + 130, 26, "#ffcf7a", 0.4 * b)
+    ground_you = float(o.get("ground", 1640))
+    j, beam = hero(cv, shot, t, o.get("you"), ground_you, 1.25, default_x=0.5) if o.get("you") else (None, None)
+    dark = float(o.get("dark", 0))
+    if dark > 0:
+        _apply_dark(cv, shot, t, dark, beam, j, extra=[("radial", cx, 900, 800, 0.8 * lit)])
