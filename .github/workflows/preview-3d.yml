@@ -9,7 +9,7 @@ on:
       script:
         description: "Blender script"
         type: string
-        default: tools/blender/bunker3d_v2.py
+        default: tools/blender/bunker3d_v3.py
       samples:
         description: "Render quality (samples per pixel)"
         type: string
@@ -17,11 +17,19 @@ on:
       file:
         description: "Drafts file with the voice/captions entry"
         type: string
-        default: content/drafts/bunker-3d-v2.yaml
+        default: content/drafts/bunker-3d-v3.yaml
       id:
         description: "Entry id in that file"
         type: string
-        default: bunker-3d-v2
+        default: bunker-3d-v3
+      first:
+        description: "First frame to render"
+        type: string
+        default: "1"
+      last:
+        description: "Last frame to render"
+        type: string
+        default: "150"
 
 permissions:
   contents: write
@@ -49,15 +57,20 @@ jobs:
           pip install -q bpy==4.2.0
       - name: Render frames
         run: |
-          START=$(( ${{ matrix.part }} * 8 + 1 ))
-          END=$(( START + 7 ))
-          if [ $END -gt 150 ]; then END=150; fi
-          python "${{ inputs.script }}" output/b3d --samples "${{ inputs.samples }}" --start $START --end $END
+          FIRST=${{ inputs.first }}; LAST=${{ inputs.last }}
+          PER=$(( (LAST - FIRST + 1 + 19) / 20 ))
+          START=$(( FIRST + ${{ matrix.part }} * PER ))
+          END=$(( START + PER - 1 ))
+          if [ $END -gt $LAST ]; then END=$LAST; fi
+          if [ $START -le $LAST ]; then
+            python "${{ inputs.script }}" output/b3d --samples "${{ inputs.samples }}" --start $START --end $END
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: frames-${{ matrix.part }}
           path: output/b3d/*.png
           retention-days: 1
+          if-no-files-found: ignore
 
   compose:
     needs: render
