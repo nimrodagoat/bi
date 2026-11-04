@@ -1,0 +1,524 @@
+# MILK ROUND (6 parts). You take over the pre-dawn milk round in Brindle, a
+# sleepy village: forty houses, three AM to dawn, one electric milk float.
+# Cast: you (the new milkman), Walt (the old milkman, only on the radio from the
+# dairy), Mrs. Pell (number nine, always up early), and the notes left in empty
+# bottles at number twelve, a narrow house that isn't on the map.
+# Twist: the notes were the real Walt, trapped inside number twelve since 1985,
+# asking for milk to stay alive and for someone brave enough to fetch him. The
+# voice on the radio was the house all along; its rules kept every milkman
+# away. Last sting: after you save Walt, the radio voice says "new round
+# tomorrow. Forty-one houses."
+- id: milk-round-1
+  format: stickman
+  series: MILK ROUND
+  day: 1
+  day_label: ROUND
+  meter_label: BATTERY
+  place: BRINDLE VILLAGE
+  title: "I took over the village milk round. One house on it isn't on the map 🥛"
+  tags: [stickman, animation, horror, story, milkround, village]
+  shots:
+    - scene: street
+      time: "3:00 AM"
+      light: 100
+      pace: walk
+      dark: 0.6
+      you: {light: true}
+      say: "You take over the milk round in Brindle, a sleepy little village. Three AM start. Forty houses. One slow, humming electric milk float."
+    - scene: radio
+      time: "3:05 AM"
+      on: radio
+      chip: {text: "Walt · the old milkman", cue: walt, y: 470}
+      radio_label: "RADIO · THE DAIRY"
+      say:
+        - "Old Walt did this round for forty years. He calls from the dairy with the rules."
+        - radio: "Three rules, lad. Leave exactly what the note says. Never knock on a door. And be back before dawn."
+    - scene: title
+      say: "Milk Round. Round one."
+    - scene: street
+      time: "3:15 AM"
+      light: 98
+      stop: 0
+      dark: 0.6
+      you: {light: true, facing: 1}
+      rule: {n: 1, text: Leave exactly what the note says}
+      say: "Rule number one. Every house leaves a note in an empty bottle. One pint means one pint. Never more. Never less."
+    - scene: street
+      time: "3:30 AM"
+      light: 95
+      stop: 0
+      dark: 0.6
+      you: {light: true, facing: 1}
+      rule: {n: 2, text: Never knock on a door}
+      say: "Rule number two. Never knock. Not when a light is on. Not even when somebody inside calls your name."
+    - scene: inventory
+      time: "3:35 AM"
+      light: 94
+      items:
+        - {icon: bottle, count: 40, label: pints of milk, cue: forty}
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+        - {icon: battery, count: 1, label: float battery, cue: battery}
+      total: {text: "Back by dawn · 6 AM", cue: six}
+      say: "Forty pints. One flashlight. One float battery. Tonight's goal: all forty houses, and back at the dairy by six."
+    - scene: map
+      time: "4:40 AM"
+      place: ELM ROW
+      route: [[0.3, 0.9], [0.3, 0.12]]
+      route_cue: 0
+      route_end: thirteen
+      stops:
+        - {x: 0.3, y: 0.9, left: true, label: "No. 10", cue: ten}
+        - {x: 0.3, y: 0.7, label: "No. 11", cue: eleven}
+        - {x: 0.3, y: 0.5, label: "No. 12 ?", ghost: true, cue: twelve}
+        - {x: 0.3, y: 0.3, label: "No. 13", cue: thirteen}
+      say: "Elm Row is the last street. On your map, the houses go ten, eleven, thirteen. There is no number twelve."
+    - scene: street
+      time: "4:45 AM"
+      place: ELM ROW
+      light: 80
+      stop: 0
+      dark: 0.7
+      you: {light: true, facing: 1}
+      heartbeat: narrow
+      chip: {text: "Note: two pints. And the boy who brings them.", cue: note, y: 520}
+      say: "But tonight, between eleven and thirteen, there's a narrow, dark house. Number twelve. On the step, an empty bottle with a note. Two pints, please. And the boy who brings them."
+    - scene: choice
+      time: "4:46 AM"
+      base: {scene: street, stop: 0, dark: 0.7, you: {light: true, facing: 1}}
+      question: "Leave the milk or skip number twelve?"
+      options:
+        - {text: Leave the milk, cue: leave}
+        - {text: Skip it, cue: skip}
+      say: "Do you leave the milk... or skip number twelve?"
+    - scene: endcard
+      time: "4:46 AM"
+      hold: 1.6
+      say: "Follow for round two."
+
+- id: milk-round-2
+  format: stickman
+  series: MILK ROUND
+  day: 2
+  day_label: ROUND
+  meter_label: BATTERY
+  place: ELM ROW
+  title: "The house that isn't on the map left another note. Round 2 🥛"
+  tags: [stickman, animation, horror, story, milkround, village]
+  shots:
+    - scene: street
+      recap: true
+      time: "4:46 AM"
+      light: 80
+      stop: 0
+      dark: 0.7
+      you: {light: true, facing: 1}
+      say: "Last round, a house that isn't on the map left you a note. Two pints, and the boy who brings them."
+    - scene: title
+      say: "Milk Round. Round two."
+    - scene: street
+      time: "4:47 AM"
+      light: 79
+      stop: 0
+      dark: 0.7
+      you: {light: true, facing: 1}
+      sfx: [{name: click, at: pints}]
+      heartbeat: upstairs
+      say: "You leave the two pints. Exactly what the note says, and nothing more. You don't knock. As you walk away, a light comes on upstairs."
+    - scene: radio
+      time: "4:50 AM"
+      on: radio
+      radio_label: "RADIO · THE DAIRY"
+      rule: {n: 3, text: Never go near number twelve}
+      say:
+        - "You tell Walt on the radio. He goes quiet for a long time."
+        - radio: "New rule, lad. Never go near number twelve again. That house isn't on our round."
+    - scene: street
+      time: "5:20 AM"
+      light: [70, 45]
+      pace: run
+      dark: 0.75
+      lurkers: 2
+      you: {light: true}
+      say: "Tonight's goal: the last fourteen houses before six. The float battery is low. And something tall follows you, roof to roof. When your flashlight finds it, it backs away."
+    - scene: street
+      time: "5:40 AM"
+      place: NUMBER NINE
+      light: 42
+      stop: 0
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#d9c7e8", cue: pell}]
+      say: "At number nine, old Mrs. Pell is waiting at her door in her dressing gown. She whispers. That house took a milkman once, dear. Don't let it take you."
+    - scene: room
+      time: "5:59 AM"
+      place: THE DAIRY
+      light: 30
+      wall: "#5a6a6e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      heartbeat: waiting
+      chip: {text: "Note: you forgot the boy.", cue: note, y: 520}
+      say: "You get back to the dairy at one minute to six. And on the dairy step, waiting for you, is an empty bottle with a note. You forgot the boy."
+    - scene: choice
+      time: "6:00 AM"
+      base: {scene: room, wall: "#5a6a6e", furniture: false, desk: true, clock: true}
+      question: "Tell Walt or keep it quiet?"
+      options:
+        - {text: Tell Walt, cue: tell}
+        - {text: Keep it quiet, cue: quiet}
+      say: "Do you tell Walt... or keep it quiet?"
+    - scene: endcard
+      time: "6:00 AM"
+      hold: 1.6
+      say: "Follow for round three."
+
+- id: milk-round-3
+  format: stickman
+  series: MILK ROUND
+  day: 3
+  day_label: ROUND
+  meter_label: BATTERY
+  place: THE DAIRY
+  title: "I found the house that isn't on the map in a round book from 1985. Round 3 🥛"
+  tags: [stickman, animation, horror, story, milkround, village]
+  shots:
+    - scene: room
+      recap: true
+      time: "6:00 AM"
+      light: 30
+      wall: "#5a6a6e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Last round, the house that isn't on the map left a note at the dairy. You forgot the boy."
+    - scene: title
+      say: "Milk Round. Round three."
+    - scene: radio
+      time: "6:02 AM"
+      on: radio
+      radio_label: "RADIO · THE DAIRY"
+      say:
+        - "You tell Walt about the note. He sighs into the radio."
+        - radio: "Then it's picked you, lad. Number twelve comes back every winter. It wants a milkman."
+    - scene: room
+      time: "2:30 AM"
+      light: 100
+      wall: "#5a6a6e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: reach, facing: 1}
+      say: "The next night, you come in early. Tonight's goal: find out who lived at number twelve. You dig out the dairy's old round books."
+    - scene: map
+      time: "2:40 AM"
+      place: ROUND BOOK 1985
+      route: [[0.3, 0.9], [0.3, 0.12]]
+      route_cue: 0
+      route_end: hart
+      stops:
+        - {x: 0.3, y: 0.9, left: true, label: "No. 10", cue: 0}
+        - {x: 0.3, y: 0.7, label: "No. 11", cue: 0}
+        - {x: 0.3, y: 0.5, label: "No. 12 · W. Hart", ghost: true, cue: twelve}
+        - {x: 0.3, y: 0.3, label: "No. 13", cue: 0}
+      say: "In the round book from nineteen eighty five, Elm Row has a number twelve. Two pints, every day. The customer is W. Hart."
+    - scene: street
+      time: "4:40 AM"
+      place: ELM ROW
+      light: 85
+      stop: 0
+      dark: 0.7
+      you: {light: true, facing: 1}
+      heartbeat: dark
+      chip: {text: "Note: please. It's so cold in here.", cue: note, y: 520}
+      say: "On the round, number twelve is there again. Every window dark. Two empty bottles on the step, rinsed clean. And a new note. Please. It's so cold in here."
+    - scene: cctv
+      time: "6:05 AM"
+      cam: "CAM 01 · DAIRY YARD"
+      place: THE DAIRY
+      light: 60
+      view: {scene: street, stop: 0, dark: 0.6, you: {x: -0.5}, people: [{x: 0.5, action: idle, facing: -1, color: "#f2f2f2", cue: coat}]}
+      glitch: gone
+      say: "Back at the dairy, you check the yard camera from last night. At three AM, a man in an old white milkman's coat stands beside your float. Then he's gone."
+    - scene: choice
+      time: "6:06 AM"
+      base: {scene: cctv, cam: "CAM 01 · DAIRY YARD", view: {scene: street, stop: 0, dark: 0.6, you: {x: -0.5}}}
+      question: "Ask Walt or ask Mrs. Pell?"
+      options:
+        - {text: Ask Walt, cue: walt}
+        - {text: Ask Mrs. Pell, cue: pell}
+      say: "Who do you ask about W. Hart? Walt... or Mrs. Pell?"
+    - scene: endcard
+      time: "6:06 AM"
+      hold: 1.6
+      say: "Follow for round four."
+
+- id: milk-round-4
+  format: stickman
+  series: MILK ROUND
+  day: 4
+  day_label: ROUND
+  meter_label: BATTERY
+  place: NUMBER NINE
+  title: "The old milkman went missing 40 years ago. So who's on my radio? Round 4 🥛"
+  tags: [stickman, animation, horror, story, milkround, village]
+  shots:
+    - scene: map
+      recap: true
+      time: "4:30 AM"
+      place: ROUND BOOK 1985
+      route: [[0.3, 0.9], [0.3, 0.12]]
+      route_cue: 0
+      stops:
+        - {x: 0.3, y: 0.9, left: true, label: "No. 10"}
+        - {x: 0.3, y: 0.7, label: "No. 11"}
+        - {x: 0.3, y: 0.5, label: "No. 12 · W. Hart", ghost: true}
+        - {x: 0.3, y: 0.3, label: "No. 13"}
+      say: "Last round, an old round book said number twelve once had a customer. W. Hart."
+    - scene: title
+      say: "Milk Round. Round four."
+    - scene: street
+      time: "4:35 AM"
+      light: 90
+      stop: 0
+      dark: 0.6
+      you: {light: true, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#d9c7e8", cue: pell}]
+      say: "Tonight's goal: find out who W. Hart is. At number nine, Mrs. Pell is up early again. You ask her. She nods, very slowly."
+    - scene: street
+      time: "4:37 AM"
+      light: 89
+      stop: 0
+      dark: 0.6
+      you: {light: true, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#d9c7e8"}]
+      say: "Walter Hart, dear. Everyone called him Walt. He was our milkman. Forty years ago, one winter morning, he vanished on Elm Row. They found his float still humming."
+    - scene: street
+      time: "4:40 AM"
+      light: 88
+      stop: 0
+      dark: 0.65
+      you: {light: true, facing: 1}
+      heartbeat: radio
+      say: "Walt. The man who gives you the rules on the radio every night. If Walt went missing forty years ago... who is on your radio?"
+    - scene: radio
+      time: "4:41 AM"
+      on: crackles
+      radio_label: "RADIO · THE DAIRY"
+      say:
+        - "Right then, the radio crackles. Walt's voice. Very calm."
+        - radio: "Who have you been talking to, lad?"
+    - scene: street
+      time: "4:50 AM"
+      place: ELM ROW
+      light: 80
+      pace: run
+      dark: 0.7
+      you: {light: true}
+      chip: {text: "Note: the radio is not me. Walt.", cue: note, y: 520}
+      heartbeat: note
+      say: "You run to number twelve. On the step, a fresh note in shaky writing. The radio is not me. Walt."
+    - scene: choice
+      time: "4:51 AM"
+      base: {scene: radio, on: 0}
+      question: "Switch the radio off or answer it?"
+      options:
+        - {text: Switch it off, cue: switch}
+        - {text: Answer it, cue: answer}
+      say: "Do you switch the radio off... or answer it?"
+    - scene: endcard
+      time: "4:51 AM"
+      hold: 1.6
+      say: "Follow for round five."
+
+- id: milk-round-5
+  format: stickman
+  series: MILK ROUND
+  day: 5
+  day_label: ROUND
+  meter_label: BATTERY
+  place: NUMBER TWELVE
+  title: "I went inside the house that isn't on the map. Someone was waiting. Round 5 🥛"
+  tags: [stickman, animation, horror, story, milkround, village]
+  shots:
+    - scene: street
+      recap: true
+      time: "4:51 AM"
+      place: ELM ROW
+      light: 80
+      stop: 0
+      dark: 0.7
+      you: {light: true, facing: 1}
+      say: "Last round, a note from number twelve said: the radio is not me. Walt."
+    - scene: title
+      say: "Milk Round. Round five."
+    - scene: radio
+      time: "4:52 AM"
+      on: radio
+      radio_label: "RADIO · THE DAIRY"
+      say:
+        - "You switch the radio off. It switches itself back on."
+        - radio: "Rules are rules, lad. Never knock. And never go near number twelve."
+    - scene: street
+      time: "4:55 AM"
+      light: 78
+      stop: 0
+      dark: 0.75
+      you: {light: true, facing: 1}
+      sfx: [{name: click, at: open}]
+      say: "Tonight's goal: find the real Walt, inside number twelve, before dawn. You don't knock. Rule two. You don't need to. The door is already open."
+    - scene: hallway
+      time: "5:00 AM"
+      place: NUMBER TWELVE
+      light: 75
+      lights: flicker
+      dark: 0.6
+      wall: "#5e5040"
+      floor: "#2b2219"
+      carpet: "#3d4a52"
+      ceiling: "#1d1813"
+      exit_color: "#ffd34d"
+      say: "Inside, the hallway is far too long for such a narrow house. Old wallpaper. And empty milk bottles lined up along the walls. Forty years of them."
+    - scene: hallway
+      time: "5:10 AM"
+      light: 70
+      lights: flicker
+      dark: 0.7
+      wall: "#5e5040"
+      floor: "#2b2219"
+      carpet: "#3d4a52"
+      ceiling: "#1d1813"
+      exit_color: "#ffd34d"
+      figures:
+        - {who: person, z: 3.2, x: 0.1, facing: -1, cue: coat}
+      say: "At the far end, someone stands in an old white milkman's coat. Thin. Pale. He looks up and smiles. You came, lad. You brought the milk."
+    - scene: hallway
+      time: "5:12 AM"
+      light: 68
+      lights: dying
+      "off": belt
+      dark: 0.8
+      wall: "#5e5040"
+      floor: "#2b2219"
+      carpet: "#3d4a52"
+      ceiling: "#1d1813"
+      exit_color: "#ffd34d"
+      figures:
+        - {who: person, z: 3.2, x: 0.1, facing: -1}
+      sfx: [{name: boom, at: closing}]
+      say: "Behind you, the front door starts closing by itself. And the radio on your belt says, in Walt's voice: take him, and you take his place."
+    - scene: choice
+      time: "5:13 AM"
+      base:
+        scene: hallway
+        lights: "off"
+        dark: 0.8
+        wall: "#5e5040"
+        floor: "#2b2219"
+        carpet: "#3d4a52"
+        ceiling: "#1d1813"
+        exit_color: "#ffd34d"
+        figures:
+          - {who: person, z: 3.2, x: 0.1, facing: -1}
+      question: "Take Walt and run, or leave him?"
+      options:
+        - {text: Take Walt, cue: take}
+        - {text: Leave him, cue: leave}
+      say: "Do you take Walt and run... or leave him there?"
+    - scene: endcard
+      time: "5:13 AM"
+      hold: 1.6
+      say: "Follow for the last round."
+
+- id: milk-round-6
+  format: stickman
+  series: MILK ROUND
+  day: 6
+  day_label: ROUND
+  meter_label: BATTERY
+  place: NUMBER TWELVE
+  title: "The notes were never the danger. The voice on the radio was. Final round 🥛"
+  tags: [stickman, animation, horror, story, milkround, village]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "5:13 AM"
+      light: 60
+      lights: "off"
+      dark: 0.8
+      wall: "#5e5040"
+      floor: "#2b2219"
+      carpet: "#3d4a52"
+      ceiling: "#1d1813"
+      exit_color: "#ffd34d"
+      figures:
+        - {who: person, z: 3.2, x: 0.1, facing: -1}
+      say: "Last round, inside number twelve, you found the real Walt. Missing for forty years."
+    - scene: title
+      say: "Milk Round. The last round."
+    - scene: hallway
+      time: "5:40 AM"
+      light: [55, 30]
+      lights: dying
+      "off": dark
+      dark: 0.85
+      wall: "#5e5040"
+      floor: "#2b2219"
+      carpet: "#3d4a52"
+      ceiling: "#1d1813"
+      exit_color: "#ffd34d"
+      figures:
+        - {who: creature, z: 8.5, to_z: 5.0, x: -0.3, cue: unfolds}
+      say: "You grab Walt's hand. Tonight's goal: get him out before dawn. Because when the sun comes up, the house goes, and anyone inside goes with it. The hallway stretches. Something tall unfolds from the dark behind you."
+    - scene: street
+      time: "5:59 AM"
+      place: ELM ROW
+      light: [25, 8]
+      pace: run
+      dark: 0.5
+      chasers: {n: 1, cue: 0}
+      you: {light: true}
+      people: [{x: 0.3, action: run, facing: 1, color: "#f2f2f2"}]
+      say: "You crash out onto Elm Row with Walt, one minute before dawn. You don't look back."
+    - scene: street
+      time: "6:00 AM"
+      light: 8
+      stop: 0
+      dawn: true
+      dark: 0.1
+      you: {light: false, facing: -1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#f2f2f2"}]
+      say: "The sun comes up. And behind you, number twelve folds away, as if it was never there."
+    - scene: room
+      time: "6:20 AM"
+      place: THE DAIRY
+      light: 8
+      wall: "#5a6a6e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.62, action: idle, facing: -1, color: "#f2f2f2"}]
+      say: "At the dairy, Walt explains. The notes were always him. Two pints to stay alive. And a boy brave enough to fetch him. The voice on the radio was the house. Its rules kept every milkman away."
+    - scene: radio
+      time: "6:21 AM"
+      on: crackles
+      radio_label: "RADIO · THE DAIRY"
+      say:
+        - "Then the dairy radio crackles. Same voice. Same calm."
+        - radio: "Good work, lad. New round tomorrow. Forty one houses."
+    - scene: choice
+      time: "6:22 AM"
+      base: {scene: radio, on: 0}
+      question: "Do the new round or quit?"
+      options:
+        - {text: New round, cue: round}
+        - {text: Quit, cue: quit}
+      say: "So. Do you do the new round... or quit, and never come back?"
+    - scene: endcard
+      time: "6:22 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
