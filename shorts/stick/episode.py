@@ -19,6 +19,7 @@ every shot lasts as long as its narration.
 
 from __future__ import annotations
 
+import os
 import math
 import re
 import subprocess
@@ -424,7 +425,21 @@ def render(item: dict, out_path: Path, work: Path, cfg: dict) -> Path:
     work.mkdir(parents=True, exist_ok=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     print("  voicing the narration…")
+    start = len(tts.engines_used)
     shots, mix, total = build_timeline(item, cfg, work)
+    used = list(dict.fromkeys(tts.engines_used[start:]))
+    if len(used) > 1:  # e.g. Edge dropped out halfway: re-read everything with the backup so one voice tells it
+        backup = used[-1]
+        print(f"  voices got mixed ({', '.join(used)}); re-reading the whole episode with {backup}")
+        old_env = os.environ.get("SHORTS_VOICES")
+        os.environ["SHORTS_VOICES"] = backup
+        try:
+            shots, mix, total = build_timeline(item, cfg, work)
+        finally:
+            if old_env is None:
+                os.environ.pop("SHORTS_VOICES", None)
+            else:
+                os.environ["SHORTS_VOICES"] = old_env
     add_effects(shots, mix, total)
     from . import images
     for spec in images.specs_in(item):  # real pictures (fact videos), fetched once and cached

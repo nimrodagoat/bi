@@ -39,6 +39,9 @@ class Turn:
 LINE_GAP = 0.18  # seconds of silence between two characters' lines
 
 
+engines_used: list[str] = []  # every engine that spoke a line in this run, in order (see episode.render)
+
+
 def synthesize(
     text: str, work_dir: Path, cfg: dict, voice: dict | None = None, name: str = "voice"
 ) -> tuple[Path, list[Word]]:
@@ -59,6 +62,7 @@ def synthesize(
             continue
         try:
             audio, words = fn(text, work_dir, vcfg)
+            engines_used.append(engine)
             if name == "voice" or name.endswith("00"):
                 print(f"  voice: {engine}")
             return audio, words
@@ -69,12 +73,14 @@ def synthesize(
 
 
 _edge_down = False  # set once Edge has failed even after waiting
+_edge_waited = 0.0  # seconds spent waiting on Edge in this run
 EDGE_RETRY_WAITS = (5, 20, 60, 120)  # Microsoft's server sometimes refuses a voice for a few minutes
+EDGE_WAIT_BUDGET = 300  # never spend more than this per run waiting for Edge
 
 
 def _edge(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
     """Edge with patience: retry with growing pauses before giving up on the voice."""
-    global _edge_down
+    global _edge_down, _edge_waited
     import time
 
     if _edge_down:  # stay on the fallback for the rest of this run so one video never mixes voices
@@ -84,11 +90,12 @@ def _edge(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
         try:
             return _edge_once(text, work_dir, vcfg)
         except Exception as e:
-            if attempt == len(waits):
+            if attempt == len(waits) or _edge_waited + waits[attempt] > EDGE_WAIT_BUDGET:
                 _edge_down = True
                 raise
             print(f"  edge voice busy ({e}); trying again in {waits[attempt]} s", file=sys.stderr)
             time.sleep(waits[attempt])
+            _edge_waited += waits[attempt]
 
 
 def _edge_once(text: str, work_dir: Path, vcfg: dict) -> tuple[Path, list[Word]]:
