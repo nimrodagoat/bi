@@ -15,117 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: funland-5
-  format: stickman
-  series: FUNLAND
-  day: 5
-  day_label: NIGHT
-  meter_label: BATTERY
-  place: SECURITY BOOTH
-  title: I found a whiteboard in the park office. My name was on it. Night 5 🎠
-  tags:
-  - stickman
-  - animation
-  - horror
-  - themepark
-  - funland
-  - story
-  shots:
-  - scene: closeup
-    recap: true
-    object: phone
-    time: 4:02 AM
-    screen: Ticket
-    sub: Maple Hill Funland
-    message: |-
-      ADMIT ONE
-      THE LAST RIDE
-    message_cue: 0
-    say: Last night, the girl in the yellow raincoat gave you a ticket for the last ride.
-  - scene: title
-    say: Funland. Night five.
-  - scene: room
-    time: 11:00 PM
-    place: PARK OFFICE
-    light: 90
-    wall: '#5c6a58'
-    furniture: false
-    desk: true
-    clock: true
-    you:
-      x: 0.35
-      light: true
-      aim: 0.1
-      facing: 1
-    say: You keep it. The next night, before your shift, you sneak into Rudy's office to look for answers. Behind his desk, you find a whiteboard.
-  - scene: closeup
-    object: phone
-    time: 11:05 PM
-    screen: Whiteboard
-    sub: Rudy's office
-    message: |-
-      NEW GUARD
-      CAROUSEL: PASSED
-      GHOST TRAIN: PASSED
-      BARNABY: PASSED
-    message_cue: passed
-    heartbeat: passed
-    say: 'New guard. Carousel: passed. Ghost Train: passed. Barnaby: passed. Every night you survived, ticked off like a test.'
-  - scene: room
-    time: 11:10 PM
-    light: 88
-    wall: '#5c6a58'
-    furniture: false
-    desk: true
-    clock: true
-    you:
-      x: 0.35
-      action: idle
-      facing: -1
-    say: 'Underneath, one line is still empty. Final night: the last ride. And next to it, a little drawing of a carousel.'
-  - scene: inventory
-    time: 11:15 PM
-    light: 85
-    items:
-    - icon: battery
-      count: 1
-      label: battery
-      cue: battery
-    - icon: key
-      count: 9
-      label: ride keys
-      cue: keys
-    total:
-      text: 1 night left
-      cue: night
-    say: 'One battery. Nine keys. One night left. Your goal: find out who''s been testing you all week, and why.'
-  - scene: radio
-    time: 11:20 PM
-    true: radio
-    chip:
-      text: Rudy · park manager
-      cue: 0
-      y: 470
-    radio_label: RADIO · RUDY
-    say:
-    - Then the radio crackles.
-    - radio: Big night tomorrow, pal. Don't forget your ticket.
-  - scene: choice
-    time: 11:21 PM
-    base:
-      scene: radio
-      true: 0
-    question: Confront Rudy or play along?
-    options:
-    - text: Confront him
-      cue: confront
-    - text: Play along
-      cue: play
-    say: How does he know about the ticket? Do you confront Rudy tonight... or play along, and take the last ride?
-  - scene: endcard
-    time: 11:21 PM
-    hold: 1.6
-    say: Follow for the last night.
 - id: funland-6
   format: stickman
   series: FUNLAND
@@ -1063,100 +952,152 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: LOST PROPERTY
-  title: "I'm the night clerk at a lost property office. At 2 AM a man asked for his name 🧳"
-  tags: [stickman, animation, horror, story, lostandfound, trainstation]
+  title: I'm the night clerk at a lost property office. At 2 AM a man asked for his name 🧳
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - lostandfound
+  - trainstation
   shots:
-    - scene: room
-      time: "10:00 PM"
-      light: 100
-      wall: "#6b6248"
+  - scene: room
+    time: 10:00 PM
+    light: 100
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: You take the night shift at the Lost Property office, under Central Station. Ten PM to six AM. Just you, a counter, and a thousand forgotten things.
+  - scene: radio
+    time: 10:05 PM
+    true: phone
+    chip:
+      text: Nora · day clerk
+      cue: nora
+      y: 470
+    radio_label: PHONE · NORA
+    say:
+    - Nora, the day clerk, phones with the rules.
+    - radio: Three rules, love. Log everything. Only hand things back if they can tell you what's inside. And never tell a night visitor your name.
+  - scene: title
+    say: Lost and Found. Night one.
+  - scene: room
+    time: 10:20 PM
+    light: 99
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    rule:
+      n: 1
+      text: Log every item right away
+    you:
+      x: 0.45
+      action: reach
+      facing: 1
+    say: Rule number one. Log every item the moment it lands on the counter. Even if nobody brought it.
+  - scene: room
+    time: 10:30 PM
+    light: 98
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    rule:
+      n: 2
+      text: Owners must say what's inside
+    you:
+      x: 0.45
+      action: idle
+      facing: 1
+    say: Rule number two. Only give something back if the owner can tell you what's inside it. A bag. A box. A coat pocket.
+  - scene: hallway
+    time: 11:00 PM
+    light: 96
+    lights: 'on'
+    shelves: true
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    rule:
+      n: 3
+      text: Never tell a night visitor your name
+    say: 'Rule number three. Never tell a night visitor your name. Nora didn''t say why. Tonight''s goal: log every item by six.'
+  - scene: room
+    time: 1:00 AM
+    light: 90
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: scared
+      facing: 1
+    sfx:
+    - name: tick
+      at: dripping
+    heartbeat: dripping
+    say: At one AM, a black umbrella is lying on the counter. Still dripping. You never heard anyone come in. You log it anyway.
+  - scene: room
+    time: 2:00 AM
+    light: 86
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.7
+      action: idle
+      facing: -1
+      coat: '#6b5640'
+      cue: coat
+    chip:
+      text: '"Has anyone handed in my name?"'
+      cue: name
+      y: 520
+    say: 'At two AM, a man in a long brown coat is standing at the counter. Polite. Pale. He asks: has anyone handed in my name?'
+  - scene: choice
+    time: 2:01 AM
+    base:
+      scene: room
+      wall: '#6b6248'
       furniture: false
       desk: true
       clock: true
       window: false
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "You take the night shift at the Lost Property office, under Central Station. Ten PM to six AM. Just you, a counter, and a thousand forgotten things."
-    - scene: radio
-      time: "10:05 PM"
-      on: phone
-      chip: {text: "Nora · day clerk", cue: nora, y: 470}
-      radio_label: "PHONE · NORA"
-      say:
-        - "Nora, the day clerk, phones with the rules."
-        - radio: "Three rules, love. Log everything. Only hand things back if they can tell you what's inside. And never tell a night visitor your name."
-    - scene: title
-      say: "Lost and Found. Night one."
-    - scene: room
-      time: "10:20 PM"
-      light: 99
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      rule: {n: 1, text: Log every item right away}
-      you: {x: 0.45, action: reach, facing: 1}
-      say: "Rule number one. Log every item the moment it lands on the counter. Even if nobody brought it."
-    - scene: room
-      time: "10:30 PM"
-      light: 98
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      rule: {n: 2, text: Owners must say what's inside}
-      you: {x: 0.45, action: idle, facing: 1}
-      say: "Rule number two. Only give something back if the owner can tell you what's inside it. A bag. A box. A coat pocket."
-    - scene: hallway
-      time: "11:00 PM"
-      light: 96
-      lights: "on"
-      shelves: true
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      rule: {n: 3, text: Never tell a night visitor your name}
-      say: "Rule number three. Never tell a night visitor your name. Nora didn't say why. Tonight's goal: log every item by six."
-    - scene: room
-      time: "1:00 AM"
-      light: 90
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.35, action: scared, facing: 1}
-      sfx: [{name: tick, at: dripping}]
-      heartbeat: dripping
-      say: "At one AM, a black umbrella is lying on the counter. Still dripping. You never heard anyone come in. You log it anyway."
-    - scene: room
-      time: "2:00 AM"
-      light: 86
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640", cue: coat}]
-      chip: {text: "\"Has anyone handed in my name?\"", cue: name, y: 520}
-      say: "At two AM, a man in a long brown coat is standing at the counter. Polite. Pale. He asks: has anyone handed in my name?"
-    - scene: choice
-      time: "2:01 AM"
-      base: {scene: room, wall: "#6b6248", furniture: false, desk: true, clock: true, window: false, people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640"}]}
-      question: "Answer him or stay quiet?"
-      options:
-        - {text: Answer him, cue: answer}
-        - {text: Stay quiet, cue: quiet}
-      say: "Do you answer him... or stay quiet?"
-    - scene: endcard
-      time: "2:01 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+      people:
+      - x: 0.7
+        action: idle
+        facing: -1
+        coat: '#6b5640'
+    question: Answer him or stay quiet?
+    options:
+    - text: Answer him
+      cue: answer
+    - text: Stay quiet
+      cue: quiet
+    say: Do you answer him... or stay quiet?
+  - scene: endcard
+    time: 2:01 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: lost-and-found-2
   format: stickman
   series: LOST & FOUND
@@ -1164,93 +1105,138 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: LOST PROPERTY
-  title: "The man in the brown coat wanted the umbrella nobody handed in. Night 2 🧳"
-  tags: [stickman, animation, horror, story, lostandfound, trainstation]
+  title: The man in the brown coat wanted the umbrella nobody handed in. Night 2 🧳
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - lostandfound
+  - trainstation
   shots:
-    - scene: room
-      recap: true
-      time: "2:01 AM"
-      light: 86
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640"}]
-      say: "Last night, a man in a brown coat came to the counter at two AM and asked if anyone had handed in his name."
-    - scene: title
-      say: "Lost and Found. Night two."
-    - scene: room
-      time: "2:02 AM"
-      light: 85
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640"}]
-      say: "You stay quiet. Rule three. So he points at the black umbrella. That's mine. You ask him what's inside it. Rule two. He opens his mouth, and nothing comes out."
-    - scene: room
-      time: "2:03 AM"
-      light: 84
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640", fade: gone}]
-      say: "He smiles, sadly. Tomorrow, then. You blink, and he's gone."
-    - scene: hallway
-      time: "3:30 AM"
-      light: [80, 60]
-      lights: flicker
+  - scene: room
+    recap: true
+    time: 2:01 AM
+    light: 86
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.7
+      action: idle
+      facing: -1
+      coat: '#6b5640'
+    say: Last night, a man in a brown coat came to the counter at two AM and asked if anyone had handed in his name.
+  - scene: title
+    say: Lost and Found. Night two.
+  - scene: room
+    time: 2:02 AM
+    light: 85
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.7
+      action: idle
+      facing: -1
+      coat: '#6b5640'
+    say: You stay quiet. Rule three. So he points at the black umbrella. That's mine. You ask him what's inside it. Rule two. He opens his mouth, and nothing comes out.
+  - scene: room
+    time: 2:03 AM
+    light: 84
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.7
+      action: idle
+      facing: -1
+      coat: '#6b5640'
+      fade: gone
+    say: He smiles, sadly. Tomorrow, then. You blink, and he's gone.
+  - scene: hallway
+    time: 3:30 AM
+    light:
+    - 80
+    - 60
+    lights: flicker
+    shelves: true
+    dark: 0.5
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    heartbeat: crack
+    say: 'Tonight''s goal: count every shelf and match it to the log. By half three, one thing is wrong. The umbrella is gone. And at the end of the aisle, the old wire cage is open a crack.'
+  - scene: radio
+    time: 3:35 AM
+    true: phone
+    radio_label: PHONE · NORA
+    rule:
+      n: 4
+      text: Never open the cage
+    say:
+    - You phone Nora. She is wide awake, instantly.
+    - radio: The cage holds what nobody ever came back for. Never open it. Shut it, from the outside.
+  - scene: hallway
+    time: 3:40 AM
+    light: 58
+    lights: dying
+    'off': breathing
+    shelves: true
+    dark: 0.7
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    sfx:
+    - name: whoosh
+      at: breathing
+      gain: 0.5
+    say: You walk down the aisle to shut it. From inside the cage comes a sound, like slow breathing.
+  - scene: choice
+    time: 3:41 AM
+    base:
+      scene: hallway
+      lights: 'off'
       shelves: true
-      dark: 0.5
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      heartbeat: crack
-      say: "Tonight's goal: count every shelf and match it to the log. By half three, one thing is wrong. The umbrella is gone. And at the end of the aisle, the old wire cage is open a crack."
-    - scene: radio
-      time: "3:35 AM"
-      on: phone
-      radio_label: "PHONE · NORA"
-      rule: {n: 4, text: Never open the cage}
-      say:
-        - "You phone Nora. She is wide awake, instantly."
-        - radio: "The cage holds what nobody ever came back for. Never open it. Shut it, from the outside."
-    - scene: hallway
-      time: "3:40 AM"
-      light: 58
-      lights: dying
-      "off": breathing
-      shelves: true
-      dark: 0.7
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      sfx: [{name: whoosh, at: breathing, gain: 0.5}]
-      say: "You walk down the aisle to shut it. From inside the cage comes a sound, like slow breathing."
-    - scene: choice
-      time: "3:41 AM"
-      base: {scene: hallway, lights: "off", shelves: true, dark: 0.75, wall: "#5a5240", floor: "#2a261c", carpet: "#3e3a2c", ceiling: "#1e1b14", exit_color: "#c0392b"}
-      question: "Shut the cage or look inside?"
-      options:
-        - {text: Shut it, cue: shut}
-        - {text: Look inside, cue: look}
-      say: "Do you shut the cage... or look inside?"
-    - scene: endcard
-      time: "3:41 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+      dark: 0.75
+      wall: '#5a5240'
+      floor: '#2a261c'
+      carpet: '#3e3a2c'
+      ceiling: '#1e1b14'
+      exit_color: '#c0392b'
+    question: Shut the cage or look inside?
+    options:
+    - text: Shut it
+      cue: shut
+    - text: Look inside
+      cue: look
+    say: Do you shut the cage... or look inside?
+  - scene: endcard
+    time: 3:41 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: lost-and-found-3
   format: stickman
   series: LOST & FOUND
@@ -1258,79 +1244,126 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE CAGE
-  title: "Everything in the cage was handed in on the same night in 1974. Night 3 🧳"
-  tags: [stickman, animation, horror, story, lostandfound, trainstation]
+  title: Everything in the cage was handed in on the same night in 1974. Night 3 🧳
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - lostandfound
+  - trainstation
   shots:
-    - scene: hallway
-      recap: true
-      time: "3:41 AM"
-      light: 55
-      lights: "off"
-      shelves: true
-      dark: 0.75
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      say: "Last night, the old cage at the back of the office was open. And something inside it was breathing."
-    - scene: title
-      say: "Lost and Found. Night three."
-    - scene: hallway
-      time: "3:42 AM"
-      light: 54
-      lights: "off"
-      shelves: true
-      dark: 0.8
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      say: "You look inside. Just you and your flashlight. Hats. Suitcases. Gloves. Every tag says the same date. Fourteenth of March, nineteen seventy four."
-    - scene: room
-      time: "10:00 PM"
-      light: 100
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.45, action: reach, facing: 1}
-      say: "The next night, you start early. Tonight's goal: find out who the man in the brown coat is, before two AM. You pull out the log book from nineteen seventy four."
-    - scene: map
-      time: "10:30 PM"
-      place: LOG BOOK 1974
-      route: [[0.3, 0.98], [0.3, 0.2]]
-      route_cue: 0
-      route_end: scratched
-      stops:
-        - {x: 0.3, y: 0.9, label: "Suitcase · brown", cue: 0}
-        - {x: 0.3, y: 0.7, label: "Gloves · grey", cue: 0}
-        - {x: 0.3, y: 0.5, label: "Umbrella · black", ghost: true, cue: umbrella}
-        - {x: 0.3, y: 0.3, label: "Night clerk: ????", ghost: true, cue: scratched}
-      say: "On the last page, the last item logged is a black umbrella. Under it, the night clerk signed his name. And someone scratched it out."
-    - scene: cctv
-      time: "1:59 AM"
-      cam: "CAM 04 · PLATFORM 9"
-      light: 80
-      view: {scene: hallway, lights: flicker, dark: 0.5, figures: [{who: person, z: 6.0, to_z: 3.0, x: 0.1, cue: walking}]}
-      glitch: closed
-      heartbeat: walking
-      say: "At one fifty nine, the platform camera shows the man in the brown coat walking up out of the tunnel. Platform nine. It's been closed since nineteen seventy four."
-    - scene: choice
-      time: "2:00 AM"
-      base: {scene: cctv, cam: "CAM 04 · PLATFORM 9", view: {scene: hallway, lights: flicker, dark: 0.5, figures: [{who: person, z: 3.0, x: 0.1}]}}
-      question: "Phone Nora or wait for him?"
-      options:
-        - {text: Phone Nora, cue: phone}
-        - {text: Wait for him, cue: wait}
-      say: "Do you phone Nora... or wait for him at the counter?"
-    - scene: endcard
-      time: "2:00 AM"
-      hold: 1.6
-      say: "Follow for night four."
-
+  - scene: hallway
+    recap: true
+    time: 3:41 AM
+    light: 55
+    lights: 'off'
+    shelves: true
+    dark: 0.75
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    say: Last night, the old cage at the back of the office was open. And something inside it was breathing.
+  - scene: title
+    say: Lost and Found. Night three.
+  - scene: hallway
+    time: 3:42 AM
+    light: 54
+    lights: 'off'
+    shelves: true
+    dark: 0.8
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    say: You look inside. Just you and your flashlight. Hats. Suitcases. Gloves. Every tag says the same date. Fourteenth of March, nineteen seventy four.
+  - scene: room
+    time: 10:00 PM
+    light: 100
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.45
+      action: reach
+      facing: 1
+    say: 'The next night, you start early. Tonight''s goal: find out who the man in the brown coat is, before two AM. You pull out the log book from nineteen seventy four.'
+  - scene: map
+    time: 10:30 PM
+    place: LOG BOOK 1974
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.2
+    route_cue: 0
+    route_end: scratched
+    stops:
+    - x: 0.3
+      y: 0.9
+      label: Suitcase · brown
+      cue: 0
+    - x: 0.3
+      y: 0.7
+      label: Gloves · grey
+      cue: 0
+    - x: 0.3
+      y: 0.5
+      label: Umbrella · black
+      ghost: true
+      cue: umbrella
+    - x: 0.3
+      y: 0.3
+      label: 'Night clerk: ????'
+      ghost: true
+      cue: scratched
+    say: On the last page, the last item logged is a black umbrella. Under it, the night clerk signed his name. And someone scratched it out.
+  - scene: cctv
+    time: 1:59 AM
+    cam: CAM 04 · PLATFORM 9
+    light: 80
+    view:
+      scene: hallway
+      lights: flicker
+      dark: 0.5
+      figures:
+      - who: person
+        z: 6.0
+        to_z: 3.0
+        x: 0.1
+        cue: walking
+    glitch: closed
+    heartbeat: walking
+    say: At one fifty nine, the platform camera shows the man in the brown coat walking up out of the tunnel. Platform nine. It's been closed since nineteen seventy four.
+  - scene: choice
+    time: 2:00 AM
+    base:
+      scene: cctv
+      cam: CAM 04 · PLATFORM 9
+      view:
+        scene: hallway
+        lights: flicker
+        dark: 0.5
+        figures:
+        - who: person
+          z: 3.0
+          x: 0.1
+    question: Phone Nora or wait for him?
+    options:
+    - text: Phone Nora
+      cue: phone
+    - text: Wait for him
+      cue: wait
+    say: Do you phone Nora... or wait for him at the counter?
+  - scene: endcard
+    time: 2:00 AM
+    hold: 1.6
+    say: Follow for night four.
 - id: lost-and-found-4
   format: stickman
   series: LOST & FOUND
@@ -1338,72 +1371,113 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: LOST PROPERTY
-  title: "In 1974 the night clerk told a stranger his name. Nobody remembers him. Night 4 🧳"
-  tags: [stickman, animation, horror, story, lostandfound, trainstation]
+  title: In 1974 the night clerk told a stranger his name. Nobody remembers him. Night 4 🧳
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - lostandfound
+  - trainstation
   shots:
-    - scene: cctv
-      recap: true
-      time: "2:00 AM"
-      cam: "CAM 04 · PLATFORM 9"
-      light: 78
-      view: {scene: hallway, lights: flicker, dark: 0.5, figures: [{who: person, z: 3.0, x: 0.1}]}
-      say: "Last night, the man in the brown coat walked up from platform nine. Closed since nineteen seventy four."
-    - scene: title
-      say: "Lost and Found. Night four."
-    - scene: radio
-      time: "2:01 AM"
-      on: phone
-      radio_label: "PHONE · NORA"
-      say:
-        - "You phone Nora. This time, she tells you why rule three exists."
-        - radio: "In seventy four, our night clerk told a visitor his name. The office kept it. And everyone forgot him. Even his own family."
-    - scene: room
-      time: "2:03 AM"
-      light: 76
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640", cue: counter}]
-      say: "So the man at the counter isn't a visitor. He's the old night clerk. And he isn't looking for an umbrella. He's looking for his name."
-    - scene: room
-      time: "2:05 AM"
-      light: 75
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640", fade: dawn}]
-      say: "Tonight's goal: help him find it, without giving away yours. He whispers: what's inside my umbrella, is me. Find it before dawn. Then he fades."
-    - scene: hallway
-      time: "4:00 AM"
-      light: [70, 50]
+  - scene: cctv
+    recap: true
+    time: 2:00 AM
+    cam: CAM 04 · PLATFORM 9
+    light: 78
+    view:
+      scene: hallway
       lights: flicker
+      dark: 0.5
+      figures:
+      - who: person
+        z: 3.0
+        x: 0.1
+    say: Last night, the man in the brown coat walked up from platform nine. Closed since nineteen seventy four.
+  - scene: title
+    say: Lost and Found. Night four.
+  - scene: radio
+    time: 2:01 AM
+    true: phone
+    radio_label: PHONE · NORA
+    say:
+    - You phone Nora. This time, she tells you why rule three exists.
+    - radio: In seventy four, our night clerk told a visitor his name. The office kept it. And everyone forgot him. Even his own family.
+  - scene: room
+    time: 2:03 AM
+    light: 76
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.7
+      action: idle
+      facing: -1
+      coat: '#6b5640'
+      cue: counter
+    say: So the man at the counter isn't a visitor. He's the old night clerk. And he isn't looking for an umbrella. He's looking for his name.
+  - scene: room
+    time: 2:05 AM
+    light: 75
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.7
+      action: idle
+      facing: -1
+      coat: '#6b5640'
+      fade: dawn
+    say: 'Tonight''s goal: help him find it, without giving away yours. He whispers: what''s inside my umbrella, is me. Find it before dawn. Then he fades.'
+  - scene: hallway
+    time: 4:00 AM
+    light:
+    - 70
+    - 50
+    lights: flicker
+    shelves: true
+    dark: 0.6
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    say: You search every shelf for the black umbrella. Not in the aisles. Not in the log. Which leaves one place you promised never to open.
+  - scene: choice
+    time: 4:30 AM
+    base:
+      scene: hallway
+      lights: 'off'
       shelves: true
-      dark: 0.6
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      say: "You search every shelf for the black umbrella. Not in the aisles. Not in the log. Which leaves one place you promised never to open."
-    - scene: choice
-      time: "4:30 AM"
-      base: {scene: hallway, lights: "off", shelves: true, dark: 0.7, wall: "#5a5240", floor: "#2a261c", carpet: "#3e3a2c", ceiling: "#1e1b14", exit_color: "#c0392b"}
-      question: "Open the cage or keep rule four?"
-      options:
-        - {text: Open the cage, cue: open}
-        - {text: Keep the rule, cue: keep}
-      say: "Do you open the cage... or keep rule number four?"
-    - scene: endcard
-      time: "4:30 AM"
-      hold: 1.6
-      say: "Follow for night five."
-
+      dark: 0.7
+      wall: '#5a5240'
+      floor: '#2a261c'
+      carpet: '#3e3a2c'
+      ceiling: '#1e1b14'
+      exit_color: '#c0392b'
+    question: Open the cage or keep rule four?
+    options:
+    - text: Open the cage
+      cue: open
+    - text: Keep the rule
+      cue: keep
+    say: Do you open the cage... or keep rule number four?
+  - scene: endcard
+    time: 4:30 AM
+    hold: 1.6
+    say: Follow for night five.
 - id: lost-and-found-5
   format: stickman
   series: LOST & FOUND
@@ -1411,87 +1485,125 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE CAGE
-  title: "Inside the umbrella was a name. Then something in the cage said mine. Night 5 🧳"
-  tags: [stickman, animation, horror, story, lostandfound, trainstation]
+  title: Inside the umbrella was a name. Then something in the cage said mine. Night 5 🧳
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - lostandfound
+  - trainstation
   shots:
-    - scene: hallway
-      recap: true
-      time: "4:30 AM"
-      light: 50
-      lights: "off"
-      shelves: true
-      dark: 0.7
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      say: "Last night, you learned the man in the brown coat lost his name here in nineteen seventy four. It's hidden in his black umbrella."
-    - scene: title
-      say: "Lost and Found. Night five."
-    - scene: hallway
-      time: "4:31 AM"
-      light: 49
-      lights: "off"
-      shelves: true
-      dark: 0.85
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      sfx: [{name: click, at: open}]
-      say: "You open the cage. Tonight's goal: find the umbrella, and get out before your flashlight dies. Inside, it's colder than it should be. Your breath turns to fog. And the shelves go back much further than the office does."
-    - scene: hallway
-      time: "4:40 AM"
-      light: [45, 25]
-      lights: "off"
-      shelves: true
-      dark: 0.85
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      figures:
-        - {who: creature, z: 8.0, to_z: 6.0, x: 0.3, cue: tags}
-      say: "The umbrella hangs at the very back. As you reach for it, every luggage tag in the cage starts to whisper. Not words. Names. Hundreds of them."
-    - scene: closeup
-      time: "4:42 AM"
-      object: flashlight
-      light: 24
-      chip: {text: "Tag: ARTHUR ABEL · night clerk", cue: tag, y: 520}
-      say: "You open the umbrella. A paper tag falls out, in old handwriting. Arthur Abel. Night clerk."
-    - scene: hallway
-      time: "4:43 AM"
-      light: 22
-      lights: "off"
+  - scene: hallway
+    recap: true
+    time: 4:30 AM
+    light: 50
+    lights: 'off'
+    shelves: true
+    dark: 0.7
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    say: Last night, you learned the man in the brown coat lost his name here in nineteen seventy four. It's hidden in his black umbrella.
+  - scene: title
+    say: Lost and Found. Night five.
+  - scene: hallway
+    time: 4:31 AM
+    light: 49
+    lights: 'off'
+    shelves: true
+    dark: 0.85
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    sfx:
+    - name: click
+      at: open
+    say: 'You open the cage. Tonight''s goal: find the umbrella, and get out before your flashlight dies. Inside, it''s colder than it should be. Your breath turns to fog. And the shelves go back much further than the office does.'
+  - scene: hallway
+    time: 4:40 AM
+    light:
+    - 45
+    - 25
+    lights: 'off'
+    shelves: true
+    dark: 0.85
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    figures:
+    - who: creature
+      z: 8.0
+      to_z: 6.0
+      x: 0.3
+      cue: tags
+    say: The umbrella hangs at the very back. As you reach for it, every luggage tag in the cage starts to whisper. Not words. Names. Hundreds of them.
+  - scene: closeup
+    time: 4:42 AM
+    object: flashlight
+    light: 24
+    chip:
+      text: 'Tag: ARTHUR ABEL · night clerk'
+      cue: tag
+      y: 520
+    say: You open the umbrella. A paper tag falls out, in old handwriting. Arthur Abel. Night clerk.
+  - scene: hallway
+    time: 4:43 AM
+    light: 22
+    lights: 'off'
+    shelves: true
+    dark: 0.9
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    figures:
+    - who: creature
+      z: 5.0
+      to_z: 3.2
+      x: 0.3
+      cue: own
+    shake_at:
+    - slams
+    sfx:
+    - name: boom
+      at: slams
+    heartbeat: own
+    say: Then the cage door slams behind you. And among all the whispered names, you hear one more. Your own.
+  - scene: choice
+    time: 4:44 AM
+    base:
+      scene: hallway
+      lights: 'off'
       shelves: true
       dark: 0.9
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
+      wall: '#5a5240'
+      floor: '#2a261c'
+      carpet: '#3e3a2c'
+      ceiling: '#1e1b14'
+      exit_color: '#c0392b'
       figures:
-        - {who: creature, z: 5.0, to_z: 3.2, x: 0.3, cue: own}
-      shake_at: [slams]
-      sfx: [{name: boom, at: slams}]
-      heartbeat: own
-      say: "Then the cage door slams behind you. And among all the whispered names, you hear one more. Your own."
-    - scene: choice
-      time: "4:44 AM"
-      base: {scene: hallway, lights: "off", shelves: true, dark: 0.9, wall: "#5a5240", floor: "#2a261c", carpet: "#3e3a2c", ceiling: "#1e1b14", exit_color: "#c0392b", figures: [{who: creature, z: 3.2, x: 0.3}]}
-      question: "Read the tag out loud or run?"
-      options:
-        - {text: Read it out, cue: read}
-        - {text: Run, cue: run}
-      say: "Do you read Arthur's name out loud... or run?"
-    - scene: endcard
-      time: "4:44 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+      - who: creature
+        z: 3.2
+        x: 0.3
+    question: Read the tag out loud or run?
+    options:
+    - text: Read it out
+      cue: read
+    - text: Run
+      cue: run
+    say: Do you read Arthur's name out loud... or run?
+  - scene: endcard
+    time: 4:44 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: lost-and-found-6
   format: stickman
   series: LOST & FOUND
@@ -1499,88 +1611,136 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE CAGE
-  title: "I gave the ghost clerk his name back. The office took something in return. Final night 🧳"
-  tags: [stickman, animation, horror, story, lostandfound, trainstation]
+  title: I gave the ghost clerk his name back. The office took something in return. Final night 🧳
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - lostandfound
+  - trainstation
   shots:
-    - scene: hallway
-      recap: true
-      time: "4:44 AM"
-      light: 22
-      lights: "off"
-      shelves: true
-      dark: 0.9
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      figures:
-        - {who: creature, z: 3.2, x: 0.3}
-      say: "Last night, you found a name inside the umbrella. Arthur Abel. Then the cage locked you in."
-    - scene: title
-      say: "Lost and Found. The last night."
-    - scene: hallway
-      time: "4:45 AM"
-      light: 20
-      lights: "on"
-      shelves: true
-      dark: 0.6
-      wall: "#5a5240"
-      floor: "#2a261c"
-      carpet: "#3e3a2c"
-      ceiling: "#1e1b14"
-      exit_color: "#c0392b"
-      figures:
-        - {who: creature, z: 3.2, to_z: 9.0, x: 0.3, cue: arthur}
-        - {who: person, z: 3.0, x: -0.2, cue: brown, facing: 1}
-      say: "Tonight's goal: give Arthur his name back, before dawn. So you read it out loud. Arthur Abel. The whispering stops. The lights come on. And the man in the brown coat is standing beside you."
-    - scene: room
-      time: "5:58 AM"
-      light: 18
-      wall: "#6b6248"
+  - scene: hallway
+    recap: true
+    time: 4:44 AM
+    light: 22
+    lights: 'off'
+    shelves: true
+    dark: 0.9
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    figures:
+    - who: creature
+      z: 3.2
+      x: 0.3
+    say: Last night, you found a name inside the umbrella. Arthur Abel. Then the cage locked you in.
+  - scene: title
+    say: Lost and Found. The last night.
+  - scene: hallway
+    time: 4:45 AM
+    light: 20
+    lights: 'on'
+    shelves: true
+    dark: 0.6
+    wall: '#5a5240'
+    floor: '#2a261c'
+    carpet: '#3e3a2c'
+    ceiling: '#1e1b14'
+    exit_color: '#c0392b'
+    figures:
+    - who: creature
+      z: 3.2
+      to_z: 9.0
+      x: 0.3
+      cue: arthur
+    - who: person
+      z: 3.0
+      x: -0.2
+      cue: brown
+      facing: 1
+    say: 'Tonight''s goal: give Arthur his name back, before dawn. So you read it out loud. Arthur Abel. The whispering stops. The lights come on. And the man in the brown coat is standing beside you.'
+  - scene: room
+    time: 5:58 AM
+    light: 18
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.7
+      action: idle
+      facing: -1
+      coat: '#6b5640'
+    say: He says it to himself, over and over. Arthur. Arthur Abel. He shakes your hand. Then he walks up the stairs, to catch the first train home.
+  - scene: room
+    time: 6:00 AM
+    light: 16
+    wall: '#6b6248'
+    furniture: false
+    desk: true
+    clock: true
+    window: false
+    you:
+      x: 0.45
+      action: scared
+      facing: 1
+    heartbeat: blank
+    say: You never told anyone your name. But the office never keeps an empty shelf. You look down at your staff badge. It's blank.
+  - scene: map
+    time: 6:01 AM
+    place: LOG BOOK
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.5
+    route_cue: 0
+    route_end: owner
+    stops:
+    - x: 0.3
+      y: 0.9
+      label: Umbrella · returned
+      cue: 0
+    - x: 0.3
+      y: 0.7
+      label: 'Item: a name'
+      ghost: true
+      cue: item
+    - x: 0.3
+      y: 0.5
+      label: 'Owner: the night clerk'
+      ghost: true
+      cue: owner
+    say: 'In the log, there''s a new line, in handwriting you don''t recognise. Item: a name. Owner: the night clerk.'
+  - scene: choice
+    time: 6:02 AM
+    base:
+      scene: room
+      wall: '#6b6248'
       furniture: false
       desk: true
       clock: true
       window: false
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.7, action: idle, facing: -1, coat: "#6b5640"}]
-      say: "He says it to himself, over and over. Arthur. Arthur Abel. He shakes your hand. Then he walks up the stairs, to catch the first train home."
-    - scene: room
-      time: "6:00 AM"
-      light: 16
-      wall: "#6b6248"
-      furniture: false
-      desk: true
-      clock: true
-      window: false
-      you: {x: 0.45, action: scared, facing: 1}
-      heartbeat: blank
-      say: "You never told anyone your name. But the office never keeps an empty shelf. You look down at your staff badge. It's blank."
-    - scene: map
-      time: "6:01 AM"
-      place: LOG BOOK
-      route: [[0.3, 0.98], [0.3, 0.5]]
-      route_cue: 0
-      route_end: owner
-      stops:
-        - {x: 0.3, y: 0.9, label: "Umbrella · returned", cue: 0}
-        - {x: 0.3, y: 0.7, label: "Item: a name", ghost: true, cue: item}
-        - {x: 0.3, y: 0.5, label: "Owner: the night clerk", ghost: true, cue: owner}
-      say: "In the log, there's a new line, in handwriting you don't recognise. Item: a name. Owner: the night clerk."
-    - scene: choice
-      time: "6:02 AM"
-      base: {scene: room, wall: "#6b6248", furniture: false, desk: true, clock: true, window: false}
-      question: "Come back tonight or walk away?"
-      options:
-        - {text: Come back, cue: back}
-        - {text: Walk away, cue: away}
-      say: "Do you come back tonight, to look for your name... or walk away, and hope someone remembers you?"
-    - scene: endcard
-      time: "6:02 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+    question: Come back tonight or walk away?
+    options:
+    - text: Come back
+      cue: back
+    - text: Walk away
+      cue: away
+    say: Do you come back tonight, to look for your name... or walk away, and hope someone remembers you?
+  - scene: endcard
+    time: 6:02 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
