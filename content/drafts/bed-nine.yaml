@@ -1,0 +1,508 @@
+# BED NINE (6 parts). You are the winter night keeper at the Ashgrove
+# Glasshouse, eight PM to six AM. The meter is the HEAT inside the glass.
+# Cast: you (night keeper), Dr. Hale (head botanist, only on the radio),
+# Tobias (an old man with garden shears at the door), and the moonflower in
+# Bed Nine, which blooms once every hundred years and opens at dawn after the
+# sixth night.
+# The idea, said plainly: when the moonflower opens it hums a song; whoever
+# hears the whole song falls asleep and never wakes. Moss, a keeper from the
+# last bloom in 2006 (a smaller, "practice" bloom), is still asleep behind
+# the palms.
+# Twist / clever win: the shears can't cut it, but the flower needs warmth to
+# open, and rule one (keep the heat above ten) was there to wake it. You switch
+# the heaters off and open the doors to the frost; the bud closes, the
+# sleepers wake. Sting: Dr. Hale writes your name in the log under "keeper,
+# next bloom: 2126" and says keepers here live a long time.
+- id: bed-nine-1
+  format: stickman
+  series: BED NINE
+  day: 1
+  day_label: NIGHT
+  meter_label: HEAT
+  place: ASHGROVE GLASSHOUSE
+  title: "I'm the night keeper at a glasshouse. At 2 AM a man with shears wanted in 🌙"
+  tags: [stickman, animation, horror, story, glasshouse, plants]
+  shots:
+    - scene: room
+      time: "8:00 PM"
+      light: 100
+      wall: "#3f5a42"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the winter night shift at the Ashgrove Glasshouse. Eight PM to six AM. Ten thousand plants, three old heaters, and snow outside the glass."
+    - scene: radio
+      time: "8:05 PM"
+      on: radio
+      chip: {text: "Dr. Hale · head botanist", cue: hale, y: 470}
+      radio_label: "RADIO · DR. HALE"
+      say:
+        - "Dr. Hale, the head botanist, gives you the rules on the radio."
+        - radio: "Three rules. Keep the heat above ten degrees. Never touch Bed Nine. And keep the door locked, whoever knocks."
+    - scene: title
+      say: "Bed Nine. Night one."
+    - scene: hallway
+      time: "8:30 PM"
+      place: BED NINE
+      light: 99
+      lights: "on"
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      rule: {n: 1, text: Keep the heat above ten degrees}
+      say: "Rule number one. Keep the heat above ten degrees, all night. If it gets cold, the plants die."
+    - scene: hallway
+      time: "8:40 PM"
+      light: 98
+      lights: "on"
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      rule: {n: 2, text: Never touch Bed Nine}
+      say: "Rule number two. Never touch Bed Nine. At the end of the path, there's a single huge bud, glowing purple. A moonflower. It blooms once every hundred years. This week."
+    - scene: inventory
+      time: "9:00 PM"
+      light: 97
+      items:
+        - {icon: can, count: 3, label: heater fuel, cue: fuel}
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+        - {icon: key, count: 1, label: door key, cue: key}
+      total: {text: "Dr. Hale arrives at 6 AM", cue: six}
+      say: "Three cans of heater fuel. One flashlight. One key to the glass door. Tonight's goal: keep everything warm until six."
+    - scene: street
+      time: "2:00 AM"
+      place: THE GLASS DOOR
+      light: 90
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: knock, facing: -1, color: "#c9b28a", cue: knock}]
+      sfx: [{name: knock, at: knock}, {name: knock, at: shears}]
+      rule: {n: 3, text: Keep the door locked}
+      say: "At two AM, a knock on the glass door. Rule number three. Keep it locked, whoever it is. Outside, in the snow, stands an old man holding garden shears."
+    - scene: street
+      time: "2:01 AM"
+      light: 89
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#c9b28a"}]
+      heartbeat: opens
+      say: "He shouts through the glass. Let me in. I have to cut that flower before it opens."
+    - scene: choice
+      time: "2:02 AM"
+      base: {scene: street, stop: 0, dark: 0.6, snow: true, you: {light: true, facing: 1}, people: [{x: 0.68, action: idle, facing: -1, color: "#c9b28a"}]}
+      question: "Let him in or keep it locked?"
+      options:
+        - {text: Let him in, cue: let}
+        - {text: Keep it locked, cue: locked}
+      say: "Do you let him in... or keep the door locked?"
+    - scene: endcard
+      time: "2:02 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: bed-nine-2
+  format: stickman
+  series: BED NINE
+  day: 2
+  day_label: NIGHT
+  meter_label: HEAT
+  place: THE GLASS DOOR
+  title: "The old man said the flower sings when it opens. Then the heaters died. Night 2 🌙"
+  tags: [stickman, animation, horror, story, glasshouse, plants]
+  shots:
+    - scene: street
+      recap: true
+      time: "2:02 AM"
+      light: 89
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#c9b28a"}]
+      say: "Last night, an old man with garden shears banged on the glass door. He wants to cut the flower in Bed Nine."
+    - scene: title
+      say: "Bed Nine. Night two."
+    - scene: street
+      time: "2:03 AM"
+      light: 88
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#c9b28a", fade: walks}]
+      say: "You keep it locked. Rule three. He presses his hand on the glass. When it opens, it sings. Anyone who hears the whole song falls asleep, and never wakes up. Then he walks off into the snow."
+    - scene: map
+      time: "3:00 AM"
+      place: GLASSHOUSE PLAN
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: three
+      stops:
+        - {x: 0.3, y: 0.85, label: "Heater 1", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Heater 2 · OFF", ghost: true, cue: two}
+        - {x: 0.3, y: 0.45, label: "Heater 3", cue: three}
+        - {x: 0.3, y: 0.25, label: "Bed Nine", ghost: true, cue: three}
+      light: [86, 60]
+      say: "At three AM, heater two cuts out. The heat starts dropping fast. Tonight's goal: refuel all three heaters before it falls under ten. Below ten, the rare plants start to die."
+    - scene: hallway
+      time: "3:20 AM"
+      place: BED NINE
+      light: [58, 40]
+      lights: flicker
+      dark: 0.5
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      say: "You run from heater to heater with the fuel cans. Two down. The last one is right next to Bed Nine."
+    - scene: hallway
+      time: "3:30 AM"
+      light: [40, 55]
+      lights: flicker
+      dark: 0.6
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      heartbeat: humming
+      say: "As you refuel it, you hear humming. Soft. Low. The purple bud has turned on its stem. It's facing you."
+    - scene: choice
+      time: "3:31 AM"
+      base: {scene: hallway, lights: flicker, dark: 0.6, wall: "#2f4a32", floor: "#1e2a1c", carpet: "#4a3524", ceiling: "#16201a", exit_color: "#b388ff"}
+      question: "Tell Dr. Hale or keep quiet?"
+      options:
+        - {text: Tell Dr. Hale, cue: tell}
+        - {text: Keep quiet, cue: quiet}
+      say: "Do you tell Dr. Hale... or keep quiet?"
+    - scene: endcard
+      time: "3:31 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: bed-nine-3
+  format: stickman
+  series: BED NINE
+  day: 3
+  day_label: NIGHT
+  meter_label: HEAT
+  place: ASHGROVE GLASSHOUSE
+  title: "Behind the palms I found a night keeper from 2006. Still asleep. Night 3 🌙"
+  tags: [stickman, animation, horror, story, glasshouse, plants]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "3:31 AM"
+      light: 55
+      lights: flicker
+      dark: 0.6
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      say: "Last night, the bud in Bed Nine turned to face you. And it hummed."
+    - scene: title
+      say: "Bed Nine. Night three."
+    - scene: radio
+      time: "3:33 AM"
+      on: radio
+      radio_label: "RADIO · DR. HALE"
+      say:
+        - "You tell Dr. Hale everything. The man with the shears. The humming."
+        - radio: "That's Tobias. He was a night keeper here in two thousand six, when it last opened a little. He panicked. Ignore him."
+    - scene: room
+      time: "9:00 PM"
+      light: 100
+      wall: "#3f5a42"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.45, action: reach, facing: 1}
+      say: "The next night, you start early. Tonight's goal: find out what happened in two thousand six. You dig the old logbook out of the store room."
+    - scene: map
+      time: "9:20 PM"
+      place: LOGBOOK 2006
+      route: [[0.3, 0.98], [0.3, 0.35]]
+      route_cue: 0
+      route_end: one
+      stops:
+        - {x: 0.3, y: 0.85, label: "Keeper: T. Ash", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Keeper: R. Moss", cue: 0}
+        - {x: 0.3, y: 0.45, label: "Morning: one keeper", ghost: true, cue: one}
+      say: "On the night it opened, two keepers were on shift. Tobias Ash, and R. Moss. In the morning, the log says only one keeper."
+    - scene: hallway
+      time: "11:00 PM"
+      place: BEHIND THE PALMS
+      light: 96
+      lights: flicker
+      dark: 0.55
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      figures:
+        - {who: person, z: 3.2, x: 0.25, facing: -1, cue: someone}
+      heartbeat: breathing
+      say: "Behind the palms, you find someone standing in the dark, wrapped in vines from head to toe. A name badge. R. Moss. Night keeper. And he's still breathing."
+    - scene: choice
+      time: "11:01 PM"
+      base: {scene: hallway, lights: flicker, dark: 0.55, wall: "#2f4a32", floor: "#1e2a1c", carpet: "#4a3524", ceiling: "#16201a", exit_color: "#b388ff", figures: [{who: person, z: 3.2, x: 0.25, facing: -1}]}
+      question: "Try to wake him or leave him?"
+      options:
+        - {text: Wake him, cue: wake}
+        - {text: Leave him, cue: leave}
+      say: "Do you try to wake him... or leave him there?"
+    - scene: endcard
+      time: "11:01 PM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: bed-nine-4
+  format: stickman
+  series: BED NINE
+  day: 4
+  day_label: NIGHT
+  meter_label: HEAT
+  place: BEHIND THE PALMS
+  title: "The head botanist knew about the sleeping keeper all along. Night 4 🌙"
+  tags: [stickman, animation, horror, story, glasshouse, plants]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "11:01 PM"
+      light: 95
+      lights: flicker
+      dark: 0.55
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      figures:
+        - {who: person, z: 3.2, x: 0.25, facing: -1}
+      say: "Last night, behind the palms, you found Moss. A night keeper from two thousand six. Wrapped in vines. Still asleep."
+    - scene: title
+      say: "Bed Nine. Night four."
+    - scene: hallway
+      time: "11:02 PM"
+      light: 94
+      lights: flicker
+      dark: 0.55
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      figures:
+        - {who: person, z: 3.2, x: 0.25, facing: -1}
+      say: "You shake his shoulder. You call his name. Nothing. His skin is cold, his eyes are shut. And under the vines, he's humming. The same tune as the bud."
+    - scene: radio
+      time: "11:05 PM"
+      on: radio
+      radio_label: "RADIO · DR. HALE"
+      say:
+        - "You radio Dr. Hale. This time, she doesn't sound surprised."
+        - radio: "Don't touch Moss. He belongs to the flower now. Just keep it warm."
+    - scene: street
+      time: "2:00 AM"
+      place: THE GLASS DOOR
+      light: 85
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: knock, facing: -1, color: "#c9b28a", cue: knock}]
+      sfx: [{name: knock, at: knock}]
+      say: "Tonight's goal: decide who to trust. At two AM, Tobias knocks again. Same time. Same shears."
+    - scene: street
+      time: "2:01 AM"
+      light: 84
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#c9b28a"}]
+      heartbeat: sixth
+      say: "Moss was my friend. When the flower started to sing, he walked straight toward it. I pulled him back, but he never woke. I only heard half the song, and I barely woke up. It opens at dawn after the sixth night. Two nights left. Let me in."
+    - scene: choice
+      time: "2:02 AM"
+      base: {scene: street, stop: 0, dark: 0.6, snow: true, you: {light: true, facing: 1}, people: [{x: 0.68, action: idle, facing: -1, color: "#c9b28a"}]}
+      question: "Let Tobias in or call Dr. Hale?"
+      options:
+        - {text: Let Tobias in, cue: let}
+        - {text: Call Dr. Hale, cue: call}
+      say: "Do you let Tobias in... or call Dr. Hale?"
+    - scene: endcard
+      time: "2:02 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: bed-nine-5
+  format: stickman
+  series: BED NINE
+  day: 5
+  day_label: NIGHT
+  meter_label: HEAT
+  place: THE GLASS DOOR
+  title: "We tried to cut the flower before it opened. It started to sing. Night 5 🌙"
+  tags: [stickman, animation, horror, story, glasshouse, plants]
+  shots:
+    - scene: street
+      recap: true
+      time: "2:02 AM"
+      light: 84
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#c9b28a"}]
+      say: "Last night, Tobias begged you to let him in. The flower opens at dawn after the sixth night."
+    - scene: title
+      say: "Bed Nine. Night five."
+    - scene: street
+      time: "2:03 AM"
+      light: 83
+      stop: 0
+      dark: 0.6
+      snow: true
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: walk, facing: -1, color: "#c9b28a", drift: -120}]
+      sfx: [{name: click, at: unlock}]
+      say: "You unlock the door. You've broken rule three. Tobias grips your hand. His fingers are ice cold. Whatever happens, he says, don't stop to listen. Tonight's goal: get Tobias to Bed Nine, and cut the stem before the bud wakes."
+    - scene: hallway
+      time: "2:10 AM"
+      light: [82, 70]
+      lights: flicker
+      dark: 0.6
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      figures:
+        - {who: person, z: 2.6, x: -0.2, facing: 1}
+      heartbeat: louder
+      say: "You walk down the path together. The humming gets louder with every step, like a lullaby. Tobias starts to sway, and mumbles Moss's name."
+    - scene: hallway
+      time: "2:14 AM"
+      light: [70, 92]
+      lights: dying
+      "off": falls
+      dark: 0.75
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      sfx: [{name: hit, at: falls}]
+      say: "At the bed, the bud is as big as a door. Tobias lifts the shears. Then his eyes close. He falls asleep standing up, and drops. The shears hit the floor. And behind you, all three heaters roar up to full power, on their own."
+    - scene: choice
+      time: "2:15 AM"
+      base: {scene: hallway, lights: "off", dark: 0.75, wall: "#2f4a32", floor: "#1e2a1c", carpet: "#4a3524", ceiling: "#16201a", exit_color: "#b388ff"}
+      question: "Cut the stem or drag Tobias out?"
+      options:
+        - {text: Cut the stem, cue: cut}
+        - {text: Drag him out, cue: drag}
+      say: "Do you grab the shears and cut the stem... or drag Tobias out?"
+    - scene: endcard
+      time: "2:15 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: bed-nine-6
+  format: stickman
+  series: BED NINE
+  day: 6
+  day_label: NIGHT
+  meter_label: HEAT
+  place: BED NINE
+  title: "Rule one wasn't to keep the plants alive. It was to wake the flower. Final night 🌙"
+  tags: [stickman, animation, horror, story, glasshouse, plants]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "2:15 AM"
+      light: 92
+      lights: "off"
+      dark: 0.75
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      say: "Last night, Tobias fell asleep at Bed Nine. And the heaters turned themselves up to full."
+    - scene: title
+      say: "Bed Nine. The last night."
+    - scene: hallway
+      time: "2:16 AM"
+      light: 95
+      lights: "off"
+      dark: 0.75
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#b388ff"
+      sfx: [{name: hit, at: iron}]
+      say: "You grab the shears and cut. They bounce off. The stem is hard as iron. Tonight's goal: stop the flower opening at dawn. And then you understand rule one. The flower needs heat to open."
+    - scene: map
+      time: "5:00 AM"
+      place: GLASSHOUSE PLAN
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: doors
+      light: [95, 10]
+      stops:
+        - {x: 0.3, y: 0.85, label: "Heater 1 · OFF", ghost: true, cue: one}
+        - {x: 0.3, y: 0.65, label: "Heater 2 · OFF", ghost: true, cue: two}
+        - {x: 0.3, y: 0.45, label: "Heater 3 · OFF", ghost: true, cue: three}
+        - {x: 0.3, y: 0.25, label: "Doors · OPEN", ghost: true, cue: doors}
+      say: "So you break it. Heater one, off. Heater two, off. Heater three, off. Then you open every door to the snow."
+    - scene: hallway
+      time: "5:58 AM"
+      place: BED NINE
+      light: [10, 2]
+      lights: "off"
+      dark: 0.8
+      snow: {n: 120, speed: 0.6, wind: 0.3}
+      wall: "#2f4a32"
+      floor: "#1e2a1c"
+      carpet: "#4a3524"
+      ceiling: "#16201a"
+      exit_color: "#6a5a8a"
+      say: "Frost creeps over the glass. At dawn, the humming stops. The bud folds shut, and droops. Behind you, Tobias coughs, and sits up. And behind the palms, Moss opens his eyes."
+    - scene: radio
+      time: "6:05 AM"
+      place: ASHGROVE GLASSHOUSE
+      on: radio
+      radio_label: "RADIO · DR. HALE"
+      say:
+        - "Dr. Hale arrives. She looks at the closed bud, and smiles. She writes your name in the logbook. Keeper. Next bloom, twenty one twenty six."
+        - radio: "Don't worry. Keepers here live a very long time."
+    - scene: choice
+      time: "6:06 AM"
+      base: {scene: room, wall: "#3f5a42", furniture: false, desk: true, clock: true, window_view: forest}
+      question: "Stay as keeper or quit?"
+      options:
+        - {text: Stay, cue: stay}
+        - {text: Quit, cue: quit}
+      say: "So. Do you stay on as keeper... or quit, and hope she lets you?"
+    - scene: endcard
+      time: "6:06 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."

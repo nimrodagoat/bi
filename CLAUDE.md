@@ -44,7 +44,8 @@ clerk vs a hitchhiker who needs to be sold something; clever-win twist), WARD C 
 time-loop twist; a shot-level `day: 1` resets the corner counter), FUNLAND (6, theme-park night guard;
 `carousel` scene, bear `mascot` people; double twist: a staged tryout, but the carousel girl was real), MILK ROUND (6, pre-dawn village milkman; notes from a
 house not on the map; twist: the notes were the real Walt, the radio voice was the house), LOST & FOUND (6, station lost-property night clerk; the office keeps lost
-names; hallway `shelves` as storage aisles; twist: you return Arthur's name and the office files yours). Never reuse a premise; keep every series
+names; hallway `shelves` as storage aisles; twist: you return Arthur's name and the office files yours), BED NINE (6, glasshouse night keeper; a
+moonflower whose song puts you to sleep; meter_label HEAT; clever win: switch the heat off so it can't open). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 Nov 2: the owner is weighing a switch to how-it-works explainers (2D `style: explainer` cut-aways with
 stickman wizards, or 3D via Blender: `tools/blender/`, `.github/workflows/preview-3d.yml`); previews go
