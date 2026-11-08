@@ -15,132 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: lost-and-found-5
-  format: stickman
-  series: LOST & FOUND
-  day: 5
-  day_label: NIGHT
-  meter_label: BATTERY
-  place: THE CAGE
-  title: Inside the umbrella was a name. Then something in the cage said mine. Night 5 🧳
-  tags:
-  - stickman
-  - animation
-  - horror
-  - story
-  - lostandfound
-  - trainstation
-  shots:
-  - scene: hallway
-    recap: true
-    time: 4:30 AM
-    light: 50
-    lights: 'off'
-    shelves: true
-    dark: 0.7
-    wall: '#5a5240'
-    floor: '#2a261c'
-    carpet: '#3e3a2c'
-    ceiling: '#1e1b14'
-    exit_color: '#c0392b'
-    say: Last night, you learned the man in the brown coat lost his name here in nineteen seventy four. It's hidden in his black umbrella.
-  - scene: title
-    say: Lost and Found. Night five.
-  - scene: hallway
-    time: 4:31 AM
-    light: 49
-    lights: 'off'
-    shelves: true
-    dark: 0.85
-    wall: '#5a5240'
-    floor: '#2a261c'
-    carpet: '#3e3a2c'
-    ceiling: '#1e1b14'
-    exit_color: '#c0392b'
-    sfx:
-    - name: click
-      at: open
-    say: 'You open the cage. Tonight''s goal: find the umbrella, and get out before your flashlight dies. Inside, it''s colder than it should be. Your breath turns to fog. And the shelves go back much further than the office does.'
-  - scene: hallway
-    time: 4:40 AM
-    light:
-    - 45
-    - 25
-    lights: 'off'
-    shelves: true
-    dark: 0.85
-    wall: '#5a5240'
-    floor: '#2a261c'
-    carpet: '#3e3a2c'
-    ceiling: '#1e1b14'
-    exit_color: '#c0392b'
-    figures:
-    - who: creature
-      z: 8.0
-      to_z: 6.0
-      x: 0.3
-      cue: tags
-    say: The umbrella hangs at the very back. As you reach for it, every luggage tag in the cage starts to whisper. Not words. Names. Hundreds of them.
-  - scene: closeup
-    time: 4:42 AM
-    object: flashlight
-    light: 24
-    chip:
-      text: 'Tag: ARTHUR ABEL · night clerk'
-      cue: tag
-      y: 520
-    say: You open the umbrella. A paper tag falls out, in old handwriting. Arthur Abel. Night clerk.
-  - scene: hallway
-    time: 4:43 AM
-    light: 22
-    lights: 'off'
-    shelves: true
-    dark: 0.9
-    wall: '#5a5240'
-    floor: '#2a261c'
-    carpet: '#3e3a2c'
-    ceiling: '#1e1b14'
-    exit_color: '#c0392b'
-    figures:
-    - who: creature
-      z: 5.0
-      to_z: 3.2
-      x: 0.3
-      cue: own
-    shake_at:
-    - slams
-    sfx:
-    - name: boom
-      at: slams
-    heartbeat: own
-    say: Then the cage door slams behind you. And among all the whispered names, you hear one more. Your own.
-  - scene: choice
-    time: 4:44 AM
-    base:
-      scene: hallway
-      lights: 'off'
-      shelves: true
-      dark: 0.9
-      wall: '#5a5240'
-      floor: '#2a261c'
-      carpet: '#3e3a2c'
-      ceiling: '#1e1b14'
-      exit_color: '#c0392b'
-      figures:
-      - who: creature
-        z: 3.2
-        x: 0.3
-    question: Read the tag out loud or run?
-    options:
-    - text: Read it out
-      cue: read
-    - text: Run
-      cue: run
-    say: Do you read Arthur's name out loud... or run?
-  - scene: endcard
-    time: 4:44 AM
-    hold: 1.6
-    say: Follow for the last night.
 - id: lost-and-found-6
   format: stickman
   series: LOST & FOUND
@@ -1052,94 +926,156 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: HARLOW BATHS
-  title: "I'm the night attendant at an old swimming pool. At 3 AM someone was swimming 🏊"
-  tags: [stickman, animation, horror, story, swimmingpool, deepend]
+  title: I'm the night attendant at an old swimming pool. At 3 AM someone was swimming 🏊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - swimmingpool
+  - deepend
   shots:
-    - scene: room
-      time: "10:00 PM"
-      light: 100
-      wall: "#3f6f7a"
-      furniture: false
-      desk: true
-      monitors: true
-      clock: true
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "You take the night job at Harlow Baths, an old swimming pool. Ten PM to six AM. Mop the floors, check the water, lock up. Easy."
-    - scene: radio
-      time: "10:05 PM"
-      on: phone
-      chip: {text: "Gwen · day manager", cue: gwen, y: 470}
-      radio_label: "PHONE · GWEN"
-      say:
-        - "Gwen, the day manager, phones with the rules."
-        - radio: "Three rules, pet. Never switch the pool lights on after midnight. If you hear swimming, don't count out loud. And never go past the deep end rope."
-    - scene: title
-      say: "Deep End. Night one."
-    - scene: hallway
-      time: "10:30 PM"
-      place: THE POOL
-      light: 99
-      lights: "on"
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      rule: {n: 1, text: No pool lights after midnight}
-      say: "Rule number one. After midnight, the pool lights stay off. You only use your flashlight."
-    - scene: hallway
-      time: "10:40 PM"
-      light: 98
-      lights: "on"
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      rule: {n: 2, text: Never count lengths out loud}
-      say: "Rule number two. If you hear someone swimming, never count the lengths out loud. Not even in a whisper."
-    - scene: hallway
-      time: "10:50 PM"
-      light: 97
-      lights: "on"
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      rule: {n: 3, text: Never pass the deep end rope}
-      say: "Rule number three. Never go past the rope at the deep end. Tonight's goal: clean up, lock up, and get through to six."
-    - scene: inventory
-      time: "11:00 PM"
-      light: 96
-      items:
-        - {icon: key, count: 4, label: door keys, cue: keys}
-        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
-        - {icon: battery, count: 2, label: batteries, cue: batteries}
-      total: {text: "Gwen opens up at 6 AM", cue: six}
-      say: "Four door keys. One flashlight. Two spare batteries."
-    - scene: cctv
-      time: "3:00 AM"
-      cam: "CAM 02 · POOL"
-      place: THE OFFICE
-      light: 80
-      view: {scene: hallway, lights: "off", dark: 0.6, wall: "#4f8fa8", floor: "#1d5a74", carpet: "#2b7a99", ceiling: "#16323e", exit_color: "#9fe3ff", figures: [{who: person, z: 4.5, to_z: 3.0, x: 0.1, cue: cap}]}
-      sfx: [{name: whoosh, at: splash, gain: 0.5}]
-      heartbeat: cap
-      say: "At three AM, you hear a splash. Then another. On the pool camera, in the dark, someone is swimming lengths. A woman, in an old white swimming cap."
-    - scene: choice
-      time: "3:01 AM"
-      base: {scene: cctv, cam: "CAM 02 · POOL", view: {scene: hallway, lights: "off", dark: 0.6, wall: "#4f8fa8", floor: "#1d5a74", carpet: "#2b7a99", ceiling: "#16323e", exit_color: "#9fe3ff", figures: [{who: person, z: 3.0, x: 0.1}]}}
-      question: "Go and look or phone Gwen?"
-      options:
-        - {text: Look, cue: look}
-        - {text: Phone Gwen, cue: phone}
-      say: "Do you go and look... or phone Gwen?"
-    - scene: endcard
-      time: "3:01 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+  - scene: room
+    time: 10:00 PM
+    light: 100
+    wall: '#3f6f7a'
+    furniture: false
+    desk: true
+    monitors: true
+    clock: true
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: You take the night job at Harlow Baths, an old swimming pool. Ten PM to six AM. Mop the floors, check the water, lock up. Easy.
+  - scene: radio
+    time: 10:05 PM
+    true: phone
+    chip:
+      text: Gwen · day manager
+      cue: gwen
+      y: 470
+    radio_label: PHONE · GWEN
+    say:
+    - Gwen, the day manager, phones with the rules.
+    - radio: Three rules, pet. Never switch the pool lights on after midnight. If you hear swimming, don't count out loud. And never go past the deep end rope.
+  - scene: title
+    say: Deep End. Night one.
+  - scene: hallway
+    time: 10:30 PM
+    place: THE POOL
+    light: 99
+    lights: 'on'
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    rule:
+      n: 1
+      text: No pool lights after midnight
+    say: Rule number one. After midnight, the pool lights stay off. You only use your flashlight.
+  - scene: hallway
+    time: 10:40 PM
+    light: 98
+    lights: 'on'
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    rule:
+      n: 2
+      text: Never count lengths out loud
+    say: Rule number two. If you hear someone swimming, never count the lengths out loud. Not even in a whisper.
+  - scene: hallway
+    time: 10:50 PM
+    light: 97
+    lights: 'on'
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    rule:
+      n: 3
+      text: Never pass the deep end rope
+    say: 'Rule number three. Never go past the rope at the deep end. Tonight''s goal: clean up, lock up, and get through to six.'
+  - scene: inventory
+    time: 11:00 PM
+    light: 96
+    items:
+    - icon: key
+      count: 4
+      label: door keys
+      cue: keys
+    - icon: flashlight
+      count: 1
+      label: flashlight
+      cue: flashlight
+    - icon: battery
+      count: 2
+      label: batteries
+      cue: batteries
+    total:
+      text: Gwen opens up at 6 AM
+      cue: six
+    say: Four door keys. One flashlight. Two spare batteries.
+  - scene: cctv
+    time: 3:00 AM
+    cam: CAM 02 · POOL
+    place: THE OFFICE
+    light: 80
+    view:
+      scene: hallway
+      lights: 'off'
+      dark: 0.6
+      wall: '#4f8fa8'
+      floor: '#1d5a74'
+      carpet: '#2b7a99'
+      ceiling: '#16323e'
+      exit_color: '#9fe3ff'
+      figures:
+      - who: person
+        z: 4.5
+        to_z: 3.0
+        x: 0.1
+        cue: cap
+    sfx:
+    - name: whoosh
+      at: splash
+      gain: 0.5
+    heartbeat: cap
+    say: At three AM, you hear a splash. Then another. On the pool camera, in the dark, someone is swimming lengths. A woman, in an old white swimming cap.
+  - scene: choice
+    time: 3:01 AM
+    base:
+      scene: cctv
+      cam: CAM 02 · POOL
+      view:
+        scene: hallway
+        lights: 'off'
+        dark: 0.6
+        wall: '#4f8fa8'
+        floor: '#1d5a74'
+        carpet: '#2b7a99'
+        ceiling: '#16323e'
+        exit_color: '#9fe3ff'
+        figures:
+        - who: person
+          z: 3.0
+          x: 0.1
+    question: Go and look or phone Gwen?
+    options:
+    - text: Look
+      cue: look
+    - text: Phone Gwen
+      cue: phone
+    say: Do you go and look... or phone Gwen?
+  - scene: endcard
+    time: 3:01 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: deep-end-2
   format: stickman
   series: DEEP END
@@ -1147,82 +1083,132 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE POOL
-  title: "The swimmer stopped at the wall and asked me: how many was that? Night 2 🏊"
-  tags: [stickman, animation, horror, story, swimmingpool, deepend]
+  title: 'The swimmer stopped at the wall and asked me: how many was that? Night 2 🏊'
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - swimmingpool
+  - deepend
   shots:
-    - scene: cctv
-      recap: true
-      time: "3:01 AM"
-      cam: "CAM 02 · POOL"
-      light: 80
-      view: {scene: hallway, lights: "off", dark: 0.6, wall: "#4f8fa8", floor: "#1d5a74", carpet: "#2b7a99", ceiling: "#16323e", exit_color: "#9fe3ff", figures: [{who: person, z: 3.0, x: 0.1}]}
-      say: "Last night, at three AM, a woman in a white swimming cap was swimming lengths in the dark pool."
-    - scene: title
-      say: "Deep End. Night two."
-    - scene: hallway
-      time: "3:03 AM"
-      place: THE POOL
-      light: 79
-      lights: "off"
-      dark: 0.65
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
+  - scene: cctv
+    recap: true
+    time: 3:01 AM
+    cam: CAM 02 · POOL
+    light: 80
+    view:
+      scene: hallway
+      lights: 'off'
+      dark: 0.6
+      wall: '#4f8fa8'
+      floor: '#1d5a74'
+      carpet: '#2b7a99'
+      ceiling: '#16323e'
+      exit_color: '#9fe3ff'
       figures:
-        - {who: person, z: 3.0, x: 0.1, facing: -1, cue: wall}
-      say: "You go and look, with just your flashlight. Rule one. She swims to the wall right in front of you, and stands up. Her lips are blue. She asks: how many was that?"
-    - scene: hallway
-      time: "3:04 AM"
-      light: 78
-      lights: "off"
-      dark: 0.65
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      figures:
-        - {who: person, z: 3.0, to_z: 6.0, x: 0.1, facing: -1, cue: swims}
-      say: "You say nothing. Rule two. She looks sad, pushes off, and swims back into the dark."
-    - scene: hallway
-      time: "4:30 AM"
-      light: [76, 50]
-      lights: "off"
-      dark: 0.7
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      fog: {top: 0.75, rise: [0.85, 0.62], cue: creeping, density: 0.8, color: "#2b7a99"}
-      say: "Then you see it. The water is spilling over the edge, and creeping across the tiles toward the door. Tonight's goal: lock the pool hall before the water reaches you."
-    - scene: room
-      time: "4:40 AM"
-      place: THE OFFICE
-      light: 48
-      wall: "#3f6f7a"
+      - who: person
+        z: 3.0
+        x: 0.1
+    say: Last night, at three AM, a woman in a white swimming cap was swimming lengths in the dark pool.
+  - scene: title
+    say: Deep End. Night two.
+  - scene: hallway
+    time: 3:03 AM
+    place: THE POOL
+    light: 79
+    lights: 'off'
+    dark: 0.65
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: person
+      z: 3.0
+      x: 0.1
+      facing: -1
+      cue: wall
+    say: 'You go and look, with just your flashlight. Rule one. She swims to the wall right in front of you, and stands up. Her lips are blue. She asks: how many was that?'
+  - scene: hallway
+    time: 3:04 AM
+    light: 78
+    lights: 'off'
+    dark: 0.65
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: person
+      z: 3.0
+      to_z: 6.0
+      x: 0.1
+      facing: -1
+      cue: swims
+    say: You say nothing. Rule two. She looks sad, pushes off, and swims back into the dark.
+  - scene: hallway
+    time: 4:30 AM
+    light:
+    - 76
+    - 50
+    lights: 'off'
+    dark: 0.7
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    fog:
+      top: 0.75
+      rise:
+      - 0.85
+      - 0.62
+      cue: creeping
+      density: 0.8
+      color: '#2b7a99'
+    say: 'Then you see it. The water is spilling over the edge, and creeping across the tiles toward the door. Tonight''s goal: lock the pool hall before the water reaches you.'
+  - scene: room
+    time: 4:40 AM
+    place: THE OFFICE
+    light: 48
+    wall: '#3f6f7a'
+    furniture: false
+    desk: true
+    monitors: true
+    clock: true
+    you:
+      x: 0.4
+      action: push
+      facing: 1
+    sfx:
+    - name: boom
+      at: slam
+    - name: click
+      at: lock
+    say: You slam the door and lock it. Water seeps under it, then stops. On the other side, the splashing goes on, until six AM exactly.
+  - scene: choice
+    time: 6:00 AM
+    base:
+      scene: room
+      wall: '#3f6f7a'
       furniture: false
       desk: true
       monitors: true
       clock: true
-      you: {x: 0.4, action: push, facing: 1}
-      sfx: [{name: boom, at: slam}, {name: click, at: lock}]
-      say: "You slam the door and lock it. Water seeps under it, then stops. On the other side, the splashing goes on, until six AM exactly."
-    - scene: choice
-      time: "6:00 AM"
-      base: {scene: room, wall: "#3f6f7a", furniture: false, desk: true, monitors: true, clock: true}
-      question: "Ask Gwen or check the old records?"
-      options:
-        - {text: Ask Gwen, cue: ask}
-        - {text: Records, cue: records}
-      say: "Do you ask Gwen about the swimmer... or check the old records yourself?"
-    - scene: endcard
-      time: "6:00 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+    question: Ask Gwen or check the old records?
+    options:
+    - text: Ask Gwen
+      cue: ask
+    - text: Records
+      cue: records
+    say: Do you ask Gwen about the swimmer... or check the old records yourself?
+  - scene: endcard
+    time: 6:00 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: deep-end-3
   format: stickman
   series: DEEP END
@@ -1230,74 +1216,110 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE OFFICE
-  title: "In 1974 a swimmer tried 100 lengths at night. She stopped at 99. Night 3 🏊"
-  tags: [stickman, animation, horror, story, swimmingpool, deepend]
+  title: In 1974 a swimmer tried 100 lengths at night. She stopped at 99. Night 3 🏊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - swimmingpool
+  - deepend
   shots:
-    - scene: room
-      recap: true
-      time: "6:00 AM"
-      light: 46
-      wall: "#3f6f7a"
+  - scene: room
+    recap: true
+    time: 6:00 AM
+    light: 46
+    wall: '#3f6f7a'
+    furniture: false
+    desk: true
+    monitors: true
+    clock: true
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: Last night, the swimmer in the white cap asked you how many lengths she'd done. Then the pool tried to flood the hall.
+  - scene: title
+    say: Deep End. Night three.
+  - scene: radio
+    time: 6:05 AM
+    true: phone
+    radio_label: PHONE · GWEN
+    say:
+    - You ask Gwen. She is quiet for a long time.
+    - radio: That's June. She asks everyone how many. If you get it wrong, the deep end pulls you in, to start again. So you stay quiet, pet.
+  - scene: room
+    time: 10:00 PM
+    light: 100
+    wall: '#3f6f7a'
+    furniture: false
+    desk: true
+    monitors: true
+    clock: true
+    you:
+      x: 0.45
+      action: reach
+      facing: 1
+    say: 'The next night, you come in early. Tonight''s goal: find out who June was. In the store room, you find the old swimming club board.'
+  - scene: map
+    time: 10:20 PM
+    place: CLUB BOARD 1974
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.35
+    route_cue: 0
+    route_end: ninety
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: Night swim for charity
+      cue: 0
+    - x: 0.3
+      y: 0.65
+      label: 'Swimmer: June Price'
+      cue: june
+    - x: 0.3
+      y: 0.45
+      label: 'Lengths: 99'
+      ghost: true
+      cue: ninety
+    say: 'Nineteen seventy four. A night swim for charity. One hundred lengths. The swimmer was June Price. Her total, chalked at the bottom: ninety nine.'
+  - scene: room
+    time: 10:40 PM
+    light: 98
+    wall: '#3f6f7a'
+    furniture: false
+    desk: true
+    monitors: true
+    clock: true
+    you:
+      x: 0.45
+      action: idle
+      facing: 1
+    heartbeat: never
+    say: Under it, a newspaper clipping. At length ninety nine, the lights failed. Someone had lost count. June never came out of the water, and she was never found.
+  - scene: choice
+    time: 10:41 PM
+    base:
+      scene: room
+      wall: '#3f6f7a'
       furniture: false
       desk: true
       monitors: true
       clock: true
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "Last night, the swimmer in the white cap asked you how many lengths she'd done. Then the pool tried to flood the hall."
-    - scene: title
-      say: "Deep End. Night three."
-    - scene: radio
-      time: "6:05 AM"
-      on: phone
-      radio_label: "PHONE · GWEN"
-      say:
-        - "You ask Gwen. She is quiet for a long time."
-        - radio: "That's June. She asks everyone how many. If you get it wrong, the deep end pulls you in, to start again. So you stay quiet, pet."
-    - scene: room
-      time: "10:00 PM"
-      light: 100
-      wall: "#3f6f7a"
-      furniture: false
-      desk: true
-      monitors: true
-      clock: true
-      you: {x: 0.45, action: reach, facing: 1}
-      say: "The next night, you come in early. Tonight's goal: find out who June was. In the store room, you find the old swimming club board."
-    - scene: map
-      time: "10:20 PM"
-      place: CLUB BOARD 1974
-      route: [[0.3, 0.98], [0.3, 0.35]]
-      route_cue: 0
-      route_end: ninety
-      stops:
-        - {x: 0.3, y: 0.85, label: "Night swim for charity", cue: 0}
-        - {x: 0.3, y: 0.65, label: "Swimmer: June Price", cue: june}
-        - {x: 0.3, y: 0.45, label: "Lengths: 99", ghost: true, cue: ninety}
-      say: "Nineteen seventy four. A night swim for charity. One hundred lengths. The swimmer was June Price. Her total, chalked at the bottom: ninety nine."
-    - scene: room
-      time: "10:40 PM"
-      light: 98
-      wall: "#3f6f7a"
-      furniture: false
-      desk: true
-      monitors: true
-      clock: true
-      you: {x: 0.45, action: idle, facing: 1}
-      heartbeat: never
-      say: "Under it, a newspaper clipping. At length ninety nine, the lights failed. Someone had lost count. June never came out of the water, and she was never found."
-    - scene: choice
-      time: "10:41 PM"
-      base: {scene: room, wall: "#3f6f7a", furniture: false, desk: true, monitors: true, clock: true}
-      question: "Help June finish or keep the rules?"
-      options:
-        - {text: Help her, cue: help}
-        - {text: Keep rules, cue: keep}
-      say: "One length short. Forever. Do you help June finish her swim... or keep the rules, and stay safe?"
-    - scene: endcard
-      time: "10:41 PM"
-      hold: 1.6
-      say: "Follow for night four."
-
+    question: Help June finish or keep the rules?
+    options:
+    - text: Help her
+      cue: help
+    - text: Keep rules
+      cue: keep
+    say: One length short. Forever. Do you help June finish her swim... or keep the rules, and stay safe?
+  - scene: endcard
+    time: 10:41 PM
+    hold: 1.6
+    say: Follow for night four.
 - id: deep-end-4
   format: stickman
   series: DEEP END
@@ -1305,77 +1327,135 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE POOL
-  title: "I started counting the ghost swimmer's lengths. Something else was in the deep end. Night 4 🏊"
-  tags: [stickman, animation, horror, story, swimmingpool, deepend]
+  title: I started counting the ghost swimmer's lengths. Something else was in the deep end. Night 4 🏊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - swimmingpool
+  - deepend
   shots:
-    - scene: map
-      recap: true
-      time: "10:41 PM"
-      place: CLUB BOARD 1974
-      route: [[0.3, 0.98], [0.3, 0.35]]
-      route_cue: 0
-      stops:
-        - {x: 0.3, y: 0.85, label: "Night swim for charity"}
-        - {x: 0.3, y: 0.65, label: "Swimmer: June Price"}
-        - {x: 0.3, y: 0.45, label: "Lengths: 99", ghost: true}
-      say: "Last night, you found out the swimmer is June. In nineteen seventy four, she stopped at ninety nine lengths, and never came out."
-    - scene: title
-      say: "Deep End. Night four."
-    - scene: closeup
-      time: "2:55 AM"
-      place: THE POOL
-      object: phone
-      light: 95
-      chip: {text: "Counter: 0", cue: zero, y: 520}
-      say: "You decide to help. Tonight's goal: count every length, in silence, starting from zero. You open the counter on your phone. Rule two only says don't count out loud."
-    - scene: hallway
-      time: "3:00 AM"
-      light: [92, 70]
-      lights: "off"
-      dark: 0.65
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      figures:
-        - {who: person, z: 3.2, to_z: 6.5, x: 0.1, facing: -1}
-      sfx: [{name: whoosh, at: splash, gain: 0.5}]
-      say: "At three, the splash. June swims. Every time she touches the wall, you tap the phone. Ten. Twenty. Thirty. Forty. She never looks at you."
-    - scene: hallway
-      time: "4:10 AM"
-      light: [68, 45]
-      lights: "off"
+  - scene: map
+    recap: true
+    time: 10:41 PM
+    place: CLUB BOARD 1974
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.35
+    route_cue: 0
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: Night swim for charity
+    - x: 0.3
+      y: 0.65
+      label: 'Swimmer: June Price'
+    - x: 0.3
+      y: 0.45
+      label: 'Lengths: 99'
+      ghost: true
+    say: Last night, you found out the swimmer is June. In nineteen seventy four, she stopped at ninety nine lengths, and never came out.
+  - scene: title
+    say: Deep End. Night four.
+  - scene: closeup
+    time: 2:55 AM
+    place: THE POOL
+    object: phone
+    light: 95
+    chip:
+      text: 'Counter: 0'
+      cue: zero
+      y: 520
+    say: 'You decide to help. Tonight''s goal: count every length, in silence, starting from zero. You open the counter on your phone. Rule two only says don''t count out loud.'
+  - scene: hallway
+    time: 3:00 AM
+    light:
+    - 92
+    - 70
+    lights: 'off'
+    dark: 0.65
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: person
+      z: 3.2
+      to_z: 6.5
+      x: 0.1
+      facing: -1
+    sfx:
+    - name: whoosh
+      at: splash
+      gain: 0.5
+    say: At three, the splash. June swims. Every time she touches the wall, you tap the phone. Ten. Twenty. Thirty. Forty. She never looks at you.
+  - scene: hallway
+    time: 4:10 AM
+    light:
+    - 68
+    - 45
+    lights: 'off'
+    dark: 0.75
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: creature
+      z: 8.5
+      to_z: 6.0
+      x: -0.3
+      cue: rope
+    - who: creature
+      z: 8.0
+      to_z: 5.5
+      x: 0.35
+      cue: rope
+    heartbeat: rope
+    say: At fifty, the water at the deep end starts to bulge. Long dark shapes rise behind the rope. Everyone the deep end ever pulled in. And they're watching you, not her.
+  - scene: closeup
+    time: 4:12 AM
+    object: phone
+    light: 44
+    chip:
+      text: 'Counter: 51'
+      cue: 0
+      y: 520
+    say: Your hands are shaking. The counter says fifty one. Half way. Your phone battery is starting to die. Ten percent.
+  - scene: choice
+    time: 4:13 AM
+    base:
+      scene: hallway
+      lights: 'off'
       dark: 0.75
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
+      wall: '#4f8fa8'
+      floor: '#1d5a74'
+      carpet: '#2b7a99'
+      ceiling: '#16323e'
+      exit_color: '#9fe3ff'
       figures:
-        - {who: creature, z: 8.5, to_z: 6.0, x: -0.3, cue: rope}
-        - {who: creature, z: 8.0, to_z: 5.5, x: 0.35, cue: rope}
-      heartbeat: rope
-      say: "At fifty, the water at the deep end starts to bulge. Long dark shapes rise behind the rope. Everyone the deep end ever pulled in. And they're watching you, not her."
-    - scene: closeup
-      time: "4:12 AM"
-      object: phone
-      light: 44
-      chip: {text: "Counter: 51", cue: 0, y: 520}
-      say: "Your hands are shaking. The counter says fifty one. Half way. Your phone battery is starting to die. Ten percent."
-    - scene: choice
-      time: "4:13 AM"
-      base: {scene: hallway, lights: "off", dark: 0.75, wall: "#4f8fa8", floor: "#1d5a74", carpet: "#2b7a99", ceiling: "#16323e", exit_color: "#9fe3ff", figures: [{who: creature, z: 6.0, x: -0.3}, {who: creature, z: 5.5, x: 0.35}]}
-      question: "Keep counting or run?"
-      options:
-        - {text: Keep counting, cue: keep}
-        - {text: Run, cue: run}
-      say: "Do you keep counting... or run for the door?"
-    - scene: endcard
-      time: "4:13 AM"
-      hold: 1.6
-      say: "Follow for night five."
-
+      - who: creature
+        z: 6.0
+        x: -0.3
+      - who: creature
+        z: 5.5
+        x: 0.35
+    question: Keep counting or run?
+    options:
+    - text: Keep counting
+      cue: keep
+    - text: Run
+      cue: run
+    say: Do you keep counting... or run for the door?
+  - scene: endcard
+    time: 4:13 AM
+    hold: 1.6
+    say: Follow for night five.
 - id: deep-end-5
   format: stickman
   series: DEEP END
@@ -1383,77 +1463,124 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE POOL
-  title: "My phone died at 98 lengths. The only way to finish was to break the rule. Night 5 🏊"
-  tags: [stickman, animation, horror, story, swimmingpool, deepend]
+  title: My phone died at 98 lengths. The only way to finish was to break the rule. Night 5 🏊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - swimmingpool
+  - deepend
   shots:
-    - scene: hallway
-      recap: true
-      time: "4:13 AM"
-      light: 44
-      lights: "off"
-      dark: 0.75
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      figures:
-        - {who: creature, z: 6.0, x: -0.3}
-        - {who: creature, z: 5.5, x: 0.35}
-      say: "Last night, you counted June's lengths in silence. At fifty one, dark shapes rose in the deep end, and slid toward you."
-    - scene: title
-      say: "Deep End. Night five."
-    - scene: hallway
-      time: "4:40 AM"
-      light: [42, 20]
-      lights: "off"
-      dark: 0.8
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      figures:
-        - {who: creature, z: 6.0, to_z: 4.0, x: -0.3}
-        - {who: creature, z: 5.5, to_z: 3.6, x: 0.35}
-      say: "You keep counting. Tonight's goal: get June to one hundred before dawn. Sixty. Seventy. Eighty. The shapes slide under the rope, toward the shallow end. Toward you. Your flashlight flickers. You don't dare look away from the water."
-    - scene: closeup
-      time: "5:50 AM"
-      object: phone
-      light: [18, 2]
-      dies: dark
-      chip: {text: "Counter: 98", cue: 0, y: 520}
-      sfx: [{name: click, at: dark}]
-      say: "Ninety seven. Ninety eight. Your hands are numb. Then the screen goes dark. Your phone is dead. June touches the wall, and turns, for the last length."
-    - scene: hallway
-      time: "5:55 AM"
-      light: 2
-      lights: "off"
+  - scene: hallway
+    recap: true
+    time: 4:13 AM
+    light: 44
+    lights: 'off'
+    dark: 0.75
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: creature
+      z: 6.0
+      x: -0.3
+    - who: creature
+      z: 5.5
+      x: 0.35
+    say: Last night, you counted June's lengths in silence. At fifty one, dark shapes rose in the deep end, and slid toward you.
+  - scene: title
+    say: Deep End. Night five.
+  - scene: hallway
+    time: 4:40 AM
+    light:
+    - 42
+    - 20
+    lights: 'off'
+    dark: 0.8
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: creature
+      z: 6.0
+      to_z: 4.0
+      x: -0.3
+    - who: creature
+      z: 5.5
+      to_z: 3.6
+      x: 0.35
+    say: 'You keep counting. Tonight''s goal: get June to one hundred before dawn. Sixty. Seventy. Eighty. The shapes slide under the rope, toward the shallow end. Toward you. Your flashlight flickers. You don''t dare look away from the water.'
+  - scene: closeup
+    time: 5:50 AM
+    object: phone
+    light:
+    - 18
+    - 2
+    dies: dark
+    chip:
+      text: 'Counter: 98'
+      cue: 0
+      y: 520
+    sfx:
+    - name: click
+      at: dark
+    say: Ninety seven. Ninety eight. Your hands are numb. Then the screen goes dark. Your phone is dead. June touches the wall, and turns, for the last length.
+  - scene: hallway
+    time: 5:55 AM
+    light: 2
+    lights: 'off'
+    dark: 0.85
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: person
+      z: 3.0
+      x: 0.1
+      facing: -1
+      cue: comes
+    - who: creature
+      z: 3.8
+      x: -0.3
+    - who: creature
+      z: 3.4
+      x: 0.35
+    heartbeat: comes
+    say: 'She comes back to the wall. She stands up, looks right at you, and asks, in a very small voice: how many was that? Nobody counted the last one. Except you. In your head.'
+  - scene: choice
+    time: 5:56 AM
+    base:
+      scene: hallway
+      lights: 'off'
       dark: 0.85
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
+      wall: '#4f8fa8'
+      floor: '#1d5a74'
+      carpet: '#2b7a99'
+      ceiling: '#16323e'
+      exit_color: '#9fe3ff'
       figures:
-        - {who: person, z: 3.0, x: 0.1, facing: -1, cue: comes}
-        - {who: creature, z: 3.8, x: -0.3}
-        - {who: creature, z: 3.4, x: 0.35}
-      heartbeat: comes
-      say: "She comes back to the wall. She stands up, looks right at you, and asks, in a very small voice: how many was that? Nobody counted the last one. Except you. In your head."
-    - scene: choice
-      time: "5:56 AM"
-      base: {scene: hallway, lights: "off", dark: 0.85, wall: "#4f8fa8", floor: "#1d5a74", carpet: "#2b7a99", ceiling: "#16323e", exit_color: "#9fe3ff", figures: [{who: person, z: 3.0, x: 0.1, facing: -1}]}
-      question: "Say \"one hundred\" or stay silent?"
-      options:
-        - {text: Say it, cue: say}
-        - {text: Stay silent, cue: silent}
-      say: "Do you break rule two, and say one hundred out loud... or stay silent?"
-    - scene: endcard
-      time: "5:56 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+      - who: person
+        z: 3.0
+        x: 0.1
+        facing: -1
+    question: Say "one hundred" or stay silent?
+    options:
+    - text: Say it
+      cue: say
+    - text: Stay silent
+      cue: silent
+    say: Do you break rule two, and say one hundred out loud... or stay silent?
+  - scene: endcard
+    time: 5:56 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: deep-end-6
   format: stickman
   series: DEEP END
@@ -1461,84 +1588,131 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: THE POOL
-  title: "I counted the ghost swimmer to 100. Then the manager told me who lost count in 1974. Final night 🏊"
-  tags: [stickman, animation, horror, story, swimmingpool, deepend]
+  title: I counted the ghost swimmer to 100. Then the manager told me who lost count in 1974. Final night 🏊
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - swimmingpool
+  - deepend
   shots:
-    - scene: hallway
-      recap: true
-      time: "5:56 AM"
-      light: 2
-      lights: "off"
-      dark: 0.85
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#9fe3ff"
-      figures:
-        - {who: person, z: 3.0, x: 0.1, facing: -1}
-      say: "Last night, June swam her last length and asked you: how many was that?"
-    - scene: title
-      say: "Deep End. The last night."
-    - scene: hallway
-      time: "5:57 AM"
-      light: 2
-      lights: "on"
-      dark: 0.3
-      wall: "#4f8fa8"
-      floor: "#1d5a74"
-      carpet: "#2b7a99"
-      ceiling: "#16323e"
-      exit_color: "#ffe9a8"
-      figures:
-        - {who: person, z: 3.0, x: 0.1, facing: -1}
-      sfx: [{name: whoosh, at: still, gain: 0.4}]
-      say: "Tonight's goal: give June the right answer. You break rule two, and say it out loud. One hundred. The water goes completely still. The dark shapes sink away. And for the first time in fifty years, the pool lights come on."
-    - scene: street
-      time: "6:00 AM"
-      place: HARLOW BATHS
-      light: 2
-      stop: 0
-      dawn: true
-      dark: 0.1
-      you: {light: false, facing: 1}
-      people: [{x: 0.6, action: walk, facing: 1, color: "#f2f2f2", drift: 160, cue: climbs}]
-      say: "June climbs out. She smiles at you, wraps a towel around her shoulders, and walks out of the fire exit, into the sunrise."
-    - scene: radio
-      time: "6:10 AM"
-      place: THE OFFICE
-      on: phone
-      radio_label: "PHONE · GWEN"
-      say:
-        - "When Gwen arrives, you tell her. She starts to cry. Then she tells you the truth."
-        - radio: "In seventy four, I was the girl counting June's lengths. I lost count. Every year since, I've hired a night attendant, hoping one of you would fix it."
-    - scene: map
-      time: "6:12 AM"
-      place: CLUB BOARD 1974
-      route: [[0.3, 0.98], [0.3, 0.35]]
-      route_cue: 0
-      route_end: one
-      stops:
-        - {x: 0.3, y: 0.85, label: "Swimmer: June Price", cue: 0}
-        - {x: 0.3, y: 0.65, label: "Lengths: 100", cue: 0}
-        - {x: 0.3, y: 0.45, label: "Night swim: 1", ghost: true, cue: one}
-      sfx: [{name: whoosh, at: splash, gain: 0.6}]
-      heartbeat: one
-      say: "Then, from the pool hall, one single splash. On the old club board, a new line appears in wet chalk. Night swim. Length: one."
-    - scene: choice
-      time: "6:13 AM"
-      base: {scene: room, wall: "#3f6f7a", furniture: false, desk: true, monitors: true, clock: true}
-      question: "Look in the pool or walk away?"
-      options:
-        - {text: Look, cue: look}
-        - {text: Walk away, cue: away}
-      say: "So. Do you go and see who's swimming now... or walk away, and never count again?"
-    - scene: endcard
-      time: "6:13 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+  - scene: hallway
+    recap: true
+    time: 5:56 AM
+    light: 2
+    lights: 'off'
+    dark: 0.85
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#9fe3ff'
+    figures:
+    - who: person
+      z: 3.0
+      x: 0.1
+      facing: -1
+    say: 'Last night, June swam her last length and asked you: how many was that?'
+  - scene: title
+    say: Deep End. The last night.
+  - scene: hallway
+    time: 5:57 AM
+    light: 2
+    lights: 'on'
+    dark: 0.3
+    wall: '#4f8fa8'
+    floor: '#1d5a74'
+    carpet: '#2b7a99'
+    ceiling: '#16323e'
+    exit_color: '#ffe9a8'
+    figures:
+    - who: person
+      z: 3.0
+      x: 0.1
+      facing: -1
+    sfx:
+    - name: whoosh
+      at: still
+      gain: 0.4
+    say: 'Tonight''s goal: give June the right answer. You break rule two, and say it out loud. One hundred. The water goes completely still. The dark shapes sink away. And for the first time in fifty years, the pool lights come on.'
+  - scene: street
+    time: 6:00 AM
+    place: HARLOW BATHS
+    light: 2
+    stop: 0
+    dawn: true
+    dark: 0.1
+    you:
+      light: false
+      facing: 1
+    people:
+    - x: 0.6
+      action: walk
+      facing: 1
+      color: '#f2f2f2'
+      drift: 160
+      cue: climbs
+    say: June climbs out. She smiles at you, wraps a towel around her shoulders, and walks out of the fire exit, into the sunrise.
+  - scene: radio
+    time: 6:10 AM
+    place: THE OFFICE
+    true: phone
+    radio_label: PHONE · GWEN
+    say:
+    - When Gwen arrives, you tell her. She starts to cry. Then she tells you the truth.
+    - radio: In seventy four, I was the girl counting June's lengths. I lost count. Every year since, I've hired a night attendant, hoping one of you would fix it.
+  - scene: map
+    time: 6:12 AM
+    place: CLUB BOARD 1974
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.35
+    route_cue: 0
+    route_end: one
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: 'Swimmer: June Price'
+      cue: 0
+    - x: 0.3
+      y: 0.65
+      label: 'Lengths: 100'
+      cue: 0
+    - x: 0.3
+      y: 0.45
+      label: 'Night swim: 1'
+      ghost: true
+      cue: one
+    sfx:
+    - name: whoosh
+      at: splash
+      gain: 0.6
+    heartbeat: one
+    say: 'Then, from the pool hall, one single splash. On the old club board, a new line appears in wet chalk. Night swim. Length: one.'
+  - scene: choice
+    time: 6:13 AM
+    base:
+      scene: room
+      wall: '#3f6f7a'
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+    question: Look in the pool or walk away?
+    options:
+    - text: Look
+      cue: look
+    - text: Walk away
+      cue: away
+    say: So. Do you go and see who's swimming now... or walk away, and never count again?
+  - scene: endcard
+    time: 6:13 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
