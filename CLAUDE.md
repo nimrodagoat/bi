@@ -46,7 +46,8 @@ time-loop twist; a shot-level `day: 1` resets the corner counter), FUNLAND (6, t
 house not on the map; twist: the notes were the real Walt, the radio voice was the house), LOST & FOUND (6, station lost-property night clerk; the office keeps lost
 names; hallway `shelves` as storage aisles; twist: you return Arthur's name and the office files yours), BED NINE (6, glasshouse night keeper; a
 moonflower whose song puts you to sleep; meter_label HEAT; clever win: switch the heat off so it can't open), DEEP END (6, night attendant at old swimming
-baths; a 1974 swimmer stuck at 99 lengths; pool = blue-tiled hallway; twist: the manager lost count in 1974). Never reuse a premise; keep every series
+baths; a 1974 swimmer stuck at 99 lengths; pool = blue-tiled hallway; twist: the manager lost count in 1974), NIGHT BELL (6, school night caretaker; the Hall Monitor
+who walks when the bell rings; reversal twist: he was guarding you, and the old caretaker was the boy he saved). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 Nov 2: the owner is weighing a switch to how-it-works explainers (2D `style: explainer` cut-aways with
 stickman wizards, or 3D via Blender: `tools/blender/`, `.github/workflows/preview-3d.yml`); previews go

@@ -1,0 +1,522 @@
+# NIGHT BELL (6 parts). You are the night caretaker at Holloway High, an old
+# school, ten PM to six AM.
+# Cast: you (night caretaker), Ron (the retired caretaker, only on the radio),
+# Mr. Crane (the Hall Monitor: a tall, silent figure in an old prefect's sash
+# who walks the corridors whenever the night bell rings), and whatever is
+# sealed in Room 12.
+# The idea, said plainly: when the night bell rings, the thing in Room 12 can
+# slip out into the corridors. It chases anything that runs. Crane makes
+# everyone get into a room and lets pass-holders be. The brass hall pass is
+# also the seal on Room 12's door.
+# Twist: Crane was never hunting you; he was guarding you. After you re-seal
+# Room 12 together, he puts his sash on you. And Ron admits he was the boy
+# Crane saved in 1979; he became the caretaker to help him. Now it's you.
+- id: night-bell-1
+  format: stickman
+  series: NIGHT BELL
+  day: 1
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: HOLLOWAY HIGH
+  title: "I'm the night caretaker at an old school. At 1 AM the school bell rang by itself 🔔"
+  tags: [stickman, animation, horror, story, school, nightbell]
+  shots:
+    - scene: hallway
+      time: "10:00 PM"
+      light: 100
+      lights: "on"
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      say: "You take the night caretaker job at Holloway High, an old school. Ten PM to six AM. Mop the corridors, check the doors, and keep the boiler running."
+    - scene: radio
+      time: "10:05 PM"
+      on: radio
+      chip: {text: "Ron · retired caretaker", cue: ron, y: 470}
+      radio_label: "RADIO · RON"
+      say:
+        - "Ron, the old caretaker, gives you the rules on the radio."
+        - radio: "Three rules, son. When the night bell rings, get into a room. Never run in the corridors. And always carry the brass hall pass."
+    - scene: title
+      say: "Night Bell. Night one."
+    - scene: hallway
+      time: "10:20 PM"
+      light: 99
+      lights: "on"
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      rule: {n: 1, text: When the bell rings get into a room}
+      say: "Rule number one. If the school bell rings at night, get into the nearest room within ten seconds. And stay there until it rings again."
+    - scene: hallway
+      time: "10:30 PM"
+      light: 98
+      lights: "on"
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      rule: {n: 2, text: Never run in the corridors}
+      say: "Rule number two. Never run in the corridors. Walk. Even if something tells you to run."
+    - scene: inventory
+      time: "10:40 PM"
+      light: 97
+      items:
+        - {icon: key, count: 30, label: classroom keys, cue: keys}
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+        - {icon: key, count: 1, label: brass hall pass, cue: pass}
+      total: {text: "Always wear the pass", cue: three}
+      rule: {n: 3, text: Always carry the hall pass}
+      say: "Thirty classroom keys. One flashlight. And rule number three, an old brass hall pass, on a string. Never take it off."
+    - scene: room
+      time: "1:00 AM"
+      place: ROOM 4
+      light: 90
+      wall: "#7d8a6a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: push, facing: 1}
+      sfx: [{name: tick, at: bell}, {name: boom, at: slam}]
+      heartbeat: bell
+      say: "At one AM, the school bell rings. All by itself. You count. Seven. Eight. You slam yourself into Room four, just in time."
+    - scene: room
+      time: "1:02 AM"
+      light: 89
+      wall: "#7d8a6a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.3, action: scared, facing: 1}
+      people: [{x: 0.85, action: walk, facing: -1, color: "#9aa0a6", drift: -60, stare: true, cue: tall}]
+      say: "Through the glass in the door, a tall, thin figure walks past. Slowly. An old prefect's sash across his chest. He's checking every door."
+    - scene: choice
+      time: "1:03 AM"
+      base: {scene: room, wall: "#7d8a6a", furniture: false, desk: true, clock: true, dark: 0.4}
+      question: "Stay hidden or peek out?"
+      options:
+        - {text: Stay hidden, cue: hidden}
+        - {text: Peek out, cue: peek}
+      say: "Do you stay hidden... or peek out?"
+    - scene: endcard
+      time: "1:03 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: night-bell-2
+  format: stickman
+  series: NIGHT BELL
+  day: 2
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: ROOM 4
+  title: "The tall figure in the school corridor tapped on my door and asked for my pass. Night 2 🔔"
+  tags: [stickman, animation, horror, story, school, nightbell]
+  shots:
+    - scene: room
+      recap: true
+      time: "1:03 AM"
+      light: 88
+      wall: "#7d8a6a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.3, action: scared, facing: 1}
+      say: "Last night, the school bell rang by itself. And a tall figure in an old prefect's sash walked the corridor, checking every door."
+    - scene: title
+      say: "Night Bell. Night two."
+    - scene: room
+      time: "1:04 AM"
+      light: 87
+      wall: "#7d8a6a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.55, action: reach, facing: 1}
+      people: [{x: 0.85, action: knock, facing: -1, color: "#9aa0a6", stare: true, cue: taps}]
+      sfx: [{name: knock, at: taps}]
+      heartbeat: taps
+      say: "You peek. He's right there. He taps on the glass, and says one word. Pass. You hold up the brass hall pass. He nods, and walks on."
+    - scene: hallway
+      time: "2:00 AM"
+      light: [85, 70]
+      lights: "on"
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      say: "When the bell rings again, it's safe. Tonight's goal: mop the whole west corridor by three. It ends at a door with a rusty lock. Room twelve. Nobody has opened it in forty years."
+    - scene: hallway
+      time: "2:50 AM"
+      light: [68, 55]
+      lights: flicker
+      dark: 0.5
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      heartbeat: run
+      sfx: [{name: whoosh, at: run, gain: 0.5}]
+      say: "As you mop past Room twelve, something whispers through the keyhole. Run. Run. You jump, and the brass pass slips off its string and hits the floor."
+    - scene: closeup
+      time: "2:51 AM"
+      object: flashlight
+      light: 54
+      chip: {text: "The brass pass has cracked", cue: crack, y: 520}
+      say: "There's a crack right across it. And behind the door of Room twelve, the handle starts to turn."
+    - scene: choice
+      time: "2:52 AM"
+      base: {scene: hallway, lights: flicker, dark: 0.5, wall: "#7a6a4a", floor: "#3a3a3a", carpet: "#55554f", ceiling: "#2a2620", exit_color: "#27d466"}
+      question: "Run back or walk?"
+      options:
+        - {text: Run, cue: run}
+        - {text: Walk, cue: walk}
+      say: "Do you run back down the corridor... or walk?"
+    - scene: endcard
+      time: "2:52 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: night-bell-3
+  format: stickman
+  series: NIGHT BELL
+  day: 3
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: WEST CORRIDOR
+  title: "Every night the Hall Monitor stands outside the same sealed classroom. Night 3 🔔"
+  tags: [stickman, animation, horror, story, school, nightbell]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "2:52 AM"
+      light: 54
+      lights: flicker
+      dark: 0.5
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      say: "Last night, something behind Room twelve whispered run. Your brass pass cracked. And the door handle started to turn."
+    - scene: title
+      say: "Night Bell. Night three."
+    - scene: hallway
+      time: "2:53 AM"
+      light: [53, 45]
+      lights: flicker
+      dark: 0.55
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      say: "You walk. Rule two. Every step, the whisper gets angrier. Run. Run. But you don't. And when you look back, the handle has stopped."
+    - scene: radio
+      time: "3:00 AM"
+      on: radio
+      radio_label: "RADIO · RON"
+      say:
+        - "You tell Ron. He breathes out slowly."
+        - radio: "That tall fella is Mr. Crane. Deputy head, back in seventy nine. He wrote those rules. He went missing the night they sealed Room twelve."
+    - scene: map
+      time: "10:15 PM"
+      place: SCHOOL PLAN 1979
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: sealed
+      stops:
+        - {x: 0.3, y: 0.85, label: "Room 4", cue: 0}
+        - {x: 0.3, y: 0.65, label: "West corridor", cue: 0}
+        - {x: 0.3, y: 0.45, label: "Room 12 · SEALED", ghost: true, cue: sealed}
+      say: "The next night, tonight's goal: find out what's in Room twelve. On the old school plan, it's marked in red. Sealed. Nineteen seventy nine."
+    - scene: cctv
+      time: "1:30 AM"
+      cam: "CAM 07 · WEST CORRIDOR"
+      place: CARETAKER'S OFFICE
+      light: 90
+      view: {scene: hallway, lights: flicker, dark: 0.5, wall: "#7a6a4a", floor: "#3a3a3a", carpet: "#55554f", ceiling: "#2a2620", exit_color: "#27d466", figures: [{who: person, z: 3.4, x: 0.2, facing: -1, stare: true, cue: crane}]}
+      heartbeat: holding
+      say: "When the bell rings, you watch the cameras. Crane walks straight to Room twelve, and stands in front of the door. The handle turns. And he holds it shut."
+    - scene: choice
+      time: "1:31 AM"
+      base: {scene: cctv, cam: "CAM 07 · WEST CORRIDOR", view: {scene: hallway, lights: flicker, dark: 0.5, wall: "#7a6a4a", floor: "#3a3a3a", carpet: "#55554f", ceiling: "#2a2620", exit_color: "#27d466", figures: [{who: person, z: 3.4, x: 0.2, facing: -1, stare: true}]}}
+      question: "Help Crane or stay hidden?"
+      options:
+        - {text: Help Crane, cue: help}
+        - {text: Stay hidden, cue: hidden}
+      say: "Do you go and help Crane hold the door... or stay hidden?"
+    - scene: endcard
+      time: "1:31 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: night-bell-4
+  format: stickman
+  series: NIGHT BELL
+  day: 4
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: WEST CORRIDOR
+  title: "The Hall Monitor finally spoke. The brass pass is the lock on Room 12. Night 4 🔔"
+  tags: [stickman, animation, horror, story, school, nightbell]
+  shots:
+    - scene: cctv
+      recap: true
+      time: "1:31 AM"
+      cam: "CAM 07 · WEST CORRIDOR"
+      light: 88
+      view: {scene: hallway, lights: flicker, dark: 0.5, wall: "#7a6a4a", floor: "#3a3a3a", carpet: "#55554f", ceiling: "#2a2620", exit_color: "#27d466", figures: [{who: person, z: 3.4, x: 0.2, facing: -1, stare: true}]}
+      say: "Last night, the cameras showed Mr. Crane holding the door of Room twelve shut. From the outside."
+    - scene: title
+      say: "Night Bell. Night four."
+    - scene: hallway
+      time: "1:35 AM"
+      light: 86
+      lights: flicker
+      dark: 0.55
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      figures:
+        - {who: person, z: 2.6, x: 0.2, facing: -1, stare: true}
+      shake_at: [pulls]
+      sfx: [{name: hit, at: pulls}]
+      say: "You walk to Room twelve, and grab the handle beside Crane. Tonight's goal: hold it until the bell rings again. Something on the other side pulls. Hard."
+    - scene: hallway
+      time: "1:50 AM"
+      light: 84
+      lights: flicker
+      dark: 0.55
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      figures:
+        - {who: person, z: 2.6, x: 0.2, facing: -1, stare: true}
+      say: "Then Crane speaks, for the first time. His voice is dry, like chalk. It chases anything that runs. That's why my rules. Your pass is the lock on this door. And it's cracked."
+    - scene: radio
+      time: "2:10 AM"
+      on: radio
+      radio_label: "RADIO · RON"
+      say:
+        - "The bell rings. The pulling stops. You radio Ron."
+        - radio: "There was a spare pass. Crane kept it in his old office. In the east wing. Nobody's been in there since seventy nine."
+    - scene: map
+      time: "2:12 AM"
+      place: SCHOOL PLAN 1979
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: office
+      stops:
+        - {x: 0.3, y: 0.85, label: "Room 12 · SEALED", ghost: true, cue: 0}
+        - {x: 0.3, y: 0.65, label: "East wing", cue: east}
+        - {x: 0.3, y: 0.45, label: "Deputy head's office", cue: office}
+      say: "The east wing is on the far side of the school. A long, dark walk. And the next bell could ring at any time."
+    - scene: choice
+      time: "2:13 AM"
+      base: {scene: map, route: [[0.3, 0.98], [0.3, 0.3]], stops: [{x: 0.3, y: 0.85, label: "Room 12 · SEALED", ghost: true}, {x: 0.3, y: 0.65, label: "East wing"}, {x: 0.3, y: 0.45, label: "Deputy head's office"}]}
+      question: "Go tonight or wait?"
+      options:
+        - {text: Go tonight, cue: tonight}
+        - {text: Wait, cue: wait}
+      say: "Do you go for the spare pass tonight... or wait until tomorrow?"
+    - scene: endcard
+      time: "2:13 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: night-bell-5
+  format: stickman
+  series: NIGHT BELL
+  day: 5
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: EAST WING
+  title: "The bell rang while I was in the sealed wing. Something was out. Night 5 🔔"
+  tags: [stickman, animation, horror, story, school, nightbell]
+  shots:
+    - scene: map
+      recap: true
+      time: "2:13 AM"
+      place: SCHOOL PLAN 1979
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      stops:
+        - {x: 0.3, y: 0.85, label: "Room 12 · SEALED", ghost: true}
+        - {x: 0.3, y: 0.65, label: "East wing"}
+        - {x: 0.3, y: 0.45, label: "Deputy head's office"}
+      say: "Last night, Mr. Crane told you your cracked pass is the lock on Room twelve. The spare is in his old office."
+    - scene: title
+      say: "Night Bell. Night five."
+    - scene: hallway
+      time: "2:20 AM"
+      place: EAST WING
+      light: [80, 70]
+      lights: "off"
+      dark: 0.7
+      wall: "#5e5440"
+      floor: "#2e2e2e"
+      carpet: "#47473f"
+      ceiling: "#201d18"
+      exit_color: "#27d466"
+      say: "You go tonight. Tonight's goal: get the spare pass, and get it back to Room twelve. The east wing smells of old chalk. Dust on every door. Your flashlight is all you have."
+    - scene: room
+      time: "2:35 AM"
+      place: DEPUTY HEAD'S OFFICE
+      light: 66
+      wall: "#5a5240"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.5
+      you: {x: 0.45, action: reach, facing: 1}
+      chip: {text: "Spare hall pass · Room 12", cue: pass, y: 520}
+      say: "In Crane's office, a photo of a school trip, nineteen seventy nine. And in the desk drawer, a shiny brass pass. Labelled, Room twelve."
+    - scene: hallway
+      time: "2:40 AM"
+      place: EAST WING
+      light: [64, 40]
+      lights: "off"
+      dark: 0.8
+      wall: "#5e5440"
+      floor: "#2e2e2e"
+      carpet: "#47473f"
+      ceiling: "#201d18"
+      exit_color: "#27d466"
+      figures:
+        - {who: creature, z: 8.5, to_z: 5.0, x: -0.3, cue: shape}
+      sfx: [{name: tick, at: bell}]
+      heartbeat: shape
+      say: "Then the bell rings. And far down the corridor, a long, thin shape uncurls out of the dark. It whispers. Run. Run."
+    - scene: hallway
+      time: "2:41 AM"
+      light: 38
+      lights: "off"
+      dark: 0.8
+      wall: "#5e5440"
+      floor: "#2e2e2e"
+      carpet: "#47473f"
+      ceiling: "#201d18"
+      exit_color: "#27d466"
+      figures:
+        - {who: creature, z: 5.0, to_z: 4.0, x: -0.3}
+        - {who: person, z: 2.4, x: 0.35, facing: -1, stare: true, cue: crane}
+      say: "There's no room close enough. Then Crane is beside you, sash glowing faintly. His eyes shine in the dark. He says: walk with me."
+    - scene: choice
+      time: "2:42 AM"
+      base: {scene: hallway, lights: "off", dark: 0.8, wall: "#5e5440", floor: "#2e2e2e", carpet: "#47473f", ceiling: "#201d18", exit_color: "#27d466", figures: [{who: creature, z: 4.0, x: -0.3}, {who: person, z: 2.4, x: 0.35, facing: -1, stare: true}]}
+      question: "Walk past it or hide?"
+      options:
+        - {text: Walk past it, cue: walk}
+        - {text: Hide, cue: hide}
+      say: "Do you walk right past it with Crane... or try to hide?"
+    - scene: endcard
+      time: "2:42 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: night-bell-6
+  format: stickman
+  series: NIGHT BELL
+  day: 6
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: EAST WING
+  title: "The Hall Monitor was never hunting me. He was guarding me. Final night 🔔"
+  tags: [stickman, animation, horror, story, school, nightbell]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "2:42 AM"
+      light: 38
+      lights: "off"
+      dark: 0.8
+      wall: "#5e5440"
+      floor: "#2e2e2e"
+      carpet: "#47473f"
+      ceiling: "#201d18"
+      exit_color: "#27d466"
+      figures:
+        - {who: creature, z: 4.0, x: -0.3}
+        - {who: person, z: 2.4, x: 0.35, facing: -1, stare: true}
+      say: "Last night, you found the spare pass. Then the bell rang, and the thing from Room twelve was out in the corridor."
+    - scene: title
+      say: "Night Bell. The last night."
+    - scene: hallway
+      time: "2:45 AM"
+      light: [36, 20]
+      lights: "off"
+      dark: 0.8
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      figures:
+        - {who: creature, z: 3.0, to_z: 2.2, x: -0.35}
+      say: "Tonight's goal: get the new pass into Room twelve's lock. You walk beside Crane. Right past the thing. It screams at you to run. Every part of you wants to. But you walk."
+    - scene: hallway
+      time: "2:55 AM"
+      place: ROOM 12
+      light: [20, 15]
+      lights: "off"
+      dark: 0.7
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      figures:
+        - {who: creature, z: 2.4, to_z: 9.0, x: -0.2, cue: pulled}
+        - {who: person, z: 2.6, x: 0.25, facing: -1, stare: true}
+      sfx: [{name: click, at: lock}, {name: boom, at: pulled}]
+      shake_at: [pulled]
+      say: "At Room twelve, you push the new pass into the lock. Click. With a howl, the thing is pulled back in through the keyhole. And the door goes silent."
+    - scene: hallway
+      time: "5:58 AM"
+      light: 14
+      lights: "on"
+      dark: 0.2
+      wall: "#7a6a4a"
+      floor: "#3a3a3a"
+      carpet: "#55554f"
+      ceiling: "#2a2620"
+      exit_color: "#27d466"
+      figures:
+        - {who: person, z: 2.6, x: 0.25, facing: -1, stare: true, fade: fades}
+      say: "Crane takes off his old prefect's sash, and puts it over your shoulder. Someone must always walk the halls. Then, for the first time in fifty years, he fades."
+    - scene: radio
+      time: "6:05 AM"
+      place: CARETAKER'S OFFICE
+      on: radio
+      radio_label: "RADIO · RON"
+      say:
+        - "You tell Ron. He goes quiet. Then he tells you the truth."
+        - radio: "In seventy nine, I was the boy who ran. Crane got me into a room, and held that door. I became caretaker to help him. Now it's your turn, son."
+    - scene: choice
+      time: "6:06 AM"
+      base: {scene: hallway, lights: "on", dark: 0.2, wall: "#7a6a4a", floor: "#3a3a3a", carpet: "#55554f", ceiling: "#2a2620", exit_color: "#27d466"}
+      question: "Wear the sash or leave it?"
+      options:
+        - {text: Wear it, cue: wear}
+        - {text: Leave it, cue: leave}
+      say: "So. Do you wear the sash, and walk the halls... or leave it, and let the next bell ring for someone else?"
+    - scene: endcard
+      time: "6:06 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
