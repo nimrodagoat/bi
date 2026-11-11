@@ -969,6 +969,483 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: room-eight-1
+  format: stickman
+  series: ROOM EIGHT
+  day: 1
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE SALT HOUSE
+  title: "I'm the night porter at a seaside guesthouse. At 3 AM a soaked man asked for Room 8 🔑"
+  tags: [stickman, animation, horror, story, guesthouse, seaside]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      light: 100
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night porter job at the Salt House, a little guesthouse by the sea. Ten PM to six AM. Eight rooms. One front desk. And the sound of waves all night."
+    - scene: radio
+      time: "10:05 PM"
+      on: phone
+      chip: {text: "Mrs. Abernathy · owner", cue: owner, y: 470}
+      radio_label: "PHONE · MRS. ABERNATHY"
+      say:
+        - "Mrs. Abernathy, the owner, phones with the rules."
+        - radio: "Three rules, love. No key without a name in the guestbook. Never give out the key to Room eight. And never open the front door after midnight."
+    - scene: title
+      say: "Room Eight. Night one."
+    - scene: room
+      time: "10:20 PM"
+      light: 99
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      rule: {n: 1, text: No key without signing the guestbook}
+      you: {x: 0.45, action: reach, facing: 1}
+      say: "Rule number one. Every guest signs the guestbook before you hand them a key. No name, no room."
+    - scene: hallway
+      time: "10:40 PM"
+      light: 98
+      lights: "on"
+      wall: "#7b5e52"
+      floor: "#3a2a22"
+      carpet: "#6e2b2b"
+      ceiling: "#2a1f1a"
+      exit_color: "#ffcf6e"
+      rule: {n: 2, text: Never give out Room 8's key}
+      say: "Rule number two. Room eight is at the end of the corridor. It's always booked. Nobody ever gets its key."
+    - scene: street
+      time: "11:00 PM"
+      place: THE FRONT DOOR
+      light: 97
+      stop: 0
+      sea: true
+      dark: 0.6
+      you: {light: true, facing: 1}
+      rule: {n: 3, text: Never open the front door after midnight}
+      say: "Rule number three. After midnight, the front door stays shut. If anyone comes, talk through the letterbox. Tonight's goal: keep all eight rooms safe until six."
+    - scene: street
+      time: "3:00 AM"
+      light: 85
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: knock, facing: -1, color: "#8fa3b0", cue: bell}]
+      sfx: [{name: knock, at: bell}]
+      heartbeat: dripping
+      say: "At three AM, the bell rings. Through the letterbox you see a man in a long coat, soaking wet, dripping sea water on the step."
+    - scene: street
+      time: "3:01 AM"
+      light: 84
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8fa3b0"}]
+      say: "He smiles politely. Gale. I'm booked into Room eight."
+    - scene: choice
+      time: "3:02 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.7, you: {light: true, facing: 1}, people: [{x: 0.68, action: idle, facing: -1, color: "#8fa3b0"}]}
+      question: "Give him the key or send him away?"
+      options:
+        - {text: Give the key, cue: give}
+        - {text: Send away, cue: away}
+      say: "Do you give him the key... or send him away?"
+    - scene: endcard
+      time: "3:02 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: room-eight-2
+  format: stickman
+  series: ROOM EIGHT
+  day: 2
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE FRONT DOOR
+  title: "I looked at the clock and an hour was missing. There was sand on my shoes. Night 2 🔑"
+  tags: [stickman, animation, horror, story, guesthouse, seaside]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:02 AM"
+      light: 84
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8fa3b0"}]
+      say: "Last night, at three AM, a soaked man called Gale came to the letterbox and asked for Room eight."
+    - scene: title
+      say: "Room Eight. Night two."
+    - scene: street
+      time: "3:03 AM"
+      light: 83
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8fa3b0", fade: gone}]
+      chip: {text: "Card: When you lose time, ring me.", cue: card, y: 520}
+      say: "You send him away. Rule two. He pushes a soggy card through the letterbox. When you lose time, ring me. Then he walks back down to the beach, and he's gone."
+    - scene: room
+      time: "4:00 AM"
+      place: FRONT DESK
+      light: 70
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: scared, facing: 1}
+      heartbeat: sand
+      say: "You blink. The clock says four AM. A whole hour has gone. You don't remember it. And there's wet sand on your shoes. Your watch has stopped at three."
+    - scene: hallway
+      time: "4:15 AM"
+      light: [68, 55]
+      lights: flicker
+      dark: 0.5
+      wall: "#7b5e52"
+      floor: "#3a2a22"
+      carpet: "#6e2b2b"
+      ceiling: "#2a1f1a"
+      exit_color: "#ffcf6e"
+      say: "Tonight's goal: check all eight rooms before dawn. Seven doors are fine. But there's a trail of sandy footprints down the carpet. Your size. Your shoes."
+    - scene: hallway
+      time: "4:20 AM"
+      light: 54
+      lights: flicker
+      dark: 0.6
+      wall: "#7b5e52"
+      floor: "#3a2a22"
+      carpet: "#6e2b2b"
+      ceiling: "#2a1f1a"
+      exit_color: "#ffcf6e"
+      sfx: [{name: whoosh, at: waves, gain: 0.5}]
+      heartbeat: eight
+      say: "They lead straight to Room eight. And from behind its door, you can hear waves. Inside a room."
+    - scene: choice
+      time: "4:21 AM"
+      base: {scene: hallway, lights: flicker, dark: 0.6, wall: "#7b5e52", floor: "#3a2a22", carpet: "#6e2b2b", ceiling: "#2a1f1a", exit_color: "#ffcf6e"}
+      question: "Ring Mrs. Abernathy or ring Gale?"
+      options:
+        - {text: Mrs. Abernathy, cue: abernathy}
+        - {text: Ring Gale, cue: gale}
+      say: "Do you ring Mrs. Abernathy... or the number on Gale's card?"
+    - scene: endcard
+      time: "4:21 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: room-eight-3
+  format: stickman
+  series: ROOM EIGHT
+  day: 3
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: FRONT DESK
+  title: "The hallway camera showed me walking into Room 8. I don't remember it. Night 3 🔑"
+  tags: [stickman, animation, horror, story, guesthouse, seaside]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "4:21 AM"
+      light: 54
+      lights: flicker
+      dark: 0.6
+      wall: "#7b5e52"
+      floor: "#3a2a22"
+      carpet: "#6e2b2b"
+      ceiling: "#2a1f1a"
+      exit_color: "#ffcf6e"
+      say: "Last night, you lost a whole hour. Your sandy footprints led to Room eight. And behind its door, you heard waves."
+    - scene: title
+      say: "Room Eight. Night three."
+    - scene: radio
+      time: "4:25 AM"
+      on: phone
+      radio_label: "PHONE · MRS. ABERNATHY"
+      rule: {n: 4, text: "From 3 to 4 AM, lock yourself in the office"}
+      say:
+        - "You ring Mrs. Abernathy. She doesn't sound surprised at all. She sighs."
+        - radio: "Lost time, did you? Then from three to four, lock yourself in the office. That's rule four, love."
+    - scene: map
+      time: "10:30 PM"
+      place: GUESTBOOK 1952
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: porter
+      stops:
+        - {x: 0.3, y: 0.85, label: "Room 7 · Mr. and Mrs. Hale", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Room 8 · (no name)", ghost: true, cue: eight}
+        - {x: 0.3, y: 0.45, label: "Night porter · T. Gale", ghost: true, cue: porter}
+      say: "The next night, tonight's goal: find out who Gale is. In the oldest guestbook, from nineteen fifty two, Room eight has no name. But at the bottom, the night porter signed. T. Gale."
+    - scene: cctv
+      time: "10:50 PM"
+      cam: "CAM 01 · CORRIDOR · LAST NIGHT 3:10"
+      place: FRONT DESK
+      light: 96
+      view: {scene: hallway, lights: flicker, dark: 0.5, wall: "#7b5e52", floor: "#3a2a22", carpet: "#6e2b2b", ceiling: "#2a1f1a", exit_color: "#ffcf6e", figures: [{who: person, z: 2.6, to_z: 6.5, x: 0.0, cue: you}]}
+      heartbeat: you
+      say: "Then you check last night's corridor camera. At ten past three, someone walks slowly to Room eight, unlocks it, and goes in. It's you. Your face is blank. Your eyes are closed. Fifty minutes later, you walk out again."
+    - scene: choice
+      time: "10:51 PM"
+      base: {scene: cctv, cam: "CAM 01 · CORRIDOR · LAST NIGHT 3:10", view: {scene: hallway, lights: flicker, dark: 0.5, wall: "#7b5e52", floor: "#3a2a22", carpet: "#6e2b2b", ceiling: "#2a1f1a", exit_color: "#ffcf6e", figures: [{who: person, z: 6.5, x: 0.0}]}}
+      question: "Lock yourself in or ring Gale?"
+      options:
+        - {text: Lock in, cue: lock}
+        - {text: Ring Gale, cue: gale}
+      say: "Tonight, do you lock yourself in the office at three... or ring Gale?"
+    - scene: endcard
+      time: "10:51 PM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: room-eight-4
+  format: stickman
+  series: ROOM EIGHT
+  day: 4
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE OFFICE
+  title: "I locked myself in at 3 AM. Then the Room 8 key started to rattle. Night 4 🔑"
+  tags: [stickman, animation, horror, story, guesthouse, seaside]
+  shots:
+    - scene: cctv
+      recap: true
+      time: "10:51 PM"
+      cam: "CAM 01 · CORRIDOR · LAST NIGHT 3:10"
+      light: 95
+      view: {scene: hallway, lights: flicker, dark: 0.5, wall: "#7b5e52", floor: "#3a2a22", carpet: "#6e2b2b", ceiling: "#2a1f1a", exit_color: "#ffcf6e", figures: [{who: person, z: 6.5, x: 0.0}]}
+      say: "Last night, the camera showed you walking into Room eight at three AM. And Gale was the night porter in nineteen fifty two."
+    - scene: title
+      say: "Room Eight. Night four."
+    - scene: room
+      time: "2:59 AM"
+      light: 88
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.35, action: push, facing: 1}
+      sfx: [{name: click, at: lock}]
+      say: "At one minute to three, you lock yourself in the office. Rule four. Tonight's goal: stay awake, and stay inside, until four."
+    - scene: room
+      time: "3:10 AM"
+      light: 86
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.3
+      you: {x: 0.35, action: scared, facing: 1}
+      sfx: [{name: tick, at: rattle}, {name: tick, at: again}]
+      heartbeat: rattle
+      say: "At ten past three, the Room eight key on the desk starts to rattle. Then again. As if it wants to be picked up. Your hand is already reaching for it."
+    - scene: street
+      time: "3:15 AM"
+      place: THE LETTERBOX
+      light: 84
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8fa3b0", cue: gale}]
+      sfx: [{name: knock, at: bell}]
+      say: "The bell rings. Gale, at the letterbox. In fifty two, I was the porter. Room eight borrowed me for an hour every night. Until the night I didn't come back from the beach. It's borrowing you now."
+    - scene: room
+      time: "3:30 AM"
+      light: 82
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.35, action: scared, facing: 1}
+      sfx: [{name: click, at: unlocks}]
+      say: "At half past three, behind you, the office door unlocks itself."
+    - scene: choice
+      time: "3:31 AM"
+      base: {scene: room, wall: "#6a4f4a", furniture: false, desk: true, clock: true, dark: 0.4}
+      question: "Let Gale in or hide the key?"
+      options:
+        - {text: Let Gale in, cue: let}
+        - {text: Hide the key, cue: hide}
+      say: "Do you open the front door for Gale... or hide the key and hold on alone?"
+    - scene: endcard
+      time: "3:31 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: room-eight-5
+  format: stickman
+  series: ROOM EIGHT
+  day: 5
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE SALT HOUSE
+  title: "The ghost porter told me how to stop Room 8. I had to reach the sea first. Night 5 🔑"
+  tags: [stickman, animation, horror, story, guesthouse, seaside]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:31 AM"
+      light: 80
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.35, action: scared, facing: 1}
+      say: "Last night, the Room eight key rattled on your desk. Gale said the room has been borrowing you. Then the office door unlocked itself."
+    - scene: title
+      say: "Room Eight. Night five."
+    - scene: room
+      time: "3:32 AM"
+      light: 79
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8fa3b0", cue: drips}]
+      say: "You break rule three, and open the front door. Gale steps in. Sea water drips from him, and never stops. He isn't alive. You can see that now."
+    - scene: room
+      time: "3:34 AM"
+      light: 78
+      wall: "#6a4f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8fa3b0"}]
+      say: "He explains. The room only works through its key. Give the key back to the sea, and it lets go of both of us. Tonight's goal: get the key to the water before four."
+    - scene: street
+      time: "3:45 AM"
+      place: THE BEACH
+      light: [76, 40]
+      pace: run
+      sea: true
+      dark: 0.75
+      you: {light: true}
+      people: [{x: 0.3, action: run, facing: 1, color: "#8fa3b0"}]
+      say: "You run for the beach, the key in your fist. Halfway there, the world tilts. Your eyes close."
+    - scene: hallway
+      time: "3:55 AM"
+      place: ROOM 8
+      light: [38, 20]
+      lights: "off"
+      dark: 0.85
+      wall: "#7b5e52"
+      floor: "#3a2a22"
+      carpet: "#6e2b2b"
+      ceiling: "#2a1f1a"
+      exit_color: "#5fa8c8"
+      heartbeat: inside
+      sfx: [{name: whoosh, at: waves, gain: 0.6}]
+      say: "When you open them, you're standing in the doorway of Room eight. Inside, there's no room at all. Just dark water, and waves, and someone calling your name."
+    - scene: choice
+      time: "3:56 AM"
+      base: {scene: hallway, lights: "off", dark: 0.85, wall: "#7b5e52", floor: "#3a2a22", carpet: "#6e2b2b", ceiling: "#2a1f1a", exit_color: "#5fa8c8"}
+      question: "Step inside or throw the key?"
+      options:
+        - {text: Step inside, cue: step}
+        - {text: Throw the key, cue: throw}
+      say: "Do you step inside... or throw the key into the water?"
+    - scene: endcard
+      time: "3:56 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: room-eight-6
+  format: stickman
+  series: ROOM EIGHT
+  day: 6
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: ROOM 8
+  title: "I threw the key into the sea. Then the owner told me what Room 8 was for. Final night 🔑"
+  tags: [stickman, animation, horror, story, guesthouse, seaside]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "3:56 AM"
+      light: 20
+      lights: "off"
+      dark: 0.85
+      wall: "#7b5e52"
+      floor: "#3a2a22"
+      carpet: "#6e2b2b"
+      ceiling: "#2a1f1a"
+      exit_color: "#5fa8c8"
+      say: "Last night, you woke up in the doorway of Room eight. And inside it was the sea."
+    - scene: title
+      say: "Room Eight. The last night."
+    - scene: hallway
+      time: "3:57 AM"
+      light: 18
+      lights: "off"
+      dark: 0.85
+      wall: "#7b5e52"
+      floor: "#3a2a22"
+      carpet: "#6e2b2b"
+      ceiling: "#2a1f1a"
+      exit_color: "#5fa8c8"
+      shake_at: [slams]
+      sfx: [{name: whoosh, at: throw, gain: 0.6}, {name: boom, at: slams}]
+      say: "Tonight's goal: give the key back to the sea. You throw it, hard, into the dark water. The waves swallow it. The door slams shut in your face, and the sound of the sea stops."
+    - scene: street
+      time: "6:00 AM"
+      place: THE BEACH
+      light: 15
+      stop: 0
+      sea: true
+      dawn: true
+      dark: 0.1
+      you: {light: false, facing: 1}
+      people: [{x: 0.65, action: walk, facing: 1, color: "#8fa3b0", drift: 140, fade: smiles}]
+      say: "At dawn, you find Gale on the beach. He's dry, for the first time in seventy years. He smiles, walks into the morning light, and he's gone."
+    - scene: radio
+      time: "6:10 AM"
+      place: FRONT DESK
+      on: phone
+      radio_label: "PHONE · MRS. ABERNATHY"
+      say:
+        - "Then Mrs. Abernathy phones. She's frightened."
+        - radio: "What have you done? Room eight held the sea back from this town for seventy years. One porter was the price. That's why I hired you."
+    - scene: street
+      time: "6:15 AM"
+      place: THE BEACH
+      light: 14
+      stop: 0
+      sea: true
+      dawn: true
+      dark: 0.15
+      fog: {top: 0.75, rise: [0.85, 0.6], cue: coming, density: 0.8, color: "#2b6f99"}
+      you: {light: false, facing: 1}
+      heartbeat: coming
+      say: "You look at the beach. The tide is coming in. Fast. Past the high water line. And it isn't stopping."
+    - scene: choice
+      time: "6:16 AM"
+      base: {scene: street, stop: 0, sea: true, dawn: true, dark: 0.15, you: {light: false, facing: 1}}
+      question: "Warn the town or run?"
+      options:
+        - {text: Warn the town, cue: warn}
+        - {text: Run, cue: run}
+      say: "So. Do you warn the town... or run, and never look back?"
+    - scene: endcard
+      time: "6:16 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
+
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
