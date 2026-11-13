@@ -44,7 +44,10 @@ jobs:
         run: |
           git pull -q origin "${GITHUB_REF_NAME}"
           if [ "$(python -m shorts.schedule)" != "0" ]; then
-            gh workflow run daily-short.yml --ref "${GITHUB_REF_NAME}" -f dry_run=false -f videos=auto
+            for wait in 0 30 90; do
+              sleep "$wait"
+              gh workflow run daily-short.yml --ref "${GITHUB_REF_NAME}" -f dry_run=false -f videos=auto && break
+            done
             echo "Started Daily Short"
           else
             echo "Nothing due (already posted by another run)"
@@ -56,4 +59,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           sleep 240  # let Daily Short record the upload before the next copy reads it
-          gh workflow run post-timer.yml --ref "${GITHUB_REF_NAME}"
+          # GitHub sometimes answers HTTP 500; try a few times before giving up
+          for wait in 0 30 90 240; do
+            sleep "$wait"
+            gh workflow run post-timer.yml --ref "${GITHUB_REF_NAME}" && exit 0
+          done
+          exit 1
