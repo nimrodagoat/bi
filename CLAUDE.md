@@ -48,7 +48,8 @@ names; hallway `shelves` as storage aisles; twist: you return Arthur's name and 
 moonflower whose song puts you to sleep; meter_label HEAT; clever win: switch the heat off so it can't open), DEEP END (6, night attendant at old swimming
 baths; a 1974 swimmer stuck at 99 lengths; pool = blue-tiled hallway; twist: the manager lost count in 1974), NIGHT BELL (6, school night caretaker; the Hall Monitor
 who walks when the bell rings; reversal twist: he was guarding you, and the old caretaker was the boy he saved), ROOM EIGHT (6, seaside guesthouse night porter; Room 8
-borrows the porter for an hour a night; twist: freeing the ghost porter lets the sea back in). Never reuse a premise; keep every series
+borrows the porter for an hour a night; twist: freeing the ghost porter lets the sea back in), SPIN CYCLE (6, all-night laundromat attendant;
+night customers only on the camera, trapped till Dryer 13 finishes; twist: the owner kept them as free labour). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 Nov 2: the owner is weighing a switch to how-it-works explainers (2D `style: explainer` cut-aways with
 stickman wizards, or 3D via Blender: `tools/blender/`, `.github/workflows/preview-3d.yml`); previews go

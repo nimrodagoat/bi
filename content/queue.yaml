@@ -625,6 +625,467 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: spin-cycle-1
+  format: stickman
+  series: SPIN CYCLE
+  day: 1
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: SUDS 24
+  title: "I'm the night attendant at a laundromat. At 3 AM the camera showed customers who weren't there 🧺"
+  tags: [stickman, animation, horror, story, laundromat, spincycle]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      light: 100
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night job at Suds twenty four, an all night laundromat. Ten PM to six AM. Fold the washes, empty the coin boxes, keep the machines running."
+    - scene: radio
+      time: "10:05 PM"
+      on: phone
+      chip: {text: "Mrs. Okafor · owner", cue: owner, y: 470}
+      radio_label: "PHONE · MRS. OKAFOR"
+      say:
+        - "Mrs. Okafor, the owner, phones with the rules."
+        - radio: "Three rules. Never open Dryer thirteen. If a machine starts on its own, let it finish. And after three, don't watch the camera."
+    - scene: title
+      say: "Spin Cycle. Night one."
+    - scene: room
+      time: "10:20 PM"
+      light: 99
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      rule: {n: 1, text: Never open Dryer 13}
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Rule number one. Dryer thirteen, in the corner, is taped shut with old brown tape. Never open it. Not even a crack."
+    - scene: room
+      time: "10:30 PM"
+      light: 98
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      rule: {n: 2, text: Never stop a machine that starts by itself}
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Rule number two. If a machine starts by itself, let it finish. Never stop a cycle halfway."
+    - scene: inventory
+      time: "10:40 PM"
+      light: 97
+      items:
+        - {icon: bottle, count: 6, label: soap, cue: soap}
+        - {icon: key, count: 3, label: coin box keys, cue: keys}
+        - {icon: flashlight, count: 1, label: flashlight, cue: flashlight}
+      total: {text: "12 washes by 6 AM", cue: twelve}
+      say: "Six bottles of soap. Three coin box keys. One flashlight. Tonight's goal: fold all twelve service washes by six."
+    - scene: room
+      time: "3:00 AM"
+      light: 85
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.3
+      rule: {n: 3, text: "After 3 AM, don't watch the camera"}
+      you: {x: 0.4, action: scared, facing: 1}
+      sfx: [{name: tick, at: start}, {name: tick, at: every}]
+      heartbeat: every
+      say: "Rule number three. After three AM, don't watch the camera. At exactly three, every machine in the shop starts by itself."
+    - scene: cctv
+      time: "3:02 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 84
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.25, action: idle, facing: 1, color: "#b9c4c9"}, {x: 0.5, action: idle, facing: -1, color: "#b9c4c9"}, {x: 0.75, action: idle, facing: -1, color: "#5aa36b", stare: true, cue: green}]}
+      glitch: empty
+      say: "You glance at the camera. The laundromat is full of people, quietly folding. You look up. The room is empty. And on the screen, a woman in green turns, and looks straight at you."
+    - scene: choice
+      time: "3:03 AM"
+      base: {scene: cctv, cam: "CAM 01 · SUDS 24", view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.75, action: idle, facing: -1, color: "#5aa36b", stare: true}]}}
+      question: "Switch it off or keep watching?"
+      options:
+        - {text: Switch off, cue: switch}
+        - {text: Watch, cue: watching}
+      say: "Do you switch the camera off... or keep watching?"
+    - scene: endcard
+      time: "3:03 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: spin-cycle-2
+  format: stickman
+  series: SPIN CYCLE
+  day: 2
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: SUDS 24
+  title: "The woman on the laundromat camera tapped on Dryer 13. Then it knocked back. Night 2 🧺"
+  tags: [stickman, animation, horror, story, laundromat, spincycle]
+  shots:
+    - scene: cctv
+      recap: true
+      time: "3:03 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 84
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.75, action: idle, facing: -1, color: "#5aa36b", stare: true}]}
+      say: "Last night, at three AM, the camera showed the laundromat full of people. The real room was empty. And a woman in green looked right at you."
+    - scene: title
+      say: "Spin Cycle. Night two."
+    - scene: cctv
+      time: "3:04 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 83
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.75, action: walk, facing: 1, color: "#5aa36b", stare: true, drift: 120, cue: walks}]}
+      sfx: [{name: knock, at: taps}]
+      say: "You keep watching. She walks to the corner, to Dryer thirteen, and taps on its door. Twice."
+    - scene: room
+      time: "3:05 AM"
+      light: 82
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.35
+      you: {x: 0.35, action: scared, facing: 1}
+      sfx: [{name: knock, at: knock}, {name: knock, at: again}]
+      heartbeat: peels
+      say: "In the real room, there's no one at the dryer. But the old tape on its door peels back, all by itself. And from inside, something knocks back. Then again."
+    - scene: radio
+      time: "3:08 AM"
+      on: phone
+      radio_label: "PHONE · MRS. OKAFOR"
+      say:
+        - "You phone Mrs. Okafor. She sounds annoyed, not scared."
+        - radio: "Those are the night customers. They're harmless, as long as thirteen stays shut. Tape it up. And stop watching the camera."
+    - scene: room
+      time: "3:15 AM"
+      light: [80, 60]
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.4
+      you: {x: 0.6, action: reach, facing: 1}
+      say: "Tonight's goal: tape Dryer thirteen shut again before the knocking gets louder. You grab the roll. Your hands are shaking. The knocks are coming faster."
+    - scene: choice
+      time: "3:16 AM"
+      base: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, monitors: true, dark: 0.4}
+      question: "Knock back or tape it shut?"
+      options:
+        - {text: Knock back, cue: knock}
+        - {text: Tape it shut, cue: tape}
+      say: "Do you knock back... or tape it shut?"
+    - scene: endcard
+      time: "3:16 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: spin-cycle-3
+  format: stickman
+  series: SPIN CYCLE
+  day: 3
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: SUDS 24
+  title: "Dryer 13 has been out of order since 1986. So has the night attendant. Night 3 🧺"
+  tags: [stickman, animation, horror, story, laundromat, spincycle]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:16 AM"
+      light: 60
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.4
+      you: {x: 0.6, action: reach, facing: 1}
+      say: "Last night, the tape on Dryer thirteen peeled off by itself. And something inside knocked."
+    - scene: title
+      say: "Spin Cycle. Night three."
+    - scene: room
+      time: "3:17 AM"
+      light: 59
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.4
+      you: {x: 0.6, action: push, facing: 1}
+      say: "You tape it shut. Three layers. The knocking stops. Then, very softly, one last knock. Like a goodbye. On the camera, the woman in green lowers her head."
+    - scene: map
+      time: "10:20 PM"
+      place: REPAIR LOG
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: pike
+      stops:
+        - {x: 0.3, y: 0.85, label: "Dryer 13 · fitted 1983", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Out of order · March 1986", ghost: true, cue: order}
+        - {x: 0.3, y: 0.45, label: "Night attendant: J. Pike · missing", ghost: true, cue: pike}
+      say: "The next night, tonight's goal: find out what's wrong with Dryer thirteen. In the old repair log, it broke down in March nineteen eighty six, in the middle of a cycle. The same night the attendant, Joe Pike, went missing. His last note says: thirteen won't stop. They can't leave."
+    - scene: cctv
+      time: "3:05 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 90
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.5, action: idle, facing: -1, color: "#5aa36b", stare: true, cue: note}]}
+      chip: {text: "Note: PLEASE LET US GO HOME", cue: note, y: 520}
+      heartbeat: note
+      say: "At three, you break rule three, and watch the camera. The woman in green walks up to it, and holds up a note. Please let us go home. Behind her, every night customer stops folding, and waits."
+    - scene: choice
+      time: "3:06 AM"
+      base: {scene: cctv, cam: "CAM 01 · SUDS 24", view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.5, action: idle, facing: -1, color: "#5aa36b", stare: true}]}}
+      question: "Help them or keep the rules?"
+      options:
+        - {text: Help them, cue: help}
+        - {text: Keep the rules, cue: keep}
+      say: "Do you help the night customers... or keep the rules?"
+    - scene: endcard
+      time: "3:06 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: spin-cycle-4
+  format: stickman
+  series: SPIN CYCLE
+  day: 4
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: SUDS 24
+  title: "The night customers can't leave until Dryer 13 finishes its last cycle. Night 4 🧺"
+  tags: [stickman, animation, horror, story, laundromat, spincycle]
+  shots:
+    - scene: cctv
+      recap: true
+      time: "3:06 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 89
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.5, action: idle, facing: -1, color: "#5aa36b", stare: true}]}
+      say: "Last night, the woman on the camera held up a note. Please let us go home."
+    - scene: title
+      say: "Spin Cycle. Night four."
+    - scene: cctv
+      time: "3:08 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 88
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.3, you: {x: -0.5}, people: [{x: 0.5, action: idle, facing: -1, color: "#5aa36b", stare: true}]}
+      chip: {text: "Note: WE CAN'T LEAVE UNTIL 13 FINISHES", cue: note, y: 520}
+      say: "Tonight's goal: find out how to help them. You write on a card and hold it up to the camera. How? A moment later, she holds up a new note. We can't leave until thirteen finishes."
+    - scene: radio
+      time: "3:12 AM"
+      on: phone
+      radio_label: "PHONE · MRS. OKAFOR"
+      say:
+        - "You phone Mrs. Okafor, and ask how to finish Dryer thirteen's cycle. Her voice goes cold."
+        - radio: "You don't. Ever. Tape it, fold your washes, and stop asking questions."
+    - scene: room
+      time: "3:30 AM"
+      light: [86, 75]
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.3
+      you: {x: 0.45, action: reach, facing: 1}
+      chip: {text: "Token: SUDS 24 · DRYER · 1986", cue: token, y: 520}
+      say: "On the camera, the woman points at the lost and found jar. You tip it out. Buttons, hair clips, and one old brass token. Suds twenty four. Dryer. Nineteen eighty six."
+    - scene: room
+      time: "3:31 AM"
+      light: 74
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.35
+      you: {x: 0.45, action: idle, facing: 1}
+      heartbeat: finish
+      say: "One token for one cycle. Enough to finish what was started in nineteen eighty six."
+    - scene: choice
+      time: "3:32 AM"
+      base: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, monitors: true, dark: 0.35}
+      question: "Use it tonight or wait?"
+      options:
+        - {text: Tonight, cue: tonight}
+        - {text: Wait, cue: wait}
+      say: "Do you use the token tonight... or wait?"
+    - scene: endcard
+      time: "3:32 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: spin-cycle-5
+  format: stickman
+  series: SPIN CYCLE
+  day: 5
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: SUDS 24
+  title: "I put a 1986 token in the broken dryer. Something inside didn't want the cycle to finish. Night 5 🧺"
+  tags: [stickman, animation, horror, story, laundromat, spincycle]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:32 AM"
+      light: 74
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.35
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Last night, you found an old token from nineteen eighty six. One cycle for Dryer thirteen."
+    - scene: title
+      say: "Spin Cycle. Night five."
+    - scene: room
+      time: "3:33 AM"
+      light: 73
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.4
+      you: {x: 0.6, action: push, facing: 1}
+      sfx: [{name: click, at: clink}, {name: whoosh, at: spin, gain: 0.5}]
+      say: "You peel off the tape. You don't open the door. You just slide the token into the slot. Clink. Dryer thirteen starts to spin, for the first time in forty years."
+    - scene: room
+      time: "4:00 AM"
+      light: [72, 40]
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.6
+      dies: lights
+      you: {x: 0.35, action: scared, facing: 1}
+      shake_at: [bang]
+      sfx: [{name: hit, at: bang}, {name: hit, at: harder}]
+      say: "Tonight's goal: let the cycle finish. Rule two. Then the lights die. Something inside the dryer starts to bang on the door. Harder. Something that doesn't want this cycle to end."
+    - scene: cctv
+      time: "4:20 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 38
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.5, you: {x: 0.55, action: push, facing: 1}, people: [{x: 0.75, action: push, facing: -1, color: "#5aa36b", stare: true}, {x: 0.88, action: push, facing: -1, color: "#c9b28a", stare: true, cue: pike}]}
+      heartbeat: pike
+      say: "On the camera, you're leaning on the dryer door with all your weight. And beside you, holding it shut too, are the night customers. Even an old attendant in a Suds twenty four shirt. Joe Pike."
+    - scene: room
+      time: "5:50 AM"
+      light: 20
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.7
+      you: {x: 0.6, action: push, facing: 1}
+      sfx: [{name: hit, at: crack}]
+      say: "Ten minutes left on the cycle. Then the dryer door begins to crack."
+    - scene: choice
+      time: "5:51 AM"
+      base: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, monitors: true, dark: 0.7}
+      question: "Hold on or let go?"
+      options:
+        - {text: Hold on, cue: hold}
+        - {text: Let go, cue: go}
+      say: "Do you hold on for ten more minutes... or let go?"
+    - scene: endcard
+      time: "5:51 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: spin-cycle-6
+  format: stickman
+  series: SPIN CYCLE
+  day: 6
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: SUDS 24
+  title: "The night customers went home. Then the owner told me why she kept them. Final night 🧺"
+  tags: [stickman, animation, horror, story, laundromat, spincycle]
+  shots:
+    - scene: room
+      recap: true
+      time: "5:51 AM"
+      light: 20
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.7
+      you: {x: 0.6, action: push, facing: 1}
+      say: "Last night, you and the night customers held Dryer thirteen shut. Ten minutes left. And the door was cracking."
+    - scene: title
+      say: "Spin Cycle. The last night."
+    - scene: room
+      time: "5:59 AM"
+      light: 18
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.6
+      you: {x: 0.6, action: push, facing: 1}
+      sfx: [{name: tick, at: ding}]
+      say: "Tonight's goal: hold on until the cycle ends. You hold on. Nine minutes. Five. One. Then, ding. The banging stops. The dryer is still."
+    - scene: cctv
+      time: "6:00 AM"
+      cam: "CAM 01 · SUDS 24"
+      light: 18
+      view: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, dark: 0.2, you: {x: -0.5}, people: [{x: 0.5, action: walk, facing: 1, color: "#5aa36b", drift: 200, fade: home}, {x: 0.3, action: walk, facing: 1, color: "#c9b28a", drift: 220, fade: home}]}
+      say: "On the camera, the night customers pick up their folded washing, one by one, and walk out of the door. The woman in green waves. Joe Pike goes last. Then the screen shows an empty room."
+    - scene: radio
+      time: "6:05 AM"
+      on: phone
+      radio_label: "PHONE · MRS. OKAFOR"
+      say:
+        - "Mrs. Okafor arrives, sees the empty screen, and goes pale. Then she's furious."
+        - radio: "Do you know what you've done? Forty years of folding, for free. Every service wash in this shop. That's why I kept them."
+    - scene: room
+      time: "6:06 AM"
+      light: 16
+      wall: "#9fb8c2"
+      furniture: false
+      desk: true
+      clock: true
+      monitors: true
+      dark: 0.3
+      you: {x: 0.4, action: scared, facing: 1}
+      people: [{x: 0.75, action: idle, facing: -1, color: "#7a4a6a", cue: smiles}]
+      sfx: [{name: whoosh, at: spin, gain: 0.5}]
+      heartbeat: spin
+      say: "Then she smiles, slowly. Well. Someone will have to do the folding now. And behind you, Dryer thirteen starts to spin."
+    - scene: choice
+      time: "6:07 AM"
+      base: {scene: room, wall: "#9fb8c2", furniture: false, desk: true, clock: true, monitors: true, dark: 0.3}
+      question: "Run for the door or fight back?"
+      options:
+        - {text: Run, cue: run}
+        - {text: Fight back, cue: fight}
+      say: "So. Do you run for the door... or fight back?"
+    - scene: endcard
+      time: "6:07 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
+
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
