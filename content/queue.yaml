@@ -972,6 +972,490 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: low-water-1
+  format: stickman
+  series: LOW WATER
+  day: 1
+  day_label: NIGHT
+  meter_label: WATER
+  place: HALDON DAM
+  title: "I'm the night operator at a dam. At 2 AM a bell rang from under the water 🔔"
+  tags: [stickman, animation, horror, story, dam, reservoir]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      light: 60
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night job at Haldon Dam. Ten PM to six AM. One control room, and a reservoir as wide as a town."
+    - scene: radio
+      time: "10:05 PM"
+      on: radio
+      chip: {text: "Mr. Hollis · chief engineer", cue: hollis, y: 470}
+      radio_label: "RADIO · MR. HOLLIS"
+      say:
+        - "Mr. Hollis, the chief engineer, gives you the rules on the radio."
+        - radio: "Three rules. Keep the water under the red line. Never open the sluice gates at night. And if you hear a bell, don't look at the water."
+    - scene: title
+      say: "Low Water. Night one."
+    - scene: map
+      time: "10:20 PM"
+      place: RESERVOIR PLAN
+      light: 60
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: village
+      stops:
+        - {x: 0.3, y: 0.85, label: "Haldon Dam", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Reservoir", cue: reservoir}
+        - {x: 0.3, y: 0.45, label: "Low Ashby · flooded 1959", ghost: true, cue: village}
+      say: "Under the reservoir is a village. Low Ashby. Flooded in nineteen fifty nine. The houses are still down there."
+    - scene: room
+      time: "10:40 PM"
+      light: 61
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      rule: {n: 1, text: Keep the water under the red line}
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Rule number one. The water meter must stay under the red line, at ninety."
+    - scene: street
+      time: "11:00 PM"
+      place: THE DAM WALL
+      light: 62
+      stop: 0
+      sea: true
+      dark: 0.6
+      you: {light: true, facing: 1}
+      rule: {n: 2, text: Never open the sluice gates at night}
+      say: "Rule number two. Never open the sluice gates at night, whatever you hear. Tonight's goal: walk the wall every hour, until six."
+    - scene: street
+      time: "2:00 AM"
+      light: 66
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      rule: {n: 3, text: "If you hear a bell, don't look at the water"}
+      sfx: [{name: tick, at: bell}, {name: tick, at: again}]
+      heartbeat: again
+      say: "At two AM, on the wall, you hear it. A church bell. Rule number three. Don't look at the water. But it's coming from the water. Then again."
+    - scene: street
+      time: "2:05 AM"
+      light: 70
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.72, action: walk, facing: -1, color: "#d9b36b", drift: -60, cue: lantern}]
+      say: "Out of the dark water, a man walks up the dam steps, carrying a lantern. Dripping. He says: open the gates. Let us go home."
+    - scene: choice
+      time: "2:06 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.7, you: {light: true, facing: 1}, people: [{x: 0.62, action: idle, facing: -1, color: "#d9b36b"}]}
+      question: "Talk to him or radio Hollis?"
+      options:
+        - {text: Talk, cue: talk}
+        - {text: Radio, cue: radio}
+      say: "Do you talk to him... or radio Mr. Hollis?"
+    - scene: endcard
+      time: "2:06 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: low-water-2
+  format: stickman
+  series: LOW WATER
+  day: 2
+  day_label: NIGHT
+  meter_label: WATER
+  place: THE DAM WALL
+  title: "A man with a lantern walked out of the reservoir. Then the water started rising. Night 2 🔔"
+  tags: [stickman, animation, horror, story, dam, reservoir]
+  shots:
+    - scene: street
+      recap: true
+      time: "2:06 AM"
+      light: 70
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.62, action: idle, facing: -1, color: "#d9b36b"}]
+      say: "Last night, a bell rang under the reservoir. And a man with a lantern walked up out of the water."
+    - scene: title
+      say: "Low Water. Night two."
+    - scene: radio
+      time: "2:07 AM"
+      on: radio
+      radio_label: "RADIO · MR. HOLLIS"
+      say:
+        - "You radio Mr. Hollis. He's awake instantly."
+        - radio: "Don't talk to them. Get inside. Lock the control room door, and watch the meter."
+    - scene: room
+      time: "2:30 AM"
+      light: [72, 86]
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      dark: 0.3
+      you: {x: 0.4, action: scared, facing: 1}
+      heartbeat: rising
+      say: "You lock yourself in. The meter is rising. Seventy five. Eighty. With no rain at all, and no wind. Tonight's goal: keep the water under the red line, without opening the gates."
+    - scene: room
+      time: "3:00 AM"
+      light: [86, 80]
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      dark: 0.3
+      you: {x: 0.55, action: push, facing: 1}
+      sfx: [{name: click, at: overflow}]
+      say: "There's one thing you're allowed to do. You switch on the overflow pumps. The meter stops at eighty eight. Two below the red line."
+    - scene: room
+      time: "3:10 AM"
+      light: 82
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.4, action: scared, facing: 1}
+      sfx: [{name: knock, at: tap}, {name: knock, at: again}]
+      heartbeat: tap
+      say: "Then, a tap on the window. And again. Behind the glass, a warm lantern glow. Closer than before. And the bell starts ringing again."
+    - scene: choice
+      time: "3:11 AM"
+      base: {scene: room, wall: "#4e5a5e", furniture: false, desk: true, monitors: true, clock: true, dark: 0.4}
+      question: "Look at the window or close your eyes?"
+      options:
+        - {text: Look, cue: look}
+        - {text: Close your eyes, cue: close}
+      say: "Do you look at the window... or close your eyes, and wait?"
+    - scene: endcard
+      time: "3:11 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: low-water-3
+  format: stickman
+  series: LOW WATER
+  day: 3
+  day_label: NIGHT
+  meter_label: WATER
+  place: CONTROL ROOM
+  title: "The bell I kept hearing wasn't under the water. It was above me. Night 3 🔔"
+  tags: [stickman, animation, horror, story, dam, reservoir]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:11 AM"
+      light: 82
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.4, action: scared, facing: 1}
+      say: "Last night, the reservoir rose with no rain. Something tapped on the control room window. And the bell rang again."
+    - scene: title
+      say: "Low Water. Night three."
+    - scene: room
+      time: "3:12 AM"
+      light: 80
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You close your eyes. Rule three. The tapping stops at dawn. When you open them, there's a wet handprint on the glass. From the outside."
+    - scene: map
+      time: "10:20 PM"
+      place: DAM LOGBOOK 1959
+      light: 62
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: tower
+      stops:
+        - {x: 0.3, y: 0.85, label: "Valley flooded · 1959", cue: 0}
+        - {x: 0.3, y: 0.65, label: "St. Anne's bell removed", ghost: true, cue: removed}
+        - {x: 0.3, y: 0.45, label: "Hung in the dam tower", ghost: true, cue: tower}
+      say: "The next night, tonight's goal: find out where that bell is. In the oldest dam logbook, one line. St. Anne's church bell, removed before the flood. Hung in the dam tower."
+    - scene: hallway
+      time: "10:40 PM"
+      place: THE TOWER STAIRS
+      light: 62
+      lights: flicker
+      dark: 0.5
+      wall: "#6f6a5e"
+      floor: "#3a3832"
+      carpet: "#4a463c"
+      ceiling: "#24221e"
+      exit_color: "#ffcf6e"
+      say: "The dam tower. You've walked past it every night. A narrow stone stair, going up into the dark. And the bell you've been hearing was never under the water. It's up there."
+    - scene: hallway
+      time: "2:00 AM"
+      light: 64
+      lights: flicker
+      dark: 0.6
+      wall: "#6f6a5e"
+      floor: "#3a3832"
+      carpet: "#4a463c"
+      ceiling: "#24221e"
+      exit_color: "#ffcf6e"
+      sfx: [{name: tick, at: rings}]
+      heartbeat: rings
+      say: "At two AM, standing at the bottom of the stairs, you hear it ring. Right above you. With nobody up there to ring it."
+    - scene: choice
+      time: "2:01 AM"
+      base: {scene: hallway, lights: flicker, dark: 0.6, wall: "#6f6a5e", floor: "#3a3832", carpet: "#4a463c", ceiling: "#24221e", exit_color: "#ffcf6e"}
+      question: "Climb the tower or walk away?"
+      options:
+        - {text: Climb it, cue: climb}
+        - {text: Walk away, cue: away}
+      say: "Do you climb the tower... or walk away?"
+    - scene: endcard
+      time: "2:01 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: low-water-4
+  format: stickman
+  series: LOW WATER
+  day: 4
+  day_label: NIGHT
+  meter_label: WATER
+  place: THE TOWER
+  title: "The bell in the dam tower had words carved on it: ring us home. Night 4 🔔"
+  tags: [stickman, animation, horror, story, dam, reservoir]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "2:01 AM"
+      light: 64
+      lights: flicker
+      dark: 0.6
+      wall: "#6f6a5e"
+      floor: "#3a3832"
+      carpet: "#4a463c"
+      ceiling: "#24221e"
+      exit_color: "#ffcf6e"
+      say: "Last night, you found out the drowned village's church bell hangs in the dam tower. And it rings by itself."
+    - scene: title
+      say: "Low Water. Night four."
+    - scene: closeup
+      time: "2:10 AM"
+      object: flashlight
+      light: 66
+      chip: {text: "St. Anne's · Low Ashby · Ring us home", cue: carved, y: 520}
+      say: "You climb. At the top hangs a big green bronze bell, still swinging. Still wet. Your flashlight finds words carved round its rim. St. Anne's. Low Ashby. Ring us home."
+    - scene: street
+      time: "2:20 AM"
+      place: FOOT OF THE TOWER
+      light: 70
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#d9b36b", cue: waiting}]
+      say: "At the bottom, the man with the lantern is waiting. That's our bell. Every night it calls us. But it's up here, not down there. So we can never go home, and we can never rest."
+    - scene: radio
+      time: "2:25 AM"
+      on: radio
+      radio_label: "RADIO · MR. HOLLIS"
+      say:
+        - "You radio Mr. Hollis. Tonight's goal: decide who to believe. His voice goes hard and cold."
+        - radio: "That bell stays where it is. It's the only thing keeping them in the water. Move it, and you'll be sorry."
+    - scene: choice
+      time: "2:26 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.7, you: {light: true, facing: 1}, people: [{x: 0.65, action: idle, facing: -1, color: "#d9b36b"}]}
+      question: "Trust the man or trust Hollis?"
+      options:
+        - {text: The man, cue: man}
+        - {text: Hollis, cue: hollis}
+      say: "Who do you trust? The man with the lantern... or Mr. Hollis?"
+    - scene: endcard
+      time: "2:26 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: low-water-5
+  format: stickman
+  series: LOW WATER
+  day: 5
+  day_label: NIGHT
+  meter_label: WATER
+  place: THE TOWER
+  title: "I lowered the drowned village's bell from the dam. A hundred lanterns rose from the water. Night 5 🔔"
+  tags: [stickman, animation, horror, story, dam, reservoir]
+  shots:
+    - scene: street
+      recap: true
+      time: "2:26 AM"
+      light: 70
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#d9b36b"}]
+      say: "Last night, the man with the lantern asked for his village's bell. Mr. Hollis said moving it would be a mistake."
+    - scene: title
+      say: "Low Water. Night five."
+    - scene: hallway
+      time: "1:00 AM"
+      place: THE TOWER
+      light: 64
+      lights: flicker
+      dark: 0.6
+      wall: "#6f6a5e"
+      floor: "#3a3832"
+      carpet: "#4a463c"
+      ceiling: "#24221e"
+      exit_color: "#ffcf6e"
+      sfx: [{name: hit, at: chain}]
+      say: "You trust the man. Tonight's goal: get the bell down, and into the water, before dawn. You hook it to the maintenance crane, and slowly lower it, chain by chain."
+    - scene: street
+      time: "3:00 AM"
+      place: THE DAM WALL
+      light: [70, 88]
+      stop: 0
+      sea: true
+      dark: 0.75
+      you: {light: true, facing: 1}
+      people:
+        - {x: 0.55, action: walk, facing: -1, color: "#d9b36b", drift: -40, cue: lanterns}
+        - {x: 0.7, action: walk, facing: -1, color: "#d9b36b", drift: -40, cue: lanterns}
+        - {x: 0.85, action: walk, facing: -1, color: "#d9b36b", drift: -40, cue: lanterns}
+      heartbeat: lanterns
+      say: "As the bell comes down, the water starts to glow. Lanterns. Dozens, then hundreds, rising out of the reservoir. A whole village, walking up the dam steps."
+    - scene: radio
+      time: "3:10 AM"
+      on: radio
+      radio_label: "RADIO · MR. HOLLIS"
+      say:
+        - "The radio crackles. Mr. Hollis, shouting."
+        - radio: "Stop! If that bell goes in the water, the reservoir goes with it!"
+    - scene: room
+      time: "3:12 AM"
+      place: CONTROL ROOM
+      light: 89
+      wall: "#4e5a5e"
+      furniture: false
+      desk: true
+      monitors: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.55, action: idle, facing: 1}
+      heartbeat: red
+      say: "On the meter, the water is at eighty nine. One below the red line. The bell hangs over the edge, on the crane, swinging. Your hands shake."
+    - scene: choice
+      time: "3:13 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.75, you: {light: true, facing: 1}, people: [{x: 0.6, action: idle, facing: -1, color: "#d9b36b"}, {x: 0.75, action: idle, facing: -1, color: "#d9b36b"}]}
+      question: "Drop the bell or stop?"
+      options:
+        - {text: Drop it, cue: drop}
+        - {text: Stop, cue: stop}
+      say: "Do you drop the bell into the water... or stop?"
+    - scene: endcard
+      time: "3:13 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: low-water-6
+  format: stickman
+  series: LOW WATER
+  day: 6
+  day_label: NIGHT
+  meter_label: WATER
+  place: THE DAM WALL
+  title: "I gave the drowned village its bell back. By dawn, the reservoir was gone. Final night 🔔"
+  tags: [stickman, animation, horror, story, dam, reservoir]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:13 AM"
+      light: 89
+      stop: 0
+      sea: true
+      dark: 0.75
+      you: {light: true, facing: 1}
+      people:
+        - {x: 0.6, action: idle, facing: -1, color: "#d9b36b"}
+        - {x: 0.75, action: idle, facing: -1, color: "#d9b36b"}
+      say: "Last night, a whole drowned village rose with lanterns. And the bell hung over the water, on the crane."
+    - scene: title
+      say: "Low Water. The last night."
+    - scene: street
+      time: "3:14 AM"
+      light: 89
+      stop: 0
+      sea: true
+      dark: 0.75
+      you: {light: true, facing: 1}
+      people:
+        - {x: 0.6, action: walk, facing: 1, color: "#d9b36b", drift: 120, fade: home}
+        - {x: 0.75, action: walk, facing: 1, color: "#d9b36b", drift: 120, fade: home}
+      sfx: [{name: whoosh, at: drop, gain: 0.6}, {name: tick, at: once}]
+      say: "Tonight's goal: send them home. You drop it. The bell sinks, and rings once, deep under the water. The lanterns turn, and walk back down the steps, toward home."
+    - scene: street
+      time: "5:58 AM"
+      light: [89, 20]
+      stop: 0
+      sea: true
+      dawn: true
+      dark: 0.1
+      you: {light: false, facing: 1}
+      say: "All night, the meter falls. Eighty. Fifty. Twenty. No gates open. The water is simply leaving."
+    - scene: map
+      time: "6:00 AM"
+      place: RESERVOIR PLAN
+      light: 5
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: lit
+      stops:
+        - {x: 0.3, y: 0.85, label: "Haldon Dam", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Reservoir · empty", cue: empty}
+        - {x: 0.3, y: 0.45, label: "Low Ashby · lights on", ghost: true, cue: lit}
+      say: "At dawn, the reservoir is empty. Low Ashby stands in the mud, whole. The church has its bell. And in every window, a light is on."
+    - scene: radio
+      time: "6:05 AM"
+      place: CONTROL ROOM
+      on: radio
+      radio_label: "RADIO · MR. HOLLIS"
+      sfx: [{name: tick, at: bells}, {name: tick, at: another}]
+      heartbeat: bells
+      say:
+        - "Then Mr. Hollis speaks, very quietly."
+        - radio: "You don't understand. Every reservoir in this country was built over something."
+        - "And far away, over the hills, other bells begin to ring. Then another."
+    - scene: choice
+      time: "6:06 AM"
+      base: {scene: street, stop: 0, sea: true, dawn: true, dark: 0.1, you: {light: false, facing: 1}}
+      question: "Follow the bells or stay?"
+      options:
+        - {text: Follow them, cue: follow}
+        - {text: Stay, cue: stay}
+      say: "So. Do you follow the bells... or stay, and pretend you never heard them?"
+    - scene: endcard
+      time: "6:06 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
+
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
