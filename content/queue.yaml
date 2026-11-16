@@ -15,124 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: low-water-2
-  format: stickman
-  series: LOW WATER
-  day: 2
-  day_label: NIGHT
-  meter_label: WATER
-  place: THE DAM WALL
-  title: A man with a lantern walked out of the reservoir. Then the water started rising. Night 2 🔔
-  tags:
-  - stickman
-  - animation
-  - horror
-  - story
-  - dam
-  - reservoir
-  shots:
-  - scene: street
-    recap: true
-    time: 2:06 AM
-    light: 70
-    stop: 0
-    sea: true
-    dark: 0.7
-    you:
-      light: true
-      facing: 1
-    people:
-    - x: 0.62
-      action: idle
-      facing: -1
-      color: '#d9b36b'
-    say: Last night, a bell rang under the reservoir. And a man with a lantern walked up out of the water.
-  - scene: title
-    say: Low Water. Night two.
-  - scene: radio
-    time: 2:07 AM
-    true: radio
-    radio_label: RADIO · MR. HOLLIS
-    say:
-    - You radio Mr. Hollis. He's awake instantly.
-    - radio: Don't talk to them. Get inside. Lock the control room door, and watch the meter.
-  - scene: room
-    time: 2:30 AM
-    light:
-    - 72
-    - 86
-    wall: '#4e5a5e'
-    furniture: false
-    desk: true
-    monitors: true
-    clock: true
-    dark: 0.3
-    you:
-      x: 0.4
-      action: scared
-      facing: 1
-    heartbeat: rising
-    say: 'You lock yourself in. The meter is rising. Seventy five. Eighty. With no rain at all, and no wind. Tonight''s goal: keep the water under the red line, without opening the gates.'
-  - scene: room
-    time: 3:00 AM
-    light:
-    - 86
-    - 80
-    wall: '#4e5a5e'
-    furniture: false
-    desk: true
-    monitors: true
-    clock: true
-    dark: 0.3
-    you:
-      x: 0.55
-      action: push
-      facing: 1
-    sfx:
-    - name: click
-      at: overflow
-    say: There's one thing you're allowed to do. You switch on the overflow pumps. The meter stops at eighty eight. Two below the red line.
-  - scene: room
-    time: 3:10 AM
-    light: 82
-    wall: '#4e5a5e'
-    furniture: false
-    desk: true
-    monitors: true
-    clock: true
-    dark: 0.4
-    you:
-      x: 0.4
-      action: scared
-      facing: 1
-    sfx:
-    - name: knock
-      at: tap
-    - name: knock
-      at: again
-    heartbeat: tap
-    say: Then, a tap on the window. And again. Behind the glass, a warm lantern glow. Closer than before. And the bell starts ringing again.
-  - scene: choice
-    time: 3:11 AM
-    base:
-      scene: room
-      wall: '#4e5a5e'
-      furniture: false
-      desk: true
-      monitors: true
-      clock: true
-      dark: 0.4
-    question: Look at the window or close your eyes?
-    options:
-    - text: Look
-      cue: look
-    - text: Close your eyes
-      cue: close
-    say: Do you look at the window... or close your eyes, and wait?
-  - scene: endcard
-    time: 3:11 AM
-    hold: 1.6
-    say: Follow for night three.
 - id: low-water-3
   format: stickman
   series: LOW WATER
@@ -631,87 +513,143 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: KELDER HILL
-  title: "I'm the night assistant at an observatory. A new star appeared below the horizon ⭐"
-  tags: [stickman, animation, horror, story, observatory, stars]
+  title: I'm the night assistant at an observatory. A new star appeared below the horizon ⭐
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - observatory
+  - stars
   shots:
-    - scene: room
-      time: "9:00 PM"
-      light: 100
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "You take the night job at Kelder Hill Observatory. Nine PM to six AM. One big telescope, a dome that creaks in the wind, and a sky full of stars."
-    - scene: radio
-      time: "9:05 PM"
-      on: radio
-      chip: {text: "Professor Adair · retired astronomer", cue: adair, y: 470}
-      radio_label: "RADIO · PROFESSOR ADAIR"
-      say:
-        - "Professor Adair, who ran this place for fifty years, radios from his cottage at the bottom of the hill."
-        - radio: "Three rules. Log every star, every hour. Never point the telescope below the hills. And if a new star appears, tell nobody but me."
-    - scene: title
-      say: "New Star. Night one."
-    - scene: room
-      time: "9:20 PM"
-      light: 99
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      rule: {n: 1, text: Log every star every hour}
-      you: {x: 0.45, action: reach, facing: 1}
-      say: "Rule number one. Every hour, you log every star you can see. Anything new goes in red."
-    - scene: room
-      time: "9:30 PM"
-      light: 98
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      rule: {n: 2, text: Never point the telescope below the hills}
-      you: {x: 0.45, action: idle, facing: 1}
-      say: "Rule number two. Never point the telescope below the line of the hills. There are no stars down there. Tonight's goal: a clean log, every hour, until six."
-    - scene: inventory
-      time: "9:40 PM"
-      light: 97
-      items:
-        - {icon: key, count: 2, label: dome keys, cue: keys}
-        - {icon: flashlight, count: 1, label: red flashlight, cue: flashlight}
-        - {icon: battery, count: 2, label: batteries, cue: batteries}
-      total: {text: "Log every hour till 6 AM", cue: six}
-      say: "Two dome keys. One red flashlight, so your eyes stay used to the dark. Two spare batteries."
-    - scene: room
-      time: "2:00 AM"
-      light: 85
-      wall: "#3e4660"
+  - scene: room
+    time: 9:00 PM
+    light: 100
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: You take the night job at Kelder Hill Observatory. Nine PM to six AM. One big telescope, a dome that creaks in the wind, and a sky full of stars.
+  - scene: radio
+    time: 9:05 PM
+    true: radio
+    chip:
+      text: Professor Adair · retired astronomer
+      cue: adair
+      y: 470
+    radio_label: RADIO · PROFESSOR ADAIR
+    say:
+    - Professor Adair, who ran this place for fifty years, radios from his cottage at the bottom of the hill.
+    - radio: Three rules. Log every star, every hour. Never point the telescope below the hills. And if a new star appears, tell nobody but me.
+  - scene: title
+    say: New Star. Night one.
+  - scene: room
+    time: 9:20 PM
+    light: 99
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    rule:
+      n: 1
+      text: Log every star every hour
+    you:
+      x: 0.45
+      action: reach
+      facing: 1
+    say: Rule number one. Every hour, you log every star you can see. Anything new goes in red.
+  - scene: room
+    time: 9:30 PM
+    light: 98
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    rule:
+      n: 2
+      text: Never point the telescope below the hills
+    you:
+      x: 0.45
+      action: idle
+      facing: 1
+    say: 'Rule number two. Never point the telescope below the line of the hills. There are no stars down there. Tonight''s goal: a clean log, every hour, until six.'
+  - scene: inventory
+    time: 9:40 PM
+    light: 97
+    items:
+    - icon: key
+      count: 2
+      label: dome keys
+      cue: keys
+    - icon: flashlight
+      count: 1
+      label: red flashlight
+      cue: flashlight
+    - icon: battery
+      count: 2
+      label: batteries
+      cue: batteries
+    total:
+      text: Log every hour till 6 AM
+      cue: six
+    say: Two dome keys. One red flashlight, so your eyes stay used to the dark. Two spare batteries.
+  - scene: room
+    time: 2:00 AM
+    light: 85
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.4
+    window_lights:
+    - x: 0.5
+      y: 0.8
+      color: '#ffd98a'
+      cue: star
+      n: 1
+    rule:
+      n: 3
+      text: A new star? Tell nobody but Adair
+    you:
+      x: 0.35
+      action: scared
+      facing: 1
+    heartbeat: star
+    say: At two AM, there's a new star. Rule number three. But it's wrong. It's low, below the tops of the hills, where no star can be. And it's flickering, like a flame.
+  - scene: choice
+    time: 2:01 AM
+    base:
+      scene: room
+      wall: '#3e4660'
       furniture: false
       desk: true
       clock: true
       window_view: forest
       dark: 0.4
-      window_lights: [{x: 0.5, y: 0.8, color: "#ffd98a", cue: star, n: 1}]
-      rule: {n: 3, text: "A new star? Tell nobody but Adair"}
-      you: {x: 0.35, action: scared, facing: 1}
-      heartbeat: star
-      say: "At two AM, there's a new star. Rule number three. But it's wrong. It's low, below the tops of the hills, where no star can be. And it's flickering, like a flame."
-    - scene: choice
-      time: "2:01 AM"
-      base: {scene: room, wall: "#3e4660", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.4, window_lights: [{x: 0.5, y: 0.8, color: "#ffd98a", n: 1}]}
-      question: "Look through the telescope or just log it?"
-      options:
-        - {text: Look, cue: look}
-        - {text: Just log it, cue: log}
-      say: "Do you point the telescope at it... or just log it, in red?"
-    - scene: endcard
-      time: "2:01 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+      window_lights:
+      - x: 0.5
+        y: 0.8
+        color: '#ffd98a'
+        n: 1
+    question: Look through the telescope or just log it?
+    options:
+    - text: Look
+      cue: look
+    - text: Just log it
+      cue: log
+    say: Do you point the telescope at it... or just log it, in red?
+  - scene: endcard
+    time: 2:01 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: new-star-2
   format: stickman
   series: NEW STAR
@@ -719,80 +657,131 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: KELDER HILL
-  title: "The new star wasn't a star. It was a lantern. And something was holding it ⭐"
-  tags: [stickman, animation, horror, story, observatory, stars]
+  title: The new star wasn't a star. It was a lantern. And something was holding it ⭐
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - observatory
+  - stars
   shots:
-    - scene: room
-      recap: true
-      time: "2:01 AM"
-      light: 84
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.4
-      window_lights: [{x: 0.5, y: 0.8, color: "#ffd98a", n: 1}]
-      say: "Last night, a new star appeared below the hills, where no star can be."
-    - scene: title
-      say: "New Star. Night two."
-    - scene: room
-      time: "2:02 AM"
-      light: 83
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.45
-      window_lights: [{x: 0.5, y: 0.8, color: "#ffd98a", n: 1}]
-      you: {x: 0.5, action: reach, facing: 1}
-      heartbeat: tall
-      say: "You break rule two, and lower the telescope. It isn't a star. It's a lantern, held up high on the farthest hill. And holding it is something very tall, and very thin. Facing the observatory."
-    - scene: radio
-      time: "2:05 AM"
-      on: radio
-      radio_label: "RADIO · PROFESSOR ADAIR"
-      say:
-        - "You radio the professor. For a long time, he says nothing."
-        - radio: "So it's back. Fifty years. Switch off every light in the dome. Don't let it see you."
-    - scene: map
-      time: "9:30 PM"
-      place: KELDER VALLEY
-      light: 98
-      route: [[0.3, 0.98], [0.3, 0.3]]
-      route_cue: 0
-      route_end: closer
-      stops:
-        - {x: 0.3, y: 0.85, label: "Observatory", cue: 0}
-        - {x: 0.3, y: 0.65, label: "Mill Hill", ghost: true, cue: closer}
-        - {x: 0.3, y: 0.45, label: "Far Hill · night 1", cue: 0}
-      say: "The next night, tonight's goal: track the light, hour by hour, with the dome dark. By midnight, it's moved. One whole hill closer. Mill Hill."
-    - scene: room
-      time: "3:00 AM"
-      light: 80
-      wall: "#3e4660"
+  - scene: room
+    recap: true
+    time: 2:01 AM
+    light: 84
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.4
+    window_lights:
+    - x: 0.5
+      y: 0.8
+      color: '#ffd98a'
+      n: 1
+    say: Last night, a new star appeared below the hills, where no star can be.
+  - scene: title
+    say: New Star. Night two.
+  - scene: room
+    time: 2:02 AM
+    light: 83
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.45
+    window_lights:
+    - x: 0.5
+      y: 0.8
+      color: '#ffd98a'
+      n: 1
+    you:
+      x: 0.5
+      action: reach
+      facing: 1
+    heartbeat: tall
+    say: You break rule two, and lower the telescope. It isn't a star. It's a lantern, held up high on the farthest hill. And holding it is something very tall, and very thin. Facing the observatory.
+  - scene: radio
+    time: 2:05 AM
+    true: radio
+    radio_label: RADIO · PROFESSOR ADAIR
+    say:
+    - You radio the professor. For a long time, he says nothing.
+    - radio: So it's back. Fifty years. Switch off every light in the dome. Don't let it see you.
+  - scene: map
+    time: 9:30 PM
+    place: KELDER VALLEY
+    light: 98
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.3
+    route_cue: 0
+    route_end: closer
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: Observatory
+      cue: 0
+    - x: 0.3
+      y: 0.65
+      label: Mill Hill
+      ghost: true
+      cue: closer
+    - x: 0.3
+      y: 0.45
+      label: Far Hill · night 1
+      cue: 0
+    say: 'The next night, tonight''s goal: track the light, hour by hour, with the dome dark. By midnight, it''s moved. One whole hill closer. Mill Hill.'
+  - scene: room
+    time: 3:00 AM
+    light: 80
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.7
+    window_lights:
+    - x: 0.55
+      y: 0.7
+      color: '#ffd98a'
+      n: 1
+    you:
+      x: 0.4
+      action: scared
+      facing: 1
+    say: At three, through the dark window, you can see it without the telescope. A lantern, swinging, as something walks.
+  - scene: choice
+    time: 3:01 AM
+    base:
+      scene: room
+      wall: '#3e4660'
       furniture: false
       desk: true
       clock: true
       window_view: forest
       dark: 0.7
-      window_lights: [{x: 0.55, y: 0.7, color: "#ffd98a", n: 1}]
-      you: {x: 0.4, action: scared, facing: 1}
-      say: "At three, through the dark window, you can see it without the telescope. A lantern, swinging, as something walks."
-    - scene: choice
-      time: "3:01 AM"
-      base: {scene: room, wall: "#3e4660", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.7, window_lights: [{x: 0.55, y: 0.7, color: "#ffd98a", n: 1}]}
-      question: "Ask Adair what it wants or keep hiding?"
-      options:
-        - {text: Ask Adair, cue: ask}
-        - {text: Hide, cue: hiding}
-      say: "Do you ask the professor what it wants... or keep hiding in the dark?"
-    - scene: endcard
-      time: "3:01 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+      window_lights:
+      - x: 0.55
+        y: 0.7
+        color: '#ffd98a'
+        n: 1
+    question: Ask Adair what it wants or keep hiding?
+    options:
+    - text: Ask Adair
+      cue: ask
+    - text: Hide
+      cue: hiding
+    say: Do you ask the professor what it wants... or keep hiding in the dark?
+  - scene: endcard
+    time: 3:01 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: new-star-3
   format: stickman
   series: NEW STAR
@@ -800,69 +789,122 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: KELDER HILL
-  title: "The professor said the light took his assistant in 1976. Her note said something else ⭐"
-  tags: [stickman, animation, horror, story, observatory, stars]
+  title: The professor said the light took his assistant in 1976. Her note said something else ⭐
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - observatory
+  - stars
   shots:
-    - scene: room
-      recap: true
-      time: "3:01 AM"
-      light: 78
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
+  - scene: room
+    recap: true
+    time: 3:01 AM
+    light: 78
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.7
+    window_lights:
+    - x: 0.55
+      y: 0.7
+      color: '#ffd98a'
+      n: 1
+    say: Last night, the new star turned out to be a lantern, carried by something tall. And every night, it's one hill closer.
+  - scene: title
+    say: New Star. Night three.
+  - scene: radio
+    time: 3:02 AM
+    true: radio
+    radio_label: RADIO · PROFESSOR ADAIR
+    say:
+    - You ask Professor Adair what it wants.
+    - radio: In nineteen seventy six, it came for my assistant. Ruth. She went out to look at it, and she never came back. Stay inside.
+  - scene: map
+    time: 9:30 PM
+    place: OBSERVATORY LOG 1976
+    light: 98
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.3
+    route_cue: 0
+    route_end: gone
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: New star · 6 nights
+      cue: 0
+    - x: 0.3
+      y: 0.65
+      label: 'Assistant: R. Moore'
+      cue: ruth
+    - x: 0.3
+      y: 0.45
+      label: 'Night 6: gone'
+      ghost: true
+      cue: gone
+    say: 'The next night, tonight''s goal: find out what happened to Ruth. In the log from nineteen seventy six, the new star stayed six nights. Then the entries in Ruth''s handwriting just stop.'
+  - scene: cctv
+    time: 3:00 AM
+    cam: CAM 02 · FRONT GATE
+    light: 82
+    view:
+      scene: street
+      stop: 0
       dark: 0.7
-      window_lights: [{x: 0.55, y: 0.7, color: "#ffd98a", n: 1}]
-      say: "Last night, the new star turned out to be a lantern, carried by something tall. And every night, it's one hill closer."
-    - scene: title
-      say: "New Star. Night three."
-    - scene: radio
-      time: "3:02 AM"
-      on: radio
-      radio_label: "RADIO · PROFESSOR ADAIR"
-      say:
-        - "You ask Professor Adair what it wants."
-        - radio: "In nineteen seventy six, it came for my assistant. Ruth. She went out to look at it, and she never came back. Stay inside."
-    - scene: map
-      time: "9:30 PM"
-      place: OBSERVATORY LOG 1976
-      light: 98
-      route: [[0.3, 0.98], [0.3, 0.3]]
-      route_cue: 0
-      route_end: gone
-      stops:
-        - {x: 0.3, y: 0.85, label: "New star · 6 nights", cue: 0}
-        - {x: 0.3, y: 0.65, label: "Assistant: R. Moore", cue: ruth}
-        - {x: 0.3, y: 0.45, label: "Night 6: gone", ghost: true, cue: gone}
-      say: "The next night, tonight's goal: find out what happened to Ruth. In the log from nineteen seventy six, the new star stayed six nights. Then the entries in Ruth's handwriting just stop."
-    - scene: cctv
-      time: "3:00 AM"
-      cam: "CAM 02 · FRONT GATE"
-      light: 82
-      view: {scene: street, stop: 0, dark: 0.7, you: {x: -0.5}, people: [{x: 0.6, action: idle, facing: -1, color: "#cfc6b0", stare: true, cue: gate}]}
-      heartbeat: gate
-      say: "At three, the gate camera shows it. At the gate. A tall, thin shape, holding its lantern up high. It isn't trying to come in. It's waiting."
-    - scene: cctv
-      time: "3:05 AM"
-      cam: "CAM 02 · FRONT GATE"
-      light: 81
-      view: {scene: street, stop: 0, dark: 0.7, you: {x: -0.5}}
-      chip: {text: "Note: It's not here for you. It's here for him. Ruth, 1976", cue: note, y: 520}
-      say: "When it leaves, there's a folded paper on the gate. Old. Yellow. In Ruth's handwriting. It's not here for you. It's here for him."
-    - scene: choice
-      time: "3:06 AM"
-      base: {scene: cctv, cam: "CAM 02 · FRONT GATE", view: {scene: street, stop: 0, dark: 0.7, you: {x: -0.5}}}
-      question: "Show Adair the note or keep it secret?"
-      options:
-        - {text: Show him, cue: show}
-        - {text: Secret, cue: secret}
-      say: "Do you show the professor the note... or keep it secret?"
-    - scene: endcard
-      time: "3:06 AM"
-      hold: 1.6
-      say: "Follow for night four."
-
+      you:
+        x: -0.5
+      people:
+      - x: 0.6
+        action: idle
+        facing: -1
+        color: '#cfc6b0'
+        stare: true
+        cue: gate
+    heartbeat: gate
+    say: At three, the gate camera shows it. At the gate. A tall, thin shape, holding its lantern up high. It isn't trying to come in. It's waiting.
+  - scene: cctv
+    time: 3:05 AM
+    cam: CAM 02 · FRONT GATE
+    light: 81
+    view:
+      scene: street
+      stop: 0
+      dark: 0.7
+      you:
+        x: -0.5
+    chip:
+      text: 'Note: It''s not here for you. It''s here for him. Ruth, 1976'
+      cue: note
+      y: 520
+    say: When it leaves, there's a folded paper on the gate. Old. Yellow. In Ruth's handwriting. It's not here for you. It's here for him.
+  - scene: choice
+    time: 3:06 AM
+    base:
+      scene: cctv
+      cam: CAM 02 · FRONT GATE
+      view:
+        scene: street
+        stop: 0
+        dark: 0.7
+        you:
+          x: -0.5
+    question: Show Adair the note or keep it secret?
+    options:
+    - text: Show him
+      cue: show
+    - text: Secret
+      cue: secret
+    say: Do you show the professor the note... or keep it secret?
+  - scene: endcard
+    time: 3:06 AM
+    hold: 1.6
+    say: Follow for night four.
 - id: new-star-4
   format: stickman
   series: NEW STAR
@@ -870,61 +912,96 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: KELDER HILL
-  title: "In the professor's old desk I found a map of the sky. One star was circled: home ⭐"
-  tags: [stickman, animation, horror, story, observatory, stars]
+  title: 'In the professor''s old desk I found a map of the sky. One star was circled: home ⭐'
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - observatory
+  - stars
   shots:
-    - scene: cctv
-      recap: true
-      time: "3:06 AM"
-      cam: "CAM 02 · FRONT GATE"
-      light: 80
-      view: {scene: street, stop: 0, dark: 0.7, you: {x: -0.5}}
-      say: "Last night, the tall thing left a note at the gate, from Ruth, nineteen seventy six. It's not here for you. It's here for him."
-    - scene: title
-      say: "New Star. Night four."
-    - scene: room
-      time: "9:20 PM"
-      place: ADAIR'S OLD OFFICE
-      light: 98
-      wall: "#4a3f36"
+  - scene: cctv
+    recap: true
+    time: 3:06 AM
+    cam: CAM 02 · FRONT GATE
+    light: 80
+    view:
+      scene: street
+      stop: 0
+      dark: 0.7
+      you:
+        x: -0.5
+    say: Last night, the tall thing left a note at the gate, from Ruth, nineteen seventy six. It's not here for you. It's here for him.
+  - scene: title
+    say: New Star. Night four.
+  - scene: room
+    time: 9:20 PM
+    place: ADAIR'S OLD OFFICE
+    light: 98
+    wall: '#4a3f36'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    you:
+      x: 0.45
+      action: reach
+      facing: 1
+    say: 'You keep it secret. Tonight''s goal: find out who him is. You search the professor''s old office. Bottom drawer, under fifty years of star logs, something heavy, wrapped in cloth.'
+  - scene: map
+    time: 9:30 PM
+    place: BRASS SKY CHART
+    light: 97
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.3
+    route_cue: 0
+    route_end: home
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: Strange symbols
+      cue: 0
+    - x: 0.3
+      y: 0.65
+      label: Strange symbols
+      cue: 0
+    - x: 0.3
+      y: 0.45
+      label: 'One star, circled: HOME'
+      ghost: true
+      cue: home
+    say: A brass chart of the sky. But not our sky. The stars are in the wrong places, labelled in symbols you've never seen. One star has a circle round it. And next to it, in English, a single word. Home.
+  - scene: radio
+    time: 10:00 PM
+    true: radio
+    radio_label: RADIO · PROFESSOR ADAIR
+    say:
+    - Then the radio crackles. The professor sounds frightened.
+    - radio: Have you been in my desk? Whatever you found, keep it there. Never give it to that thing. Never.
+  - scene: choice
+    time: 10:01 PM
+    base:
+      scene: room
+      wall: '#4a3f36'
       furniture: false
       desk: true
       clock: true
       window_view: forest
-      you: {x: 0.45, action: reach, facing: 1}
-      say: "You keep it secret. Tonight's goal: find out who him is. You search the professor's old office. Bottom drawer, under fifty years of star logs, something heavy, wrapped in cloth."
-    - scene: map
-      time: "9:30 PM"
-      place: BRASS SKY CHART
-      light: 97
-      route: [[0.3, 0.98], [0.3, 0.3]]
-      route_cue: 0
-      route_end: home
-      stops:
-        - {x: 0.3, y: 0.85, label: "Strange symbols", cue: 0}
-        - {x: 0.3, y: 0.65, label: "Strange symbols", cue: 0}
-        - {x: 0.3, y: 0.45, label: "One star, circled: HOME", ghost: true, cue: home}
-      say: "A brass chart of the sky. But not our sky. The stars are in the wrong places, labelled in symbols you've never seen. One star has a circle round it. And next to it, in English, a single word. Home."
-    - scene: radio
-      time: "10:00 PM"
-      on: radio
-      radio_label: "RADIO · PROFESSOR ADAIR"
-      say:
-        - "Then the radio crackles. The professor sounds frightened."
-        - radio: "Have you been in my desk? Whatever you found, keep it there. Never give it to that thing. Never."
-    - scene: choice
-      time: "10:01 PM"
-      base: {scene: room, wall: "#4a3f36", furniture: false, desk: true, clock: true, window_view: forest}
-      question: "Keep the chart or take it to the gate?"
-      options:
-        - {text: Keep it, cue: keep}
-        - {text: Take it, cue: take}
-      say: "Do you keep the chart hidden... or take it to the gate?"
-    - scene: endcard
-      time: "10:01 PM"
-      hold: 1.6
-      say: "Follow for night five."
-
+    question: Keep the chart or take it to the gate?
+    options:
+    - text: Keep it
+      cue: keep
+    - text: Take it
+      cue: take
+    say: Do you keep the chart hidden... or take it to the gate?
+  - scene: endcard
+    time: 10:01 PM
+    hold: 1.6
+    say: Follow for night five.
 - id: new-star-5
   format: stickman
   series: NEW STAR
@@ -932,72 +1009,125 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: KELDER HILL
-  title: "The tall thing with the lantern reached the observatory. Then I saw its face ⭐"
-  tags: [stickman, animation, horror, story, observatory, stars]
+  title: The tall thing with the lantern reached the observatory. Then I saw its face ⭐
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - observatory
+  - stars
   shots:
-    - scene: map
-      recap: true
-      time: "10:01 PM"
-      place: BRASS SKY CHART
-      light: 96
-      route: [[0.3, 0.98], [0.3, 0.3]]
-      route_cue: 0
-      stops:
-        - {x: 0.3, y: 0.85, label: "Strange symbols"}
-        - {x: 0.3, y: 0.65, label: "Strange symbols"}
-        - {x: 0.3, y: 0.45, label: "One star, circled: HOME", ghost: true}
-      say: "Last night, you found a brass chart of a strange sky in the professor's desk. One star, circled. Home."
-    - scene: title
-      say: "New Star. Night five."
-    - scene: room
-      time: "3:00 AM"
-      place: KELDER HILL
-      light: [90, 60]
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.75
-      dies: lights
-      window_lights: [{x: 0.6, y: 0.55, color: "#ffd98a", n: 1}]
-      you: {x: 0.35, action: scared, facing: 1}
-      sfx: [{name: knock, at: dome}, {name: knock, at: again}]
-      heartbeat: dome
-      say: "Tonight's goal: get through the night with the chart still hidden. At three, every light in the observatory dies. Something taps on the dome, high up. Then again. Gently. The red flashlight flickers in your hand."
-    - scene: room
-      time: "3:10 AM"
-      light: 58
-      wall: "#3e4660"
+  - scene: map
+    recap: true
+    time: 10:01 PM
+    place: BRASS SKY CHART
+    light: 96
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.3
+    route_cue: 0
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: Strange symbols
+    - x: 0.3
+      y: 0.65
+      label: Strange symbols
+    - x: 0.3
+      y: 0.45
+      label: 'One star, circled: HOME'
+      ghost: true
+    say: Last night, you found a brass chart of a strange sky in the professor's desk. One star, circled. Home.
+  - scene: title
+    say: New Star. Night five.
+  - scene: room
+    time: 3:00 AM
+    place: KELDER HILL
+    light:
+    - 90
+    - 60
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.75
+    dies: lights
+    window_lights:
+    - x: 0.6
+      y: 0.55
+      color: '#ffd98a'
+      n: 1
+    you:
+      x: 0.35
+      action: scared
+      facing: 1
+    sfx:
+    - name: knock
+      at: dome
+    - name: knock
+      at: again
+    heartbeat: dome
+    say: 'Tonight''s goal: get through the night with the chart still hidden. At three, every light in the observatory dies. Something taps on the dome, high up. Then again. Gently. The red flashlight flickers in your hand.'
+  - scene: room
+    time: 3:10 AM
+    light: 58
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.6
+    window_lights:
+    - x: 0.5
+      y: 0.3
+      color: '#ffd98a'
+      n: 1
+    creatures:
+    - x: 0.82
+      facing: -1
+      cue: face
+      scale: 1.3
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    say: It's at the window. The lantern lights its face. Long, and pale, and tired. Its eyes are wet. Not angry. It looks at the drawer where the chart is. Then down the hill, at the professor's cottage.
+  - scene: radio
+    time: 3:12 AM
+    true: radio
+    radio_label: RADIO · PROFESSOR ADAIR
+    say:
+    - The radio crackles. The professor is almost crying. He's out of breath, as if he's been running.
+    - radio: Please. Don't give it anything. I've kept that drawer shut for fifty years.
+  - scene: choice
+    time: 3:13 AM
+    base:
+      scene: room
+      wall: '#3e4660'
       furniture: false
       desk: true
       clock: true
       window_view: forest
       dark: 0.6
-      window_lights: [{x: 0.5, y: 0.3, color: "#ffd98a", n: 1}]
-      creatures: [{x: 0.82, facing: -1, cue: face, scale: 1.3}]
-      you: {x: 0.35, action: idle, facing: 1}
-      say: "It's at the window. The lantern lights its face. Long, and pale, and tired. Its eyes are wet. Not angry. It looks at the drawer where the chart is. Then down the hill, at the professor's cottage."
-    - scene: radio
-      time: "3:12 AM"
-      on: radio
-      radio_label: "RADIO · PROFESSOR ADAIR"
-      say:
-        - "The radio crackles. The professor is almost crying. He's out of breath, as if he's been running."
-        - radio: "Please. Don't give it anything. I've kept that drawer shut for fifty years."
-    - scene: choice
-      time: "3:13 AM"
-      base: {scene: room, wall: "#3e4660", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.6, creatures: [{x: 0.82, facing: -1, scale: 1.3}]}
-      question: "Give it the chart or keep it hidden?"
-      options:
-        - {text: Give it, cue: give}
-        - {text: Keep hidden, cue: hidden}
-      say: "Do you give it the chart... or keep it hidden, like the professor says?"
-    - scene: endcard
-      time: "3:13 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+      creatures:
+      - x: 0.82
+        facing: -1
+        scale: 1.3
+    question: Give it the chart or keep it hidden?
+    options:
+    - text: Give it
+      cue: give
+    - text: Keep hidden
+      cue: hidden
+    say: Do you give it the chart... or keep it hidden, like the professor says?
+  - scene: endcard
+    time: 3:13 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: new-star-6
   format: stickman
   series: NEW STAR
@@ -1005,82 +1135,134 @@
   day_label: NIGHT
   meter_label: BATTERY
   place: KELDER HILL
-  title: "I gave the lantern-bearer the sky chart. Then I found out who was really lost ⭐"
-  tags: [stickman, animation, horror, story, observatory, stars]
+  title: I gave the lantern-bearer the sky chart. Then I found out who was really lost ⭐
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - observatory
+  - stars
   shots:
-    - scene: room
-      recap: true
-      time: "3:13 AM"
-      light: 56
-      wall: "#3e4660"
+  - scene: room
+    recap: true
+    time: 3:13 AM
+    light: 56
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.6
+    creatures:
+    - x: 0.82
+      facing: -1
+      scale: 1.3
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    say: Last night, the tall thing with the lantern came to the observatory window. And it looked at the drawer with the chart.
+  - scene: title
+    say: New Star. The last night.
+  - scene: room
+    time: 3:15 AM
+    light: 55
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.55
+    creatures:
+    - x: 0.82
+      facing: -1
+      scale: 1.3
+      cue: takes
+    you:
+      x: 0.65
+      action: reach
+      facing: 1
+    say: 'Tonight''s goal: give it what it came for. You open the window and hold out the brass chart. It takes it, so gently. It touches the circled star. And then it turns, and walks down the hill. Toward the cottage.'
+  - scene: radio
+    time: 3:30 AM
+    true: radio
+    radio_label: RADIO · PROFESSOR ADAIR
+    say:
+    - The radio crackles. The professor's voice, very small.
+    - radio: I'm sorry. I came from up there, a long time ago. I took the map so they could never find me. I didn't want to go home.
+  - scene: street
+    time: 5:59 AM
+    place: KELDER HILL
+    light: 40
+    stop: 0
+    dawn: true
+    dark: 0.2
+    you:
+      light: false
+      facing: 1
+    people:
+    - x: 0.55
+      action: walk
+      facing: 1
+      color: '#d9d2c0'
+      drift: 140
+      fade: rise
+    - x: 0.72
+      action: walk
+      facing: 1
+      color: '#cfc6b0'
+      drift: 140
+      fade: rise
+    say: At dawn, you watch two figures walk up the far hill together. One tall, with a lantern. One small and stooped. And then, slowly, they rise.
+  - scene: room
+    time: 6:10 AM
+    light: 38
+    wall: '#3e4660'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.2
+    window_lights:
+    - x: 0.4
+      y: 0.2
+      color: '#fff2c8'
+      n: 1
+      cue: two
+    - x: 0.6
+      y: 0.22
+      color: '#fff2c8'
+      n: 1
+      cue: two
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    heartbeat: two
+    say: That night, you log two new stars, side by side. Professor Adair's cottage is empty. On his doormat, a note. Keep watching the sky. I wasn't the only one who ran.
+  - scene: choice
+    time: 6:11 AM
+    base:
+      scene: room
+      wall: '#3e4660'
       furniture: false
       desk: true
       clock: true
       window_view: forest
-      dark: 0.6
-      creatures: [{x: 0.82, facing: -1, scale: 1.3}]
-      you: {x: 0.35, action: idle, facing: 1}
-      say: "Last night, the tall thing with the lantern came to the observatory window. And it looked at the drawer with the chart."
-    - scene: title
-      say: "New Star. The last night."
-    - scene: room
-      time: "3:15 AM"
-      light: 55
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.55
-      creatures: [{x: 0.82, facing: -1, scale: 1.3, cue: takes}]
-      you: {x: 0.65, action: reach, facing: 1}
-      say: "Tonight's goal: give it what it came for. You open the window and hold out the brass chart. It takes it, so gently. It touches the circled star. And then it turns, and walks down the hill. Toward the cottage."
-    - scene: radio
-      time: "3:30 AM"
-      on: radio
-      radio_label: "RADIO · PROFESSOR ADAIR"
-      say:
-        - "The radio crackles. The professor's voice, very small."
-        - radio: "I'm sorry. I came from up there, a long time ago. I took the map so they could never find me. I didn't want to go home."
-    - scene: street
-      time: "5:59 AM"
-      place: KELDER HILL
-      light: 40
-      stop: 0
-      dawn: true
       dark: 0.2
-      you: {light: false, facing: 1}
-      people:
-        - {x: 0.55, action: walk, facing: 1, color: "#d9d2c0", drift: 140, fade: rise}
-        - {x: 0.72, action: walk, facing: 1, color: "#cfc6b0", drift: 140, fade: rise}
-      say: "At dawn, you watch two figures walk up the far hill together. One tall, with a lantern. One small and stooped. And then, slowly, they rise."
-    - scene: room
-      time: "6:10 AM"
-      light: 38
-      wall: "#3e4660"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.2
-      window_lights: [{x: 0.4, y: 0.2, color: "#fff2c8", n: 1, cue: two}, {x: 0.6, y: 0.22, color: "#fff2c8", n: 1, cue: two}]
-      you: {x: 0.4, action: idle, facing: 1}
-      heartbeat: two
-      say: "That night, you log two new stars, side by side. Professor Adair's cottage is empty. On his doormat, a note. Keep watching the sky. I wasn't the only one who ran."
-    - scene: choice
-      time: "6:11 AM"
-      base: {scene: room, wall: "#3e4660", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.2}
-      question: "Keep watching or leave the hill?"
-      options:
-        - {text: Watch, cue: watching}
-        - {text: Leave, cue: leave}
-      say: "So. Do you keep watching the sky... or leave the hill, and never look up again?"
-    - scene: endcard
-      time: "6:11 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+    question: Keep watching or leave the hill?
+    options:
+    - text: Watch
+      cue: watching
+    - text: Leave
+      cue: leave
+    say: So. Do you keep watching the sky... or leave the hill, and never look up again?
+  - scene: endcard
+    time: 6:11 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
