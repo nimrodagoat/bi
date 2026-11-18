@@ -1081,6 +1081,476 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: keepers-hour-1
+  format: stickman
+  series: KEEPER'S HOUR
+  day: 1
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: MARROW TOWN HALL
+  title: "I'm the night keeper of a town clock. At 3 AM it struck one extra chime 🕰️"
+  tags: [stickman, animation, horror, story, clocktower, mystery]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      place: THE CLOCK ROOM
+      light: 100
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night keeper job at Marrow town hall. Ten PM to six AM. One huge old clock, and a view over the sleeping town."
+    - scene: radio
+      time: "10:05 PM"
+      on: phone
+      chip: {text: "Agnes · town clerk", cue: agnes, y: 470}
+      radio_label: "PHONE · AGNES"
+      say:
+        - "Agnes, the old town clerk, phones with the rules."
+        - radio: "Three rules, dear. Wind the clock forty turns at midnight. Never stop the pendulum. And if it strikes thirteen, stay in the tower until the hour is over."
+    - scene: title
+      say: "Keeper's Hour. Night one."
+    - scene: room
+      time: "12:00 AM"
+      light: 99
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      rule: {n: 1, text: Wind the clock forty turns at midnight}
+      you: {x: 0.55, action: push, facing: 1}
+      say: "Rule number one. At midnight, wind the clock with the big iron handle. Forty turns. Not thirty nine. Not forty one."
+    - scene: hallway
+      time: "12:30 AM"
+      place: THE TOWER STAIRS
+      light: 98
+      lights: "on"
+      wall: "#6b5e4e"
+      floor: "#3a3228"
+      carpet: "#4a4034"
+      ceiling: "#241e18"
+      exit_color: "#ffcf6e"
+      rule: {n: 2, text: Never stop the pendulum}
+      say: "Rule number two. The pendulum swings down the middle of the tower, longer than a bus. Never stop it. Not even for a second. Tonight's goal: keep it all ticking until six."
+    - scene: room
+      time: "3:00 AM"
+      place: THE CLOCK ROOM
+      light: 90
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      rule: {n: 3, text: "If it strikes 13, stay in the tower"}
+      you: {x: 0.4, action: scared, facing: 1}
+      sfx: [{name: tick, at: one}, {name: tick, at: twelve}, {name: boom, at: thirteen}]
+      heartbeat: thirteen
+      say: "At three AM, the clock starts to strike. One. Two. You count. Eleven. Twelve. Rule number three. Then it strikes thirteen."
+    - scene: street
+      time: "3:00 AM"
+      place: THE TOWN SQUARE
+      light: 89
+      stop: 0
+      dark: 0.6
+      you: {x: -0.5}
+      people:
+        - {x: 0.3, action: walk, facing: 1, color: "#b9b2a6"}
+        - {x: 0.7, action: walk, facing: -1, color: "#b9b2a6"}
+      say: "You look out of the clock face, down at the square. Everything has stopped. A man walking his dog, frozen mid step. Rain, hanging in the air like glass beads."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: street, stop: 0, dark: 0.6, you: {x: -0.5}, people: [{x: 0.3, action: walk, facing: 1, color: "#b9b2a6"}, {x: 0.7, action: walk, facing: -1, color: "#b9b2a6"}]}
+      question: "Go down to the square or stay in the tower?"
+      options:
+        - {text: Go down, cue: down}
+        - {text: Stay, cue: stay}
+      say: "Do you go down to the frozen square... or stay in the tower?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: keepers-hour-2
+  format: stickman
+  series: KEEPER'S HOUR
+  day: 2
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE CLOCK ROOM
+  title: "When the clock struck 13, the town froze. Then someone climbed out of the clock 🕰️"
+  tags: [stickman, animation, horror, story, clocktower, mystery]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:01 AM"
+      place: THE TOWN SQUARE
+      light: 88
+      stop: 0
+      dark: 0.6
+      you: {x: -0.5}
+      people:
+        - {x: 0.3, action: walk, facing: 1, color: "#b9b2a6"}
+        - {x: 0.7, action: walk, facing: -1, color: "#b9b2a6"}
+      say: "Last night, the clock struck thirteen. And the whole town outside froze."
+    - scene: title
+      say: "Keeper's Hour. Night two."
+    - scene: room
+      time: "3:02 AM"
+      place: THE CLOCK ROOM
+      light: 87
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.72, action: walk, facing: -1, color: "#8a6a4a", drift: -40, cue: climbs}]
+      sfx: [{name: click, at: hatch}]
+      say: "You stay in the tower. Rule three. Then a little hatch in the clock face opens, and an old man climbs in from outside. Waistcoat. Pocket watch. He's not frozen at all."
+    - scene: room
+      time: "3:05 AM"
+      light: 86
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8a6a4a"}]
+      say: "He nods at you, as if he knew you'd be here. Only the keeper can move in the extra hour, he says. And I'm still the keeper. Then he picks up a coil of rope."
+    - scene: room
+      time: "3:30 AM"
+      light: [84, 70]
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Tonight's goal: find out what he's doing before the hour ends. He ties the rope to the clock frame, and climbs back out through the hatch. Down the outside of the tower."
+    - scene: room
+      time: "3:59 AM"
+      light: 68
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.6, action: reach, facing: 1}
+      sfx: [{name: tick, at: tick}]
+      heartbeat: tick
+      say: "At one minute to four, the rope goes slack. The clock ticks. The hour is over. The rain starts falling again. And the old man is gone."
+    - scene: choice
+      time: "4:00 AM"
+      base: {scene: room, wall: "#5a4a3a", furniture: false, desk: true, clock: true, dark: 0.45}
+      question: "Ask Agnes or look out of the hatch?"
+      options:
+        - {text: Ask Agnes, cue: ask}
+        - {text: Look out, cue: look}
+      say: "Do you ask Agnes about him... or look out of the hatch?"
+    - scene: endcard
+      time: "4:00 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: keepers-hour-3
+  format: stickman
+  series: KEEPER'S HOUR
+  day: 3
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE CLOCK ROOM
+  title: "Hanging in the air outside the clock tower was a girl. Frozen since 1962 🕰️"
+  tags: [stickman, animation, horror, story, clocktower, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "4:00 AM"
+      light: 66
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.6, action: reach, facing: 1}
+      say: "Last night, during the frozen hour, an old keeper climbed out of the clock face, and down the outside of the tower."
+    - scene: title
+      say: "Keeper's Hour. Night three."
+    - scene: room
+      time: "3:00 AM"
+      light: 92
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.62, action: reach, facing: 1}
+      sfx: [{name: boom, at: thirteen}]
+      say: "The next night, tonight's goal: see where he goes. At the thirteenth chime, you open the hatch and look down. You can't breathe."
+    - scene: street
+      time: "3:02 AM"
+      place: BELOW THE CLOCK FACE
+      light: 90
+      stop: 0
+      dark: 0.6
+      you: {x: -0.5}
+      people:
+        - {x: 0.5, action: scared, facing: 1, color: "#e6c45a", cue: girl}
+      heartbeat: girl
+      say: "Halfway down the tower, hanging in the empty air, is a little girl in a yellow cardigan. Arms out. Mouth open. Frozen in the middle of a fall. She can't be more than seven. And above her, on the rope, inching down, the old keeper."
+    - scene: map
+      time: "3:30 AM"
+      place: KEEPER'S LOG
+      light: 88
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: short
+      stops:
+        - {x: 0.3, y: 0.85, label: "1962 · girl falls from tower", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Keeper stops the clock", cue: stops}
+        - {x: 0.3, y: 0.45, label: "Every night: one metre short", ghost: true, cue: short}
+      say: "On the shelf, the old keeper's log. Nineteen sixty two. A child fell from the tower. He made the clock strike thirteen to stop her falling. And every night since, one hour. Always one metre short."
+    - scene: choice
+      time: "3:31 AM"
+      base: {scene: room, wall: "#5a4a3a", furniture: false, desk: true, clock: true, dark: 0.45}
+      question: "Help him or leave him be?"
+      options:
+        - {text: Help him, cue: help}
+        - {text: Leave him, cue: leave}
+      say: "Do you help him reach her... or leave him be?"
+    - scene: endcard
+      time: "3:31 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: keepers-hour-4
+  format: stickman
+  series: KEEPER'S HOUR
+  day: 4
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE CLOCK ROOM
+  title: "The old keeper has tried to catch the falling girl every night for 60 years 🕰️"
+  tags: [stickman, animation, horror, story, clocktower, mystery]
+  shots:
+    - scene: map
+      recap: true
+      time: "3:31 AM"
+      place: KEEPER'S LOG
+      light: 86
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      stops:
+        - {x: 0.3, y: 0.85, label: "1962 · girl falls from tower"}
+        - {x: 0.3, y: 0.65, label: "Keeper stops the clock"}
+        - {x: 0.3, y: 0.45, label: "Every night: one metre short", ghost: true}
+      say: "Last night, you saw a girl frozen in mid fall outside the tower. The old keeper has been trying to reach her since nineteen sixty two."
+    - scene: title
+      say: "Keeper's Hour. Night four."
+    - scene: radio
+      time: "11:00 PM"
+      on: phone
+      radio_label: "PHONE · AGNES"
+      say:
+        - "You ask Agnes about nineteen sixty two. She is quiet for a very long time."
+        - radio: "A little girl climbed the tower on a dare. She slipped. Everyone saw her fall. And then nobody remembers. That's all I know, dear."
+    - scene: room
+      time: "3:00 AM"
+      light: 92
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.4, action: idle, facing: 1}
+      people: [{x: 0.68, action: idle, facing: -1, color: "#8a6a4a", cue: hands}]
+      sfx: [{name: boom, at: thirteen}]
+      say: "Tonight's goal: help him get closer. At the thirteenth chime, he climbs in. You tell him you want to help. He looks at you for a long time. Then he hands you the rope."
+    - scene: room
+      time: "3:40 AM"
+      light: [90, 70]
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.5
+      you: {x: 0.55, action: push, facing: 1}
+      heartbeat: closer
+      say: "You hold the rope while he climbs. With you taking his weight, he goes faster. Closer than he has ever been. His hand stretches down. Two fingers from her cardigan."
+    - scene: room
+      time: "3:59 AM"
+      light: 68
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.5
+      you: {x: 0.55, action: push, facing: 1}
+      sfx: [{name: tick, at: tick}]
+      say: "Then, tick. The hour ends. And he's gone again. But this time, you heard him shout, just before. Tomorrow. Both of us. Two pairs of hands."
+    - scene: choice
+      time: "4:00 AM"
+      base: {scene: room, wall: "#5a4a3a", furniture: false, desk: true, clock: true, dark: 0.5}
+      question: "Climb down with him or hold the rope?"
+      options:
+        - {text: Climb down, cue: climb}
+        - {text: Hold the rope, cue: hold}
+      say: "Tomorrow, do you climb down beside him... or stay and hold the rope?"
+    - scene: endcard
+      time: "4:00 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: keepers-hour-5
+  format: stickman
+  series: KEEPER'S HOUR
+  day: 5
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: OUTSIDE THE TOWER
+  title: "I climbed down the outside of the clock tower in the frozen hour. Then the pendulum slowed 🕰️"
+  tags: [stickman, animation, horror, story, clocktower, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "4:00 AM"
+      place: THE CLOCK ROOM
+      light: 66
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.5
+      you: {x: 0.55, action: push, facing: 1}
+      say: "Last night, the old keeper got within two fingers of the falling girl. He said it would take two pairs of hands."
+    - scene: title
+      say: "Keeper's Hour. Night five."
+    - scene: street
+      time: "3:05 AM"
+      place: OUTSIDE THE TOWER
+      light: [92, 75]
+      stop: 0
+      dark: 0.65
+      you: {x: 0.22, light: true, facing: 1}
+      people:
+        - {x: 0.62, action: idle, facing: -1, color: "#8a6a4a"}
+      say: "Tonight's goal: reach her together. At the thirteenth chime, you tie on a second rope, and climb out of the hatch beside him. The frozen rain hangs all around you. Fifty metres of nothing below. Don't look down, he says."
+    - scene: street
+      time: "3:30 AM"
+      light: [74, 60]
+      stop: 0
+      dark: 0.7
+      you: {x: 0.22, light: true, facing: 1}
+      people:
+        - {x: 0.62, action: idle, facing: -1, color: "#8a6a4a"}
+        - {x: 0.45, action: scared, facing: 1, color: "#e6c45a"}
+      heartbeat: cardigan
+      say: "Hand over hand, you climb down together. There she is. Close enough to see the freckles on her face. You reach out. Your fingertips touch her cardigan."
+    - scene: hallway
+      time: "3:40 AM"
+      place: THE PENDULUM
+      light: [58, 40]
+      lights: flicker
+      dark: 0.6
+      wall: "#6b5e4e"
+      floor: "#3a3228"
+      carpet: "#4a4034"
+      ceiling: "#241e18"
+      exit_color: "#ffcf6e"
+      sfx: [{name: tick, at: slower}, {name: tick, at: "70%"}]
+      say: "Then, inside the tower, you hear the pendulum. It's slowing down. Nobody is up there to keep it going. If it stops, rule two, the frozen hour ends early. And everything falls."
+    - scene: choice
+      time: "3:41 AM"
+      base: {scene: street, stop: 0, dark: 0.7, you: {x: 0.22, light: true, facing: 1}, people: [{x: 0.62, action: idle, facing: -1, color: "#8a6a4a"}, {x: 0.45, action: scared, facing: 1, color: "#e6c45a"}]}
+      question: "Grab the girl or climb back to the pendulum?"
+      options:
+        - {text: Grab her, cue: grab}
+        - {text: The pendulum, cue: pendulum}
+      say: "Do you grab the girl now... or climb back up to save the pendulum?"
+    - scene: endcard
+      time: "3:41 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: keepers-hour-6
+  format: stickman
+  series: KEEPER'S HOUR
+  day: 6
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: OUTSIDE THE TOWER
+  title: "We caught the girl who fell from the clock tower in 1962. Then I found out who she grew up to be 🕰️"
+  tags: [stickman, animation, horror, story, clocktower, mystery]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:41 AM"
+      light: 58
+      stop: 0
+      dark: 0.7
+      you: {x: 0.22, light: true, facing: 1}
+      people:
+        - {x: 0.62, action: idle, facing: -1, color: "#8a6a4a"}
+        - {x: 0.45, action: scared, facing: 1, color: "#e6c45a"}
+      say: "Last night, you touched the falling girl's cardigan. And inside the tower, the pendulum began to stop."
+    - scene: title
+      say: "Keeper's Hour. The last night."
+    - scene: street
+      time: "3:42 AM"
+      light: 56
+      stop: 0
+      dark: 0.7
+      you: {x: 0.22, light: true, facing: 1}
+      people:
+        - {x: 0.62, action: idle, facing: -1, color: "#8a6a4a"}
+        - {x: 0.5, action: idle, facing: 1, color: "#e6c45a", cue: grab}
+      sfx: [{name: whoosh, at: grab, gain: 0.5}]
+      say: "Tonight's goal: bring her up before the pendulum stops. You grab her wrist. The old keeper grabs the other. Two pairs of hands. Together, you pull her in against the wall."
+    - scene: street
+      time: "3:58 AM"
+      light: [54, 30]
+      stop: 0
+      dark: 0.6
+      you: {x: 0.22, light: true, facing: 1}
+      people:
+        - {x: 0.62, action: walk, facing: 1, color: "#8a6a4a", drift: 60}
+        - {x: 0.5, action: walk, facing: 1, color: "#e6c45a", drift: 60}
+      sfx: [{name: tick, at: last}]
+      say: "You climb. Every swing of the pendulum is slower. You haul her through the hatch on the last tick. The rain falls. The town wakes up. And the girl is crying, safe, on the clock room floor."
+    - scene: room
+      time: "4:05 AM"
+      place: THE CLOCK ROOM
+      light: 28
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.2
+      you: {x: 0.4, action: idle, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#8a6a4a", fade: smiles}]
+      say: "The old keeper smiles at her, then at you. Sixty years, he says. Thank you. And as the morning light comes in, he fades. When you turn round, the girl is gone too. Back where she belongs. In nineteen sixty two."
+    - scene: radio
+      time: "6:00 AM"
+      on: phone
+      radio_label: "PHONE · AGNES"
+      say:
+        - "At six, the phone rings. It's Agnes. Her voice is shaking."
+        - radio: "I fell from that tower when I was seven, dear. Someone caught me. I always wondered who the second pair of hands was."
+    - scene: choice
+      time: "6:01 AM"
+      base: {scene: room, wall: "#5a4a3a", furniture: false, desk: true, clock: true, dark: 0.2}
+      question: "Stay on as keeper or hand back the keys?"
+      options:
+        - {text: Stay on, cue: stay}
+        - {text: Hand back, cue: hand}
+      say: "So. Do you stay on as the new keeper... or hand back the keys?"
+    - scene: endcard
+      time: "6:01 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
+
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
