@@ -1,0 +1,442 @@
+# NIGHT LOAF (6 parts). You are the night baker at Hollins Bakery in the
+# village of Upper Fenwick, one AM to six AM. The meter is the OVEN heat.
+# Cast: you (night baker), Mrs. Hollins (the retired baker, only on the phone),
+# and the Neighbour: something tall and thin in an old baker's apron that
+# takes the extra loaf from the back step at three.
+# The idea, said plainly: since the famine winter of 1902 the bakery has left
+# one small dark loaf out every night, baked from a very old sourdough starter.
+# Fed, the Neighbour stands at the edge of the woods all night, and the shapes
+# in the trees keep away from the village.
+# Twist: the Neighbour is old Joseph Hollins, the first baker, Mrs. Hollins's
+# grandfather. In 1902 he made the deal: he guards the village, the bakery
+# feeds him. When the starter dies you revive it, he finally speaks: "Tell
+# Margaret her grandad says thank you."
+- id: night-loaf-1
+  format: stickman
+  series: NIGHT LOAF
+  day: 1
+  day_label: NIGHT
+  meter_label: OVEN
+  place: HOLLINS BAKERY
+  title: "I'm the night baker in a village. Every night I leave one loaf on the back step 🍞"
+  tags: [stickman, animation, horror, story, bakery, village]
+  shots:
+    - scene: room
+      time: "1:00 AM"
+      light: 100
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: push, facing: 1}
+      say: "You take the night baker job at Hollins Bakery, in the tiny village of Upper Fenwick. One AM to six AM. One old brick oven."
+    - scene: radio
+      time: "1:05 AM"
+      on: phone
+      chip: {text: "Mrs. Hollins · retired baker", cue: hollins, y: 470}
+      radio_label: "PHONE · MRS. HOLLINS"
+      say:
+        - "Mrs. Hollins, the old baker, phones with the rules."
+        - radio: "Three rules, love. Sixty loaves by six. One extra loaf, from the black tin, on the back step at three. And never look out of the back window while it's there."
+    - scene: title
+      say: "Night Loaf. Night one."
+    - scene: room
+      time: "1:20 AM"
+      light: 99
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      rule: {n: 1, text: Sixty loaves by six}
+      you: {x: 0.45, action: push, facing: 1}
+      say: "Rule number one. Sixty loaves out of the oven by six. Tonight's goal: all sixty, on time."
+    - scene: inventory
+      time: "1:30 AM"
+      light: 98
+      items:
+        - {icon: can, count: 6, label: flour tins, cue: flour}
+        - {icon: matches, count: 1, label: oven matches, cue: matches}
+        - {icon: key, count: 1, label: back door key, cue: key}
+      total: {text: "One old black tin", cue: black}
+      say: "Six tins of flour. One box of matches for the old oven. The back door key. And one heavy old black tin."
+    - scene: room
+      time: "2:45 AM"
+      light: 96
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      rule: {n: 2, text: "Extra loaf on the back step at 3"}
+      you: {x: 0.55, action: reach, facing: 1}
+      chip: {text: "Jar: STARTER · 1902", cue: jar, y: 520}
+      say: "Rule number two. The extra loaf. It's small and dark, made from a jar of sourdough on the top shelf. The label says nineteen oh two. At three, it goes on the back step."
+    - scene: room
+      time: "3:00 AM"
+      light: 95
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.35
+      rule: {n: 3, text: Never look out of the back window}
+      you: {x: 0.35, action: listen, facing: 1}
+      sfx: [{name: knock, at: chewing}]
+      heartbeat: chewing
+      say: "Rule number three. Never look out of the back window while the loaf is there. At three, you put it out. A minute later, from the step, you hear chewing. Slow. Careful."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: room, wall: "#a8744a", furniture: false, desk: true, clock: true, dark: 0.35}
+      question: "Look out of the window or keep baking?"
+      options:
+        - {text: Look, cue: look}
+        - {text: Keep baking, cue: baking}
+      say: "Do you look out of the back window... or keep baking?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: night-loaf-2
+  format: stickman
+  series: NIGHT LOAF
+  day: 2
+  day_label: NIGHT
+  meter_label: OVEN
+  place: HOLLINS BAKERY
+  title: "I looked out of the bakery's back window. Something tall was eating the loaf 🍞"
+  tags: [stickman, animation, horror, story, bakery, village]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:01 AM"
+      light: 94
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.35
+      you: {x: 0.35, action: listen, facing: 1}
+      say: "Last night, you left the extra loaf on the back step at three. Then you heard something eating it."
+    - scene: title
+      say: "Night Loaf. Night two."
+    - scene: room
+      time: "3:02 AM"
+      light: 93
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.35, action: scared, facing: 1}
+      creatures: [{x: 0.8, facing: -1, cue: tall, scale: 1.3}]
+      heartbeat: tall
+      say: "You break rule three, and look. On the step, crouched, is something very tall and very thin. It's wearing an old, floury baker's apron. It holds the loaf in both hands, like something precious."
+    - scene: room
+      time: "3:03 AM"
+      light: 92
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.35, action: scared, facing: 1}
+      creatures: [{x: 0.8, facing: -1, scale: 1.3}]
+      chip: {text: "One penny · 1902", cue: penny, y: 520}
+      say: "It sees you. It doesn't run. It just puts something on the step, and walks away into the dark. A single old penny. Dated nineteen oh two. It's warm, as if it's been held for a long time."
+    - scene: room
+      time: "5:30 AM"
+      light: [80, 40]
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.3
+      you: {x: 0.55, action: push, facing: 1}
+      say: "Tonight's goal: still sixty loaves by six. But the oven is cooling, too fast. You light it again and again. Your arms ache. You finish the last loaf at one minute to six."
+    - scene: choice
+      time: "6:00 AM"
+      base: {scene: room, wall: "#a8744a", furniture: false, desk: true, clock: true, dark: 0.3}
+      question: "Tell Mrs. Hollins or keep it quiet?"
+      options:
+        - {text: Tell her, cue: tell}
+        - {text: Keep quiet, cue: quiet}
+      say: "Do you tell Mrs. Hollins what you saw... or keep it quiet?"
+    - scene: endcard
+      time: "6:00 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: night-loaf-3
+  format: stickman
+  series: NIGHT LOAF
+  day: 3
+  day_label: NIGHT
+  meter_label: OVEN
+  place: HOLLINS BAKERY
+  title: "The old baker said the thing on the step keeps the village safe. From what? 🍞"
+  tags: [stickman, animation, horror, story, bakery, village]
+  shots:
+    - scene: room
+      recap: true
+      time: "6:00 AM"
+      light: 40
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.3
+      you: {x: 0.55, action: idle, facing: 1}
+      say: "Last night, you saw what eats the extra loaf. Something tall, in an old baker's apron. It left you a penny from nineteen oh two."
+    - scene: title
+      say: "Night Loaf. Night three."
+    - scene: radio
+      time: "6:05 AM"
+      on: phone
+      radio_label: "PHONE · MRS. HOLLINS"
+      say:
+        - "You tell Mrs. Hollins. She isn't cross. She just sighs."
+        - radio: "That's the Neighbour, love. As long as it's fed, it keeps the village safe. Never miss a night. Not one."
+    - scene: map
+      time: "1:20 AM"
+      place: ORDER BOOK 1902
+      light: 100
+      route: [[0.3, 0.98], [0.3, 0.3]]
+      route_cue: 0
+      route_end: neighbour
+      stops:
+        - {x: 0.3, y: 0.85, label: "Famine winter · 1902", cue: 0}
+        - {x: 0.3, y: 0.65, label: "Baker: J. Hollins", cue: hollins}
+        - {x: 0.3, y: 0.45, label: "Extra loaf: for the Neighbour", ghost: true, cue: neighbour}
+      say: "The next night, tonight's goal: find out what it keeps us safe from. In the oldest order book, nineteen oh two. The famine winter. Baker, J. Hollins. At the bottom of every page, one extra loaf. For the Neighbour."
+    - scene: street
+      time: "3:10 AM"
+      place: THE BACK LANE
+      light: 94
+      stop: 0
+      dark: 0.75
+      lurkers: 3
+      you: {light: true, facing: 1}
+      heartbeat: trees
+      say: "At ten past three, you open the back door, just a crack. At the end of the lane, where the woods begin, shapes are moving between the trees. Lots of them. Watching the village."
+    - scene: choice
+      time: "3:11 AM"
+      base: {scene: street, stop: 0, dark: 0.75, lurkers: 3, you: {light: true, facing: 1}}
+      question: "Follow the Neighbour or lock the door?"
+      options:
+        - {text: Follow it, cue: follow}
+        - {text: Lock it, cue: lock}
+      say: "Do you follow the Neighbour toward the woods... or lock the door?"
+    - scene: endcard
+      time: "3:11 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: night-loaf-4
+  format: stickman
+  series: NIGHT LOAF
+  day: 4
+  day_label: NIGHT
+  meter_label: OVEN
+  place: THE BACK LANE
+  title: "I followed the Neighbour to the edge of the woods. It was standing guard 🍞"
+  tags: [stickman, animation, horror, story, bakery, village]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:11 AM"
+      light: 93
+      stop: 0
+      dark: 0.75
+      lurkers: 3
+      you: {light: true, facing: 1}
+      say: "Last night, you saw shapes in the woods, watching the village. And the Neighbour has fed at the bakery since nineteen oh two."
+    - scene: title
+      say: "Night Loaf. Night four."
+    - scene: street
+      time: "3:15 AM"
+      light: 92
+      pace: walk
+      dark: 0.75
+      lurkers: 3
+      you: {light: true}
+      say: "You follow it. Tonight's goal: find out what it does after it eats. It walks to the very edge of the woods, and stands there. Tall. Still. Facing the trees."
+    - scene: street
+      time: "3:30 AM"
+      light: 90
+      stop: 0
+      dark: 0.8
+      lurkers: 4
+      you: {light: true, facing: 1}
+      heartbeat: back
+      say: "And every shape in those woods keeps away from it. They creep close, and then they back away. All night. The Neighbour isn't hunting the village. It's guarding it."
+    - scene: radio
+      time: "4:00 AM"
+      on: phone
+      radio_label: "PHONE · MRS. HOLLINS"
+      say:
+        - "Back at the bakery, the phone rings. Mrs. Hollins sounds worried."
+        - radio: "Is the starter jar bubbling, love? It's been so slow lately. If it dies, there's no more loaf. And no more Neighbour."
+    - scene: room
+      time: "4:05 AM"
+      place: HOLLINS BAKERY
+      light: [88, 70]
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.55, action: reach, facing: 1}
+      chip: {text: "Jar: STARTER · 1902 · grey, flat", cue: grey, y: 520}
+      say: "You check the jar on the top shelf. The starter is grey. Flat. Not a single bubble. There's only enough left for one more loaf."
+    - scene: choice
+      time: "4:06 AM"
+      base: {scene: room, wall: "#a8744a", furniture: false, desk: true, clock: true}
+      question: "Bake the last loaf or try to save the starter?"
+      options:
+        - {text: Bake it, cue: bake}
+        - {text: Save it, cue: save}
+      say: "Do you bake the last loaf now... or try to bring the starter back to life?"
+    - scene: endcard
+      time: "4:06 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: night-loaf-5
+  format: stickman
+  series: NIGHT LOAF
+  day: 5
+  day_label: NIGHT
+  meter_label: OVEN
+  place: HOLLINS BAKERY
+  title: "The 1902 sourdough died. That night, the shapes in the woods came closer 🍞"
+  tags: [stickman, animation, horror, story, bakery, village]
+  shots:
+    - scene: room
+      recap: true
+      time: "4:06 AM"
+      light: 70
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.55, action: reach, facing: 1}
+      say: "Last night, you found out the Neighbour guards the village. And the old sourdough that feeds it is dying."
+    - scene: title
+      say: "Night Loaf. Night five."
+    - scene: room
+      time: "1:10 AM"
+      light: 100
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.5, action: push, facing: 1}
+      chip: {text: "Card: Feed it from the hand that bakes for him. J.H.", cue: card, y: 520}
+      say: "Tonight's goal: bring the starter back to life by three. Taped under the shelf, you find an old recipe card. Feed it warm, from the hand that bakes for him. J. H."
+    - scene: room
+      time: "2:30 AM"
+      light: [96, 60]
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.3
+      you: {x: 0.5, action: push, facing: 1}
+      say: "You feed it fresh flour and warm water, and stir it with your own hands, like the card says. You wait. Nothing. The oven is cooling. And the clock says half past two."
+    - scene: street
+      time: "3:00 AM"
+      place: THE BACK LANE
+      light: 50
+      stop: 0
+      dark: 0.85
+      lurkers: 5
+      you: {light: true, facing: 1}
+      heartbeat: closer
+      say: "At three, there's no loaf on the step. Through the back window, you see the shapes leave the woods. Slowly. Closer to the village than ever. And the Neighbour is standing at your back door. Waiting."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: street, stop: 0, dark: 0.85, lurkers: 5, you: {light: true, facing: 1}}
+      question: "Open the door or check the jar once more?"
+      options:
+        - {text: Open, cue: open}
+        - {text: Check jar, cue: jar}
+      say: "Do you open the back door to it... or check the jar, one last time?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: night-loaf-6
+  format: stickman
+  series: NIGHT LOAF
+  day: 6
+  day_label: NIGHT
+  meter_label: OVEN
+  place: HOLLINS BAKERY
+  title: "I finally found out who the Neighbour was. And who it had been protecting 🍞"
+  tags: [stickman, animation, horror, story, bakery, village]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:01 AM"
+      place: THE BACK LANE
+      light: 48
+      stop: 0
+      dark: 0.85
+      lurkers: 5
+      you: {light: true, facing: 1}
+      say: "Last night, the starter died. There was no loaf on the step. And the shapes left the woods."
+    - scene: title
+      say: "Night Loaf. The last night."
+    - scene: room
+      time: "3:02 AM"
+      place: HOLLINS BAKERY
+      light: 46
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.3
+      you: {x: 0.55, action: reach, facing: 1}
+      sfx: [{name: click, at: bubble}]
+      say: "Tonight's goal: get a loaf on the step before the shapes reach the village. You check the jar once more. One tiny bubble. Then another. The starter is breathing."
+    - scene: room
+      time: "3:40 AM"
+      light: [44, 92]
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.25
+      you: {x: 0.5, action: push, facing: 1}
+      say: "You shape the loaf in the old black tin, and bake it hotter and faster than you've ever baked anything. At twenty to four, you open the back door."
+    - scene: room
+      time: "3:41 AM"
+      light: 90
+      wall: "#a8744a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.35
+      you: {x: 0.45, action: reach, facing: 1}
+      creatures: [{x: 0.78, facing: -1, scale: 1.3, cue: takes}]
+      say: "The Neighbour takes the loaf. And for the first time, it speaks. A soft old voice, covered in flour. Thank you. Tell Margaret her grandad says thank you. Then it goes back to the woods. And the shapes run."
+    - scene: radio
+      time: "6:00 AM"
+      on: phone
+      radio_label: "PHONE · MRS. HOLLINS"
+      say:
+        - "At six, you phone Mrs. Hollins, and tell her what it said. For a long time, she cries."
+        - radio: "My name is Margaret. My grandad was Joseph Hollins. He went into those woods in nineteen oh two, and never came back."
+    - scene: choice
+      time: "6:01 AM"
+      base: {scene: room, wall: "#a8744a", furniture: false, desk: true, clock: true}
+      question: "Keep baking for him or tell the village?"
+      options:
+        - {text: Keep baking, cue: baking}
+        - {text: Tell them, cue: village}
+      say: "So. Do you keep baking for him, every night... or tell the whole village who has been guarding them?"
+    - scene: endcard
+      time: "6:01 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
