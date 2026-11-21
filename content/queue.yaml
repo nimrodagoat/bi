@@ -909,6 +909,417 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: the-toll-1
+  format: stickman
+  series: THE TOLL
+  day: 1
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: HARROW BRIDGE
+  title: "I'm the night toll-keeper on an old bridge. At 3 AM something asked what the toll was 🌉"
+  tags: [stickman, animation, horror, story, bridge, toll]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      place: THE TOLL BOOTH
+      light: 100
+      wall: "#4a5a4e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night job in the toll booth on Harrow Bridge. Ten PM to six AM. One barrier, one cash box, and a long drop into the gorge below."
+    - scene: radio
+      time: "10:05 PM"
+      on: phone
+      chip: {text: "Mr. Quill · bridge trust", cue: quill, y: 470}
+      radio_label: "PHONE · MR. QUILL"
+      say:
+        - "Mr. Quill, from the bridge trust, phones with the rules."
+        - radio: "Three rules. Everyone pays the toll, no exceptions. Never cross the bridge yourself after midnight. And if something asks for the Others price, choose very, very carefully."
+    - scene: title
+      say: "The Toll. Night one."
+    - scene: street
+      time: "10:20 PM"
+      place: HARROW BRIDGE
+      light: 99
+      stop: 0
+      sea: true
+      dark: 0.55
+      you: {light: true, facing: 1}
+      rule: {n: 1, text: Everyone pays the toll}
+      chip: {text: "WALKERS 10p · CARTS 20p · OTHERS: ASK THE KEEPER", cue: board, y: 520}
+      say: "Rule number one. Everyone pays. The old toll board says walkers, ten pence. Carts, twenty pence. And at the bottom, Others. Ask the keeper."
+    - scene: street
+      time: "11:00 PM"
+      light: 98
+      stop: 0
+      sea: true
+      dark: 0.6
+      you: {light: true, facing: -1}
+      rule: {n: 2, text: Never cross after midnight}
+      say: "Rule number two. After midnight, never cross the bridge yourself. Not even to the middle. Tonight's goal: keep the barrier until six."
+    - scene: street
+      time: "3:00 AM"
+      light: 92
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true, cue: coat}]
+      rule: {n: 3, text: "Others' toll: choose carefully"}
+      heartbeat: coat
+      say: "Rule number three. At three AM, a tall figure in a long dark coat stands at the barrier. Its eyes shine in your flashlight. It speaks softly. Others. What's the toll?"
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.7, you: {light: true, facing: 1}, people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true}]}
+      question: "Name a price or refuse it?"
+      options:
+        - {text: Name a price, cue: name}
+        - {text: Refuse, cue: refuse}
+      say: "Do you name a price... or refuse to let it cross?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: the-toll-2
+  format: stickman
+  series: THE TOLL
+  day: 2
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: HARROW BRIDGE
+  title: "I asked the thing on the bridge to pay with a song. The next day, nobody in town could sing 🌉"
+  tags: [stickman, animation, horror, story, bridge, toll]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:01 AM"
+      light: 91
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true}]
+      say: "Last night, a tall figure in a long coat came to the toll barrier at three AM, and asked the price for Others."
+    - scene: title
+      say: "The Toll. Night two."
+    - scene: street
+      time: "3:02 AM"
+      light: [90, 60]
+      stop: 0
+      sea: true
+      dark: 0.75
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true}]
+      say: "You refuse. It doesn't move. It just waits. And one by one, the lamps along the bridge go out. The dark is creeping toward the booth. Your flashlight flickers. It still doesn't move."
+    - scene: street
+      time: "3:10 AM"
+      light: 58
+      stop: 0
+      sea: true
+      dark: 0.8
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: walk, facing: -1, color: "#3a3a44", drift: -260, fade: crosses}]
+      sfx: [{name: click, at: barrier}]
+      say: "Tonight's goal: get it off the bridge before the dark reaches you. Panicking, you say the first small thing in your head. A song. It sings. The most beautiful song you've ever heard. It makes your eyes sting. The barrier lifts, and it crosses into town."
+    - scene: room
+      time: "9:00 AM"
+      place: HARROW TOWN
+      light: 100
+      wall: "#4a5a4e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: scared, facing: 1}
+      heartbeat: sing
+      say: "The next morning, the whole town is talking. At the school assembly, nobody could sing. Not the children. Not the teachers. Not one note."
+    - scene: choice
+      time: "9:01 AM"
+      base: {scene: room, wall: "#4a5a4e", furniture: false, desk: true, clock: true}
+      question: "Tell Mr. Quill or check the old ledger?"
+      options:
+        - {text: Tell Quill, cue: tell}
+        - {text: The ledger, cue: ledger}
+      say: "Do you tell Mr. Quill... or check the booth's old toll ledger?"
+    - scene: endcard
+      time: "9:01 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: the-toll-3
+  format: stickman
+  series: THE TOLL
+  day: 3
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE TOLL BOOTH
+  title: "The toll ledger showed what every keeper ever charged the thing on the bridge 🌉"
+  tags: [stickman, animation, horror, story, bridge, toll]
+  shots:
+    - scene: room
+      recap: true
+      time: "9:01 AM"
+      place: HARROW TOWN
+      light: 98
+      wall: "#4a5a4e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: scared, facing: 1}
+      say: "Last night, the Collector paid with a song. And the next day, nobody in town could sing."
+    - scene: title
+      say: "The Toll. Night three."
+    - scene: map
+      time: "10:10 PM"
+      place: TOLL LEDGER
+      light: 100
+      route: [[0.3, 0.98], [0.3, 0.2]]
+      route_cue: 0
+      route_end: keeper
+      stops:
+        - {x: 0.3, y: 0.85, label: "1931 · Others paid: a colour", cue: colour}
+        - {x: 0.3, y: 0.65, label: "1958 · Others paid: a summer", cue: summer}
+        - {x: 0.3, y: 0.45, label: "1990 · Others paid: a keeper", ghost: true, cue: keeper}
+      say: "Tonight's goal: find out what you've done. In the booth's old ledger, every Others toll. Nineteen thirty one, a colour. Nineteen fifty eight, a summer. Nineteen ninety, a keeper."
+    - scene: room
+      time: "10:20 PM"
+      place: THE TOLL BOOTH
+      light: 99
+      wall: "#4a5a4e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: idle, facing: 1}
+      heartbeat: blue
+      say: "And then you understand. Nothing in Harrow is blue. Not the doors, not the cars, not the sky. Even the river below the bridge is grey. And nobody here remembers a summer. It pays exactly what the keeper asks. Then it takes the same thing from the town."
+    - scene: room
+      time: "10:30 PM"
+      light: 98
+      wall: "#4a5a4e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: scared, facing: 1}
+      say: "Under the nineteen ninety line, in shaky writing. Keeper, E. Quill. And under that, nothing. That keeper's name was never signed again. Someone pressed so hard the pen tore the paper."
+    - scene: choice
+      time: "10:31 PM"
+      base: {scene: room, wall: "#4a5a4e", furniture: false, desk: true, clock: true}
+      question: "Ask Mr. Quill about it or quit tonight?"
+      options:
+        - {text: Ask Quill, cue: ask}
+        - {text: Quit, cue: quit}
+      say: "Do you ask Mr. Quill about E. Quill... or quit, tonight?"
+    - scene: endcard
+      time: "10:31 PM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: the-toll-4
+  format: stickman
+  series: THE TOLL
+  day: 4
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: THE TOLL BOOTH
+  title: "In 1990 the toll-keeper charged the thing on the bridge 'a keeper.' He vanished 🌉"
+  tags: [stickman, animation, horror, story, bridge, toll]
+  shots:
+    - scene: room
+      recap: true
+      time: "10:31 PM"
+      light: 97
+      wall: "#4a5a4e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: scared, facing: 1}
+      say: "Last night, the ledger showed the town lost blue, and summer, and a keeper. The Collector takes from the town whatever it pays."
+    - scene: title
+      say: "The Toll. Night four."
+    - scene: radio
+      time: "10:35 PM"
+      on: phone
+      radio_label: "PHONE · MR. QUILL"
+      say:
+        - "You phone Mr. Quill. He's quiet for a long time. Then he clears his throat."
+        - radio: "Edwin was my brother. In ninety, he asked it to pay with a keeper, hoping it would have none to give. It paid with him."
+    - scene: street
+      time: "3:00 AM"
+      place: HARROW BRIDGE
+      light: 90
+      stop: 0
+      sea: true
+      dark: 0.7
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true, cue: back}]
+      say: "Tonight's goal: find a toll that costs the town nothing. At three, it's back at the barrier. What's the toll? You try something worthless. A stone."
+    - scene: street
+      time: "3:02 AM"
+      light: 88
+      stop: 0
+      sea: true
+      dark: 0.75
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: walk, facing: -1, color: "#3a3a44", drift: -260, fade: crosses}]
+      shake_at: [crash]
+      sfx: [{name: boom, at: crash}]
+      say: "It hands you a smooth grey stone, without even looking at it, and crosses. Seconds later, far off in the town, a crash. The top stone of the church tower has fallen into the square."
+    - scene: choice
+      time: "3:03 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.75, you: {light: true, facing: 1}}
+      question: "Keep trying small tolls or think bigger?"
+      options:
+        - {text: Small tolls, cue: small}
+        - {text: Think bigger, cue: bigger}
+      say: "Do you keep trying small tolls... or think of something bigger?"
+    - scene: endcard
+      time: "3:03 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: the-toll-5
+  format: stickman
+  series: THE TOLL
+  day: 5
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: HARROW BRIDGE
+  title: "Every toll I chose took something from the town. Then I thought of one it couldn't pay 🌉"
+  tags: [stickman, animation, horror, story, bridge, toll]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:03 AM"
+      light: 86
+      stop: 0
+      sea: true
+      dark: 0.75
+      you: {light: true, facing: 1}
+      say: "Last night, even a stone cost the town something. The church tower lost its top stone."
+    - scene: title
+      say: "The Toll. Night five."
+    - scene: room
+      time: "11:00 PM"
+      place: THE TOLL BOOTH
+      light: 100
+      wall: "#4a5a4e"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Tonight's goal: find a toll that hurts nobody. You think it through, writing a list on the back of the ledger. It pays exactly what you ask. Then it takes the same thing from the town. So what if what you ask for... already belongs to the town?"
+    - scene: street
+      time: "3:00 AM"
+      place: HARROW BRIDGE
+      light: [90, 50]
+      stop: 0
+      sea: true
+      dark: 0.8
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true}]
+      heartbeat: impatient
+      say: "At three, it comes. But tonight it's impatient. It's taller. And the lamps along the bridge go out all at once. The rail under your hand is ice cold. What's the toll, keeper?"
+    - scene: radio
+      time: "3:01 AM"
+      on: phone
+      radio_label: "PHONE · MR. QUILL"
+      say:
+        - "Your phone buzzes. Mr. Quill. He saw the lamps go out from his window."
+        - radio: "Whatever you're thinking, don't. Ask for nothing. Let it cross free. It's safer."
+    - scene: choice
+      time: "3:02 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.8, you: {light: true, facing: 1}, people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true}]}
+      question: "Ask for nothing or ask for everything?"
+      options:
+        - {text: Nothing, cue: nothing}
+        - {text: Everything, cue: everything}
+      say: "Do you ask for nothing, like Mr. Quill says... or ask for everything?"
+    - scene: endcard
+      time: "3:02 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: the-toll-6
+  format: stickman
+  series: THE TOLL
+  day: 6
+  day_label: NIGHT
+  meter_label: BATTERY
+  place: HARROW BRIDGE
+  title: "I charged the thing on the bridge everything it ever took. It had to pay it all back 🌉"
+  tags: [stickman, animation, horror, story, bridge, toll]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:02 AM"
+      light: 50
+      stop: 0
+      sea: true
+      dark: 0.8
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true}]
+      say: "Last night, the Collector came back, taller and angrier. And you had one idea left."
+    - scene: title
+      say: "The Toll. The last night."
+    - scene: street
+      time: "3:03 AM"
+      light: 48
+      stop: 0
+      sea: true
+      dark: 0.8
+      you: {light: true, facing: 1}
+      people: [{x: 0.7, action: idle, facing: -1, color: "#3a3a44", stare: true, cue: still}]
+      heartbeat: still
+      say: "Tonight's goal: name a toll that costs the town nothing. You say it clearly. The toll is everything you have ever taken from this town. It goes completely still. Rule one. Everyone pays."
+    - scene: street
+      time: "3:05 AM"
+      light: [50, 90]
+      stop: 0
+      sea: true
+      dark: 0.4
+      you: {light: true, facing: 1}
+      people:
+        - {x: 0.7, action: idle, facing: -1, color: "#3a3a44", fade: empty}
+        - {x: 0.55, action: walk, facing: -1, color: "#c9b28a", cue: edwin}
+      sfx: [{name: whoosh, at: pours, gain: 0.6}]
+      say: "It opens its coat, and everything pours out. Songs. Warm summer air. The colour blue, flooding into the night sky. And a man in an old keeper's uniform, blinking. Edwin. It can't take any of it again. It's already paid. Empty, it fades."
+    - scene: street
+      time: "6:00 AM"
+      light: 92
+      stop: 0
+      sea: true
+      dawn: true
+      dark: 0.05
+      you: {light: false, facing: 1}
+      people: [{x: 0.6, action: idle, facing: -1, color: "#c9b28a"}]
+      say: "At dawn, the sky over Harrow is blue for the first time in nearly a hundred years. In town, someone is singing. And Edwin Quill phones his brother from your booth, crying and laughing at once."
+    - scene: street
+      time: "6:05 AM"
+      light: 90
+      stop: 0
+      sea: true
+      dawn: true
+      dark: 0.05
+      you: {light: false, facing: 1}
+      people: [{x: 0.6, action: idle, facing: -1, color: "#c9b28a"}]
+      heartbeat: other
+      say: "Then Edwin looks across the gorge, at the far end of the bridge, where a second, older booth stands in the mist. Good, he says. Now, who's going to warn the keeper on the other side?"
+    - scene: choice
+      time: "6:06 AM"
+      base: {scene: street, stop: 0, sea: true, dawn: true, dark: 0.05, you: {light: false, facing: 1}}
+      question: "Cross to the other booth or stay on this side?"
+      options:
+        - {text: Cross, cue: cross}
+        - {text: Stay, cue: stay}
+      say: "So. Do you cross to the other booth... or stay on your side of the bridge?"
+    - scene: endcard
+      time: "6:06 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
+
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa

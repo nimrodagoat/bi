@@ -54,7 +54,8 @@ village's bell hung in the dam tower; meter_label WATER; twist: returning it dra
 lantern-bearer one hill closer each night, `window_lights` as the star; twist: it's a rescuer, the professor is the lost one), LANE THIRTEEN (6, bowling-alley night closer; a ghost
 bowler one strike from a perfect game; twist: you gutter your last ball so he can finish, and the owner was his 1979 opponent), KEEPER'S HOUR (6, town clock keeper; a 13th chime freezes the
 town for an hour; rescue-across-time twist: you catch the girl who fell in 1962, and she is Agnes on the phone), NIGHT LOAF (6, village night baker; an extra loaf feeds the
-Neighbour, who guards the village from the woods; meter_label OVEN; twist: it is the old baker's grandfather). Never reuse a premise; keep every series
+Neighbour, who guards the village from the woods; meter_label OVEN; twist: it is the old baker's grandfather), THE TOLL (6, toll-bridge night keeper; the Collector pays
+what you ask and takes the same from the town; clever win: charge it everything it ever took). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 Nov 2: the owner is weighing a switch to how-it-works explainers (2D `style: explainer` cut-aways with
 stickman wizards, or 3D via Blender: `tools/blender/`, `.github/workflows/preview-3d.yml`); previews go
