@@ -499,6 +499,13 @@ def hallway(cv, shot, t):
         pts = [proj(sx, -1, z), proj(sx, 0.75, z), proj(sx, 0.75, z + 0.5), proj(sx, -1, z + 0.5)]
         fill(ctx, pts, shade("#2a1a10", sh))
         inner = [proj(sx, -1, z + 0.04), proj(sx, 0.7, z + 0.04), proj(sx, 0.7, z + 0.46), proj(sx, -1, z + 0.46)]
+        if o.get("timbers"):  # a mine tunnel: wooden pit props and a roof beam instead of doors
+            post = [proj(sx, -1, z), proj(sx, 1, z), proj(sx, 1, z + 0.14), proj(sx, -1, z + 0.14)]
+            fill(ctx, post, shade("#6b4a2a", sh))
+            face = [proj(sx * 0.93, -1, z), proj(sx * 0.93, 1, z), proj(sx, 1, z), proj(sx, -1, z)]
+            fill(ctx, face, shade("#4a321c", sh))
+            fill(ctx, [proj(-1, 0.86, z), proj(1, 0.86, z), proj(1, 1, z), proj(-1, 1, z)], shade("#5a3d22", sh))
+            continue
         if o.get("shelves"):  # a library: tall bookcases instead of doors
             case = [proj(sx, -1, z - 0.3), proj(sx, 0.95, z - 0.3), proj(sx, 0.95, z + 0.8), proj(sx, -1, z + 0.8)]
             fill(ctx, case, shade("#3a2414", sh))

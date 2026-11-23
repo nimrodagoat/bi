@@ -1,0 +1,485 @@
+# LAMP ROOM (6 parts). You are the night watchman at Pentre Pit, an old coal
+# mine that is now a museum, ten PM to six AM, keeping the lamp room.
+# Cast: you (night watchman), Dilys Morgan (the museum manager, on the phone),
+# and Tom Pryce: tag 47, a seventeen-year-old pony boy lost in the 1938 roof
+# fall with his pit pony, Seren. His lamp light comes up the old tunnel at 3 AM.
+# The idea, said plainly: miners hung a brass tag on the board coming up; a
+# missing tag means someone is still down there. Tag 47 has been missing since
+# 1938. In the old tap code, three taps = "I hear you", two = "stay where you
+# are", one = "come up". Every watchman since has only ever tapped three.
+# Twist: a torn page shows the 1938 foreman (Evan Morgan, Dilys's
+# great-grandfather) signalled Tom "two taps, stay put, rescue coming", then the
+# roof fell again and nobody came. Tom has been obeying an order for 88 years.
+# You tap once. He walks out with Seren, hangs tag 47, and the board is full.
+- id: lamp-room-1
+  format: stickman
+  series: LAMP ROOM
+  day: 1
+  day_label: NIGHT
+  meter_label: LAMP
+  place: PENTRE PIT
+  title: "I'm the night watchman at an old coal mine. One lamp tag has been missing since 1938 ⛏️"
+  tags: [stickman, animation, horror, story, mine, mystery]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      place: THE LAMP ROOM
+      light: 100
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night job at Pentre Pit, an old coal mine that's now a museum. Ten PM to six AM, watching the lamp room at the top of the old tunnel."
+    - scene: radio
+      time: "10:05 PM"
+      on: phone
+      chip: {text: "Dilys · museum manager", cue: dilys, y: 470}
+      radio_label: "PHONE · DILYS"
+      say:
+        - "Dilys, the museum manager, phones with the rules."
+        - radio: "Three rules. Check the tag board every hour. Never go past the second gate. And if you hear tapping in the rock, always tap back."
+    - scene: title
+      say: "Lamp Room. Night one."
+    - scene: inventory
+      time: "10:15 PM"
+      place: THE TAG BOARD
+      light: 99
+      rule: {n: 1, text: Check the tag board every hour}
+      items:
+        - {icon: key, count: 46, label: brass tags on the board, cue: board}
+      total: {text: "Hook 47 is empty", cue: empty}
+      say: "Rule number one. Every miner took a brass tag going down, and hung it back coming up. An empty hook meant someone was still underground. Forty six tags. Hook forty seven is empty."
+    - scene: hallway
+      time: "11:00 PM"
+      place: THE OLD TUNNEL
+      light: 98
+      lights: "on"
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#3a3028"
+      rule: {n: 2, text: Never pass the second gate}
+      say: "Rule number two. Never go past the second gate. The old seam behind it isn't safe. Tonight's goal: keep watch until six."
+    - scene: hallway
+      time: "3:00 AM"
+      light: 90
+      lights: "off"
+      dark: 0.6
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      rule: {n: 3, text: Always tap back}
+      sfx: [{name: knock, at: tap, gain: 0.7}, {name: knock, at: "75%", gain: 0.7}]
+      heartbeat: lamp
+      say: "Rule number three. At three AM, you hear it. Tap, tap, tap, inside the rock. You tap back three times. And far down the tunnel, past the last gate, a small yellow lamp light comes on."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: hallway, lights: "off", dark: 0.6, timbers: true, wall: "#4a3f36", floor: "#2a231d", carpet: "#3a2f26", ceiling: "#1a1512", exit_color: "#ffcf7a"}
+      question: "Walk to the gate or stay by the board?"
+      options:
+        - {text: Walk to the gate, cue: walk}
+        - {text: Stay by the board, cue: stay}
+      say: "Do you walk down to the gate... or stay by the tag board?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: lamp-room-2
+  format: stickman
+  series: LAMP ROOM
+  day: 2
+  day_label: NIGHT
+  meter_label: LAMP
+  place: PENTRE PIT
+  title: "Every night the lamp light in the old mine comes one gate closer ⛏️"
+  tags: [stickman, animation, horror, story, mine, mystery]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "3:01 AM"
+      light: 89
+      lights: "off"
+      dark: 0.6
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      say: "Last night, something tapped inside the rock, and a lamp light came on deep in the old mine."
+    - scene: title
+      say: "Lamp Room. Night two."
+    - scene: map
+      time: "3:05 AM"
+      place: TUNNEL PLAN
+      light: 88
+      route: [[0.5, 0.98], [0.5, 0.15]]
+      route_cue: 0
+      route_end: three
+      stops:
+        - {x: 0.5, y: 0.8, label: "Gate 1", cue: gates}
+        - {x: 0.5, y: 0.6, label: "Gate 2 · never pass", cue: gates}
+        - {x: 0.5, y: 0.4, label: "Gate 3 · the light", ghost: true, cue: three}
+        - {x: 0.5, y: 0.2, label: "Gate 4", cue: four}
+      say: "You stay by the board. The tunnel has four gates. Last night the light was past gate four. Tonight, at three AM, it's at gate three. It came one gate closer."
+    - scene: hallway
+      time: "3:30 AM"
+      light: 86
+      lights: "off"
+      dark: 0.65
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      figures: [{who: person, z: 4.5, x: 0.0, cue: someone}]
+      sfx: [{name: knock, at: taps, gain: 0.7}]
+      say: "Tonight's goal: find out who's down there. You shine your flashlight down the tunnel. Someone is standing behind gate three, holding the lamp. You can't see a face, only the light swinging gently. It taps three times on the rock. You tap back. At dawn, the light goes out."
+    - scene: inventory
+      time: "6:00 AM"
+      place: THE TAG BOARD
+      light: 84
+      items:
+        - {icon: key, count: 46, label: brass tags on the board, cue: board}
+      total: {text: "Fresh coal dust on hook 47", cue: dust}
+      heartbeat: dust
+      say: "When you check the board at six, there's fresh black coal dust on hook forty seven. Like a hand reached for it in the dark, and couldn't quite touch it."
+    - scene: choice
+      time: "6:01 AM"
+      base: {scene: room, window: false, wall: "#5a4a3a", furniture: false, desk: true, clock: true}
+      question: "Ask Dilys or read the old lamp book?"
+      options:
+        - {text: Ask Dilys, cue: ask}
+        - {text: The lamp book, cue: book}
+      say: "Do you ask Dilys... or read the old lamp book?"
+    - scene: endcard
+      time: "6:01 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: lamp-room-3
+  format: stickman
+  series: LAMP ROOM
+  day: 3
+  day_label: NIGHT
+  meter_label: LAMP
+  place: THE LAMP ROOM
+  title: "The old lamp book told me who tag 47 was. He was seventeen ⛏️"
+  tags: [stickman, animation, horror, story, mine, mystery]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "6:01 AM"
+      light: 98
+      lights: "off"
+      dark: 0.6
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      figures: [{who: person, z: 4.5, x: 0.0}]
+      say: "Last night, the lamp light came one gate closer, and there was fresh coal dust on the empty hook."
+    - scene: title
+      say: "Lamp Room. Night three."
+    - scene: map
+      time: "10:10 PM"
+      place: THE LAMP BOOK
+      light: 100
+      route: [[0.3, 0.98], [0.3, 0.2]]
+      route_cue: 0
+      route_end: seren
+      stops:
+        - {x: 0.3, y: 0.85, label: "1938 · roof fall, 4:00 AM", cue: fall}
+        - {x: 0.3, y: 0.65, label: "46 tags back by 6:00", cue: back}
+        - {x: 0.3, y: 0.45, label: "Tag 47 · Tom Pryce, 17", ghost: true, cue: tom}
+      say: "Tonight's goal: learn who tag forty seven was. The old lamp book says, nineteen thirty eight, the roof fell at four AM. Forty six men came up. Tag forty seven, Tom Pryce, seventeen, the pony boy."
+    - scene: room
+      time: "10:20 PM"
+      place: THE LAMP ROOM
+      light: 99
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Tom looked after the pit ponies. When the roof started to crack, he went back down for his pony, Seren. Neither of them came up. Nobody ever found them."
+    - scene: hallway
+      time: "3:00 AM"
+      light: 92
+      lights: "off"
+      dark: 0.65
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      figures: [{who: person, z: 4.0, to_z: 2.6, x: 0.0, cue: gate}]
+      sfx: [{name: knock, at: tap, gain: 0.7}]
+      heartbeat: hooves
+      say: "At three AM, the light comes to gate two. Now you can see him. A thin boy with a sooty face and a lamp. Behind him, in the dark, you hear hooves. He taps three times. Tap, tap, tap. Then he just waits at the gate."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: hallway, lights: "off", dark: 0.65, timbers: true, wall: "#4a3f36", floor: "#2a231d", carpet: "#3a2f26", ceiling: "#1a1512", exit_color: "#ffcf7a", figures: [{who: person, z: 2.6, x: 0.0}]}
+      question: "Open gate two or phone Dilys?"
+      options:
+        - {text: Open the gate, cue: open}
+        - {text: Phone Dilys, cue: phone}
+      say: "Do you open gate two... or phone Dilys?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: lamp-room-4
+  format: stickman
+  series: LAMP ROOM
+  day: 4
+  day_label: NIGHT
+  meter_label: LAMP
+  place: PENTRE PIT
+  title: "Miners used a tap code underground. Three taps meant 'I hear you.' One tap meant something else ⛏️"
+  tags: [stickman, animation, horror, story, mine, mystery]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "3:01 AM"
+      light: 91
+      lights: "off"
+      dark: 0.65
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      figures: [{who: person, z: 2.6, x: 0.0}]
+      say: "Last night, Tom Pryce, the pony boy lost in nineteen thirty eight, came right up to gate two."
+    - scene: title
+      say: "Lamp Room. Night four."
+    - scene: radio
+      time: "3:05 AM"
+      on: phone
+      chip: {text: "Dilys · museum manager", cue: dilys, y: 470}
+      radio_label: "PHONE · DILYS"
+      say:
+        - "You phone Dilys. She goes very quiet."
+        - radio: "Don't open the gate. And don't ever tap just once. My grandmother made every watchman promise. Three taps, always three."
+    - scene: map
+      time: "3:10 AM"
+      place: THE TAP CODE
+      light: 89
+      route: [[0.3, 0.98], [0.3, 0.2]]
+      route_cue: 0
+      route_end: one
+      stops:
+        - {x: 0.3, y: 0.85, label: "Three taps · I hear you", cue: three}
+        - {x: 0.3, y: 0.65, label: "Two taps · stay where you are", cue: two}
+        - {x: 0.3, y: 0.45, label: "One tap · come up", ghost: true, cue: one}
+      say: "She explains the old tap code. Miners talked through the rock. Three taps means, I hear you. Two taps means, stay where you are. And one tap means, come up."
+    - scene: room
+      time: "3:20 AM"
+      place: THE LAMP ROOM
+      light: 88
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: scared, facing: 1}
+      heartbeat: torn
+      say: "Tonight's goal: find out why he never comes up. Every watchman for eighty eight years has only ever said, I hear you. Not once has anyone told him to come up. Then you notice. In the lamp book, the page after the roof fall is torn out."
+    - scene: choice
+      time: "3:21 AM"
+      base: {scene: room, window: false, wall: "#5a4a3a", furniture: false, desk: true, clock: true}
+      question: "Find the torn page or tap once tonight?"
+      options:
+        - {text: Find the page, cue: page}
+        - {text: Tap once, cue: once}
+      say: "Do you search for the torn page... or tap just once tonight?"
+    - scene: endcard
+      time: "3:21 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: lamp-room-5
+  format: stickman
+  series: LAMP ROOM
+  day: 5
+  day_label: NIGHT
+  meter_label: LAMP
+  place: THE LAMP ROOM
+  title: "I found the page someone tore out of the 1938 lamp book ⛏️"
+  tags: [stickman, animation, horror, story, mine, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:21 AM"
+      light: 98
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: scared, facing: 1}
+      say: "Last time, you learned the old tap code. One tap means come up. And someone tore a page out of the lamp book."
+    - scene: title
+      say: "Lamp Room. Night five."
+    - scene: room
+      time: "10:30 PM"
+      light: 100
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.6, action: idle, facing: -1}
+      say: "Tonight's goal: find that page. You search the old foreman's desk. Under the bottom drawer, folded small, yellow with age, is the torn page."
+    - scene: map
+      time: "10:40 PM"
+      place: THE TORN PAGE
+      light: 99
+      route: [[0.3, 0.98], [0.3, 0.2]]
+      route_cue: 0
+      route_end: nobody
+      stops:
+        - {x: 0.3, y: 0.85, label: "4:10 · signalled Pryce: 2 taps", cue: two}
+        - {x: 0.3, y: 0.65, label: "Stay put. Rescue coming.", cue: rescue}
+        - {x: 0.3, y: 0.45, label: "4:30 · second fall. Sealed.", ghost: true, cue: sealed}
+      say: "In the foreman's handwriting. Four ten AM. Signalled Pryce, two taps. Stay put, rescue coming. Four thirty. Second roof fall. Tunnel sealed. Signed, Evan Morgan."
+    - scene: room
+      time: "10:50 PM"
+      light: 98
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.6, action: scared, facing: -1}
+      heartbeat: waiting
+      say: "Two taps. Stay where you are. The rescue never came. And nobody ever told him. Tom has been waiting down there for eighty eight years, doing exactly what he was told."
+    - scene: hallway
+      time: "3:00 AM"
+      light: 92
+      lights: "off"
+      dark: 0.65
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      figures: [{who: person, z: 2.6, x: 0.0, cue: gate}]
+      sfx: [{name: boom, at: rumbles, gain: 0.5}]
+      shake_at: [rumbles]
+      say: "At three AM, he's at gate two again. Tap, tap, tap. Then the whole tunnel rumbles. Dust falls from the roof. If you're going to tell him, it has to be now."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: hallway, lights: "off", dark: 0.65, timbers: true, wall: "#4a3f36", floor: "#2a231d", carpet: "#3a2f26", ceiling: "#1a1512", exit_color: "#ffcf7a", figures: [{who: person, z: 2.6, x: 0.0}]}
+      question: "Tap once or go down and fetch him?"
+      options:
+        - {text: Tap once, cue: once}
+        - {text: Fetch him, cue: fetch}
+      say: "Do you tap just once... or go past the gate and fetch him?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: lamp-room-6
+  format: stickman
+  series: LAMP ROOM
+  day: 6
+  day_label: NIGHT
+  meter_label: LAMP
+  place: PENTRE PIT
+  title: "I tapped once on the rock. After 88 years, the boy in the mine came up ⛏️"
+  tags: [stickman, animation, horror, story, mine, mystery]
+  shots:
+    - scene: hallway
+      recap: true
+      time: "3:01 AM"
+      light: 91
+      lights: "off"
+      dark: 0.65
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      figures: [{who: person, z: 2.6, x: 0.0}]
+      say: "Last time, you found out Tom was told to stay put in nineteen thirty eight, and nobody ever told him he could come up."
+    - scene: title
+      say: "Lamp Room. The last night."
+    - scene: hallway
+      time: "3:02 AM"
+      light: [90, 70]
+      lights: "off"
+      dark: 0.6
+      timbers: true
+      wall: "#4a3f36"
+      floor: "#2a231d"
+      carpet: "#3a2f26"
+      ceiling: "#1a1512"
+      exit_color: "#ffcf7a"
+      figures: [{who: person, z: 2.6, to_z: 1.0, x: 0.0, cue: walks}]
+      sfx: [{name: knock, at: once, gain: 0.9}, {name: click, at: creaks, gain: 0.6}]
+      say: "Tonight's goal: bring him home. You put your hand on the cold rock, and tap once. Come up. Gate two creaks open on its own. And Tom walks up the tunnel, lamp swinging, leading a small grey pony."
+    - scene: inventory
+      time: "3:10 AM"
+      place: THE TAG BOARD
+      light: 68
+      items:
+        - {icon: key, count: 47, label: brass tags on the board, cue: board}
+      total: {text: "47 of 47. Everyone is up.", cue: everyone}
+      say: "He stops at the board, smiles, and hangs tag forty seven on its hook. Click. For the first time since nineteen thirty eight, every tag is back. Everyone is up."
+    - scene: room
+      time: "6:00 AM"
+      place: THE LAMP ROOM
+      light: 66
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#8a6a8a"}]
+      say: "At six, Dilys arrives. You show her the torn page. She reads the name. Evan Morgan. Her great grandfather. He never forgave himself, she says. So he made every watchman tap three. I hear you. He just couldn't bear to say, come up."
+    - scene: room
+      time: "6:05 AM"
+      light: 64
+      window: false
+      wall: "#5a4a3a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#8a6a8a"}]
+      heartbeat: stall
+      say: "Then you both look at Seren's old pony stall, locked since nineteen thirty eight. The straw inside is warm. And on the stall door hangs a brand new brass tag. Number forty eight."
+    - scene: choice
+      time: "6:06 AM"
+      base: {scene: room, window: false, wall: "#5a4a3a", furniture: false, desk: true, clock: true, you: {x: 0.35, action: idle, facing: 1}, people: [{x: 0.65, action: idle, facing: -1, color: "#8a6a8a"}]}
+      question: "Open the stall or leave it locked?"
+      options:
+        - {text: Open it, cue: open}
+        - {text: Leave it, cue: leave}
+      say: "So. Do you open the stall... or leave it locked?"
+    - scene: endcard
+      time: "6:06 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."

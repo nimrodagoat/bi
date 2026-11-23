@@ -82,7 +82,7 @@ Cues (when something happens) are a word the narrator says in that shot
 - `endcard`: "follow for day N+1"; flips to the next day at the end. `final: true` on the
   last part: "THE END?" and "follow for a new story".
 
-Hallway `shelves: true` turns the doors into tall bookcases (library stacks). Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a garage or a
+Hallway `shelves: true` turns the doors into tall bookcases (library stacks). Hallway `timbers: true` turns them into wooden pit props and roof beams (a mine tunnel). Hallway colours: `wall`, `floor`, `carpet`, `ceiling`, `exit_color` (e.g. a garage or a
 stadium tunnel); a `who: person` figure can have `stare: true` (shining eyes).
 Street: `floodlights: cue` (bright lights ahead), `dawn: true` (sunrise sky), `rooftop: true`, `sea: true` (open water instead
 of buildings: a causeway or pier; pair it with a blue `fog` for rising water),
