@@ -56,7 +56,8 @@ bowler one strike from a perfect game; twist: you gutter your last ball so he ca
 town for an hour; rescue-across-time twist: you catch the girl who fell in 1962, and she is Agnes on the phone), NIGHT LOAF (6, village night baker; an extra loaf feeds the
 Neighbour, who guards the village from the woods; meter_label OVEN; twist: it is the old baker's grandfather), THE TOLL (6, toll-bridge night keeper; the Collector pays
 what you ask and takes the same from the town; clever win: charge it everything it ever took). LAMP ROOM (6, coal-mine museum night watchman; tag 47 missing since 1938; hallway `timbers` = mine tunnel;
-twist: the miners' tap code, the boy was told "stay put" and nobody ever tapped "come up"). Never reuse a premise; keep every series
+twist: the miners' tap code, the boy was told "stay put" and nobody ever tapped "come up"). HEADCOUNT (6, city-zoo night keeper; every count one too
+many; street `counter` as headcounts; twist: the uncounted thing in Enclosure 9 just wanted to be counted, and next night it is two). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 Nov 2: the owner is weighing a switch to how-it-works explainers (2D `style: explainer` cut-aways with
 stickman wizards, or 3D via Blender: `tools/blender/`, `.github/workflows/preview-3d.yml`); previews go
