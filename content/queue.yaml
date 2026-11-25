@@ -15,131 +15,6 @@
 #   tags          YouTube tags
 #   description   optional; generated from the script if missing
 
-- id: lamp-room-3
-  format: stickman
-  series: LAMP ROOM
-  day: 3
-  day_label: NIGHT
-  meter_label: LAMP
-  place: THE LAMP ROOM
-  title: The old lamp book told me who tag 47 was. He was seventeen ⛏️
-  tags:
-  - stickman
-  - animation
-  - horror
-  - story
-  - mine
-  - mystery
-  shots:
-  - scene: hallway
-    recap: true
-    time: 6:01 AM
-    light: 98
-    lights: 'off'
-    dark: 0.6
-    timbers: true
-    wall: '#4a3f36'
-    floor: '#2a231d'
-    carpet: '#3a2f26'
-    ceiling: '#1a1512'
-    exit_color: '#ffcf7a'
-    figures:
-    - who: person
-      z: 4.5
-      x: 0.0
-    say: Last night, the lamp light came one gate closer, and there was fresh coal dust on the empty hook.
-  - scene: title
-    say: Lamp Room. Night three.
-  - scene: map
-    time: 10:10 PM
-    place: THE LAMP BOOK
-    light: 100
-    route:
-    - - 0.3
-      - 0.98
-    - - 0.3
-      - 0.2
-    route_cue: 0
-    route_end: seren
-    stops:
-    - x: 0.3
-      y: 0.85
-      label: 1938 · roof fall, 4:00 AM
-      cue: fall
-    - x: 0.3
-      y: 0.65
-      label: 46 tags back by 6:00
-      cue: back
-    - x: 0.3
-      y: 0.45
-      label: Tag 47 · Tom Pryce, 17
-      ghost: true
-      cue: tom
-    say: 'Tonight''s goal: learn who tag forty seven was. The old lamp book says, nineteen thirty eight, the roof fell at four AM. Forty six men came up. Tag forty seven, Tom Pryce, seventeen, the pony boy.'
-  - scene: room
-    time: 10:20 PM
-    place: THE LAMP ROOM
-    light: 99
-    window: false
-    wall: '#5a4a3a'
-    furniture: false
-    desk: true
-    clock: true
-    you:
-      x: 0.45
-      action: idle
-      facing: 1
-    say: Tom looked after the pit ponies. When the roof started to crack, he went back down for his pony, Seren. Neither of them came up. Nobody ever found them.
-  - scene: hallway
-    time: 3:00 AM
-    light: 92
-    lights: 'off'
-    dark: 0.65
-    timbers: true
-    wall: '#4a3f36'
-    floor: '#2a231d'
-    carpet: '#3a2f26'
-    ceiling: '#1a1512'
-    exit_color: '#ffcf7a'
-    figures:
-    - who: person
-      z: 4.0
-      to_z: 2.6
-      x: 0.0
-      cue: gate
-    sfx:
-    - name: knock
-      at: tap
-      gain: 0.7
-    heartbeat: hooves
-    say: At three AM, the light comes to gate two. Now you can see him. A thin boy with a sooty face and a lamp. Behind him, in the dark, you hear hooves. He taps three times. Tap, tap, tap. Then he just waits at the gate.
-  - scene: choice
-    time: 3:01 AM
-    base:
-      scene: hallway
-      lights: 'off'
-      dark: 0.65
-      timbers: true
-      wall: '#4a3f36'
-      floor: '#2a231d'
-      carpet: '#3a2f26'
-      ceiling: '#1a1512'
-      exit_color: '#ffcf7a'
-      figures:
-      - who: person
-        z: 2.6
-        x: 0.0
-    question: Open gate two or phone Dilys?
-    options:
-    - text: Open the gate
-      cue: open
-    - text: Phone Dilys
-      cue: phone
-    say: Do you open gate two... or phone Dilys?
-  - scene: endcard
-    time: 3:01 AM
-    hold: 1.6
-    say: Follow for night four.
 - id: lamp-room-4
   format: stickman
   series: LAMP ROOM
@@ -532,84 +407,149 @@
   day_label: NIGHT
   meter_label: TORCH
   place: BRACKLEY ZOO
-  title: "I'm the night keeper at a zoo. Every night my count comes out one too many 🦩"
-  tags: [stickman, animation, horror, story, zoo, mystery]
+  title: I'm the night keeper at a zoo. Every night my count comes out one too many 🦩
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - zoo
+  - mystery
   shots:
-    - scene: room
-      time: "10:00 PM"
-      place: KEEPER'S HUT
-      light: 100
-      wall: "#55684a"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      you: {x: 0.4, action: idle, facing: 1}
-      say: "You take the night job at Brackley City Zoo. Ten PM to six AM. Your job is simple. Count every animal, and write the numbers on the board in the keeper's hut."
-    - scene: radio
-      time: "10:05 PM"
-      on: radio
-      chip: {text: "Mr. Osei · head keeper", cue: osei, y: 470}
-      radio_label: "RADIO · MR. OSEI"
-      say:
-        - "Mr. Osei, the head keeper, radios the rules."
-        - radio: "Three rules. Count at midnight, three and six. If a count comes out one too many, never recount. Write it down and walk on. And never go into Enclosure Nine."
-    - scene: title
-      say: "Headcount. Night one."
-    - scene: street
-      time: "12:00 AM"
-      place: THE ZOO PATH
-      light: 99
-      pace: walk
-      speed: 200
-      dark: 0.5
-      you: {light: true}
-      rule: {n: 1, text: "Count at 12, 3 and 6"}
-      counter:
-        - {text: "4", label: penguins, cue: four}
-        - {text: "12", label: flamingos, cue: twelve}
-        - {text: "2", label: camels, cue: two}
-      say: "Rule number one. Count at midnight, three and six. Four penguins. Twelve flamingos. Two camels. Everything matches."
-    - scene: map
-      time: "12:30 AM"
-      place: ZOO PLAN
-      light: 98
-      rule: {n: 3, text: Never enter Enclosure 9}
-      route: [[0.5, 0.98], [0.5, 0.25]]
-      route_cue: 0
-      route_end: nine
-      stops:
-        - {x: 0.5, y: 0.8, label: "Hut", cue: hut}
-        - {x: 0.5, y: 0.6, label: "Camels · Flamingos", cue: hut}
-        - {x: 0.5, y: 0.4, label: "Penguins", cue: hut}
-        - {x: 0.5, y: 0.25, label: "Enclosure 9 · empty since 1987", ghost: true, cue: nine}
-      say: "Rule number three. Never go into Enclosure Nine, at the far end of the zoo. It's been empty since nineteen eighty seven."
-    - scene: street
-      time: "3:00 AM"
-      place: THE ZOO PATH
-      light: 94
+  - scene: room
+    time: 10:00 PM
+    place: KEEPER'S HUT
+    light: 100
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    you:
+      x: 0.4
+      action: idle
+      facing: 1
+    say: You take the night job at Brackley City Zoo. Ten PM to six AM. Your job is simple. Count every animal, and write the numbers on the board in the keeper's hut.
+  - scene: radio
+    time: 10:05 PM
+    true: radio
+    chip:
+      text: Mr. Osei · head keeper
+      cue: osei
+      y: 470
+    radio_label: RADIO · MR. OSEI
+    say:
+    - Mr. Osei, the head keeper, radios the rules.
+    - radio: Three rules. Count at midnight, three and six. If a count comes out one too many, never recount. Write it down and walk on. And never go into Enclosure Nine.
+  - scene: title
+    say: Headcount. Night one.
+  - scene: street
+    time: 12:00 AM
+    place: THE ZOO PATH
+    light: 99
+    pace: walk
+    speed: 200
+    dark: 0.5
+    you:
+      light: true
+    rule:
+      n: 1
+      text: Count at 12, 3 and 6
+    counter:
+    - text: '4'
+      label: penguins
+      cue: four
+    - text: '12'
+      label: flamingos
+      cue: twelve
+    - text: '2'
+      label: camels
+      cue: two
+    say: Rule number one. Count at midnight, three and six. Four penguins. Twelve flamingos. Two camels. Everything matches.
+  - scene: map
+    time: 12:30 AM
+    place: ZOO PLAN
+    light: 98
+    rule:
+      n: 3
+      text: Never enter Enclosure 9
+    route:
+    - - 0.5
+      - 0.98
+    - - 0.5
+      - 0.25
+    route_cue: 0
+    route_end: nine
+    stops:
+    - x: 0.5
+      y: 0.8
+      label: Hut
+      cue: hut
+    - x: 0.5
+      y: 0.6
+      label: Camels · Flamingos
+      cue: hut
+    - x: 0.5
+      y: 0.4
+      label: Penguins
+      cue: hut
+    - x: 0.5
+      y: 0.25
+      label: Enclosure 9 · empty since 1987
+      ghost: true
+      cue: nine
+    say: Rule number three. Never go into Enclosure Nine, at the far end of the zoo. It's been empty since nineteen eighty seven.
+  - scene: street
+    time: 3:00 AM
+    place: THE ZOO PATH
+    light: 94
+    stop: 0
+    dark: 0.65
+    you:
+      light: true
+      facing: 1
+    people:
+    - x: 0.72
+      action: idle
+      facing: -1
+      color: '#2c2c30'
+      stare: true
+      cue: apart
+    rule:
+      n: 2
+      text: One too many? Never recount
+    counter:
+    - text: '5'
+      label: penguins
+      cue: five
+    heartbeat: apart
+    say: 'Rule number two. At three AM, you count the penguins. Five. There should be four. One of them stands apart, too still, and its eyes shine in your torch. Tonight''s goal: get to six.'
+  - scene: choice
+    time: 3:01 AM
+    base:
+      scene: street
       stop: 0
       dark: 0.65
-      you: {light: true, facing: 1}
-      people: [{x: 0.72, action: idle, facing: -1, color: "#2c2c30", stare: true, cue: apart}]
-      rule: {n: 2, text: "One too many? Never recount"}
-      counter:
-        - {text: "5", label: penguins, cue: five}
-      heartbeat: apart
-      say: "Rule number two. At three AM, you count the penguins. Five. There should be four. One of them stands apart, too still, and its eyes shine in your torch. Tonight's goal: get to six."
-    - scene: choice
-      time: "3:01 AM"
-      base: {scene: street, stop: 0, dark: 0.65, you: {light: true, facing: 1}, people: [{x: 0.72, action: idle, facing: -1, color: "#2c2c30", stare: true}]}
-      question: "Write it down or recount?"
-      options:
-        - {text: Write it down, cue: write}
-        - {text: Recount, cue: recount}
-      say: "Do you write it down and walk on... or recount?"
-    - scene: endcard
-      time: "3:01 AM"
-      hold: 1.6
-      say: "Follow for night two."
-
+      you:
+        light: true
+        facing: 1
+      people:
+      - x: 0.72
+        action: idle
+        facing: -1
+        color: '#2c2c30'
+        stare: true
+    question: Write it down or recount?
+    options:
+    - text: Write it down
+      cue: write
+    - text: Recount
+      cue: recount
+    say: Do you write it down and walk on... or recount?
+  - scene: endcard
+    time: 3:01 AM
+    hold: 1.6
+    say: Follow for night two.
 - id: headcount-2
   format: stickman
   series: HEADCOUNT
@@ -617,69 +557,125 @@
   day_label: NIGHT
   meter_label: TORCH
   place: BRACKLEY ZOO
-  title: "The extra animal at the zoo is one enclosure closer to my hut every night 🦩"
-  tags: [stickman, animation, horror, story, zoo, mystery]
+  title: The extra animal at the zoo is one enclosure closer to my hut every night 🦩
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - zoo
+  - mystery
   shots:
-    - scene: street
-      recap: true
-      time: "3:01 AM"
-      light: 93
-      stop: 0
-      dark: 0.65
-      you: {light: true, facing: 1}
-      people: [{x: 0.72, action: idle, facing: -1, color: "#2c2c30", stare: true}]
-      say: "Last night, your three AM count came out one too many. An extra penguin, with shining eyes."
-    - scene: title
-      say: "Headcount. Night two."
-    - scene: room
-      time: "6:00 AM"
-      place: KEEPER'S HUT
-      light: 92
-      wall: "#55684a"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      you: {x: 0.45, action: idle, facing: 1}
-      say: "You wrote it down and walked on. At six, there were four penguins again. But on the path from the pool, there were thin muddy footprints, leading away toward Enclosure Nine. Not penguin feet. Something longer, with too many toes. You don't follow them. Not yet."
-    - scene: street
-      time: "3:00 AM"
-      place: THE ZOO PATH
-      light: 90
+  - scene: street
+    recap: true
+    time: 3:01 AM
+    light: 93
+    stop: 0
+    dark: 0.65
+    you:
+      light: true
+      facing: 1
+    people:
+    - x: 0.72
+      action: idle
+      facing: -1
+      color: '#2c2c30'
+      stare: true
+    say: Last night, your three AM count came out one too many. An extra penguin, with shining eyes.
+  - scene: title
+    say: Headcount. Night two.
+  - scene: room
+    time: 6:00 AM
+    place: KEEPER'S HUT
+    light: 92
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    you:
+      x: 0.45
+      action: idle
+      facing: 1
+    say: You wrote it down and walked on. At six, there were four penguins again. But on the path from the pool, there were thin muddy footprints, leading away toward Enclosure Nine. Not penguin feet. Something longer, with too many toes. You don't follow them. Not yet.
+  - scene: street
+    time: 3:00 AM
+    place: THE ZOO PATH
+    light: 90
+    stop: 0
+    dark: 0.7
+    you:
+      light: true
+      facing: 1
+    people:
+    - x: 0.68
+      action: idle
+      facing: -1
+      color: '#2c2c30'
+      stare: true
+      cue: still
+    counter:
+    - text: '13'
+      label: flamingos
+      cue: thirteen
+    heartbeat: still
+    say: 'Tonight''s goal: keep the rules, and get to six. At three AM, the flamingos. Thirteen. There should be twelve. One of them doesn''t stand on one leg. It stands perfectly still, and it''s looking right at you. You write it down, and walk on.'
+  - scene: map
+    time: 3:05 AM
+    place: ZOO PLAN
+    light: 88
+    route:
+    - - 0.5
+      - 0.25
+    - - 0.5
+      - 0.6
+    route_cue: 0
+    route_end: closer
+    stops:
+    - x: 0.5
+      y: 0.8
+      label: Hut
+      cue: hut
+    - x: 0.5
+      y: 0.6
+      label: Flamingos · tonight
+      ghost: true
+      cue: closer
+    - x: 0.5
+      y: 0.4
+      label: Penguins · last night
+      cue: last
+    - x: 0.5
+      y: 0.25
+      label: Enclosure 9
+      cue: nine
+    say: Then you see the pattern. Last night, the penguins. Tonight, the flamingos. It's coming one enclosure closer to your hut every night.
+  - scene: choice
+    time: 3:06 AM
+    base:
+      scene: street
       stop: 0
       dark: 0.7
-      you: {light: true, facing: 1}
-      people: [{x: 0.68, action: idle, facing: -1, color: "#2c2c30", stare: true, cue: still}]
-      counter:
-        - {text: "13", label: flamingos, cue: thirteen}
-      heartbeat: still
-      say: "Tonight's goal: keep the rules, and get to six. At three AM, the flamingos. Thirteen. There should be twelve. One of them doesn't stand on one leg. It stands perfectly still, and it's looking right at you. You write it down, and walk on."
-    - scene: map
-      time: "3:05 AM"
-      place: ZOO PLAN
-      light: 88
-      route: [[0.5, 0.25], [0.5, 0.6]]
-      route_cue: 0
-      route_end: closer
-      stops:
-        - {x: 0.5, y: 0.8, label: "Hut", cue: hut}
-        - {x: 0.5, y: 0.6, label: "Flamingos · tonight", ghost: true, cue: closer}
-        - {x: 0.5, y: 0.4, label: "Penguins · last night", cue: last}
-        - {x: 0.5, y: 0.25, label: "Enclosure 9", cue: nine}
-      say: "Then you see the pattern. Last night, the penguins. Tonight, the flamingos. It's coming one enclosure closer to your hut every night."
-    - scene: choice
-      time: "3:06 AM"
-      base: {scene: street, stop: 0, dark: 0.7, you: {light: true, facing: 1}, people: [{x: 0.68, action: idle, facing: -1, color: "#2c2c30", stare: true}]}
-      question: "Follow the footprints or radio Mr. Osei?"
-      options:
-        - {text: Follow them, cue: follow}
-        - {text: Radio Osei, cue: radio}
-      say: "Do you follow the footprints... or radio Mr. Osei?"
-    - scene: endcard
-      time: "3:06 AM"
-      hold: 1.6
-      say: "Follow for night three."
-
+      you:
+        light: true
+        facing: 1
+      people:
+      - x: 0.68
+        action: idle
+        facing: -1
+        color: '#2c2c30'
+        stare: true
+    question: Follow the footprints or radio Mr. Osei?
+    options:
+    - text: Follow them
+      cue: follow
+    - text: Radio Osei
+      cue: radio
+    say: Do you follow the footprints... or radio Mr. Osei?
+  - scene: endcard
+    time: 3:06 AM
+    hold: 1.6
+    say: Follow for night three.
 - id: headcount-3
   format: stickman
   series: HEADCOUNT
@@ -687,73 +683,126 @@
   day_label: NIGHT
   meter_label: TORCH
   place: KEEPER'S HUT
-  title: "I asked the head keeper why we never count Enclosure 9 🦩"
-  tags: [stickman, animation, horror, story, zoo, mystery]
+  title: I asked the head keeper why we never count Enclosure 9 🦩
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - zoo
+  - mystery
   shots:
-    - scene: map
-      recap: true
-      time: "3:06 AM"
-      place: ZOO PLAN
-      light: 98
-      route: [[0.5, 0.25], [0.5, 0.6]]
-      route_cue: 0
-      route_end: hut
-      stops:
-        - {x: 0.5, y: 0.8, label: "Hut", cue: hut}
-        - {x: 0.5, y: 0.6, label: "Flamingos", ghost: true, cue: hut}
-        - {x: 0.5, y: 0.25, label: "Enclosure 9", cue: hut}
-      say: "Last night, the extra animal came one enclosure closer to your hut, and its footprints led to Enclosure Nine."
-    - scene: title
-      say: "Headcount. Night three."
-    - scene: radio
-      time: "10:10 PM"
-      place: KEEPER'S HUT
-      on: radio
-      chip: {text: "Mr. Osei · head keeper", cue: osei, y: 470}
-      radio_label: "RADIO · MR. OSEI"
-      say:
-        - "You radio Mr. Osei. Tonight's goal: find out what lived in Enclosure Nine."
-        - radio: "Nineteen eighty seven, a storm blew the sign off Nine. After that, nobody remembered what lived there. The old manager said, don't count it, and it'll go away. So we never did."
-    - scene: room
-      time: "3:00 AM"
-      place: KEEPER'S HUT
-      light: 90
-      wall: "#55684a"
+  - scene: map
+    recap: true
+    time: 3:06 AM
+    place: ZOO PLAN
+    light: 98
+    route:
+    - - 0.5
+      - 0.25
+    - - 0.5
+      - 0.6
+    route_cue: 0
+    route_end: hut
+    stops:
+    - x: 0.5
+      y: 0.8
+      label: Hut
+      cue: hut
+    - x: 0.5
+      y: 0.6
+      label: Flamingos
+      ghost: true
+      cue: hut
+    - x: 0.5
+      y: 0.25
+      label: Enclosure 9
+      cue: hut
+    say: Last night, the extra animal came one enclosure closer to your hut, and its footprints led to Enclosure Nine.
+  - scene: title
+    say: Headcount. Night three.
+  - scene: radio
+    time: 10:10 PM
+    place: KEEPER'S HUT
+    true: radio
+    chip:
+      text: Mr. Osei · head keeper
+      cue: osei
+      y: 470
+    radio_label: RADIO · MR. OSEI
+    say:
+    - 'You radio Mr. Osei. Tonight''s goal: find out what lived in Enclosure Nine.'
+    - radio: Nineteen eighty seven, a storm blew the sign off Nine. After that, nobody remembered what lived there. The old manager said, don't count it, and it'll go away. So we never did.
+  - scene: room
+    time: 3:00 AM
+    place: KEEPER'S HUT
+    light: 90
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.5
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    window_lights:
+    - x: 0.5
+      y: 0.7
+      color: '#fff2c0'
+      cue: eyes
+      n: 2
+    heartbeat: eyes
+    say: At three AM, you count the camels from the hut window. Three. There should be two. And the third one isn't in the camel pen. It's standing right outside your window. Two shining eyes, very close to the glass.
+  - scene: room
+    time: 3:02 AM
+    light: 89
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.5
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    window_lights:
+    - x: 0.5
+      y: 0.7
+      color: '#fff2c0'
+      n: 2
+    sfx:
+    - name: knock
+      at: knock
+      gain: 0.7
+    say: Then, very gently, something knocks on the hut door. Not hard. Just once. Like it's asking to come in. Your torch flickers in your hand.
+  - scene: choice
+    time: 3:03 AM
+    base:
+      scene: room
+      wall: '#55684a'
       furniture: false
       desk: true
       clock: true
       window_view: forest
       dark: 0.5
-      you: {x: 0.3, action: scared, facing: 1}
-      window_lights: [{x: 0.5, y: 0.7, color: "#fff2c0", cue: eyes, n: 2}]
-      heartbeat: eyes
-      say: "At three AM, you count the camels from the hut window. Three. There should be two. And the third one isn't in the camel pen. It's standing right outside your window. Two shining eyes, very close to the glass."
-    - scene: room
-      time: "3:02 AM"
-      light: 89
-      wall: "#55684a"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.5
-      you: {x: 0.3, action: scared, facing: 1}
-      window_lights: [{x: 0.5, y: 0.7, color: "#fff2c0", n: 2}]
-      sfx: [{name: knock, at: knock, gain: 0.7}]
-      say: "Then, very gently, something knocks on the hut door. Not hard. Just once. Like it's asking to come in. Your torch flickers in your hand."
-    - scene: choice
-      time: "3:03 AM"
-      base: {scene: room, wall: "#55684a", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.5, you: {x: 0.3, action: scared, facing: 1}}
-      question: "Open the door or keep it shut?"
-      options:
-        - {text: Open it, cue: open}
-        - {text: Keep it shut, cue: shut}
-      say: "Do you open the hut door... or keep it shut?"
-    - scene: endcard
-      time: "3:03 AM"
-      hold: 1.6
-      say: "Follow for night four."
-
+      you:
+        x: 0.3
+        action: scared
+        facing: 1
+    question: Open the door or keep it shut?
+    options:
+    - text: Open it
+      cue: open
+    - text: Keep it shut
+      cue: shut
+    say: Do you open the hut door... or keep it shut?
+  - scene: endcard
+    time: 3:03 AM
+    hold: 1.6
+    say: Follow for night four.
 - id: headcount-4
   format: stickman
   series: HEADCOUNT
@@ -761,68 +810,137 @@
   day_label: NIGHT
   meter_label: TORCH
   place: KEEPER'S HUT
-  title: "Something left the old Enclosure 9 sign on my doorstep. I read the zoo's 1987 records 🦩"
-  tags: [stickman, animation, horror, story, zoo, mystery]
+  title: Something left the old Enclosure 9 sign on my doorstep. I read the zoo's 1987 records 🦩
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - zoo
+  - mystery
   shots:
-    - scene: room
-      recap: true
-      time: "3:03 AM"
-      light: 98
-      wall: "#55684a"
+  - scene: room
+    recap: true
+    time: 3:03 AM
+    light: 98
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.5
+    you:
+      x: 0.3
+      action: scared
+      facing: 1
+    say: Last night, the extra animal stood right outside your hut, and knocked once on the door.
+  - scene: title
+    say: Headcount. Night four.
+  - scene: room
+    time: 3:04 AM
+    light: 97
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.45
+    door_open:
+    - - false
+      - 0
+    - - true
+      - opens
+    you:
+      x: 0.55
+      action: idle
+      facing: 1
+    say: You open the door. Nothing's there. But on the step lies an old wooden sign, covered in mud. It says Enclosure Nine. The rest is worn away. Only two words are left. The last. Underneath, in the mud, are the same long footprints, with too many toes.
+  - scene: map
+    time: 9:00 AM
+    place: ZOO RECORDS 1987
+    light: 96
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.2
+    route_cue: 0
+    route_end: last
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: Enclosure 9 · one animal
+      cue: one
+    - x: 0.3
+      y: 0.65
+      label: Found in the hills, 1961
+      cue: hills
+    - x: 0.3
+      y: 0.45
+      label: The last of its kind
+      ghost: true
+      cue: last
+    say: 'Tonight''s goal: find out what the sign meant. In the zoo''s old records, Enclosure Nine. One animal. Found in the hills in nineteen sixty one. The last of its kind. No name. No photo.'
+  - scene: cctv
+    time: 3:00 AM
+    place: KEEPER'S HUT
+    cam: CAM 01 · KEEPER'S HUT
+    light: 90
+    view:
+      scene: room
+      wall: '#55684a'
       furniture: false
       desk: true
       clock: true
       window_view: forest
-      dark: 0.5
-      you: {x: 0.3, action: scared, facing: 1}
-      say: "Last night, the extra animal stood right outside your hut, and knocked once on the door."
-    - scene: title
-      say: "Headcount. Night four."
-    - scene: room
-      time: "3:04 AM"
-      light: 97
-      wall: "#55684a"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.45
-      door_open: [[false, 0], [true, opens]]
-      you: {x: 0.55, action: idle, facing: 1}
-      say: "You open the door. Nothing's there. But on the step lies an old wooden sign, covered in mud. It says Enclosure Nine. The rest is worn away. Only two words are left. The last. Underneath, in the mud, are the same long footprints, with too many toes."
-    - scene: map
-      time: "9:00 AM"
-      place: ZOO RECORDS 1987
-      light: 96
-      route: [[0.3, 0.98], [0.3, 0.2]]
-      route_cue: 0
-      route_end: last
-      stops:
-        - {x: 0.3, y: 0.85, label: "Enclosure 9 · one animal", cue: one}
-        - {x: 0.3, y: 0.65, label: "Found in the hills, 1961", cue: hills}
-        - {x: 0.3, y: 0.45, label: "The last of its kind", ghost: true, cue: last}
-      say: "Tonight's goal: find out what the sign meant. In the zoo's old records, Enclosure Nine. One animal. Found in the hills in nineteen sixty one. The last of its kind. No name. No photo."
-    - scene: cctv
-      time: "3:00 AM"
-      place: KEEPER'S HUT
-      cam: "CAM 01 · KEEPER'S HUT"
-      light: 90
-      view: {scene: room, wall: "#55684a", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.4, you: {x: 0.4, action: idle, facing: 1}, people: [{x: 0.15, action: idle, facing: 1, color: "#2c2c30", stare: true, cue: two}]}
-      heartbeat: two
-      say: "At three AM, you count yourself in. One keeper on shift. But on the hut camera, there are two keepers. You. And something standing right behind you, copying how you stand."
-    - scene: choice
-      time: "3:01 AM"
-      base: {scene: cctv, cam: "CAM 01 · KEEPER'S HUT", view: {scene: room, wall: "#55684a", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.4, you: {x: 0.4, action: idle, facing: 1}, people: [{x: 0.15, action: idle, facing: 1, color: "#2c2c30", stare: true}]}}
-      question: "Turn around or switch off the screen?"
-      options:
-        - {text: Turn, cue: turn}
-        - {text: Switch off, cue: off}
-      say: "Do you turn around... or switch off the screen?"
-    - scene: endcard
-      time: "3:01 AM"
-      hold: 1.6
-      say: "Follow for night five."
-
+      dark: 0.4
+      you:
+        x: 0.4
+        action: idle
+        facing: 1
+      people:
+      - x: 0.15
+        action: idle
+        facing: 1
+        color: '#2c2c30'
+        stare: true
+        cue: two
+    heartbeat: two
+    say: At three AM, you count yourself in. One keeper on shift. But on the hut camera, there are two keepers. You. And something standing right behind you, copying how you stand.
+  - scene: choice
+    time: 3:01 AM
+    base:
+      scene: cctv
+      cam: CAM 01 · KEEPER'S HUT
+      view:
+        scene: room
+        wall: '#55684a'
+        furniture: false
+        desk: true
+        clock: true
+        window_view: forest
+        dark: 0.4
+        you:
+          x: 0.4
+          action: idle
+          facing: 1
+        people:
+        - x: 0.15
+          action: idle
+          facing: 1
+          color: '#2c2c30'
+          stare: true
+    question: Turn around or switch off the screen?
+    options:
+    - text: Turn
+      cue: turn
+    - text: Switch off
+      cue: false
+    say: Do you turn around... or switch off the screen?
+  - scene: endcard
+    time: 3:01 AM
+    hold: 1.6
+    say: Follow for night five.
 - id: headcount-5
   format: stickman
   series: HEADCOUNT
@@ -830,69 +948,135 @@
   day_label: NIGHT
   meter_label: TORCH
   place: KEEPER'S HUT
-  title: "I turned around. The thing from Enclosure 9 was holding out a clipboard 🦩"
-  tags: [stickman, animation, horror, story, zoo, mystery]
+  title: I turned around. The thing from Enclosure 9 was holding out a clipboard 🦩
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - zoo
+  - mystery
   shots:
-    - scene: cctv
-      recap: true
-      time: "3:01 AM"
-      cam: "CAM 01 · KEEPER'S HUT"
-      light: 98
-      view: {scene: room, wall: "#55684a", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.4, you: {x: 0.4, action: idle, facing: 1}, people: [{x: 0.15, action: idle, facing: 1, color: "#2c2c30", stare: true}]}
-      say: "Last time, the hut camera showed two keepers. You, and something standing right behind you."
-    - scene: title
-      say: "Headcount. Night five."
-    - scene: room
-      time: "3:02 AM"
-      light: 96
-      wall: "#55684a"
+  - scene: cctv
+    recap: true
+    time: 3:01 AM
+    cam: CAM 01 · KEEPER'S HUT
+    light: 98
+    view:
+      scene: room
+      wall: '#55684a'
       furniture: false
       desk: true
       clock: true
       window_view: forest
       dark: 0.4
-      you: {x: 0.55, action: scared, facing: -1}
-      creatures: [{x: 0.22, facing: 1, scale: 0.9, cue: turn}]
-      heartbeat: turn
-      say: "You turn around. It's tall and thin and grey, folded into the corner of the hut, like it's trying to look small. It doesn't move toward you. It just holds out an old clipboard, with long grey fingers, very carefully, like it's scared you'll say no."
-    - scene: map
-      time: "3:05 AM"
-      place: THE OLD CLIPBOARD
-      light: 95
-      route: [[0.3, 0.98], [0.3, 0.2]]
-      route_cue: 0
-      route_end: nine
-      stops:
-        - {x: 0.3, y: 0.85, label: "Penguins 4 · Flamingos 12", cue: list}
-        - {x: 0.3, y: 0.65, label: "Camels 2", cue: list}
-        - {x: 0.3, y: 0.45, label: "Enclosure 9 · DO NOT COUNT", ghost: true, cue: nine}
-      say: "Tonight's goal: understand what it wants. It's the nineteen eighty seven headcount. Every enclosure has a number. Except one. Enclosure Nine, crossed out. Do not count."
-    - scene: room
-      time: "3:10 AM"
-      place: KEEPER'S HUT
-      light: 94
-      wall: "#55684a"
+      you:
+        x: 0.4
+        action: idle
+        facing: 1
+      people:
+      - x: 0.15
+        action: idle
+        facing: 1
+        color: '#2c2c30'
+        stare: true
+    say: Last time, the hut camera showed two keepers. You, and something standing right behind you.
+  - scene: title
+    say: Headcount. Night five.
+  - scene: room
+    time: 3:02 AM
+    light: 96
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.4
+    you:
+      x: 0.55
+      action: scared
+      facing: -1
+    creatures:
+    - x: 0.22
+      facing: 1
+      scale: 0.9
+      cue: turn
+    heartbeat: turn
+    say: You turn around. It's tall and thin and grey, folded into the corner of the hut, like it's trying to look small. It doesn't move toward you. It just holds out an old clipboard, with long grey fingers, very carefully, like it's scared you'll say no.
+  - scene: map
+    time: 3:05 AM
+    place: THE OLD CLIPBOARD
+    light: 95
+    route:
+    - - 0.3
+      - 0.98
+    - - 0.3
+      - 0.2
+    route_cue: 0
+    route_end: nine
+    stops:
+    - x: 0.3
+      y: 0.85
+      label: Penguins 4 · Flamingos 12
+      cue: list
+    - x: 0.3
+      y: 0.65
+      label: Camels 2
+      cue: list
+    - x: 0.3
+      y: 0.45
+      label: Enclosure 9 · DO NOT COUNT
+      ghost: true
+      cue: nine
+    say: 'Tonight''s goal: understand what it wants. It''s the nineteen eighty seven headcount. Every enclosure has a number. Except one. Enclosure Nine, crossed out. Do not count.'
+  - scene: room
+    time: 3:10 AM
+    place: KEEPER'S HUT
+    light: 94
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.4
+    you:
+      x: 0.55
+      action: idle
+      facing: -1
+    creatures:
+    - x: 0.22
+      facing: 1
+      scale: 0.9
+    say: And you understand. For almost forty years, nobody counted it. Nobody fed it on time, or checked it, or looked at it properly. So it copied the penguins, the flamingos, the camels, and tonight, you. It just wanted to be on the board.
+  - scene: choice
+    time: 3:11 AM
+    base:
+      scene: room
+      wall: '#55684a'
       furniture: false
       desk: true
       clock: true
       window_view: forest
       dark: 0.4
-      you: {x: 0.55, action: idle, facing: -1}
-      creatures: [{x: 0.22, facing: 1, scale: 0.9}]
-      say: "And you understand. For almost forty years, nobody counted it. Nobody fed it on time, or checked it, or looked at it properly. So it copied the penguins, the flamingos, the camels, and tonight, you. It just wanted to be on the board."
-    - scene: choice
-      time: "3:11 AM"
-      base: {scene: room, wall: "#55684a", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.4, you: {x: 0.55, action: idle, facing: -1}, creatures: [{x: 0.22, facing: 1, scale: 0.9}]}
-      question: "Count it or send it away?"
-      options:
-        - {text: Count it, cue: count}
-        - {text: Send it away, cue: away}
-      say: "Do you count it... or send it away?"
-    - scene: endcard
-      time: "3:11 AM"
-      hold: 1.6
-      say: "Follow for the last night."
-
+      you:
+        x: 0.55
+        action: idle
+        facing: -1
+      creatures:
+      - x: 0.22
+        facing: 1
+        scale: 0.9
+    question: Count it or send it away?
+    options:
+    - text: Count it
+      cue: count
+    - text: Send it away
+      cue: away
+    say: Do you count it... or send it away?
+  - scene: endcard
+    time: 3:11 AM
+    hold: 1.6
+    say: Follow for the last night.
 - id: headcount-6
   format: stickman
   series: HEADCOUNT
@@ -900,88 +1084,137 @@
   day_label: NIGHT
   meter_label: TORCH
   place: BRACKLEY ZOO
-  title: "I wrote 'Enclosure 9: one' on the zoo board. The next night, the count changed 🦩"
-  tags: [stickman, animation, horror, story, zoo, mystery]
+  title: 'I wrote ''Enclosure 9: one'' on the zoo board. The next night, the count changed 🦩'
+  tags:
+  - stickman
+  - animation
+  - horror
+  - story
+  - zoo
+  - mystery
   shots:
-    - scene: room
-      recap: true
-      time: "3:11 AM"
-      light: 93
-      wall: "#55684a"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.4
-      you: {x: 0.55, action: idle, facing: -1}
-      creatures: [{x: 0.22, facing: 1, scale: 0.9}]
-      say: "Last time, you learned the thing from Enclosure Nine just wanted to be counted."
-    - scene: title
-      say: "Headcount. The last night."
-    - scene: room
-      time: "3:12 AM"
-      light: 92
-      wall: "#55684a"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      dark: 0.35
-      you: {x: 0.2, action: idle, facing: 1}
-      creatures: [{x: 0.5, to: 1.05, arrive: home, facing: 1, scale: 0.9, action: walk}]
-      sfx: [{name: tick, at: one, gain: 0.6}]
-      say: "Tonight's goal: put it on the board. You pick up the chalk, and write. Enclosure Nine. One. It looks at the number for a long time. Then it unfolds, ducks out of the door, and walks home."
-    - scene: street
-      time: "6:00 AM"
-      place: THE ZOO PATH
-      light: 90
-      pace: walk
-      speed: 200
-      dawn: true
-      dark: 0.05
-      you: {light: false}
-      counter:
-        - {text: "4", label: penguins, cue: four}
-        - {text: "12", label: flamingos, cue: twelve}
-        - {text: "1", label: enclosure nine, cue: nine}
-      say: "At six, you do the last count. Four penguins. Twelve flamingos. And in Enclosure Nine, curled up in fresh straw for the first time in years, one. Everything matches."
-    - scene: room
-      time: "6:30 AM"
-      place: KEEPER'S HUT
-      light: 89
-      wall: "#55684a"
-      furniture: false
-      desk: true
-      clock: true
-      window_view: forest
-      you: {x: 0.35, action: idle, facing: 1}
-      people: [{x: 0.65, action: idle, facing: -1, color: "#3a6a8a"}]
-      say: "Mr. Osei sees the board, and goes quiet. That afternoon, he paints a brand new sign for Nine. Please count me."
-    - scene: street
-      time: "12:00 AM"
-      place: THE ZOO PATH
-      light: 99
+  - scene: room
+    recap: true
+    time: 3:11 AM
+    light: 93
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.4
+    you:
+      x: 0.55
+      action: idle
+      facing: -1
+    creatures:
+    - x: 0.22
+      facing: 1
+      scale: 0.9
+    say: Last time, you learned the thing from Enclosure Nine just wanted to be counted.
+  - scene: title
+    say: Headcount. The last night.
+  - scene: room
+    time: 3:12 AM
+    light: 92
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    dark: 0.35
+    you:
+      x: 0.2
+      action: idle
+      facing: 1
+    creatures:
+    - x: 0.5
+      to: 1.05
+      arrive: home
+      facing: 1
+      scale: 0.9
+      action: walk
+    sfx:
+    - name: tick
+      at: one
+      gain: 0.6
+    say: 'Tonight''s goal: put it on the board. You pick up the chalk, and write. Enclosure Nine. One. It looks at the number for a long time. Then it unfolds, ducks out of the door, and walks home.'
+  - scene: street
+    time: 6:00 AM
+    place: THE ZOO PATH
+    light: 90
+    pace: walk
+    speed: 200
+    dawn: true
+    dark: 0.05
+    you:
+      light: false
+    counter:
+    - text: '4'
+      label: penguins
+      cue: four
+    - text: '12'
+      label: flamingos
+      cue: twelve
+    - text: '1'
+      label: enclosure nine
+      cue: nine
+    say: At six, you do the last count. Four penguins. Twelve flamingos. And in Enclosure Nine, curled up in fresh straw for the first time in years, one. Everything matches.
+  - scene: room
+    time: 6:30 AM
+    place: KEEPER'S HUT
+    light: 89
+    wall: '#55684a'
+    furniture: false
+    desk: true
+    clock: true
+    window_view: forest
+    you:
+      x: 0.35
+      action: idle
+      facing: 1
+    people:
+    - x: 0.65
+      action: idle
+      facing: -1
+      color: '#3a6a8a'
+    say: Mr. Osei sees the board, and goes quiet. That afternoon, he paints a brand new sign for Nine. Please count me.
+  - scene: street
+    time: 12:00 AM
+    place: THE ZOO PATH
+    light: 99
+    stop: 0
+    dark: 0.6
+    you:
+      light: true
+      facing: 1
+    counter:
+    - text: '2'
+      label: enclosure nine
+      cue: two
+    heartbeat: two
+    say: The next night, at midnight, you count Enclosure Nine. Two. One big. One very, very small. It wasn't trying to scare anyone. It needed someone to count it before the baby came.
+  - scene: choice
+    time: 12:01 AM
+    base:
+      scene: street
       stop: 0
       dark: 0.6
-      you: {light: true, facing: 1}
-      counter:
-        - {text: "2", label: enclosure nine, cue: two}
-      heartbeat: two
-      say: "The next night, at midnight, you count Enclosure Nine. Two. One big. One very, very small. It wasn't trying to scare anyone. It needed someone to count it before the baby came."
-    - scene: choice
-      time: "12:01 AM"
-      base: {scene: street, stop: 0, dark: 0.6, you: {light: true, facing: 1}}
-      question: "Tell Mr. Osei or keep it your secret?"
-      options:
-        - {text: Tell Osei, cue: tell}
-        - {text: Keep it secret, cue: secret}
-      say: "So. Do you tell Mr. Osei... or keep it your secret?"
-    - scene: endcard
-      time: "12:01 AM"
-      final: true
-      hold: 1.8
-      say: "Follow for a brand new story."
-
+      you:
+        light: true
+        facing: 1
+    question: Tell Mr. Osei or keep it your secret?
+    options:
+    - text: Tell Osei
+      cue: tell
+    - text: Keep it secret
+      cue: secret
+    say: So. Do you tell Mr. Osei... or keep it your secret?
+  - scene: endcard
+    time: 12:01 AM
+    final: true
+    hold: 1.8
+    say: Follow for a brand new story.
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
