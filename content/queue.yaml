@@ -680,6 +680,471 @@
     final: true
     hold: 1.8
     say: Follow for a brand new story.
+- id: dead-letters-1
+  format: stickman
+  series: DEAD LETTERS
+  day: 1
+  day_label: NIGHT
+  meter_label: LAMP
+  place: WEXLEY SORTING OFFICE
+  title: "I'm the night sorter at an old post office. At 3 AM someone collects the letters with no stamp ✉️"
+  tags: [stickman, animation, horror, story, post office, mystery]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      place: THE SORTING ROOM
+      light: 100
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night job at the old Wexley sorting office. Ten PM to six AM. You sort the town's letters before the vans leave at five."
+    - scene: radio
+      time: "10:05 PM"
+      on: phone
+      chip: {text: "Mrs. Penrose · postmaster", cue: penrose, y: 470}
+      radio_label: "PHONE · MRS. PENROSE"
+      say:
+        - "Mrs. Penrose, the postmaster, phones with the rules."
+        - radio: "Three rules. Sort everything by five. Letters with no stamp go in the Night Sack, never the vans. And at three, give the sack to the man at the back door. Don't look inside it, and don't speak to him."
+    - scene: title
+      say: "Dead Letters. Night one."
+    - scene: hallway
+      time: "11:00 PM"
+      place: THE RACKS
+      light: 99
+      lights: "on"
+      shelves: true
+      wall: "#6e5f4a"
+      floor: "#3a3026"
+      carpet: "#5a4a38"
+      ceiling: "#2a231c"
+      exit_color: "#ffe2a8"
+      rule: {n: 1, text: Sort everything by 5 AM}
+      say: "Rule number one. Every letter is sorted by five, when the vans leave. Long racks of little boxes, one for every street."
+    - scene: room
+      time: "1:00 AM"
+      place: THE SORTING ROOM
+      light: 97
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: idle, facing: 1}
+      rule: {n: 2, text: "No stamp? Into the Night Sack"}
+      say: "Rule number two. Letters with no stamp go in the Night Sack. Tonight there are three. Old paper. No stamp, no postmark, as if they were never posted at all. Tonight's goal: get to six."
+    - scene: room
+      time: "3:00 AM"
+      light: 94
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      door_open: [[false, 0], [true, opens]]
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a", cue: man}]
+      rule: {n: 3, text: "Never look inside. Never speak."}
+      sfx: [{name: knock, at: knock, gain: 0.7}]
+      heartbeat: man
+      say: "Rule number three. At three AM, a knock at the back door. It opens. A man in an old postman's cap stands in the fog. He doesn't say a word. He just holds out his hand for the sack."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: room, wall: "#6e5f4a", furniture: false, desk: true, clock: true, dark: 0.45, door_open: true, you: {x: 0.35, action: idle, facing: 1}, people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a"}]}
+      question: "Hand over the sack or keep it?"
+      options:
+        - {text: Hand it over, cue: hand}
+        - {text: Keep it, cue: keep}
+      say: "Do you hand over the sack... or keep it?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: dead-letters-2
+  format: stickman
+  series: DEAD LETTERS
+  day: 2
+  day_label: NIGHT
+  meter_label: LAMP
+  place: WEXLEY SORTING OFFICE
+  title: "The letters with no stamp were all written by people in my town, and never posted ✉️"
+  tags: [stickman, animation, horror, story, post office, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:01 AM"
+      light: 93
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      door_open: true
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a"}]
+      say: "Last night, at three AM, a silent man in an old postman's cap came to the back door for the Night Sack."
+    - scene: title
+      say: "Dead Letters. Night two."
+    - scene: room
+      time: "3:02 AM"
+      light: 92
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      door_open: [[true, 0], [false, gone]]
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.8, action: walk, facing: 1, color: "#2c3a5a", fade: fog}]
+      say: "You handed it over. He nodded once, and walked into the fog without a single footstep. Then he was gone."
+    - scene: room
+      time: "1:00 AM"
+      light: 98
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: idle, facing: 1}
+      say: "Tonight's goal: find out what goes in that sack, without opening anything. You read the envelopes. One says, to Tom Hale, twelve Mill Lane. From your brother, Sam. Dated nineteen seventy one."
+    - scene: radio
+      time: "1:10 AM"
+      on: phone
+      chip: {text: "Mrs. Penrose · postmaster", cue: penrose, y: 470}
+      radio_label: "PHONE · MRS. PENROSE"
+      say:
+        - "You phone Mrs. Penrose. She sighs."
+        - radio: "Those are letters people wrote and never posted. Every one in Wexley ends up here, sooner or later. And he takes them. That's how it's always been."
+    - scene: room
+      time: "1:20 AM"
+      light: 97
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: scared, facing: 1}
+      heartbeat: sorry
+      say: "Through the thin envelope, you can read the first line. Tom, I'm sorry. Fifty years, and it never got there."
+    - scene: choice
+      time: "1:21 AM"
+      base: {scene: room, wall: "#6e5f4a", furniture: false, desk: true, clock: true, you: {x: 0.45, action: scared, facing: 1}}
+      question: "Deliver Sam's letter or put it in the sack?"
+      options:
+        - {text: Deliver it, cue: deliver}
+        - {text: Into the sack, cue: sack}
+      say: "Do you deliver Sam's letter yourself... or put it in the Night Sack?"
+    - scene: endcard
+      time: "1:21 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: dead-letters-3
+  format: stickman
+  series: DEAD LETTERS
+  day: 3
+  day_label: NIGHT
+  meter_label: LAMP
+  place: MILL LANE
+  title: "I delivered a letter that was 50 years late. Then the man at the back door noticed ✉️"
+  tags: [stickman, animation, horror, story, post office, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "1:21 AM"
+      place: THE SORTING ROOM
+      light: 98
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.45, action: scared, facing: 1}
+      say: "Last night, you found a letter never posted, from Sam to his brother Tom. Fifty years late."
+    - scene: title
+      say: "Dead Letters. Night three."
+    - scene: street
+      time: "6:10 AM"
+      place: MILL LANE
+      light: 97
+      pace: walk
+      speed: 180
+      dawn: true
+      dark: 0.1
+      you: {light: false}
+      counter:
+        - {text: "8", label: mill lane, cue: eight}
+        - {text: "10", label: mill lane, cue: ten}
+        - {text: "12", label: mill lane, cue: twelve}
+      say: "Tonight's goal: get Sam's letter home. After your shift, you walk it to Mill Lane yourself. Number eight. Number ten. Number twelve. You push it through the door, and run before anyone sees you."
+    - scene: radio
+      time: "9:00 AM"
+      on: phone
+      chip: {text: "Mrs. Penrose · postmaster", cue: penrose, y: 470}
+      radio_label: "PHONE · MRS. PENROSE"
+      say:
+        - "By nine, Mrs. Penrose is on the phone."
+        - radio: "Old Tom Hale was in the shop crying this morning. Happy crying. He and his brother hadn't spoken in fifty years. They're having lunch."
+    - scene: room
+      time: "3:00 AM"
+      place: THE SORTING ROOM
+      light: 92
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      door_open: [[false, 0], [true, opens]]
+      you: {x: 0.35, action: scared, facing: 1}
+      people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a", stare: true, cue: man}]
+      sfx: [{name: knock, at: knock, gain: 0.7}]
+      heartbeat: missing
+      say: "That night, at three, the knock. The door opens. The man in the cap takes the sack, and stops. His eyes shine under the cap. One letter is missing. He counts again, slowly. For the first time, he speaks, in a dry, papery voice. Who said they were ready?"
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: room, wall: "#6e5f4a", furniture: false, desk: true, clock: true, dark: 0.45, door_open: true, you: {x: 0.35, action: scared, facing: 1}, people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a", stare: true}]}
+      question: "Tell the truth or say it got lost?"
+      options:
+        - {text: The truth, cue: truth}
+        - {text: It got lost, cue: lost}
+      say: "Do you tell him the truth... or say it got lost?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: dead-letters-4
+  format: stickman
+  series: DEAD LETTERS
+  day: 4
+  day_label: NIGHT
+  meter_label: LAMP
+  place: WEXLEY SORTING OFFICE
+  title: "The man at the post office back door gave me a key to the loft. It was full of unsent letters ✉️"
+  tags: [stickman, animation, horror, story, post office, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:01 AM"
+      place: THE SORTING ROOM
+      light: 98
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      door_open: true
+      you: {x: 0.35, action: scared, facing: 1}
+      people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a", stare: true}]
+      say: "Last time, you delivered a letter yourself, and the man at the back door noticed it was missing."
+    - scene: title
+      say: "Dead Letters. Night four."
+    - scene: room
+      time: "3:02 AM"
+      light: 97
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      door_open: true
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a"}]
+      say: "You tell him the truth. He's quiet for a long time. Then he says, a letter sent too early can break things. So I keep them, until people are ready. You were lucky. Then he puts something in your hand, and leaves."
+    - scene: inventory
+      time: "3:05 AM"
+      place: THE SORTING ROOM
+      light: 96
+      items:
+        - {icon: key, count: 1, label: old brass key, cue: key}
+      total: {text: "Tag: LOFT", cue: loft}
+      say: "Tonight's goal: find what it opens. An old brass key. The paper tag on it says, loft."
+    - scene: hallway
+      time: "4:00 AM"
+      place: THE LOFT
+      light: 94
+      lights: flicker
+      shelves: true
+      wall: "#5a4a38"
+      floor: "#2e261e"
+      carpet: "#3e3226"
+      ceiling: "#1e1914"
+      exit_color: "#ffe2a8"
+      say: "Up the narrow stairs, you unlock the loft. Shelves, from floor to roof, and all of them letters. Thousands. Sorted by year. Love letters, apologies, goodbyes. Every letter Wexley never sent."
+    - scene: room
+      time: "4:10 AM"
+      place: THE LOFT
+      light: 93
+      wall: "#5a4a38"
+      furniture: false
+      desk: true
+      dark: 0.5
+      you: {x: 0.45, action: scared, facing: 1}
+      heartbeat: arthur
+      say: "On the newest shelf, one letter. In Mrs. Penrose's handwriting. To Arthur Penrose. The night sorter."
+    - scene: choice
+      time: "4:11 AM"
+      base: {scene: room, wall: "#5a4a38", furniture: false, desk: true, dark: 0.5, you: {x: 0.45, action: scared, facing: 1}}
+      question: "Read it or take it to Mrs. Penrose?"
+      options:
+        - {text: Read it, cue: read}
+        - {text: Take it, cue: take}
+      say: "Do you read it... or take it to Mrs. Penrose?"
+    - scene: endcard
+      time: "4:11 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: dead-letters-5
+  format: stickman
+  series: DEAD LETTERS
+  day: 5
+  day_label: NIGHT
+  meter_label: LAMP
+  place: WEXLEY SORTING OFFICE
+  title: "I found out who the man at the post office back door really is ✉️"
+  tags: [stickman, animation, horror, story, post office, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "4:11 AM"
+      place: THE LOFT
+      light: 98
+      wall: "#5a4a38"
+      furniture: false
+      desk: true
+      dark: 0.5
+      you: {x: 0.45, action: scared, facing: 1}
+      say: "Last time, in a loft full of unsent letters, you found one from Mrs. Penrose, to Arthur Penrose, the night sorter."
+    - scene: title
+      say: "Dead Letters. Night five."
+    - scene: radio
+      time: "9:00 AM"
+      on: phone
+      chip: {text: "Mrs. Penrose · postmaster", cue: penrose, y: 470}
+      radio_label: "PHONE · MRS. PENROSE"
+      say:
+        - "Tonight's goal: find out who Arthur is. You phone Mrs. Penrose and read her the name. The line goes very quiet."
+        - radio: "Arthur was my husband. He was the night sorter for forty years. He died last winter. I wrote that letter the night he died. I never posted it. I never said goodbye."
+    - scene: map
+      time: "9:10 AM"
+      place: STAFF PHOTO 1979
+      light: 97
+      route: [[0.3, 0.98], [0.3, 0.2]]
+      route_cue: 0
+      route_end: cap
+      stops:
+        - {x: 0.3, y: 0.85, label: "Wexley Post Office staff", cue: photo}
+        - {x: 0.3, y: 0.65, label: "Back row: the vans", cue: photo}
+        - {x: 0.3, y: 0.45, label: "Arthur Penrose · night sorter", ghost: true, cue: cap}
+      say: "On the sorting room wall hangs an old staff photo from nineteen seventy nine. In the back row, a young man in a postman's cap. The same cap. The same face. Arthur Penrose."
+    - scene: room
+      time: "2:55 AM"
+      place: THE SORTING ROOM
+      light: 92
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "He kept everyone's letters safe for forty years. And then he kept doing it, even after. Tonight, it's nearly three. Her letter is in your pocket. And rule three says, never speak to him."
+    - scene: choice
+      time: "2:56 AM"
+      base: {scene: room, wall: "#6e5f4a", furniture: false, desk: true, clock: true, dark: 0.45, you: {x: 0.4, action: idle, facing: 1}}
+      question: "Put it in the sack or hand it to him?"
+      options:
+        - {text: In the sack, cue: sack}
+        - {text: Hand it over, cue: hand}
+      say: "Do you put her letter in the Night Sack... or hand it to him yourself?"
+    - scene: endcard
+      time: "2:56 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: dead-letters-6
+  format: stickman
+  series: DEAD LETTERS
+  day: 6
+  day_label: NIGHT
+  meter_label: LAMP
+  place: WEXLEY SORTING OFFICE
+  title: "I broke the post office's last rule and spoke to the man at the back door ✉️"
+  tags: [stickman, animation, horror, story, post office, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "2:56 AM"
+      place: THE SORTING ROOM
+      light: 98
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "Last time, you learned the man at the back door is Arthur, the old night sorter, who died last winter."
+    - scene: title
+      say: "Dead Letters. The last night."
+    - scene: room
+      time: "3:00 AM"
+      light: 97
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      door_open: [[false, 0], [true, opens]]
+      you: {x: 0.4, action: idle, facing: 1}
+      people: [{x: 0.8, action: idle, facing: -1, color: "#2c3a5a", cue: cap}]
+      sfx: [{name: knock, at: knock, gain: 0.7}]
+      say: "Tonight's goal: deliver one last letter. The knock. The door opens. Arthur holds out his hand. You break rule three, and speak. This one isn't for the sack, Arthur. It's for you. She's ready."
+    - scene: room
+      time: "3:05 AM"
+      light: 96
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.4
+      door_open: true
+      you: {x: 0.4, action: idle, facing: 1}
+      people: [{x: 0.8, action: walk, facing: 1, color: "#2c3a5a", fade: fog}]
+      say: "He reads it under the lamp, very slowly. Then he smiles, takes off his cap, and leaves it on the sorting desk. He walks into the fog. This time, he doesn't come back."
+    - scene: room
+      time: "6:00 AM"
+      light: 95
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      you: {x: 0.35, action: idle, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#8a5a6a"}]
+      say: "At six, Mrs. Penrose comes in. She sees the cap, and holds it for a long time. Then she takes over the loft herself. Arthur kept the letters. She'll deliver them, one by one, when people are ready."
+    - scene: room
+      time: "3:00 AM"
+      light: 99
+      wall: "#6e5f4a"
+      furniture: false
+      desk: true
+      clock: true
+      dark: 0.45
+      you: {x: 0.45, action: scared, facing: 1}
+      heartbeat: yours
+      say: "The next night, at three, one letter drops into your tray. No stamp. It's addressed to you. In your own handwriting. And it's dated ten years from now."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: room, wall: "#6e5f4a", furniture: false, desk: true, clock: true, dark: 0.45, you: {x: 0.45, action: scared, facing: 1}}
+      question: "Open it or put it in the loft?"
+      options:
+        - {text: Open it, cue: open}
+        - {text: The loft, cue: loft}
+      say: "So. Do you open it... or put it in the loft until you're ready?"
+    - scene: endcard
+      time: "3:01 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
+
 - id: grandpa-hearing-aid-bluetooth
   title: My grandpa's hearing aids connected to MY phone 🎧
   contact: Grandpa
