@@ -58,7 +58,8 @@ Neighbour, who guards the village from the woods; meter_label OVEN; twist: it is
 what you ask and takes the same from the town; clever win: charge it everything it ever took). LAMP ROOM (6, coal-mine museum night watchman; tag 47 missing since 1938; hallway `timbers` = mine tunnel;
 twist: the miners' tap code, the boy was told "stay put" and nobody ever tapped "come up"). HEADCOUNT (6, city-zoo night keeper; every count one too
 many; street `counter` as headcounts; twist: the uncounted thing in Enclosure 9 just wanted to be counted, and next night it is two). DEAD LETTERS (6, village sorting-office night sorter; unposted letters go in
-the Night Sack for the Courier; twist: he is Arthur, the dead night sorter, and you hand him his widow's unsent goodbye). Never reuse a premise; keep every series
+the Night Sack for the Courier; twist: he is Arthur, the dead night sorter, and you hand him his widow's unsent goodbye). CALL SIGN (6, island-airfield night radio operator; a 1953 mail plane asks to land;
+it looks for the old lamp-lit grass strip; twist: it went down off the strip, it needed to be found, not land). Never reuse a premise; keep every series
 original (never copy other channels, e.g. "14 Floors Up").
 Nov 2: the owner is weighing a switch to how-it-works explainers (2D `style: explainer` cut-aways with
 stickman wizards, or 3D via Blender: `tools/blender/`, `.github/workflows/preview-3d.yml`); previews go

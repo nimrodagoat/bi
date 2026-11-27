@@ -1,0 +1,470 @@
+# CALL SIGN (6 parts). You are the night radio operator in the one-room tower
+# of Carra airfield, a tiny island strip, ten PM to six AM.
+# Cast: you (night operator), Morag (the airfield owner, on the phone), and
+# Mike Echo Four: a pilot's voice on the radio at 3 AM, a mail plane lost in
+# fog in 1953, still asking to land.
+# The idea, said plainly: in 1953 the runway was an old grass strip on the
+# WEST side, lit by paraffin lamps. The new runway (1960) is on the EAST. The
+# pilot circles looking for lamps that aren't there.
+# Rule 3 (never clear him to land) dates from 1961, when Morag's father cleared
+# him and was found at dawn soaked in seawater.
+# Twist: you light the old strip; he says "I see lamps" and goes down. At dawn,
+# low tide shows a plane's tail in the sand off the end of the old strip,
+# exactly where the lamps point. He never needed to land. He needed to be
+# found. The switched-off radio crackles once: "Thank you, Carra."
+- id: call-sign-1
+  format: stickman
+  series: CALL SIGN
+  day: 1
+  day_label: NIGHT
+  meter_label: POWER
+  place: CARRA AIRFIELD
+  title: "I'm the night radio operator at a tiny island airfield. At 3 AM a plane asked to land ✈️"
+  tags: [stickman, animation, horror, story, airfield, mystery]
+  shots:
+    - scene: room
+      time: "10:00 PM"
+      place: THE TOWER
+      light: 100
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.4, action: idle, facing: 1}
+      say: "You take the night job in the tower at Carra, a tiny island airfield. Ten PM to six AM. One runway, one radio, and one old generator for the lights."
+    - scene: radio
+      time: "10:05 PM"
+      on: phone
+      chip: {text: "Morag · airfield owner", cue: morag, y: 470}
+      radio_label: "PHONE · MORAG"
+      say:
+        - "Morag, who owns the airfield, phones with the rules."
+        - radio: "Three rules. Keep the runway lights on till dawn. Answer every call on the radio. And if Mike Echo Four calls, never clear it to land. Never."
+    - scene: title
+      say: "Call Sign. Night one."
+    - scene: street
+      time: "11:00 PM"
+      place: THE RUNWAY
+      light: 99
+      stop: 0
+      sea: true
+      dark: 0.55
+      floodlights: lights
+      you: {light: true, facing: 1}
+      rule: {n: 1, text: Runway lights on till dawn}
+      say: "Rule number one. The runway lights stay on till dawn. If the generator runs dry, the island goes dark. Tonight's goal: keep them burning until six."
+    - scene: radio
+      time: "1:00 AM"
+      on: radio
+      chip: {text: "Fishing boat · Kestrel", cue: kestrel, y: 470}
+      radio_label: "RADIO · CHANNEL 1"
+      rule: {n: 2, text: Answer every call}
+      say:
+        - "Rule number two. Answer every call on the radio. At one AM, a fishing boat checks the weather. You answer. Easy."
+    - scene: room
+      time: "3:00 AM"
+      place: THE TOWER
+      light: 94
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      dark: 0.5
+      you: {x: 0.35, action: scared, facing: 1}
+      window_lights: [{x: 0.3, y: 0.3, color: "#ff5a4a", cue: lights, n: 2, drift: 0.4}]
+      rule: {n: 3, text: "Never clear Mike Echo Four"}
+      heartbeat: lights
+      say:
+        - "Rule number three. At three AM, the radio crackles. An old engine hums somewhere in the fog. Small red lights circle past the window."
+        - radio: "Carra tower, this is Mike Echo Four. Requesting permission to land."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: room, wall: "#4e5c66", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.5, you: {x: 0.35, action: scared, facing: 1}, window_lights: [{x: 0.3, y: 0.3, color: "#ff5a4a", n: 2}]}
+      question: "Refuse him or ask who he is?"
+      options:
+        - {text: Refuse, cue: refuse}
+        - {text: Ask who, cue: ask}
+      say: "Do you refuse him... or ask who he is?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night two."
+
+- id: call-sign-2
+  format: stickman
+  series: CALL SIGN
+  day: 2
+  day_label: NIGHT
+  meter_label: POWER
+  place: CARRA AIRFIELD
+  title: "The plane asking to land at my island airfield went missing in 1953 ✈️"
+  tags: [stickman, animation, horror, story, airfield, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:01 AM"
+      place: THE TOWER
+      light: 93
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      dark: 0.5
+      you: {x: 0.35, action: scared, facing: 1}
+      window_lights: [{x: 0.3, y: 0.3, color: "#ff5a4a", n: 2, drift: 0.4}]
+      say: "Last night, at three AM, a plane called Mike Echo Four asked to land, and you're never allowed to say yes."
+    - scene: title
+      say: "Call Sign. Night two."
+    - scene: radio
+      time: "3:02 AM"
+      on: radio
+      chip: {text: "Mike Echo Four", cue: mike, y: 470}
+      radio_label: "RADIO · MIKE ECHO FOUR"
+      say:
+        - "You ask who he is. A calm, tired voice answers."
+        - radio: "Mike Echo Four. Mail flight from the mainland. Two on board. Fuel low. I can't see a thing in this fog."
+    - scene: room
+      time: "3:05 AM"
+      light: 91
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      dark: 0.5
+      you: {x: 0.35, action: idle, facing: 1}
+      window_lights: [{x: 0.3, y: 0.3, color: "#ff5a4a", n: 2, drift: 0.6}]
+      say: "You keep the rule. Permission refused. He asks again, and again, politely, every few minutes. The red lights circle lower. At dawn, they fade into the fog, and the radio goes quiet."
+    - scene: radio
+      time: "9:00 AM"
+      on: phone
+      chip: {text: "Morag · airfield owner", cue: morag, y: 470}
+      radio_label: "PHONE · MORAG"
+      say:
+        - "Tonight's goal: find out who he is. You phone Morag."
+        - radio: "Mike Echo Four went missing in fog in nineteen fifty three. Never found. It calls every night. In sixty one, a night man said yes. They found him at dawn, soaked in seawater. He was my father."
+    - scene: choice
+      time: "9:01 AM"
+      base: {scene: room, wall: "#4e5c66", furniture: false, desk: true, clock: true, window_view: forest, you: {x: 0.35, action: idle, facing: 1}}
+      question: "Read the old logbook or play the old tape?"
+      options:
+        - {text: The logbook, cue: logbook}
+        - {text: The tape, cue: tape}
+      say: "Do you read the tower's old logbook... or play the old radio tape?"
+    - scene: endcard
+      time: "9:01 AM"
+      hold: 1.6
+      say: "Follow for night three."
+
+- id: call-sign-3
+  format: stickman
+  series: CALL SIGN
+  day: 3
+  day_label: NIGHT
+  meter_label: POWER
+  place: THE TOWER
+  title: "I played the 1953 radio tape from the plane that never landed ✈️"
+  tags: [stickman, animation, horror, story, airfield, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "9:01 AM"
+      place: THE TOWER
+      light: 98
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      you: {x: 0.35, action: idle, facing: 1}
+      say: "Last time, you learned Mike Echo Four went missing in nineteen fifty three, and it still calls every night."
+    - scene: title
+      say: "Call Sign. Night three."
+    - scene: radio
+      time: "10:30 PM"
+      on: tape
+      chip: {text: "Tape · 18 Nov 1953", cue: tape, y: 470}
+      radio_label: "TAPE · 1953"
+      say:
+        - "Tonight's goal: find out why he never landed. You find the old tape, and play it."
+        - radio: "Carra, Mike Echo Four. I can't see your lamps. Repeat, I cannot see your lamps. Where are your lamps?"
+    - scene: map
+      time: "10:40 PM"
+      place: AIRFIELD PLAN
+      light: 97
+      route: [[0.75, 0.9], [0.75, 0.2]]
+      route_cue: 0
+      route_end: west
+      stops:
+        - {x: 0.75, y: 0.75, label: "Runway · built 1960", cue: runway}
+        - {x: 0.25, y: 0.55, label: "Old grass strip · 1953", ghost: true, cue: west}
+        - {x: 0.25, y: 0.25, label: "Sea", cue: sea}
+      say: "Lamps. Not lights. On the old plan, you see it. In nineteen fifty three, there was no runway. Just a grass strip on the west side, lit with paraffin lamps. The runway you light every night was built later, on the east side."
+    - scene: room
+      time: "3:00 AM"
+      light: 92
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      dark: 0.5
+      you: {x: 0.35, action: scared, facing: 1}
+      window_lights: [{x: 0.3, y: 0.3, color: "#ff5a4a", n: 2, drift: 0.5}]
+      heartbeat: lamps
+      say:
+        - "He's been circling the wrong side for seventy three years, looking for lamps that aren't there. At three AM, he calls again."
+        - radio: "Carra, fuel very low. Please. Show me your lamps."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: room, wall: "#4e5c66", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.5, you: {x: 0.35, action: scared, facing: 1}, window_lights: [{x: 0.3, y: 0.3, color: "#ff5a4a", n: 2}]}
+      question: "Light the old strip or keep the rules?"
+      options:
+        - {text: Light it, cue: light}
+        - {text: Keep the rules, cue: rules}
+      say: "Do you light the old strip... or keep the rules?"
+    - scene: endcard
+      time: "3:01 AM"
+      hold: 1.6
+      say: "Follow for night four."
+
+- id: call-sign-4
+  format: stickman
+  series: CALL SIGN
+  day: 4
+  day_label: NIGHT
+  meter_label: POWER
+  place: CARRA AIRFIELD
+  title: "I tried to light the old 1953 grass strip with paraffin lamps. Then the generator died ✈️"
+  tags: [stickman, animation, horror, story, airfield, mystery]
+  shots:
+    - scene: room
+      recap: true
+      time: "3:01 AM"
+      place: THE TOWER
+      light: 98
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      dark: 0.5
+      you: {x: 0.35, action: scared, facing: 1}
+      window_lights: [{x: 0.3, y: 0.3, color: "#ff5a4a", n: 2, drift: 0.5}]
+      say: "Last time, you learned the lost plane is searching for the old grass strip, lit with lamps that aren't there any more."
+    - scene: title
+      say: "Call Sign. Night four."
+    - scene: inventory
+      time: "11:00 PM"
+      place: THE OLD SHED
+      light: 97
+      items:
+        - {icon: candle, count: 12, label: paraffin lamps, cue: lamps}
+        - {icon: can, count: 1, label: paraffin, cue: paraffin}
+        - {icon: matches, count: 1, label: matches, cue: matches}
+      total: {text: "Enough for one strip", cue: enough}
+      say: "Tonight's goal: light the old strip before three. In the old shed, twelve dusty paraffin lamps. One can of paraffin. One box of matches. Enough for one strip. They haven't been lit since nineteen fifty three."
+    - scene: street
+      time: "1:30 AM"
+      place: THE OLD STRIP
+      light: [96, 60]
+      pace: walk
+      speed: 160
+      dark: 0.7
+      sea: true
+      fog: {top: 0.55, density: 0.6, color: "#9aa6ae"}
+      you: {light: true}
+      counter:
+        - {text: "1", label: lamps lit, cue: one}
+        - {text: "6", label: lamps lit, cue: six}
+        - {text: "11", label: lamps lit, cue: eleven}
+      say: "You walk the old strip in thick fog, lighting them one by one. Your torch barely reaches the next lamp. Three AM is close. One. Six. Eleven. Then, behind you, the generator coughs."
+    - scene: street
+      time: "2:50 AM"
+      light: 55
+      stop: 0
+      sea: true
+      dark: 0.85
+      fog: {top: 0.55, density: 0.6, color: "#9aa6ae"}
+      you: {light: true, facing: -1}
+      sfx: [{name: boom, at: die, gain: 0.5}]
+      shake_at: [die]
+      heartbeat: dark
+      say: "The runway lights on the east side flicker, and die. Rule one, broken. The whole island is dark, except for eleven little flames. And one lamp still left in your hand."
+    - scene: choice
+      time: "2:51 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.85, you: {light: true, facing: -1}}
+      question: "Fix the generator or light the last lamp?"
+      options:
+        - {text: Generator, cue: generator}
+        - {text: Last lamp, cue: last}
+      say: "Do you run back and fix the generator... or light the last lamp?"
+    - scene: endcard
+      time: "2:51 AM"
+      hold: 1.6
+      say: "Follow for night five."
+
+- id: call-sign-5
+  format: stickman
+  series: CALL SIGN
+  day: 5
+  day_label: NIGHT
+  meter_label: POWER
+  place: THE OLD STRIP
+  title: "The lost 1953 plane said 'I see lamps.' Then the airfield owner told me the truth ✈️"
+  tags: [stickman, animation, horror, story, airfield, mystery]
+  shots:
+    - scene: street
+      recap: true
+      time: "2:51 AM"
+      place: THE OLD STRIP
+      light: 55
+      stop: 0
+      sea: true
+      dark: 0.85
+      fog: {top: 0.55, density: 0.6, color: "#9aa6ae"}
+      you: {light: true, facing: -1}
+      say: "Last time, the generator died, the island went dark, and you had one paraffin lamp left in your hand."
+    - scene: title
+      say: "Call Sign. Night five."
+    - scene: street
+      time: "2:55 AM"
+      light: 54
+      stop: 0
+      sea: true
+      dark: 0.75
+      fog: {top: 0.55, density: 0.6, color: "#9aa6ae"}
+      you: {light: true, facing: 1}
+      sfx: [{name: whoosh, at: twelve, gain: 0.5}]
+      say: "Tonight's goal: get him the lamps he's looking for. You light the last lamp. Twelve. A line of little flames, pointing out to sea. Then the handheld radio on your belt crackles."
+    - scene: radio
+      time: "3:00 AM"
+      on: radio
+      chip: {text: "Mike Echo Four", cue: mike, y: 470}
+      radio_label: "RADIO · MIKE ECHO FOUR"
+      say:
+        - "For the first time in seventy three years, his voice changes."
+        - radio: "Carra. I see lamps. I see your lamps. Requesting permission to land."
+    - scene: radio
+      time: "3:01 AM"
+      on: phone
+      chip: {text: "Morag · airfield owner", cue: morag, y: 470}
+      radio_label: "PHONE · MORAG"
+      say:
+        - "Your phone buzzes. Morag. She saw the lights go out."
+        - radio: "Don't you dare clear him. My father did. And he walked straight off the end of that old strip, into the sea, looking for him. He didn't stop until the water was at his chest."
+    - scene: street
+      time: "3:02 AM"
+      light: 52
+      stop: 0
+      sea: true
+      dark: 0.75
+      fog: {top: 0.55, density: 0.6, color: "#9aa6ae"}
+      you: {light: true, facing: 1}
+      heartbeat: engine
+      say: "Out in the fog, the old engine comes closer. Lower."
+    - scene: choice
+      time: "3:03 AM"
+      base: {scene: street, stop: 0, sea: true, dark: 0.75, you: {light: true, facing: 1}}
+      question: "Clear him to land or stay silent?"
+      options:
+        - {text: Clear him, cue: clear}
+        - {text: Stay silent, cue: silent}
+      say: "Do you clear him to land... or stay silent?"
+    - scene: endcard
+      time: "3:03 AM"
+      hold: 1.6
+      say: "Follow for the last night."
+
+- id: call-sign-6
+  format: stickman
+  series: CALL SIGN
+  day: 6
+  day_label: NIGHT
+  meter_label: POWER
+  place: THE OLD STRIP
+  title: "I cleared the lost 1953 plane to land. At low tide, I found out why it never had ✈️"
+  tags: [stickman, animation, horror, story, airfield, mystery]
+  shots:
+    - scene: street
+      recap: true
+      time: "3:03 AM"
+      place: THE OLD STRIP
+      light: 52
+      stop: 0
+      sea: true
+      dark: 0.75
+      fog: {top: 0.55, density: 0.6, color: "#9aa6ae"}
+      you: {light: true, facing: 1}
+      say: "Last time, the lost plane finally saw the old lamps, and asked you for permission to land."
+    - scene: title
+      say: "Call Sign. The last night."
+    - scene: radio
+      time: "3:04 AM"
+      on: radio
+      chip: {text: "Mike Echo Four", cue: mike, y: 470}
+      radio_label: "RADIO · MIKE ECHO FOUR"
+      say:
+        - "Tonight's goal: bring him in. You press the button. Mike Echo Four, Carra. Cleared to land, old strip."
+        - radio: "Cleared to land. Thank you, Carra."
+    - scene: street
+      time: "3:05 AM"
+      light: 50
+      stop: 0
+      sea: true
+      dark: 0.7
+      fog: {top: 0.55, density: 0.5, color: "#9aa6ae"}
+      you: {light: true, facing: 1}
+      sfx: [{name: whoosh, at: roars, gain: 0.8}, {name: boom, at: splash, gain: 0.3}]
+      say: "The engine roars overhead. Small red lights skim along the lamps, past the end of the strip, out over the water. Then, far out, a soft splash. And silence."
+    - scene: street
+      time: "6:30 AM"
+      light: 49
+      stop: 0
+      sea: true
+      dawn: true
+      dark: 0.05
+      you: {light: false, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#7a5a8a"}]
+      say: "At dawn, the tide goes out further than ever. And in the wet sand, right in line with your lamps, sticks the tail of a small plane. Mike Echo Four."
+    - scene: street
+      time: "6:35 AM"
+      light: 48
+      stop: 0
+      sea: true
+      dawn: true
+      dark: 0.05
+      you: {light: false, facing: 1}
+      people: [{x: 0.65, action: idle, facing: -1, color: "#7a5a8a"}]
+      say: "He never needed to land. He went down in nineteen fifty three, just past the old strip. He needed someone to show where. Now two people can finally come home. Morag cries. Her father was searching the right spot all along."
+    - scene: room
+      time: "3:00 AM"
+      place: THE TOWER
+      light: 100
+      wall: "#4e5c66"
+      furniture: false
+      desk: true
+      clock: true
+      window_view: forest
+      dark: 0.5
+      you: {x: 0.4, action: scared, facing: 1}
+      heartbeat: off
+      say:
+        - "The next night, the radio is switched off. Unplugged. And at three AM, it crackles anyway."
+        - radio: "Carra, Mike Echo Five. Requesting permission to land."
+    - scene: choice
+      time: "3:01 AM"
+      base: {scene: room, wall: "#4e5c66", furniture: false, desk: true, clock: true, window_view: forest, dark: 0.5, you: {x: 0.4, action: scared, facing: 1}}
+      question: "Answer it or pull the radio out?"
+      options:
+        - {text: Answer, cue: answer}
+        - {text: Pull it out, cue: pull}
+      say: "So. Do you answer... or rip the radio out of the wall?"
+    - scene: endcard
+      time: "3:01 AM"
+      final: true
+      hold: 1.8
+      say: "Follow for a brand new story."
